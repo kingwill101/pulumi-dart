@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_policysimulator_v1_replay_config.dart';
 
 /// The set of arguments for Replay.
 class ReplayArgs {
   /// The configuration used for the `Replay`.
-  final Input<GoogleCloudPolicysimulatorV1ReplayConfig> config;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<GoogleCloudPolicysimulatorV1ReplayConfig> config;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   ReplayArgs({
     required this.config,
@@ -18,7 +18,7 @@ class ReplayArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['config'] = Input.mapInputValue<
+    map['config'] = pulumi.Input.mapInputValue<
         GoogleCloudPolicysimulatorV1ReplayConfig,
         Map<String, dynamic>>(config, (value) => value.toMap());
     final locationValue = location;
@@ -34,10 +34,10 @@ class ReplayArgs {
 
   factory ReplayArgs.fromMap(Map<String, dynamic> map) {
     return ReplayArgs(
-      config: Input.asInput<GoogleCloudPolicysimulatorV1ReplayConfig>(
+      config: pulumi.Input.asInput<GoogleCloudPolicysimulatorV1ReplayConfig>(
           map['config']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

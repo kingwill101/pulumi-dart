@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'discovered_response2.dart';
+import 'discovered_response_containeranalysis_v1beta1.dart';
 
 /// Details of a discovery occurrence.
 class GrafeasV1beta1DiscoveryDetailsResponse {
   /// Analysis status for the discovered resource.
-  final DiscoveredResponse2 discovered;
+  final DiscoveredResponseContaineranalysisV1beta1 discovered;
 
   GrafeasV1beta1DiscoveryDetailsResponse({
     required this.discovered,
@@ -20,7 +20,7 @@ class GrafeasV1beta1DiscoveryDetailsResponse {
   factory GrafeasV1beta1DiscoveryDetailsResponse.fromMap(
       Map<String, dynamic> map) {
     return GrafeasV1beta1DiscoveryDetailsResponse(
-      discovered: DiscoveredResponse2.fromMap(
+      discovered: DiscoveredResponseContaineranalysisV1beta1.fromMap(
           (map['discovered'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'license2.dart';
+import 'license_containeranalysis_v1alpha1.dart';
 
 /// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
 class PackageInfoOccurrence {
@@ -14,7 +14,7 @@ class PackageInfoOccurrence {
   final String? id;
 
   /// package or alternative values, if the governing license cannot be determined
-  final License2? licenseConcluded;
+  final LicenseContaineranalysisV1alpha1? licenseConcluded;
 
   /// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
   final String? sourceInfo;
@@ -59,7 +59,7 @@ class PackageInfoOccurrence {
       id: map['id'] == null ? null : map['id'] as String,
       licenseConcluded: map['licenseConcluded'] == null
           ? null
-          : License2.fromMap(
+          : LicenseContaineranalysisV1alpha1.fromMap(
               (map['licenseConcluded'] as Map).cast<String, dynamic>()),
       sourceInfo:
           map['sourceInfo'] == null ? null : map['sourceInfo'] as String,

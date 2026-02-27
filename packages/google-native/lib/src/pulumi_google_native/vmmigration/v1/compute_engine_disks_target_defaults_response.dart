@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disks_migration_vm_target_defaults_response.dart';
 import 'persistent_disk_defaults_response.dart';
 
@@ -31,9 +31,8 @@ class ComputeEngineDisksTargetDefaultsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['disks'] =
-        Input.encodeList<PersistentDiskDefaultsResponse, Map<String, dynamic>>(
-            disks, (value) => value.toMap());
+    map['disks'] = pulumi.Input.encodeList<PersistentDiskDefaultsResponse,
+        Map<String, dynamic>>(disks, (value) => value.toMap());
     map['disksTargetDefaults'] = disksTargetDefaults;
     map['targetProject'] = targetProject;
     map['vmTargetDefaults'] = vmTargetDefaults.toMap();
@@ -44,7 +43,7 @@ class ComputeEngineDisksTargetDefaultsResponse {
   factory ComputeEngineDisksTargetDefaultsResponse.fromMap(
       Map<String, dynamic> map) {
     return ComputeEngineDisksTargetDefaultsResponse(
-      disks: Input.decodeList<PersistentDiskDefaultsResponse>(
+      disks: pulumi.Input.decodeList<PersistentDiskDefaultsResponse>(
           map['disks'],
           (value) => PersistentDiskDefaultsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

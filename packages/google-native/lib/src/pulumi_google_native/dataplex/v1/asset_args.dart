@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_asset_discovery_spec.dart';
 import 'google_cloud_dataplex_v1_asset_resource_spec.dart';
 
 /// The set of arguments for Asset.
 class AssetArgs {
   /// Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
-  final Input<String> assetId;
+  final pulumi.Input<String> assetId;
 
   /// Optional. Description of the asset.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
-  final Input<GoogleCloudDataplexV1AssetDiscoverySpec>? discoverySpec;
+  final pulumi.Input<GoogleCloudDataplexV1AssetDiscoverySpec>? discoverySpec;
 
   /// Optional. User friendly display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. User defined labels for the asset.
-  final Input<Map<String, String>>? labels;
-  final Input<String> lakeId;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String> lakeId;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// Specification of the resource that is referenced by this asset.
-  final Input<GoogleCloudDataplexV1AssetResourceSpec> resourceSpec;
-  final Input<String>? zone;
+  final pulumi.Input<GoogleCloudDataplexV1AssetResourceSpec> resourceSpec;
+  final pulumi.Input<String>? zone;
 
   AssetArgs({
     required this.assetId,
@@ -50,7 +50,7 @@ class AssetArgs {
     }
     final discoverySpecValue = discoverySpec;
     if (discoverySpecValue != null) {
-      map['discoverySpec'] = Input.mapOptionalInputValue<
+      map['discoverySpec'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudDataplexV1AssetDiscoverySpec,
           Map<String, dynamic>>(discoverySpecValue, (value) => value.toMap());
     }
@@ -71,7 +71,7 @@ class AssetArgs {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['resourceSpec'] = Input.mapInputValue<
+    map['resourceSpec'] = pulumi.Input.mapInputValue<
         GoogleCloudDataplexV1AssetResourceSpec,
         Map<String, dynamic>>(resourceSpec, (value) => value.toMap());
     final zoneValue = zone;
@@ -83,19 +83,20 @@ class AssetArgs {
 
   factory AssetArgs.fromMap(Map<String, dynamic> map) {
     return AssetArgs(
-      assetId: Input.asInput<String>(map['assetId']),
-      description: Input.asOptionalInput<String>(map['description']),
+      assetId: pulumi.Input.asInput<String>(map['assetId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       discoverySpec:
-          Input.asOptionalInput<GoogleCloudDataplexV1AssetDiscoverySpec>(
+          pulumi.Input.asOptionalInput<GoogleCloudDataplexV1AssetDiscoverySpec>(
               map['discoverySpec']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      lakeId: Input.asInput<String>(map['lakeId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resourceSpec: Input.asInput<GoogleCloudDataplexV1AssetResourceSpec>(
-          map['resourceSpec']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      lakeId: pulumi.Input.asInput<String>(map['lakeId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resourceSpec:
+          pulumi.Input.asInput<GoogleCloudDataplexV1AssetResourceSpec>(
+              map['resourceSpec']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

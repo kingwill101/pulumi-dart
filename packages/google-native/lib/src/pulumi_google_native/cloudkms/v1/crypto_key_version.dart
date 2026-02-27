@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'crypto_key_version_args.dart';
 import 'external_protection_level_options_response.dart';
 import 'key_operation_attestation_response.dart';
@@ -6,69 +6,69 @@ import 'key_operation_attestation_response.dart';
 /// Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class CryptoKeyVersion extends CustomResource {
+class CryptoKeyVersion extends pulumi.CustomResource {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-  late final Output<String> algorithm;
+  late final pulumi.Output<String> algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-  late final Output<KeyOperationAttestationResponse> attestation;
+  late final pulumi.Output<KeyOperationAttestationResponse> attestation;
 
   /// The time at which this CryptoKeyVersion was created.
-  late final Output<String> createTime;
-  late final Output<String> cryptoKeyId;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<String> cryptoKeyId;
 
   /// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-  late final Output<String> destroyEventTime;
+  late final pulumi.Output<String> destroyEventTime;
 
   /// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-  late final Output<String> destroyTime;
+  late final pulumi.Output<String> destroyTime;
 
   /// The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
-  late final Output<String> externalDestructionFailureReason;
+  late final pulumi.Output<String> externalDestructionFailureReason;
 
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
-  late final Output<ExternalProtectionLevelOptionsResponse>
+  late final pulumi.Output<ExternalProtectionLevelOptionsResponse>
       externalProtectionLevelOptions;
 
   /// The time this CryptoKeyVersion's key material was generated.
-  late final Output<String> generateTime;
+  late final pulumi.Output<String> generateTime;
 
   /// The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
-  late final Output<String> generationFailureReason;
+  late final pulumi.Output<String> generationFailureReason;
 
   /// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
-  late final Output<String> importFailureReason;
+  late final pulumi.Output<String> importFailureReason;
 
   /// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
-  late final Output<String> importJob;
+  late final pulumi.Output<String> importJob;
 
   /// The time at which this CryptoKeyVersion's key material was most recently imported.
-  late final Output<String> importTime;
-  late final Output<String> keyRingId;
-  late final Output<String> location;
+  late final pulumi.Output<String> importTime;
+  late final pulumi.Output<String> keyRingId;
+  late final pulumi.Output<String> location;
 
   /// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-  late final Output<String> protectionLevel;
+  late final pulumi.Output<String> protectionLevel;
 
   /// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
-  late final Output<bool> reimportEligible;
+  late final pulumi.Output<bool> reimportEligible;
 
   /// The current state of the CryptoKeyVersion.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   CryptoKeyVersion(
     String name, {
     CryptoKeyVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:cloudkms/v1:CryptoKeyVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.algorithm = registerOutput<String>('algorithm');
     this.attestation =

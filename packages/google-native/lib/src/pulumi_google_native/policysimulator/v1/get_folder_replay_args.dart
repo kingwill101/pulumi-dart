@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolderReplay.
 class GetFolderReplayArgs {
-  final Input<String> folderId;
-  final Input<String> location;
-  final Input<String> replayId;
+  final pulumi.Input<String> folderId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> replayId;
 
   GetFolderReplayArgs({
     required this.folderId,
@@ -24,9 +24,9 @@ class GetFolderReplayArgs {
 
   factory GetFolderReplayArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderReplayArgs(
-      folderId: Input.asInput<String>(map['folderId']),
-      location: Input.asInput<String>(map['location']),
-      replayId: Input.asInput<String>(map['replayId']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      replayId: pulumi.Input.asInput<String>(map['replayId']),
     );
   }
 }

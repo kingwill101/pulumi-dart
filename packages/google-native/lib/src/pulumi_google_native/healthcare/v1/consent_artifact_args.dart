@@ -1,38 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image.dart';
-import 'signature3.dart';
+import 'signature_healthcare_v1.dart';
 
 /// The set of arguments for ConsentArtifact.
 class ConsentArtifactArgs {
   /// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
-  final Input<List<Image>>? consentContentScreenshots;
+  final pulumi.Input<List<Image>>? consentContentScreenshots;
 
   /// Optional. An string indicating the version of the consent information shown to the user.
-  final Input<String>? consentContentVersion;
-  final Input<String> consentStoreId;
-  final Input<String> datasetId;
+  final pulumi.Input<String>? consentContentVersion;
+  final pulumi.Input<String> consentStoreId;
+  final pulumi.Input<String> datasetId;
 
   /// Optional. A signature from a guardian.
-  final Input<Signature3>? guardianSignature;
-  final Input<String>? location;
+  final pulumi.Input<SignatureHealthcareV1>? guardianSignature;
+  final pulumi.Input<String>? location;
 
   /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
-  final Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
 
   /// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// User's UUID provided by the client.
-  final Input<String> userId;
+  final pulumi.Input<String> userId;
 
   /// Optional. User's signature.
-  final Input<Signature3>? userSignature;
+  final pulumi.Input<SignatureHealthcareV1>? userSignature;
 
   /// Optional. A signature from a witness.
-  final Input<Signature3>? witnessSignature;
+  final pulumi.Input<SignatureHealthcareV1>? witnessSignature;
 
   ConsentArtifactArgs({
     this.consentContentScreenshots,
@@ -53,11 +53,11 @@ class ConsentArtifactArgs {
     final map = <String, dynamic>{};
     final consentContentScreenshotsValue = consentContentScreenshots;
     if (consentContentScreenshotsValue != null) {
-      map['consentContentScreenshots'] =
-          Input.mapOptionalInputValue<List<Image>, List<Map<String, dynamic>>>(
-              consentContentScreenshotsValue,
-              (value) => Input.encodeList<Image, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+      map['consentContentScreenshots'] = pulumi.Input.mapOptionalInputValue<
+              List<Image>, List<Map<String, dynamic>>>(
+          consentContentScreenshotsValue,
+          (value) => pulumi.Input.encodeList<Image, Map<String, dynamic>>(
+              value, (value) => value.toMap()));
     }
     final consentContentVersionValue = consentContentVersion;
     if (consentContentVersionValue != null) {
@@ -67,9 +67,9 @@ class ConsentArtifactArgs {
     map['datasetId'] = datasetId;
     final guardianSignatureValue = guardianSignature;
     if (guardianSignatureValue != null) {
-      map['guardianSignature'] =
-          Input.mapOptionalInputValue<Signature3, Map<String, dynamic>>(
-              guardianSignatureValue, (value) => value.toMap());
+      map['guardianSignature'] = pulumi.Input.mapOptionalInputValue<
+              SignatureHealthcareV1, Map<String, dynamic>>(
+          guardianSignatureValue, (value) => value.toMap());
     }
     final locationValue = location;
     if (locationValue != null) {
@@ -90,37 +90,39 @@ class ConsentArtifactArgs {
     map['userId'] = userId;
     final userSignatureValue = userSignature;
     if (userSignatureValue != null) {
-      map['userSignature'] =
-          Input.mapOptionalInputValue<Signature3, Map<String, dynamic>>(
-              userSignatureValue, (value) => value.toMap());
+      map['userSignature'] = pulumi.Input.mapOptionalInputValue<
+          SignatureHealthcareV1,
+          Map<String, dynamic>>(userSignatureValue, (value) => value.toMap());
     }
     final witnessSignatureValue = witnessSignature;
     if (witnessSignatureValue != null) {
-      map['witnessSignature'] =
-          Input.mapOptionalInputValue<Signature3, Map<String, dynamic>>(
-              witnessSignatureValue, (value) => value.toMap());
+      map['witnessSignature'] = pulumi.Input.mapOptionalInputValue<
+              SignatureHealthcareV1, Map<String, dynamic>>(
+          witnessSignatureValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory ConsentArtifactArgs.fromMap(Map<String, dynamic> map) {
     return ConsentArtifactArgs(
-      consentContentScreenshots:
-          Input.asOptionalInput<List<Image>>(map['consentContentScreenshots']),
+      consentContentScreenshots: pulumi.Input.asOptionalInput<List<Image>>(
+          map['consentContentScreenshots']),
       consentContentVersion:
-          Input.asOptionalInput<String>(map['consentContentVersion']),
-      consentStoreId: Input.asInput<String>(map['consentStoreId']),
-      datasetId: Input.asInput<String>(map['datasetId']),
-      guardianSignature:
-          Input.asOptionalInput<Signature3>(map['guardianSignature']),
-      location: Input.asOptionalInput<String>(map['location']),
-      metadata: Input.asOptionalInput<Map<String, String>>(map['metadata']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      userId: Input.asInput<String>(map['userId']),
-      userSignature: Input.asOptionalInput<Signature3>(map['userSignature']),
-      witnessSignature:
-          Input.asOptionalInput<Signature3>(map['witnessSignature']),
+          pulumi.Input.asOptionalInput<String>(map['consentContentVersion']),
+      consentStoreId: pulumi.Input.asInput<String>(map['consentStoreId']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      guardianSignature: pulumi.Input.asOptionalInput<SignatureHealthcareV1>(
+          map['guardianSignature']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      metadata:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['metadata']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
+      userSignature: pulumi.Input.asOptionalInput<SignatureHealthcareV1>(
+          map['userSignature']),
+      witnessSignature: pulumi.Input.asOptionalInput<SignatureHealthcareV1>(
+          map['witnessSignature']),
     );
   }
 }

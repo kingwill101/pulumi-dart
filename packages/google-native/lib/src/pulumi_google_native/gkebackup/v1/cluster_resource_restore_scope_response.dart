@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_kind_response.dart';
 
 /// Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - Node - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume
@@ -28,11 +28,11 @@ class ClusterResourceRestoreScopeResponse {
     final map = <String, dynamic>{};
     map['allGroupKinds'] = allGroupKinds;
     map['excludedGroupKinds'] =
-        Input.encodeList<GroupKindResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GroupKindResponse, Map<String, dynamic>>(
             excludedGroupKinds, (value) => value.toMap());
     map['noGroupKinds'] = noGroupKinds;
     map['selectedGroupKinds'] =
-        Input.encodeList<GroupKindResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GroupKindResponse, Map<String, dynamic>>(
             selectedGroupKinds, (value) => value.toMap());
     return map;
   }
@@ -41,12 +41,12 @@ class ClusterResourceRestoreScopeResponse {
       Map<String, dynamic> map) {
     return ClusterResourceRestoreScopeResponse(
       allGroupKinds: map['allGroupKinds'] as bool,
-      excludedGroupKinds: Input.decodeList<GroupKindResponse>(
+      excludedGroupKinds: pulumi.Input.decodeList<GroupKindResponse>(
           map['excludedGroupKinds'],
           (value) => GroupKindResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       noGroupKinds: map['noGroupKinds'] as bool,
-      selectedGroupKinds: Input.decodeList<GroupKindResponse>(
+      selectedGroupKinds: pulumi.Input.decodeList<GroupKindResponse>(
           map['selectedGroupKinds'],
           (value) => GroupKindResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

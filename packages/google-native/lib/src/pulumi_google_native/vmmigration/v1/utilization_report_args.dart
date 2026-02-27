@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'utilization_report_time_frame.dart';
 import 'vm_utilization_info.dart';
 
 /// The set of arguments for UtilizationReport.
 class UtilizationReportArgs {
   /// The report display name, as assigned by the user.
-  final Input<String>? displayName;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final Input<String>? requestId;
-  final Input<String> sourceId;
+  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String> sourceId;
 
   /// Time frame of the report.
-  final Input<UtilizationReportTimeFrame>? timeFrame;
+  final pulumi.Input<UtilizationReportTimeFrame>? timeFrame;
 
   /// Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
-  final Input<String> utilizationReportId;
+  final pulumi.Input<String> utilizationReportId;
 
   /// List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
-  final Input<List<VmUtilizationInfo>>? vms;
+  final pulumi.Input<List<VmUtilizationInfo>>? vms;
 
   UtilizationReportArgs({
     this.displayName,
@@ -56,33 +56,35 @@ class UtilizationReportArgs {
     map['sourceId'] = sourceId;
     final timeFrameValue = timeFrame;
     if (timeFrameValue != null) {
-      map['timeFrame'] =
-          Input.mapOptionalInputValue<UtilizationReportTimeFrame, String>(
-              timeFrameValue, (value) => value.value);
+      map['timeFrame'] = pulumi.Input.mapOptionalInputValue<
+          UtilizationReportTimeFrame,
+          String>(timeFrameValue, (value) => value.value);
     }
     map['utilizationReportId'] = utilizationReportId;
     final vmsValue = vms;
     if (vmsValue != null) {
-      map['vms'] = Input.mapOptionalInputValue<List<VmUtilizationInfo>,
+      map['vms'] = pulumi.Input.mapOptionalInputValue<List<VmUtilizationInfo>,
               List<Map<String, dynamic>>>(
           vmsValue,
-          (value) => Input.encodeList<VmUtilizationInfo, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<VmUtilizationInfo, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     return map;
   }
 
   factory UtilizationReportArgs.fromMap(Map<String, dynamic> map) {
     return UtilizationReportArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      sourceId: Input.asInput<String>(map['sourceId']),
-      timeFrame:
-          Input.asOptionalInput<UtilizationReportTimeFrame>(map['timeFrame']),
-      utilizationReportId: Input.asInput<String>(map['utilizationReportId']),
-      vms: Input.asOptionalInput<List<VmUtilizationInfo>>(map['vms']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      sourceId: pulumi.Input.asInput<String>(map['sourceId']),
+      timeFrame: pulumi.Input.asOptionalInput<UtilizationReportTimeFrame>(
+          map['timeFrame']),
+      utilizationReportId:
+          pulumi.Input.asInput<String>(map['utilizationReportId']),
+      vms: pulumi.Input.asOptionalInput<List<VmUtilizationInfo>>(map['vms']),
     );
   }
 }

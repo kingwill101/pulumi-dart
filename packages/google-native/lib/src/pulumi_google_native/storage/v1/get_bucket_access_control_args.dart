@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBucketAccessControl.
 class GetBucketAccessControlArgs {
-  final Input<String> bucket;
-  final Input<String> entity;
-  final Input<String>? userProject;
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<String> entity;
+  final pulumi.Input<String>? userProject;
 
   GetBucketAccessControlArgs({
     required this.bucket,
@@ -27,9 +27,9 @@ class GetBucketAccessControlArgs {
 
   factory GetBucketAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketAccessControlArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      entity: Input.asInput<String>(map['entity']),
-      userProject: Input.asOptionalInput<String>(map['userProject']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      entity: pulumi.Input.asInput<String>(map['entity']),
+      userProject: pulumi.Input.asOptionalInput<String>(map['userProject']),
     );
   }
 }

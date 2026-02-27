@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_recommendationengine_v1beta1_catalog_item_category_hierarchy_response.dart';
 import 'google_cloud_recommendationengine_v1beta1_feature_map_response.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_response.dart';
@@ -47,7 +47,7 @@ class GetCatalogItemResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['categoryHierarchies'] = Input.encodeList<
+    map['categoryHierarchies'] = pulumi.Input.encodeList<
         GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse,
         Map<String, dynamic>>(categoryHierarchies, (value) => value.toMap());
     map['description'] = description;
@@ -62,7 +62,7 @@ class GetCatalogItemResult {
 
   factory GetCatalogItemResult.fromMap(Map<String, dynamic> map) {
     return GetCatalogItemResult(
-      categoryHierarchies: Input.decodeList<
+      categoryHierarchies: pulumi.Input.decodeList<
               GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>(
           map['categoryHierarchies'],
           (value) =>

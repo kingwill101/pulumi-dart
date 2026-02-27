@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getApicategory.
 class GetApicategoryArgs {
-  final Input<String> apicategoryId;
-  final Input<String> organizationId;
-  final Input<String> siteId;
+  final pulumi.Input<String> apicategoryId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> siteId;
 
   GetApicategoryArgs({
     required this.apicategoryId,
@@ -24,9 +24,9 @@ class GetApicategoryArgs {
 
   factory GetApicategoryArgs.fromMap(Map<String, dynamic> map) {
     return GetApicategoryArgs(
-      apicategoryId: Input.asInput<String>(map['apicategoryId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      siteId: Input.asInput<String>(map['siteId']),
+      apicategoryId: pulumi.Input.asInput<String>(map['apicategoryId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      siteId: pulumi.Input.asInput<String>(map['siteId']),
     );
   }
 }

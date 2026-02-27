@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'boot_disk_defaults_response.dart';
 import 'compute_scheduling_response.dart';
-import 'encryption_response2.dart';
-import 'network_interface_response6.dart';
+import 'encryption_response_vmmigration_v1.dart';
+import 'network_interface_response_vmmigration_v1.dart';
 
 /// Details for creation of a VM that migrated data disks will be attached to.
 class DisksMigrationVmTargetDefaultsResponse {
@@ -18,7 +18,7 @@ class DisksMigrationVmTargetDefaultsResponse {
   final ComputeSchedulingResponse computeScheduling;
 
   /// Optional. The encryption to apply to the VM.
-  final EncryptionResponse2 encryption;
+  final EncryptionResponseVmmigrationV1 encryption;
 
   /// Optional. The hostname to assign to the VM.
   final String hostname;
@@ -36,7 +36,7 @@ class DisksMigrationVmTargetDefaultsResponse {
   final Map<String, String> metadata;
 
   /// Optional. NICs to attach to the VM.
-  final List<NetworkInterfaceResponse6> networkInterfaces;
+  final List<NetworkInterfaceResponseVmmigrationV1> networkInterfaces;
 
   /// Optional. A list of network tags to associate with the VM.
   final List<String> networkTags;
@@ -78,9 +78,9 @@ class DisksMigrationVmTargetDefaultsResponse {
     map['machineType'] = machineType;
     map['machineTypeSeries'] = machineTypeSeries;
     map['metadata'] = metadata;
-    map['networkInterfaces'] =
-        Input.encodeList<NetworkInterfaceResponse6, Map<String, dynamic>>(
-            networkInterfaces, (value) => value.toMap());
+    map['networkInterfaces'] = pulumi.Input.encodeList<
+        NetworkInterfaceResponseVmmigrationV1,
+        Map<String, dynamic>>(networkInterfaces, (value) => value.toMap());
     map['networkTags'] = networkTags;
     map['secureBoot'] = secureBoot;
     map['serviceAccount'] = serviceAccount;
@@ -96,17 +96,18 @@ class DisksMigrationVmTargetDefaultsResponse {
           (map['bootDiskDefaults'] as Map).cast<String, dynamic>()),
       computeScheduling: ComputeSchedulingResponse.fromMap(
           (map['computeScheduling'] as Map).cast<String, dynamic>()),
-      encryption: EncryptionResponse2.fromMap(
+      encryption: EncryptionResponseVmmigrationV1.fromMap(
           (map['encryption'] as Map).cast<String, dynamic>()),
       hostname: map['hostname'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       machineType: map['machineType'] as String,
       machineTypeSeries: map['machineTypeSeries'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
-      networkInterfaces: Input.decodeList<NetworkInterfaceResponse6>(
-          map['networkInterfaces'],
-          (value) => NetworkInterfaceResponse6.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networkInterfaces:
+          pulumi.Input.decodeList<NetworkInterfaceResponseVmmigrationV1>(
+              map['networkInterfaces'],
+              (value) => NetworkInterfaceResponseVmmigrationV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       networkTags: (map['networkTags'] as List).cast<String>(),
       secureBoot: map['secureBoot'] as bool,
       serviceAccount: map['serviceAccount'] as String,

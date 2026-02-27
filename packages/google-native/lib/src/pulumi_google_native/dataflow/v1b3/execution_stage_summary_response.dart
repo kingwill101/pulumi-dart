@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'component_source_response.dart';
 import 'component_transform_response.dart';
 import 'stage_source_response.dart';
@@ -41,18 +41,18 @@ class ExecutionStageSummaryResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['componentSource'] =
-        Input.encodeList<ComponentSourceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ComponentSourceResponse, Map<String, dynamic>>(
             componentSource, (value) => value.toMap());
-    map['componentTransform'] =
-        Input.encodeList<ComponentTransformResponse, Map<String, dynamic>>(
-            componentTransform, (value) => value.toMap());
+    map['componentTransform'] = pulumi.Input.encodeList<
+        ComponentTransformResponse,
+        Map<String, dynamic>>(componentTransform, (value) => value.toMap());
     map['inputSource'] =
-        Input.encodeList<StageSourceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StageSourceResponse, Map<String, dynamic>>(
             inputSource, (value) => value.toMap());
     map['kind'] = kind;
     map['name'] = name;
     map['outputSource'] =
-        Input.encodeList<StageSourceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StageSourceResponse, Map<String, dynamic>>(
             outputSource, (value) => value.toMap());
     map['prerequisiteStage'] = prerequisiteStage;
     return map;
@@ -60,21 +60,21 @@ class ExecutionStageSummaryResponse {
 
   factory ExecutionStageSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStageSummaryResponse(
-      componentSource: Input.decodeList<ComponentSourceResponse>(
+      componentSource: pulumi.Input.decodeList<ComponentSourceResponse>(
           map['componentSource'],
           (value) => ComponentSourceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      componentTransform: Input.decodeList<ComponentTransformResponse>(
+      componentTransform: pulumi.Input.decodeList<ComponentTransformResponse>(
           map['componentTransform'],
           (value) => ComponentTransformResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      inputSource: Input.decodeList<StageSourceResponse>(
+      inputSource: pulumi.Input.decodeList<StageSourceResponse>(
           map['inputSource'],
           (value) => StageSourceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       name: map['name'] as String,
-      outputSource: Input.decodeList<StageSourceResponse>(
+      outputSource: pulumi.Input.decodeList<StageSourceResponse>(
           map['outputSource'],
           (value) => StageSourceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

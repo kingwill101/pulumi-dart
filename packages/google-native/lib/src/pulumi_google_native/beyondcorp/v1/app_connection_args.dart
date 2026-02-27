@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_connection_type.dart';
 import 'google_cloud_beyondcorp_appconnections_v1_app_connection_application_endpoint.dart';
 import 'google_cloud_beyondcorp_appconnections_v1_app_connection_gateway.dart';
@@ -8,36 +8,36 @@ import 'google_cloud_beyondcorp_appconnections_v1_app_connection_gateway.dart';
 /// The set of arguments for AppConnection.
 class AppConnectionArgs {
   /// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
-  final Input<String>? appConnectionId;
+  final pulumi.Input<String>? appConnectionId;
 
   /// Address of the remote application endpoint for the BeyondCorp AppConnection.
-  final Input<
+  final pulumi.Input<
           GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint>
       applicationEndpoint;
 
   /// Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this AppConnection.
-  final Input<List<String>>? connectors;
+  final pulumi.Input<List<String>>? connectors;
 
   /// Optional. An arbitrary user-provided name for the AppConnection. Cannot exceed 64 characters.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. Gateway used by the AppConnection.
-  final Input<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway>?
+  final pulumi.Input<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway>?
       gateway;
 
   /// Optional. Resource labels to represent user provided metadata.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Unique resource name of the AppConnection. The name is ignored when creating a AppConnection.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// The type of network connectivity used by the AppConnection.
-  final Input<AppConnectionType> type;
+  final pulumi.Input<AppConnectionType> type;
 
   AppConnectionArgs({
     this.appConnectionId,
@@ -59,7 +59,7 @@ class AppConnectionArgs {
     if (appConnectionIdValue != null) {
       map['appConnectionId'] = appConnectionIdValue;
     }
-    map['applicationEndpoint'] = Input.mapInputValue<
+    map['applicationEndpoint'] = pulumi.Input.mapInputValue<
         GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint,
         Map<String, dynamic>>(applicationEndpoint, (value) => value.toMap());
     final connectorsValue = connectors;
@@ -72,7 +72,7 @@ class AppConnectionArgs {
     }
     final gatewayValue = gateway;
     if (gatewayValue != null) {
-      map['gateway'] = Input.mapOptionalInputValue<
+      map['gateway'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway,
           Map<String, dynamic>>(gatewayValue, (value) => value.toMap());
     }
@@ -96,28 +96,29 @@ class AppConnectionArgs {
     if (requestIdValue != null) {
       map['requestId'] = requestIdValue;
     }
-    map['type'] = Input.mapInputValue<AppConnectionType, String>(
+    map['type'] = pulumi.Input.mapInputValue<AppConnectionType, String>(
         type, (value) => value.value);
     return map;
   }
 
   factory AppConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AppConnectionArgs(
-      appConnectionId: Input.asOptionalInput<String>(map['appConnectionId']),
-      applicationEndpoint: Input.asInput<
+      appConnectionId:
+          pulumi.Input.asOptionalInput<String>(map['appConnectionId']),
+      applicationEndpoint: pulumi.Input.asInput<
               GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint>(
           map['applicationEndpoint']),
-      connectors: Input.asOptionalInput<List<String>>(map['connectors']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      gateway: Input.asOptionalInput<
+      connectors: pulumi.Input.asOptionalInput<List<String>>(map['connectors']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      gateway: pulumi.Input.asOptionalInput<
               GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway>(
           map['gateway']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      type: Input.asInput<AppConnectionType>(map['type']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      type: pulumi.Input.asInput<AppConnectionType>(map['type']),
     );
   }
 }

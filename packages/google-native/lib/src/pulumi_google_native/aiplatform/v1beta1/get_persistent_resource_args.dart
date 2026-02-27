@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPersistentResource.
 class GetPersistentResourceArgs {
-  final Input<String> location;
-  final Input<String> persistentResourceId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> persistentResourceId;
+  final pulumi.Input<String>? project;
 
   GetPersistentResourceArgs({
     required this.location,
@@ -27,9 +27,10 @@ class GetPersistentResourceArgs {
 
   factory GetPersistentResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetPersistentResourceArgs(
-      location: Input.asInput<String>(map['location']),
-      persistentResourceId: Input.asInput<String>(map['persistentResourceId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      persistentResourceId:
+          pulumi.Input.asInput<String>(map['persistentResourceId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

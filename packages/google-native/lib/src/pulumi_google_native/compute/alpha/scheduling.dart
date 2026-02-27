@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration.dart';
 import 'scheduling_graceful_shutdown.dart';
 import 'scheduling_instance_termination_action.dart';
@@ -150,7 +150,7 @@ class Scheduling {
     final nodeAffinitiesValue = nodeAffinities;
     if (nodeAffinitiesValue != null) {
       map['nodeAffinities'] =
-          Input.encodeList<SchedulingNodeAffinity, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SchedulingNodeAffinity, Map<String, dynamic>>(
               nodeAffinitiesValue, (value) => value.toMap());
     }
     final onHostMaintenanceValue = onHostMaintenance;
@@ -221,7 +221,7 @@ class Scheduling {
           map['minNodeCpus'] == null ? null : map['minNodeCpus'] as int,
       nodeAffinities: map['nodeAffinities'] == null
           ? null
-          : Input.decodeList<SchedulingNodeAffinity>(
+          : pulumi.Input.decodeList<SchedulingNodeAffinity>(
               map['nodeAffinities'],
               (value) => SchedulingNodeAffinity.fromMap(
                   (value as Map).cast<String, dynamic>())),

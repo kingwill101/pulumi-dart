@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'filter_options.dart';
-import 'source5.dart';
+import 'source_cloudsearch_v1.dart';
 
 /// Restriction on Datasource.
 class DataSourceRestriction {
@@ -10,7 +10,7 @@ class DataSourceRestriction {
   final List<FilterOptions>? filterOptions;
 
   /// The source of restriction.
-  final Source5? source;
+  final SourceCloudsearchV1? source;
 
   DataSourceRestriction({
     this.filterOptions,
@@ -22,7 +22,7 @@ class DataSourceRestriction {
     final filterOptionsValue = filterOptions;
     if (filterOptionsValue != null) {
       map['filterOptions'] =
-          Input.encodeList<FilterOptions, Map<String, dynamic>>(
+          pulumi.Input.encodeList<FilterOptions, Map<String, dynamic>>(
               filterOptionsValue, (value) => value.toMap());
     }
     final sourceValue = source;
@@ -36,13 +36,14 @@ class DataSourceRestriction {
     return DataSourceRestriction(
       filterOptions: map['filterOptions'] == null
           ? null
-          : Input.decodeList<FilterOptions>(
+          : pulumi.Input.decodeList<FilterOptions>(
               map['filterOptions'],
               (value) => FilterOptions.fromMap(
                   (value as Map).cast<String, dynamic>())),
       source: map['source'] == null
           ? null
-          : Source5.fromMap((map['source'] as Map).cast<String, dynamic>()),
+          : SourceCloudsearchV1.fromMap(
+              (map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }

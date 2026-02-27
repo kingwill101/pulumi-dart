@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServiceAccountIamPolicy.
 class GetServiceAccountIamPolicyArgs {
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
-  final Input<String> serviceAccountId;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> serviceAccountId;
 
   GetServiceAccountIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
@@ -30,10 +30,10 @@ class GetServiceAccountIamPolicyArgs {
 
   factory GetServiceAccountIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceAccountIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceAccountId: Input.asInput<String>(map['serviceAccountId']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceAccountId: pulumi.Input.asInput<String>(map['serviceAccountId']),
     );
   }
 }

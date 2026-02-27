@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_field_schema.dart';
 
 class TableSchema {
@@ -15,8 +15,9 @@ class TableSchema {
     final map = <String, dynamic>{};
     final fieldsValue = fields;
     if (fieldsValue != null) {
-      map['fields'] = Input.encodeList<TableFieldSchema, Map<String, dynamic>>(
-          fieldsValue, (value) => value.toMap());
+      map['fields'] =
+          pulumi.Input.encodeList<TableFieldSchema, Map<String, dynamic>>(
+              fieldsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -25,7 +26,7 @@ class TableSchema {
     return TableSchema(
       fields: map['fields'] == null
           ? null
-          : Input.decodeList<TableFieldSchema>(
+          : pulumi.Input.decodeList<TableFieldSchema>(
               map['fields'],
               (value) => TableFieldSchema.fromMap(
                   (value as Map).cast<String, dynamic>())),

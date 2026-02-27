@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'knowledge_base_response.dart';
 
 class WindowsDetailResponse {
@@ -28,7 +28,7 @@ class WindowsDetailResponse {
     map['cpeUri'] = cpeUri;
     map['description'] = description;
     map['fixingKbs'] =
-        Input.encodeList<KnowledgeBaseResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<KnowledgeBaseResponse, Map<String, dynamic>>(
             fixingKbs, (value) => value.toMap());
     map['name'] = name;
     return map;
@@ -38,7 +38,7 @@ class WindowsDetailResponse {
     return WindowsDetailResponse(
       cpeUri: map['cpeUri'] as String,
       description: map['description'] as String,
-      fixingKbs: Input.decodeList<KnowledgeBaseResponse>(
+      fixingKbs: pulumi.Input.decodeList<KnowledgeBaseResponse>(
           map['fixingKbs'],
           (value) => KnowledgeBaseResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReportConfig.
 class GetReportConfigArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> reportConfigId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> reportConfigId;
 
   GetReportConfigArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetReportConfigArgs {
 
   factory GetReportConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetReportConfigArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      reportConfigId: Input.asInput<String>(map['reportConfigId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      reportConfigId: pulumi.Input.asInput<String>(map['reportConfigId']),
     );
   }
 }

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceGroup.
 class GetInstanceGroupArgs {
-  final Input<String> instanceGroup;
-  final Input<String>? project;
-  final Input<String> zone;
+  final pulumi.Input<String> instanceGroup;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> zone;
 
   GetInstanceGroupArgs({
     required this.instanceGroup,
@@ -27,9 +27,9 @@ class GetInstanceGroupArgs {
 
   factory GetInstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupArgs(
-      instanceGroup: Input.asInput<String>(map['instanceGroup']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asInput<String>(map['zone']),
+      instanceGroup: pulumi.Input.asInput<String>(map['instanceGroup']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

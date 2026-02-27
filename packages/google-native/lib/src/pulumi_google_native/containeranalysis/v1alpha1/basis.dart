@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'fingerprint2.dart';
+import 'fingerprint_containeranalysis_v1alpha1.dart';
 
 /// Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
 class Basis {
   /// The fingerprint of the base image.
-  final Fingerprint2? fingerprint;
+  final FingerprintContaineranalysisV1alpha1? fingerprint;
 
   /// The resource_url for the resource representing the basis of associated occurrence images.
   final String? resourceUrl;
@@ -32,7 +32,7 @@ class Basis {
     return Basis(
       fingerprint: map['fingerprint'] == null
           ? null
-          : Fingerprint2.fromMap(
+          : FingerprintContaineranalysisV1alpha1.fromMap(
               (map['fingerprint'] as Map).cast<String, dynamic>()),
       resourceUrl:
           map['resourceUrl'] == null ? null : map['resourceUrl'] as String,

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'subject_alt_names_response.dart';
-import 'subject_response4.dart';
+import 'subject_response_privateca_v1.dart';
 
 /// These values describe fields in an issued X.509 certificate such as the distinguished name, subject alternative names, serial number, and lifetime.
 class SubjectDescriptionResponse {
@@ -18,7 +18,7 @@ class SubjectDescriptionResponse {
   final String notBeforeTime;
 
   /// Contains distinguished name fields such as the common name, location and / organization.
-  final SubjectResponse4 subject;
+  final SubjectResponsePrivatecaV1 subject;
 
   /// The subject alternative name fields.
   final SubjectAltNamesResponse subjectAltName;
@@ -49,7 +49,7 @@ class SubjectDescriptionResponse {
       lifetime: map['lifetime'] as String,
       notAfterTime: map['notAfterTime'] as String,
       notBeforeTime: map['notBeforeTime'] as String,
-      subject: SubjectResponse4.fromMap(
+      subject: SubjectResponsePrivatecaV1.fromMap(
           (map['subject'] as Map).cast<String, dynamic>()),
       subjectAltName: SubjectAltNamesResponse.fromMap(
           (map['subjectAltName'] as Map).cast<String, dynamic>()),

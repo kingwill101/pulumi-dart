@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'text_mapping_response.dart';
 
 /// Encoding of a text stream. For example, closed captions or subtitles.
@@ -30,7 +30,7 @@ class TextStreamResponse {
     map['displayName'] = displayName;
     map['languageCode'] = languageCode;
     map['mapping'] =
-        Input.encodeList<TextMappingResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TextMappingResponse, Map<String, dynamic>>(
             mapping, (value) => value.toMap());
     return map;
   }
@@ -40,7 +40,7 @@ class TextStreamResponse {
       codec: map['codec'] as String,
       displayName: map['displayName'] as String,
       languageCode: map['languageCode'] as String,
-      mapping: Input.decodeList<TextMappingResponse>(
+      mapping: pulumi.Input.decodeList<TextMappingResponse>(
           map['mapping'],
           (value) => TextMappingResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

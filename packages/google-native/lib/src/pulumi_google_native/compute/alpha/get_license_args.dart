@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLicense.
 class GetLicenseArgs {
-  final Input<String> license;
-  final Input<String>? project;
+  final pulumi.Input<String> license;
+  final pulumi.Input<String>? project;
 
   GetLicenseArgs({
     required this.license,
@@ -24,8 +24,8 @@ class GetLicenseArgs {
 
   factory GetLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseArgs(
-      license: Input.asInput<String>(map['license']),
-      project: Input.asOptionalInput<String>(map['project']),
+      license: pulumi.Input.asInput<String>(map['license']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

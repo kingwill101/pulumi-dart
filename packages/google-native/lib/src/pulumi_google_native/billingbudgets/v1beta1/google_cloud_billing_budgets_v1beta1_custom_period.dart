@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'google_type_date2.dart';
+import 'google_type_date_billingbudgets_v1beta1.dart';
 
 /// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
 class GoogleCloudBillingBudgetsV1beta1CustomPeriod {
   /// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
-  final GoogleTypeDate2? endDate;
+  final GoogleTypeDateBillingbudgetsV1beta1? endDate;
 
   /// The start date must be after January 1, 2017.
-  final GoogleTypeDate2 startDate;
+  final GoogleTypeDateBillingbudgetsV1beta1 startDate;
 
   GoogleCloudBillingBudgetsV1beta1CustomPeriod({
     this.endDate,
@@ -30,9 +30,9 @@ class GoogleCloudBillingBudgetsV1beta1CustomPeriod {
     return GoogleCloudBillingBudgetsV1beta1CustomPeriod(
       endDate: map['endDate'] == null
           ? null
-          : GoogleTypeDate2.fromMap(
+          : GoogleTypeDateBillingbudgetsV1beta1.fromMap(
               (map['endDate'] as Map).cast<String, dynamic>()),
-      startDate: GoogleTypeDate2.fromMap(
+      startDate: GoogleTypeDateBillingbudgetsV1beta1.fromMap(
           (map['startDate'] as Map).cast<String, dynamic>()),
     );
   }

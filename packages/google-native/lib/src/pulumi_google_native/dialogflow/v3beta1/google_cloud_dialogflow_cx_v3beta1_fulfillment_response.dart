@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_advanced_settings_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_fulfillment_conditional_cases_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_fulfillment_set_parameter_action_response.dart';
@@ -49,15 +49,15 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['advancedSettings'] = advancedSettings.toMap();
-    map['conditionalCases'] = Input.encodeList<
+    map['conditionalCases'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse,
         Map<String, dynamic>>(conditionalCases, (value) => value.toMap());
     map['enableGenerativeFallback'] = enableGenerativeFallback;
-    map['messages'] = Input.encodeList<
+    map['messages'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3beta1ResponseMessageResponse,
         Map<String, dynamic>>(messages, (value) => value.toMap());
     map['returnPartialResponses'] = returnPartialResponses;
-    map['setParameterActions'] = Input.encodeList<
+    map['setParameterActions'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse,
         Map<String, dynamic>>(setParameterActions, (value) => value.toMap());
     map['tag'] = tag;
@@ -71,21 +71,21 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentResponse {
       advancedSettings:
           GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap(
               (map['advancedSettings'] as Map).cast<String, dynamic>()),
-      conditionalCases: Input.decodeList<
+      conditionalCases: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse>(
           map['conditionalCases'],
           (value) =>
               GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse
                   .fromMap((value as Map).cast<String, dynamic>())),
       enableGenerativeFallback: map['enableGenerativeFallback'] as bool,
-      messages: Input.decodeList<
+      messages: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3beta1ResponseMessageResponse>(
           map['messages'],
           (value) =>
               GoogleCloudDialogflowCxV3beta1ResponseMessageResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       returnPartialResponses: map['returnPartialResponses'] as bool,
-      setParameterActions: Input.decodeList<
+      setParameterActions: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse>(
           map['setParameterActions'],
           (value) =>

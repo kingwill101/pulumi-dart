@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator.dart';
 import 'attached_disk.dart';
 import 'disk.dart';
@@ -43,8 +43,9 @@ class InstancePolicy {
     final map = <String, dynamic>{};
     final acceleratorsValue = accelerators;
     if (acceleratorsValue != null) {
-      map['accelerators'] = Input.encodeList<Accelerator, Map<String, dynamic>>(
-          acceleratorsValue, (value) => value.toMap());
+      map['accelerators'] =
+          pulumi.Input.encodeList<Accelerator, Map<String, dynamic>>(
+              acceleratorsValue, (value) => value.toMap());
     }
     final bootDiskValue = bootDisk;
     if (bootDiskValue != null) {
@@ -52,8 +53,9 @@ class InstancePolicy {
     }
     final disksValue = disks;
     if (disksValue != null) {
-      map['disks'] = Input.encodeList<AttachedDisk, Map<String, dynamic>>(
-          disksValue, (value) => value.toMap());
+      map['disks'] =
+          pulumi.Input.encodeList<AttachedDisk, Map<String, dynamic>>(
+              disksValue, (value) => value.toMap());
     }
     final machineTypeValue = machineType;
     if (machineTypeValue != null) {
@@ -78,7 +80,7 @@ class InstancePolicy {
     return InstancePolicy(
       accelerators: map['accelerators'] == null
           ? null
-          : Input.decodeList<Accelerator>(
+          : pulumi.Input.decodeList<Accelerator>(
               map['accelerators'],
               (value) =>
                   Accelerator.fromMap((value as Map).cast<String, dynamic>())),
@@ -87,7 +89,7 @@ class InstancePolicy {
           : Disk.fromMap((map['bootDisk'] as Map).cast<String, dynamic>()),
       disks: map['disks'] == null
           ? null
-          : Input.decodeList<AttachedDisk>(
+          : pulumi.Input.decodeList<AttachedDisk>(
               map['disks'],
               (value) =>
                   AttachedDisk.fromMap((value as Map).cast<String, dynamic>())),

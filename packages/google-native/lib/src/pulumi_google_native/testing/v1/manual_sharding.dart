@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'test_targets_for_shard.dart';
 
 /// Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
@@ -15,14 +15,14 @@ class ManualSharding {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['testTargetsForShard'] =
-        Input.encodeList<TestTargetsForShard, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TestTargetsForShard, Map<String, dynamic>>(
             testTargetsForShard, (value) => value.toMap());
     return map;
   }
 
   factory ManualSharding.fromMap(Map<String, dynamic> map) {
     return ManualSharding(
-      testTargetsForShard: Input.decodeList<TestTargetsForShard>(
+      testTargetsForShard: pulumi.Input.decodeList<TestTargetsForShard>(
           map['testTargetsForShard'],
           (value) => TestTargetsForShard.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_carousel_select_item_response.dart';
 
 /// The card for presenting a carousel of options to select from.
@@ -16,7 +16,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['items'] = Input.encodeList<
+    map['items'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse,
         Map<String, dynamic>>(items, (value) => value.toMap());
     return map;
@@ -25,7 +25,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse {
   factory GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse(
-      items: Input.decodeList<
+      items: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse>(
           map['items'],
           (value) =>

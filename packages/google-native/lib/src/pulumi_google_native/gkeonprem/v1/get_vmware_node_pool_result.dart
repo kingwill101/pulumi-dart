@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'resource_status_response4.dart';
+import 'resource_status_response_gkeonprem_v1.dart';
 import 'vmware_node_config_response.dart';
 import 'vmware_node_pool_autoscaling_config_response.dart';
 
@@ -40,7 +40,7 @@ class GetVmwareNodePoolResult {
   final String state;
 
   /// ResourceStatus representing the detailed VMware node pool state.
-  final ResourceStatusResponse4 status;
+  final ResourceStatusResponseGkeonpremV1 status;
 
   /// The unique identifier of the node pool.
   final String uid;
@@ -99,7 +99,7 @@ class GetVmwareNodePoolResult {
       onPremVersion: map['onPremVersion'] as String,
       reconciling: map['reconciling'] as bool,
       state: map['state'] as String,
-      status: ResourceStatusResponse4.fromMap(
+      status: ResourceStatusResponseGkeonpremV1.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,

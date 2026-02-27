@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFeedbackMessage.
 class GetFeedbackMessageArgs {
-  final Input<String> annotatedDatasetId;
-  final Input<String> datasetId;
-  final Input<String> feedbackMessageId;
-  final Input<String> feedbackThreadId;
-  final Input<String>? project;
+  final pulumi.Input<String> annotatedDatasetId;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> feedbackMessageId;
+  final pulumi.Input<String> feedbackThreadId;
+  final pulumi.Input<String>? project;
 
   GetFeedbackMessageArgs({
     required this.annotatedDatasetId,
@@ -33,11 +33,12 @@ class GetFeedbackMessageArgs {
 
   factory GetFeedbackMessageArgs.fromMap(Map<String, dynamic> map) {
     return GetFeedbackMessageArgs(
-      annotatedDatasetId: Input.asInput<String>(map['annotatedDatasetId']),
-      datasetId: Input.asInput<String>(map['datasetId']),
-      feedbackMessageId: Input.asInput<String>(map['feedbackMessageId']),
-      feedbackThreadId: Input.asInput<String>(map['feedbackThreadId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      annotatedDatasetId:
+          pulumi.Input.asInput<String>(map['annotatedDatasetId']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      feedbackMessageId: pulumi.Input.asInput<String>(map['feedbackMessageId']),
+      feedbackThreadId: pulumi.Input.asInput<String>(map['feedbackThreadId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

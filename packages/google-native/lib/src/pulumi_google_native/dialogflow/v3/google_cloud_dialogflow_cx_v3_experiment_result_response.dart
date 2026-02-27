@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_experiment_result_version_metrics_response.dart';
 
 /// The inference result which includes an objective metric to optimize and the confidence interval.
@@ -20,7 +20,7 @@ class GoogleCloudDialogflowCxV3ExperimentResultResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['lastUpdateTime'] = lastUpdateTime;
-    map['versionMetrics'] = Input.encodeList<
+    map['versionMetrics'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse,
         Map<String, dynamic>>(versionMetrics, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GoogleCloudDialogflowCxV3ExperimentResultResponse {
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ExperimentResultResponse(
       lastUpdateTime: map['lastUpdateTime'] as String,
-      versionMetrics: Input.decodeList<
+      versionMetrics: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse>(
           map['versionMetrics'],
           (value) =>

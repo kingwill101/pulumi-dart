@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'egress_policy.dart';
 import 'ingress_policy.dart';
 import 'vpc_accessible_services.dart';
@@ -43,13 +43,13 @@ class ServicePerimeterConfig {
     final egressPoliciesValue = egressPolicies;
     if (egressPoliciesValue != null) {
       map['egressPolicies'] =
-          Input.encodeList<EgressPolicy, Map<String, dynamic>>(
+          pulumi.Input.encodeList<EgressPolicy, Map<String, dynamic>>(
               egressPoliciesValue, (value) => value.toMap());
     }
     final ingressPoliciesValue = ingressPolicies;
     if (ingressPoliciesValue != null) {
       map['ingressPolicies'] =
-          Input.encodeList<IngressPolicy, Map<String, dynamic>>(
+          pulumi.Input.encodeList<IngressPolicy, Map<String, dynamic>>(
               ingressPoliciesValue, (value) => value.toMap());
     }
     final resourcesValue = resources;
@@ -74,13 +74,13 @@ class ServicePerimeterConfig {
           : (map['accessLevels'] as List).cast<String>(),
       egressPolicies: map['egressPolicies'] == null
           ? null
-          : Input.decodeList<EgressPolicy>(
+          : pulumi.Input.decodeList<EgressPolicy>(
               map['egressPolicies'],
               (value) =>
                   EgressPolicy.fromMap((value as Map).cast<String, dynamic>())),
       ingressPolicies: map['ingressPolicies'] == null
           ? null
-          : Input.decodeList<IngressPolicy>(
+          : pulumi.Input.decodeList<IngressPolicy>(
               map['ingressPolicies'],
               (value) => IngressPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),

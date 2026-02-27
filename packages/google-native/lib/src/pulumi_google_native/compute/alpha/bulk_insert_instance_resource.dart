@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'instance_properties.dart';
-import 'location_policy2.dart';
+import 'location_policy_compute_alpha.dart';
 
 /// A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
 class BulkInsertInstanceResource {
@@ -12,7 +12,7 @@ class BulkInsertInstanceResource {
   final InstanceProperties? instanceProperties;
 
   /// Policy for chosing target zone. For more information, see Create VMs in bulk .
-  final LocationPolicy2? locationPolicy;
+  final LocationPolicyComputeAlpha? locationPolicy;
 
   /// The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
   final String? minCount;
@@ -78,7 +78,7 @@ class BulkInsertInstanceResource {
               (map['instanceProperties'] as Map).cast<String, dynamic>()),
       locationPolicy: map['locationPolicy'] == null
           ? null
-          : LocationPolicy2.fromMap(
+          : LocationPolicyComputeAlpha.fromMap(
               (map['locationPolicy'] as Map).cast<String, dynamic>()),
       minCount: map['minCount'] == null ? null : map['minCount'] as String,
       namePattern:

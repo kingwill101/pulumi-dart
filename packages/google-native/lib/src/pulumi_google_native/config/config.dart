@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 int? _parseIntConfig(String? value) {
   if (value == null) {
@@ -38,12 +38,12 @@ class GoogleNativeConfig {
   const GoogleNativeConfig();
 
   String? _raw(String key) {
-    final deployment = Deployment.instance;
+    final deployment = pulumi.Deployment.instance;
     return deployment.getConfig(key);
   }
 
   bool _isSecret(String key) {
-    final deployment = Deployment.instance;
+    final deployment = pulumi.Deployment.instance;
     return deployment.isConfigSecret(key);
   }
 

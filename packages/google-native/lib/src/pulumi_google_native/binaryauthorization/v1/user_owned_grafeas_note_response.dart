@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestor_public_key_response.dart';
 
 /// An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.
@@ -24,9 +24,8 @@ class UserOwnedGrafeasNoteResponse {
     final map = <String, dynamic>{};
     map['delegationServiceAccountEmail'] = delegationServiceAccountEmail;
     map['noteReference'] = noteReference;
-    map['publicKeys'] =
-        Input.encodeList<AttestorPublicKeyResponse, Map<String, dynamic>>(
-            publicKeys, (value) => value.toMap());
+    map['publicKeys'] = pulumi.Input.encodeList<AttestorPublicKeyResponse,
+        Map<String, dynamic>>(publicKeys, (value) => value.toMap());
     return map;
   }
 
@@ -35,7 +34,7 @@ class UserOwnedGrafeasNoteResponse {
       delegationServiceAccountEmail:
           map['delegationServiceAccountEmail'] as String,
       noteReference: map['noteReference'] as String,
-      publicKeys: Input.decodeList<AttestorPublicKeyResponse>(
+      publicKeys: pulumi.Input.decodeList<AttestorPublicKeyResponse>(
           map['publicKeys'],
           (value) => AttestorPublicKeyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

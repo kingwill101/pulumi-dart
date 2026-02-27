@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'applied_license_response2.dart';
-import 'compute_scheduling_response2.dart';
-import 'network_interface_response7.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'applied_license_response_vmmigration_v1alpha1.dart';
+import 'compute_scheduling_response_vmmigration_v1alpha1.dart';
+import 'network_interface_response_vmmigration_v1alpha1.dart';
 
 /// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
 class TargetVMDetailsResponse {
   /// The OS license returned from the adaptation module report.
-  final AppliedLicenseResponse2 appliedLicense;
+  final AppliedLicenseResponseVmmigrationV1alpha1 appliedLicense;
 
   /// The VM Boot Option, as set in the source VM.
   final String bootOption;
 
   /// Compute instance scheduling information (if empty default is used).
-  final ComputeSchedulingResponse2 computeScheduling;
+  final ComputeSchedulingResponseVmmigrationV1alpha1 computeScheduling;
 
   /// The disk type to use in the VM.
   final String diskType;
@@ -47,7 +47,7 @@ class TargetVMDetailsResponse {
   final String network;
 
   /// List of NICs connected to this VM.
-  final List<NetworkInterfaceResponse7> networkInterfaces;
+  final List<NetworkInterfaceResponseVmmigrationV1alpha1> networkInterfaces;
 
   /// A list of network tags to associate with the VM.
   final List<String> networkTags;
@@ -109,9 +109,9 @@ class TargetVMDetailsResponse {
     map['metadata'] = metadata;
     map['name'] = name;
     map['network'] = network;
-    map['networkInterfaces'] =
-        Input.encodeList<NetworkInterfaceResponse7, Map<String, dynamic>>(
-            networkInterfaces, (value) => value.toMap());
+    map['networkInterfaces'] = pulumi.Input.encodeList<
+        NetworkInterfaceResponseVmmigrationV1alpha1,
+        Map<String, dynamic>>(networkInterfaces, (value) => value.toMap());
     map['networkTags'] = networkTags;
     map['project'] = project;
     map['secureBoot'] = secureBoot;
@@ -124,10 +124,10 @@ class TargetVMDetailsResponse {
 
   factory TargetVMDetailsResponse.fromMap(Map<String, dynamic> map) {
     return TargetVMDetailsResponse(
-      appliedLicense: AppliedLicenseResponse2.fromMap(
+      appliedLicense: AppliedLicenseResponseVmmigrationV1alpha1.fromMap(
           (map['appliedLicense'] as Map).cast<String, dynamic>()),
       bootOption: map['bootOption'] as String,
-      computeScheduling: ComputeSchedulingResponse2.fromMap(
+      computeScheduling: ComputeSchedulingResponseVmmigrationV1alpha1.fromMap(
           (map['computeScheduling'] as Map).cast<String, dynamic>()),
       diskType: map['diskType'] as String,
       externalIp: map['externalIp'] as String,
@@ -139,10 +139,11 @@ class TargetVMDetailsResponse {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       network: map['network'] as String,
-      networkInterfaces: Input.decodeList<NetworkInterfaceResponse7>(
-          map['networkInterfaces'],
-          (value) => NetworkInterfaceResponse7.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networkInterfaces:
+          pulumi.Input.decodeList<NetworkInterfaceResponseVmmigrationV1alpha1>(
+              map['networkInterfaces'],
+              (value) => NetworkInterfaceResponseVmmigrationV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       networkTags: (map['networkTags'] as List).cast<String>(),
       project: map['project'] as String,
       secureBoot: map['secureBoot'] as bool,

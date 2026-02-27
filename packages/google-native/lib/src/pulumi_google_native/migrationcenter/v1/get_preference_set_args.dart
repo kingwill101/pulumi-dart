@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPreferenceSet.
 class GetPreferenceSetArgs {
-  final Input<String> location;
-  final Input<String> preferenceSetId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> preferenceSetId;
+  final pulumi.Input<String>? project;
 
   GetPreferenceSetArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetPreferenceSetArgs {
 
   factory GetPreferenceSetArgs.fromMap(Map<String, dynamic> map) {
     return GetPreferenceSetArgs(
-      location: Input.asInput<String>(map['location']),
-      preferenceSetId: Input.asInput<String>(map['preferenceSetId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      preferenceSetId: pulumi.Input.asInput<String>(map['preferenceSetId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

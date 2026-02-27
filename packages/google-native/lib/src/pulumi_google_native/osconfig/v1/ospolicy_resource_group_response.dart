@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ospolicy_inventory_filter_response.dart';
 import 'ospolicy_resource_response.dart';
 
@@ -19,22 +19,23 @@ class OSPolicyResourceGroupResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['inventoryFilters'] =
-        Input.encodeList<OSPolicyInventoryFilterResponse, Map<String, dynamic>>(
-            inventoryFilters, (value) => value.toMap());
+    map['inventoryFilters'] = pulumi.Input.encodeList<
+        OSPolicyInventoryFilterResponse,
+        Map<String, dynamic>>(inventoryFilters, (value) => value.toMap());
     map['resources'] =
-        Input.encodeList<OSPolicyResourceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<OSPolicyResourceResponse, Map<String, dynamic>>(
             resources, (value) => value.toMap());
     return map;
   }
 
   factory OSPolicyResourceGroupResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceGroupResponse(
-      inventoryFilters: Input.decodeList<OSPolicyInventoryFilterResponse>(
-          map['inventoryFilters'],
-          (value) => OSPolicyInventoryFilterResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      resources: Input.decodeList<OSPolicyResourceResponse>(
+      inventoryFilters:
+          pulumi.Input.decodeList<OSPolicyInventoryFilterResponse>(
+              map['inventoryFilters'],
+              (value) => OSPolicyInventoryFilterResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      resources: pulumi.Input.decodeList<OSPolicyResourceResponse>(
           map['resources'],
           (value) => OSPolicyResourceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

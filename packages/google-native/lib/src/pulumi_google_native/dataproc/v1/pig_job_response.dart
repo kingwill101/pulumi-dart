@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config_response3.dart';
+import 'logging_config_response_dataproc_v1.dart';
 import 'query_list_response.dart';
 
 /// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
@@ -12,7 +12,7 @@ class PigJobResponse {
   final List<String> jarFileUris;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfigResponse3 loggingConfig;
+  final LoggingConfigResponseDataprocV1 loggingConfig;
 
   /// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
   final Map<String, String> properties;
@@ -52,7 +52,7 @@ class PigJobResponse {
     return PigJobResponse(
       continueOnFailure: map['continueOnFailure'] as bool,
       jarFileUris: (map['jarFileUris'] as List).cast<String>(),
-      loggingConfig: LoggingConfigResponse3.fromMap(
+      loggingConfig: LoggingConfigResponseDataprocV1.fromMap(
           (map['loggingConfig'] as Map).cast<String, dynamic>()),
       properties: (map['properties'] as Map).cast<String, String>(),
       queryFileUri: map['queryFileUri'] as String,

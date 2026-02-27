@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_response.dart';
-import 'signature_response3.dart';
+import 'signature_response_healthcare_v1.dart';
 
 /// Result data returned by getConsentArtifact.
 class GetConsentArtifactResult {
@@ -13,7 +13,7 @@ class GetConsentArtifactResult {
   final String consentContentVersion;
 
   /// Optional. A signature from a guardian.
-  final SignatureResponse3 guardianSignature;
+  final SignatureResponseHealthcareV1 guardianSignature;
 
   /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
   final Map<String, String> metadata;
@@ -25,10 +25,10 @@ class GetConsentArtifactResult {
   final String userId;
 
   /// Optional. User's signature.
-  final SignatureResponse3 userSignature;
+  final SignatureResponseHealthcareV1 userSignature;
 
   /// Optional. A signature from a witness.
-  final SignatureResponse3 witnessSignature;
+  final SignatureResponseHealthcareV1 witnessSignature;
 
   GetConsentArtifactResult({
     required this.consentContentScreenshots,
@@ -44,7 +44,7 @@ class GetConsentArtifactResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['consentContentScreenshots'] =
-        Input.encodeList<ImageResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ImageResponse, Map<String, dynamic>>(
             consentContentScreenshots, (value) => value.toMap());
     map['consentContentVersion'] = consentContentVersion;
     map['guardianSignature'] = guardianSignature.toMap();
@@ -58,19 +58,19 @@ class GetConsentArtifactResult {
 
   factory GetConsentArtifactResult.fromMap(Map<String, dynamic> map) {
     return GetConsentArtifactResult(
-      consentContentScreenshots: Input.decodeList<ImageResponse>(
+      consentContentScreenshots: pulumi.Input.decodeList<ImageResponse>(
           map['consentContentScreenshots'],
           (value) =>
               ImageResponse.fromMap((value as Map).cast<String, dynamic>())),
       consentContentVersion: map['consentContentVersion'] as String,
-      guardianSignature: SignatureResponse3.fromMap(
+      guardianSignature: SignatureResponseHealthcareV1.fromMap(
           (map['guardianSignature'] as Map).cast<String, dynamic>()),
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       userId: map['userId'] as String,
-      userSignature: SignatureResponse3.fromMap(
+      userSignature: SignatureResponseHealthcareV1.fromMap(
           (map['userSignature'] as Map).cast<String, dynamic>()),
-      witnessSignature: SignatureResponse3.fromMap(
+      witnessSignature: SignatureResponseHealthcareV1.fromMap(
           (map['witnessSignature'] as Map).cast<String, dynamic>()),
     );
   }

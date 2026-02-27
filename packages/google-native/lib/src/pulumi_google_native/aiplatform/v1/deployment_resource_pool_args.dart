@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_dedicated_resources.dart';
 
 /// The set of arguments for DeploymentResourcePool.
 class DeploymentResourcePoolArgs {
   /// The underlying DedicatedResources that the DeploymentResourcePool uses.
-  final Input<GoogleCloudAiplatformV1DedicatedResources> dedicatedResources;
+  final pulumi.Input<GoogleCloudAiplatformV1DedicatedResources>
+      dedicatedResources;
 
   /// The ID to use for the DeploymentResourcePool, which will become the final component of the DeploymentResourcePool's resource name. The maximum length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
-  final Input<String> deploymentResourcePoolId;
-  final Input<String>? location;
+  final pulumi.Input<String> deploymentResourcePoolId;
+  final pulumi.Input<String>? location;
 
   /// Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   DeploymentResourcePoolArgs({
     required this.dedicatedResources,
@@ -26,7 +27,7 @@ class DeploymentResourcePoolArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dedicatedResources'] = Input.mapInputValue<
+    map['dedicatedResources'] = pulumi.Input.mapInputValue<
         GoogleCloudAiplatformV1DedicatedResources,
         Map<String, dynamic>>(dedicatedResources, (value) => value.toMap());
     map['deploymentResourcePoolId'] = deploymentResourcePoolId;
@@ -48,13 +49,13 @@ class DeploymentResourcePoolArgs {
   factory DeploymentResourcePoolArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentResourcePoolArgs(
       dedicatedResources:
-          Input.asInput<GoogleCloudAiplatformV1DedicatedResources>(
+          pulumi.Input.asInput<GoogleCloudAiplatformV1DedicatedResources>(
               map['dedicatedResources']),
       deploymentResourcePoolId:
-          Input.asInput<String>(map['deploymentResourcePoolId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['deploymentResourcePoolId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_id_response.dart';
 
 /// Describes a set of X.509 extensions that may be part of some certificate issuance controls.
@@ -19,7 +19,7 @@ class CertificateExtensionConstraintsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['additionalExtensions'] =
-        Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
             additionalExtensions, (value) => value.toMap());
     map['knownExtensions'] = knownExtensions;
     return map;
@@ -28,7 +28,7 @@ class CertificateExtensionConstraintsResponse {
   factory CertificateExtensionConstraintsResponse.fromMap(
       Map<String, dynamic> map) {
     return CertificateExtensionConstraintsResponse(
-      additionalExtensions: Input.decodeList<ObjectIdResponse>(
+      additionalExtensions: pulumi.Input.decodeList<ObjectIdResponse>(
           map['additionalExtensions'],
           (value) =>
               ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>())),

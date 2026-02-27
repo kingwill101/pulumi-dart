@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2alpha_condition_query_term.dart';
 import 'google_cloud_retail_v2alpha_condition_time_range.dart';
 
@@ -25,7 +25,7 @@ class GoogleCloudRetailV2alphaCondition {
     final map = <String, dynamic>{};
     final activeTimeRangeValue = activeTimeRange;
     if (activeTimeRangeValue != null) {
-      map['activeTimeRange'] = Input.encodeList<
+      map['activeTimeRange'] = pulumi.Input.encodeList<
           GoogleCloudRetailV2alphaConditionTimeRange,
           Map<String, dynamic>>(activeTimeRangeValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class GoogleCloudRetailV2alphaCondition {
     }
     final queryTermsValue = queryTerms;
     if (queryTermsValue != null) {
-      map['queryTerms'] = Input.encodeList<
+      map['queryTerms'] = pulumi.Input.encodeList<
           GoogleCloudRetailV2alphaConditionQueryTerm,
           Map<String, dynamic>>(queryTermsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class GoogleCloudRetailV2alphaCondition {
     return GoogleCloudRetailV2alphaCondition(
       activeTimeRange: map['activeTimeRange'] == null
           ? null
-          : Input.decodeList<GoogleCloudRetailV2alphaConditionTimeRange>(
+          : pulumi.Input.decodeList<GoogleCloudRetailV2alphaConditionTimeRange>(
               map['activeTimeRange'],
               (value) => GoogleCloudRetailV2alphaConditionTimeRange.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -55,7 +55,7 @@ class GoogleCloudRetailV2alphaCondition {
           : (map['pageCategories'] as List).cast<String>(),
       queryTerms: map['queryTerms'] == null
           ? null
-          : Input.decodeList<GoogleCloudRetailV2alphaConditionQueryTerm>(
+          : pulumi.Input.decodeList<GoogleCloudRetailV2alphaConditionQueryTerm>(
               map['queryTerms'],
               (value) => GoogleCloudRetailV2alphaConditionQueryTerm.fromMap(
                   (value as Map).cast<String, dynamic>())),

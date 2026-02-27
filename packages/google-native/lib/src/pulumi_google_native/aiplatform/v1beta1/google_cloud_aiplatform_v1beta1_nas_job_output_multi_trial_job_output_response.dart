@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_nas_trial_response.dart';
 
 /// The output of a multi-trial Neural Architecture Search (NAS) jobs.
@@ -18,10 +18,10 @@ class GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['searchTrials'] = Input.encodeList<
+    map['searchTrials'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1NasTrialResponse,
         Map<String, dynamic>>(searchTrials, (value) => value.toMap());
-    map['trainTrials'] = Input.encodeList<
+    map['trainTrials'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1NasTrialResponse,
         Map<String, dynamic>>(trainTrials, (value) => value.toMap());
     return map;
@@ -31,12 +31,12 @@ class GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponse {
       Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponse(
       searchTrials:
-          Input.decodeList<GoogleCloudAiplatformV1beta1NasTrialResponse>(
+          pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1NasTrialResponse>(
               map['searchTrials'],
               (value) => GoogleCloudAiplatformV1beta1NasTrialResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       trainTrials:
-          Input.decodeList<GoogleCloudAiplatformV1beta1NasTrialResponse>(
+          pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1NasTrialResponse>(
               map['trainTrials'],
               (value) => GoogleCloudAiplatformV1beta1NasTrialResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'expr_response100.dart';
+import 'expr_response_securitycenter_v1.dart';
 
 /// An individual name-value pair that defines a custom source property.
 class GoogleCloudSecuritycenterV1PropertyResponse {
@@ -8,7 +8,7 @@ class GoogleCloudSecuritycenterV1PropertyResponse {
   final String name;
 
   /// The CEL expression for the custom output. A resource property can be specified to return the value of the property or a text string enclosed in quotation marks.
-  final ExprResponse100 valueExpression;
+  final ExprResponseSecuritycenterV1 valueExpression;
 
   GoogleCloudSecuritycenterV1PropertyResponse({
     required this.name,
@@ -26,7 +26,7 @@ class GoogleCloudSecuritycenterV1PropertyResponse {
       Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1PropertyResponse(
       name: map['name'] as String,
-      valueExpression: ExprResponse100.fromMap(
+      valueExpression: ExprResponseSecuritycenterV1.fromMap(
           (map['valueExpression'] as Map).cast<String, dynamic>()),
     );
   }

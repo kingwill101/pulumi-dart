@@ -1,28 +1,28 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_args.dart';
 
 /// Creates a new Workspace in a given Repository.
 /// Auto-naming is currently not supported for this resource.
-class Workspace extends CustomResource {
-  late final Output<String> location;
+class Workspace extends pulumi.CustomResource {
+  late final pulumi.Output<String> location;
 
   /// The workspace's name.
-  late final Output<String> name;
-  late final Output<String> project;
-  late final Output<String> repositoryId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
+  late final pulumi.Output<String> repositoryId;
 
   /// Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
-  late final Output<String> workspaceId;
+  late final pulumi.Output<String> workspaceId;
 
   Workspace(
     String name, {
     WorkspaceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:dataform/v1beta1:Workspace',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

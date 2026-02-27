@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'glossary_terms_pair.dart';
 import 'glossary_terms_set.dart';
 
 /// The set of arguments for GlossaryEntry.
 class GlossaryEntryArgs {
   /// Describes the glossary entry.
-  final Input<String>? description;
-  final Input<String> glossaryId;
-  final Input<String>? location;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String> glossaryId;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Used for an unidirectional glossary.
-  final Input<GlossaryTermsPair>? termsPair;
+  final pulumi.Input<GlossaryTermsPair>? termsPair;
 
   /// Used for an equivalent term sets glossary.
-  final Input<GlossaryTermsSet>? termsSet;
+  final pulumi.Input<GlossaryTermsSet>? termsSet;
 
   GlossaryEntryArgs({
     this.description,
@@ -52,28 +52,27 @@ class GlossaryEntryArgs {
     }
     final termsPairValue = termsPair;
     if (termsPairValue != null) {
-      map['termsPair'] =
-          Input.mapOptionalInputValue<GlossaryTermsPair, Map<String, dynamic>>(
-              termsPairValue, (value) => value.toMap());
+      map['termsPair'] = pulumi.Input.mapOptionalInputValue<GlossaryTermsPair,
+          Map<String, dynamic>>(termsPairValue, (value) => value.toMap());
     }
     final termsSetValue = termsSet;
     if (termsSetValue != null) {
-      map['termsSet'] =
-          Input.mapOptionalInputValue<GlossaryTermsSet, Map<String, dynamic>>(
-              termsSetValue, (value) => value.toMap());
+      map['termsSet'] = pulumi.Input.mapOptionalInputValue<GlossaryTermsSet,
+          Map<String, dynamic>>(termsSetValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory GlossaryEntryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryEntryArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      glossaryId: Input.asInput<String>(map['glossaryId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      termsPair: Input.asOptionalInput<GlossaryTermsPair>(map['termsPair']),
-      termsSet: Input.asOptionalInput<GlossaryTermsSet>(map['termsSet']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      glossaryId: pulumi.Input.asInput<String>(map['glossaryId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      termsPair:
+          pulumi.Input.asOptionalInput<GlossaryTermsPair>(map['termsPair']),
+      termsSet: pulumi.Input.asOptionalInput<GlossaryTermsSet>(map['termsSet']),
     );
   }
 }

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'android_app_info.dart';
-import 'android_instrumentation_test2.dart';
-import 'android_robo_test2.dart';
-import 'duration4.dart';
+import 'android_instrumentation_test_toolresults_v1beta3.dart';
+import 'android_robo_test_toolresults_v1beta3.dart';
+import 'duration_toolresults_v1beta3.dart';
 
 /// An Android mobile test specification.
 class AndroidTest {
@@ -11,16 +11,17 @@ class AndroidTest {
   final AndroidAppInfo? androidAppInfo;
 
   /// An Android instrumentation test.
-  final AndroidInstrumentationTest2? androidInstrumentationTest;
+  final AndroidInstrumentationTestToolresultsV1beta3?
+      androidInstrumentationTest;
 
   /// An Android robo test.
-  final AndroidRoboTest2? androidRoboTest;
+  final AndroidRoboTestToolresultsV1beta3? androidRoboTest;
 
   /// An Android test loop.
   final Map<String, dynamic>? androidTestLoop;
 
   /// Max time a test is allowed to run before it is automatically cancelled.
-  final Duration4? testTimeout;
+  final DurationToolresultsV1beta3? testTimeout;
 
   AndroidTest({
     this.androidAppInfo,
@@ -64,19 +65,19 @@ class AndroidTest {
               (map['androidAppInfo'] as Map).cast<String, dynamic>()),
       androidInstrumentationTest: map['androidInstrumentationTest'] == null
           ? null
-          : AndroidInstrumentationTest2.fromMap(
+          : AndroidInstrumentationTestToolresultsV1beta3.fromMap(
               (map['androidInstrumentationTest'] as Map)
                   .cast<String, dynamic>()),
       androidRoboTest: map['androidRoboTest'] == null
           ? null
-          : AndroidRoboTest2.fromMap(
+          : AndroidRoboTestToolresultsV1beta3.fromMap(
               (map['androidRoboTest'] as Map).cast<String, dynamic>()),
       androidTestLoop: map['androidTestLoop'] == null
           ? null
           : (map['androidTestLoop'] as Map).cast<String, dynamic>(),
       testTimeout: map['testTimeout'] == null
           ? null
-          : Duration4.fromMap(
+          : DurationToolresultsV1beta3.fromMap(
               (map['testTimeout'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,14 +1,14 @@
-import 'package:pulumi/pulumi.dart' hide Config;
-import '../../iam/v1/condition8.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../../iam/v1/condition_iam_v1.dart';
 import 'object_iam_member_args.dart';
 
 /// Updates an IAM policy for the specified object.
-class ObjectIamMember extends CustomResource {
+class ObjectIamMember extends pulumi.CustomResource {
   /// An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.
-  late final Output<Condition8?> condition;
+  late final pulumi.Output<ConditionIamV1?> condition;
 
   /// The etag of the resource's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
   /// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
@@ -20,13 +20,13 @@ class ObjectIamMember extends CustomResource {
   /// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
   /// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
   /// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// The name of the resource to manage IAM policies for.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project in which the resource belongs. If it is not provided, a default will be supplied.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
   /// The new IAM roles are:
@@ -39,19 +39,19 @@ class ObjectIamMember extends CustomResource {
   /// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
   /// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
   /// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   ObjectIamMember(
     String name, {
     ObjectIamMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:storage/v1:ObjectIamMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.condition = registerOutput<Condition8?>('condition');
+    this.condition = registerOutput<ConditionIamV1?>('condition');
     this.etag = registerOutput<String>('etag');
     this.member = registerOutput<String>('member');
     this.name = registerOutput<String>('name');

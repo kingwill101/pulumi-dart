@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWebApp.
 class GetWebAppArgs {
-  final Input<String>? project;
-  final Input<String> webAppId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> webAppId;
 
   GetWebAppArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetWebAppArgs {
 
   factory GetWebAppArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      webAppId: Input.asInput<String>(map['webAppId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      webAppId: pulumi.Input.asInput<String>(map['webAppId']),
     );
   }
 }

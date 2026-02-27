@@ -1,55 +1,55 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contactcenterinsights_v1_issue_model_input_data_config_response.dart';
 import 'google_cloud_contactcenterinsights_v1_issue_model_label_stats_response.dart';
 import 'issue_model_args.dart';
 
 /// Creates an issue model.
-class IssueModel extends CustomResource {
+class IssueModel extends pulumi.CustomResource {
   /// The time at which this issue model was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The representative name for the issue model.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Configs for the input data that used to create the issue model.
-  late final Output<
+  late final pulumi.Output<
           GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse>
       inputDataConfig;
 
   /// Number of issues in this issue model.
-  late final Output<String> issueCount;
+  late final pulumi.Output<String> issueCount;
 
   /// Language of the model.
-  late final Output<String> languageCode;
-  late final Output<String> location;
+  late final pulumi.Output<String> languageCode;
+  late final pulumi.Output<String> location;
 
   /// Type of the model.
-  late final Output<String> modelType;
+  late final pulumi.Output<String> modelType;
 
   /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// State of the model.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Immutable. The issue model's label statistics on its training data.
-  late final Output<
-          GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse>
+  late final pulumi
+      .Output<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse>
       trainingStats;
 
   /// The most recent time at which the issue model was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   IssueModel(
     String name, {
     IssueModelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:contactcenterinsights/v1:IssueModel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');

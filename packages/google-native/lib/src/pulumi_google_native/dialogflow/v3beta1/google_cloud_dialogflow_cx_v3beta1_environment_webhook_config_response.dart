@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_webhook_response.dart';
 
 /// Configuration for webhooks.
@@ -14,7 +14,7 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['webhookOverrides'] = Input.encodeList<
+    map['webhookOverrides'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3beta1WebhookResponse,
         Map<String, dynamic>>(webhookOverrides, (value) => value.toMap());
     return map;
@@ -23,11 +23,11 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse {
   factory GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse(
-      webhookOverrides:
-          Input.decodeList<GoogleCloudDialogflowCxV3beta1WebhookResponse>(
-              map['webhookOverrides'],
-              (value) => GoogleCloudDialogflowCxV3beta1WebhookResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      webhookOverrides: pulumi.Input.decodeList<
+              GoogleCloudDialogflowCxV3beta1WebhookResponse>(
+          map['webhookOverrides'],
+          (value) => GoogleCloudDialogflowCxV3beta1WebhookResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

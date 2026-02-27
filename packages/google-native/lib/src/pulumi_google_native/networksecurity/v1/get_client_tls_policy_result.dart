@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_networksecurity_v1_certificate_provider_response.dart';
 import 'validation_caresponse.dart';
 
@@ -50,7 +50,7 @@ class GetClientTlsPolicyResult {
     map['labels'] = labels;
     map['name'] = name;
     map['serverValidationCa'] =
-        Input.encodeList<ValidationCAResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ValidationCAResponse, Map<String, dynamic>>(
             serverValidationCa, (value) => value.toMap());
     map['sni'] = sni;
     map['updateTime'] = updateTime;
@@ -66,7 +66,7 @@ class GetClientTlsPolicyResult {
       description: map['description'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      serverValidationCa: Input.decodeList<ValidationCAResponse>(
+      serverValidationCa: pulumi.Input.decodeList<ValidationCAResponse>(
           map['serverValidationCa'],
           (value) => ValidationCAResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

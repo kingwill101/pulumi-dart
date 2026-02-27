@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAuthorizationPolicy.
 class GetAuthorizationPolicyArgs {
-  final Input<String> authorizationPolicyId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> authorizationPolicyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetAuthorizationPolicyArgs({
     required this.authorizationPolicyId,
@@ -28,9 +28,9 @@ class GetAuthorizationPolicyArgs {
   factory GetAuthorizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationPolicyArgs(
       authorizationPolicyId:
-          Input.asInput<String>(map['authorizationPolicyId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['authorizationPolicyId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

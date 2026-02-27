@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_connection_config_response.dart';
 import 'machine_config_response.dart';
 import 'node_response.dart';
@@ -116,7 +116,7 @@ class GetInstanceResult {
     map['labels'] = labels;
     map['machineConfig'] = machineConfig.toMap();
     map['name'] = name;
-    map['nodes'] = Input.encodeList<NodeResponse, Map<String, dynamic>>(
+    map['nodes'] = pulumi.Input.encodeList<NodeResponse, Map<String, dynamic>>(
         nodes, (value) => value.toMap());
     map['queryInsightsConfig'] = queryInsightsConfig.toMap();
     map['readPoolConfig'] = readPoolConfig.toMap();
@@ -146,7 +146,7 @@ class GetInstanceResult {
       machineConfig: MachineConfigResponse.fromMap(
           (map['machineConfig'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      nodes: Input.decodeList<NodeResponse>(
+      nodes: pulumi.Input.decodeList<NodeResponse>(
           map['nodes'],
           (value) =>
               NodeResponse.fromMap((value as Map).cast<String, dynamic>())),

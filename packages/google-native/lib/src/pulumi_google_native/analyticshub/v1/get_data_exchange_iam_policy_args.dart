@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDataExchangeIamPolicy.
 class GetDataExchangeIamPolicyArgs {
-  final Input<String> dataExchangeId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> dataExchangeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDataExchangeIamPolicyArgs({
     required this.dataExchangeId,
@@ -27,9 +27,9 @@ class GetDataExchangeIamPolicyArgs {
 
   factory GetDataExchangeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDataExchangeIamPolicyArgs(
-      dataExchangeId: Input.asInput<String>(map['dataExchangeId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      dataExchangeId: pulumi.Input.asInput<String>(map['dataExchangeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

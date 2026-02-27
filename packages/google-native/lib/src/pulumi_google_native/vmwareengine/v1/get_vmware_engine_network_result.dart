@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_network_response.dart';
 
 /// Result data returned by getVmwareEngineNetwork.
@@ -55,7 +55,7 @@ class GetVmwareEngineNetworkResult {
     map['uid'] = uid;
     map['updateTime'] = updateTime;
     map['vpcNetworks'] =
-        Input.encodeList<VpcNetworkResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<VpcNetworkResponse, Map<String, dynamic>>(
             vpcNetworks, (value) => value.toMap());
     return map;
   }
@@ -70,7 +70,7 @@ class GetVmwareEngineNetworkResult {
       type: map['type'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
-      vpcNetworks: Input.decodeList<VpcNetworkResponse>(
+      vpcNetworks: pulumi.Input.decodeList<VpcNetworkResponse>(
           map['vpcNetworks'],
           (value) => VpcNetworkResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

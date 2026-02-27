@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_error_response_policy.dart';
 import 'http_header_action.dart';
 import 'http_redirect_action.dart';
@@ -83,13 +83,15 @@ class PathMatcher {
     }
     final pathRulesValue = pathRules;
     if (pathRulesValue != null) {
-      map['pathRules'] = Input.encodeList<PathRule, Map<String, dynamic>>(
-          pathRulesValue, (value) => value.toMap());
+      map['pathRules'] =
+          pulumi.Input.encodeList<PathRule, Map<String, dynamic>>(
+              pathRulesValue, (value) => value.toMap());
     }
     final routeRulesValue = routeRules;
     if (routeRulesValue != null) {
-      map['routeRules'] = Input.encodeList<HttpRouteRule, Map<String, dynamic>>(
-          routeRulesValue, (value) => value.toMap());
+      map['routeRules'] =
+          pulumi.Input.encodeList<HttpRouteRule, Map<String, dynamic>>(
+              routeRulesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -122,13 +124,13 @@ class PathMatcher {
       name: map['name'] == null ? null : map['name'] as String,
       pathRules: map['pathRules'] == null
           ? null
-          : Input.decodeList<PathRule>(
+          : pulumi.Input.decodeList<PathRule>(
               map['pathRules'],
               (value) =>
                   PathRule.fromMap((value as Map).cast<String, dynamic>())),
       routeRules: map['routeRules'] == null
           ? null
-          : Input.decodeList<HttpRouteRule>(
+          : pulumi.Input.decodeList<HttpRouteRule>(
               map['routeRules'],
               (value) => HttpRouteRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

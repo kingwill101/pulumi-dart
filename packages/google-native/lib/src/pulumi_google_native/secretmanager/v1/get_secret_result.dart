@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_response.dart';
 import 'rotation_response.dart';
 import 'topic_response.dart';
@@ -64,8 +64,9 @@ class GetSecretResult {
     map['name'] = name;
     map['replication'] = replication.toMap();
     map['rotation'] = rotation.toMap();
-    map['topics'] = Input.encodeList<TopicResponse, Map<String, dynamic>>(
-        topics, (value) => value.toMap());
+    map['topics'] =
+        pulumi.Input.encodeList<TopicResponse, Map<String, dynamic>>(
+            topics, (value) => value.toMap());
     map['ttl'] = ttl;
     map['versionAliases'] = versionAliases;
     return map;
@@ -83,7 +84,7 @@ class GetSecretResult {
           (map['replication'] as Map).cast<String, dynamic>()),
       rotation: RotationResponse.fromMap(
           (map['rotation'] as Map).cast<String, dynamic>()),
-      topics: Input.decodeList<TopicResponse>(
+      topics: pulumi.Input.decodeList<TopicResponse>(
           map['topics'],
           (value) =>
               TopicResponse.fromMap((value as Map).cast<String, dynamic>())),

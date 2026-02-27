@@ -1,45 +1,45 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_beyondcorp_partnerservices_v1alpha_group_response.dart';
 import 'google_cloud_beyondcorp_partnerservices_v1alpha_partner_metadata_response.dart';
 import 'partner_tenant_args.dart';
 
 /// Creates a new BeyondCorp Enterprise partnerTenant in a given organization and can only be called by onboarded BeyondCorp Enterprise partner.
 /// Auto-naming is currently not supported for this resource.
-class PartnerTenant extends CustomResource {
+class PartnerTenant extends pulumi.CustomResource {
   /// Timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. An arbitrary caller-provided name for the PartnerTenant. Cannot exceed 64 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Optional. Group information for the users enabled to use the partnerTenant. If the group information is not provided then the partnerTenant will be enabled for all users.
-  late final Output<GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse>
-      group;
+  late final pulumi
+      .Output<GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse> group;
 
   /// Unique resource name of the PartnerTenant. The name is ignored when creating PartnerTenant.
-  late final Output<String> name;
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> organizationId;
 
   /// Optional. Metadata provided by the Partner associated with PartnerTenant.
-  late final Output<
+  late final pulumi.Output<
           GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse>
       partnerMetadata;
 
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  late final Output<String?> requestId;
+  late final pulumi.Output<String?> requestId;
 
   /// Timestamp when the resource was last modified.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   PartnerTenant(
     String name, {
     PartnerTenantArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:beyondcorp/v1alpha:PartnerTenant',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_recommendationengine_v1beta1_image_response.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_exact_price_response.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_price_range_response.dart';
@@ -51,7 +51,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
     map['costs'] = costs;
     map['currencyCode'] = currencyCode;
     map['exactPrice'] = exactPrice.toMap();
-    map['images'] = Input.encodeList<
+    map['images'] = pulumi.Input.encodeList<
         GoogleCloudRecommendationengineV1beta1ImageResponse,
         Map<String, dynamic>>(images, (value) => value.toMap());
     map['priceRange'] = priceRange.toMap();
@@ -69,12 +69,12 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
       exactPrice:
           GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
               .fromMap((map['exactPrice'] as Map).cast<String, dynamic>()),
-      images:
-          Input.decodeList<GoogleCloudRecommendationengineV1beta1ImageResponse>(
-              map['images'],
-              (value) =>
-                  GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      images: pulumi.Input.decodeList<
+              GoogleCloudRecommendationengineV1beta1ImageResponse>(
+          map['images'],
+          (value) =>
+              GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       priceRange:
           GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
               .fromMap((map['priceRange'] as Map).cast<String, dynamic>()),

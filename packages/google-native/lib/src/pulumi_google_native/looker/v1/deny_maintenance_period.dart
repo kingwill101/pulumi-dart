@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'date2.dart';
+import 'date_looker_v1.dart';
 import 'time_of_day.dart';
 
 /// Specifies the maintenance denial period.
 class DenyMaintenancePeriod {
   /// End date of the deny maintenance period.
-  final Date2 endDate;
+  final DateLookerV1 endDate;
 
   /// Start date of the deny maintenance period.
-  final Date2 startDate;
+  final DateLookerV1 startDate;
 
   /// Time in UTC when the period starts and ends.
   final TimeOfDay time;
@@ -30,9 +30,10 @@ class DenyMaintenancePeriod {
 
   factory DenyMaintenancePeriod.fromMap(Map<String, dynamic> map) {
     return DenyMaintenancePeriod(
-      endDate: Date2.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
-      startDate:
-          Date2.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
+      endDate:
+          DateLookerV1.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
+      startDate: DateLookerV1.fromMap(
+          (map['startDate'] as Map).cast<String, dynamic>()),
       time: TimeOfDay.fromMap((map['time'] as Map).cast<String, dynamic>()),
     );
   }

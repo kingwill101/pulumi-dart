@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_error_response.dart';
 import 'google_privacy_dlp_v2_inspect_job_config_response.dart';
 import 'google_privacy_dlp_v2_trigger_response.dart';
@@ -55,14 +55,13 @@ class GetJobTriggerResult {
     map['createTime'] = createTime;
     map['description'] = description;
     map['displayName'] = displayName;
-    map['errors'] =
-        Input.encodeList<GooglePrivacyDlpV2ErrorResponse, Map<String, dynamic>>(
-            errors, (value) => value.toMap());
+    map['errors'] = pulumi.Input.encodeList<GooglePrivacyDlpV2ErrorResponse,
+        Map<String, dynamic>>(errors, (value) => value.toMap());
     map['inspectJob'] = inspectJob.toMap();
     map['lastRunTime'] = lastRunTime;
     map['name'] = name;
     map['status'] = status;
-    map['triggers'] = Input.encodeList<GooglePrivacyDlpV2TriggerResponse,
+    map['triggers'] = pulumi.Input.encodeList<GooglePrivacyDlpV2TriggerResponse,
         Map<String, dynamic>>(triggers, (value) => value.toMap());
     map['updateTime'] = updateTime;
     return map;
@@ -73,7 +72,7 @@ class GetJobTriggerResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      errors: Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(
+      errors: pulumi.Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(
           map['errors'],
           (value) => GooglePrivacyDlpV2ErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -82,7 +81,7 @@ class GetJobTriggerResult {
       lastRunTime: map['lastRunTime'] as String,
       name: map['name'] as String,
       status: map['status'] as String,
-      triggers: Input.decodeList<GooglePrivacyDlpV2TriggerResponse>(
+      triggers: pulumi.Input.decodeList<GooglePrivacyDlpV2TriggerResponse>(
           map['triggers'],
           (value) => GooglePrivacyDlpV2TriggerResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

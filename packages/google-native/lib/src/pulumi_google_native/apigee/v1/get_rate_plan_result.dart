@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_rate_range_response.dart';
 import 'google_cloud_apigee_v1_revenue_share_range_response.dart';
-import 'google_type_money_response3.dart';
+import 'google_type_money_response_apigee_v1.dart';
 
 /// Result data returned by getRatePlan.
 class GetRatePlanResult {
@@ -38,7 +38,7 @@ class GetRatePlanResult {
   final int fixedFeeFrequency;
 
   /// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
-  final GoogleTypeMoneyResponse3 fixedRecurringFee;
+  final GoogleTypeMoneyResponseApigeeV1 fixedRecurringFee;
 
   /// Time the rate plan was last modified in milliseconds since epoch.
   final String lastModifiedAt;
@@ -56,7 +56,7 @@ class GetRatePlanResult {
   final String revenueShareType;
 
   /// Initial, one-time fee paid when purchasing the API product.
-  final GoogleTypeMoneyResponse3 setupFee;
+  final GoogleTypeMoneyResponseApigeeV1 setupFee;
 
   /// Time when the rate plan becomes active in milliseconds since epoch.
   final String startTime;
@@ -90,7 +90,7 @@ class GetRatePlanResult {
     final map = <String, dynamic>{};
     map['apiproduct'] = apiproduct;
     map['billingPeriod'] = billingPeriod;
-    map['consumptionPricingRates'] = Input.encodeList<
+    map['consumptionPricingRates'] = pulumi.Input.encodeList<
             GoogleCloudApigeeV1RateRangeResponse, Map<String, dynamic>>(
         consumptionPricingRates, (value) => value.toMap());
     map['consumptionPricingType'] = consumptionPricingType;
@@ -104,7 +104,7 @@ class GetRatePlanResult {
     map['lastModifiedAt'] = lastModifiedAt;
     map['name'] = name;
     map['paymentFundingModel'] = paymentFundingModel;
-    map['revenueShareRates'] = Input.encodeList<
+    map['revenueShareRates'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1RevenueShareRangeResponse,
         Map<String, dynamic>>(revenueShareRates, (value) => value.toMap());
     map['revenueShareType'] = revenueShareType;
@@ -119,7 +119,7 @@ class GetRatePlanResult {
       apiproduct: map['apiproduct'] as String,
       billingPeriod: map['billingPeriod'] as String,
       consumptionPricingRates:
-          Input.decodeList<GoogleCloudApigeeV1RateRangeResponse>(
+          pulumi.Input.decodeList<GoogleCloudApigeeV1RateRangeResponse>(
               map['consumptionPricingRates'],
               (value) => GoogleCloudApigeeV1RateRangeResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -130,18 +130,18 @@ class GetRatePlanResult {
       displayName: map['displayName'] as String,
       endTime: map['endTime'] as String,
       fixedFeeFrequency: map['fixedFeeFrequency'] as int,
-      fixedRecurringFee: GoogleTypeMoneyResponse3.fromMap(
+      fixedRecurringFee: GoogleTypeMoneyResponseApigeeV1.fromMap(
           (map['fixedRecurringFee'] as Map).cast<String, dynamic>()),
       lastModifiedAt: map['lastModifiedAt'] as String,
       name: map['name'] as String,
       paymentFundingModel: map['paymentFundingModel'] as String,
       revenueShareRates:
-          Input.decodeList<GoogleCloudApigeeV1RevenueShareRangeResponse>(
+          pulumi.Input.decodeList<GoogleCloudApigeeV1RevenueShareRangeResponse>(
               map['revenueShareRates'],
               (value) => GoogleCloudApigeeV1RevenueShareRangeResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       revenueShareType: map['revenueShareType'] as String,
-      setupFee: GoogleTypeMoneyResponse3.fromMap(
+      setupFee: GoogleTypeMoneyResponseApigeeV1.fromMap(
           (map['setupFee'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] as String,
       state: map['state'] as String,

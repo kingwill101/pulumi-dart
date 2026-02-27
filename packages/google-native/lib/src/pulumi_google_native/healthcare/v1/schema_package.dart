@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hl7_schema_config.dart';
 import 'hl7_types_config.dart';
 import 'schema_package_schematized_parsing_type.dart';
@@ -39,8 +39,9 @@ class SchemaPackage {
     }
     final schemasValue = schemas;
     if (schemasValue != null) {
-      map['schemas'] = Input.encodeList<Hl7SchemaConfig, Map<String, dynamic>>(
-          schemasValue, (value) => value.toMap());
+      map['schemas'] =
+          pulumi.Input.encodeList<Hl7SchemaConfig, Map<String, dynamic>>(
+              schemasValue, (value) => value.toMap());
     }
     final schematizedParsingTypeValue = schematizedParsingType;
     if (schematizedParsingTypeValue != null) {
@@ -48,8 +49,9 @@ class SchemaPackage {
     }
     final typesValue = types;
     if (typesValue != null) {
-      map['types'] = Input.encodeList<Hl7TypesConfig, Map<String, dynamic>>(
-          typesValue, (value) => value.toMap());
+      map['types'] =
+          pulumi.Input.encodeList<Hl7TypesConfig, Map<String, dynamic>>(
+              typesValue, (value) => value.toMap());
     }
     final unexpectedSegmentHandlingValue = unexpectedSegmentHandling;
     if (unexpectedSegmentHandlingValue != null) {
@@ -65,7 +67,7 @@ class SchemaPackage {
           : map['ignoreMinOccurs'] as bool,
       schemas: map['schemas'] == null
           ? null
-          : Input.decodeList<Hl7SchemaConfig>(
+          : pulumi.Input.decodeList<Hl7SchemaConfig>(
               map['schemas'],
               (value) => Hl7SchemaConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -75,7 +77,7 @@ class SchemaPackage {
               map['schematizedParsingType'] as String),
       types: map['types'] == null
           ? null
-          : Input.decodeList<Hl7TypesConfig>(
+          : pulumi.Input.decodeList<Hl7TypesConfig>(
               map['types'],
               (value) => Hl7TypesConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

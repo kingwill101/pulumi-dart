@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFhir.
 class GetFhirArgs {
-  final Input<String> datasetId;
-  final Input<String> fhirId;
-  final Input<String> fhirId1;
-  final Input<String> fhirStoreId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> fhirId;
+  final pulumi.Input<String> fhirId1;
+  final pulumi.Input<String> fhirStoreId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetFhirArgs({
     required this.datasetId,
@@ -36,12 +36,12 @@ class GetFhirArgs {
 
   factory GetFhirArgs.fromMap(Map<String, dynamic> map) {
     return GetFhirArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      fhirId: Input.asInput<String>(map['fhirId']),
-      fhirId1: Input.asInput<String>(map['fhirId1']),
-      fhirStoreId: Input.asInput<String>(map['fhirStoreId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      fhirId: pulumi.Input.asInput<String>(map['fhirId']),
+      fhirId1: pulumi.Input.asInput<String>(map['fhirId1']),
+      fhirStoreId: pulumi.Input.asInput<String>(map['fhirStoreId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

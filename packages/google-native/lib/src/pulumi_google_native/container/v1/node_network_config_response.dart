@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'additional_node_network_config_response.dart';
 import 'additional_pod_network_config_response.dart';
-import 'network_performance_config_response4.dart';
+import 'network_performance_config_response_container_v1.dart';
 import 'pod_cidroverprovision_config_response.dart';
 
 /// Parameters for node pool-level network config.
@@ -21,7 +21,7 @@ class NodeNetworkConfigResponse {
   final bool enablePrivateNodes;
 
   /// Network bandwidth tier configuration.
-  final NetworkPerformanceConfigResponse4 networkPerformanceConfig;
+  final NetworkPerformanceConfigResponseContainerV1 networkPerformanceConfig;
 
   /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
   final PodCIDROverprovisionConfigResponse podCidrOverprovisionConfig;
@@ -49,10 +49,10 @@ class NodeNetworkConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['additionalNodeNetworkConfigs'] = Input.encodeList<
+    map['additionalNodeNetworkConfigs'] = pulumi.Input.encodeList<
             AdditionalNodeNetworkConfigResponse, Map<String, dynamic>>(
         additionalNodeNetworkConfigs, (value) => value.toMap());
-    map['additionalPodNetworkConfigs'] = Input.encodeList<
+    map['additionalPodNetworkConfigs'] = pulumi.Input.encodeList<
             AdditionalPodNetworkConfigResponse, Map<String, dynamic>>(
         additionalPodNetworkConfigs, (value) => value.toMap());
     map['createPodRange'] = createPodRange;
@@ -68,19 +68,20 @@ class NodeNetworkConfigResponse {
   factory NodeNetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return NodeNetworkConfigResponse(
       additionalNodeNetworkConfigs:
-          Input.decodeList<AdditionalNodeNetworkConfigResponse>(
+          pulumi.Input.decodeList<AdditionalNodeNetworkConfigResponse>(
               map['additionalNodeNetworkConfigs'],
               (value) => AdditionalNodeNetworkConfigResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       additionalPodNetworkConfigs:
-          Input.decodeList<AdditionalPodNetworkConfigResponse>(
+          pulumi.Input.decodeList<AdditionalPodNetworkConfigResponse>(
               map['additionalPodNetworkConfigs'],
               (value) => AdditionalPodNetworkConfigResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       createPodRange: map['createPodRange'] as bool,
       enablePrivateNodes: map['enablePrivateNodes'] as bool,
-      networkPerformanceConfig: NetworkPerformanceConfigResponse4.fromMap(
-          (map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
+      networkPerformanceConfig:
+          NetworkPerformanceConfigResponseContainerV1.fromMap(
+              (map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
       podCidrOverprovisionConfig: PodCIDROverprovisionConfigResponse.fromMap(
           (map['podCidrOverprovisionConfig'] as Map).cast<String, dynamic>()),
       podIpv4CidrBlock: map['podIpv4CidrBlock'] as String,

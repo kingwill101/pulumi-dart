@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_syntax.dart';
 import 'method.dart';
 import 'mixin.dart';
 import 'option.dart';
-import 'source_context3.dart';
+import 'source_context_servicemanagement_v1.dart';
 
 /// Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology.
 class Api {
@@ -22,7 +22,7 @@ class Api {
   final List<Option>? options;
 
   /// Source context for the protocol buffer service represented by this message.
-  final SourceContext3? sourceContext;
+  final SourceContextServicemanagementV1? sourceContext;
 
   /// The source syntax of the service.
   final ApiSyntax? syntax;
@@ -44,12 +44,12 @@ class Api {
     final map = <String, dynamic>{};
     final methodsValue = methods;
     if (methodsValue != null) {
-      map['methods'] = Input.encodeList<Method, Map<String, dynamic>>(
+      map['methods'] = pulumi.Input.encodeList<Method, Map<String, dynamic>>(
           methodsValue, (value) => value.toMap());
     }
     final mixinsValue = mixins;
     if (mixinsValue != null) {
-      map['mixins'] = Input.encodeList<Mixin, Map<String, dynamic>>(
+      map['mixins'] = pulumi.Input.encodeList<Mixin, Map<String, dynamic>>(
           mixinsValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -58,7 +58,7 @@ class Api {
     }
     final optionsValue = options;
     if (optionsValue != null) {
-      map['options'] = Input.encodeList<Option, Map<String, dynamic>>(
+      map['options'] = pulumi.Input.encodeList<Option, Map<String, dynamic>>(
           optionsValue, (value) => value.toMap());
     }
     final sourceContextValue = sourceContext;
@@ -80,24 +80,24 @@ class Api {
     return Api(
       methods: map['methods'] == null
           ? null
-          : Input.decodeList<Method>(
+          : pulumi.Input.decodeList<Method>(
               map['methods'],
               (value) =>
                   Method.fromMap((value as Map).cast<String, dynamic>())),
       mixins: map['mixins'] == null
           ? null
-          : Input.decodeList<Mixin>(map['mixins'],
+          : pulumi.Input.decodeList<Mixin>(map['mixins'],
               (value) => Mixin.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
       options: map['options'] == null
           ? null
-          : Input.decodeList<Option>(
+          : pulumi.Input.decodeList<Option>(
               map['options'],
               (value) =>
                   Option.fromMap((value as Map).cast<String, dynamic>())),
       sourceContext: map['sourceContext'] == null
           ? null
-          : SourceContext3.fromMap(
+          : SourceContextServicemanagementV1.fromMap(
               (map['sourceContext'] as Map).cast<String, dynamic>()),
       syntax: map['syntax'] == null
           ? null

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_gcs_destination.dart';
 import 'google_cloud_aiplatform_v1beta1_model_monitoring_alert_config.dart';
 import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config.dart';
@@ -39,7 +39,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringConfig {
     }
     final objectiveConfigsValue = objectiveConfigs;
     if (objectiveConfigsValue != null) {
-      map['objectiveConfigs'] = Input.encodeList<
+      map['objectiveConfigs'] = pulumi.Input.encodeList<
               GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig,
               Map<String, dynamic>>(
           objectiveConfigsValue, (value) => value.toMap());
@@ -64,7 +64,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringConfig {
           : map['analysisInstanceSchemaUri'] as String,
       objectiveConfigs: map['objectiveConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig>(
               map['objectiveConfigs'],
               (value) =>

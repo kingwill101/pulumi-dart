@@ -1,53 +1,53 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_taxonomy_args.dart';
 
 /// Create a DataTaxonomy resource.
 /// Auto-naming is currently not supported for this resource.
-class DataTaxonomy extends CustomResource {
+class DataTaxonomy extends pulumi.CustomResource {
   /// The number of attributes in the DataTaxonomy.
-  late final Output<int> attributeCount;
+  late final pulumi.Output<int> attributeCount;
 
   /// The number of classes in the DataTaxonomy.
-  late final Output<int> classCount;
+  late final pulumi.Output<int> classCount;
 
   /// The time when the DataTaxonomy was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Required. DataTaxonomy identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the Project.
-  late final Output<String> dataTaxonomyId;
+  late final pulumi.Output<String> dataTaxonomyId;
 
   /// Optional. Description of the DataTaxonomy.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Optional. User friendly display name.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Optional. User-defined labels for the DataTaxonomy.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// The relative resource name of the DataTaxonomy, of the form: projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// System generated globally unique ID for the dataTaxonomy. This ID will be different if the DataTaxonomy is deleted and re-created with the same name.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time when the DataTaxonomy was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DataTaxonomy(
     String name, {
     DataTaxonomyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:dataplex/v1:DataTaxonomy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attributeCount = registerOutput<int>('attributeCount');
     this.classCount = registerOutput<int>('classCount');

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationBucket.
 class GetOrganizationBucketArgs {
-  final Input<String> bucketId;
-  final Input<String> location;
-  final Input<String> organizationId;
+  final pulumi.Input<String> bucketId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> organizationId;
 
   GetOrganizationBucketArgs({
     required this.bucketId,
@@ -24,9 +24,9 @@ class GetOrganizationBucketArgs {
 
   factory GetOrganizationBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationBucketArgs(
-      bucketId: Input.asInput<String>(map['bucketId']),
-      location: Input.asInput<String>(map['location']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      bucketId: pulumi.Input.asInput<String>(map['bucketId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'query_parameter_type_struct_types_item_response.dart';
 
 class QueryParameterTypeResponse {
@@ -22,7 +22,7 @@ class QueryParameterTypeResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arrayType'] = arrayType.toMap();
-    map['structTypes'] = Input.encodeList<
+    map['structTypes'] = pulumi.Input.encodeList<
         QueryParameterTypeStructTypesItemResponse,
         Map<String, dynamic>>(structTypes, (value) => value.toMap());
     map['type'] = type;
@@ -33,10 +33,11 @@ class QueryParameterTypeResponse {
     return QueryParameterTypeResponse(
       arrayType: QueryParameterTypeResponse.fromMap(
           (map['arrayType'] as Map).cast<String, dynamic>()),
-      structTypes: Input.decodeList<QueryParameterTypeStructTypesItemResponse>(
-          map['structTypes'],
-          (value) => QueryParameterTypeStructTypesItemResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      structTypes:
+          pulumi.Input.decodeList<QueryParameterTypeStructTypesItemResponse>(
+              map['structTypes'],
+              (value) => QueryParameterTypeStructTypesItemResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

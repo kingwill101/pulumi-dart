@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'permission_constraint.dart';
 
 /// [Deprecated] All fields defined in a permission are ANDed.
@@ -49,7 +49,7 @@ class Permission {
     final constraintsValue = constraints;
     if (constraintsValue != null) {
       map['constraints'] =
-          Input.encodeList<PermissionConstraint, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PermissionConstraint, Map<String, dynamic>>(
               constraintsValue, (value) => value.toMap());
     }
     final hostsValue = hosts;
@@ -91,7 +91,7 @@ class Permission {
     return Permission(
       constraints: map['constraints'] == null
           ? null
-          : Input.decodeList<PermissionConstraint>(
+          : pulumi.Input.decodeList<PermissionConstraint>(
               map['constraints'],
               (value) => PermissionConstraint.fromMap(
                   (value as Map).cast<String, dynamic>())),

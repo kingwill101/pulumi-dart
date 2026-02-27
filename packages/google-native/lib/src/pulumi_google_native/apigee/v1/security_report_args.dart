@@ -1,44 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_security_report_query_metric.dart';
 
 /// The set of arguments for SecurityReport.
 class SecurityReportArgs {
   /// Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
-  final Input<String>? csvDelimiter;
+  final pulumi.Input<String>? csvDelimiter;
 
   /// A list of dimensions. https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions
-  final Input<List<String>>? dimensions;
+  final pulumi.Input<List<String>>? dimensions;
 
   /// Security Report display name which users can specify.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Hostname needs to be specified if query intends to run at host level. This field is only allowed when query is submitted by CreateHostSecurityReport where analytics data will be grouped by organization and hostname.
-  final Input<String>? envgroupHostname;
-  final Input<String> environmentId;
+  final pulumi.Input<String>? envgroupHostname;
+  final pulumi.Input<String> environmentId;
 
   /// Boolean expression that can be used to filter data. Filter expressions can be combined using AND/OR terms and should be fully parenthesized to avoid ambiguity. See Analytics metrics, dimensions, and filters reference https://docs.apigee.com/api-platform/analytics/analytics-reference for more information on the fields available to filter on. For more information on the tokens that you use to build filter expressions, see Filter expression syntax. https://docs.apigee.com/api-platform/analytics/asynch-reports-api#filter-expression-syntax
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// Time unit used to group the result set. Valid values include: second, minute, hour, day, week, or month. If a query includes groupByTimeUnit, then the result is an aggregation based on the specified time unit and the resultant timestamp does not include milliseconds precision. If a query omits groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
-  final Input<String>? groupByTimeUnit;
+  final pulumi.Input<String>? groupByTimeUnit;
 
   /// Maximum number of rows that can be returned in the result.
-  final Input<int>? limit;
+  final pulumi.Input<int>? limit;
 
   /// A list of Metrics.
-  final Input<List<GoogleCloudApigeeV1SecurityReportQueryMetric>>? metrics;
+  final pulumi.Input<List<GoogleCloudApigeeV1SecurityReportQueryMetric>>?
+      metrics;
 
   /// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
-  final Input<String>? mimeType;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? mimeType;
+  final pulumi.Input<String> organizationId;
 
   /// Report Definition ID.
-  final Input<String>? reportDefinitionId;
+  final pulumi.Input<String>? reportDefinitionId;
 
   /// Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
-  final Input<dynamic> timeRange;
+  final pulumi.Input<dynamic> timeRange;
 
   SecurityReportArgs({
     this.csvDelimiter,
@@ -89,11 +90,11 @@ class SecurityReportArgs {
     }
     final metricsValue = metrics;
     if (metricsValue != null) {
-      map['metrics'] = Input.mapOptionalInputValue<
+      map['metrics'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudApigeeV1SecurityReportQueryMetric>,
               List<Map<String, dynamic>>>(
           metricsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               GoogleCloudApigeeV1SecurityReportQueryMetric,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -112,21 +113,23 @@ class SecurityReportArgs {
 
   factory SecurityReportArgs.fromMap(Map<String, dynamic> map) {
     return SecurityReportArgs(
-      csvDelimiter: Input.asOptionalInput<String>(map['csvDelimiter']),
-      dimensions: Input.asOptionalInput<List<String>>(map['dimensions']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      envgroupHostname: Input.asOptionalInput<String>(map['envgroupHostname']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      filter: Input.asOptionalInput<String>(map['filter']),
-      groupByTimeUnit: Input.asOptionalInput<String>(map['groupByTimeUnit']),
-      limit: Input.asOptionalInput<int>(map['limit']),
-      metrics: Input.asOptionalInput<
+      csvDelimiter: pulumi.Input.asOptionalInput<String>(map['csvDelimiter']),
+      dimensions: pulumi.Input.asOptionalInput<List<String>>(map['dimensions']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      envgroupHostname:
+          pulumi.Input.asOptionalInput<String>(map['envgroupHostname']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      groupByTimeUnit:
+          pulumi.Input.asOptionalInput<String>(map['groupByTimeUnit']),
+      limit: pulumi.Input.asOptionalInput<int>(map['limit']),
+      metrics: pulumi.Input.asOptionalInput<
           List<GoogleCloudApigeeV1SecurityReportQueryMetric>>(map['metrics']),
-      mimeType: Input.asOptionalInput<String>(map['mimeType']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      mimeType: pulumi.Input.asOptionalInput<String>(map['mimeType']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
       reportDefinitionId:
-          Input.asOptionalInput<String>(map['reportDefinitionId']),
-      timeRange: Input.asInput<dynamic>(map['timeRange']),
+          pulumi.Input.asOptionalInput<String>(map['reportDefinitionId']),
+      timeRange: pulumi.Input.asInput<dynamic>(map['timeRange']),
     );
   }
 }

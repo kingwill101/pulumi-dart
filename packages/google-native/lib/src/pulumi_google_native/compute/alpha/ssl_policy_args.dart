@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_tls_settings.dart';
 import 'ssl_policy_min_tls_version.dart';
 import 'ssl_policy_profile.dart';
@@ -8,26 +8,26 @@ import 'ssl_policy_profile.dart';
 /// The set of arguments for SslPolicy.
 class SslPolicyArgs {
   /// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
-  final Input<List<String>>? customFeatures;
+  final pulumi.Input<List<String>>? customFeatures;
 
   /// An optional description of this resource. Provide this property when you create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
-  final Input<SslPolicyMinTlsVersion>? minTlsVersion;
+  final pulumi.Input<SslPolicyMinTlsVersion>? minTlsVersion;
 
   /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
-  final Input<SslPolicyProfile>? profile;
-  final Input<String>? project;
+  final pulumi.Input<SslPolicyProfile>? profile;
+  final pulumi.Input<String>? project;
 
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-  final Input<ServerTlsSettings>? tlsSettings;
+  final pulumi.Input<ServerTlsSettings>? tlsSettings;
 
   SslPolicyArgs({
     this.customFeatures,
@@ -53,7 +53,7 @@ class SslPolicyArgs {
     final minTlsVersionValue = minTlsVersion;
     if (minTlsVersionValue != null) {
       map['minTlsVersion'] =
-          Input.mapOptionalInputValue<SslPolicyMinTlsVersion, String>(
+          pulumi.Input.mapOptionalInputValue<SslPolicyMinTlsVersion, String>(
               minTlsVersionValue, (value) => value.value);
     }
     final nameValue = name;
@@ -62,8 +62,9 @@ class SslPolicyArgs {
     }
     final profileValue = profile;
     if (profileValue != null) {
-      map['profile'] = Input.mapOptionalInputValue<SslPolicyProfile, String>(
-          profileValue, (value) => value.value);
+      map['profile'] =
+          pulumi.Input.mapOptionalInputValue<SslPolicyProfile, String>(
+              profileValue, (value) => value.value);
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -75,9 +76,8 @@ class SslPolicyArgs {
     }
     final tlsSettingsValue = tlsSettings;
     if (tlsSettingsValue != null) {
-      map['tlsSettings'] =
-          Input.mapOptionalInputValue<ServerTlsSettings, Map<String, dynamic>>(
-              tlsSettingsValue, (value) => value.toMap());
+      map['tlsSettings'] = pulumi.Input.mapOptionalInputValue<ServerTlsSettings,
+          Map<String, dynamic>>(tlsSettingsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -85,15 +85,16 @@ class SslPolicyArgs {
   factory SslPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SslPolicyArgs(
       customFeatures:
-          Input.asOptionalInput<List<String>>(map['customFeatures']),
-      description: Input.asOptionalInput<String>(map['description']),
-      minTlsVersion:
-          Input.asOptionalInput<SslPolicyMinTlsVersion>(map['minTlsVersion']),
-      name: Input.asOptionalInput<String>(map['name']),
-      profile: Input.asOptionalInput<SslPolicyProfile>(map['profile']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      tlsSettings: Input.asOptionalInput<ServerTlsSettings>(map['tlsSettings']),
+          pulumi.Input.asOptionalInput<List<String>>(map['customFeatures']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      minTlsVersion: pulumi.Input.asOptionalInput<SslPolicyMinTlsVersion>(
+          map['minTlsVersion']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      profile: pulumi.Input.asOptionalInput<SslPolicyProfile>(map['profile']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      tlsSettings:
+          pulumi.Input.asOptionalInput<ServerTlsSettings>(map['tlsSettings']),
     );
   }
 }

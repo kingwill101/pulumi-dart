@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifacts.dart';
 import 'build_options.dart';
 import 'build_step.dart';
@@ -93,7 +93,7 @@ class Build {
     }
     final secretsValue = secrets;
     if (secretsValue != null) {
-      map['secrets'] = Input.encodeList<Secret, Map<String, dynamic>>(
+      map['secrets'] = pulumi.Input.encodeList<Secret, Map<String, dynamic>>(
           secretsValue, (value) => value.toMap());
     }
     final serviceAccountValue = serviceAccount;
@@ -104,7 +104,7 @@ class Build {
     if (sourceValue != null) {
       map['source'] = sourceValue.toMap();
     }
-    map['steps'] = Input.encodeList<BuildStep, Map<String, dynamic>>(
+    map['steps'] = pulumi.Input.encodeList<BuildStep, Map<String, dynamic>>(
         steps, (value) => value.toMap());
     final substitutionsValue = substitutions;
     if (substitutionsValue != null) {
@@ -142,7 +142,7 @@ class Build {
       queueTtl: map['queueTtl'] == null ? null : map['queueTtl'] as String,
       secrets: map['secrets'] == null
           ? null
-          : Input.decodeList<Secret>(
+          : pulumi.Input.decodeList<Secret>(
               map['secrets'],
               (value) =>
                   Secret.fromMap((value as Map).cast<String, dynamic>())),
@@ -152,7 +152,7 @@ class Build {
       source: map['source'] == null
           ? null
           : Source.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      steps: Input.decodeList<BuildStep>(map['steps'],
+      steps: pulumi.Input.decodeList<BuildStep>(map['steps'],
           (value) => BuildStep.fromMap((value as Map).cast<String, dynamic>())),
       substitutions: map['substitutions'] == null
           ? null

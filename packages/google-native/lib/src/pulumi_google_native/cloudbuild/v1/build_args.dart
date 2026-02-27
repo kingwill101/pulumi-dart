@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifacts.dart';
 import 'build_options.dart';
 import 'build_step.dart';
@@ -11,48 +11,48 @@ import 'source.dart';
 /// The set of arguments for Build.
 class BuildArgs {
   /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
-  final Input<Artifacts>? artifacts;
+  final pulumi.Input<Artifacts>? artifacts;
 
   /// Secrets and secret environment variables.
-  final Input<Secrets>? availableSecrets;
+  final pulumi.Input<Secrets>? availableSecrets;
 
   /// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-  final Input<List<String>>? images;
-  final Input<String>? location;
+  final pulumi.Input<List<String>>? images;
+  final pulumi.Input<String>? location;
 
   /// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
-  final Input<String>? logsBucket;
+  final pulumi.Input<String>? logsBucket;
 
   /// Special options for this build.
-  final Input<BuildOptions>? options;
-  final Input<String>? project;
+  final pulumi.Input<BuildOptions>? options;
+  final pulumi.Input<String>? project;
 
   /// Required. ID of the project.
-  final Input<String> projectId;
+  final pulumi.Input<String> projectId;
 
   /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
-  final Input<String>? queueTtl;
+  final pulumi.Input<String>? queueTtl;
 
   /// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
-  final Input<List<Secret>>? secrets;
+  final pulumi.Input<List<Secret>>? secrets;
 
   /// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
-  final Input<String>? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
 
   /// The location of the source files to build.
-  final Input<Source>? source;
+  final pulumi.Input<Source>? source;
 
   /// The operations to be performed on the workspace.
-  final Input<List<BuildStep>> steps;
+  final pulumi.Input<List<BuildStep>> steps;
 
   /// Substitutions data for `Build` resource.
-  final Input<Map<String, String>>? substitutions;
+  final pulumi.Input<Map<String, String>>? substitutions;
 
   /// Tags for annotation of a `Build`. These are not docker tags.
-  final Input<List<String>>? tags;
+  final pulumi.Input<List<String>>? tags;
 
   /// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
-  final Input<String>? timeout;
+  final pulumi.Input<String>? timeout;
 
   BuildArgs({
     this.artifacts,
@@ -78,13 +78,13 @@ class BuildArgs {
     final artifactsValue = artifacts;
     if (artifactsValue != null) {
       map['artifacts'] =
-          Input.mapOptionalInputValue<Artifacts, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<Artifacts, Map<String, dynamic>>(
               artifactsValue, (value) => value.toMap());
     }
     final availableSecretsValue = availableSecrets;
     if (availableSecretsValue != null) {
       map['availableSecrets'] =
-          Input.mapOptionalInputValue<Secrets, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<Secrets, Map<String, dynamic>>(
               availableSecretsValue, (value) => value.toMap());
     }
     final imagesValue = images;
@@ -101,9 +101,8 @@ class BuildArgs {
     }
     final optionsValue = options;
     if (optionsValue != null) {
-      map['options'] =
-          Input.mapOptionalInputValue<BuildOptions, Map<String, dynamic>>(
-              optionsValue, (value) => value.toMap());
+      map['options'] = pulumi.Input.mapOptionalInputValue<BuildOptions,
+          Map<String, dynamic>>(optionsValue, (value) => value.toMap());
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -116,11 +115,11 @@ class BuildArgs {
     }
     final secretsValue = secrets;
     if (secretsValue != null) {
-      map['secrets'] =
-          Input.mapOptionalInputValue<List<Secret>, List<Map<String, dynamic>>>(
-              secretsValue,
-              (value) => Input.encodeList<Secret, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+      map['secrets'] = pulumi.Input.mapOptionalInputValue<List<Secret>,
+              List<Map<String, dynamic>>>(
+          secretsValue,
+          (value) => pulumi.Input.encodeList<Secret, Map<String, dynamic>>(
+              value, (value) => value.toMap()));
     }
     final serviceAccountValue = serviceAccount;
     if (serviceAccountValue != null) {
@@ -128,13 +127,14 @@ class BuildArgs {
     }
     final sourceValue = source;
     if (sourceValue != null) {
-      map['source'] = Input.mapOptionalInputValue<Source, Map<String, dynamic>>(
-          sourceValue, (value) => value.toMap());
+      map['source'] =
+          pulumi.Input.mapOptionalInputValue<Source, Map<String, dynamic>>(
+              sourceValue, (value) => value.toMap());
     }
     map['steps'] =
-        Input.mapInputValue<List<BuildStep>, List<Map<String, dynamic>>>(
+        pulumi.Input.mapInputValue<List<BuildStep>, List<Map<String, dynamic>>>(
             steps,
-            (value) => Input.encodeList<BuildStep, Map<String, dynamic>>(
+            (value) => pulumi.Input.encodeList<BuildStep, Map<String, dynamic>>(
                 value, (value) => value.toMap()));
     final substitutionsValue = substitutions;
     if (substitutionsValue != null) {
@@ -153,23 +153,25 @@ class BuildArgs {
 
   factory BuildArgs.fromMap(Map<String, dynamic> map) {
     return BuildArgs(
-      artifacts: Input.asOptionalInput<Artifacts>(map['artifacts']),
-      availableSecrets: Input.asOptionalInput<Secrets>(map['availableSecrets']),
-      images: Input.asOptionalInput<List<String>>(map['images']),
-      location: Input.asOptionalInput<String>(map['location']),
-      logsBucket: Input.asOptionalInput<String>(map['logsBucket']),
-      options: Input.asOptionalInput<BuildOptions>(map['options']),
-      project: Input.asOptionalInput<String>(map['project']),
-      projectId: Input.asInput<String>(map['projectId']),
-      queueTtl: Input.asOptionalInput<String>(map['queueTtl']),
-      secrets: Input.asOptionalInput<List<Secret>>(map['secrets']),
-      serviceAccount: Input.asOptionalInput<String>(map['serviceAccount']),
-      source: Input.asOptionalInput<Source>(map['source']),
-      steps: Input.asInput<List<BuildStep>>(map['steps']),
-      substitutions:
-          Input.asOptionalInput<Map<String, String>>(map['substitutions']),
-      tags: Input.asOptionalInput<List<String>>(map['tags']),
-      timeout: Input.asOptionalInput<String>(map['timeout']),
+      artifacts: pulumi.Input.asOptionalInput<Artifacts>(map['artifacts']),
+      availableSecrets:
+          pulumi.Input.asOptionalInput<Secrets>(map['availableSecrets']),
+      images: pulumi.Input.asOptionalInput<List<String>>(map['images']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      logsBucket: pulumi.Input.asOptionalInput<String>(map['logsBucket']),
+      options: pulumi.Input.asOptionalInput<BuildOptions>(map['options']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      projectId: pulumi.Input.asInput<String>(map['projectId']),
+      queueTtl: pulumi.Input.asOptionalInput<String>(map['queueTtl']),
+      secrets: pulumi.Input.asOptionalInput<List<Secret>>(map['secrets']),
+      serviceAccount:
+          pulumi.Input.asOptionalInput<String>(map['serviceAccount']),
+      source: pulumi.Input.asOptionalInput<Source>(map['source']),
+      steps: pulumi.Input.asInput<List<BuildStep>>(map['steps']),
+      substitutions: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['substitutions']),
+      tags: pulumi.Input.asOptionalInput<List<String>>(map['tags']),
+      timeout: pulumi.Input.asOptionalInput<String>(map['timeout']),
     );
   }
 }

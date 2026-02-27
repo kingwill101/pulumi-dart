@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_attachment_connected_endpoint_response.dart';
 
 /// Result data returned by getNetworkAttachment.
@@ -64,7 +64,7 @@ class GetNetworkAttachmentResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['connectionEndpoints'] = Input.encodeList<
+    map['connectionEndpoints'] = pulumi.Input.encodeList<
         NetworkAttachmentConnectedEndpointResponse,
         Map<String, dynamic>>(connectionEndpoints, (value) => value.toMap());
     map['connectionPreference'] = connectionPreference;
@@ -86,7 +86,7 @@ class GetNetworkAttachmentResult {
   factory GetNetworkAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentResult(
       connectionEndpoints:
-          Input.decodeList<NetworkAttachmentConnectedEndpointResponse>(
+          pulumi.Input.decodeList<NetworkAttachmentConnectedEndpointResponse>(
               map['connectionEndpoints'],
               (value) => NetworkAttachmentConnectedEndpointResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

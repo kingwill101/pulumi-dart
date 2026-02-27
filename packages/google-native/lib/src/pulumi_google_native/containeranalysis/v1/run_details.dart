@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'build_metadata.dart';
 import 'provenance_builder.dart';
 import 'resource_descriptor.dart';
@@ -25,7 +25,7 @@ class RunDetails {
     final byproductsValue = byproducts;
     if (byproductsValue != null) {
       map['byproducts'] =
-          Input.encodeList<ResourceDescriptor, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ResourceDescriptor, Map<String, dynamic>>(
               byproductsValue, (value) => value.toMap());
     }
     final metadataValue = metadata;
@@ -43,7 +43,7 @@ class RunDetails {
               (map['builder'] as Map).cast<String, dynamic>()),
       byproducts: map['byproducts'] == null
           ? null
-          : Input.decodeList<ResourceDescriptor>(
+          : pulumi.Input.decodeList<ResourceDescriptor>(
               map['byproducts'],
               (value) => ResourceDescriptor.fromMap(
                   (value as Map).cast<String, dynamic>())),

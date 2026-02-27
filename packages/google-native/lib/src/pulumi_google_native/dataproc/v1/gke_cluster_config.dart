@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gke_node_pool_target.dart';
 import 'namespaced_gke_deployment_target.dart';
 
@@ -35,7 +35,7 @@ class GkeClusterConfig {
     final nodePoolTargetValue = nodePoolTarget;
     if (nodePoolTargetValue != null) {
       map['nodePoolTarget'] =
-          Input.encodeList<GkeNodePoolTarget, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GkeNodePoolTarget, Map<String, dynamic>>(
               nodePoolTargetValue, (value) => value.toMap());
     }
     return map;
@@ -54,7 +54,7 @@ class GkeClusterConfig {
                       .cast<String, dynamic>()),
       nodePoolTarget: map['nodePoolTarget'] == null
           ? null
-          : Input.decodeList<GkeNodePoolTarget>(
+          : pulumi.Input.decodeList<GkeNodePoolTarget>(
               map['nodePoolTarget'],
               (value) => GkeNodePoolTarget.fromMap(
                   (value as Map).cast<String, dynamic>())),

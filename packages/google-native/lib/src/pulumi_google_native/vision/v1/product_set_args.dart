@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ProductSet.
 class ProductSetArgs {
   /// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
-  final Input<String>? displayName;
-  final Input<String>? location;
+  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
-  final Input<String>? productSetId;
-  final Input<String>? project;
+  final pulumi.Input<String>? productSetId;
+  final pulumi.Input<String>? project;
 
   ProductSetArgs({
     this.displayName,
@@ -50,11 +50,11 @@ class ProductSetArgs {
 
   factory ProductSetArgs.fromMap(Map<String, dynamic> map) {
     return ProductSetArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      productSetId: Input.asOptionalInput<String>(map['productSetId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      productSetId: pulumi.Input.asOptionalInput<String>(map['productSetId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_peering_config.dart';
 
 /// The set of arguments for PrivateConnection.
 class PrivateConnectionArgs {
   /// The private connection display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// The name of the resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Required. The private connection identifier.
-  final Input<String> privateConnectionId;
-  final Input<String>? project;
+  final pulumi.Input<String> privateConnectionId;
+  final pulumi.Input<String>? project;
 
   /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Optional. If set to true, will skip validations.
-  final Input<bool>? skipValidation;
+  final pulumi.Input<bool>? skipValidation;
 
   /// VPC peering configuration.
-  final Input<VpcPeeringConfig>? vpcPeeringConfig;
+  final pulumi.Input<VpcPeeringConfig>? vpcPeeringConfig;
 
   PrivateConnectionArgs({
     this.displayName,
@@ -73,25 +73,26 @@ class PrivateConnectionArgs {
     }
     final vpcPeeringConfigValue = vpcPeeringConfig;
     if (vpcPeeringConfigValue != null) {
-      map['vpcPeeringConfig'] =
-          Input.mapOptionalInputValue<VpcPeeringConfig, Map<String, dynamic>>(
-              vpcPeeringConfigValue, (value) => value.toMap());
+      map['vpcPeeringConfig'] = pulumi.Input.mapOptionalInputValue<
+              VpcPeeringConfig, Map<String, dynamic>>(
+          vpcPeeringConfigValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      privateConnectionId: Input.asInput<String>(map['privateConnectionId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      skipValidation: Input.asOptionalInput<bool>(map['skipValidation']),
-      vpcPeeringConfig:
-          Input.asOptionalInput<VpcPeeringConfig>(map['vpcPeeringConfig']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      privateConnectionId:
+          pulumi.Input.asInput<String>(map['privateConnectionId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      skipValidation: pulumi.Input.asOptionalInput<bool>(map['skipValidation']),
+      vpcPeeringConfig: pulumi.Input.asOptionalInput<VpcPeeringConfig>(
+          map['vpcPeeringConfig']),
     );
   }
 }

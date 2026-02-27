@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGitLabConfig.
 class GetGitLabConfigArgs {
-  final Input<String> gitLabConfigId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> gitLabConfigId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetGitLabConfigArgs({
     required this.gitLabConfigId,
@@ -27,9 +27,9 @@ class GetGitLabConfigArgs {
 
   factory GetGitLabConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetGitLabConfigArgs(
-      gitLabConfigId: Input.asInput<String>(map['gitLabConfigId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      gitLabConfigId: pulumi.Input.asInput<String>(map['gitLabConfigId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

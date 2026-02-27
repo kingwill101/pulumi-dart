@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_type_date_time_response.dart';
 
 /// DateTime values.
@@ -14,16 +14,15 @@ class GoogleCloudContentwarehouseV1DateTimeArrayResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['values'] =
-        Input.encodeList<GoogleTypeDateTimeResponse, Map<String, dynamic>>(
-            values, (value) => value.toMap());
+    map['values'] = pulumi.Input.encodeList<GoogleTypeDateTimeResponse,
+        Map<String, dynamic>>(values, (value) => value.toMap());
     return map;
   }
 
   factory GoogleCloudContentwarehouseV1DateTimeArrayResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DateTimeArrayResponse(
-      values: Input.decodeList<GoogleTypeDateTimeResponse>(
+      values: pulumi.Input.decodeList<GoogleTypeDateTimeResponse>(
           map['values'],
           (value) => GoogleTypeDateTimeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

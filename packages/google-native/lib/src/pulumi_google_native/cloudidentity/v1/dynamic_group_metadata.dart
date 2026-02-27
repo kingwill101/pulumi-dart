@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dynamic_group_query.dart';
 
 /// Dynamic group metadata like queries and status.
@@ -17,7 +17,7 @@ class DynamicGroupMetadata {
     final queriesValue = queries;
     if (queriesValue != null) {
       map['queries'] =
-          Input.encodeList<DynamicGroupQuery, Map<String, dynamic>>(
+          pulumi.Input.encodeList<DynamicGroupQuery, Map<String, dynamic>>(
               queriesValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class DynamicGroupMetadata {
     return DynamicGroupMetadata(
       queries: map['queries'] == null
           ? null
-          : Input.decodeList<DynamicGroupQuery>(
+          : pulumi.Input.decodeList<DynamicGroupQuery>(
               map['queries'],
               (value) => DynamicGroupQuery.fromMap(
                   (value as Map).cast<String, dynamic>())),

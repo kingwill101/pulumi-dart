@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionNetworkEndpointGroup.
 class GetRegionNetworkEndpointGroupArgs {
-  final Input<String> networkEndpointGroup;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> networkEndpointGroup;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetRegionNetworkEndpointGroupArgs({
     required this.networkEndpointGroup,
@@ -27,9 +27,10 @@ class GetRegionNetworkEndpointGroupArgs {
 
   factory GetRegionNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupArgs(
-      networkEndpointGroup: Input.asInput<String>(map['networkEndpointGroup']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      networkEndpointGroup:
+          pulumi.Input.asInput<String>(map['networkEndpointGroup']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

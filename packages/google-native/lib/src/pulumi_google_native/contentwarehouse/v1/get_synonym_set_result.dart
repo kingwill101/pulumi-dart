@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_synonym_set_synonym_response.dart';
 
 /// Result data returned by getSynonymSet.
@@ -24,7 +24,7 @@ class GetSynonymSetResult {
     final map = <String, dynamic>{};
     map['context'] = context;
     map['name'] = name;
-    map['synonyms'] = Input.encodeList<
+    map['synonyms'] = pulumi.Input.encodeList<
         GoogleCloudContentwarehouseV1SynonymSetSynonymResponse,
         Map<String, dynamic>>(synonyms, (value) => value.toMap());
     return map;
@@ -34,7 +34,7 @@ class GetSynonymSetResult {
     return GetSynonymSetResult(
       context: map['context'] as String,
       name: map['name'] as String,
-      synonyms: Input.decodeList<
+      synonyms: pulumi.Input.decodeList<
               GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>(
           map['synonyms'],
           (value) =>

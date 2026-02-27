@@ -2,7 +2,7 @@
 
 import 'appliance_cluster_response.dart';
 import 'edge_cluster_response.dart';
-import 'gke_cluster_response2.dart';
+import 'gke_cluster_response_gkehub_v1.dart';
 import 'kubernetes_metadata_response.dart';
 import 'kubernetes_resource_response.dart';
 import 'multi_cloud_cluster_response.dart';
@@ -17,7 +17,7 @@ class MembershipEndpointResponse {
   final EdgeClusterResponse edgeCluster;
 
   /// Optional. Specific information for a GKE-on-GCP cluster.
-  final GkeClusterResponse2 gkeCluster;
+  final GkeClusterResponseGkehubV1 gkeCluster;
 
   /// Whether the lifecycle of this membership is managed by a google cluster platform service.
   final bool googleManaged;
@@ -64,7 +64,7 @@ class MembershipEndpointResponse {
           (map['applianceCluster'] as Map).cast<String, dynamic>()),
       edgeCluster: EdgeClusterResponse.fromMap(
           (map['edgeCluster'] as Map).cast<String, dynamic>()),
-      gkeCluster: GkeClusterResponse2.fromMap(
+      gkeCluster: GkeClusterResponseGkehubV1.fromMap(
           (map['gkeCluster'] as Map).cast<String, dynamic>()),
       googleManaged: map['googleManaged'] as bool,
       kubernetesMetadata: KubernetesMetadataResponse.fromMap(

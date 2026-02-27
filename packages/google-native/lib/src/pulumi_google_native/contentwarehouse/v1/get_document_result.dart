@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_property_response.dart';
 import 'google_cloud_documentai_v1_document_response.dart';
 
@@ -107,7 +107,7 @@ class GetDocumentResult {
     map['legalHold'] = legalHold;
     map['name'] = name;
     map['plainText'] = plainText;
-    map['properties'] = Input.encodeList<
+    map['properties'] = pulumi.Input.encodeList<
         GoogleCloudContentwarehouseV1PropertyResponse,
         Map<String, dynamic>>(properties, (value) => value.toMap());
     map['rawDocumentFileType'] = rawDocumentFileType;
@@ -136,11 +136,11 @@ class GetDocumentResult {
       legalHold: map['legalHold'] as bool,
       name: map['name'] as String,
       plainText: map['plainText'] as String,
-      properties:
-          Input.decodeList<GoogleCloudContentwarehouseV1PropertyResponse>(
-              map['properties'],
-              (value) => GoogleCloudContentwarehouseV1PropertyResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeList<
+              GoogleCloudContentwarehouseV1PropertyResponse>(
+          map['properties'],
+          (value) => GoogleCloudContentwarehouseV1PropertyResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       rawDocumentFileType: map['rawDocumentFileType'] as String,
       rawDocumentPath: map['rawDocumentPath'] as String,
       referenceId: map['referenceId'] as String,

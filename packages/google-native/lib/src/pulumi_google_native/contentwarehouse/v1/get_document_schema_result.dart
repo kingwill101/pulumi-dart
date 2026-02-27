@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_property_definition_response.dart';
 
 /// Result data returned by getDocumentSchema.
@@ -44,7 +44,7 @@ class GetDocumentSchemaResult {
     map['displayName'] = displayName;
     map['documentIsFolder'] = documentIsFolder;
     map['name'] = name;
-    map['propertyDefinitions'] = Input.encodeList<
+    map['propertyDefinitions'] = pulumi.Input.encodeList<
         GoogleCloudContentwarehouseV1PropertyDefinitionResponse,
         Map<String, dynamic>>(propertyDefinitions, (value) => value.toMap());
     map['updateTime'] = updateTime;
@@ -58,7 +58,7 @@ class GetDocumentSchemaResult {
       displayName: map['displayName'] as String,
       documentIsFolder: map['documentIsFolder'] as bool,
       name: map['name'] as String,
-      propertyDefinitions: Input.decodeList<
+      propertyDefinitions: pulumi.Input.decodeList<
               GoogleCloudContentwarehouseV1PropertyDefinitionResponse>(
           map['propertyDefinitions'],
           (value) =>

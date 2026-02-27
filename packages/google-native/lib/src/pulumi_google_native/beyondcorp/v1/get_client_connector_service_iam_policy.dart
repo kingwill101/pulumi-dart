@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_client_connector_service_iam_policy_args.dart';
 import 'get_client_connector_service_iam_policy_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_client_connector_service_iam_policy_result.dart';
 Future<GetClientConnectorServiceIamPolicyResult>
     getClientConnectorServiceIamPolicy(
   GetClientConnectorServiceIamPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:beyondcorp/v1:getClientConnectorServiceIamPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientConnectorServiceIamPolicyResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'field_policy_response.dart';
 
 /// Defines policies applying to an RPC method.
@@ -19,7 +19,7 @@ class MethodPolicyResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['requestPolicies'] =
-        Input.encodeList<FieldPolicyResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<FieldPolicyResponse, Map<String, dynamic>>(
             requestPolicies, (value) => value.toMap());
     map['selector'] = selector;
     return map;
@@ -27,7 +27,7 @@ class MethodPolicyResponse {
 
   factory MethodPolicyResponse.fromMap(Map<String, dynamic> map) {
     return MethodPolicyResponse(
-      requestPolicies: Input.decodeList<FieldPolicyResponse>(
+      requestPolicies: pulumi.Input.decodeList<FieldPolicyResponse>(
           map['requestPolicies'],
           (value) => FieldPolicyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

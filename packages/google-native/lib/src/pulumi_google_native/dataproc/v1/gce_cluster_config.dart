@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'confidential_instance_config4.dart';
+import 'confidential_instance_config_dataproc_v1.dart';
 import 'gce_cluster_config_private_ipv6_google_access.dart';
 import 'node_group_affinity.dart';
-import 'reservation_affinity6.dart';
-import 'shielded_instance_config6.dart';
+import 'reservation_affinity_dataproc_v1.dart';
+import 'shielded_instance_config_dataproc_v1.dart';
 
 /// Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
 class GceClusterConfig {
   /// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
-  final ConfidentialInstanceConfig4? confidentialInstanceConfig;
+  final ConfidentialInstanceConfigDataprocV1? confidentialInstanceConfig;
 
   /// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
   final bool? internalIpOnly;
@@ -27,7 +27,7 @@ class GceClusterConfig {
   final GceClusterConfigPrivateIpv6GoogleAccess? privateIpv6GoogleAccess;
 
   /// Optional. Reservation Affinity for consuming Zonal reservation.
-  final ReservationAffinity6? reservationAffinity;
+  final ReservationAffinityDataprocV1? reservationAffinity;
 
   /// Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
   final String? serviceAccount;
@@ -36,7 +36,7 @@ class GceClusterConfig {
   final List<String>? serviceAccountScopes;
 
   /// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
-  final ShieldedInstanceConfig6? shieldedInstanceConfig;
+  final ShieldedInstanceConfigDataprocV1? shieldedInstanceConfig;
 
   /// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/[region]/subnetworks/sub0 projects/[project_id]/regions/[region]/subnetworks/sub0 sub0
   final String? subnetworkUri;
@@ -125,7 +125,7 @@ class GceClusterConfig {
     return GceClusterConfig(
       confidentialInstanceConfig: map['confidentialInstanceConfig'] == null
           ? null
-          : ConfidentialInstanceConfig4.fromMap(
+          : ConfidentialInstanceConfigDataprocV1.fromMap(
               (map['confidentialInstanceConfig'] as Map)
                   .cast<String, dynamic>()),
       internalIpOnly:
@@ -145,7 +145,7 @@ class GceClusterConfig {
               map['privateIpv6GoogleAccess'] as String),
       reservationAffinity: map['reservationAffinity'] == null
           ? null
-          : ReservationAffinity6.fromMap(
+          : ReservationAffinityDataprocV1.fromMap(
               (map['reservationAffinity'] as Map).cast<String, dynamic>()),
       serviceAccount: map['serviceAccount'] == null
           ? null
@@ -155,7 +155,7 @@ class GceClusterConfig {
           : (map['serviceAccountScopes'] as List).cast<String>(),
       shieldedInstanceConfig: map['shieldedInstanceConfig'] == null
           ? null
-          : ShieldedInstanceConfig6.fromMap(
+          : ShieldedInstanceConfigDataprocV1.fromMap(
               (map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
       subnetworkUri:
           map['subnetworkUri'] == null ? null : map['subnetworkUri'] as String,

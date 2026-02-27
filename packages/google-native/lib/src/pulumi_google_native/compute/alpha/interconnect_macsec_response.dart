@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_macsec_pre_shared_key_response.dart';
 
 /// Configuration information for enabling Media Access Control security (MACsec) on this Cloud Interconnect connection between Google and your on-premises router.
@@ -19,7 +19,7 @@ class InterconnectMacsecResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['failOpen'] = failOpen;
-    map['preSharedKeys'] = Input.encodeList<
+    map['preSharedKeys'] = pulumi.Input.encodeList<
         InterconnectMacsecPreSharedKeyResponse,
         Map<String, dynamic>>(preSharedKeys, (value) => value.toMap());
     return map;
@@ -28,10 +28,11 @@ class InterconnectMacsecResponse {
   factory InterconnectMacsecResponse.fromMap(Map<String, dynamic> map) {
     return InterconnectMacsecResponse(
       failOpen: map['failOpen'] as bool,
-      preSharedKeys: Input.decodeList<InterconnectMacsecPreSharedKeyResponse>(
-          map['preSharedKeys'],
-          (value) => InterconnectMacsecPreSharedKeyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      preSharedKeys:
+          pulumi.Input.decodeList<InterconnectMacsecPreSharedKeyResponse>(
+              map['preSharedKeys'],
+              (value) => InterconnectMacsecPreSharedKeyResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

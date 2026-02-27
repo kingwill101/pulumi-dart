@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_type.dart';
 import 'hive_database_options.dart';
 
 /// The set of arguments for Database.
 class DatabaseArgs {
-  final Input<String> catalogId;
+  final pulumi.Input<String> catalogId;
 
   /// Required. The ID to use for the database, which will become the final component of the database's resource name.
-  final Input<String> databaseId;
+  final pulumi.Input<String> databaseId;
 
   /// Options of a Hive database.
-  final Input<HiveDatabaseOptions>? hiveOptions;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<HiveDatabaseOptions>? hiveOptions;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// The database type.
-  final Input<DatabaseType>? type;
+  final pulumi.Input<DatabaseType>? type;
 
   DatabaseArgs({
     required this.catalogId,
@@ -34,7 +34,8 @@ class DatabaseArgs {
     map['databaseId'] = databaseId;
     final hiveOptionsValue = hiveOptions;
     if (hiveOptionsValue != null) {
-      map['hiveOptions'] = Input.mapOptionalInputValue<HiveDatabaseOptions,
+      map['hiveOptions'] = pulumi.Input.mapOptionalInputValue<
+          HiveDatabaseOptions,
           Map<String, dynamic>>(hiveOptionsValue, (value) => value.toMap());
     }
     final locationValue = location;
@@ -47,7 +48,7 @@ class DatabaseArgs {
     }
     final typeValue = type;
     if (typeValue != null) {
-      map['type'] = Input.mapOptionalInputValue<DatabaseType, String>(
+      map['type'] = pulumi.Input.mapOptionalInputValue<DatabaseType, String>(
           typeValue, (value) => value.value);
     }
     return map;
@@ -55,13 +56,13 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      catalogId: Input.asInput<String>(map['catalogId']),
-      databaseId: Input.asInput<String>(map['databaseId']),
+      catalogId: pulumi.Input.asInput<String>(map['catalogId']),
+      databaseId: pulumi.Input.asInput<String>(map['databaseId']),
       hiveOptions:
-          Input.asOptionalInput<HiveDatabaseOptions>(map['hiveOptions']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      type: Input.asOptionalInput<DatabaseType>(map['type']),
+          pulumi.Input.asOptionalInput<HiveDatabaseOptions>(map['hiveOptions']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      type: pulumi.Input.asOptionalInput<DatabaseType>(map['type']),
     );
   }
 }

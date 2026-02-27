@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIndex.
 class GetIndexArgs {
-  final Input<String> indexId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> indexId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetIndexArgs({
     required this.indexId,
@@ -27,9 +27,9 @@ class GetIndexArgs {
 
   factory GetIndexArgs.fromMap(Map<String, dynamic> map) {
     return GetIndexArgs(
-      indexId: Input.asInput<String>(map['indexId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      indexId: pulumi.Input.asInput<String>(map['indexId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

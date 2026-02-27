@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'compensation_range_response.dart';
-import 'money_response2.dart';
+import 'money_response_jobs_v3.dart';
 
 /// A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
 class CompensationEntryResponse {
   /// Optional. Compensation amount.
-  final MoneyResponse2 amount;
+  final MoneyResponseJobsV3 amount;
 
   /// Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
   final String description;
@@ -45,7 +45,7 @@ class CompensationEntryResponse {
 
   factory CompensationEntryResponse.fromMap(Map<String, dynamic> map) {
     return CompensationEntryResponse(
-      amount: MoneyResponse2.fromMap(
+      amount: MoneyResponseJobsV3.fromMap(
           (map['amount'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       expectedUnitsPerYear: map['expectedUnitsPerYear'] as double,

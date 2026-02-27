@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_ldiversity_equivalence_class_response.dart';
 
 /// Histogram of l-diversity equivalence class sensitive value frequencies.
@@ -32,7 +32,7 @@ class GooglePrivacyDlpV2LDiversityHistogramBucketResponse {
     final map = <String, dynamic>{};
     map['bucketSize'] = bucketSize;
     map['bucketValueCount'] = bucketValueCount;
-    map['bucketValues'] = Input.encodeList<
+    map['bucketValues'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2LDiversityEquivalenceClassResponse,
         Map<String, dynamic>>(bucketValues, (value) => value.toMap());
     map['sensitiveValueFrequencyLowerBound'] =
@@ -47,7 +47,7 @@ class GooglePrivacyDlpV2LDiversityHistogramBucketResponse {
     return GooglePrivacyDlpV2LDiversityHistogramBucketResponse(
       bucketSize: map['bucketSize'] as String,
       bucketValueCount: map['bucketValueCount'] as String,
-      bucketValues: Input.decodeList<
+      bucketValues: pulumi.Input.decodeList<
               GooglePrivacyDlpV2LDiversityEquivalenceClassResponse>(
           map['bucketValues'],
           (value) =>

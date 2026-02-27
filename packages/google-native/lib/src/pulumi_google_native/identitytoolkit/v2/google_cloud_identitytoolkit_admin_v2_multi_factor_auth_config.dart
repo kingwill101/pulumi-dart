@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_multi_factor_auth_config_enabled_providers_item.dart';
 import 'google_cloud_identitytoolkit_admin_v2_multi_factor_auth_config_state.dart';
 import 'google_cloud_identitytoolkit_admin_v2_provider_config.dart';
@@ -28,13 +28,13 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
     final map = <String, dynamic>{};
     final enabledProvidersValue = enabledProviders;
     if (enabledProvidersValue != null) {
-      map['enabledProviders'] = Input.encodeList<
+      map['enabledProviders'] = pulumi.Input.encodeList<
           GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem,
           String>(enabledProvidersValue, (value) => value.value);
     }
     final providerConfigsValue = providerConfigs;
     if (providerConfigsValue != null) {
-      map['providerConfigs'] = Input.encodeList<
+      map['providerConfigs'] = pulumi.Input.encodeList<
           GoogleCloudIdentitytoolkitAdminV2ProviderConfig,
           Map<String, dynamic>>(providerConfigsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
     return GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig(
       enabledProviders: map['enabledProviders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem>(
               map['enabledProviders'],
               (value) =>
@@ -58,7 +58,8 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
                       .fromValue(value as String)),
       providerConfigs: map['providerConfigs'] == null
           ? null
-          : Input.decodeList<GoogleCloudIdentitytoolkitAdminV2ProviderConfig>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudIdentitytoolkitAdminV2ProviderConfig>(
               map['providerConfigs'],
               (value) =>
                   GoogleCloudIdentitytoolkitAdminV2ProviderConfig.fromMap(

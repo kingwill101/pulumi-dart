@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'category_response.dart';
 import 'identity_response.dart';
 
@@ -40,7 +40,7 @@ class WindowsUpdateResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['categories'] =
-        Input.encodeList<CategoryResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<CategoryResponse, Map<String, dynamic>>(
             categories, (value) => value.toMap());
     map['description'] = description;
     map['identity'] = identity.toMap();
@@ -53,7 +53,7 @@ class WindowsUpdateResponse {
 
   factory WindowsUpdateResponse.fromMap(Map<String, dynamic> map) {
     return WindowsUpdateResponse(
-      categories: Input.decodeList<CategoryResponse>(
+      categories: pulumi.Input.decodeList<CategoryResponse>(
           map['categories'],
           (value) =>
               CategoryResponse.fromMap((value as Map).cast<String, dynamic>())),

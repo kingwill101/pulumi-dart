@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_human_agent_assistant_config_suggestion_feature_config_response.dart';
 
 /// Detail human agent assistant config.
@@ -20,7 +20,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigRespo
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['featureConfigs'] = Input.encodeList<
+    map['featureConfigs'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse,
         Map<String, dynamic>>(featureConfigs, (value) => value.toMap());
     map['groupSuggestionResponses'] = groupSuggestionResponses;
@@ -30,7 +30,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigRespo
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse(
-      featureConfigs: Input.decodeList<
+      featureConfigs: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse>(
           map['featureConfigs'],
           (value) =>

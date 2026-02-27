@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'instance_reference_response3.dart';
+import 'instance_reference_response_sqladmin_v1.dart';
 
 /// On-premises instance configuration.
 class OnPremisesConfigurationResponse {
@@ -26,7 +26,7 @@ class OnPremisesConfigurationResponse {
   final String password;
 
   /// The reference to Cloud SQL instance if the source is Cloud SQL.
-  final InstanceReferenceResponse3 sourceInstance;
+  final InstanceReferenceResponseSqladminV1 sourceInstance;
 
   /// The username for connecting to on-premises instance.
   final String username;
@@ -66,7 +66,7 @@ class OnPremisesConfigurationResponse {
       hostPort: map['hostPort'] as String,
       kind: map['kind'] as String,
       password: map['password'] as String,
-      sourceInstance: InstanceReferenceResponse3.fromMap(
+      sourceInstance: InstanceReferenceResponseSqladminV1.fromMap(
           (map['sourceInstance'] as Map).cast<String, dynamic>()),
       username: map['username'] as String,
     );

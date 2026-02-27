@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'label_descriptor_response.dart';
 import 'metric_descriptor_metadata_response.dart';
 
@@ -58,7 +58,7 @@ class MetricDescriptorResponse {
     map['description'] = description;
     map['displayName'] = displayName;
     map['labels'] =
-        Input.encodeList<LabelDescriptorResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<LabelDescriptorResponse, Map<String, dynamic>>(
             labels, (value) => value.toMap());
     map['launchStage'] = launchStage;
     map['metadata'] = metadata.toMap();
@@ -75,7 +75,7 @@ class MetricDescriptorResponse {
     return MetricDescriptorResponse(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      labels: Input.decodeList<LabelDescriptorResponse>(
+      labels: pulumi.Input.decodeList<LabelDescriptorResponse>(
           map['labels'],
           (value) => LabelDescriptorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

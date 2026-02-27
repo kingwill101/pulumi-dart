@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'subject4.dart';
 import 'subject_alt_names.dart';
+import 'subject_privateca_v1.dart';
 
 /// These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
 class SubjectConfig {
   /// Optional. Contains distinguished name fields such as the common name, location and organization.
-  final Subject4? subject;
+  final SubjectPrivatecaV1? subject;
 
   /// Optional. The subject alternative name fields.
   final SubjectAltNames? subjectAltName;
@@ -33,7 +33,8 @@ class SubjectConfig {
     return SubjectConfig(
       subject: map['subject'] == null
           ? null
-          : Subject4.fromMap((map['subject'] as Map).cast<String, dynamic>()),
+          : SubjectPrivatecaV1.fromMap(
+              (map['subject'] as Map).cast<String, dynamic>()),
       subjectAltName: map['subjectAltName'] == null
           ? null
           : SubjectAltNames.fromMap(

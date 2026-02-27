@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_drained_machine_response.dart';
 import 'bare_metal_draining_machine_response.dart';
 
@@ -19,10 +19,11 @@ class BareMetalMachineDrainStatusResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['drainedMachines'] =
-        Input.encodeList<BareMetalDrainedMachineResponse, Map<String, dynamic>>(
-            drainedMachines, (value) => value.toMap());
-    map['drainingMachines'] = Input.encodeList<BareMetalDrainingMachineResponse,
+    map['drainedMachines'] = pulumi.Input.encodeList<
+        BareMetalDrainedMachineResponse,
+        Map<String, dynamic>>(drainedMachines, (value) => value.toMap());
+    map['drainingMachines'] = pulumi.Input.encodeList<
+        BareMetalDrainingMachineResponse,
         Map<String, dynamic>>(drainingMachines, (value) => value.toMap());
     return map;
   }
@@ -30,14 +31,15 @@ class BareMetalMachineDrainStatusResponse {
   factory BareMetalMachineDrainStatusResponse.fromMap(
       Map<String, dynamic> map) {
     return BareMetalMachineDrainStatusResponse(
-      drainedMachines: Input.decodeList<BareMetalDrainedMachineResponse>(
+      drainedMachines: pulumi.Input.decodeList<BareMetalDrainedMachineResponse>(
           map['drainedMachines'],
           (value) => BareMetalDrainedMachineResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      drainingMachines: Input.decodeList<BareMetalDrainingMachineResponse>(
-          map['drainingMachines'],
-          (value) => BareMetalDrainingMachineResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      drainingMachines:
+          pulumi.Input.decodeList<BareMetalDrainingMachineResponse>(
+              map['drainingMachines'],
+              (value) => BareMetalDrainingMachineResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

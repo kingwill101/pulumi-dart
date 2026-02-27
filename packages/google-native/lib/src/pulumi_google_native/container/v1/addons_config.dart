@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'cloud_run_config2.dart';
+import 'cloud_run_config_container_v1.dart';
 import 'config_connector_config.dart';
 import 'dns_cache_config.dart';
 import 'gce_persistent_disk_csi_driver_config.dart';
@@ -15,7 +15,7 @@ import 'network_policy_config.dart';
 /// Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
 class AddonsConfig {
   /// Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
-  final CloudRunConfig2? cloudRunConfig;
+  final CloudRunConfigContainerV1? cloudRunConfig;
 
   /// Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through the Kubernetes API
   final ConfigConnectorConfig? configConnectorConfig;
@@ -117,7 +117,7 @@ class AddonsConfig {
     return AddonsConfig(
       cloudRunConfig: map['cloudRunConfig'] == null
           ? null
-          : CloudRunConfig2.fromMap(
+          : CloudRunConfigContainerV1.fromMap(
               (map['cloudRunConfig'] as Map).cast<String, dynamic>()),
       configConnectorConfig: map['configConnectorConfig'] == null
           ? null

@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Resourcefile.
 class ResourcefileArgs {
   /// The HTTP Content-Type header value specifying the content type of the body.
-  final Input<String>? contentType;
+  final pulumi.Input<String>? contentType;
 
   /// The HTTP request/response body as raw binary.
-  final Input<String>? data;
-  final Input<String> environmentId;
+  final pulumi.Input<String>? data;
+  final pulumi.Input<String> environmentId;
 
   /// Application specific response metadata. Must be set in the first response for streaming APIs.
-  final Input<List<Map<String, String>>>? extensions;
+  final pulumi.Input<List<Map<String, String>>>? extensions;
 
   /// File to upload.
-  final Input<dynamic>? file;
+  final pulumi.Input<dynamic>? file;
 
   /// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
-  final Input<String> name;
-  final Input<String> organizationId;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> organizationId;
 
   /// Required. Resource file type. {{ resource_file_type }}
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   ResourcefileArgs({
     this.contentType,
@@ -62,15 +62,15 @@ class ResourcefileArgs {
 
   factory ResourcefileArgs.fromMap(Map<String, dynamic> map) {
     return ResourcefileArgs(
-      contentType: Input.asOptionalInput<String>(map['contentType']),
-      data: Input.asOptionalInput<String>(map['data']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      extensions:
-          Input.asOptionalInput<List<Map<String, String>>>(map['extensions']),
-      file: Input.asOptionalInput<dynamic>(map['file']),
-      name: Input.asInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      type: Input.asInput<String>(map['type']),
+      contentType: pulumi.Input.asOptionalInput<String>(map['contentType']),
+      data: pulumi.Input.asOptionalInput<String>(map['data']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      extensions: pulumi.Input.asOptionalInput<List<Map<String, String>>>(
+          map['extensions']),
+      file: pulumi.Input.asOptionalInput<dynamic>(map['file']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLoggingServer.
 class GetLoggingServerArgs {
-  final Input<String> location;
-  final Input<String> loggingServerId;
-  final Input<String> privateCloudId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> loggingServerId;
+  final pulumi.Input<String> privateCloudId;
+  final pulumi.Input<String>? project;
 
   GetLoggingServerArgs({
     required this.location,
@@ -30,10 +30,10 @@ class GetLoggingServerArgs {
 
   factory GetLoggingServerArgs.fromMap(Map<String, dynamic> map) {
     return GetLoggingServerArgs(
-      location: Input.asInput<String>(map['location']),
-      loggingServerId: Input.asInput<String>(map['loggingServerId']),
-      privateCloudId: Input.asInput<String>(map['privateCloudId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      loggingServerId: pulumi.Input.asInput<String>(map['loggingServerId']),
+      privateCloudId: pulumi.Input.asInput<String>(map['privateCloudId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

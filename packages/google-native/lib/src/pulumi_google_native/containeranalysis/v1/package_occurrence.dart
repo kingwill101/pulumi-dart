@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'license.dart';
 import 'location.dart';
 
@@ -25,7 +25,7 @@ class PackageOccurrence {
     }
     final locationValue = location;
     if (locationValue != null) {
-      map['location'] = Input.encodeList<Location, Map<String, dynamic>>(
+      map['location'] = pulumi.Input.encodeList<Location, Map<String, dynamic>>(
           locationValue, (value) => value.toMap());
     }
     return map;
@@ -38,7 +38,7 @@ class PackageOccurrence {
           : License.fromMap((map['license'] as Map).cast<String, dynamic>()),
       location: map['location'] == null
           ? null
-          : Input.decodeList<Location>(
+          : pulumi.Input.decodeList<Location>(
               map['location'],
               (value) =>
                   Location.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResourceRecordSet.
 class GetResourceRecordSetArgs {
-  final Input<String>? clientOperationId;
-  final Input<String> managedZone;
-  final Input<String> name;
-  final Input<String>? project;
-  final Input<String> type;
+  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String> managedZone;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> type;
 
   GetResourceRecordSetArgs({
     this.clientOperationId,
@@ -37,11 +37,11 @@ class GetResourceRecordSetArgs {
   factory GetResourceRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceRecordSetArgs(
       clientOperationId:
-          Input.asOptionalInput<String>(map['clientOperationId']),
-      managedZone: Input.asInput<String>(map['managedZone']),
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      type: Input.asInput<String>(map['type']),
+          pulumi.Input.asOptionalInput<String>(map['clientOperationId']),
+      managedZone: pulumi.Input.asInput<String>(map['managedZone']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

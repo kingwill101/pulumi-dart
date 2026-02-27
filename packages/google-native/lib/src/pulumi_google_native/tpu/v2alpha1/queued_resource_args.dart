@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'guaranteed.dart';
 import 'queueing_policy.dart';
 import 'tpu.dart';
@@ -8,30 +8,30 @@ import 'tpu.dart';
 /// The set of arguments for QueuedResource.
 class QueuedResourceArgs {
   /// The BestEffort tier.
-  final Input<Map<String, dynamic>>? bestEffort;
+  final pulumi.Input<Map<String, dynamic>>? bestEffort;
 
   /// The Guaranteed tier.
-  final Input<Guaranteed>? guaranteed;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<Guaranteed>? guaranteed;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
-  final Input<String>? queuedResourceId;
+  final pulumi.Input<String>? queuedResourceId;
 
   /// The queueing policy of the QueuedRequest.
-  final Input<QueueingPolicy>? queueingPolicy;
+  final pulumi.Input<QueueingPolicy>? queueingPolicy;
 
   /// Idempotent request UUID.
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
-  final Input<String>? reservationName;
+  final pulumi.Input<String>? reservationName;
 
   /// Optional. The Spot tier.
-  final Input<Map<String, dynamic>>? spot;
+  final pulumi.Input<Map<String, dynamic>>? spot;
 
   /// Defines a TPU resource.
-  final Input<Tpu>? tpu;
+  final pulumi.Input<Tpu>? tpu;
 
   QueuedResourceArgs({
     this.bestEffort,
@@ -55,7 +55,7 @@ class QueuedResourceArgs {
     final guaranteedValue = guaranteed;
     if (guaranteedValue != null) {
       map['guaranteed'] =
-          Input.mapOptionalInputValue<Guaranteed, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<Guaranteed, Map<String, dynamic>>(
               guaranteedValue, (value) => value.toMap());
     }
     final locationValue = location;
@@ -72,9 +72,8 @@ class QueuedResourceArgs {
     }
     final queueingPolicyValue = queueingPolicy;
     if (queueingPolicyValue != null) {
-      map['queueingPolicy'] =
-          Input.mapOptionalInputValue<QueueingPolicy, Map<String, dynamic>>(
-              queueingPolicyValue, (value) => value.toMap());
+      map['queueingPolicy'] = pulumi.Input.mapOptionalInputValue<QueueingPolicy,
+          Map<String, dynamic>>(queueingPolicyValue, (value) => value.toMap());
     }
     final requestIdValue = requestId;
     if (requestIdValue != null) {
@@ -90,8 +89,9 @@ class QueuedResourceArgs {
     }
     final tpuValue = tpu;
     if (tpuValue != null) {
-      map['tpu'] = Input.mapOptionalInputValue<Tpu, Map<String, dynamic>>(
-          tpuValue, (value) => value.toMap());
+      map['tpu'] =
+          pulumi.Input.mapOptionalInputValue<Tpu, Map<String, dynamic>>(
+              tpuValue, (value) => value.toMap());
     }
     return map;
   }
@@ -99,17 +99,19 @@ class QueuedResourceArgs {
   factory QueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return QueuedResourceArgs(
       bestEffort:
-          Input.asOptionalInput<Map<String, dynamic>>(map['bestEffort']),
-      guaranteed: Input.asOptionalInput<Guaranteed>(map['guaranteed']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      queuedResourceId: Input.asOptionalInput<String>(map['queuedResourceId']),
+          pulumi.Input.asOptionalInput<Map<String, dynamic>>(map['bestEffort']),
+      guaranteed: pulumi.Input.asOptionalInput<Guaranteed>(map['guaranteed']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      queuedResourceId:
+          pulumi.Input.asOptionalInput<String>(map['queuedResourceId']),
       queueingPolicy:
-          Input.asOptionalInput<QueueingPolicy>(map['queueingPolicy']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      reservationName: Input.asOptionalInput<String>(map['reservationName']),
-      spot: Input.asOptionalInput<Map<String, dynamic>>(map['spot']),
-      tpu: Input.asOptionalInput<Tpu>(map['tpu']),
+          pulumi.Input.asOptionalInput<QueueingPolicy>(map['queueingPolicy']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      reservationName:
+          pulumi.Input.asOptionalInput<String>(map['reservationName']),
+      spot: pulumi.Input.asOptionalInput<Map<String, dynamic>>(map['spot']),
+      tpu: pulumi.Input.asOptionalInput<Tpu>(map['tpu']),
     );
   }
 }

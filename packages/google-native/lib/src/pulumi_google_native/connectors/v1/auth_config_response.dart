@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_variable_response.dart';
 import 'oauth2_auth_code_flow_response.dart';
 import 'oauth2_client_credentials_response.dart';
 import 'oauth2_jwt_bearer_response.dart';
 import 'ssh_public_key_response.dart';
-import 'user_password_response4.dart';
+import 'user_password_response_connectors_v1.dart';
 
 /// AuthConfig defines details of a authentication type.
 class AuthConfigResponse {
@@ -32,7 +32,7 @@ class AuthConfigResponse {
   final SshPublicKeyResponse sshPublicKey;
 
   /// UserPassword.
-  final UserPasswordResponse4 userPassword;
+  final UserPasswordResponseConnectorsV1 userPassword;
 
   AuthConfigResponse({
     required this.additionalVariables,
@@ -48,7 +48,7 @@ class AuthConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['additionalVariables'] =
-        Input.encodeList<ConfigVariableResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ConfigVariableResponse, Map<String, dynamic>>(
             additionalVariables, (value) => value.toMap());
     map['authKey'] = authKey;
     map['authType'] = authType;
@@ -62,7 +62,7 @@ class AuthConfigResponse {
 
   factory AuthConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuthConfigResponse(
-      additionalVariables: Input.decodeList<ConfigVariableResponse>(
+      additionalVariables: pulumi.Input.decodeList<ConfigVariableResponse>(
           map['additionalVariables'],
           (value) => ConfigVariableResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -76,7 +76,7 @@ class AuthConfigResponse {
           (map['oauth2JwtBearer'] as Map).cast<String, dynamic>()),
       sshPublicKey: SshPublicKeyResponse.fromMap(
           (map['sshPublicKey'] as Map).cast<String, dynamic>()),
-      userPassword: UserPasswordResponse4.fromMap(
+      userPassword: UserPasswordResponseConnectorsV1.fromMap(
           (map['userPassword'] as Map).cast<String, dynamic>()),
     );
   }

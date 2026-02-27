@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'text_mapping.dart';
 
 /// Encoding of a text stream. For example, closed captions or subtitles.
@@ -40,8 +40,9 @@ class TextStream {
     }
     final mappingValue = mapping;
     if (mappingValue != null) {
-      map['mapping'] = Input.encodeList<TextMapping, Map<String, dynamic>>(
-          mappingValue, (value) => value.toMap());
+      map['mapping'] =
+          pulumi.Input.encodeList<TextMapping, Map<String, dynamic>>(
+              mappingValue, (value) => value.toMap());
     }
     return map;
   }
@@ -55,7 +56,7 @@ class TextStream {
           map['languageCode'] == null ? null : map['languageCode'] as String,
       mapping: map['mapping'] == null
           ? null
-          : Input.decodeList<TextMapping>(
+          : pulumi.Input.decodeList<TextMapping>(
               map['mapping'],
               (value) =>
                   TextMapping.fromMap((value as Map).cast<String, dynamic>())),

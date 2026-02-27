@@ -2,7 +2,7 @@
 
 import 'approval_config_response.dart';
 import 'bitbucket_server_trigger_config_response.dart';
-import 'build_response2.dart';
+import 'build_response_cloudbuild_v1.dart';
 import 'git_file_source_response.dart';
 import 'git_hub_events_config_response.dart';
 import 'git_lab_events_config_response.dart';
@@ -24,7 +24,7 @@ class GetTriggerResult {
   final BitbucketServerTriggerConfigResponse bitbucketServerTriggerConfig;
 
   /// Contents of the build template.
-  final BuildResponse2 build;
+  final BuildResponseCloudbuildV1 build;
 
   /// Time when the trigger was created.
   final String createTime;
@@ -161,8 +161,8 @@ class GetTriggerResult {
           BitbucketServerTriggerConfigResponse.fromMap(
               (map['bitbucketServerTriggerConfig'] as Map)
                   .cast<String, dynamic>()),
-      build:
-          BuildResponse2.fromMap((map['build'] as Map).cast<String, dynamic>()),
+      build: BuildResponseCloudbuildV1.fromMap(
+          (map['build'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       disabled: map['disabled'] as bool,

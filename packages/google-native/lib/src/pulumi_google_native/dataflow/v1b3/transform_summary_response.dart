@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'display_data_response.dart';
 
 /// Description of the type, names/ids, and input/outputs for a transform.
@@ -31,7 +31,7 @@ class TransformSummaryResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['displayData'] =
-        Input.encodeList<DisplayDataResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DisplayDataResponse, Map<String, dynamic>>(
             displayData, (value) => value.toMap());
     map['inputCollectionName'] = inputCollectionName;
     map['kind'] = kind;
@@ -42,7 +42,7 @@ class TransformSummaryResponse {
 
   factory TransformSummaryResponse.fromMap(Map<String, dynamic> map) {
     return TransformSummaryResponse(
-      displayData: Input.decodeList<DisplayDataResponse>(
+      displayData: pulumi.Input.decodeList<DisplayDataResponse>(
           map['displayData'],
           (value) => DisplayDataResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

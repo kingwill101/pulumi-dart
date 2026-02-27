@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_workflow_args.dart';
 import 'get_workflow_result.dart';
 
 /// Gets details of a single workflow.
 Future<GetWorkflowResult> getWorkflow(
   GetWorkflowArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:workflows/v1:getWorkflow',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkflowResult.fromMap(result);
 }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response30.dart';
+import 'status_response_vmmigration_v1.dart';
 
 /// UpgradeStatus contains information about upgradeAppliance operation.
 class UpgradeStatusResponse {
   /// Provides details on the state of the upgrade operation in case of an error.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// The version from which we upgraded.
   final String previousVersion;
@@ -39,7 +39,7 @@ class UpgradeStatusResponse {
 
   factory UpgradeStatusResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeStatusResponse(
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       previousVersion: map['previousVersion'] as String,
       startTime: map['startTime'] as String,

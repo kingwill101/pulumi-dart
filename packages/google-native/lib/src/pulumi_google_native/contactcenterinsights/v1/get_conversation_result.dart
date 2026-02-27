@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contactcenterinsights_v1_analysis_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_call_metadata_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_data_source_response.dart';
@@ -114,7 +114,7 @@ class GetConversationResult {
     map['medium'] = medium;
     map['name'] = name;
     map['obfuscatedUserId'] = obfuscatedUserId;
-    map['runtimeAnnotations'] = Input.encodeList<
+    map['runtimeAnnotations'] = pulumi.Input.encodeList<
         GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse,
         Map<String, dynamic>>(runtimeAnnotations, (value) => value.toMap());
     map['startTime'] = startTime;
@@ -150,7 +150,7 @@ class GetConversationResult {
       medium: map['medium'] as String,
       name: map['name'] as String,
       obfuscatedUserId: map['obfuscatedUserId'] as String,
-      runtimeAnnotations: Input.decodeList<
+      runtimeAnnotations: pulumi.Input.decodeList<
               GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse>(
           map['runtimeAnnotations'],
           (value) => GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse

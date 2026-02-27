@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_datastore_config.dart';
 
 /// The set of arguments for Datastore.
 class DatastoreArgs {
   /// Datastore Configurations.
-  final Input<GoogleCloudApigeeV1DatastoreConfig>? datastoreConfig;
+  final pulumi.Input<GoogleCloudApigeeV1DatastoreConfig>? datastoreConfig;
 
   /// Display name in UI
-  final Input<String> displayName;
-  final Input<String> organizationId;
+  final pulumi.Input<String> displayName;
+  final pulumi.Input<String> organizationId;
 
   /// Destination storage type. Supported types `gcs` or `bigquery`.
-  final Input<String>? targetType;
+  final pulumi.Input<String>? targetType;
 
   DatastoreArgs({
     this.datastoreConfig,
@@ -26,7 +26,7 @@ class DatastoreArgs {
     final map = <String, dynamic>{};
     final datastoreConfigValue = datastoreConfig;
     if (datastoreConfigValue != null) {
-      map['datastoreConfig'] = Input.mapOptionalInputValue<
+      map['datastoreConfig'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudApigeeV1DatastoreConfig,
           Map<String, dynamic>>(datastoreConfigValue, (value) => value.toMap());
     }
@@ -42,11 +42,11 @@ class DatastoreArgs {
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
       datastoreConfig:
-          Input.asOptionalInput<GoogleCloudApigeeV1DatastoreConfig>(
+          pulumi.Input.asOptionalInput<GoogleCloudApigeeV1DatastoreConfig>(
               map['datastoreConfig']),
-      displayName: Input.asInput<String>(map['displayName']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      targetType: Input.asOptionalInput<String>(map['targetType']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      targetType: pulumi.Input.asOptionalInput<String>(map['targetType']),
     );
   }
 }

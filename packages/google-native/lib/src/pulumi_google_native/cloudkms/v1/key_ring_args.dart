@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for KeyRing.
 class KeyRingArgs {
   /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-  final Input<String>? keyRingId;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String>? keyRingId;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   KeyRingArgs({
     this.keyRingId,
@@ -34,9 +34,9 @@ class KeyRingArgs {
 
   factory KeyRingArgs.fromMap(Map<String, dynamic> map) {
     return KeyRingArgs(
-      keyRingId: Input.asOptionalInput<String>(map['keyRingId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      keyRingId: pulumi.Input.asOptionalInput<String>(map['keyRingId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

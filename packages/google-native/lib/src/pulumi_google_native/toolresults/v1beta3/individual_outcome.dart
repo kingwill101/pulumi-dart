@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'duration4.dart';
+import 'duration_toolresults_v1beta3.dart';
 import 'individual_outcome_outcome_summary.dart';
 
 /// Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
@@ -10,7 +10,7 @@ class IndividualOutcome {
   final IndividualOutcomeOutcomeSummary? outcomeSummary;
 
   /// How long it took for this step to run.
-  final Duration4? runDuration;
+  final DurationToolresultsV1beta3? runDuration;
   final String? stepId;
 
   IndividualOutcome({
@@ -51,7 +51,7 @@ class IndividualOutcome {
               map['outcomeSummary'] as String),
       runDuration: map['runDuration'] == null
           ? null
-          : Duration4.fromMap(
+          : DurationToolresultsV1beta3.fromMap(
               (map['runDuration'] as Map).cast<String, dynamic>()),
       stepId: map['stepId'] == null ? null : map['stepId'] as String,
     );

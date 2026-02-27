@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_settings.dart';
 
 /// The set of arguments for DomainMapping.
 class DomainMappingArgs {
-  final Input<String> appId;
+  final pulumi.Input<String> appId;
 
   /// Relative name of the domain serving the application. Example: example.com.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
-  final Input<String>? overrideStrategy;
+  final pulumi.Input<String>? overrideStrategy;
 
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-  final Input<SslSettings>? sslSettings;
+  final pulumi.Input<SslSettings>? sslSettings;
 
   DomainMappingArgs({
     required this.appId,
@@ -37,7 +37,7 @@ class DomainMappingArgs {
     final sslSettingsValue = sslSettings;
     if (sslSettingsValue != null) {
       map['sslSettings'] =
-          Input.mapOptionalInputValue<SslSettings, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<SslSettings, Map<String, dynamic>>(
               sslSettingsValue, (value) => value.toMap());
     }
     return map;
@@ -45,10 +45,12 @@ class DomainMappingArgs {
 
   factory DomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingArgs(
-      appId: Input.asInput<String>(map['appId']),
-      id: Input.asOptionalInput<String>(map['id']),
-      overrideStrategy: Input.asOptionalInput<String>(map['overrideStrategy']),
-      sslSettings: Input.asOptionalInput<SslSettings>(map['sslSettings']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      overrideStrategy:
+          pulumi.Input.asOptionalInput<String>(map['overrideStrategy']),
+      sslSettings:
+          pulumi.Input.asOptionalInput<SslSettings>(map['sslSettings']),
     );
   }
 }

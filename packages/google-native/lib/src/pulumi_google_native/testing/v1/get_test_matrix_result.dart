@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_info_response.dart';
 import 'environment_matrix_response.dart';
 import 'result_storage_response.dart';
@@ -76,7 +76,7 @@ class GetTestMatrixResult {
     map['resultStorage'] = resultStorage.toMap();
     map['state'] = state;
     map['testExecutions'] =
-        Input.encodeList<TestExecutionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TestExecutionResponse, Map<String, dynamic>>(
             testExecutions, (value) => value.toMap());
     map['testMatrixId'] = testMatrixId;
     map['testSpecification'] = testSpecification.toMap();
@@ -98,7 +98,7 @@ class GetTestMatrixResult {
       resultStorage: ResultStorageResponse.fromMap(
           (map['resultStorage'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      testExecutions: Input.decodeList<TestExecutionResponse>(
+      testExecutions: pulumi.Input.decodeList<TestExecutionResponse>(
           map['testExecutions'],
           (value) => TestExecutionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

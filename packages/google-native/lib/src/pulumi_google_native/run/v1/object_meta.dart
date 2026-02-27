@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'owner_reference.dart';
 
 /// google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
@@ -111,7 +111,7 @@ class ObjectMeta {
     final ownerReferencesValue = ownerReferences;
     if (ownerReferencesValue != null) {
       map['ownerReferences'] =
-          Input.encodeList<OwnerReference, Map<String, dynamic>>(
+          pulumi.Input.encodeList<OwnerReference, Map<String, dynamic>>(
               ownerReferencesValue, (value) => value.toMap());
     }
     final resourceVersionValue = resourceVersion;
@@ -158,7 +158,7 @@ class ObjectMeta {
       namespace: map['namespace'] as String,
       ownerReferences: map['ownerReferences'] == null
           ? null
-          : Input.decodeList<OwnerReference>(
+          : pulumi.Input.decodeList<OwnerReference>(
               map['ownerReferences'],
               (value) => OwnerReference.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'canary_evaluation_args.dart';
 import 'google_cloud_apigee_v1_canary_evaluation_metric_labels_response.dart';
 
@@ -6,46 +6,47 @@ import 'google_cloud_apigee_v1_canary_evaluation_metric_labels_response.dart';
 /// Auto-naming is currently not supported for this resource.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class CanaryEvaluation extends CustomResource {
+class CanaryEvaluation extends pulumi.CustomResource {
   /// The stable version that is serving requests.
-  late final Output<String> control;
+  late final pulumi.Output<String> control;
 
   /// Create time of the canary evaluation.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// End time for the evaluation's analysis.
-  late final Output<String> endTime;
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> endTime;
+  late final pulumi.Output<String> instanceId;
 
   /// Labels used to filter the metrics used for a canary evaluation.
-  late final Output<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>
+  late final pulumi
+      .Output<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>
       metricLabels;
 
   /// Name of the canary evalution.
-  late final Output<String> name;
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> organizationId;
 
   /// Start time for the canary evaluation's analysis.
-  late final Output<String> startTime;
+  late final pulumi.Output<String> startTime;
 
   /// The current state of the canary evaluation.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The newer version that is serving requests.
-  late final Output<String> treatment;
+  late final pulumi.Output<String> treatment;
 
   /// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-  late final Output<String> verdict;
+  late final pulumi.Output<String> verdict;
 
   CanaryEvaluation(
     String name, {
     CanaryEvaluationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:apigee/v1:CanaryEvaluation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.control = registerOutput<String>('control');
     this.createTime = registerOutput<String>('createTime');

@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_organization_contact_args.dart';
 import 'get_organization_contact_result.dart';
 
 /// Gets a single contact.
 Future<GetOrganizationContactResult> getOrganizationContact(
   GetOrganizationContactArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:essentialcontacts/v1:getOrganizationContact',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationContactResult.fromMap(result);
 }

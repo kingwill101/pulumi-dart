@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAttestor.
 class GetAttestorArgs {
-  final Input<String> attestorId;
-  final Input<String>? project;
+  final pulumi.Input<String> attestorId;
+  final pulumi.Input<String>? project;
 
   GetAttestorArgs({
     required this.attestorId,
@@ -24,8 +24,8 @@ class GetAttestorArgs {
 
   factory GetAttestorArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestorArgs(
-      attestorId: Input.asInput<String>(map['attestorId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      attestorId: pulumi.Input.asInput<String>(map['attestorId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

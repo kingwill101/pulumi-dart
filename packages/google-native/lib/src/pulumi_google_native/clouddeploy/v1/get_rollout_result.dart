@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_response.dart';
 import 'phase_response.dart';
 
@@ -115,8 +115,9 @@ class GetRolloutResult {
     map['labels'] = labels;
     map['metadata'] = metadata.toMap();
     map['name'] = name;
-    map['phases'] = Input.encodeList<PhaseResponse, Map<String, dynamic>>(
-        phases, (value) => value.toMap());
+    map['phases'] =
+        pulumi.Input.encodeList<PhaseResponse, Map<String, dynamic>>(
+            phases, (value) => value.toMap());
     map['rollbackOfRollout'] = rollbackOfRollout;
     map['rolledBackByRollouts'] = rolledBackByRollouts;
     map['state'] = state;
@@ -144,7 +145,7 @@ class GetRolloutResult {
       metadata: MetadataResponse.fromMap(
           (map['metadata'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      phases: Input.decodeList<PhaseResponse>(
+      phases: pulumi.Input.decodeList<PhaseResponse>(
           map['phases'],
           (value) =>
               PhaseResponse.fromMap((value as Map).cast<String, dynamic>())),

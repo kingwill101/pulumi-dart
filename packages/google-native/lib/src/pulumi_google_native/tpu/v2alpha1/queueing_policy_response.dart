@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'interval_response2.dart';
+import 'interval_response_tpu_v2alpha1.dart';
 
 /// Defines the policy of the QueuedRequest.
 class QueueingPolicyResponse {
@@ -11,7 +11,7 @@ class QueueingPolicyResponse {
   final String validAfterTime;
 
   /// An absolute time interval within which resources may be created.
-  final IntervalResponse2 validInterval;
+  final IntervalResponseTpuV2alpha1 validInterval;
 
   /// A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
   final String validUntilDuration;
@@ -41,7 +41,7 @@ class QueueingPolicyResponse {
     return QueueingPolicyResponse(
       validAfterDuration: map['validAfterDuration'] as String,
       validAfterTime: map['validAfterTime'] as String,
-      validInterval: IntervalResponse2.fromMap(
+      validInterval: IntervalResponseTpuV2alpha1.fromMap(
           (map['validInterval'] as Map).cast<String, dynamic>()),
       validUntilDuration: map['validUntilDuration'] as String,
       validUntilTime: map['validUntilTime'] as String,

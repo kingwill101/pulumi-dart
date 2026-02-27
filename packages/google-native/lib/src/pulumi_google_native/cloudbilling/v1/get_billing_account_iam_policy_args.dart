@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBillingAccountIamPolicy.
 class GetBillingAccountIamPolicyArgs {
-  final Input<String> billingAccountId;
-  final Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String> billingAccountId;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
 
   GetBillingAccountIamPolicyArgs({
     required this.billingAccountId,
@@ -24,9 +24,9 @@ class GetBillingAccountIamPolicyArgs {
 
   factory GetBillingAccountIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountIamPolicyArgs(
-      billingAccountId: Input.asInput<String>(map['billingAccountId']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
+      billingAccountId: pulumi.Input.asInput<String>(map['billingAccountId']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
     );
   }
 }

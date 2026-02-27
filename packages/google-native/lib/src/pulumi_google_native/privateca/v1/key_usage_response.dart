@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_key_usage_options_response.dart';
 import 'key_usage_options_response.dart';
 import 'object_id_response.dart';
@@ -27,7 +27,7 @@ class KeyUsageResponse {
     map['baseKeyUsage'] = baseKeyUsage.toMap();
     map['extendedKeyUsage'] = extendedKeyUsage.toMap();
     map['unknownExtendedKeyUsages'] =
-        Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
             unknownExtendedKeyUsages, (value) => value.toMap());
     return map;
   }
@@ -38,7 +38,7 @@ class KeyUsageResponse {
           (map['baseKeyUsage'] as Map).cast<String, dynamic>()),
       extendedKeyUsage: ExtendedKeyUsageOptionsResponse.fromMap(
           (map['extendedKeyUsage'] as Map).cast<String, dynamic>()),
-      unknownExtendedKeyUsages: Input.decodeList<ObjectIdResponse>(
+      unknownExtendedKeyUsages: pulumi.Input.decodeList<ObjectIdResponse>(
           map['unknownExtendedKeyUsages'],
           (value) =>
               ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,34 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attribute_definition_category.dart';
 
 /// The set of arguments for AttributeDefinition.
 class AttributeDefinitionArgs {
   /// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
-  final Input<List<String>> allowedValues;
+  final pulumi.Input<List<String>> allowedValues;
 
   /// Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
-  final Input<String> attributeDefinitionId;
+  final pulumi.Input<String> attributeDefinitionId;
 
   /// The category of the attribute. The value of this field cannot be changed after creation.
-  final Input<AttributeDefinitionCategory> category;
+  final pulumi.Input<AttributeDefinitionCategory> category;
 
   /// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
-  final Input<List<String>>? consentDefaultValues;
-  final Input<String> consentStoreId;
+  final pulumi.Input<List<String>>? consentDefaultValues;
+  final pulumi.Input<String> consentStoreId;
 
   /// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
-  final Input<String>? dataMappingDefaultValue;
-  final Input<String> datasetId;
+  final pulumi.Input<String>? dataMappingDefaultValue;
+  final pulumi.Input<String> datasetId;
 
   /// Optional. A description of the attribute.
-  final Input<String>? description;
-  final Input<String>? location;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String>? location;
 
   /// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   AttributeDefinitionArgs({
     required this.allowedValues,
@@ -48,8 +48,9 @@ class AttributeDefinitionArgs {
     final map = <String, dynamic>{};
     map['allowedValues'] = allowedValues;
     map['attributeDefinitionId'] = attributeDefinitionId;
-    map['category'] = Input.mapInputValue<AttributeDefinitionCategory, String>(
-        category, (value) => value.value);
+    map['category'] =
+        pulumi.Input.mapInputValue<AttributeDefinitionCategory, String>(
+            category, (value) => value.value);
     final consentDefaultValuesValue = consentDefaultValues;
     if (consentDefaultValuesValue != null) {
       map['consentDefaultValues'] = consentDefaultValuesValue;
@@ -81,20 +82,21 @@ class AttributeDefinitionArgs {
 
   factory AttributeDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return AttributeDefinitionArgs(
-      allowedValues: Input.asInput<List<String>>(map['allowedValues']),
+      allowedValues: pulumi.Input.asInput<List<String>>(map['allowedValues']),
       attributeDefinitionId:
-          Input.asInput<String>(map['attributeDefinitionId']),
-      category: Input.asInput<AttributeDefinitionCategory>(map['category']),
-      consentDefaultValues:
-          Input.asOptionalInput<List<String>>(map['consentDefaultValues']),
-      consentStoreId: Input.asInput<String>(map['consentStoreId']),
+          pulumi.Input.asInput<String>(map['attributeDefinitionId']),
+      category:
+          pulumi.Input.asInput<AttributeDefinitionCategory>(map['category']),
+      consentDefaultValues: pulumi.Input.asOptionalInput<List<String>>(
+          map['consentDefaultValues']),
+      consentStoreId: pulumi.Input.asInput<String>(map['consentStoreId']),
       dataMappingDefaultValue:
-          Input.asOptionalInput<String>(map['dataMappingDefaultValue']),
-      datasetId: Input.asInput<String>(map['datasetId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['dataMappingDefaultValue']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

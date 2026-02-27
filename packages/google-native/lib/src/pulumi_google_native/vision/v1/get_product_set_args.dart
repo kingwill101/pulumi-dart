@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getProductSet.
 class GetProductSetArgs {
-  final Input<String> location;
-  final Input<String> productSetId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> productSetId;
+  final pulumi.Input<String>? project;
 
   GetProductSetArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetProductSetArgs {
 
   factory GetProductSetArgs.fromMap(Map<String, dynamic> map) {
     return GetProductSetArgs(
-      location: Input.asInput<String>(map['location']),
-      productSetId: Input.asInput<String>(map['productSetId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      productSetId: pulumi.Input.asInput<String>(map['productSetId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

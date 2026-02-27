@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_taint.dart';
 
 /// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
@@ -16,7 +16,7 @@ class NodeTaints {
     final map = <String, dynamic>{};
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] = Input.encodeList<NodeTaint, Map<String, dynamic>>(
+      map['taints'] = pulumi.Input.encodeList<NodeTaint, Map<String, dynamic>>(
           taintsValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +26,7 @@ class NodeTaints {
     return NodeTaints(
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<NodeTaint>(
+          : pulumi.Input.decodeList<NodeTaint>(
               map['taints'],
               (value) =>
                   NodeTaint.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'source_crowding_config_response.dart';
-import 'source_response5.dart';
+import 'source_response_cloudsearch_v1.dart';
 import 'source_scoring_config_response.dart';
 
 /// Configurations for a source while processing a Search or Suggest request.
@@ -13,7 +13,7 @@ class SourceConfigResponse {
   final SourceScoringConfigResponse scoringConfig;
 
   /// The source for which this configuration is to be used.
-  final SourceResponse5 source;
+  final SourceResponseCloudsearchV1 source;
 
   SourceConfigResponse({
     required this.crowdingConfig,
@@ -35,7 +35,7 @@ class SourceConfigResponse {
           (map['crowdingConfig'] as Map).cast<String, dynamic>()),
       scoringConfig: SourceScoringConfigResponse.fromMap(
           (map['scoringConfig'] as Map).cast<String, dynamic>()),
-      source: SourceResponse5.fromMap(
+      source: SourceResponseCloudsearchV1.fromMap(
           (map['source'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grafeas_v1beta1_intoto_signature.dart';
 import 'link.dart';
 
@@ -18,9 +18,8 @@ class GrafeasV1beta1IntotoDetails {
     final map = <String, dynamic>{};
     final signaturesValue = signatures;
     if (signaturesValue != null) {
-      map['signatures'] =
-          Input.encodeList<GrafeasV1beta1IntotoSignature, Map<String, dynamic>>(
-              signaturesValue, (value) => value.toMap());
+      map['signatures'] = pulumi.Input.encodeList<GrafeasV1beta1IntotoSignature,
+          Map<String, dynamic>>(signaturesValue, (value) => value.toMap());
     }
     final signedValue = signed;
     if (signedValue != null) {
@@ -33,7 +32,7 @@ class GrafeasV1beta1IntotoDetails {
     return GrafeasV1beta1IntotoDetails(
       signatures: map['signatures'] == null
           ? null
-          : Input.decodeList<GrafeasV1beta1IntotoSignature>(
+          : pulumi.Input.decodeList<GrafeasV1beta1IntotoSignature>(
               map['signatures'],
               (value) => GrafeasV1beta1IntotoSignature.fromMap(
                   (value as Map).cast<String, dynamic>())),

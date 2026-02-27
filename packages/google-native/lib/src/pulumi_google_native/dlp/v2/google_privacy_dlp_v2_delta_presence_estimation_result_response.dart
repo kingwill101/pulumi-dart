@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_delta_presence_estimation_histogram_bucket_response.dart';
 
 /// Result of the δ-presence computation. Note that these results are an estimation, not exact values.
@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['deltaPresenceEstimationHistogram'] = Input.encodeList<
+    map['deltaPresenceEstimationHistogram'] = pulumi.Input.encodeList<
             GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse,
             Map<String, dynamic>>(
         deltaPresenceEstimationHistogram, (value) => value.toMap());
@@ -25,7 +25,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse {
   factory GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse(
-      deltaPresenceEstimationHistogram: Input.decodeList<
+      deltaPresenceEstimationHistogram: pulumi.Input.decodeList<
               GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse>(
           map['deltaPresenceEstimationHistogram'],
           (value) =>

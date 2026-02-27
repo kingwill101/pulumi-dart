@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_page_image_quality_scores_detected_defect.dart';
 
 /// Image quality scores for the page image.
@@ -22,7 +22,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
     final map = <String, dynamic>{};
     final detectedDefectsValue = detectedDefects;
     if (detectedDefectsValue != null) {
-      map['detectedDefects'] = Input.encodeList<
+      map['detectedDefects'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect,
           Map<String, dynamic>>(detectedDefectsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
     return GoogleCloudDocumentaiV1DocumentPageImageQualityScores(
       detectedDefects: map['detectedDefects'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>(
               map['detectedDefects'],
               (value) =>

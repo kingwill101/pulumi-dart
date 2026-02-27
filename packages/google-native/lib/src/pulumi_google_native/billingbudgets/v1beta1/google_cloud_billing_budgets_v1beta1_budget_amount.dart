@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'google_type_money3.dart';
+import 'google_type_money_billingbudgets_v1beta1.dart';
 
 /// The budgeted amount for each usage period.
 class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
@@ -8,7 +8,7 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
   final Map<String, dynamic>? lastPeriodAmount;
 
   /// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
-  final GoogleTypeMoney3? specifiedAmount;
+  final GoogleTypeMoneyBillingbudgetsV1beta1? specifiedAmount;
 
   GoogleCloudBillingBudgetsV1beta1BudgetAmount({
     this.lastPeriodAmount,
@@ -36,7 +36,7 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
           : (map['lastPeriodAmount'] as Map).cast<String, dynamic>(),
       specifiedAmount: map['specifiedAmount'] == null
           ? null
-          : GoogleTypeMoney3.fromMap(
+          : GoogleTypeMoneyBillingbudgetsV1beta1.fromMap(
               (map['specifiedAmount'] as Map).cast<String, dynamic>()),
     );
   }

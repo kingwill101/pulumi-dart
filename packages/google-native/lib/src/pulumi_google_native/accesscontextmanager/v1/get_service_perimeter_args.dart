@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServicePerimeter.
 class GetServicePerimeterArgs {
-  final Input<String> accessPolicyId;
-  final Input<String> servicePerimeterId;
+  final pulumi.Input<String> accessPolicyId;
+  final pulumi.Input<String> servicePerimeterId;
 
   GetServicePerimeterArgs({
     required this.accessPolicyId,
@@ -21,8 +21,9 @@ class GetServicePerimeterArgs {
 
   factory GetServicePerimeterArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePerimeterArgs(
-      accessPolicyId: Input.asInput<String>(map['accessPolicyId']),
-      servicePerimeterId: Input.asInput<String>(map['servicePerimeterId']),
+      accessPolicyId: pulumi.Input.asInput<String>(map['accessPolicyId']),
+      servicePerimeterId:
+          pulumi.Input.asInput<String>(map['servicePerimeterId']),
     );
   }
 }

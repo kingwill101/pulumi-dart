@@ -1,32 +1,32 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_config_response.dart';
 import 'job_template_args.dart';
 
 /// Creates a job template in the specified region.
-class JobTemplate extends CustomResource {
+class JobTemplate extends pulumi.CustomResource {
   /// The configuration for this template.
-  late final Output<JobConfigResponse> config;
+  late final pulumi.Output<JobConfigResponse> config;
 
   /// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
-  late final Output<String> jobTemplateId;
+  late final pulumi.Output<String> jobTemplateId;
 
   /// The labels associated with this job template. You can use these to organize and group your job templates.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   JobTemplate(
     String name, {
     JobTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:transcoder/v1:JobTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.config = registerOutput<JobConfigResponse>('config');
     this.jobTemplateId = registerOutput<String>('jobTemplateId');

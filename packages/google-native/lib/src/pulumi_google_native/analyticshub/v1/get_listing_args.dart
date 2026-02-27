@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getListing.
 class GetListingArgs {
-  final Input<String> dataExchangeId;
-  final Input<String> listingId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> dataExchangeId;
+  final pulumi.Input<String> listingId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetListingArgs({
     required this.dataExchangeId,
@@ -30,10 +30,10 @@ class GetListingArgs {
 
   factory GetListingArgs.fromMap(Map<String, dynamic> map) {
     return GetListingArgs(
-      dataExchangeId: Input.asInput<String>(map['dataExchangeId']),
-      listingId: Input.asInput<String>(map['listingId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      dataExchangeId: pulumi.Input.asInput<String>(map['dataExchangeId']),
+      listingId: pulumi.Input.asInput<String>(map['listingId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

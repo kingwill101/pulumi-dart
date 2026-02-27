@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWebhook.
 class GetWebhookArgs {
-  final Input<String> agentId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> webhookId;
+  final pulumi.Input<String> agentId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> webhookId;
 
   GetWebhookArgs({
     required this.agentId,
@@ -30,10 +30,10 @@ class GetWebhookArgs {
 
   factory GetWebhookArgs.fromMap(Map<String, dynamic> map) {
     return GetWebhookArgs(
-      agentId: Input.asInput<String>(map['agentId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      webhookId: Input.asInput<String>(map['webhookId']),
+      agentId: pulumi.Input.asInput<String>(map['agentId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      webhookId: pulumi.Input.asInput<String>(map['webhookId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_coordinate_response.dart';
 import 'google_cloud_integrations_v1alpha_failure_policy_response.dart';
 import 'google_cloud_integrations_v1alpha_next_task_response.dart';
@@ -84,7 +84,7 @@ class GoogleCloudIntegrationsV1alphaTaskConfigResponse {
     map['externalTaskType'] = externalTaskType;
     map['failurePolicy'] = failurePolicy.toMap();
     map['jsonValidationOption'] = jsonValidationOption;
-    map['nextTasks'] = Input.encodeList<
+    map['nextTasks'] = pulumi.Input.encodeList<
         GoogleCloudIntegrationsV1alphaNextTaskResponse,
         Map<String, dynamic>>(nextTasks, (value) => value.toMap());
     map['nextTasksExecutionPolicy'] = nextTasksExecutionPolicy;
@@ -110,11 +110,11 @@ class GoogleCloudIntegrationsV1alphaTaskConfigResponse {
           GoogleCloudIntegrationsV1alphaFailurePolicyResponse.fromMap(
               (map['failurePolicy'] as Map).cast<String, dynamic>()),
       jsonValidationOption: map['jsonValidationOption'] as String,
-      nextTasks:
-          Input.decodeList<GoogleCloudIntegrationsV1alphaNextTaskResponse>(
-              map['nextTasks'],
-              (value) => GoogleCloudIntegrationsV1alphaNextTaskResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      nextTasks: pulumi.Input.decodeList<
+              GoogleCloudIntegrationsV1alphaNextTaskResponse>(
+          map['nextTasks'],
+          (value) => GoogleCloudIntegrationsV1alphaNextTaskResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] as String,
       parameters: (map['parameters'] as Map).cast<String, String>(),
       position: GoogleCloudIntegrationsV1alphaCoordinateResponse.fromMap(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_chart_data_data_point_response.dart';
 
 /// Describes a collection of data points rendered as a Chart.
@@ -14,7 +14,7 @@ class ReportSummaryChartDataResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dataPoints'] = Input.encodeList<
+    map['dataPoints'] = pulumi.Input.encodeList<
         ReportSummaryChartDataDataPointResponse,
         Map<String, dynamic>>(dataPoints, (value) => value.toMap());
     return map;
@@ -22,10 +22,11 @@ class ReportSummaryChartDataResponse {
 
   factory ReportSummaryChartDataResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryChartDataResponse(
-      dataPoints: Input.decodeList<ReportSummaryChartDataDataPointResponse>(
-          map['dataPoints'],
-          (value) => ReportSummaryChartDataDataPointResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      dataPoints:
+          pulumi.Input.decodeList<ReportSummaryChartDataDataPointResponse>(
+              map['dataPoints'],
+              (value) => ReportSummaryChartDataDataPointResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'import_error_response.dart';
 
 /// A resource that reports the import job errors at row level.
@@ -26,8 +26,9 @@ class ImportRowErrorResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['errors'] = Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(
-        errors, (value) => value.toMap());
+    map['errors'] =
+        pulumi.Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(
+            errors, (value) => value.toMap());
     map['rowNumber'] = rowNumber;
     map['vmName'] = vmName;
     map['vmUuid'] = vmUuid;
@@ -36,7 +37,7 @@ class ImportRowErrorResponse {
 
   factory ImportRowErrorResponse.fromMap(Map<String, dynamic> map) {
     return ImportRowErrorResponse(
-      errors: Input.decodeList<ImportErrorResponse>(
+      errors: pulumi.Input.decodeList<ImportErrorResponse>(
           map['errors'],
           (value) => ImportErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

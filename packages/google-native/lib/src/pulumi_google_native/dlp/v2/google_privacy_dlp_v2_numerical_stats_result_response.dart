@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_value_response.dart';
 
 /// Result of the numerical stats computation.
@@ -24,9 +24,9 @@ class GooglePrivacyDlpV2NumericalStatsResultResponse {
     final map = <String, dynamic>{};
     map['maxValue'] = maxValue.toMap();
     map['minValue'] = minValue.toMap();
-    map['quantileValues'] =
-        Input.encodeList<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(
-            quantileValues, (value) => value.toMap());
+    map['quantileValues'] = pulumi.Input.encodeList<
+        GooglePrivacyDlpV2ValueResponse,
+        Map<String, dynamic>>(quantileValues, (value) => value.toMap());
     return map;
   }
 
@@ -37,7 +37,7 @@ class GooglePrivacyDlpV2NumericalStatsResultResponse {
           (map['maxValue'] as Map).cast<String, dynamic>()),
       minValue: GooglePrivacyDlpV2ValueResponse.fromMap(
           (map['minValue'] as Map).cast<String, dynamic>()),
-      quantileValues: Input.decodeList<GooglePrivacyDlpV2ValueResponse>(
+      quantileValues: pulumi.Input.decodeList<GooglePrivacyDlpV2ValueResponse>(
           map['quantileValues'],
           (value) => GooglePrivacyDlpV2ValueResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

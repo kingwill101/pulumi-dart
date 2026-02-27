@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDisk.
 class GetDiskArgs {
-  final Input<String> disk;
-  final Input<String>? project;
-  final Input<String> zone;
+  final pulumi.Input<String> disk;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> zone;
 
   GetDiskArgs({
     required this.disk,
@@ -27,9 +27,9 @@ class GetDiskArgs {
 
   factory GetDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskArgs(
-      disk: Input.asInput<String>(map['disk']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asInput<String>(map['zone']),
+      disk: pulumi.Input.asInput<String>(map['disk']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

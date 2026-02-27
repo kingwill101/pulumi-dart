@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_response.dart';
 import 'allocation_specific_skuallocation_allocated_instance_properties_reserved_disk_response.dart';
 
@@ -41,10 +41,10 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['guestAccelerators'] =
-        Input.encodeList<AcceleratorConfigResponse, Map<String, dynamic>>(
-            guestAccelerators, (value) => value.toMap());
-    map['localSsds'] = Input.encodeList<
+    map['guestAccelerators'] = pulumi.Input.encodeList<
+        AcceleratorConfigResponse,
+        Map<String, dynamic>>(guestAccelerators, (value) => value.toMap());
+    map['localSsds'] = pulumi.Input.encodeList<
         AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse,
         Map<String, dynamic>>(localSsds, (value) => value.toMap());
     map['locationHint'] = locationHint;
@@ -58,11 +58,11 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse {
   factory AllocationSpecificSKUAllocationReservedInstancePropertiesResponse.fromMap(
       Map<String, dynamic> map) {
     return AllocationSpecificSKUAllocationReservedInstancePropertiesResponse(
-      guestAccelerators: Input.decodeList<AcceleratorConfigResponse>(
+      guestAccelerators: pulumi.Input.decodeList<AcceleratorConfigResponse>(
           map['guestAccelerators'],
           (value) => AcceleratorConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      localSsds: Input.decodeList<
+      localSsds: pulumi.Input.decodeList<
               AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse>(
           map['localSsds'],
           (value) =>

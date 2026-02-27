@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getUser.
 class GetUserArgs {
-  final Input<String> clusterId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> userId;
+  final pulumi.Input<String> clusterId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> userId;
 
   GetUserArgs({
     required this.clusterId,
@@ -30,10 +30,10 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      clusterId: Input.asInput<String>(map['clusterId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      userId: Input.asInput<String>(map['userId']),
+      clusterId: pulumi.Input.asInput<String>(map['clusterId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
     );
   }
 }

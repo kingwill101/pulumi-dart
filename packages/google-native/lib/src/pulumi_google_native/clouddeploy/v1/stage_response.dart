@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deploy_parameters_response.dart';
 import 'strategy_response.dart';
 
@@ -28,7 +28,7 @@ class StageResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['deployParameters'] =
-        Input.encodeList<DeployParametersResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DeployParametersResponse, Map<String, dynamic>>(
             deployParameters, (value) => value.toMap());
     map['profiles'] = profiles;
     map['strategy'] = strategy.toMap();
@@ -38,7 +38,7 @@ class StageResponse {
 
   factory StageResponse.fromMap(Map<String, dynamic> map) {
     return StageResponse(
-      deployParameters: Input.decodeList<DeployParametersResponse>(
+      deployParameters: pulumi.Input.decodeList<DeployParametersResponse>(
           map['deployParameters'],
           (value) => DeployParametersResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

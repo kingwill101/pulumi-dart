@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'expr34.dart';
+import 'expr_compute_alpha.dart';
 import 'security_policy_rule_matcher_config.dart';
 import 'security_policy_rule_matcher_expr_options.dart';
 import 'security_policy_rule_matcher_versioned_expr.dart';
@@ -11,7 +11,7 @@ class SecurityPolicyRuleMatcher {
   final SecurityPolicyRuleMatcherConfig? config;
 
   /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
-  final Expr34? expr;
+  final ExprComputeAlpha? expr;
 
   /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
   final SecurityPolicyRuleMatcherExprOptions? exprOptions;
@@ -55,7 +55,8 @@ class SecurityPolicyRuleMatcher {
               (map['config'] as Map).cast<String, dynamic>()),
       expr: map['expr'] == null
           ? null
-          : Expr34.fromMap((map['expr'] as Map).cast<String, dynamic>()),
+          : ExprComputeAlpha.fromMap(
+              (map['expr'] as Map).cast<String, dynamic>()),
       exprOptions: map['exprOptions'] == null
           ? null
           : SecurityPolicyRuleMatcherExprOptions.fromMap(

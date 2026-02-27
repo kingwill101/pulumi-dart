@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'by_products.dart';
-import 'environment2.dart';
+import 'environment_containeranalysis_v1beta1.dart';
 import 'grafeas_v1beta1_intoto_artifact.dart';
 
 /// This corresponds to an in-toto link.
@@ -14,7 +14,7 @@ class Link {
   final List<String>? command;
 
   /// This is a field that can be used to capture information about the environment. It is suggested for this field to contain information that details environment variables, filesystem information, and the present working directory. The recommended structure of this field is: "environment": { "custom_values": { "variables": "", "filesystem": "", "workdir": "", "": "..." } }
-  final Environment2? environment;
+  final EnvironmentContaineranalysisV1beta1? environment;
 
   /// Materials are the supply chain artifacts that go into the step and are used for the operation performed. The key of the map is the path of the artifact and the structure contains the recorded hash information. An example is: "materials": [ { "resource_uri": "foo/bar", "hashes": { "sha256": "ebebf...", : } } ]
   final List<GrafeasV1beta1IntotoArtifact>? materials;
@@ -46,15 +46,13 @@ class Link {
     }
     final materialsValue = materials;
     if (materialsValue != null) {
-      map['materials'] =
-          Input.encodeList<GrafeasV1beta1IntotoArtifact, Map<String, dynamic>>(
-              materialsValue, (value) => value.toMap());
+      map['materials'] = pulumi.Input.encodeList<GrafeasV1beta1IntotoArtifact,
+          Map<String, dynamic>>(materialsValue, (value) => value.toMap());
     }
     final productsValue = products;
     if (productsValue != null) {
-      map['products'] =
-          Input.encodeList<GrafeasV1beta1IntotoArtifact, Map<String, dynamic>>(
-              productsValue, (value) => value.toMap());
+      map['products'] = pulumi.Input.encodeList<GrafeasV1beta1IntotoArtifact,
+          Map<String, dynamic>>(productsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -70,17 +68,17 @@ class Link {
           : (map['command'] as List).cast<String>(),
       environment: map['environment'] == null
           ? null
-          : Environment2.fromMap(
+          : EnvironmentContaineranalysisV1beta1.fromMap(
               (map['environment'] as Map).cast<String, dynamic>()),
       materials: map['materials'] == null
           ? null
-          : Input.decodeList<GrafeasV1beta1IntotoArtifact>(
+          : pulumi.Input.decodeList<GrafeasV1beta1IntotoArtifact>(
               map['materials'],
               (value) => GrafeasV1beta1IntotoArtifact.fromMap(
                   (value as Map).cast<String, dynamic>())),
       products: map['products'] == null
           ? null
-          : Input.decodeList<GrafeasV1beta1IntotoArtifact>(
+          : pulumi.Input.decodeList<GrafeasV1beta1IntotoArtifact>(
               map['products'],
               (value) => GrafeasV1beta1IntotoArtifact.fromMap(
                   (value as Map).cast<String, dynamic>())),

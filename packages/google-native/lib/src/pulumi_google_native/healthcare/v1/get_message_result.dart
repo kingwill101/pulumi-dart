@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parsed_data_response.dart';
 import 'patient_id_response.dart';
 import 'schematized_data_response.dart';
@@ -59,7 +59,7 @@ class GetMessageResult {
     map['name'] = name;
     map['parsedData'] = parsedData.toMap();
     map['patientIds'] =
-        Input.encodeList<PatientIdResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PatientIdResponse, Map<String, dynamic>>(
             patientIds, (value) => value.toMap());
     map['schematizedData'] = schematizedData.toMap();
     map['sendFacility'] = sendFacility;
@@ -76,7 +76,7 @@ class GetMessageResult {
       name: map['name'] as String,
       parsedData: ParsedDataResponse.fromMap(
           (map['parsedData'] as Map).cast<String, dynamic>()),
-      patientIds: Input.decodeList<PatientIdResponse>(
+      patientIds: pulumi.Input.decodeList<PatientIdResponse>(
           map['patientIds'],
           (value) => PatientIdResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

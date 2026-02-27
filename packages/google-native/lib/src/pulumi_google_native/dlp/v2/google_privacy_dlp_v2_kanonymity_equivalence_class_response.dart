@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_value_response.dart';
 
 /// The set of columns' values that share the same ldiversity value
@@ -19,9 +19,9 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['equivalenceClassSize'] = equivalenceClassSize;
-    map['quasiIdsValues'] =
-        Input.encodeList<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(
-            quasiIdsValues, (value) => value.toMap());
+    map['quasiIdsValues'] = pulumi.Input.encodeList<
+        GooglePrivacyDlpV2ValueResponse,
+        Map<String, dynamic>>(quasiIdsValues, (value) => value.toMap());
     return map;
   }
 
@@ -29,7 +29,7 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse {
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse(
       equivalenceClassSize: map['equivalenceClassSize'] as String,
-      quasiIdsValues: Input.decodeList<GooglePrivacyDlpV2ValueResponse>(
+      quasiIdsValues: pulumi.Input.decodeList<GooglePrivacyDlpV2ValueResponse>(
           map['quasiIdsValues'],
           (value) => GooglePrivacyDlpV2ValueResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDeveloperAppKey.
 class GetDeveloperAppKeyArgs {
-  final Input<String> appId;
-  final Input<String> developerId;
-  final Input<String> keyId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> appId;
+  final pulumi.Input<String> developerId;
+  final pulumi.Input<String> keyId;
+  final pulumi.Input<String> organizationId;
 
   GetDeveloperAppKeyArgs({
     required this.appId,
@@ -27,10 +27,10 @@ class GetDeveloperAppKeyArgs {
 
   factory GetDeveloperAppKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperAppKeyArgs(
-      appId: Input.asInput<String>(map['appId']),
-      developerId: Input.asInput<String>(map['developerId']),
-      keyId: Input.asInput<String>(map['keyId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
+      developerId: pulumi.Input.asInput<String>(map['developerId']),
+      keyId: pulumi.Input.asInput<String>(map['keyId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

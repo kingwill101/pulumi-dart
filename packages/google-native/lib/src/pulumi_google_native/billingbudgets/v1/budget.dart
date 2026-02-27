@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'budget_args.dart';
 import 'google_cloud_billing_budgets_v1_budget_amount_response.dart';
 import 'google_cloud_billing_budgets_v1_filter_response.dart';
@@ -7,41 +7,44 @@ import 'google_cloud_billing_budgets_v1_threshold_rule_response.dart';
 
 /// Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
 /// Auto-naming is currently not supported for this resource.
-class Budget extends CustomResource {
+class Budget extends pulumi.CustomResource {
   /// Budgeted amount.
-  late final Output<GoogleCloudBillingBudgetsV1BudgetAmountResponse> amount;
-  late final Output<String> billingAccountId;
+  late final pulumi.Output<GoogleCloudBillingBudgetsV1BudgetAmountResponse>
+      amount;
+  late final pulumi.Output<String> billingAccountId;
 
   /// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
-  late final Output<GoogleCloudBillingBudgetsV1FilterResponse> budgetFilter;
+  late final pulumi.Output<GoogleCloudBillingBudgetsV1FilterResponse>
+      budgetFilter;
 
   /// User data for display name in UI. The name must be less than or equal to 60 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-  late final Output<GoogleCloudBillingBudgetsV1NotificationsRuleResponse>
+  late final pulumi.Output<GoogleCloudBillingBudgetsV1NotificationsRuleResponse>
       notificationsRule;
-  late final Output<String> ownershipScope;
+  late final pulumi.Output<String> ownershipScope;
 
   /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  late final Output<List<GoogleCloudBillingBudgetsV1ThresholdRuleResponse>>
+  late final pulumi
+      .Output<List<GoogleCloudBillingBudgetsV1ThresholdRuleResponse>>
       thresholdRules;
 
   Budget(
     String name, {
     BudgetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:billingbudgets/v1:Budget',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.amount =
         registerOutput<GoogleCloudBillingBudgetsV1BudgetAmountResponse>(

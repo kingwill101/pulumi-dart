@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'apt_repository_response2.dart';
+import 'apt_repository_response_osconfig_v1beta.dart';
 import 'goo_repository_response.dart';
-import 'yum_repository_response2.dart';
+import 'yum_repository_response_osconfig_v1beta.dart';
 import 'zypper_repository_response.dart';
 
 /// A package repository.
 class PackageRepositoryResponse {
   /// An Apt Repository.
-  final AptRepositoryResponse2 apt;
+  final AptRepositoryResponseOsconfigV1beta apt;
 
   /// A Goo Repository.
   final GooRepositoryResponse goo;
 
   /// A Yum Repository.
-  final YumRepositoryResponse2 yum;
+  final YumRepositoryResponseOsconfigV1beta yum;
 
   /// A Zypper Repository.
   final ZypperRepositoryResponse zypper;
@@ -37,11 +37,11 @@ class PackageRepositoryResponse {
 
   factory PackageRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return PackageRepositoryResponse(
-      apt: AptRepositoryResponse2.fromMap(
+      apt: AptRepositoryResponseOsconfigV1beta.fromMap(
           (map['apt'] as Map).cast<String, dynamic>()),
       goo: GooRepositoryResponse.fromMap(
           (map['goo'] as Map).cast<String, dynamic>()),
-      yum: YumRepositoryResponse2.fromMap(
+      yum: YumRepositoryResponseOsconfigV1beta.fromMap(
           (map['yum'] as Map).cast<String, dynamic>()),
       zypper: ZypperRepositoryResponse.fromMap(
           (map['zypper'] as Map).cast<String, dynamic>()),

@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_perf_sample_series.dart';
 
 /// The set of arguments for PerfSampleSeries.
 class PerfSampleSeriesArgs {
   /// Basic series represented by a line chart
-  final Input<BasicPerfSampleSeries>? basicPerfSampleSeries;
-  final Input<String> executionId;
-  final Input<String> historyId;
-  final Input<String>? project;
-  final Input<String> stepId;
+  final pulumi.Input<BasicPerfSampleSeries>? basicPerfSampleSeries;
+  final pulumi.Input<String> executionId;
+  final pulumi.Input<String> historyId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> stepId;
 
   PerfSampleSeriesArgs({
     this.basicPerfSampleSeries,
@@ -24,7 +24,7 @@ class PerfSampleSeriesArgs {
     final map = <String, dynamic>{};
     final basicPerfSampleSeriesValue = basicPerfSampleSeries;
     if (basicPerfSampleSeriesValue != null) {
-      map['basicPerfSampleSeries'] = Input.mapOptionalInputValue<
+      map['basicPerfSampleSeries'] = pulumi.Input.mapOptionalInputValue<
               BasicPerfSampleSeries, Map<String, dynamic>>(
           basicPerfSampleSeriesValue, (value) => value.toMap());
     }
@@ -40,12 +40,13 @@ class PerfSampleSeriesArgs {
 
   factory PerfSampleSeriesArgs.fromMap(Map<String, dynamic> map) {
     return PerfSampleSeriesArgs(
-      basicPerfSampleSeries: Input.asOptionalInput<BasicPerfSampleSeries>(
-          map['basicPerfSampleSeries']),
-      executionId: Input.asInput<String>(map['executionId']),
-      historyId: Input.asInput<String>(map['historyId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      stepId: Input.asInput<String>(map['stepId']),
+      basicPerfSampleSeries:
+          pulumi.Input.asOptionalInput<BasicPerfSampleSeries>(
+              map['basicPerfSampleSeries']),
+      executionId: pulumi.Input.asInput<String>(map['executionId']),
+      historyId: pulumi.Input.asInput<String>(map['historyId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      stepId: pulumi.Input.asInput<String>(map['stepId']),
     );
   }
 }

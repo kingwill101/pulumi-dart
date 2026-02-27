@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contactcenterinsights_v1_issue_assignment_response.dart';
 
 /// Issue Modeling result on a conversation.
@@ -19,7 +19,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['issueModel'] = issueModel;
-    map['issues'] = Input.encodeList<
+    map['issues'] = pulumi.Input.encodeList<
         GoogleCloudContactcenterinsightsV1IssueAssignmentResponse,
         Map<String, dynamic>>(issues, (value) => value.toMap());
     return map;
@@ -29,7 +29,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
       Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1IssueModelResultResponse(
       issueModel: map['issueModel'] as String,
-      issues: Input.decodeList<
+      issues: pulumi.Input.decodeList<
               GoogleCloudContactcenterinsightsV1IssueAssignmentResponse>(
           map['issues'],
           (value) =>

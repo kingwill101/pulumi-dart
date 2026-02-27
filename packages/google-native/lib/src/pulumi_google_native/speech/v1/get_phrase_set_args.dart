@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPhraseSet.
 class GetPhraseSetArgs {
-  final Input<String> location;
-  final Input<String> phraseSetId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> phraseSetId;
+  final pulumi.Input<String>? project;
 
   GetPhraseSetArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetPhraseSetArgs {
 
   factory GetPhraseSetArgs.fromMap(Map<String, dynamic> map) {
     return GetPhraseSetArgs(
-      location: Input.asInput<String>(map['location']),
-      phraseSetId: Input.asInput<String>(map['phraseSetId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      phraseSetId: pulumi.Input.asInput<String>(map['phraseSetId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

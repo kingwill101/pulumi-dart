@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'breakdown.dart';
 import 'data_set_plot_type.dart';
 import 'data_set_target_axis.dart';
@@ -49,13 +49,15 @@ class DataSet {
     final map = <String, dynamic>{};
     final breakdownsValue = breakdowns;
     if (breakdownsValue != null) {
-      map['breakdowns'] = Input.encodeList<Breakdown, Map<String, dynamic>>(
-          breakdownsValue, (value) => value.toMap());
+      map['breakdowns'] =
+          pulumi.Input.encodeList<Breakdown, Map<String, dynamic>>(
+              breakdownsValue, (value) => value.toMap());
     }
     final dimensionsValue = dimensions;
     if (dimensionsValue != null) {
-      map['dimensions'] = Input.encodeList<Dimension, Map<String, dynamic>>(
-          dimensionsValue, (value) => value.toMap());
+      map['dimensions'] =
+          pulumi.Input.encodeList<Dimension, Map<String, dynamic>>(
+              dimensionsValue, (value) => value.toMap());
     }
     final legendTemplateValue = legendTemplate;
     if (legendTemplateValue != null) {
@@ -63,7 +65,7 @@ class DataSet {
     }
     final measuresValue = measures;
     if (measuresValue != null) {
-      map['measures'] = Input.encodeList<Measure, Map<String, dynamic>>(
+      map['measures'] = pulumi.Input.encodeList<Measure, Map<String, dynamic>>(
           measuresValue, (value) => value.toMap());
     }
     final minAlignmentPeriodValue = minAlignmentPeriod;
@@ -86,13 +88,13 @@ class DataSet {
     return DataSet(
       breakdowns: map['breakdowns'] == null
           ? null
-          : Input.decodeList<Breakdown>(
+          : pulumi.Input.decodeList<Breakdown>(
               map['breakdowns'],
               (value) =>
                   Breakdown.fromMap((value as Map).cast<String, dynamic>())),
       dimensions: map['dimensions'] == null
           ? null
-          : Input.decodeList<Dimension>(
+          : pulumi.Input.decodeList<Dimension>(
               map['dimensions'],
               (value) =>
                   Dimension.fromMap((value as Map).cast<String, dynamic>())),
@@ -101,7 +103,7 @@ class DataSet {
           : map['legendTemplate'] as String,
       measures: map['measures'] == null
           ? null
-          : Input.decodeList<Measure>(
+          : pulumi.Input.decodeList<Measure>(
               map['measures'],
               (value) =>
                   Measure.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v2_container_port.dart';
 import 'google_cloud_run_v2_env_var.dart';
 import 'google_cloud_run_v2_probe.dart';
@@ -77,7 +77,7 @@ class GoogleCloudRunV2Container {
     final envValue = env;
     if (envValue != null) {
       map['env'] =
-          Input.encodeList<GoogleCloudRunV2EnvVar, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GoogleCloudRunV2EnvVar, Map<String, dynamic>>(
               envValue, (value) => value.toMap());
     }
     map['image'] = image;
@@ -91,9 +91,8 @@ class GoogleCloudRunV2Container {
     }
     final portsValue = ports;
     if (portsValue != null) {
-      map['ports'] =
-          Input.encodeList<GoogleCloudRunV2ContainerPort, Map<String, dynamic>>(
-              portsValue, (value) => value.toMap());
+      map['ports'] = pulumi.Input.encodeList<GoogleCloudRunV2ContainerPort,
+          Map<String, dynamic>>(portsValue, (value) => value.toMap());
     }
     final resourcesValue = resources;
     if (resourcesValue != null) {
@@ -105,9 +104,8 @@ class GoogleCloudRunV2Container {
     }
     final volumeMountsValue = volumeMounts;
     if (volumeMountsValue != null) {
-      map['volumeMounts'] =
-          Input.encodeList<GoogleCloudRunV2VolumeMount, Map<String, dynamic>>(
-              volumeMountsValue, (value) => value.toMap());
+      map['volumeMounts'] = pulumi.Input.encodeList<GoogleCloudRunV2VolumeMount,
+          Map<String, dynamic>>(volumeMountsValue, (value) => value.toMap());
     }
     final workingDirValue = workingDir;
     if (workingDirValue != null) {
@@ -127,7 +125,7 @@ class GoogleCloudRunV2Container {
           : (map['dependsOn'] as List).cast<String>(),
       env: map['env'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV2EnvVar>(
+          : pulumi.Input.decodeList<GoogleCloudRunV2EnvVar>(
               map['env'],
               (value) => GoogleCloudRunV2EnvVar.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -139,7 +137,7 @@ class GoogleCloudRunV2Container {
       name: map['name'] == null ? null : map['name'] as String,
       ports: map['ports'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV2ContainerPort>(
+          : pulumi.Input.decodeList<GoogleCloudRunV2ContainerPort>(
               map['ports'],
               (value) => GoogleCloudRunV2ContainerPort.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -153,7 +151,7 @@ class GoogleCloudRunV2Container {
               (map['startupProbe'] as Map).cast<String, dynamic>()),
       volumeMounts: map['volumeMounts'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV2VolumeMount>(
+          : pulumi.Input.decodeList<GoogleCloudRunV2VolumeMount>(
               map['volumeMounts'],
               (value) => GoogleCloudRunV2VolumeMount.fromMap(
                   (value as Map).cast<String, dynamic>())),

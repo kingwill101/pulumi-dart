@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_observability_feature_error_response.dart';
 
 /// Base state for fleet observability feature.
@@ -19,7 +19,8 @@ class FleetObservabilityFleetObservabilityBaseFeatureStateResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['code'] = code;
-    map['errors'] = Input.encodeList<FleetObservabilityFeatureErrorResponse,
+    map['errors'] = pulumi.Input.encodeList<
+        FleetObservabilityFeatureErrorResponse,
         Map<String, dynamic>>(errors, (value) => value.toMap());
     return map;
   }
@@ -28,7 +29,7 @@ class FleetObservabilityFleetObservabilityBaseFeatureStateResponse {
       Map<String, dynamic> map) {
     return FleetObservabilityFleetObservabilityBaseFeatureStateResponse(
       code: map['code'] as String,
-      errors: Input.decodeList<FleetObservabilityFeatureErrorResponse>(
+      errors: pulumi.Input.decodeList<FleetObservabilityFeatureErrorResponse>(
           map['errors'],
           (value) => FleetObservabilityFeatureErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_env_var_response.dart';
 
 /// The spec of a Python packaged code.
@@ -31,7 +31,8 @@ class GoogleCloudAiplatformV1beta1PythonPackageSpecResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['args'] = args;
-    map['env'] = Input.encodeList<GoogleCloudAiplatformV1beta1EnvVarResponse,
+    map['env'] = pulumi.Input.encodeList<
+        GoogleCloudAiplatformV1beta1EnvVarResponse,
         Map<String, dynamic>>(env, (value) => value.toMap());
     map['executorImageUri'] = executorImageUri;
     map['packageUris'] = packageUris;
@@ -43,7 +44,7 @@ class GoogleCloudAiplatformV1beta1PythonPackageSpecResponse {
       Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PythonPackageSpecResponse(
       args: (map['args'] as List).cast<String>(),
-      env: Input.decodeList<GoogleCloudAiplatformV1beta1EnvVarResponse>(
+      env: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1EnvVarResponse>(
           map['env'],
           (value) => GoogleCloudAiplatformV1beta1EnvVarResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

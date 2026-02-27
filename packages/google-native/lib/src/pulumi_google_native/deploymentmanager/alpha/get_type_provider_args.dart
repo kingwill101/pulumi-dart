@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTypeProvider.
 class GetTypeProviderArgs {
-  final Input<String>? project;
-  final Input<String> typeProvider;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> typeProvider;
 
   GetTypeProviderArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetTypeProviderArgs {
 
   factory GetTypeProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetTypeProviderArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      typeProvider: Input.asInput<String>(map['typeProvider']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      typeProvider: pulumi.Input.asInput<String>(map['typeProvider']),
     );
   }
 }

@@ -1,7 +1,7 @@
 library module_websecurityscanner_v1;
 
-export 'v1/authentication2.dart';
-export 'v1/authentication_response2.dart';
+export 'v1/authentication_response_websecurityscanner_v1.dart';
+export 'v1/authentication_websecurityscanner_v1.dart';
 export 'v1/custom_account.dart';
 export 'v1/custom_account_response.dart';
 export 'v1/get_scan_config.dart';
@@ -18,5 +18,5 @@ export 'v1/scan_config_args.dart';
 export 'v1/scan_config_export_to_security_command_center.dart';
 export 'v1/scan_config_risk_level.dart';
 export 'v1/scan_config_user_agent.dart';
-export 'v1/schedule3.dart';
-export 'v1/schedule_response3.dart';
+export 'v1/schedule_response_websecurityscanner_v1.dart';
+export 'v1/schedule_websecurityscanner_v1.dart';

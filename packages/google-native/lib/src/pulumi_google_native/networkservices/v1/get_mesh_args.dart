@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMesh.
 class GetMeshArgs {
-  final Input<String> location;
-  final Input<String> meshId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> meshId;
+  final pulumi.Input<String>? project;
 
   GetMeshArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetMeshArgs {
 
   factory GetMeshArgs.fromMap(Map<String, dynamic> map) {
     return GetMeshArgs(
-      location: Input.asInput<String>(map['location']),
-      meshId: Input.asInput<String>(map['meshId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      meshId: pulumi.Input.asInput<String>(map['meshId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

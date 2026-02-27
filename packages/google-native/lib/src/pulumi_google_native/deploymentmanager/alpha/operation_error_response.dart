@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'operation_error_errors_item_response.dart';
 
 /// [Output Only] If errors are generated during processing of the operation, this field will be populated.
@@ -14,14 +14,14 @@ class OperationErrorResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['errors'] = Input.encodeList<OperationErrorErrorsItemResponse,
+    map['errors'] = pulumi.Input.encodeList<OperationErrorErrorsItemResponse,
         Map<String, dynamic>>(errors, (value) => value.toMap());
     return map;
   }
 
   factory OperationErrorResponse.fromMap(Map<String, dynamic> map) {
     return OperationErrorResponse(
-      errors: Input.decodeList<OperationErrorErrorsItemResponse>(
+      errors: pulumi.Input.decodeList<OperationErrorErrorsItemResponse>(
           map['errors'],
           (value) => OperationErrorErrorsItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

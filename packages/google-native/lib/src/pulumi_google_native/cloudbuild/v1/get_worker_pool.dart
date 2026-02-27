@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_worker_pool_args.dart';
 import 'get_worker_pool_result.dart';
 
 /// Returns details of a `WorkerPool`.
 Future<GetWorkerPoolResult> getWorkerPool(
   GetWorkerPoolArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:cloudbuild/v1:getWorkerPool',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkerPoolResult.fromMap(result);
 }

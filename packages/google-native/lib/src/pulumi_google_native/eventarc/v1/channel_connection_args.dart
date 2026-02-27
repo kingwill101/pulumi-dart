@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ChannelConnection.
 class ChannelConnectionArgs {
   /// Input only. Activation token for the channel. The token will be used during the creation of ChannelConnection to bind the channel with the provider project. This field will not be stored in the provider resource.
-  final Input<String>? activationToken;
+  final pulumi.Input<String>? activationToken;
 
   /// The name of the connected subscriber Channel. This is a weak reference to avoid cross project and cross accounts references. This must be in `projects/{project}/location/{location}/channels/{channel_id}` format.
-  final Input<String> channel;
+  final pulumi.Input<String> channel;
 
   /// Required. The user-provided ID to be assigned to the channel connection.
-  final Input<String> channelConnectionId;
-  final Input<String>? location;
+  final pulumi.Input<String> channelConnectionId;
+  final pulumi.Input<String>? location;
 
   /// The name of the connection.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   ChannelConnectionArgs({
     this.activationToken,
@@ -52,12 +52,14 @@ class ChannelConnectionArgs {
 
   factory ChannelConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ChannelConnectionArgs(
-      activationToken: Input.asOptionalInput<String>(map['activationToken']),
-      channel: Input.asInput<String>(map['channel']),
-      channelConnectionId: Input.asInput<String>(map['channelConnectionId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      activationToken:
+          pulumi.Input.asOptionalInput<String>(map['activationToken']),
+      channel: pulumi.Input.asInput<String>(map['channel']),
+      channelConnectionId:
+          pulumi.Input.asInput<String>(map['channelConnectionId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

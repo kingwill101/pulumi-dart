@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_action_details_response.dart';
 import 'google_privacy_dlp_v2_analyze_data_source_risk_details_response.dart';
 import 'google_privacy_dlp_v2_error_response.dart';
@@ -61,14 +61,13 @@ class GetDlpJobResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actionDetails'] = Input.encodeList<
+    map['actionDetails'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2ActionDetailsResponse,
         Map<String, dynamic>>(actionDetails, (value) => value.toMap());
     map['createTime'] = createTime;
     map['endTime'] = endTime;
-    map['errors'] =
-        Input.encodeList<GooglePrivacyDlpV2ErrorResponse, Map<String, dynamic>>(
-            errors, (value) => value.toMap());
+    map['errors'] = pulumi.Input.encodeList<GooglePrivacyDlpV2ErrorResponse,
+        Map<String, dynamic>>(errors, (value) => value.toMap());
     map['inspectDetails'] = inspectDetails.toMap();
     map['jobTriggerName'] = jobTriggerName;
     map['lastModified'] = lastModified;
@@ -82,13 +81,14 @@ class GetDlpJobResult {
 
   factory GetDlpJobResult.fromMap(Map<String, dynamic> map) {
     return GetDlpJobResult(
-      actionDetails: Input.decodeList<GooglePrivacyDlpV2ActionDetailsResponse>(
-          map['actionDetails'],
-          (value) => GooglePrivacyDlpV2ActionDetailsResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      actionDetails:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2ActionDetailsResponse>(
+              map['actionDetails'],
+              (value) => GooglePrivacyDlpV2ActionDetailsResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       endTime: map['endTime'] as String,
-      errors: Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(
+      errors: pulumi.Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(
           map['errors'],
           (value) => GooglePrivacyDlpV2ErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

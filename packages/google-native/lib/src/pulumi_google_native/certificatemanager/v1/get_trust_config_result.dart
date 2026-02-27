@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_store_response.dart';
 
 /// Result data returned by getTrustConfig.
@@ -44,7 +44,7 @@ class GetTrustConfigResult {
     map['labels'] = labels;
     map['name'] = name;
     map['trustStores'] =
-        Input.encodeList<TrustStoreResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TrustStoreResponse, Map<String, dynamic>>(
             trustStores, (value) => value.toMap());
     map['updateTime'] = updateTime;
     return map;
@@ -57,7 +57,7 @@ class GetTrustConfigResult {
       etag: map['etag'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      trustStores: Input.decodeList<TrustStoreResponse>(
+      trustStores: pulumi.Input.decodeList<TrustStoreResponse>(
           map['trustStores'],
           (value) => TrustStoreResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

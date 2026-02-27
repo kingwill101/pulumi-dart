@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNodeTemplate.
 class GetNodeTemplateArgs {
-  final Input<String> nodeTemplate;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> nodeTemplate;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetNodeTemplateArgs({
     required this.nodeTemplate,
@@ -27,9 +27,9 @@ class GetNodeTemplateArgs {
 
   factory GetNodeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeTemplateArgs(
-      nodeTemplate: Input.asInput<String>(map['nodeTemplate']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      nodeTemplate: pulumi.Input.asInput<String>(map['nodeTemplate']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

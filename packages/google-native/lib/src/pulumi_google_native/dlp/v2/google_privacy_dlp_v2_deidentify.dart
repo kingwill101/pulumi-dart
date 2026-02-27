@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_deidentify_file_types_to_transform_item.dart';
 import 'google_privacy_dlp_v2_transformation_config.dart';
 import 'google_privacy_dlp_v2_transformation_details_storage_config.dart';
@@ -33,7 +33,7 @@ class GooglePrivacyDlpV2Deidentify {
     map['cloudStorageOutput'] = cloudStorageOutput;
     final fileTypesToTransformValue = fileTypesToTransform;
     if (fileTypesToTransformValue != null) {
-      map['fileTypesToTransform'] = Input.encodeList<
+      map['fileTypesToTransform'] = pulumi.Input.encodeList<
           GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem,
           String>(fileTypesToTransformValue, (value) => value.value);
     }
@@ -55,7 +55,7 @@ class GooglePrivacyDlpV2Deidentify {
       cloudStorageOutput: map['cloudStorageOutput'] as String,
       fileTypesToTransform: map['fileTypesToTransform'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem>(
               map['fileTypesToTransform'],
               (value) => GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem

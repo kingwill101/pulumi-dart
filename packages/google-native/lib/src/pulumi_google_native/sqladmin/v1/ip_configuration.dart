@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'acl_entry.dart';
 import 'ip_configuration_ssl_mode.dart';
-import 'psc_config5.dart';
+import 'psc_config_sqladmin_v1.dart';
 
 /// IP Management configuration.
 class IpConfiguration {
@@ -23,7 +23,7 @@ class IpConfiguration {
   final String? privateNetwork;
 
   /// PSC settings for this instance.
-  final PscConfig5? pscConfig;
+  final PscConfigSqladminV1? pscConfig;
 
   /// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
   final bool? requireSsl;
@@ -51,7 +51,7 @@ class IpConfiguration {
     final authorizedNetworksValue = authorizedNetworks;
     if (authorizedNetworksValue != null) {
       map['authorizedNetworks'] =
-          Input.encodeList<AclEntry, Map<String, dynamic>>(
+          pulumi.Input.encodeList<AclEntry, Map<String, dynamic>>(
               authorizedNetworksValue, (value) => value.toMap());
     }
     final enablePrivatePathForGoogleCloudServicesValue =
@@ -90,7 +90,7 @@ class IpConfiguration {
           : map['allocatedIpRange'] as String,
       authorizedNetworks: map['authorizedNetworks'] == null
           ? null
-          : Input.decodeList<AclEntry>(
+          : pulumi.Input.decodeList<AclEntry>(
               map['authorizedNetworks'],
               (value) =>
                   AclEntry.fromMap((value as Map).cast<String, dynamic>())),
@@ -105,7 +105,7 @@ class IpConfiguration {
           : map['privateNetwork'] as String,
       pscConfig: map['pscConfig'] == null
           ? null
-          : PscConfig5.fromMap(
+          : PscConfigSqladminV1.fromMap(
               (map['pscConfig'] as Map).cast<String, dynamic>()),
       requireSsl: map['requireSsl'] == null ? null : map['requireSsl'] as bool,
       sslMode: map['sslMode'] == null

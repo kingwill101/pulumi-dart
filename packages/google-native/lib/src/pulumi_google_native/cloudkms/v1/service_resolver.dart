@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate.dart';
 
 /// A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
@@ -32,7 +32,7 @@ class ServiceResolver {
     }
     map['hostname'] = hostname;
     map['serverCertificates'] =
-        Input.encodeList<Certificate, Map<String, dynamic>>(
+        pulumi.Input.encodeList<Certificate, Map<String, dynamic>>(
             serverCertificates, (value) => value.toMap());
     map['serviceDirectoryService'] = serviceDirectoryService;
     return map;
@@ -44,7 +44,7 @@ class ServiceResolver {
           ? null
           : map['endpointFilter'] as String,
       hostname: map['hostname'] as String,
-      serverCertificates: Input.decodeList<Certificate>(
+      serverCertificates: pulumi.Input.decodeList<Certificate>(
           map['serverCertificates'],
           (value) =>
               Certificate.fromMap((value as Map).cast<String, dynamic>())),

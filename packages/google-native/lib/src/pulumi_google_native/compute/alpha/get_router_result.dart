@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_bgp_peer_response.dart';
 import 'router_bgp_response.dart';
 import 'router_interface_response.dart';
@@ -72,21 +72,22 @@ class GetRouterResult {
     final map = <String, dynamic>{};
     map['bgp'] = bgp.toMap();
     map['bgpPeers'] =
-        Input.encodeList<RouterBgpPeerResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RouterBgpPeerResponse, Map<String, dynamic>>(
             bgpPeers, (value) => value.toMap());
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
     map['encryptedInterconnectRouter'] = encryptedInterconnectRouter;
     map['interfaces'] =
-        Input.encodeList<RouterInterfaceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RouterInterfaceResponse, Map<String, dynamic>>(
             interfaces, (value) => value.toMap());
     map['kind'] = kind;
-    map['md5AuthenticationKeys'] = Input.encodeList<
+    map['md5AuthenticationKeys'] = pulumi.Input.encodeList<
         RouterMd5AuthenticationKeyResponse,
         Map<String, dynamic>>(md5AuthenticationKeys, (value) => value.toMap());
     map['name'] = name;
-    map['nats'] = Input.encodeList<RouterNatResponse, Map<String, dynamic>>(
-        nats, (value) => value.toMap());
+    map['nats'] =
+        pulumi.Input.encodeList<RouterNatResponse, Map<String, dynamic>>(
+            nats, (value) => value.toMap());
     map['network'] = network;
     map['region'] = region;
     map['selfLink'] = selfLink;
@@ -98,25 +99,25 @@ class GetRouterResult {
     return GetRouterResult(
       bgp: RouterBgpResponse.fromMap(
           (map['bgp'] as Map).cast<String, dynamic>()),
-      bgpPeers: Input.decodeList<RouterBgpPeerResponse>(
+      bgpPeers: pulumi.Input.decodeList<RouterBgpPeerResponse>(
           map['bgpPeers'],
           (value) => RouterBgpPeerResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
       encryptedInterconnectRouter: map['encryptedInterconnectRouter'] as bool,
-      interfaces: Input.decodeList<RouterInterfaceResponse>(
+      interfaces: pulumi.Input.decodeList<RouterInterfaceResponse>(
           map['interfaces'],
           (value) => RouterInterfaceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       md5AuthenticationKeys:
-          Input.decodeList<RouterMd5AuthenticationKeyResponse>(
+          pulumi.Input.decodeList<RouterMd5AuthenticationKeyResponse>(
               map['md5AuthenticationKeys'],
               (value) => RouterMd5AuthenticationKeyResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      nats: Input.decodeList<RouterNatResponse>(
+      nats: pulumi.Input.decodeList<RouterNatResponse>(
           map['nats'],
           (value) => RouterNatResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

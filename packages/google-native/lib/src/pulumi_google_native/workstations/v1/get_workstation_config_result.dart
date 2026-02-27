@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'container_response3.dart';
-import 'customer_encryption_key_response5.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'container_response_workstations_v1.dart';
+import 'customer_encryption_key_response_workstations_v1.dart';
 import 'host_response.dart';
 import 'persistent_directory_response.dart';
-import 'readiness_check_response3.dart';
-import 'status_response34.dart';
+import 'readiness_check_response_workstations_v1.dart';
+import 'status_response_workstations_v1.dart';
 
 /// Result data returned by getWorkstationConfig.
 class GetWorkstationConfigResult {
@@ -14,10 +14,10 @@ class GetWorkstationConfigResult {
   final Map<String, String> annotations;
 
   /// Status conditions describing the current resource state.
-  final List<StatusResponse34> conditions;
+  final List<StatusResponseWorkstationsV1> conditions;
 
   /// Optional. Container that runs upon startup for each workstation using this workstation configuration.
-  final ContainerResponse3 container;
+  final ContainerResponseWorkstationsV1 container;
 
   /// Time when this workstation configuration was created.
   final String createTime;
@@ -32,7 +32,7 @@ class GetWorkstationConfigResult {
   final String displayName;
 
   /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
-  final CustomerEncryptionKeyResponse5 encryptionKey;
+  final CustomerEncryptionKeyResponseWorkstationsV1 encryptionKey;
 
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
   final String etag;
@@ -53,7 +53,7 @@ class GetWorkstationConfigResult {
   final List<PersistentDirectoryResponse> persistentDirectories;
 
   /// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
-  final List<ReadinessCheckResponse3> readinessChecks;
+  final List<ReadinessCheckResponseWorkstationsV1> readinessChecks;
 
   /// Indicates whether this workstation configuration is currently being updated to match its intended state.
   final bool reconciling;
@@ -96,9 +96,8 @@ class GetWorkstationConfigResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['annotations'] = annotations;
-    map['conditions'] =
-        Input.encodeList<StatusResponse34, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
+    map['conditions'] = pulumi.Input.encodeList<StatusResponseWorkstationsV1,
+        Map<String, dynamic>>(conditions, (value) => value.toMap());
     map['container'] = container.toMap();
     map['createTime'] = createTime;
     map['degraded'] = degraded;
@@ -110,12 +109,12 @@ class GetWorkstationConfigResult {
     map['idleTimeout'] = idleTimeout;
     map['labels'] = labels;
     map['name'] = name;
-    map['persistentDirectories'] =
-        Input.encodeList<PersistentDirectoryResponse, Map<String, dynamic>>(
-            persistentDirectories, (value) => value.toMap());
-    map['readinessChecks'] =
-        Input.encodeList<ReadinessCheckResponse3, Map<String, dynamic>>(
-            readinessChecks, (value) => value.toMap());
+    map['persistentDirectories'] = pulumi.Input.encodeList<
+        PersistentDirectoryResponse,
+        Map<String, dynamic>>(persistentDirectories, (value) => value.toMap());
+    map['readinessChecks'] = pulumi.Input.encodeList<
+        ReadinessCheckResponseWorkstationsV1,
+        Map<String, dynamic>>(readinessChecks, (value) => value.toMap());
     map['reconciling'] = reconciling;
     map['replicaZones'] = replicaZones;
     map['runningTimeout'] = runningTimeout;
@@ -127,31 +126,33 @@ class GetWorkstationConfigResult {
   factory GetWorkstationConfigResult.fromMap(Map<String, dynamic> map) {
     return GetWorkstationConfigResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      conditions: Input.decodeList<StatusResponse34>(
+      conditions: pulumi.Input.decodeList<StatusResponseWorkstationsV1>(
           map['conditions'],
-          (value) =>
-              StatusResponse34.fromMap((value as Map).cast<String, dynamic>())),
-      container: ContainerResponse3.fromMap(
+          (value) => StatusResponseWorkstationsV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      container: ContainerResponseWorkstationsV1.fromMap(
           (map['container'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       degraded: map['degraded'] as bool,
       deleteTime: map['deleteTime'] as String,
       displayName: map['displayName'] as String,
-      encryptionKey: CustomerEncryptionKeyResponse5.fromMap(
+      encryptionKey: CustomerEncryptionKeyResponseWorkstationsV1.fromMap(
           (map['encryptionKey'] as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
       host: HostResponse.fromMap((map['host'] as Map).cast<String, dynamic>()),
       idleTimeout: map['idleTimeout'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      persistentDirectories: Input.decodeList<PersistentDirectoryResponse>(
-          map['persistentDirectories'],
-          (value) => PersistentDirectoryResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      readinessChecks: Input.decodeList<ReadinessCheckResponse3>(
-          map['readinessChecks'],
-          (value) => ReadinessCheckResponse3.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      persistentDirectories:
+          pulumi.Input.decodeList<PersistentDirectoryResponse>(
+              map['persistentDirectories'],
+              (value) => PersistentDirectoryResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      readinessChecks:
+          pulumi.Input.decodeList<ReadinessCheckResponseWorkstationsV1>(
+              map['readinessChecks'],
+              (value) => ReadinessCheckResponseWorkstationsV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       reconciling: map['reconciling'] as bool,
       replicaZones: (map['replicaZones'] as List).cast<String>(),
       runningTimeout: map['runningTimeout'] as String,

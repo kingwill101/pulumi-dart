@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SshPublicKey.
 class SshPublicKeyArgs {
   /// An expiration time in microseconds since epoch.
-  final Input<String>? expirationTimeUsec;
+  final pulumi.Input<String>? expirationTimeUsec;
 
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
-  final Input<String>? key;
-  final Input<String> userId;
+  final pulumi.Input<String>? key;
+  final pulumi.Input<String> userId;
 
   SshPublicKeyArgs({
     this.expirationTimeUsec,
@@ -34,9 +34,9 @@ class SshPublicKeyArgs {
   factory SshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyArgs(
       expirationTimeUsec:
-          Input.asOptionalInput<String>(map['expirationTimeUsec']),
-      key: Input.asOptionalInput<String>(map['key']),
-      userId: Input.asInput<String>(map['userId']),
+          pulumi.Input.asOptionalInput<String>(map['expirationTimeUsec']),
+      key: pulumi.Input.asOptionalInput<String>(map['key']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
     );
   }
 }

@@ -3,12 +3,12 @@
 import 'compensation_entry_type.dart';
 import 'compensation_entry_unit.dart';
 import 'compensation_range.dart';
-import 'money4.dart';
+import 'money_jobs_v3.dart';
 
 /// A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
 class CompensationEntry {
   /// Optional. Compensation amount.
-  final Money4? amount;
+  final MoneyJobsV3? amount;
 
   /// Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
   final String? description;
@@ -67,7 +67,7 @@ class CompensationEntry {
     return CompensationEntry(
       amount: map['amount'] == null
           ? null
-          : Money4.fromMap((map['amount'] as Map).cast<String, dynamic>()),
+          : MoneyJobsV3.fromMap((map['amount'] as Map).cast<String, dynamic>()),
       description:
           map['description'] == null ? null : map['description'] as String,
       expectedUnitsPerYear: map['expectedUnitsPerYear'] == null

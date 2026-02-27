@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'httpheader.dart';
 
 /// HTTPGetAction describes an action based on HTTP Get requests.
@@ -36,8 +36,9 @@ class HTTPGetAction {
     }
     final httpHeadersValue = httpHeaders;
     if (httpHeadersValue != null) {
-      map['httpHeaders'] = Input.encodeList<HTTPHeader, Map<String, dynamic>>(
-          httpHeadersValue, (value) => value.toMap());
+      map['httpHeaders'] =
+          pulumi.Input.encodeList<HTTPHeader, Map<String, dynamic>>(
+              httpHeadersValue, (value) => value.toMap());
     }
     final pathValue = path;
     if (pathValue != null) {
@@ -59,7 +60,7 @@ class HTTPGetAction {
       host: map['host'] == null ? null : map['host'] as String,
       httpHeaders: map['httpHeaders'] == null
           ? null
-          : Input.decodeList<HTTPHeader>(
+          : pulumi.Input.decodeList<HTTPHeader>(
               map['httpHeaders'],
               (value) =>
                   HTTPHeader.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_feature_monitoring_stats_anomaly_response.dart';
 
 /// Result data returned by getFeatureStoreFeature.
@@ -56,7 +56,7 @@ class GetFeatureStoreFeatureResult {
     map['disableMonitoring'] = disableMonitoring;
     map['etag'] = etag;
     map['labels'] = labels;
-    map['monitoringStatsAnomalies'] = Input.encodeList<
+    map['monitoringStatsAnomalies'] = pulumi.Input.encodeList<
             GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse,
             Map<String, dynamic>>(
         monitoringStatsAnomalies, (value) => value.toMap());
@@ -74,7 +74,7 @@ class GetFeatureStoreFeatureResult {
       disableMonitoring: map['disableMonitoring'] as bool,
       etag: map['etag'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      monitoringStatsAnomalies: Input.decodeList<
+      monitoringStatsAnomalies: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse>(
           map['monitoringStatsAnomalies'],
           (value) =>

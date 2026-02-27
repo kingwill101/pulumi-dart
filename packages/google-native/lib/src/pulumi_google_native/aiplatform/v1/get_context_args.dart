@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getContext.
 class GetContextArgs {
-  final Input<String> contextId;
-  final Input<String> location;
-  final Input<String> metadataStoreId;
-  final Input<String>? project;
+  final pulumi.Input<String> contextId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> metadataStoreId;
+  final pulumi.Input<String>? project;
 
   GetContextArgs({
     required this.contextId,
@@ -30,10 +30,10 @@ class GetContextArgs {
 
   factory GetContextArgs.fromMap(Map<String, dynamic> map) {
     return GetContextArgs(
-      contextId: Input.asInput<String>(map['contextId']),
-      location: Input.asInput<String>(map['location']),
-      metadataStoreId: Input.asInput<String>(map['metadataStoreId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      contextId: pulumi.Input.asInput<String>(map['contextId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      metadataStoreId: pulumi.Input.asInput<String>(map['metadataStoreId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

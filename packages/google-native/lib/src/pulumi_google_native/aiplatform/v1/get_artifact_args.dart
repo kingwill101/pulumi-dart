@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getArtifact.
 class GetArtifactArgs {
-  final Input<String> artifactId;
-  final Input<String> location;
-  final Input<String> metadataStoreId;
-  final Input<String>? project;
+  final pulumi.Input<String> artifactId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> metadataStoreId;
+  final pulumi.Input<String>? project;
 
   GetArtifactArgs({
     required this.artifactId,
@@ -30,10 +30,10 @@ class GetArtifactArgs {
 
   factory GetArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetArtifactArgs(
-      artifactId: Input.asInput<String>(map['artifactId']),
-      location: Input.asInput<String>(map['location']),
-      metadataStoreId: Input.asInput<String>(map['metadataStoreId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      artifactId: pulumi.Input.asInput<String>(map['artifactId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      metadataStoreId: pulumi.Input.asInput<String>(map['metadataStoreId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

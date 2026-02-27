@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPatchDeployment.
 class GetPatchDeploymentArgs {
-  final Input<String> patchDeploymentId;
-  final Input<String>? project;
+  final pulumi.Input<String> patchDeploymentId;
+  final pulumi.Input<String>? project;
 
   GetPatchDeploymentArgs({
     required this.patchDeploymentId,
@@ -24,8 +24,8 @@ class GetPatchDeploymentArgs {
 
   factory GetPatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchDeploymentArgs(
-      patchDeploymentId: Input.asInput<String>(map['patchDeploymentId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      patchDeploymentId: pulumi.Input.asInput<String>(map['patchDeploymentId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

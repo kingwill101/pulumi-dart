@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_perf_sample_series_response.dart';
 import 'perf_sample_series_args.dart';
 
@@ -6,26 +6,26 @@ import 'perf_sample_series_args.dart';
 /// Auto-naming is currently not supported for this resource.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class PerfSampleSeries extends CustomResource {
+class PerfSampleSeries extends pulumi.CustomResource {
   /// Basic series represented by a line chart
-  late final Output<BasicPerfSampleSeriesResponse> basicPerfSampleSeries;
-  late final Output<String> executionId;
-  late final Output<String> historyId;
-  late final Output<String> project;
+  late final pulumi.Output<BasicPerfSampleSeriesResponse> basicPerfSampleSeries;
+  late final pulumi.Output<String> executionId;
+  late final pulumi.Output<String> historyId;
+  late final pulumi.Output<String> project;
 
   /// A sample series id
-  late final Output<String> sampleSeriesId;
-  late final Output<String> stepId;
+  late final pulumi.Output<String> sampleSeriesId;
+  late final pulumi.Output<String> stepId;
 
   PerfSampleSeries(
     String name, {
     PerfSampleSeriesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:toolresults/v1beta3:PerfSampleSeries',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.basicPerfSampleSeries =
         registerOutput<BasicPerfSampleSeriesResponse>('basicPerfSampleSeries');

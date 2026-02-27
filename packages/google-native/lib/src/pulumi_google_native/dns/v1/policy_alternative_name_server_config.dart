@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_alternative_name_server_config_target_name_server.dart';
 
 class PolicyAlternativeNameServerConfig {
@@ -23,7 +23,7 @@ class PolicyAlternativeNameServerConfig {
     }
     final targetNameServersValue = targetNameServers;
     if (targetNameServersValue != null) {
-      map['targetNameServers'] = Input.encodeList<
+      map['targetNameServers'] = pulumi.Input.encodeList<
               PolicyAlternativeNameServerConfigTargetNameServer,
               Map<String, dynamic>>(
           targetNameServersValue, (value) => value.toMap());
@@ -36,7 +36,8 @@ class PolicyAlternativeNameServerConfig {
       kind: map['kind'] == null ? null : map['kind'] as String,
       targetNameServers: map['targetNameServers'] == null
           ? null
-          : Input.decodeList<PolicyAlternativeNameServerConfigTargetNameServer>(
+          : pulumi.Input.decodeList<
+                  PolicyAlternativeNameServerConfigTargetNameServer>(
               map['targetNameServers'],
               (value) =>
                   PolicyAlternativeNameServerConfigTargetNameServer.fromMap(

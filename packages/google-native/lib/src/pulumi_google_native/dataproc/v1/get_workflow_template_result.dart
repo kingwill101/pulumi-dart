@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataproc_v1_workflow_template_encryption_config_response.dart';
 import 'ordered_job_response.dart';
 import 'template_parameter_response.dart';
@@ -57,13 +57,13 @@ class GetWorkflowTemplateResult {
     map['createTime'] = createTime;
     map['dagTimeout'] = dagTimeout;
     map['encryptionConfig'] = encryptionConfig.toMap();
-    map['jobs'] = Input.encodeList<OrderedJobResponse, Map<String, dynamic>>(
-        jobs, (value) => value.toMap());
+    map['jobs'] =
+        pulumi.Input.encodeList<OrderedJobResponse, Map<String, dynamic>>(
+            jobs, (value) => value.toMap());
     map['labels'] = labels;
     map['name'] = name;
-    map['parameters'] =
-        Input.encodeList<TemplateParameterResponse, Map<String, dynamic>>(
-            parameters, (value) => value.toMap());
+    map['parameters'] = pulumi.Input.encodeList<TemplateParameterResponse,
+        Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['placement'] = placement.toMap();
     map['updateTime'] = updateTime;
     map['version'] = version;
@@ -77,13 +77,13 @@ class GetWorkflowTemplateResult {
       encryptionConfig:
           GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse.fromMap(
               (map['encryptionConfig'] as Map).cast<String, dynamic>()),
-      jobs: Input.decodeList<OrderedJobResponse>(
+      jobs: pulumi.Input.decodeList<OrderedJobResponse>(
           map['jobs'],
           (value) => OrderedJobResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      parameters: Input.decodeList<TemplateParameterResponse>(
+      parameters: pulumi.Input.decodeList<TemplateParameterResponse>(
           map['parameters'],
           (value) => TemplateParameterResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

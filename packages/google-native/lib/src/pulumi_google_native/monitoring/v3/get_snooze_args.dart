@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSnooze.
 class GetSnoozeArgs {
-  final Input<String>? project;
-  final Input<String> snoozeId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> snoozeId;
 
   GetSnoozeArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetSnoozeArgs {
 
   factory GetSnoozeArgs.fromMap(Map<String, dynamic> map) {
     return GetSnoozeArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      snoozeId: Input.asInput<String>(map['snoozeId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      snoozeId: pulumi.Input.asInput<String>(map['snoozeId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extension_chain_extension_supported_events_item.dart';
 
 /// A single extension in the chain to execute for the matching request.
@@ -51,9 +51,9 @@ class ExtensionChainExtension {
     map['service'] = service;
     final supportedEventsValue = supportedEvents;
     if (supportedEventsValue != null) {
-      map['supportedEvents'] =
-          Input.encodeList<ExtensionChainExtensionSupportedEventsItem, String>(
-              supportedEventsValue, (value) => value.value);
+      map['supportedEvents'] = pulumi.Input.encodeList<
+          ExtensionChainExtensionSupportedEventsItem,
+          String>(supportedEventsValue, (value) => value.value);
     }
     map['timeout'] = timeout;
     return map;
@@ -70,7 +70,7 @@ class ExtensionChainExtension {
       service: map['service'] as String,
       supportedEvents: map['supportedEvents'] == null
           ? null
-          : Input.decodeList<ExtensionChainExtensionSupportedEventsItem>(
+          : pulumi.Input.decodeList<ExtensionChainExtensionSupportedEventsItem>(
               map['supportedEvents'],
               (value) => ExtensionChainExtensionSupportedEventsItem.fromValue(
                   value as String)),

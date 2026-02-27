@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routing_vpcresponse.dart';
 import 'spoke_summary_response.dart';
 
@@ -57,7 +57,7 @@ class GetHubResult {
     map['name'] = name;
     map['routeTables'] = routeTables;
     map['routingVpcs'] =
-        Input.encodeList<RoutingVPCResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RoutingVPCResponse, Map<String, dynamic>>(
             routingVpcs, (value) => value.toMap());
     map['spokeSummary'] = spokeSummary.toMap();
     map['state'] = state;
@@ -73,7 +73,7 @@ class GetHubResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       routeTables: (map['routeTables'] as List).cast<String>(),
-      routingVpcs: Input.decodeList<RoutingVPCResponse>(
+      routingVpcs: pulumi.Input.decodeList<RoutingVPCResponse>(
           map['routingVpcs'],
           (value) => RoutingVPCResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

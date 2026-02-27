@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'environment_response4.dart';
+import 'environment_response_testing_v1.dart';
 import 'shard_response.dart';
 import 'test_details_response.dart';
 import 'test_specification_response.dart';
@@ -9,7 +9,7 @@ import 'tool_results_step_response.dart';
 /// A single test executed in a single environment.
 class TestExecutionResponse {
   /// How the host machine(s) are configured.
-  final EnvironmentResponse4 environment;
+  final EnvironmentResponseTestingV1 environment;
 
   /// Id of the containing TestMatrix.
   final String matrixId;
@@ -63,7 +63,7 @@ class TestExecutionResponse {
 
   factory TestExecutionResponse.fromMap(Map<String, dynamic> map) {
     return TestExecutionResponse(
-      environment: EnvironmentResponse4.fromMap(
+      environment: EnvironmentResponseTestingV1.fromMap(
           (map['environment'] as Map).cast<String, dynamic>()),
       matrixId: map['matrixId'] as String,
       project: map['project'] as String,

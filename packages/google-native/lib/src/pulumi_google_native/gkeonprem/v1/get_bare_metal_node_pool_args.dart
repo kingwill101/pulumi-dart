@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBareMetalNodePool.
 class GetBareMetalNodePoolArgs {
-  final Input<String> bareMetalClusterId;
-  final Input<String> bareMetalNodePoolId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? view;
+  final pulumi.Input<String> bareMetalClusterId;
+  final pulumi.Input<String> bareMetalNodePoolId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
 
   GetBareMetalNodePoolArgs({
     required this.bareMetalClusterId,
@@ -36,11 +36,13 @@ class GetBareMetalNodePoolArgs {
 
   factory GetBareMetalNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetBareMetalNodePoolArgs(
-      bareMetalClusterId: Input.asInput<String>(map['bareMetalClusterId']),
-      bareMetalNodePoolId: Input.asInput<String>(map['bareMetalNodePoolId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
+      bareMetalClusterId:
+          pulumi.Input.asInput<String>(map['bareMetalClusterId']),
+      bareMetalNodePoolId:
+          pulumi.Input.asInput<String>(map['bareMetalNodePoolId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

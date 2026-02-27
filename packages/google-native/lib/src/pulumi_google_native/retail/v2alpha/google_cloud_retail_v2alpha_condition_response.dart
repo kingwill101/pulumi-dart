@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2alpha_condition_query_term_response.dart';
 import 'google_cloud_retail_v2alpha_condition_time_range_response.dart';
 
@@ -24,11 +24,11 @@ class GoogleCloudRetailV2alphaConditionResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['activeTimeRange'] = Input.encodeList<
+    map['activeTimeRange'] = pulumi.Input.encodeList<
         GoogleCloudRetailV2alphaConditionTimeRangeResponse,
         Map<String, dynamic>>(activeTimeRange, (value) => value.toMap());
     map['pageCategories'] = pageCategories;
-    map['queryTerms'] = Input.encodeList<
+    map['queryTerms'] = pulumi.Input.encodeList<
         GoogleCloudRetailV2alphaConditionQueryTermResponse,
         Map<String, dynamic>>(queryTerms, (value) => value.toMap());
     return map;
@@ -37,19 +37,17 @@ class GoogleCloudRetailV2alphaConditionResponse {
   factory GoogleCloudRetailV2alphaConditionResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaConditionResponse(
-      activeTimeRange:
-          Input.decodeList<GoogleCloudRetailV2alphaConditionTimeRangeResponse>(
-              map['activeTimeRange'],
-              (value) =>
-                  GoogleCloudRetailV2alphaConditionTimeRangeResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      activeTimeRange: pulumi.Input.decodeList<
+              GoogleCloudRetailV2alphaConditionTimeRangeResponse>(
+          map['activeTimeRange'],
+          (value) => GoogleCloudRetailV2alphaConditionTimeRangeResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       pageCategories: (map['pageCategories'] as List).cast<String>(),
-      queryTerms:
-          Input.decodeList<GoogleCloudRetailV2alphaConditionQueryTermResponse>(
-              map['queryTerms'],
-              (value) =>
-                  GoogleCloudRetailV2alphaConditionQueryTermResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      queryTerms: pulumi.Input.decodeList<
+              GoogleCloudRetailV2alphaConditionQueryTermResponse>(
+          map['queryTerms'],
+          (value) => GoogleCloudRetailV2alphaConditionQueryTermResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

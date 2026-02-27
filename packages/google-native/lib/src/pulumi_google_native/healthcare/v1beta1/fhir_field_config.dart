@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fhir_field_config_profile_type.dart';
 import 'google_cloud_healthcare_v1beta1_deidentify_field_metadata.dart';
 import 'google_cloud_healthcare_v1beta1_deidentify_options.dart';
@@ -27,7 +27,7 @@ class FhirFieldConfig {
     final map = <String, dynamic>{};
     final fieldMetadataListValue = fieldMetadataList;
     if (fieldMetadataListValue != null) {
-      map['fieldMetadataList'] = Input.encodeList<
+      map['fieldMetadataList'] = pulumi.Input.encodeList<
               GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata,
               Map<String, dynamic>>(
           fieldMetadataListValue, (value) => value.toMap());
@@ -47,7 +47,7 @@ class FhirFieldConfig {
     return FhirFieldConfig(
       fieldMetadataList: map['fieldMetadataList'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>(
               map['fieldMetadataList'],
               (value) =>

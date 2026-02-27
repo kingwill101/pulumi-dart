@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_response.dart';
 import 'advanced_machine_features_response.dart';
-import 'attached_disk_response2.dart';
+import 'attached_disk_response_compute_alpha.dart';
 import 'confidential_instance_config_response.dart';
 import 'display_device_response.dart';
-import 'metadata_response2.dart';
-import 'network_interface_response2.dart';
+import 'metadata_response_compute_alpha.dart';
+import 'network_interface_response_compute_alpha.dart';
 import 'network_performance_config_response.dart';
 import 'reservation_affinity_response.dart';
 import 'scheduling_response.dart';
-import 'service_account_response3.dart';
+import 'service_account_response_compute_alpha.dart';
 import 'shielded_instance_config_response.dart';
 import 'shielded_vm_config_response.dart';
 import 'tags_response.dart';
@@ -30,7 +30,7 @@ class InstancePropertiesResponse {
   final String description;
 
   /// An array of disks that are associated with the instances that are created from these properties.
-  final List<AttachedDiskResponse2> disks;
+  final List<AttachedDiskResponseComputeAlpha> disks;
 
   /// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
   final DisplayDeviceResponse displayDevice;
@@ -48,13 +48,13 @@ class InstancePropertiesResponse {
   final String machineType;
 
   /// The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
-  final MetadataResponse2 metadata;
+  final MetadataResponseComputeAlpha metadata;
 
   /// Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
   final String minCpuPlatform;
 
   /// An array of network access configurations for this interface.
-  final List<NetworkInterfaceResponse2> networkInterfaces;
+  final List<NetworkInterfaceResponseComputeAlpha> networkInterfaces;
 
   /// Note that for MachineImage, this is not supported yet.
   final NetworkPerformanceConfigResponse networkPerformanceConfig;
@@ -84,7 +84,7 @@ class InstancePropertiesResponse {
   final List<String> secureTags;
 
   /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-  final List<ServiceAccountResponse3> serviceAccounts;
+  final List<ServiceAccountResponseComputeAlpha> serviceAccounts;
 
   /// Mapping of user defined keys to ServiceIntegrationSpec.
   final Map<String, String> serviceIntegrationSpecs;
@@ -134,21 +134,20 @@ class InstancePropertiesResponse {
     map['canIpForward'] = canIpForward;
     map['confidentialInstanceConfig'] = confidentialInstanceConfig.toMap();
     map['description'] = description;
-    map['disks'] =
-        Input.encodeList<AttachedDiskResponse2, Map<String, dynamic>>(
-            disks, (value) => value.toMap());
+    map['disks'] = pulumi.Input.encodeList<AttachedDiskResponseComputeAlpha,
+        Map<String, dynamic>>(disks, (value) => value.toMap());
     map['displayDevice'] = displayDevice.toMap();
-    map['guestAccelerators'] =
-        Input.encodeList<AcceleratorConfigResponse, Map<String, dynamic>>(
-            guestAccelerators, (value) => value.toMap());
+    map['guestAccelerators'] = pulumi.Input.encodeList<
+        AcceleratorConfigResponse,
+        Map<String, dynamic>>(guestAccelerators, (value) => value.toMap());
     map['keyRevocationActionType'] = keyRevocationActionType;
     map['labels'] = labels;
     map['machineType'] = machineType;
     map['metadata'] = metadata.toMap();
     map['minCpuPlatform'] = minCpuPlatform;
-    map['networkInterfaces'] =
-        Input.encodeList<NetworkInterfaceResponse2, Map<String, dynamic>>(
-            networkInterfaces, (value) => value.toMap());
+    map['networkInterfaces'] = pulumi.Input.encodeList<
+        NetworkInterfaceResponseComputeAlpha,
+        Map<String, dynamic>>(networkInterfaces, (value) => value.toMap());
     map['networkPerformanceConfig'] = networkPerformanceConfig.toMap();
     map['partnerMetadata'] = partnerMetadata;
     map['postKeyRevocationActionType'] = postKeyRevocationActionType;
@@ -158,9 +157,9 @@ class InstancePropertiesResponse {
     map['resourcePolicies'] = resourcePolicies;
     map['scheduling'] = scheduling.toMap();
     map['secureTags'] = secureTags;
-    map['serviceAccounts'] =
-        Input.encodeList<ServiceAccountResponse3, Map<String, dynamic>>(
-            serviceAccounts, (value) => value.toMap());
+    map['serviceAccounts'] = pulumi.Input.encodeList<
+        ServiceAccountResponseComputeAlpha,
+        Map<String, dynamic>>(serviceAccounts, (value) => value.toMap());
     map['serviceIntegrationSpecs'] = serviceIntegrationSpecs;
     map['shieldedInstanceConfig'] = shieldedInstanceConfig.toMap();
     map['shieldedVmConfig'] = shieldedVmConfig.toMap();
@@ -176,26 +175,27 @@ class InstancePropertiesResponse {
       confidentialInstanceConfig: ConfidentialInstanceConfigResponse.fromMap(
           (map['confidentialInstanceConfig'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
-      disks: Input.decodeList<AttachedDiskResponse2>(
+      disks: pulumi.Input.decodeList<AttachedDiskResponseComputeAlpha>(
           map['disks'],
-          (value) => AttachedDiskResponse2.fromMap(
+          (value) => AttachedDiskResponseComputeAlpha.fromMap(
               (value as Map).cast<String, dynamic>())),
       displayDevice: DisplayDeviceResponse.fromMap(
           (map['displayDevice'] as Map).cast<String, dynamic>()),
-      guestAccelerators: Input.decodeList<AcceleratorConfigResponse>(
+      guestAccelerators: pulumi.Input.decodeList<AcceleratorConfigResponse>(
           map['guestAccelerators'],
           (value) => AcceleratorConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       keyRevocationActionType: map['keyRevocationActionType'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       machineType: map['machineType'] as String,
-      metadata: MetadataResponse2.fromMap(
+      metadata: MetadataResponseComputeAlpha.fromMap(
           (map['metadata'] as Map).cast<String, dynamic>()),
       minCpuPlatform: map['minCpuPlatform'] as String,
-      networkInterfaces: Input.decodeList<NetworkInterfaceResponse2>(
-          map['networkInterfaces'],
-          (value) => NetworkInterfaceResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networkInterfaces:
+          pulumi.Input.decodeList<NetworkInterfaceResponseComputeAlpha>(
+              map['networkInterfaces'],
+              (value) => NetworkInterfaceResponseComputeAlpha.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       networkPerformanceConfig: NetworkPerformanceConfigResponse.fromMap(
           (map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
       partnerMetadata: (map['partnerMetadata'] as Map).cast<String, String>(),
@@ -209,10 +209,11 @@ class InstancePropertiesResponse {
       scheduling: SchedulingResponse.fromMap(
           (map['scheduling'] as Map).cast<String, dynamic>()),
       secureTags: (map['secureTags'] as List).cast<String>(),
-      serviceAccounts: Input.decodeList<ServiceAccountResponse3>(
-          map['serviceAccounts'],
-          (value) => ServiceAccountResponse3.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      serviceAccounts:
+          pulumi.Input.decodeList<ServiceAccountResponseComputeAlpha>(
+              map['serviceAccounts'],
+              (value) => ServiceAccountResponseComputeAlpha.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       serviceIntegrationSpecs:
           (map['serviceIntegrationSpecs'] as Map).cast<String, String>(),
       shieldedInstanceConfig: ShieldedInstanceConfigResponse.fromMap(

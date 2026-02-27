@@ -1,30 +1,30 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_ring_args.dart';
 
 /// Create a new KeyRing in a given Project and Location.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class KeyRing extends CustomResource {
+class KeyRing extends pulumi.CustomResource {
   /// The time at which this KeyRing was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-  late final Output<String> keyRingId;
-  late final Output<String> location;
+  late final pulumi.Output<String> keyRingId;
+  late final pulumi.Output<String> location;
 
   /// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   KeyRing(
     String name, {
     KeyRingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:cloudkms/v1:KeyRing',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.keyRingId = registerOutput<String>('keyRingId');

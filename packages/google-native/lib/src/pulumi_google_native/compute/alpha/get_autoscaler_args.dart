@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAutoscaler.
 class GetAutoscalerArgs {
-  final Input<String> autoscaler;
-  final Input<String>? project;
-  final Input<String> zone;
+  final pulumi.Input<String> autoscaler;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> zone;
 
   GetAutoscalerArgs({
     required this.autoscaler,
@@ -27,9 +27,9 @@ class GetAutoscalerArgs {
 
   factory GetAutoscalerArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoscalerArgs(
-      autoscaler: Input.asInput<String>(map['autoscaler']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asInput<String>(map['zone']),
+      autoscaler: pulumi.Input.asInput<String>(map['autoscaler']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

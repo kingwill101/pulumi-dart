@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iteration_result_response.dart';
 
 class MlStatisticsResponse {
@@ -18,7 +18,7 @@ class MlStatisticsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['iterationResults'] =
-        Input.encodeList<IterationResultResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<IterationResultResponse, Map<String, dynamic>>(
             iterationResults, (value) => value.toMap());
     map['maxIterations'] = maxIterations;
     return map;
@@ -26,7 +26,7 @@ class MlStatisticsResponse {
 
   factory MlStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return MlStatisticsResponse(
-      iterationResults: Input.decodeList<IterationResultResponse>(
+      iterationResults: pulumi.Input.decodeList<IterationResultResponse>(
           map['iterationResults'],
           (value) => IterationResultResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

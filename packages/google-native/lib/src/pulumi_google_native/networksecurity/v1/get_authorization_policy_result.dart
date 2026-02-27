@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'rule_response6.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'rule_response_networksecurity_v1.dart';
 
 /// Result data returned by getAuthorizationPolicy.
 class GetAuthorizationPolicyResult {
@@ -21,7 +21,7 @@ class GetAuthorizationPolicyResult {
   final String name;
 
   /// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
-  final List<RuleResponse6> rules;
+  final List<RuleResponseNetworksecurityV1> rules;
 
   /// The timestamp when the resource was updated.
   final String updateTime;
@@ -43,8 +43,8 @@ class GetAuthorizationPolicyResult {
     map['description'] = description;
     map['labels'] = labels;
     map['name'] = name;
-    map['rules'] = Input.encodeList<RuleResponse6, Map<String, dynamic>>(
-        rules, (value) => value.toMap());
+    map['rules'] = pulumi.Input.encodeList<RuleResponseNetworksecurityV1,
+        Map<String, dynamic>>(rules, (value) => value.toMap());
     map['updateTime'] = updateTime;
     return map;
   }
@@ -56,10 +56,10 @@ class GetAuthorizationPolicyResult {
       description: map['description'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      rules: Input.decodeList<RuleResponse6>(
+      rules: pulumi.Input.decodeList<RuleResponseNetworksecurityV1>(
           map['rules'],
-          (value) =>
-              RuleResponse6.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => RuleResponseNetworksecurityV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }

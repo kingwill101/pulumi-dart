@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_rule.dart';
 
 /// The set of arguments for RuleSet.
 class RuleSetArgs {
   /// Short description of the rule-set.
-  final Input<String>? description;
-  final Input<String>? location;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// List of rules given by the customer.
-  final Input<List<GoogleCloudContentwarehouseV1Rule>>? rules;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1Rule>>? rules;
 
   /// Source of the rules i.e., customer name.
-  final Input<String>? source;
+  final pulumi.Input<String>? source;
 
   RuleSetArgs({
     this.description,
@@ -48,11 +48,11 @@ class RuleSetArgs {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.mapOptionalInputValue<
+      map['rules'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudContentwarehouseV1Rule>,
               List<Map<String, dynamic>>>(
           rulesValue,
-          (value) => Input.encodeList<GoogleCloudContentwarehouseV1Rule,
+          (value) => pulumi.Input.encodeList<GoogleCloudContentwarehouseV1Rule,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final sourceValue = source;
@@ -64,13 +64,14 @@ class RuleSetArgs {
 
   factory RuleSetArgs.fromMap(Map<String, dynamic> map) {
     return RuleSetArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      rules: Input.asOptionalInput<List<GoogleCloudContentwarehouseV1Rule>>(
-          map['rules']),
-      source: Input.asOptionalInput<String>(map['source']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      rules:
+          pulumi.Input.asOptionalInput<List<GoogleCloudContentwarehouseV1Rule>>(
+              map['rules']),
+      source: pulumi.Input.asOptionalInput<String>(map['source']),
     );
   }
 }

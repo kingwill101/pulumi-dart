@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apigateway_audit_config_response.dart';
 import 'apigateway_binding_response.dart';
 
@@ -27,12 +27,10 @@ class GetApiConfigIamPolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['auditConfigs'] =
-        Input.encodeList<ApigatewayAuditConfigResponse, Map<String, dynamic>>(
-            auditConfigs, (value) => value.toMap());
-    map['bindings'] =
-        Input.encodeList<ApigatewayBindingResponse, Map<String, dynamic>>(
-            bindings, (value) => value.toMap());
+    map['auditConfigs'] = pulumi.Input.encodeList<ApigatewayAuditConfigResponse,
+        Map<String, dynamic>>(auditConfigs, (value) => value.toMap());
+    map['bindings'] = pulumi.Input.encodeList<ApigatewayBindingResponse,
+        Map<String, dynamic>>(bindings, (value) => value.toMap());
     map['etag'] = etag;
     map['version'] = version;
     return map;
@@ -40,11 +38,11 @@ class GetApiConfigIamPolicyResult {
 
   factory GetApiConfigIamPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetApiConfigIamPolicyResult(
-      auditConfigs: Input.decodeList<ApigatewayAuditConfigResponse>(
+      auditConfigs: pulumi.Input.decodeList<ApigatewayAuditConfigResponse>(
           map['auditConfigs'],
           (value) => ApigatewayAuditConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      bindings: Input.decodeList<ApigatewayBindingResponse>(
+      bindings: pulumi.Input.decodeList<ApigatewayBindingResponse>(
           map['bindings'],
           (value) => ApigatewayBindingResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_circuit_info_response.dart';
 import 'interconnect_macsec_response.dart';
 import 'interconnect_outage_notification_response.dart';
@@ -134,13 +134,13 @@ class GetInterconnectResult {
     final map = <String, dynamic>{};
     map['adminEnabled'] = adminEnabled;
     map['availableFeatures'] = availableFeatures;
-    map['circuitInfos'] =
-        Input.encodeList<InterconnectCircuitInfoResponse, Map<String, dynamic>>(
-            circuitInfos, (value) => value.toMap());
+    map['circuitInfos'] = pulumi.Input.encodeList<
+        InterconnectCircuitInfoResponse,
+        Map<String, dynamic>>(circuitInfos, (value) => value.toMap());
     map['creationTimestamp'] = creationTimestamp;
     map['customerName'] = customerName;
     map['description'] = description;
-    map['expectedOutages'] = Input.encodeList<
+    map['expectedOutages'] = pulumi.Input.encodeList<
         InterconnectOutageNotificationResponse,
         Map<String, dynamic>>(expectedOutages, (value) => value.toMap());
     map['googleIpAddress'] = googleIpAddress;
@@ -173,17 +173,18 @@ class GetInterconnectResult {
     return GetInterconnectResult(
       adminEnabled: map['adminEnabled'] as bool,
       availableFeatures: (map['availableFeatures'] as List).cast<String>(),
-      circuitInfos: Input.decodeList<InterconnectCircuitInfoResponse>(
+      circuitInfos: pulumi.Input.decodeList<InterconnectCircuitInfoResponse>(
           map['circuitInfos'],
           (value) => InterconnectCircuitInfoResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       creationTimestamp: map['creationTimestamp'] as String,
       customerName: map['customerName'] as String,
       description: map['description'] as String,
-      expectedOutages: Input.decodeList<InterconnectOutageNotificationResponse>(
-          map['expectedOutages'],
-          (value) => InterconnectOutageNotificationResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      expectedOutages:
+          pulumi.Input.decodeList<InterconnectOutageNotificationResponse>(
+              map['expectedOutages'],
+              (value) => InterconnectOutageNotificationResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       googleIpAddress: map['googleIpAddress'] as String,
       googleReferenceId: map['googleReferenceId'] as String,
       interconnectAttachments:

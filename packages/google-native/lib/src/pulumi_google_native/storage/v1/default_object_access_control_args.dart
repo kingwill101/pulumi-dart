@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_object_access_control_project_team.dart';
 
 /// The set of arguments for DefaultObjectAccessControl.
 class DefaultObjectAccessControlArgs {
   /// The name of the bucket.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// The domain associated with the entity, if any.
-  final Input<String>? domain;
+  final pulumi.Input<String>? domain;
 
   /// The email address associated with the entity, if any.
-  final Input<String>? email;
+  final pulumi.Input<String>? email;
 
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
@@ -26,37 +26,37 @@ class DefaultObjectAccessControlArgs {
   /// - The user liz@example.com would be user-liz@example.com.
   /// - The group example@googlegroups.com would be group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-  final Input<String>? entity;
+  final pulumi.Input<String>? entity;
 
   /// The ID for the entity, if any.
-  final Input<String>? entityId;
+  final pulumi.Input<String>? entityId;
 
   /// HTTP 1.1 Entity tag for the access-control entry.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// The content generation of the object, if applied to an object.
-  final Input<String>? generation;
+  final pulumi.Input<String>? generation;
 
   /// The ID of the access-control entry.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
-  final Input<String>? kind;
+  final pulumi.Input<String>? kind;
 
   /// The name of the object, if applied to an object.
-  final Input<String>? object;
+  final pulumi.Input<String>? object;
 
   /// The project team associated with the entity, if any.
-  final Input<DefaultObjectAccessControlProjectTeam>? projectTeam;
+  final pulumi.Input<DefaultObjectAccessControlProjectTeam>? projectTeam;
 
   /// The access permission for the entity.
-  final Input<String>? role;
+  final pulumi.Input<String>? role;
 
   /// The link to this access-control entry.
-  final Input<String>? selfLink;
+  final pulumi.Input<String>? selfLink;
 
   /// The project to be billed for this request. Required for Requester Pays buckets.
-  final Input<String>? userProject;
+  final pulumi.Input<String>? userProject;
 
   DefaultObjectAccessControlArgs({
     required this.bucket,
@@ -116,7 +116,7 @@ class DefaultObjectAccessControlArgs {
     }
     final projectTeamValue = projectTeam;
     if (projectTeamValue != null) {
-      map['projectTeam'] = Input.mapOptionalInputValue<
+      map['projectTeam'] = pulumi.Input.mapOptionalInputValue<
           DefaultObjectAccessControlProjectTeam,
           Map<String, dynamic>>(projectTeamValue, (value) => value.toMap());
     }
@@ -137,21 +137,22 @@ class DefaultObjectAccessControlArgs {
 
   factory DefaultObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return DefaultObjectAccessControlArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      domain: Input.asOptionalInput<String>(map['domain']),
-      email: Input.asOptionalInput<String>(map['email']),
-      entity: Input.asOptionalInput<String>(map['entity']),
-      entityId: Input.asOptionalInput<String>(map['entityId']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      generation: Input.asOptionalInput<String>(map['generation']),
-      id: Input.asOptionalInput<String>(map['id']),
-      kind: Input.asOptionalInput<String>(map['kind']),
-      object: Input.asOptionalInput<String>(map['object']),
-      projectTeam: Input.asOptionalInput<DefaultObjectAccessControlProjectTeam>(
-          map['projectTeam']),
-      role: Input.asOptionalInput<String>(map['role']),
-      selfLink: Input.asOptionalInput<String>(map['selfLink']),
-      userProject: Input.asOptionalInput<String>(map['userProject']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      domain: pulumi.Input.asOptionalInput<String>(map['domain']),
+      email: pulumi.Input.asOptionalInput<String>(map['email']),
+      entity: pulumi.Input.asOptionalInput<String>(map['entity']),
+      entityId: pulumi.Input.asOptionalInput<String>(map['entityId']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      generation: pulumi.Input.asOptionalInput<String>(map['generation']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      kind: pulumi.Input.asOptionalInput<String>(map['kind']),
+      object: pulumi.Input.asOptionalInput<String>(map['object']),
+      projectTeam:
+          pulumi.Input.asOptionalInput<DefaultObjectAccessControlProjectTeam>(
+              map['projectTeam']),
+      role: pulumi.Input.asOptionalInput<String>(map['role']),
+      selfLink: pulumi.Input.asOptionalInput<String>(map['selfLink']),
+      userProject: pulumi.Input.asOptionalInput<String>(map['userProject']),
     );
   }
 }

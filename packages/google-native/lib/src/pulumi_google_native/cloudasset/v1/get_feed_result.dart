@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'expr_response16.dart';
+import 'expr_response_cloudasset_v1.dart';
 import 'feed_output_config_response.dart';
 
 /// Result data returned by getFeed.
@@ -12,7 +12,7 @@ class GetFeedResult {
   final List<String> assetTypes;
 
   /// A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed instructions.
-  final ExprResponse16 condition;
+  final ExprResponseCloudassetV1 condition;
 
   /// Asset content type. If not specified, no content but the asset name and type will be returned.
   final String contentType;
@@ -52,7 +52,7 @@ class GetFeedResult {
     return GetFeedResult(
       assetNames: (map['assetNames'] as List).cast<String>(),
       assetTypes: (map['assetTypes'] as List).cast<String>(),
-      condition: ExprResponse16.fromMap(
+      condition: ExprResponseCloudassetV1.fromMap(
           (map['condition'] as Map).cast<String, dynamic>()),
       contentType: map['contentType'] as String,
       feedOutputConfig: FeedOutputConfigResponse.fromMap(

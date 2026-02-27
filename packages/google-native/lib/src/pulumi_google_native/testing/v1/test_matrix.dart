@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_info_response.dart';
 import 'environment_matrix_response.dart';
 import 'result_storage_response.dart';
@@ -10,56 +10,56 @@ import 'test_specification_response.dart';
 /// Auto-naming is currently not supported for this resource.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class TestMatrix extends CustomResource {
+class TestMatrix extends pulumi.CustomResource {
   /// Information about the client which invoked the test.
-  late final Output<ClientInfoResponse> clientInfo;
+  late final pulumi.Output<ClientInfoResponse> clientInfo;
 
   /// The devices the tests are being executed on.
-  late final Output<EnvironmentMatrixResponse> environmentMatrix;
+  late final pulumi.Output<EnvironmentMatrixResponse> environmentMatrix;
 
   /// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
-  late final Output<bool> failFast;
+  late final pulumi.Output<bool> failFast;
 
   /// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-  late final Output<int> flakyTestAttempts;
+  late final pulumi.Output<int> flakyTestAttempts;
 
   /// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-  late final Output<String> invalidMatrixDetails;
+  late final pulumi.Output<String> invalidMatrixDetails;
 
   /// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-  late final Output<String> outcomeSummary;
-  late final Output<String> project;
+  late final pulumi.Output<String> outcomeSummary;
+  late final pulumi.Output<String> project;
 
   /// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
-  late final Output<String?> requestId;
+  late final pulumi.Output<String?> requestId;
 
   /// Where the results for the matrix are written.
-  late final Output<ResultStorageResponse> resultStorage;
+  late final pulumi.Output<ResultStorageResponse> resultStorage;
 
   /// Indicates the current progress of the test matrix.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The list of test executions that the service creates for this matrix.
-  late final Output<List<TestExecutionResponse>> testExecutions;
+  late final pulumi.Output<List<TestExecutionResponse>> testExecutions;
 
   /// Unique id set by the service.
-  late final Output<String> testMatrixId;
+  late final pulumi.Output<String> testMatrixId;
 
   /// How to run the test.
-  late final Output<TestSpecificationResponse> testSpecification;
+  late final pulumi.Output<TestSpecificationResponse> testSpecification;
 
   /// The time this test matrix was initially created.
-  late final Output<String> timestamp;
+  late final pulumi.Output<String> timestamp;
 
   TestMatrix(
     String name, {
     TestMatrixArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:testing/v1:TestMatrix',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clientInfo = registerOutput<ClientInfoResponse>('clientInfo');
     this.environmentMatrix =

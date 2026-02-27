@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_operation_response.dart';
 
 /// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
@@ -24,7 +24,7 @@ class EgressToResponse {
     final map = <String, dynamic>{};
     map['externalResources'] = externalResources;
     map['operations'] =
-        Input.encodeList<ApiOperationResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ApiOperationResponse, Map<String, dynamic>>(
             operations, (value) => value.toMap());
     map['resources'] = resources;
     return map;
@@ -33,7 +33,7 @@ class EgressToResponse {
   factory EgressToResponse.fromMap(Map<String, dynamic> map) {
     return EgressToResponse(
       externalResources: (map['externalResources'] as List).cast<String>(),
-      operations: Input.decodeList<ApiOperationResponse>(
+      operations: pulumi.Input.decodeList<ApiOperationResponse>(
           map['operations'],
           (value) => ApiOperationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

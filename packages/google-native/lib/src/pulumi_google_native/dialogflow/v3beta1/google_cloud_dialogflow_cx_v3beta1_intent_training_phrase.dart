@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_intent_training_phrase_part.dart';
 
 /// Represents an example that the agent is trained on to identify the intent.
@@ -18,7 +18,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['parts'] = Input.encodeList<
+    map['parts'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart,
         Map<String, dynamic>>(parts, (value) => value.toMap());
     final repeatCountValue = repeatCount;
@@ -31,7 +31,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
   factory GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase(
-      parts: Input.decodeList<
+      parts: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>(
           map['parts'],
           (value) =>

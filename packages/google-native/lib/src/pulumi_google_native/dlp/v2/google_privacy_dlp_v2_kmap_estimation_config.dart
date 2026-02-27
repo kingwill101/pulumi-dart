@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_auxiliary_table.dart';
 import 'google_privacy_dlp_v2_tagged_field.dart';
 
@@ -25,13 +25,12 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
     final map = <String, dynamic>{};
     final auxiliaryTablesValue = auxiliaryTables;
     if (auxiliaryTablesValue != null) {
-      map['auxiliaryTables'] = Input.encodeList<
+      map['auxiliaryTables'] = pulumi.Input.encodeList<
           GooglePrivacyDlpV2AuxiliaryTable,
           Map<String, dynamic>>(auxiliaryTablesValue, (value) => value.toMap());
     }
-    map['quasiIds'] =
-        Input.encodeList<GooglePrivacyDlpV2TaggedField, Map<String, dynamic>>(
-            quasiIds, (value) => value.toMap());
+    map['quasiIds'] = pulumi.Input.encodeList<GooglePrivacyDlpV2TaggedField,
+        Map<String, dynamic>>(quasiIds, (value) => value.toMap());
     final regionCodeValue = regionCode;
     if (regionCodeValue != null) {
       map['regionCode'] = regionCodeValue;
@@ -44,11 +43,11 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
     return GooglePrivacyDlpV2KMapEstimationConfig(
       auxiliaryTables: map['auxiliaryTables'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2AuxiliaryTable>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2AuxiliaryTable>(
               map['auxiliaryTables'],
               (value) => GooglePrivacyDlpV2AuxiliaryTable.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      quasiIds: Input.decodeList<GooglePrivacyDlpV2TaggedField>(
+      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2TaggedField>(
           map['quasiIds'],
           (value) => GooglePrivacyDlpV2TaggedField.fromMap(
               (value as Map).cast<String, dynamic>())),

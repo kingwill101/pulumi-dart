@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'target_response2.dart';
+import 'target_response_dataform_v1beta1.dart';
 
 /// An error encountered when attempting to compile a Dataform project.
 class CompilationErrorResponse {
   /// The identifier of the action where this error occurred, if available.
-  final TargetResponse2 actionTarget;
+  final TargetResponseDataformV1beta1 actionTarget;
 
   /// The error's top level message.
   final String message;
@@ -34,7 +34,7 @@ class CompilationErrorResponse {
 
   factory CompilationErrorResponse.fromMap(Map<String, dynamic> map) {
     return CompilationErrorResponse(
-      actionTarget: TargetResponse2.fromMap(
+      actionTarget: TargetResponseDataformV1beta1.fromMap(
           (map['actionTarget'] as Map).cast<String, dynamic>()),
       message: map['message'] as String,
       path: map['path'] as String,

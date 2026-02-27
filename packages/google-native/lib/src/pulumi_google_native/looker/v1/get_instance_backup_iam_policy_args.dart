@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceBackupIamPolicy.
 class GetInstanceBackupIamPolicyArgs {
-  final Input<String> backupId;
-  final Input<String> instanceId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> backupId;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetInstanceBackupIamPolicyArgs({
     required this.backupId,
@@ -36,12 +36,12 @@ class GetInstanceBackupIamPolicyArgs {
 
   factory GetInstanceBackupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceBackupIamPolicyArgs(
-      backupId: Input.asInput<String>(map['backupId']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      backupId: pulumi.Input.asInput<String>(map['backupId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

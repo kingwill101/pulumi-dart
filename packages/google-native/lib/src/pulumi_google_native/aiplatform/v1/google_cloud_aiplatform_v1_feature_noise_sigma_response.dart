@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_feature_noise_sigma_noise_sigma_for_feature_response.dart';
 
 /// Noise sigma by features. Noise sigma represents the standard deviation of the gaussian kernel that will be used to add noise to interpolated inputs prior to computing gradients.
@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1FeatureNoiseSigmaResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['noiseSigma'] = Input.encodeList<
+    map['noiseSigma'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse,
         Map<String, dynamic>>(noiseSigma, (value) => value.toMap());
     return map;
@@ -25,7 +25,7 @@ class GoogleCloudAiplatformV1FeatureNoiseSigmaResponse {
   factory GoogleCloudAiplatformV1FeatureNoiseSigmaResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureNoiseSigmaResponse(
-      noiseSigma: Input.decodeList<
+      noiseSigma: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse>(
           map['noiseSigma'],
           (value) =>

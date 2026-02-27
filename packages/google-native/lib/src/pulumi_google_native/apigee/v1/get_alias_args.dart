@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAlias.
 class GetAliasArgs {
-  final Input<String> aliasId;
-  final Input<String> environmentId;
-  final Input<String> keystoreId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> aliasId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> keystoreId;
+  final pulumi.Input<String> organizationId;
 
   GetAliasArgs({
     required this.aliasId,
@@ -27,10 +27,10 @@ class GetAliasArgs {
 
   factory GetAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetAliasArgs(
-      aliasId: Input.asInput<String>(map['aliasId']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      keystoreId: Input.asInput<String>(map['keystoreId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      aliasId: pulumi.Input.asInput<String>(map['aliasId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      keystoreId: pulumi.Input.asInput<String>(map['keystoreId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

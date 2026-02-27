@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config3.dart';
+import 'logging_config_dataproc_v1.dart';
 
 /// A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
 class HadoopJob {
@@ -17,7 +17,7 @@ class HadoopJob {
   final List<String>? jarFileUris;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfig3? loggingConfig;
+  final LoggingConfigDataprocV1? loggingConfig;
 
   /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
   final String? mainClass;
@@ -90,7 +90,7 @@ class HadoopJob {
           : (map['jarFileUris'] as List).cast<String>(),
       loggingConfig: map['loggingConfig'] == null
           ? null
-          : LoggingConfig3.fromMap(
+          : LoggingConfigDataprocV1.fromMap(
               (map['loggingConfig'] as Map).cast<String, dynamic>()),
       mainClass: map['mainClass'] == null ? null : map['mainClass'] as String,
       mainJarFileUri: map['mainJarFileUri'] == null

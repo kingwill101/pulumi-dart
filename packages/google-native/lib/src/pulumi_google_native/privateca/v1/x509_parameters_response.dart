@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ca_options_response.dart';
 import 'key_usage_response.dart';
 import 'name_constraints_response.dart';
@@ -39,20 +39,21 @@ class X509ParametersResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['additionalExtensions'] =
-        Input.encodeList<X509ExtensionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<X509ExtensionResponse, Map<String, dynamic>>(
             additionalExtensions, (value) => value.toMap());
     map['aiaOcspServers'] = aiaOcspServers;
     map['caOptions'] = caOptions.toMap();
     map['keyUsage'] = keyUsage.toMap();
     map['nameConstraints'] = nameConstraints.toMap();
-    map['policyIds'] = Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
-        policyIds, (value) => value.toMap());
+    map['policyIds'] =
+        pulumi.Input.encodeList<ObjectIdResponse, Map<String, dynamic>>(
+            policyIds, (value) => value.toMap());
     return map;
   }
 
   factory X509ParametersResponse.fromMap(Map<String, dynamic> map) {
     return X509ParametersResponse(
-      additionalExtensions: Input.decodeList<X509ExtensionResponse>(
+      additionalExtensions: pulumi.Input.decodeList<X509ExtensionResponse>(
           map['additionalExtensions'],
           (value) => X509ExtensionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -63,7 +64,7 @@ class X509ParametersResponse {
           (map['keyUsage'] as Map).cast<String, dynamic>()),
       nameConstraints: NameConstraintsResponse.fromMap(
           (map['nameConstraints'] as Map).cast<String, dynamic>()),
-      policyIds: Input.decodeList<ObjectIdResponse>(
+      policyIds: pulumi.Input.decodeList<ObjectIdResponse>(
           map['policyIds'],
           (value) =>
               ObjectIdResponse.fromMap((value as Map).cast<String, dynamic>())),

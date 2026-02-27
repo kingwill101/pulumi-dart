@@ -1,38 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute.dart';
 
 /// The set of arguments for AppGroupApp.
 class AppGroupAppArgs {
   /// List of API products associated with the AppGroup app.
-  final Input<List<String>>? apiProducts;
+  final pulumi.Input<List<String>>? apiProducts;
 
   /// Immutable. Name of the parent AppGroup whose resource name format is of syntax (organizations/*/appgroups/*).
-  final Input<String>? appGroup;
+  final pulumi.Input<String>? appGroup;
 
   /// Immutable. ID of the AppGroup app.
-  final Input<String>? appId;
-  final Input<String> appgroupId;
+  final pulumi.Input<String>? appId;
+  final pulumi.Input<String> appgroupId;
 
   /// List of attributes for the AppGroup app.
-  final Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
 
   /// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to AppGroup apps.
-  final Input<String>? callbackUrl;
+  final pulumi.Input<String>? callbackUrl;
 
   /// Immutable. Expiration time, in seconds, for the consumer key that is generated for the AppGroup app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
-  final Input<String>? keyExpiresIn;
+  final pulumi.Input<String>? keyExpiresIn;
 
   /// Immutable. Name of the AppGroup app whose resource name format is of syntax (organizations/*/appgroups/*/apps/*).
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   /// Scopes to apply to the AppGroup app. The specified scopes must already exist for the API product that you associate with the AppGroup app.
-  final Input<List<String>>? scopes;
+  final pulumi.Input<List<String>>? scopes;
 
   /// Status of the App. Valid values include `approved` or `revoked`.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   AppGroupAppArgs({
     this.apiProducts,
@@ -65,10 +65,10 @@ class AppGroupAppArgs {
     map['appgroupId'] = appgroupId;
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.mapOptionalInputValue<
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudApigeeV1Attribute>, List<Map<String, dynamic>>>(
           attributesValue,
-          (value) => Input.encodeList<GoogleCloudApigeeV1Attribute,
+          (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1Attribute,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final callbackUrlValue = callbackUrl;
@@ -97,18 +97,20 @@ class AppGroupAppArgs {
 
   factory AppGroupAppArgs.fromMap(Map<String, dynamic> map) {
     return AppGroupAppArgs(
-      apiProducts: Input.asOptionalInput<List<String>>(map['apiProducts']),
-      appGroup: Input.asOptionalInput<String>(map['appGroup']),
-      appId: Input.asOptionalInput<String>(map['appId']),
-      appgroupId: Input.asInput<String>(map['appgroupId']),
-      attributes: Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(
-          map['attributes']),
-      callbackUrl: Input.asOptionalInput<String>(map['callbackUrl']),
-      keyExpiresIn: Input.asOptionalInput<String>(map['keyExpiresIn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      scopes: Input.asOptionalInput<List<String>>(map['scopes']),
-      status: Input.asOptionalInput<String>(map['status']),
+      apiProducts:
+          pulumi.Input.asOptionalInput<List<String>>(map['apiProducts']),
+      appGroup: pulumi.Input.asOptionalInput<String>(map['appGroup']),
+      appId: pulumi.Input.asOptionalInput<String>(map['appId']),
+      appgroupId: pulumi.Input.asInput<String>(map['appgroupId']),
+      attributes:
+          pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(
+              map['attributes']),
+      callbackUrl: pulumi.Input.asOptionalInput<String>(map['callbackUrl']),
+      keyExpiresIn: pulumi.Input.asOptionalInput<String>(map['keyExpiresIn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      scopes: pulumi.Input.asOptionalInput<List<String>>(map['scopes']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
     );
   }
 }

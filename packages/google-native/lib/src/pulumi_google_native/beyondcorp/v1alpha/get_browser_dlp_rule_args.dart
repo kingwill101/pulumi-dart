@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBrowserDlpRule.
 class GetBrowserDlpRuleArgs {
-  final Input<String> browserDlpRuleId;
-  final Input<String> organizationId;
-  final Input<String> partnerTenantId;
+  final pulumi.Input<String> browserDlpRuleId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> partnerTenantId;
 
   GetBrowserDlpRuleArgs({
     required this.browserDlpRuleId,
@@ -24,9 +24,9 @@ class GetBrowserDlpRuleArgs {
 
   factory GetBrowserDlpRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetBrowserDlpRuleArgs(
-      browserDlpRuleId: Input.asInput<String>(map['browserDlpRuleId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      partnerTenantId: Input.asInput<String>(map['partnerTenantId']),
+      browserDlpRuleId: pulumi.Input.asInput<String>(map['browserDlpRuleId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      partnerTenantId: pulumi.Input.asInput<String>(map['partnerTenantId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_provider_config_response.dart';
 
 /// Options related to MultiFactor Authentication for the project.
@@ -24,7 +24,7 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabledProviders'] = enabledProviders;
-    map['providerConfigs'] = Input.encodeList<
+    map['providerConfigs'] = pulumi.Input.encodeList<
         GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse,
         Map<String, dynamic>>(providerConfigs, (value) => value.toMap());
     map['state'] = state;
@@ -35,7 +35,7 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse {
       Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse(
       enabledProviders: (map['enabledProviders'] as List).cast<String>(),
-      providerConfigs: Input.decodeList<
+      providerConfigs: pulumi.Input.decodeList<
               GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse>(
           map['providerConfigs'],
           (value) =>

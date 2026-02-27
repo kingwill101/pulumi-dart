@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'forwarding_rule_service_directory_registration_response.dart';
 import 'metadata_filter_response.dart';
 
@@ -173,7 +173,7 @@ class GetGlobalForwardingRuleResult {
     map['labels'] = labels;
     map['loadBalancingScheme'] = loadBalancingScheme;
     map['metadataFilters'] =
-        Input.encodeList<MetadataFilterResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MetadataFilterResponse, Map<String, dynamic>>(
             metadataFilters, (value) => value.toMap());
     map['name'] = name;
     map['network'] = network;
@@ -186,7 +186,7 @@ class GetGlobalForwardingRuleResult {
     map['region'] = region;
     map['selfLink'] = selfLink;
     map['selfLinkWithId'] = selfLinkWithId;
-    map['serviceDirectoryRegistrations'] = Input.encodeList<
+    map['serviceDirectoryRegistrations'] = pulumi.Input.encodeList<
             ForwardingRuleServiceDirectoryRegistrationResponse,
             Map<String, dynamic>>(
         serviceDirectoryRegistrations, (value) => value.toMap());
@@ -218,7 +218,7 @@ class GetGlobalForwardingRuleResult {
       labelFingerprint: map['labelFingerprint'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       loadBalancingScheme: map['loadBalancingScheme'] as String,
-      metadataFilters: Input.decodeList<MetadataFilterResponse>(
+      metadataFilters: pulumi.Input.decodeList<MetadataFilterResponse>(
           map['metadataFilters'],
           (value) => MetadataFilterResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -233,12 +233,11 @@ class GetGlobalForwardingRuleResult {
       region: map['region'] as String,
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
-      serviceDirectoryRegistrations:
-          Input.decodeList<ForwardingRuleServiceDirectoryRegistrationResponse>(
-              map['serviceDirectoryRegistrations'],
-              (value) =>
-                  ForwardingRuleServiceDirectoryRegistrationResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      serviceDirectoryRegistrations: pulumi.Input.decodeList<
+              ForwardingRuleServiceDirectoryRegistrationResponse>(
+          map['serviceDirectoryRegistrations'],
+          (value) => ForwardingRuleServiceDirectoryRegistrationResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       serviceLabel: map['serviceLabel'] as String,
       serviceName: map['serviceName'] as String,
       sourceIpRanges: (map['sourceIpRanges'] as List).cast<String>(),

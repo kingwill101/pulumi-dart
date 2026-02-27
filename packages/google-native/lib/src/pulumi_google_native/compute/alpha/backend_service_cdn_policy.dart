@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_cdn_policy_bypass_cache_on_request_header.dart';
 import 'backend_service_cdn_policy_cache_mode.dart';
 import 'backend_service_cdn_policy_negative_caching_policy.dart';
@@ -61,7 +61,7 @@ class BackendServiceCdnPolicy {
     final map = <String, dynamic>{};
     final bypassCacheOnRequestHeadersValue = bypassCacheOnRequestHeaders;
     if (bypassCacheOnRequestHeadersValue != null) {
-      map['bypassCacheOnRequestHeaders'] = Input.encodeList<
+      map['bypassCacheOnRequestHeaders'] = pulumi.Input.encodeList<
               BackendServiceCdnPolicyBypassCacheOnRequestHeader,
               Map<String, dynamic>>(
           bypassCacheOnRequestHeadersValue, (value) => value.toMap());
@@ -92,7 +92,7 @@ class BackendServiceCdnPolicy {
     }
     final negativeCachingPolicyValue = negativeCachingPolicy;
     if (negativeCachingPolicyValue != null) {
-      map['negativeCachingPolicy'] = Input.encodeList<
+      map['negativeCachingPolicy'] = pulumi.Input.encodeList<
               BackendServiceCdnPolicyNegativeCachingPolicy,
               Map<String, dynamic>>(
           negativeCachingPolicyValue, (value) => value.toMap());
@@ -116,7 +116,8 @@ class BackendServiceCdnPolicy {
     return BackendServiceCdnPolicy(
       bypassCacheOnRequestHeaders: map['bypassCacheOnRequestHeaders'] == null
           ? null
-          : Input.decodeList<BackendServiceCdnPolicyBypassCacheOnRequestHeader>(
+          : pulumi.Input.decodeList<
+                  BackendServiceCdnPolicyBypassCacheOnRequestHeader>(
               map['bypassCacheOnRequestHeaders'],
               (value) =>
                   BackendServiceCdnPolicyBypassCacheOnRequestHeader.fromMap(
@@ -137,7 +138,8 @@ class BackendServiceCdnPolicy {
           : map['negativeCaching'] as bool,
       negativeCachingPolicy: map['negativeCachingPolicy'] == null
           ? null
-          : Input.decodeList<BackendServiceCdnPolicyNegativeCachingPolicy>(
+          : pulumi.Input.decodeList<
+                  BackendServiceCdnPolicyNegativeCachingPolicy>(
               map['negativeCachingPolicy'],
               (value) => BackendServiceCdnPolicyNegativeCachingPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_field_schema_categories_response.dart';
 import 'table_field_schema_policy_tags_response.dart';
 import 'table_field_schema_range_element_type_response.dart';
@@ -70,7 +70,7 @@ class TableFieldSchemaResponse {
     map['defaultValueExpression'] = defaultValueExpression;
     map['description'] = description;
     map['fields'] =
-        Input.encodeList<TableFieldSchemaResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TableFieldSchemaResponse, Map<String, dynamic>>(
             fields, (value) => value.toMap());
     map['maxLength'] = maxLength;
     map['mode'] = mode;
@@ -91,7 +91,7 @@ class TableFieldSchemaResponse {
       collation: map['collation'] as String,
       defaultValueExpression: map['defaultValueExpression'] as String,
       description: map['description'] as String,
-      fields: Input.decodeList<TableFieldSchemaResponse>(
+      fields: pulumi.Input.decodeList<TableFieldSchemaResponse>(
           map['fields'],
           (value) => TableFieldSchemaResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

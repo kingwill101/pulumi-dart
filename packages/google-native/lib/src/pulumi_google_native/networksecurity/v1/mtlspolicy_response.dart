@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'validation_caresponse.dart';
 
 /// Specification of the MTLSPolicy.
@@ -23,7 +23,7 @@ class MTLSPolicyResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['clientValidationCa'] =
-        Input.encodeList<ValidationCAResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ValidationCAResponse, Map<String, dynamic>>(
             clientValidationCa, (value) => value.toMap());
     map['clientValidationMode'] = clientValidationMode;
     map['clientValidationTrustConfig'] = clientValidationTrustConfig;
@@ -32,7 +32,7 @@ class MTLSPolicyResponse {
 
   factory MTLSPolicyResponse.fromMap(Map<String, dynamic> map) {
     return MTLSPolicyResponse(
-      clientValidationCa: Input.decodeList<ValidationCAResponse>(
+      clientValidationCa: pulumi.Input.decodeList<ValidationCAResponse>(
           map['clientValidationCa'],
           (value) => ValidationCAResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

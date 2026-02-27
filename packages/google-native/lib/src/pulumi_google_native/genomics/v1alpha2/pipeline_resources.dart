@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'disk3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'disk_genomics_v1alpha2.dart';
 
 /// The system resources for the pipeline run.
 class PipelineResources {
@@ -15,7 +15,7 @@ class PipelineResources {
   final int? bootDiskSizeGb;
 
   /// Disks to attach.
-  final List<Disk3>? disks;
+  final List<DiskGenomicsV1alpha2>? disks;
 
   /// The minimum number of cores to use. Defaults to 1.
   final int? minimumCpuCores;
@@ -60,8 +60,9 @@ class PipelineResources {
     }
     final disksValue = disks;
     if (disksValue != null) {
-      map['disks'] = Input.encodeList<Disk3, Map<String, dynamic>>(
-          disksValue, (value) => value.toMap());
+      map['disks'] =
+          pulumi.Input.encodeList<DiskGenomicsV1alpha2, Map<String, dynamic>>(
+              disksValue, (value) => value.toMap());
     }
     final minimumCpuCoresValue = minimumCpuCores;
     if (minimumCpuCoresValue != null) {
@@ -98,8 +99,10 @@ class PipelineResources {
           map['bootDiskSizeGb'] == null ? null : map['bootDiskSizeGb'] as int,
       disks: map['disks'] == null
           ? null
-          : Input.decodeList<Disk3>(map['disks'],
-              (value) => Disk3.fromMap((value as Map).cast<String, dynamic>())),
+          : pulumi.Input.decodeList<DiskGenomicsV1alpha2>(
+              map['disks'],
+              (value) => DiskGenomicsV1alpha2.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       minimumCpuCores:
           map['minimumCpuCores'] == null ? null : map['minimumCpuCores'] as int,
       minimumRamGb:

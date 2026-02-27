@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'severity_override_response.dart';
 import 'threat_override_response.dart';
 
@@ -20,21 +20,21 @@ class ThreatPreventionProfileResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['severityOverrides'] =
-        Input.encodeList<SeverityOverrideResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SeverityOverrideResponse, Map<String, dynamic>>(
             severityOverrides, (value) => value.toMap());
     map['threatOverrides'] =
-        Input.encodeList<ThreatOverrideResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ThreatOverrideResponse, Map<String, dynamic>>(
             threatOverrides, (value) => value.toMap());
     return map;
   }
 
   factory ThreatPreventionProfileResponse.fromMap(Map<String, dynamic> map) {
     return ThreatPreventionProfileResponse(
-      severityOverrides: Input.decodeList<SeverityOverrideResponse>(
+      severityOverrides: pulumi.Input.decodeList<SeverityOverrideResponse>(
           map['severityOverrides'],
           (value) => SeverityOverrideResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      threatOverrides: Input.decodeList<ThreatOverrideResponse>(
+      threatOverrides: pulumi.Input.decodeList<ThreatOverrideResponse>(
           map['threatOverrides'],
           (value) => ThreatOverrideResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

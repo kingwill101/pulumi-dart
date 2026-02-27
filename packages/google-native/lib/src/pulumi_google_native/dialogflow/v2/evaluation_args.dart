@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_evaluation_config.dart';
 
 /// The set of arguments for Evaluation.
 class EvaluationArgs {
-  final Input<String> conversationModelId;
+  final pulumi.Input<String> conversationModelId;
 
   /// Optional. The display name of the model evaluation. At most 64 bytes long.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. The configuration of the evaluation task.
-  final Input<GoogleCloudDialogflowV2EvaluationConfig>? evaluationConfig;
-  final Input<String>? location;
+  final pulumi.Input<GoogleCloudDialogflowV2EvaluationConfig>? evaluationConfig;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   EvaluationArgs({
     required this.conversationModelId,
@@ -36,7 +36,7 @@ class EvaluationArgs {
     }
     final evaluationConfigValue = evaluationConfig;
     if (evaluationConfigValue != null) {
-      map['evaluationConfig'] = Input.mapOptionalInputValue<
+      map['evaluationConfig'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudDialogflowV2EvaluationConfig, Map<String, dynamic>>(
           evaluationConfigValue, (value) => value.toMap());
     }
@@ -57,14 +57,15 @@ class EvaluationArgs {
 
   factory EvaluationArgs.fromMap(Map<String, dynamic> map) {
     return EvaluationArgs(
-      conversationModelId: Input.asInput<String>(map['conversationModelId']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
+      conversationModelId:
+          pulumi.Input.asInput<String>(map['conversationModelId']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
       evaluationConfig:
-          Input.asOptionalInput<GoogleCloudDialogflowV2EvaluationConfig>(
+          pulumi.Input.asOptionalInput<GoogleCloudDialogflowV2EvaluationConfig>(
               map['evaluationConfig']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

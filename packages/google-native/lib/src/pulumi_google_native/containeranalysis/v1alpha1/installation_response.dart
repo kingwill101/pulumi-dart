@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'license_response2.dart';
-import 'location_response2.dart';
-import 'version_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'license_response_containeranalysis_v1alpha1.dart';
+import 'location_response_containeranalysis_v1alpha1.dart';
+import 'version_response_containeranalysis_v1alpha1.dart';
 
 /// This represents how a particular software package may be installed on a system.
 class InstallationResponse {
@@ -14,10 +14,10 @@ class InstallationResponse {
   final String cpeUri;
 
   /// Licenses that have been declared by the authors of the package.
-  final LicenseResponse2 license;
+  final LicenseResponseContaineranalysisV1alpha1 license;
 
   /// All of the places within the filesystem versions of this package have been found.
-  final List<LocationResponse2> location;
+  final List<LocationResponseContaineranalysisV1alpha1> location;
 
   /// The name of the installed package.
   final String name;
@@ -26,7 +26,7 @@ class InstallationResponse {
   final String packageType;
 
   /// The version of the package.
-  final VersionResponse2 version;
+  final VersionResponseContaineranalysisV1alpha1 version;
 
   InstallationResponse({
     required this.architecture,
@@ -43,8 +43,9 @@ class InstallationResponse {
     map['architecture'] = architecture;
     map['cpeUri'] = cpeUri;
     map['license'] = license.toMap();
-    map['location'] = Input.encodeList<LocationResponse2, Map<String, dynamic>>(
-        location, (value) => value.toMap());
+    map['location'] = pulumi.Input.encodeList<
+        LocationResponseContaineranalysisV1alpha1,
+        Map<String, dynamic>>(location, (value) => value.toMap());
     map['name'] = name;
     map['packageType'] = packageType;
     map['version'] = version.toMap();
@@ -55,15 +56,16 @@ class InstallationResponse {
     return InstallationResponse(
       architecture: map['architecture'] as String,
       cpeUri: map['cpeUri'] as String,
-      license: LicenseResponse2.fromMap(
+      license: LicenseResponseContaineranalysisV1alpha1.fromMap(
           (map['license'] as Map).cast<String, dynamic>()),
-      location: Input.decodeList<LocationResponse2>(
-          map['location'],
-          (value) => LocationResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      location:
+          pulumi.Input.decodeList<LocationResponseContaineranalysisV1alpha1>(
+              map['location'],
+              (value) => LocationResponseContaineranalysisV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       packageType: map['packageType'] as String,
-      version: VersionResponse2.fromMap(
+      version: VersionResponseContaineranalysisV1alpha1.fromMap(
           (map['version'] as Map).cast<String, dynamic>()),
     );
   }

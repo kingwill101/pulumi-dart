@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account.dart';
 import 'apk.dart';
 import 'device_file.dart';
@@ -56,8 +56,9 @@ class TestSetup {
     }
     final additionalApksValue = additionalApks;
     if (additionalApksValue != null) {
-      map['additionalApks'] = Input.encodeList<Apk, Map<String, dynamic>>(
-          additionalApksValue, (value) => value.toMap());
+      map['additionalApks'] =
+          pulumi.Input.encodeList<Apk, Map<String, dynamic>>(
+              additionalApksValue, (value) => value.toMap());
     }
     final directoriesToPullValue = directoriesToPull;
     if (directoriesToPullValue != null) {
@@ -70,18 +71,20 @@ class TestSetup {
     final environmentVariablesValue = environmentVariables;
     if (environmentVariablesValue != null) {
       map['environmentVariables'] =
-          Input.encodeList<EnvironmentVariable, Map<String, dynamic>>(
+          pulumi.Input.encodeList<EnvironmentVariable, Map<String, dynamic>>(
               environmentVariablesValue, (value) => value.toMap());
     }
     final filesToPushValue = filesToPush;
     if (filesToPushValue != null) {
-      map['filesToPush'] = Input.encodeList<DeviceFile, Map<String, dynamic>>(
-          filesToPushValue, (value) => value.toMap());
+      map['filesToPush'] =
+          pulumi.Input.encodeList<DeviceFile, Map<String, dynamic>>(
+              filesToPushValue, (value) => value.toMap());
     }
     final initialSetupApksValue = initialSetupApks;
     if (initialSetupApksValue != null) {
-      map['initialSetupApks'] = Input.encodeList<Apk, Map<String, dynamic>>(
-          initialSetupApksValue, (value) => value.toMap());
+      map['initialSetupApks'] =
+          pulumi.Input.encodeList<Apk, Map<String, dynamic>>(
+              initialSetupApksValue, (value) => value.toMap());
     }
     final networkProfileValue = networkProfile;
     if (networkProfileValue != null) {
@@ -101,7 +104,7 @@ class TestSetup {
           : Account.fromMap((map['account'] as Map).cast<String, dynamic>()),
       additionalApks: map['additionalApks'] == null
           ? null
-          : Input.decodeList<Apk>(map['additionalApks'],
+          : pulumi.Input.decodeList<Apk>(map['additionalApks'],
               (value) => Apk.fromMap((value as Map).cast<String, dynamic>())),
       directoriesToPull: map['directoriesToPull'] == null
           ? null
@@ -111,19 +114,19 @@ class TestSetup {
           : map['dontAutograntPermissions'] as bool,
       environmentVariables: map['environmentVariables'] == null
           ? null
-          : Input.decodeList<EnvironmentVariable>(
+          : pulumi.Input.decodeList<EnvironmentVariable>(
               map['environmentVariables'],
               (value) => EnvironmentVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),
       filesToPush: map['filesToPush'] == null
           ? null
-          : Input.decodeList<DeviceFile>(
+          : pulumi.Input.decodeList<DeviceFile>(
               map['filesToPush'],
               (value) =>
                   DeviceFile.fromMap((value as Map).cast<String, dynamic>())),
       initialSetupApks: map['initialSetupApks'] == null
           ? null
-          : Input.decodeList<Apk>(map['initialSetupApks'],
+          : pulumi.Input.decodeList<Apk>(map['initialSetupApks'],
               (value) => Apk.fromMap((value as Map).cast<String, dynamic>())),
       networkProfile: map['networkProfile'] == null
           ? null

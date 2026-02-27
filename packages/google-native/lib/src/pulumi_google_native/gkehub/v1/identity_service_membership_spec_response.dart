@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_service_auth_method_response.dart';
 
 /// **Anthos Identity Service**: Configuration for a single Membership.
@@ -14,7 +14,8 @@ class IdentityServiceMembershipSpecResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['authMethods'] = Input.encodeList<IdentityServiceAuthMethodResponse,
+    map['authMethods'] = pulumi.Input.encodeList<
+        IdentityServiceAuthMethodResponse,
         Map<String, dynamic>>(authMethods, (value) => value.toMap());
     return map;
   }
@@ -22,7 +23,7 @@ class IdentityServiceMembershipSpecResponse {
   factory IdentityServiceMembershipSpecResponse.fromMap(
       Map<String, dynamic> map) {
     return IdentityServiceMembershipSpecResponse(
-      authMethods: Input.decodeList<IdentityServiceAuthMethodResponse>(
+      authMethods: pulumi.Input.decodeList<IdentityServiceAuthMethodResponse>(
           map['authMethods'],
           (value) => IdentityServiceAuthMethodResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

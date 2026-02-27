@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_kanonymity_histogram_bucket_response.dart';
 
 /// Result of the k-anonymity computation.
@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2KAnonymityResultResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['equivalenceClassHistogramBuckets'] = Input.encodeList<
+    map['equivalenceClassHistogramBuckets'] = pulumi.Input.encodeList<
             GooglePrivacyDlpV2KAnonymityHistogramBucketResponse,
             Map<String, dynamic>>(
         equivalenceClassHistogramBuckets, (value) => value.toMap());
@@ -25,12 +25,12 @@ class GooglePrivacyDlpV2KAnonymityResultResponse {
   factory GooglePrivacyDlpV2KAnonymityResultResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KAnonymityResultResponse(
-      equivalenceClassHistogramBuckets:
-          Input.decodeList<GooglePrivacyDlpV2KAnonymityHistogramBucketResponse>(
-              map['equivalenceClassHistogramBuckets'],
-              (value) =>
-                  GooglePrivacyDlpV2KAnonymityHistogramBucketResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      equivalenceClassHistogramBuckets: pulumi.Input.decodeList<
+              GooglePrivacyDlpV2KAnonymityHistogramBucketResponse>(
+          map['equivalenceClassHistogramBuckets'],
+          (value) =>
+              GooglePrivacyDlpV2KAnonymityHistogramBucketResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

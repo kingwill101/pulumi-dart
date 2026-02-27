@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'money_response4.dart';
+import 'money_response_migrationcenter_v1.dart';
 import 'report_summary_compute_engine_finding_response.dart';
 import 'report_summary_sole_tenant_finding_response.dart';
 import 'report_summary_vmware_engine_finding_response.dart';
@@ -21,22 +21,22 @@ class ReportSummaryGroupPreferenceSetFindingResponse {
   final VirtualMachinePreferencesResponse machinePreferences;
 
   /// Compute monthly cost for this preference set.
-  final MoneyResponse4 monthlyCostCompute;
+  final MoneyResponseMigrationcenterV1 monthlyCostCompute;
 
   /// Network Egress monthly cost for this preference set.
-  final MoneyResponse4 monthlyCostNetworkEgress;
+  final MoneyResponseMigrationcenterV1 monthlyCostNetworkEgress;
 
   /// Licensing monthly cost for this preference set.
-  final MoneyResponse4 monthlyCostOsLicense;
+  final MoneyResponseMigrationcenterV1 monthlyCostOsLicense;
 
   /// Miscellaneous monthly cost for this preference set.
-  final MoneyResponse4 monthlyCostOther;
+  final MoneyResponseMigrationcenterV1 monthlyCostOther;
 
   /// Storage monthly cost for this preference set.
-  final MoneyResponse4 monthlyCostStorage;
+  final MoneyResponseMigrationcenterV1 monthlyCostStorage;
 
   /// Total monthly cost for this preference set.
-  final MoneyResponse4 monthlyCostTotal;
+  final MoneyResponseMigrationcenterV1 monthlyCostTotal;
 
   /// A set of findings that applies to Sole-Tenant machines in the input.
   final ReportSummarySoleTenantFindingResponse soleTenantFinding;
@@ -85,17 +85,17 @@ class ReportSummaryGroupPreferenceSetFindingResponse {
       displayName: map['displayName'] as String,
       machinePreferences: VirtualMachinePreferencesResponse.fromMap(
           (map['machinePreferences'] as Map).cast<String, dynamic>()),
-      monthlyCostCompute: MoneyResponse4.fromMap(
+      monthlyCostCompute: MoneyResponseMigrationcenterV1.fromMap(
           (map['monthlyCostCompute'] as Map).cast<String, dynamic>()),
-      monthlyCostNetworkEgress: MoneyResponse4.fromMap(
+      monthlyCostNetworkEgress: MoneyResponseMigrationcenterV1.fromMap(
           (map['monthlyCostNetworkEgress'] as Map).cast<String, dynamic>()),
-      monthlyCostOsLicense: MoneyResponse4.fromMap(
+      monthlyCostOsLicense: MoneyResponseMigrationcenterV1.fromMap(
           (map['monthlyCostOsLicense'] as Map).cast<String, dynamic>()),
-      monthlyCostOther: MoneyResponse4.fromMap(
+      monthlyCostOther: MoneyResponseMigrationcenterV1.fromMap(
           (map['monthlyCostOther'] as Map).cast<String, dynamic>()),
-      monthlyCostStorage: MoneyResponse4.fromMap(
+      monthlyCostStorage: MoneyResponseMigrationcenterV1.fromMap(
           (map['monthlyCostStorage'] as Map).cast<String, dynamic>()),
-      monthlyCostTotal: MoneyResponse4.fromMap(
+      monthlyCostTotal: MoneyResponseMigrationcenterV1.fromMap(
           (map['monthlyCostTotal'] as Map).cast<String, dynamic>()),
       soleTenantFinding: ReportSummarySoleTenantFindingResponse.fromMap(
           (map['soleTenantFinding'] as Map).cast<String, dynamic>()),

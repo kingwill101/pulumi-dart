@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'analysis_completed_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'analysis_completed_response_containeranalysis_v1alpha1.dart';
 import 'operation_response.dart';
-import 'sbomstatus_response2.dart';
-import 'status_response11.dart';
+import 'sbomstatus_response_containeranalysis_v1alpha1.dart';
+import 'status_response_containeranalysis_v1alpha1.dart';
 
 /// Provides information about the scan status of a discovered resource.
 class DiscoveredResponse {
   /// The list of analysis that were completed for a resource.
-  final AnalysisCompletedResponse2 analysisCompleted;
+  final AnalysisCompletedResponseContaineranalysisV1alpha1 analysisCompleted;
 
   /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
-  final List<StatusResponse11> analysisError;
+  final List<StatusResponseContaineranalysisV1alpha1> analysisError;
 
   /// The status of discovery for the resource.
   final String analysisStatus;
 
   /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
-  final StatusResponse11 analysisStatusError;
+  final StatusResponseContaineranalysisV1alpha1 analysisStatusError;
 
   /// The time occurrences related to this discovery occurrence were archived.
   final String archiveTime;
@@ -36,7 +36,7 @@ class DiscoveredResponse {
   final OperationResponse operation;
 
   /// The status of an SBOM generation.
-  final SBOMStatusResponse2 sbomStatus;
+  final SBOMStatusResponseContaineranalysisV1alpha1 sbomStatus;
 
   DiscoveredResponse({
     required this.analysisCompleted,
@@ -54,9 +54,9 @@ class DiscoveredResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['analysisCompleted'] = analysisCompleted.toMap();
-    map['analysisError'] =
-        Input.encodeList<StatusResponse11, Map<String, dynamic>>(
-            analysisError, (value) => value.toMap());
+    map['analysisError'] = pulumi.Input.encodeList<
+        StatusResponseContaineranalysisV1alpha1,
+        Map<String, dynamic>>(analysisError, (value) => value.toMap());
     map['analysisStatus'] = analysisStatus;
     map['analysisStatusError'] = analysisStatusError.toMap();
     map['archiveTime'] = archiveTime;
@@ -70,14 +70,16 @@ class DiscoveredResponse {
 
   factory DiscoveredResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveredResponse(
-      analysisCompleted: AnalysisCompletedResponse2.fromMap(
-          (map['analysisCompleted'] as Map).cast<String, dynamic>()),
-      analysisError: Input.decodeList<StatusResponse11>(
-          map['analysisError'],
-          (value) =>
-              StatusResponse11.fromMap((value as Map).cast<String, dynamic>())),
+      analysisCompleted:
+          AnalysisCompletedResponseContaineranalysisV1alpha1.fromMap(
+              (map['analysisCompleted'] as Map).cast<String, dynamic>()),
+      analysisError:
+          pulumi.Input.decodeList<StatusResponseContaineranalysisV1alpha1>(
+              map['analysisError'],
+              (value) => StatusResponseContaineranalysisV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       analysisStatus: map['analysisStatus'] as String,
-      analysisStatusError: StatusResponse11.fromMap(
+      analysisStatusError: StatusResponseContaineranalysisV1alpha1.fromMap(
           (map['analysisStatusError'] as Map).cast<String, dynamic>()),
       archiveTime: map['archiveTime'] as String,
       continuousAnalysis: map['continuousAnalysis'] as String,
@@ -85,7 +87,7 @@ class DiscoveredResponse {
       lastScanTime: map['lastScanTime'] as String,
       operation: OperationResponse.fromMap(
           (map['operation'] as Map).cast<String, dynamic>()),
-      sbomStatus: SBOMStatusResponse2.fromMap(
+      sbomStatus: SBOMStatusResponseContaineranalysisV1alpha1.fromMap(
           (map['sbomStatus'] as Map).cast<String, dynamic>()),
     );
   }

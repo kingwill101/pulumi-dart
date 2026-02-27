@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collection_override_response.dart';
 import 'credential_response.dart';
-import 'operation_response2.dart';
-import 'options_response2.dart';
+import 'operation_response_deploymentmanager_alpha.dart';
+import 'options_response_deploymentmanager_alpha.dart';
 import 'type_provider_label_entry_response.dart';
 
 /// Result data returned by getTypeProvider.
@@ -34,10 +34,10 @@ class GetTypeProviderResult {
   final String name;
 
   /// The Operation that most recently ran, or is currently running, on this type provider.
-  final OperationResponse2 operation;
+  final OperationResponseDeploymentmanagerAlpha operation;
 
   /// Options to apply when handling any resources in this service.
-  final OptionsResponse2 options;
+  final OptionsResponseDeploymentmanagerAlpha options;
 
   /// Self link for the type provider.
   final String selfLink;
@@ -58,17 +58,16 @@ class GetTypeProviderResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['collectionOverrides'] =
-        Input.encodeList<CollectionOverrideResponse, Map<String, dynamic>>(
-            collectionOverrides, (value) => value.toMap());
+    map['collectionOverrides'] = pulumi.Input.encodeList<
+        CollectionOverrideResponse,
+        Map<String, dynamic>>(collectionOverrides, (value) => value.toMap());
     map['credential'] = credential.toMap();
     map['customCertificateAuthorityRoots'] = customCertificateAuthorityRoots;
     map['description'] = description;
     map['descriptorUrl'] = descriptorUrl;
     map['insertTime'] = insertTime;
-    map['labels'] =
-        Input.encodeList<TypeProviderLabelEntryResponse, Map<String, dynamic>>(
-            labels, (value) => value.toMap());
+    map['labels'] = pulumi.Input.encodeList<TypeProviderLabelEntryResponse,
+        Map<String, dynamic>>(labels, (value) => value.toMap());
     map['name'] = name;
     map['operation'] = operation.toMap();
     map['options'] = options.toMap();
@@ -78,7 +77,7 @@ class GetTypeProviderResult {
 
   factory GetTypeProviderResult.fromMap(Map<String, dynamic> map) {
     return GetTypeProviderResult(
-      collectionOverrides: Input.decodeList<CollectionOverrideResponse>(
+      collectionOverrides: pulumi.Input.decodeList<CollectionOverrideResponse>(
           map['collectionOverrides'],
           (value) => CollectionOverrideResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -89,14 +88,14 @@ class GetTypeProviderResult {
       description: map['description'] as String,
       descriptorUrl: map['descriptorUrl'] as String,
       insertTime: map['insertTime'] as String,
-      labels: Input.decodeList<TypeProviderLabelEntryResponse>(
+      labels: pulumi.Input.decodeList<TypeProviderLabelEntryResponse>(
           map['labels'],
           (value) => TypeProviderLabelEntryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      operation: OperationResponse2.fromMap(
+      operation: OperationResponseDeploymentmanagerAlpha.fromMap(
           (map['operation'] as Map).cast<String, dynamic>()),
-      options: OptionsResponse2.fromMap(
+      options: OptionsResponseDeploymentmanagerAlpha.fromMap(
           (map['options'] as Map).cast<String, dynamic>()),
       selfLink: map['selfLink'] as String,
     );

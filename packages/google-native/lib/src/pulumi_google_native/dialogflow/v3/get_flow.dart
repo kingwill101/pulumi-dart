@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_flow_args.dart';
 import 'get_flow_result.dart';
 
 /// Retrieves the specified flow.
 Future<GetFlowResult> getFlow(
   GetFlowArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:dialogflow/v3:getFlow',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFlowResult.fromMap(result);
 }

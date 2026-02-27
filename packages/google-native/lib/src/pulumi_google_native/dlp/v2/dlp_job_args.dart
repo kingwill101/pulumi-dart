@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_inspect_job_config.dart';
 import 'google_privacy_dlp_v2_risk_analysis_job_config.dart';
 
 /// The set of arguments for DlpJob.
 class DlpJobArgs {
   /// An inspection job scans a storage repository for InfoTypes.
-  final Input<GooglePrivacyDlpV2InspectJobConfig>? inspectJob;
+  final pulumi.Input<GooglePrivacyDlpV2InspectJobConfig>? inspectJob;
 
   /// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final Input<String>? jobId;
+  final pulumi.Input<String>? jobId;
 
   /// Deprecated. This field has no effect.
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
-  final Input<GooglePrivacyDlpV2RiskAnalysisJobConfig>? riskJob;
+  final pulumi.Input<GooglePrivacyDlpV2RiskAnalysisJobConfig>? riskJob;
 
   DlpJobArgs({
     this.inspectJob,
@@ -31,7 +31,7 @@ class DlpJobArgs {
     final map = <String, dynamic>{};
     final inspectJobValue = inspectJob;
     if (inspectJobValue != null) {
-      map['inspectJob'] = Input.mapOptionalInputValue<
+      map['inspectJob'] = pulumi.Input.mapOptionalInputValue<
           GooglePrivacyDlpV2InspectJobConfig,
           Map<String, dynamic>>(inspectJobValue, (value) => value.toMap());
     }
@@ -49,7 +49,7 @@ class DlpJobArgs {
     }
     final riskJobValue = riskJob;
     if (riskJobValue != null) {
-      map['riskJob'] = Input.mapOptionalInputValue<
+      map['riskJob'] = pulumi.Input.mapOptionalInputValue<
           GooglePrivacyDlpV2RiskAnalysisJobConfig,
           Map<String, dynamic>>(riskJobValue, (value) => value.toMap());
     }
@@ -58,13 +58,15 @@ class DlpJobArgs {
 
   factory DlpJobArgs.fromMap(Map<String, dynamic> map) {
     return DlpJobArgs(
-      inspectJob: Input.asOptionalInput<GooglePrivacyDlpV2InspectJobConfig>(
-          map['inspectJob']),
-      jobId: Input.asOptionalInput<String>(map['jobId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      riskJob: Input.asOptionalInput<GooglePrivacyDlpV2RiskAnalysisJobConfig>(
-          map['riskJob']),
+      inspectJob:
+          pulumi.Input.asOptionalInput<GooglePrivacyDlpV2InspectJobConfig>(
+              map['inspectJob']),
+      jobId: pulumi.Input.asOptionalInput<String>(map['jobId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      riskJob:
+          pulumi.Input.asOptionalInput<GooglePrivacyDlpV2RiskAnalysisJobConfig>(
+              map['riskJob']),
     );
   }
 }

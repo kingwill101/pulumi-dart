@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1_gcs_destination_response.dart';
 import 'google_cloud_aiplatform_v1_model_deployment_monitoring_big_query_table_response.dart';
@@ -119,7 +119,7 @@ class GetModelDeploymentMonitoringJobResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['analysisInstanceSchemaUri'] = analysisInstanceSchemaUri;
-    map['bigqueryTables'] = Input.encodeList<
+    map['bigqueryTables'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse,
         Map<String, dynamic>>(bigqueryTables, (value) => value.toMap());
     map['createTime'] = createTime;
@@ -133,7 +133,7 @@ class GetModelDeploymentMonitoringJobResult {
         latestMonitoringPipelineMetadata.toMap();
     map['logTtl'] = logTtl;
     map['loggingSamplingStrategy'] = loggingSamplingStrategy.toMap();
-    map['modelDeploymentMonitoringObjectiveConfigs'] = Input.encodeList<
+    map['modelDeploymentMonitoringObjectiveConfigs'] = pulumi.Input.encodeList<
             GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfigResponse,
             Map<String, dynamic>>(
         modelDeploymentMonitoringObjectiveConfigs, (value) => value.toMap());
@@ -155,7 +155,7 @@ class GetModelDeploymentMonitoringJobResult {
       Map<String, dynamic> map) {
     return GetModelDeploymentMonitoringJobResult(
       analysisInstanceSchemaUri: map['analysisInstanceSchemaUri'] as String,
-      bigqueryTables: Input.decodeList<
+      bigqueryTables: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse>(
           map['bigqueryTables'],
           (value) =>
@@ -178,7 +178,7 @@ class GetModelDeploymentMonitoringJobResult {
       loggingSamplingStrategy:
           GoogleCloudAiplatformV1SamplingStrategyResponse.fromMap(
               (map['loggingSamplingStrategy'] as Map).cast<String, dynamic>()),
-      modelDeploymentMonitoringObjectiveConfigs: Input.decodeList<
+      modelDeploymentMonitoringObjectiveConfigs: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfigResponse>(
           map['modelDeploymentMonitoringObjectiveConfigs'],
           (value) =>

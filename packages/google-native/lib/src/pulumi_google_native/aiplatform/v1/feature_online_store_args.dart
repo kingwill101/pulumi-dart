@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_feature_online_store_bigtable.dart';
 
 /// The set of arguments for FeatureOnlineStore.
 class FeatureOnlineStoreArgs {
   /// Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
-  final Input<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>? bigtable;
+  final pulumi.Input<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>?
+      bigtable;
 
   /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
-  final Input<String> featureOnlineStoreId;
+  final pulumi.Input<String> featureOnlineStoreId;
 
   /// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   FeatureOnlineStoreArgs({
     this.bigtable,
@@ -32,7 +33,7 @@ class FeatureOnlineStoreArgs {
     final map = <String, dynamic>{};
     final bigtableValue = bigtable;
     if (bigtableValue != null) {
-      map['bigtable'] = Input.mapOptionalInputValue<
+      map['bigtable'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudAiplatformV1FeatureOnlineStoreBigtable,
           Map<String, dynamic>>(bigtableValue, (value) => value.toMap());
     }
@@ -58,13 +59,14 @@ class FeatureOnlineStoreArgs {
 
   factory FeatureOnlineStoreArgs.fromMap(Map<String, dynamic> map) {
     return FeatureOnlineStoreArgs(
-      bigtable: Input.asOptionalInput<
+      bigtable: pulumi.Input.asOptionalInput<
           GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>(map['bigtable']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      featureOnlineStoreId: Input.asInput<String>(map['featureOnlineStoreId']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      featureOnlineStoreId:
+          pulumi.Input.asInput<String>(map['featureOnlineStoreId']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

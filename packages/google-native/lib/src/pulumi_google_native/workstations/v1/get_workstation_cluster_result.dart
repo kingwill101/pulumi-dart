@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'private_cluster_config_response5.dart';
-import 'status_response34.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'private_cluster_config_response_workstations_v1.dart';
+import 'status_response_workstations_v1.dart';
 
 /// Result data returned by getWorkstationCluster.
 class GetWorkstationClusterResult {
@@ -10,7 +10,7 @@ class GetWorkstationClusterResult {
   final Map<String, String> annotations;
 
   /// Status conditions describing the workstation cluster's current state.
-  final List<StatusResponse34> conditions;
+  final List<StatusResponseWorkstationsV1> conditions;
 
   /// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
   final String controlPlaneIp;
@@ -40,7 +40,7 @@ class GetWorkstationClusterResult {
   final String network;
 
   /// Optional. Configuration for private workstation cluster.
-  final PrivateClusterConfigResponse5 privateClusterConfig;
+  final PrivateClusterConfigResponseWorkstationsV1 privateClusterConfig;
 
   /// Indicates whether this workstation cluster is currently being updated to match its intended state.
   final bool reconciling;
@@ -76,9 +76,8 @@ class GetWorkstationClusterResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['annotations'] = annotations;
-    map['conditions'] =
-        Input.encodeList<StatusResponse34, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
+    map['conditions'] = pulumi.Input.encodeList<StatusResponseWorkstationsV1,
+        Map<String, dynamic>>(conditions, (value) => value.toMap());
     map['controlPlaneIp'] = controlPlaneIp;
     map['createTime'] = createTime;
     map['degraded'] = degraded;
@@ -99,10 +98,10 @@ class GetWorkstationClusterResult {
   factory GetWorkstationClusterResult.fromMap(Map<String, dynamic> map) {
     return GetWorkstationClusterResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      conditions: Input.decodeList<StatusResponse34>(
+      conditions: pulumi.Input.decodeList<StatusResponseWorkstationsV1>(
           map['conditions'],
-          (value) =>
-              StatusResponse34.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => StatusResponseWorkstationsV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
       controlPlaneIp: map['controlPlaneIp'] as String,
       createTime: map['createTime'] as String,
       degraded: map['degraded'] as bool,
@@ -112,7 +111,7 @@ class GetWorkstationClusterResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       network: map['network'] as String,
-      privateClusterConfig: PrivateClusterConfigResponse5.fromMap(
+      privateClusterConfig: PrivateClusterConfigResponseWorkstationsV1.fromMap(
           (map['privateClusterConfig'] as Map).cast<String, dynamic>()),
       reconciling: map['reconciling'] as bool,
       subnetwork: map['subnetwork'] as String,

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_route_header_match.dart';
 import 'http_route_query_parameter_match.dart';
 
@@ -42,7 +42,7 @@ class HttpRouteRouteMatch {
     final headersValue = headers;
     if (headersValue != null) {
       map['headers'] =
-          Input.encodeList<HttpRouteHeaderMatch, Map<String, dynamic>>(
+          pulumi.Input.encodeList<HttpRouteHeaderMatch, Map<String, dynamic>>(
               headersValue, (value) => value.toMap());
     }
     final ignoreCaseValue = ignoreCase;
@@ -55,9 +55,9 @@ class HttpRouteRouteMatch {
     }
     final queryParametersValue = queryParameters;
     if (queryParametersValue != null) {
-      map['queryParameters'] =
-          Input.encodeList<HttpRouteQueryParameterMatch, Map<String, dynamic>>(
-              queryParametersValue, (value) => value.toMap());
+      map['queryParameters'] = pulumi.Input.encodeList<
+          HttpRouteQueryParameterMatch,
+          Map<String, dynamic>>(queryParametersValue, (value) => value.toMap());
     }
     final regexMatchValue = regexMatch;
     if (regexMatchValue != null) {
@@ -72,7 +72,7 @@ class HttpRouteRouteMatch {
           map['fullPathMatch'] == null ? null : map['fullPathMatch'] as String,
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<HttpRouteHeaderMatch>(
+          : pulumi.Input.decodeList<HttpRouteHeaderMatch>(
               map['headers'],
               (value) => HttpRouteHeaderMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -81,7 +81,7 @@ class HttpRouteRouteMatch {
           map['prefixMatch'] == null ? null : map['prefixMatch'] as String,
       queryParameters: map['queryParameters'] == null
           ? null
-          : Input.decodeList<HttpRouteQueryParameterMatch>(
+          : pulumi.Input.decodeList<HttpRouteQueryParameterMatch>(
               map['queryParameters'],
               (value) => HttpRouteQueryParameterMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cis_benchmark.dart';
 import 'compliance_version.dart';
 
@@ -64,7 +64,7 @@ class ComplianceNote {
     final versionValue = version;
     if (versionValue != null) {
       map['version'] =
-          Input.encodeList<ComplianceVersion, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ComplianceVersion, Map<String, dynamic>>(
               versionValue, (value) => value.toMap());
     }
     return map;
@@ -87,7 +87,7 @@ class ComplianceNote {
       title: map['title'] == null ? null : map['title'] as String,
       version: map['version'] == null
           ? null
-          : Input.decodeList<ComplianceVersion>(
+          : pulumi.Input.decodeList<ComplianceVersion>(
               map['version'],
               (value) => ComplianceVersion.fromMap(
                   (value as Map).cast<String, dynamic>())),

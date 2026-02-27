@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_response.dart';
-import 'metadata_response2.dart';
-import 'network_interface_response2.dart';
+import 'metadata_response_compute_alpha.dart';
+import 'network_interface_response_compute_alpha.dart';
 import 'saved_attached_disk_response.dart';
 import 'scheduling_response.dart';
-import 'service_account_response3.dart';
+import 'service_account_response_compute_alpha.dart';
 import 'tags_response.dart';
 
 /// DEPRECATED: Please use compute#instanceProperties instead. New properties will not be added to this field.
@@ -36,13 +36,13 @@ class SourceInstancePropertiesResponse {
   final String machineType;
 
   /// The metadata key/value pairs to assign to instances that are created from this machine image. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
-  final MetadataResponse2 metadata;
+  final MetadataResponseComputeAlpha metadata;
 
   /// Minimum cpu/platform to be used by instances created from this machine image. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
   final String minCpuPlatform;
 
   /// An array of network access configurations for this interface.
-  final List<NetworkInterfaceResponse2> networkInterfaces;
+  final List<NetworkInterfaceResponseComputeAlpha> networkInterfaces;
 
   /// PostKeyRevocationActionType of the instance.
   final String postKeyRevocationActionType;
@@ -51,7 +51,7 @@ class SourceInstancePropertiesResponse {
   final SchedulingResponse scheduling;
 
   /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from this machine image. Use metadata queries to obtain the access tokens for these instances.
-  final List<ServiceAccountResponse3> serviceAccounts;
+  final List<ServiceAccountResponseComputeAlpha> serviceAccounts;
 
   /// A list of tags to apply to the instances that are created from this machine image. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
   final TagsResponse tags;
@@ -79,25 +79,24 @@ class SourceInstancePropertiesResponse {
     map['canIpForward'] = canIpForward;
     map['deletionProtection'] = deletionProtection;
     map['description'] = description;
-    map['disks'] =
-        Input.encodeList<SavedAttachedDiskResponse, Map<String, dynamic>>(
-            disks, (value) => value.toMap());
-    map['guestAccelerators'] =
-        Input.encodeList<AcceleratorConfigResponse, Map<String, dynamic>>(
-            guestAccelerators, (value) => value.toMap());
+    map['disks'] = pulumi.Input.encodeList<SavedAttachedDiskResponse,
+        Map<String, dynamic>>(disks, (value) => value.toMap());
+    map['guestAccelerators'] = pulumi.Input.encodeList<
+        AcceleratorConfigResponse,
+        Map<String, dynamic>>(guestAccelerators, (value) => value.toMap());
     map['keyRevocationActionType'] = keyRevocationActionType;
     map['labels'] = labels;
     map['machineType'] = machineType;
     map['metadata'] = metadata.toMap();
     map['minCpuPlatform'] = minCpuPlatform;
-    map['networkInterfaces'] =
-        Input.encodeList<NetworkInterfaceResponse2, Map<String, dynamic>>(
-            networkInterfaces, (value) => value.toMap());
+    map['networkInterfaces'] = pulumi.Input.encodeList<
+        NetworkInterfaceResponseComputeAlpha,
+        Map<String, dynamic>>(networkInterfaces, (value) => value.toMap());
     map['postKeyRevocationActionType'] = postKeyRevocationActionType;
     map['scheduling'] = scheduling.toMap();
-    map['serviceAccounts'] =
-        Input.encodeList<ServiceAccountResponse3, Map<String, dynamic>>(
-            serviceAccounts, (value) => value.toMap());
+    map['serviceAccounts'] = pulumi.Input.encodeList<
+        ServiceAccountResponseComputeAlpha,
+        Map<String, dynamic>>(serviceAccounts, (value) => value.toMap());
     map['tags'] = tags.toMap();
     return map;
   }
@@ -107,31 +106,33 @@ class SourceInstancePropertiesResponse {
       canIpForward: map['canIpForward'] as bool,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
-      disks: Input.decodeList<SavedAttachedDiskResponse>(
+      disks: pulumi.Input.decodeList<SavedAttachedDiskResponse>(
           map['disks'],
           (value) => SavedAttachedDiskResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      guestAccelerators: Input.decodeList<AcceleratorConfigResponse>(
+      guestAccelerators: pulumi.Input.decodeList<AcceleratorConfigResponse>(
           map['guestAccelerators'],
           (value) => AcceleratorConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       keyRevocationActionType: map['keyRevocationActionType'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       machineType: map['machineType'] as String,
-      metadata: MetadataResponse2.fromMap(
+      metadata: MetadataResponseComputeAlpha.fromMap(
           (map['metadata'] as Map).cast<String, dynamic>()),
       minCpuPlatform: map['minCpuPlatform'] as String,
-      networkInterfaces: Input.decodeList<NetworkInterfaceResponse2>(
-          map['networkInterfaces'],
-          (value) => NetworkInterfaceResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networkInterfaces:
+          pulumi.Input.decodeList<NetworkInterfaceResponseComputeAlpha>(
+              map['networkInterfaces'],
+              (value) => NetworkInterfaceResponseComputeAlpha.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       postKeyRevocationActionType: map['postKeyRevocationActionType'] as String,
       scheduling: SchedulingResponse.fromMap(
           (map['scheduling'] as Map).cast<String, dynamic>()),
-      serviceAccounts: Input.decodeList<ServiceAccountResponse3>(
-          map['serviceAccounts'],
-          (value) => ServiceAccountResponse3.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      serviceAccounts:
+          pulumi.Input.decodeList<ServiceAccountResponseComputeAlpha>(
+              map['serviceAccounts'],
+              (value) => ServiceAccountResponseComputeAlpha.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       tags: TagsResponse.fromMap((map['tags'] as Map).cast<String, dynamic>()),
     );
   }

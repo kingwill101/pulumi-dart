@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_error_response.dart';
 import 'google_privacy_dlp_v2_stored_info_type_config_response.dart';
 import 'google_privacy_dlp_v2_stored_info_type_stats_response.dart';
@@ -34,9 +34,8 @@ class GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
     final map = <String, dynamic>{};
     map['config'] = config.toMap();
     map['createTime'] = createTime;
-    map['errors'] =
-        Input.encodeList<GooglePrivacyDlpV2ErrorResponse, Map<String, dynamic>>(
-            errors, (value) => value.toMap());
+    map['errors'] = pulumi.Input.encodeList<GooglePrivacyDlpV2ErrorResponse,
+        Map<String, dynamic>>(errors, (value) => value.toMap());
     map['state'] = state;
     map['stats'] = stats.toMap();
     return map;
@@ -48,7 +47,7 @@ class GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
       config: GooglePrivacyDlpV2StoredInfoTypeConfigResponse.fromMap(
           (map['config'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
-      errors: Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(
+      errors: pulumi.Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(
           map['errors'],
           (value) => GooglePrivacyDlpV2ErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPrivateConnection.
 class GetPrivateConnectionArgs {
-  final Input<String> location;
-  final Input<String> privateConnectionId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> privateConnectionId;
+  final pulumi.Input<String>? project;
 
   GetPrivateConnectionArgs({
     required this.location,
@@ -27,9 +27,10 @@ class GetPrivateConnectionArgs {
 
   factory GetPrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateConnectionArgs(
-      location: Input.asInput<String>(map['location']),
-      privateConnectionId: Input.asInput<String>(map['privateConnectionId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      privateConnectionId:
+          pulumi.Input.asInput<String>(map['privateConnectionId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

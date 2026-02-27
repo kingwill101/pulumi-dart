@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CertificateMap.
 class CertificateMapArgs {
   /// Required. A user-provided name of the certificate map.
-  final Input<String> certificateMapId;
+  final pulumi.Input<String> certificateMapId;
 
   /// One or more paragraphs of text description of a certificate map.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Set of labels associated with a Certificate Map.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   CertificateMapArgs({
     required this.certificateMapId,
@@ -55,12 +55,12 @@ class CertificateMapArgs {
 
   factory CertificateMapArgs.fromMap(Map<String, dynamic> map) {
     return CertificateMapArgs(
-      certificateMapId: Input.asInput<String>(map['certificateMapId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      certificateMapId: pulumi.Input.asInput<String>(map['certificateMapId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

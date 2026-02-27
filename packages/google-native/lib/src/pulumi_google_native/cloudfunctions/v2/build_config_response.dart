@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'source_provenance_response2.dart';
-import 'source_response2.dart';
+import 'source_provenance_response_cloudfunctions_v2.dart';
+import 'source_response_cloudfunctions_v2.dart';
 
 /// Describes the Build step of the function that builds a container from the given source.
 class BuildConfigResponse {
@@ -24,10 +24,10 @@ class BuildConfigResponse {
   final String runtime;
 
   /// The location of the function source code.
-  final SourceResponse2 source;
+  final SourceResponseCloudfunctionsV2 source;
 
   /// A permanent fixed identifier for source.
-  final SourceProvenanceResponse2 sourceProvenance;
+  final SourceProvenanceResponseCloudfunctionsV2 sourceProvenance;
 
   /// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
   final String sourceToken;
@@ -72,9 +72,9 @@ class BuildConfigResponse {
       environmentVariables:
           (map['environmentVariables'] as Map).cast<String, String>(),
       runtime: map['runtime'] as String,
-      source: SourceResponse2.fromMap(
+      source: SourceResponseCloudfunctionsV2.fromMap(
           (map['source'] as Map).cast<String, dynamic>()),
-      sourceProvenance: SourceProvenanceResponse2.fromMap(
+      sourceProvenance: SourceProvenanceResponseCloudfunctionsV2.fromMap(
           (map['sourceProvenance'] as Map).cast<String, dynamic>()),
       sourceToken: map['sourceToken'] as String,
       workerPool: map['workerPool'] as String,

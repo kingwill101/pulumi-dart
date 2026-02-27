@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'composite_filter_logic_operator.dart';
 import 'filter.dart';
 
@@ -24,7 +24,7 @@ class CompositeFilter {
     }
     final subFiltersValue = subFilters;
     if (subFiltersValue != null) {
-      map['subFilters'] = Input.encodeList<Filter, Map<String, dynamic>>(
+      map['subFilters'] = pulumi.Input.encodeList<Filter, Map<String, dynamic>>(
           subFiltersValue, (value) => value.toMap());
     }
     return map;
@@ -38,7 +38,7 @@ class CompositeFilter {
               map['logicOperator'] as String),
       subFilters: map['subFilters'] == null
           ? null
-          : Input.decodeList<Filter>(
+          : pulumi.Input.decodeList<Filter>(
               map['subFilters'],
               (value) =>
                   Filter.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'update_info_response3.dart';
+import 'update_info_response_redis_v1.dart';
 
 /// Represents additional information about the state of the cluster.
 class StateInfoResponse {
   /// Describes ongoing update on the cluster when cluster state is UPDATING.
-  final UpdateInfoResponse3 updateInfo;
+  final UpdateInfoResponseRedisV1 updateInfo;
 
   StateInfoResponse({
     required this.updateInfo,
@@ -19,7 +19,7 @@ class StateInfoResponse {
 
   factory StateInfoResponse.fromMap(Map<String, dynamic> map) {
     return StateInfoResponse(
-      updateInfo: UpdateInfoResponse3.fromMap(
+      updateInfo: UpdateInfoResponseRedisV1.fromMap(
           (map['updateInfo'] as Map).cast<String, dynamic>()),
     );
   }

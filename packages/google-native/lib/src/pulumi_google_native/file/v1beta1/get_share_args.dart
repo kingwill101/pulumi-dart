@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getShare.
 class GetShareArgs {
-  final Input<String> instanceId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> shareId;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> shareId;
 
   GetShareArgs({
     required this.instanceId,
@@ -30,10 +30,10 @@ class GetShareArgs {
 
   factory GetShareArgs.fromMap(Map<String, dynamic> map) {
     return GetShareArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      shareId: Input.asInput<String>(map['shareId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      shareId: pulumi.Input.asInput<String>(map['shareId']),
     );
   }
 }

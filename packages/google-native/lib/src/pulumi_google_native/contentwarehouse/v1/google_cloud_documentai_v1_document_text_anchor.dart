@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_text_anchor_text_segment.dart';
 
 /// Text reference indexing into the Document.text.
@@ -25,7 +25,7 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
     }
     final textSegmentsValue = textSegments;
     if (textSegmentsValue != null) {
-      map['textSegments'] = Input.encodeList<
+      map['textSegments'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment,
           Map<String, dynamic>>(textSegmentsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
       content: map['content'] == null ? null : map['content'] as String,
       textSegments: map['textSegments'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>(
               map['textSegments'],
               (value) =>

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBatchPredictionJob.
 class GetBatchPredictionJobArgs {
-  final Input<String> batchPredictionJobId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> batchPredictionJobId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetBatchPredictionJobArgs({
     required this.batchPredictionJobId,
@@ -27,9 +27,10 @@ class GetBatchPredictionJobArgs {
 
   factory GetBatchPredictionJobArgs.fromMap(Map<String, dynamic> map) {
     return GetBatchPredictionJobArgs(
-      batchPredictionJobId: Input.asInput<String>(map['batchPredictionJobId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      batchPredictionJobId:
+          pulumi.Input.asInput<String>(map['batchPredictionJobId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

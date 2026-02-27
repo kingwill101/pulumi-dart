@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_delta_presence_estimation_quasi_id_values_response.dart';
 
 /// A DeltaPresenceEstimationHistogramBucket message with the following values: min_probability: 0.1 max_probability: 0.2 frequency: 42 means that there are 42 records for which δ is in [0.1, 0.2). An important particular case is when min_probability = max_probability = 1: then, every individual who shares this quasi-identifier combination is in the dataset.
@@ -33,7 +33,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
     final map = <String, dynamic>{};
     map['bucketSize'] = bucketSize;
     map['bucketValueCount'] = bucketValueCount;
-    map['bucketValues'] = Input.encodeList<
+    map['bucketValues'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse,
         Map<String, dynamic>>(bucketValues, (value) => value.toMap());
     map['maxProbability'] = maxProbability;
@@ -46,7 +46,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
     return GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse(
       bucketSize: map['bucketSize'] as String,
       bucketValueCount: map['bucketValueCount'] as String,
-      bucketValues: Input.decodeList<
+      bucketValues: pulumi.Input.decodeList<
               GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse>(
           map['bucketValues'],
           (value) =>

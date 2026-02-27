@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getProcessor.
 class GetProcessorArgs {
-  final Input<String> location;
-  final Input<String> processorId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> processorId;
+  final pulumi.Input<String>? project;
 
   GetProcessorArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetProcessorArgs {
 
   factory GetProcessorArgs.fromMap(Map<String, dynamic> map) {
     return GetProcessorArgs(
-      location: Input.asInput<String>(map['location']),
-      processorId: Input.asInput<String>(map['processorId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      processorId: pulumi.Input.asInput<String>(map['processorId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

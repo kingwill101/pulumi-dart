@@ -15,7 +15,7 @@ export 'v1/google_cloud_policysimulator_v1_replay_config.dart';
 export 'v1/google_cloud_policysimulator_v1_replay_config_log_source.dart';
 export 'v1/google_cloud_policysimulator_v1_replay_config_response.dart';
 export 'v1/google_cloud_policysimulator_v1_replay_results_summary_response.dart';
-export 'v1/google_type_date_response6.dart';
+export 'v1/google_type_date_response_policysimulator_v1.dart';
 export 'v1/organization_replay.dart';
 export 'v1/organization_replay_args.dart';
 export 'v1/replay.dart';

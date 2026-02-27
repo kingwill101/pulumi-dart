@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_env_var_response.dart';
 import 'google_cloud_aiplatform_v1beta1_port_response.dart';
 import 'google_cloud_aiplatform_v1beta1_probe_response.dart';
@@ -59,12 +59,14 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse {
     map['args'] = args;
     map['command'] = command;
     map['deploymentTimeout'] = deploymentTimeout;
-    map['env'] = Input.encodeList<GoogleCloudAiplatformV1beta1EnvVarResponse,
+    map['env'] = pulumi.Input.encodeList<
+        GoogleCloudAiplatformV1beta1EnvVarResponse,
         Map<String, dynamic>>(env, (value) => value.toMap());
     map['healthProbe'] = healthProbe.toMap();
     map['healthRoute'] = healthRoute;
     map['imageUri'] = imageUri;
-    map['ports'] = Input.encodeList<GoogleCloudAiplatformV1beta1PortResponse,
+    map['ports'] = pulumi.Input.encodeList<
+        GoogleCloudAiplatformV1beta1PortResponse,
         Map<String, dynamic>>(ports, (value) => value.toMap());
     map['predictRoute'] = predictRoute;
     map['sharedMemorySizeMb'] = sharedMemorySizeMb;
@@ -78,7 +80,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse {
       args: (map['args'] as List).cast<String>(),
       command: (map['command'] as List).cast<String>(),
       deploymentTimeout: map['deploymentTimeout'] as String,
-      env: Input.decodeList<GoogleCloudAiplatformV1beta1EnvVarResponse>(
+      env: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1EnvVarResponse>(
           map['env'],
           (value) => GoogleCloudAiplatformV1beta1EnvVarResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -86,7 +88,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse {
           (map['healthProbe'] as Map).cast<String, dynamic>()),
       healthRoute: map['healthRoute'] as String,
       imageUri: map['imageUri'] as String,
-      ports: Input.decodeList<GoogleCloudAiplatformV1beta1PortResponse>(
+      ports: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1PortResponse>(
           map['ports'],
           (value) => GoogleCloudAiplatformV1beta1PortResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

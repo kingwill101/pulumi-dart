@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_built_in_algorithm_output_response.dart';
 import 'google_cloud_ml_v1_hyperparameter_output_response.dart';
 
@@ -49,7 +49,7 @@ class GoogleCloudMlV1TrainingOutputResponse {
     map['hyperparameterMetricTag'] = hyperparameterMetricTag;
     map['isBuiltInAlgorithmJob'] = isBuiltInAlgorithmJob;
     map['isHyperparameterTuningJob'] = isHyperparameterTuningJob;
-    map['trials'] = Input.encodeList<
+    map['trials'] = pulumi.Input.encodeList<
         GoogleCloudMlV1HyperparameterOutputResponse,
         Map<String, dynamic>>(trials, (value) => value.toMap());
     map['webAccessUris'] = webAccessUris;
@@ -67,10 +67,11 @@ class GoogleCloudMlV1TrainingOutputResponse {
       hyperparameterMetricTag: map['hyperparameterMetricTag'] as String,
       isBuiltInAlgorithmJob: map['isBuiltInAlgorithmJob'] as bool,
       isHyperparameterTuningJob: map['isHyperparameterTuningJob'] as bool,
-      trials: Input.decodeList<GoogleCloudMlV1HyperparameterOutputResponse>(
-          map['trials'],
-          (value) => GoogleCloudMlV1HyperparameterOutputResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      trials:
+          pulumi.Input.decodeList<GoogleCloudMlV1HyperparameterOutputResponse>(
+              map['trials'],
+              (value) => GoogleCloudMlV1HyperparameterOutputResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       webAccessUris: (map['webAccessUris'] as Map).cast<String, String>(),
     );
   }

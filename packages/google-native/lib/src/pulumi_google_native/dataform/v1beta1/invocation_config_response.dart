@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'target_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'target_response_dataform_v1beta1.dart';
 
 /// Includes various configuration options for a workflow invocation. If both `included_targets` and `included_tags` are unset, all actions will be included.
 class InvocationConfigResponse {
@@ -12,7 +12,7 @@ class InvocationConfigResponse {
   final List<String> includedTags;
 
   /// Optional. The set of action identifiers to include.
-  final List<TargetResponse2> includedTargets;
+  final List<TargetResponseDataformV1beta1> includedTargets;
 
   /// Optional. The service account to run workflow invocations under.
   final String serviceAccount;
@@ -37,9 +37,9 @@ class InvocationConfigResponse {
     map['fullyRefreshIncrementalTablesEnabled'] =
         fullyRefreshIncrementalTablesEnabled;
     map['includedTags'] = includedTags;
-    map['includedTargets'] =
-        Input.encodeList<TargetResponse2, Map<String, dynamic>>(
-            includedTargets, (value) => value.toMap());
+    map['includedTargets'] = pulumi.Input.encodeList<
+        TargetResponseDataformV1beta1,
+        Map<String, dynamic>>(includedTargets, (value) => value.toMap());
     map['serviceAccount'] = serviceAccount;
     map['transitiveDependenciesIncluded'] = transitiveDependenciesIncluded;
     map['transitiveDependentsIncluded'] = transitiveDependentsIncluded;
@@ -51,10 +51,10 @@ class InvocationConfigResponse {
       fullyRefreshIncrementalTablesEnabled:
           map['fullyRefreshIncrementalTablesEnabled'] as bool,
       includedTags: (map['includedTags'] as List).cast<String>(),
-      includedTargets: Input.decodeList<TargetResponse2>(
+      includedTargets: pulumi.Input.decodeList<TargetResponseDataformV1beta1>(
           map['includedTargets'],
-          (value) =>
-              TargetResponse2.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => TargetResponseDataformV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>())),
       serviceAccount: map['serviceAccount'] as String,
       transitiveDependenciesIncluded:
           map['transitiveDependenciesIncluded'] as bool,

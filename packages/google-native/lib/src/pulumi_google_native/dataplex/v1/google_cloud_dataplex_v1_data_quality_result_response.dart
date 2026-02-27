@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_data_quality_column_result_response.dart';
 import 'google_cloud_dataplex_v1_data_quality_dimension_result_response.dart';
 import 'google_cloud_dataplex_v1_data_quality_result_post_scan_actions_result_response.dart';
@@ -48,16 +48,16 @@ class GoogleCloudDataplexV1DataQualityResultResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['columns'] = Input.encodeList<
+    map['columns'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1DataQualityColumnResultResponse,
         Map<String, dynamic>>(columns, (value) => value.toMap());
-    map['dimensions'] = Input.encodeList<
+    map['dimensions'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1DataQualityDimensionResultResponse,
         Map<String, dynamic>>(dimensions, (value) => value.toMap());
     map['passed'] = passed;
     map['postScanActionsResult'] = postScanActionsResult.toMap();
     map['rowCount'] = rowCount;
-    map['rules'] = Input.encodeList<
+    map['rules'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1DataQualityRuleResultResponse,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     map['scannedData'] = scannedData.toMap();
@@ -68,13 +68,13 @@ class GoogleCloudDataplexV1DataQualityResultResponse {
   factory GoogleCloudDataplexV1DataQualityResultResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityResultResponse(
-      columns: Input.decodeList<
+      columns: pulumi.Input.decodeList<
               GoogleCloudDataplexV1DataQualityColumnResultResponse>(
           map['columns'],
           (value) =>
               GoogleCloudDataplexV1DataQualityColumnResultResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      dimensions: Input.decodeList<
+      dimensions: pulumi.Input.decodeList<
               GoogleCloudDataplexV1DataQualityDimensionResultResponse>(
           map['dimensions'],
           (value) =>
@@ -86,12 +86,11 @@ class GoogleCloudDataplexV1DataQualityResultResponse {
               .fromMap((map['postScanActionsResult'] as Map)
                   .cast<String, dynamic>()),
       rowCount: map['rowCount'] as String,
-      rules:
-          Input.decodeList<GoogleCloudDataplexV1DataQualityRuleResultResponse>(
-              map['rules'],
-              (value) =>
-                  GoogleCloudDataplexV1DataQualityRuleResultResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<
+              GoogleCloudDataplexV1DataQualityRuleResultResponse>(
+          map['rules'],
+          (value) => GoogleCloudDataplexV1DataQualityRuleResultResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       scannedData: GoogleCloudDataplexV1ScannedDataResponse.fromMap(
           (map['scannedData'] as Map).cast<String, dynamic>()),
       score: map['score'] as double,

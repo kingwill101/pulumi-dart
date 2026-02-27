@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAutoscalingPolicyIamPolicy.
 class GetAutoscalingPolicyIamPolicyArgs {
-  final Input<String> autoscalingPolicyId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> autoscalingPolicyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetAutoscalingPolicyIamPolicyArgs({
     required this.autoscalingPolicyId,
@@ -27,9 +27,10 @@ class GetAutoscalingPolicyIamPolicyArgs {
 
   factory GetAutoscalingPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoscalingPolicyIamPolicyArgs(
-      autoscalingPolicyId: Input.asInput<String>(map['autoscalingPolicyId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      autoscalingPolicyId:
+          pulumi.Input.asInput<String>(map['autoscalingPolicyId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

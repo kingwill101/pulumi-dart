@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolderSink.
 class GetFolderSinkArgs {
-  final Input<String> folderId;
-  final Input<String> sinkId;
+  final pulumi.Input<String> folderId;
+  final pulumi.Input<String> sinkId;
 
   GetFolderSinkArgs({
     required this.folderId,
@@ -21,8 +21,8 @@ class GetFolderSinkArgs {
 
   factory GetFolderSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderSinkArgs(
-      folderId: Input.asInput<String>(map['folderId']),
-      sinkId: Input.asInput<String>(map['sinkId']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
+      sinkId: pulumi.Input.asInput<String>(map['sinkId']),
     );
   }
 }

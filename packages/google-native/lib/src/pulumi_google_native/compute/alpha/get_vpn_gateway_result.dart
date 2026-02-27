@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_gateway_vpn_gateway_interface_response.dart';
 
 /// Result data returned by getVpnGateway.
@@ -69,7 +69,7 @@ class GetVpnGatewayResult {
     map['region'] = region;
     map['selfLink'] = selfLink;
     map['stackType'] = stackType;
-    map['vpnInterfaces'] = Input.encodeList<
+    map['vpnInterfaces'] = pulumi.Input.encodeList<
         VpnGatewayVpnGatewayInterfaceResponse,
         Map<String, dynamic>>(vpnInterfaces, (value) => value.toMap());
     return map;
@@ -88,10 +88,11 @@ class GetVpnGatewayResult {
       region: map['region'] as String,
       selfLink: map['selfLink'] as String,
       stackType: map['stackType'] as String,
-      vpnInterfaces: Input.decodeList<VpnGatewayVpnGatewayInterfaceResponse>(
-          map['vpnInterfaces'],
-          (value) => VpnGatewayVpnGatewayInterfaceResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      vpnInterfaces:
+          pulumi.Input.decodeList<VpnGatewayVpnGatewayInterfaceResponse>(
+              map['vpnInterfaces'],
+              (value) => VpnGatewayVpnGatewayInterfaceResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

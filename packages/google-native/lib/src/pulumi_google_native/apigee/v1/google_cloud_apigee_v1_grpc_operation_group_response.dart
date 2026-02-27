@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_grpc_operation_config_response.dart';
 
 /// List of gRPC operation configuration details associated with Apigee API proxies.
@@ -14,7 +14,7 @@ class GoogleCloudApigeeV1GrpcOperationGroupResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['operationConfigs'] = Input.encodeList<
+    map['operationConfigs'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1GrpcOperationConfigResponse,
         Map<String, dynamic>>(operationConfigs, (value) => value.toMap());
     return map;
@@ -23,11 +23,11 @@ class GoogleCloudApigeeV1GrpcOperationGroupResponse {
   factory GoogleCloudApigeeV1GrpcOperationGroupResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GrpcOperationGroupResponse(
-      operationConfigs:
-          Input.decodeList<GoogleCloudApigeeV1GrpcOperationConfigResponse>(
-              map['operationConfigs'],
-              (value) => GoogleCloudApigeeV1GrpcOperationConfigResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      operationConfigs: pulumi.Input.decodeList<
+              GoogleCloudApigeeV1GrpcOperationConfigResponse>(
+          map['operationConfigs'],
+          (value) => GoogleCloudApigeeV1GrpcOperationConfigResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

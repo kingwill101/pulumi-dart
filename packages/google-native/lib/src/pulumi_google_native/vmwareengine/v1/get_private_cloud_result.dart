@@ -2,7 +2,7 @@
 
 import 'hcx_response.dart';
 import 'management_cluster_response.dart';
-import 'network_config_response21.dart';
+import 'network_config_response_vmwareengine_v1.dart';
 import 'nsx_response.dart';
 import 'vcenter_response.dart';
 
@@ -30,7 +30,7 @@ class GetPrivateCloudResult {
   final String name;
 
   /// Network configuration of the private cloud.
-  final NetworkConfigResponse21 networkConfig;
+  final NetworkConfigResponseVmwareengineV1 networkConfig;
 
   /// NSX appliance.
   final NsxResponse nsx;
@@ -96,7 +96,7 @@ class GetPrivateCloudResult {
       managementCluster: ManagementClusterResponse.fromMap(
           (map['managementCluster'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      networkConfig: NetworkConfigResponse21.fromMap(
+      networkConfig: NetworkConfigResponseVmwareengineV1.fromMap(
           (map['networkConfig'] as Map).cast<String, dynamic>()),
       nsx: NsxResponse.fromMap((map['nsx'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,

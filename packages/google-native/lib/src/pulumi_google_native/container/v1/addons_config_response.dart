@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'cloud_run_config_response2.dart';
+import 'cloud_run_config_response_container_v1.dart';
 import 'config_connector_config_response.dart';
 import 'dns_cache_config_response.dart';
 import 'gce_persistent_disk_csi_driver_config_response.dart';
@@ -15,7 +15,7 @@ import 'network_policy_config_response.dart';
 /// Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
 class AddonsConfigResponse {
   /// Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
-  final CloudRunConfigResponse2 cloudRunConfig;
+  final CloudRunConfigResponseContainerV1 cloudRunConfig;
 
   /// Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through the Kubernetes API
   final ConfigConnectorConfigResponse configConnectorConfig;
@@ -81,7 +81,7 @@ class AddonsConfigResponse {
 
   factory AddonsConfigResponse.fromMap(Map<String, dynamic> map) {
     return AddonsConfigResponse(
-      cloudRunConfig: CloudRunConfigResponse2.fromMap(
+      cloudRunConfig: CloudRunConfigResponseContainerV1.fromMap(
           (map['cloudRunConfig'] as Map).cast<String, dynamic>()),
       configConnectorConfig: ConfigConnectorConfigResponse.fromMap(
           (map['configConnectorConfig'] as Map).cast<String, dynamic>()),

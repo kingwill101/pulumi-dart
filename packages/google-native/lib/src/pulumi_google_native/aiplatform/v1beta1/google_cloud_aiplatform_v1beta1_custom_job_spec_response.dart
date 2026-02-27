@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_gcs_destination_response.dart';
 import 'google_cloud_aiplatform_v1beta1_scheduling_response.dart';
 import 'google_cloud_aiplatform_v1beta1_worker_pool_spec_response.dart';
@@ -77,7 +77,7 @@ class GoogleCloudAiplatformV1beta1CustomJobSpecResponse {
     map['scheduling'] = scheduling.toMap();
     map['serviceAccount'] = serviceAccount;
     map['tensorboard'] = tensorboard;
-    map['workerPoolSpecs'] = Input.encodeList<
+    map['workerPoolSpecs'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse,
         Map<String, dynamic>>(workerPoolSpecs, (value) => value.toMap());
     return map;
@@ -101,12 +101,11 @@ class GoogleCloudAiplatformV1beta1CustomJobSpecResponse {
           (map['scheduling'] as Map).cast<String, dynamic>()),
       serviceAccount: map['serviceAccount'] as String,
       tensorboard: map['tensorboard'] as String,
-      workerPoolSpecs:
-          Input.decodeList<GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse>(
-              map['workerPoolSpecs'],
-              (value) =>
-                  GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      workerPoolSpecs: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse>(
+          map['workerPoolSpecs'],
+          (value) => GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

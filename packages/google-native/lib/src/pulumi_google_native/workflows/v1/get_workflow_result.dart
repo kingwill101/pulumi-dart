@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'state_error_response2.dart';
+import 'state_error_response_workflows_v1.dart';
 
 /// Result data returned by getWorkflow.
 class GetWorkflowResult {
@@ -38,7 +38,7 @@ class GetWorkflowResult {
   final String state;
 
   /// Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
-  final StateErrorResponse2 stateError;
+  final StateErrorResponseWorkflowsV1 stateError;
 
   /// The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
   final String updateTime;
@@ -95,7 +95,7 @@ class GetWorkflowResult {
       serviceAccount: map['serviceAccount'] as String,
       sourceContents: map['sourceContents'] as String,
       state: map['state'] as String,
-      stateError: StateErrorResponse2.fromMap(
+      stateError: StateErrorResponseWorkflowsV1.fromMap(
           (map['stateError'] as Map).cast<String, dynamic>()),
       updateTime: map['updateTime'] as String,
       userEnvVars: (map['userEnvVars'] as Map).cast<String, String>(),

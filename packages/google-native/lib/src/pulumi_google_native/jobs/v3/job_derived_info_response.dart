@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'location_response4.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'location_response_jobs_v3.dart';
 
 /// Output only. Derived details about the job posting.
 class JobDerivedInfoResponse {
@@ -9,7 +9,7 @@ class JobDerivedInfoResponse {
   final List<String> jobCategories;
 
   /// Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
-  final List<LocationResponse4> locations;
+  final List<LocationResponseJobsV3> locations;
 
   JobDerivedInfoResponse({
     required this.jobCategories,
@@ -20,7 +20,7 @@ class JobDerivedInfoResponse {
     final map = <String, dynamic>{};
     map['jobCategories'] = jobCategories;
     map['locations'] =
-        Input.encodeList<LocationResponse4, Map<String, dynamic>>(
+        pulumi.Input.encodeList<LocationResponseJobsV3, Map<String, dynamic>>(
             locations, (value) => value.toMap());
     return map;
   }
@@ -28,9 +28,9 @@ class JobDerivedInfoResponse {
   factory JobDerivedInfoResponse.fromMap(Map<String, dynamic> map) {
     return JobDerivedInfoResponse(
       jobCategories: (map['jobCategories'] as List).cast<String>(),
-      locations: Input.decodeList<LocationResponse4>(
+      locations: pulumi.Input.decodeList<LocationResponseJobsV3>(
           map['locations'],
-          (value) => LocationResponse4.fromMap(
+          (value) => LocationResponseJobsV3.fromMap(
               (value as Map).cast<String, dynamic>())),
     );
   }

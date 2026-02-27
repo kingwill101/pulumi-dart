@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_descriptor_response.dart';
 
 class BuildDefinitionResponse {
@@ -21,9 +21,9 @@ class BuildDefinitionResponse {
     map['buildType'] = buildType;
     map['externalParameters'] = externalParameters;
     map['internalParameters'] = internalParameters;
-    map['resolvedDependencies'] =
-        Input.encodeList<ResourceDescriptorResponse, Map<String, dynamic>>(
-            resolvedDependencies, (value) => value.toMap());
+    map['resolvedDependencies'] = pulumi.Input.encodeList<
+        ResourceDescriptorResponse,
+        Map<String, dynamic>>(resolvedDependencies, (value) => value.toMap());
     return map;
   }
 
@@ -34,7 +34,7 @@ class BuildDefinitionResponse {
           (map['externalParameters'] as Map).cast<String, String>(),
       internalParameters:
           (map['internalParameters'] as Map).cast<String, String>(),
-      resolvedDependencies: Input.decodeList<ResourceDescriptorResponse>(
+      resolvedDependencies: pulumi.Input.decodeList<ResourceDescriptorResponse>(
           map['resolvedDependencies'],
           (value) => ResourceDescriptorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

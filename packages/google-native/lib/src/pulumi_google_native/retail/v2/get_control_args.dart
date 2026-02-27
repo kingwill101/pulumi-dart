@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getControl.
 class GetControlArgs {
-  final Input<String> catalogId;
-  final Input<String> controlId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> catalogId;
+  final pulumi.Input<String> controlId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetControlArgs({
     required this.catalogId,
@@ -30,10 +30,10 @@ class GetControlArgs {
 
   factory GetControlArgs.fromMap(Map<String, dynamic> map) {
     return GetControlArgs(
-      catalogId: Input.asInput<String>(map['catalogId']),
-      controlId: Input.asInput<String>(map['controlId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      catalogId: pulumi.Input.asInput<String>(map['catalogId']),
+      controlId: pulumi.Input.asInput<String>(map['controlId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

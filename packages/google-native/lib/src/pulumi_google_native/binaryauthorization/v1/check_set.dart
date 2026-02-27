@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'check.dart';
 import 'image_allowlist.dart';
 import 'scope.dart';
@@ -30,7 +30,7 @@ class CheckSet {
     final map = <String, dynamic>{};
     final checksValue = checks;
     if (checksValue != null) {
-      map['checks'] = Input.encodeList<Check, Map<String, dynamic>>(
+      map['checks'] = pulumi.Input.encodeList<Check, Map<String, dynamic>>(
           checksValue, (value) => value.toMap());
     }
     final displayNameValue = displayName;
@@ -52,7 +52,7 @@ class CheckSet {
     return CheckSet(
       checks: map['checks'] == null
           ? null
-          : Input.decodeList<Check>(map['checks'],
+          : pulumi.Input.decodeList<Check>(map['checks'],
               (value) => Check.fromMap((value as Map).cast<String, dynamic>())),
       displayName:
           map['displayName'] == null ? null : map['displayName'] as String,

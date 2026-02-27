@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'metadata_response5.dart';
+import 'metadata_response_containeranalysis_v1.dart';
 import 'recipe_response.dart';
 
 class InTotoProvenanceResponse {
@@ -9,7 +9,7 @@ class InTotoProvenanceResponse {
 
   /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
   final List<String> materials;
-  final MetadataResponse5 metadata;
+  final MetadataResponseContaineranalysisV1 metadata;
 
   /// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
   final RecipeResponse recipe;
@@ -34,7 +34,7 @@ class InTotoProvenanceResponse {
     return InTotoProvenanceResponse(
       builderConfig: (map['builderConfig'] as Map).cast<String, dynamic>(),
       materials: (map['materials'] as List).cast<String>(),
-      metadata: MetadataResponse5.fromMap(
+      metadata: MetadataResponseContaineranalysisV1.fromMap(
           (map['metadata'] as Map).cast<String, dynamic>()),
       recipe: RecipeResponse.fromMap(
           (map['recipe'] as Map).cast<String, dynamic>()),

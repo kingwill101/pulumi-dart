@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'license2.dart';
-import 'location2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'license_containeranalysis_v1alpha1.dart';
+import 'location_containeranalysis_v1alpha1.dart';
 
 /// This represents how a particular software package may be installed on a system.
 class Installation {
   /// Licenses that have been declared by the authors of the package.
-  final License2? license;
+  final LicenseContaineranalysisV1alpha1? license;
 
   /// All of the places within the filesystem versions of this package have been found.
-  final List<Location2>? location;
+  final List<LocationContaineranalysisV1alpha1>? location;
 
   Installation({
     this.license,
@@ -25,8 +25,9 @@ class Installation {
     }
     final locationValue = location;
     if (locationValue != null) {
-      map['location'] = Input.encodeList<Location2, Map<String, dynamic>>(
-          locationValue, (value) => value.toMap());
+      map['location'] = pulumi.Input.encodeList<
+          LocationContaineranalysisV1alpha1,
+          Map<String, dynamic>>(locationValue, (value) => value.toMap());
     }
     return map;
   }
@@ -35,13 +36,14 @@ class Installation {
     return Installation(
       license: map['license'] == null
           ? null
-          : License2.fromMap((map['license'] as Map).cast<String, dynamic>()),
+          : LicenseContaineranalysisV1alpha1.fromMap(
+              (map['license'] as Map).cast<String, dynamic>()),
       location: map['location'] == null
           ? null
-          : Input.decodeList<Location2>(
+          : pulumi.Input.decodeList<LocationContaineranalysisV1alpha1>(
               map['location'],
-              (value) =>
-                  Location2.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => LocationContaineranalysisV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

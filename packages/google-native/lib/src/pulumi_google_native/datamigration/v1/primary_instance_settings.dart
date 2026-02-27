@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'machine_config4.dart';
+import 'machine_config_datamigration_v1.dart';
 
 /// Settings for the cluster's primary instance
 class PrimaryInstanceSettings {
@@ -14,7 +14,7 @@ class PrimaryInstanceSettings {
   final Map<String, String>? labels;
 
   /// Configuration for the machines that host the underlying database engine.
-  final MachineConfig4? machineConfig;
+  final MachineConfigDatamigrationV1? machineConfig;
 
   PrimaryInstanceSettings({
     this.databaseFlags,
@@ -52,7 +52,7 @@ class PrimaryInstanceSettings {
           : (map['labels'] as Map).cast<String, String>(),
       machineConfig: map['machineConfig'] == null
           ? null
-          : MachineConfig4.fromMap(
+          : MachineConfigDatamigrationV1.fromMap(
               (map['machineConfig'] as Map).cast<String, dynamic>()),
     );
   }

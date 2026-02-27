@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFutureReservation.
 class GetFutureReservationArgs {
-  final Input<String> futureReservation;
-  final Input<String>? project;
-  final Input<String> zone;
+  final pulumi.Input<String> futureReservation;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> zone;
 
   GetFutureReservationArgs({
     required this.futureReservation,
@@ -27,9 +27,9 @@ class GetFutureReservationArgs {
 
   factory GetFutureReservationArgs.fromMap(Map<String, dynamic> map) {
     return GetFutureReservationArgs(
-      futureReservation: Input.asInput<String>(map['futureReservation']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asInput<String>(map['zone']),
+      futureReservation: pulumi.Input.asInput<String>(map['futureReservation']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

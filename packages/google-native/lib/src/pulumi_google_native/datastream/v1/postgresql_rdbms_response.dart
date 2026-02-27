@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgresql_schema_response.dart';
 
 /// PostgreSQL database structure.
@@ -15,14 +15,14 @@ class PostgresqlRdbmsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['postgresqlSchemas'] =
-        Input.encodeList<PostgresqlSchemaResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PostgresqlSchemaResponse, Map<String, dynamic>>(
             postgresqlSchemas, (value) => value.toMap());
     return map;
   }
 
   factory PostgresqlRdbmsResponse.fromMap(Map<String, dynamic> map) {
     return PostgresqlRdbmsResponse(
-      postgresqlSchemas: Input.decodeList<PostgresqlSchemaResponse>(
+      postgresqlSchemas: pulumi.Input.decodeList<PostgresqlSchemaResponse>(
           map['postgresqlSchemas'],
           (value) => PostgresqlSchemaResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

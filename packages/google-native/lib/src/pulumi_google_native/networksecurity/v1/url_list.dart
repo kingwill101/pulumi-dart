@@ -1,37 +1,37 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'url_list_args.dart';
 
 /// Creates a new UrlList in a given project and location.
-class UrlList extends CustomResource {
+class UrlList extends pulumi.CustomResource {
   /// Time when the security policy was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Free-text description of the resource.
-  late final Output<String> description;
-  late final Output<String> location;
+  late final pulumi.Output<String> description;
+  late final pulumi.Output<String> location;
 
   /// Name of the resource provided by the user. Name is of the form projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// Time when the security policy was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Required. Short name of the UrlList resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "url_list".
-  late final Output<String> urlListId;
+  late final pulumi.Output<String> urlListId;
 
   /// FQDNs and URLs.
-  late final Output<List<String>> values;
+  late final pulumi.Output<List<String>> values;
 
   UrlList(
     String name, {
     UrlListArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:networksecurity/v1:UrlList',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String>('description');

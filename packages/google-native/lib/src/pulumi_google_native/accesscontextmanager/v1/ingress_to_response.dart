@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_operation_response.dart';
 
 /// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
@@ -19,7 +19,7 @@ class IngressToResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['operations'] =
-        Input.encodeList<ApiOperationResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ApiOperationResponse, Map<String, dynamic>>(
             operations, (value) => value.toMap());
     map['resources'] = resources;
     return map;
@@ -27,7 +27,7 @@ class IngressToResponse {
 
   factory IngressToResponse.fromMap(Map<String, dynamic> map) {
     return IngressToResponse(
-      operations: Input.decodeList<ApiOperationResponse>(
+      operations: pulumi.Input.decodeList<ApiOperationResponse>(
           map['operations'],
           (value) => ApiOperationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

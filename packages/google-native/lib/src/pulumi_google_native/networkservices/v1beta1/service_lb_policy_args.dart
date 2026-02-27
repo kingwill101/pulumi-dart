@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_lb_policy_auto_capacity_drain.dart';
 import 'service_lb_policy_failover_config.dart';
 import 'service_lb_policy_load_balancing_algorithm.dart';
@@ -8,27 +8,28 @@ import 'service_lb_policy_load_balancing_algorithm.dart';
 /// The set of arguments for ServiceLbPolicy.
 class ServiceLbPolicyArgs {
   /// Optional. Configuration to automatically move traffic away for unhealthy IG/NEG for the associated Backend Service.
-  final Input<ServiceLbPolicyAutoCapacityDrain>? autoCapacityDrain;
+  final pulumi.Input<ServiceLbPolicyAutoCapacityDrain>? autoCapacityDrain;
 
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. Configuration related to health based failover.
-  final Input<ServiceLbPolicyFailoverConfig>? failoverConfig;
+  final pulumi.Input<ServiceLbPolicyFailoverConfig>? failoverConfig;
 
   /// Optional. Set of label tags associated with the ServiceLbPolicy resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
-  final Input<ServiceLbPolicyLoadBalancingAlgorithm>? loadBalancingAlgorithm;
-  final Input<String>? location;
+  final pulumi.Input<ServiceLbPolicyLoadBalancingAlgorithm>?
+      loadBalancingAlgorithm;
+  final pulumi.Input<String>? location;
 
   /// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Required. Short name of the ServiceLbPolicy resource to be created. E.g. for resource name `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`. the id is value of {service_lb_policy_name}
-  final Input<String> serviceLbPolicyId;
+  final pulumi.Input<String> serviceLbPolicyId;
 
   ServiceLbPolicyArgs({
     this.autoCapacityDrain,
@@ -46,7 +47,7 @@ class ServiceLbPolicyArgs {
     final map = <String, dynamic>{};
     final autoCapacityDrainValue = autoCapacityDrain;
     if (autoCapacityDrainValue != null) {
-      map['autoCapacityDrain'] = Input.mapOptionalInputValue<
+      map['autoCapacityDrain'] = pulumi.Input.mapOptionalInputValue<
               ServiceLbPolicyAutoCapacityDrain, Map<String, dynamic>>(
           autoCapacityDrainValue, (value) => value.toMap());
     }
@@ -56,7 +57,7 @@ class ServiceLbPolicyArgs {
     }
     final failoverConfigValue = failoverConfig;
     if (failoverConfigValue != null) {
-      map['failoverConfig'] = Input.mapOptionalInputValue<
+      map['failoverConfig'] = pulumi.Input.mapOptionalInputValue<
           ServiceLbPolicyFailoverConfig,
           Map<String, dynamic>>(failoverConfigValue, (value) => value.toMap());
     }
@@ -66,7 +67,7 @@ class ServiceLbPolicyArgs {
     }
     final loadBalancingAlgorithmValue = loadBalancingAlgorithm;
     if (loadBalancingAlgorithmValue != null) {
-      map['loadBalancingAlgorithm'] = Input.mapOptionalInputValue<
+      map['loadBalancingAlgorithm'] = pulumi.Input.mapOptionalInputValue<
           ServiceLbPolicyLoadBalancingAlgorithm,
           String>(loadBalancingAlgorithmValue, (value) => value.value);
     }
@@ -89,19 +90,20 @@ class ServiceLbPolicyArgs {
   factory ServiceLbPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLbPolicyArgs(
       autoCapacityDrain:
-          Input.asOptionalInput<ServiceLbPolicyAutoCapacityDrain>(
+          pulumi.Input.asOptionalInput<ServiceLbPolicyAutoCapacityDrain>(
               map['autoCapacityDrain']),
-      description: Input.asOptionalInput<String>(map['description']),
-      failoverConfig: Input.asOptionalInput<ServiceLbPolicyFailoverConfig>(
-          map['failoverConfig']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      failoverConfig:
+          pulumi.Input.asOptionalInput<ServiceLbPolicyFailoverConfig>(
+              map['failoverConfig']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
       loadBalancingAlgorithm:
-          Input.asOptionalInput<ServiceLbPolicyLoadBalancingAlgorithm>(
+          pulumi.Input.asOptionalInput<ServiceLbPolicyLoadBalancingAlgorithm>(
               map['loadBalancingAlgorithm']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceLbPolicyId: Input.asInput<String>(map['serviceLbPolicyId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceLbPolicyId: pulumi.Input.asInput<String>(map['serviceLbPolicyId']),
     );
   }
 }

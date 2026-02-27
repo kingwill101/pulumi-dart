@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rrset_routing_policy_load_balancer_target.dart';
 
 /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
@@ -15,7 +15,7 @@ class RRSetRoutingPolicyHealthCheckTargets {
     final map = <String, dynamic>{};
     final internalLoadBalancersValue = internalLoadBalancers;
     if (internalLoadBalancersValue != null) {
-      map['internalLoadBalancers'] = Input.encodeList<
+      map['internalLoadBalancers'] = pulumi.Input.encodeList<
               RRSetRoutingPolicyLoadBalancerTarget, Map<String, dynamic>>(
           internalLoadBalancersValue, (value) => value.toMap());
     }
@@ -27,7 +27,7 @@ class RRSetRoutingPolicyHealthCheckTargets {
     return RRSetRoutingPolicyHealthCheckTargets(
       internalLoadBalancers: map['internalLoadBalancers'] == null
           ? null
-          : Input.decodeList<RRSetRoutingPolicyLoadBalancerTarget>(
+          : pulumi.Input.decodeList<RRSetRoutingPolicyLoadBalancerTarget>(
               map['internalLoadBalancers'],
               (value) => RRSetRoutingPolicyLoadBalancerTarget.fromMap(
                   (value as Map).cast<String, dynamic>())),

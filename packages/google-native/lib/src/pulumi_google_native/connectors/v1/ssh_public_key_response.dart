@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'secret_response2.dart';
+import 'secret_response_connectors_v1.dart';
 
 /// Parameters to support Ssh public key Authentication.
 class SshPublicKeyResponse {
@@ -8,10 +8,10 @@ class SshPublicKeyResponse {
   final String certType;
 
   /// SSH Client Cert. It should contain both public and private key.
-  final SecretResponse2 sshClientCert;
+  final SecretResponseConnectorsV1 sshClientCert;
 
   /// Password (passphrase) for ssh client certificate if it has one.
-  final SecretResponse2 sshClientCertPass;
+  final SecretResponseConnectorsV1 sshClientCertPass;
 
   /// The user account used to authenticate.
   final String username;
@@ -35,9 +35,9 @@ class SshPublicKeyResponse {
   factory SshPublicKeyResponse.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyResponse(
       certType: map['certType'] as String,
-      sshClientCert: SecretResponse2.fromMap(
+      sshClientCert: SecretResponseConnectorsV1.fromMap(
           (map['sshClientCert'] as Map).cast<String, dynamic>()),
-      sshClientCertPass: SecretResponse2.fromMap(
+      sshClientCertPass: SecretResponseConnectorsV1.fromMap(
           (map['sshClientCertPass'] as Map).cast<String, dynamic>()),
       username: map['username'] as String,
     );

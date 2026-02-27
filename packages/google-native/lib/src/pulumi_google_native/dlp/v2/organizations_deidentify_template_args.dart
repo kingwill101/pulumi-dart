@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_deidentify_config.dart';
 
 /// The set of arguments for OrganizationsDeidentifyTemplate.
 class OrganizationsDeidentifyTemplateArgs {
   /// The core content of the template.
-  final Input<GooglePrivacyDlpV2DeidentifyConfig>? deidentifyConfig;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyConfig>? deidentifyConfig;
 
   /// Short description (max 256 chars).
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Display name (max 256 chars).
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Deprecated. This field has no effect.
-  final Input<String>? location;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String> organizationId;
 
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final Input<String>? templateId;
+  final pulumi.Input<String>? templateId;
 
   OrganizationsDeidentifyTemplateArgs({
     this.deidentifyConfig,
@@ -34,7 +34,7 @@ class OrganizationsDeidentifyTemplateArgs {
     final map = <String, dynamic>{};
     final deidentifyConfigValue = deidentifyConfig;
     if (deidentifyConfigValue != null) {
-      map['deidentifyConfig'] = Input.mapOptionalInputValue<
+      map['deidentifyConfig'] = pulumi.Input.mapOptionalInputValue<
               GooglePrivacyDlpV2DeidentifyConfig, Map<String, dynamic>>(
           deidentifyConfigValue, (value) => value.toMap());
     }
@@ -62,13 +62,13 @@ class OrganizationsDeidentifyTemplateArgs {
       Map<String, dynamic> map) {
     return OrganizationsDeidentifyTemplateArgs(
       deidentifyConfig:
-          Input.asOptionalInput<GooglePrivacyDlpV2DeidentifyConfig>(
+          pulumi.Input.asOptionalInput<GooglePrivacyDlpV2DeidentifyConfig>(
               map['deidentifyConfig']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      templateId: Input.asOptionalInput<String>(map['templateId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      templateId: pulumi.Input.asOptionalInput<String>(map['templateId']),
     );
   }
 }

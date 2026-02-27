@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v2_container_response.dart';
 import 'google_cloud_run_v2_revision_scaling_response.dart';
 import 'google_cloud_run_v2_volume_response.dart';
@@ -66,7 +66,8 @@ class GoogleCloudRunV2RevisionTemplateResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['annotations'] = annotations;
-    map['containers'] = Input.encodeList<GoogleCloudRunV2ContainerResponse,
+    map['containers'] = pulumi.Input.encodeList<
+        GoogleCloudRunV2ContainerResponse,
         Map<String, dynamic>>(containers, (value) => value.toMap());
     map['encryptionKey'] = encryptionKey;
     map['executionEnvironment'] = executionEnvironment;
@@ -77,9 +78,8 @@ class GoogleCloudRunV2RevisionTemplateResponse {
     map['serviceAccount'] = serviceAccount;
     map['sessionAffinity'] = sessionAffinity;
     map['timeout'] = timeout;
-    map['volumes'] =
-        Input.encodeList<GoogleCloudRunV2VolumeResponse, Map<String, dynamic>>(
-            volumes, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<GoogleCloudRunV2VolumeResponse,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
     map['vpcAccess'] = vpcAccess.toMap();
     return map;
   }
@@ -88,7 +88,7 @@ class GoogleCloudRunV2RevisionTemplateResponse {
       Map<String, dynamic> map) {
     return GoogleCloudRunV2RevisionTemplateResponse(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      containers: Input.decodeList<GoogleCloudRunV2ContainerResponse>(
+      containers: pulumi.Input.decodeList<GoogleCloudRunV2ContainerResponse>(
           map['containers'],
           (value) => GoogleCloudRunV2ContainerResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -103,7 +103,7 @@ class GoogleCloudRunV2RevisionTemplateResponse {
       serviceAccount: map['serviceAccount'] as String,
       sessionAffinity: map['sessionAffinity'] as bool,
       timeout: map['timeout'] as String,
-      volumes: Input.decodeList<GoogleCloudRunV2VolumeResponse>(
+      volumes: pulumi.Input.decodeList<GoogleCloudRunV2VolumeResponse>(
           map['volumes'],
           (value) => GoogleCloudRunV2VolumeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_address_pool_response.dart';
 
 /// Represents configuration parameters for the MetalLB load balancer.
@@ -14,15 +14,14 @@ class VmwareMetalLbConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['addressPools'] =
-        Input.encodeList<VmwareAddressPoolResponse, Map<String, dynamic>>(
-            addressPools, (value) => value.toMap());
+    map['addressPools'] = pulumi.Input.encodeList<VmwareAddressPoolResponse,
+        Map<String, dynamic>>(addressPools, (value) => value.toMap());
     return map;
   }
 
   factory VmwareMetalLbConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareMetalLbConfigResponse(
-      addressPools: Input.decodeList<VmwareAddressPoolResponse>(
+      addressPools: pulumi.Input.decodeList<VmwareAddressPoolResponse>(
           map['addressPools'],
           (value) => VmwareAddressPoolResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

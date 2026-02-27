@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a column field within a table schema.
 class GoogleCloudDataplexV1SchemaSchemaFieldResponse {
@@ -30,7 +30,7 @@ class GoogleCloudDataplexV1SchemaSchemaFieldResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['description'] = description;
-    map['fields'] = Input.encodeList<
+    map['fields'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1SchemaSchemaFieldResponse,
         Map<String, dynamic>>(fields, (value) => value.toMap());
     map['mode'] = mode;
@@ -43,7 +43,8 @@ class GoogleCloudDataplexV1SchemaSchemaFieldResponse {
       Map<String, dynamic> map) {
     return GoogleCloudDataplexV1SchemaSchemaFieldResponse(
       description: map['description'] as String,
-      fields: Input.decodeList<GoogleCloudDataplexV1SchemaSchemaFieldResponse>(
+      fields: pulumi.Input.decodeList<
+              GoogleCloudDataplexV1SchemaSchemaFieldResponse>(
           map['fields'],
           (value) => GoogleCloudDataplexV1SchemaSchemaFieldResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

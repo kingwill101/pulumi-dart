@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v2_network_interface.dart';
 import 'google_cloud_run_v2_vpc_access_egress.dart';
 
@@ -33,7 +33,7 @@ class GoogleCloudRunV2VpcAccess {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] = Input.encodeList<
+      map['networkInterfaces'] = pulumi.Input.encodeList<
               GoogleCloudRunV2NetworkInterface, Map<String, dynamic>>(
           networkInterfacesValue, (value) => value.toMap());
     }
@@ -48,7 +48,7 @@ class GoogleCloudRunV2VpcAccess {
           : GoogleCloudRunV2VpcAccessEgress.fromValue(map['egress'] as String),
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV2NetworkInterface>(
+          : pulumi.Input.decodeList<GoogleCloudRunV2NetworkInterface>(
               map['networkInterfaces'],
               (value) => GoogleCloudRunV2NetworkInterface.fromMap(
                   (value as Map).cast<String, dynamic>())),

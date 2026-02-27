@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'nfs_export_options_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'nfs_export_options_response_file_v1beta1.dart';
 
 /// Result data returned by getShare.
 class GetShareResult {
@@ -27,7 +27,7 @@ class GetShareResult {
   final String name;
 
   /// Nfs Export Options. There is a limit of 10 export options per file share.
-  final List<NfsExportOptionsResponse2> nfsExportOptions;
+  final List<NfsExportOptionsResponseFileV1beta1> nfsExportOptions;
 
   /// The share state.
   final String state;
@@ -53,9 +53,9 @@ class GetShareResult {
     map['labels'] = labels;
     map['mountName'] = mountName;
     map['name'] = name;
-    map['nfsExportOptions'] =
-        Input.encodeList<NfsExportOptionsResponse2, Map<String, dynamic>>(
-            nfsExportOptions, (value) => value.toMap());
+    map['nfsExportOptions'] = pulumi.Input.encodeList<
+        NfsExportOptionsResponseFileV1beta1,
+        Map<String, dynamic>>(nfsExportOptions, (value) => value.toMap());
     map['state'] = state;
     return map;
   }
@@ -69,10 +69,11 @@ class GetShareResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       mountName: map['mountName'] as String,
       name: map['name'] as String,
-      nfsExportOptions: Input.decodeList<NfsExportOptionsResponse2>(
-          map['nfsExportOptions'],
-          (value) => NfsExportOptionsResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nfsExportOptions:
+          pulumi.Input.decodeList<NfsExportOptionsResponseFileV1beta1>(
+              map['nfsExportOptions'],
+              (value) => NfsExportOptionsResponseFileV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
     );
   }

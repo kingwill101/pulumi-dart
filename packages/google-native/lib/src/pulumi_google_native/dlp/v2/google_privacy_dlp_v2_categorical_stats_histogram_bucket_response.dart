@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_value_frequency_response.dart';
 
 /// Histogram of value frequencies in the column.
@@ -32,7 +32,7 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
     final map = <String, dynamic>{};
     map['bucketSize'] = bucketSize;
     map['bucketValueCount'] = bucketValueCount;
-    map['bucketValues'] = Input.encodeList<
+    map['bucketValues'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2ValueFrequencyResponse,
         Map<String, dynamic>>(bucketValues, (value) => value.toMap());
     map['valueFrequencyLowerBound'] = valueFrequencyLowerBound;
@@ -45,10 +45,11 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
     return GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse(
       bucketSize: map['bucketSize'] as String,
       bucketValueCount: map['bucketValueCount'] as String,
-      bucketValues: Input.decodeList<GooglePrivacyDlpV2ValueFrequencyResponse>(
-          map['bucketValues'],
-          (value) => GooglePrivacyDlpV2ValueFrequencyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      bucketValues:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2ValueFrequencyResponse>(
+              map['bucketValues'],
+              (value) => GooglePrivacyDlpV2ValueFrequencyResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       valueFrequencyLowerBound: map['valueFrequencyLowerBound'] as String,
       valueFrequencyUpperBound: map['valueFrequencyUpperBound'] as String,
     );

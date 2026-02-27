@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCanaryEvaluation.
 class GetCanaryEvaluationArgs {
-  final Input<String> canaryevaluationId;
-  final Input<String> instanceId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> canaryevaluationId;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> organizationId;
 
   GetCanaryEvaluationArgs({
     required this.canaryevaluationId,
@@ -24,9 +24,10 @@ class GetCanaryEvaluationArgs {
 
   factory GetCanaryEvaluationArgs.fromMap(Map<String, dynamic> map) {
     return GetCanaryEvaluationArgs(
-      canaryevaluationId: Input.asInput<String>(map['canaryevaluationId']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      canaryevaluationId:
+          pulumi.Input.asInput<String>(map['canaryevaluationId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

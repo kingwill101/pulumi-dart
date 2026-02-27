@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disks_migration_vm_target_details_response.dart';
 import 'persistent_disk_response.dart';
 
@@ -24,7 +24,7 @@ class ComputeEngineDisksTargetDetailsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['disks'] =
-        Input.encodeList<PersistentDiskResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PersistentDiskResponse, Map<String, dynamic>>(
             disks, (value) => value.toMap());
     map['disksTargetDetails'] = disksTargetDetails;
     map['vmTargetDetails'] = vmTargetDetails.toMap();
@@ -34,7 +34,7 @@ class ComputeEngineDisksTargetDetailsResponse {
   factory ComputeEngineDisksTargetDetailsResponse.fromMap(
       Map<String, dynamic> map) {
     return ComputeEngineDisksTargetDetailsResponse(
-      disks: Input.decodeList<PersistentDiskResponse>(
+      disks: pulumi.Input.decodeList<PersistentDiskResponse>(
           map['disks'],
           (value) => PersistentDiskResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,43 +1,43 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mesh_args.dart';
 
 /// Creates a new Mesh in a given project and location.
-class Mesh extends CustomResource {
+class Mesh extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
-  late final Output<int> interceptionPort;
+  late final pulumi.Output<int> interceptionPort;
 
   /// Optional. Set of label tags associated with the Mesh resource.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// Required. Short name of the Mesh resource to be created.
-  late final Output<String> meshId;
+  late final pulumi.Output<String> meshId;
 
   /// Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// Server-defined URL of this resource
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The timestamp when the resource was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Mesh(
     String name, {
     MeshArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:networkservices/v1:Mesh',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String>('description');

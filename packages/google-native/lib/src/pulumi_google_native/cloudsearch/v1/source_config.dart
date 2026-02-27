@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'source5.dart';
+import 'source_cloudsearch_v1.dart';
 import 'source_crowding_config.dart';
 import 'source_scoring_config.dart';
 
@@ -13,7 +13,7 @@ class SourceConfig {
   final SourceScoringConfig? scoringConfig;
 
   /// The source for which this configuration is to be used.
-  final Source5? source;
+  final SourceCloudsearchV1? source;
 
   SourceConfig({
     this.crowdingConfig,
@@ -50,7 +50,8 @@ class SourceConfig {
               (map['scoringConfig'] as Map).cast<String, dynamic>()),
       source: map['source'] == null
           ? null
-          : Source5.fromMap((map['source'] as Map).cast<String, dynamic>()),
+          : SourceCloudsearchV1.fromMap(
+              (map['source'] as Map).cast<String, dynamic>()),
     );
   }
 }

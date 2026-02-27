@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_data_profile_action_response.dart';
 import 'google_privacy_dlp_v2_discovery_target_response.dart';
 import 'google_privacy_dlp_v2_error_response.dart';
@@ -57,20 +57,20 @@ class GetDiscoveryConfigResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] = Input.encodeList<
+    map['actions'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2DataProfileActionResponse,
         Map<String, dynamic>>(actions, (value) => value.toMap());
     map['createTime'] = createTime;
     map['displayName'] = displayName;
-    map['errors'] =
-        Input.encodeList<GooglePrivacyDlpV2ErrorResponse, Map<String, dynamic>>(
-            errors, (value) => value.toMap());
+    map['errors'] = pulumi.Input.encodeList<GooglePrivacyDlpV2ErrorResponse,
+        Map<String, dynamic>>(errors, (value) => value.toMap());
     map['inspectTemplates'] = inspectTemplates;
     map['lastRunTime'] = lastRunTime;
     map['name'] = name;
     map['orgConfig'] = orgConfig.toMap();
     map['status'] = status;
-    map['targets'] = Input.encodeList<GooglePrivacyDlpV2DiscoveryTargetResponse,
+    map['targets'] = pulumi.Input.encodeList<
+        GooglePrivacyDlpV2DiscoveryTargetResponse,
         Map<String, dynamic>>(targets, (value) => value.toMap());
     map['updateTime'] = updateTime;
     return map;
@@ -78,13 +78,14 @@ class GetDiscoveryConfigResult {
 
   factory GetDiscoveryConfigResult.fromMap(Map<String, dynamic> map) {
     return GetDiscoveryConfigResult(
-      actions: Input.decodeList<GooglePrivacyDlpV2DataProfileActionResponse>(
-          map['actions'],
-          (value) => GooglePrivacyDlpV2DataProfileActionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      actions:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2DataProfileActionResponse>(
+              map['actions'],
+              (value) => GooglePrivacyDlpV2DataProfileActionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      errors: Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(
+      errors: pulumi.Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(
           map['errors'],
           (value) => GooglePrivacyDlpV2ErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -94,10 +95,11 @@ class GetDiscoveryConfigResult {
       orgConfig: GooglePrivacyDlpV2OrgConfigResponse.fromMap(
           (map['orgConfig'] as Map).cast<String, dynamic>()),
       status: map['status'] as String,
-      targets: Input.decodeList<GooglePrivacyDlpV2DiscoveryTargetResponse>(
-          map['targets'],
-          (value) => GooglePrivacyDlpV2DiscoveryTargetResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      targets:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2DiscoveryTargetResponse>(
+              map['targets'],
+              (value) => GooglePrivacyDlpV2DiscoveryTargetResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }

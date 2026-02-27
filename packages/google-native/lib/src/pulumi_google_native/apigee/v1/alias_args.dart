@@ -1,38 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Alias.
 class AliasArgs {
   /// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
-  final Input<String>? alias;
+  final pulumi.Input<String>? alias;
 
   /// The HTTP Content-Type header value specifying the content type of the body.
-  final Input<String>? contentType;
+  final pulumi.Input<String>? contentType;
 
   /// The HTTP request/response body as raw binary.
-  final Input<String>? data;
-  final Input<String> environmentId;
+  final pulumi.Input<String>? data;
+  final pulumi.Input<String> environmentId;
 
   /// Application specific response metadata. Must be set in the first response for streaming APIs.
-  final Input<List<Map<String, String>>>? extensions;
+  final pulumi.Input<List<Map<String, String>>>? extensions;
 
   /// File to upload.
-  final Input<dynamic>? file;
+  final pulumi.Input<dynamic>? file;
 
   /// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
-  final Input<String> format;
+  final pulumi.Input<String> format;
 
   /// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
-  final Input<bool>? ignoreExpiryValidation;
+  final pulumi.Input<bool>? ignoreExpiryValidation;
 
   /// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
-  final Input<bool>? ignoreNewlineValidation;
-  final Input<String> keystoreId;
-  final Input<String> organizationId;
+  final pulumi.Input<bool>? ignoreNewlineValidation;
+  final pulumi.Input<String> keystoreId;
+  final pulumi.Input<String> organizationId;
 
   /// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
-  final Input<String>? password;
+  final pulumi.Input<String>? password;
 
   AliasArgs({
     this.alias,
@@ -92,21 +92,21 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      alias: Input.asOptionalInput<String>(map['alias']),
-      contentType: Input.asOptionalInput<String>(map['contentType']),
-      data: Input.asOptionalInput<String>(map['data']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      extensions:
-          Input.asOptionalInput<List<Map<String, String>>>(map['extensions']),
-      file: Input.asOptionalInput<dynamic>(map['file']),
-      format: Input.asInput<String>(map['format']),
+      alias: pulumi.Input.asOptionalInput<String>(map['alias']),
+      contentType: pulumi.Input.asOptionalInput<String>(map['contentType']),
+      data: pulumi.Input.asOptionalInput<String>(map['data']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      extensions: pulumi.Input.asOptionalInput<List<Map<String, String>>>(
+          map['extensions']),
+      file: pulumi.Input.asOptionalInput<dynamic>(map['file']),
+      format: pulumi.Input.asInput<String>(map['format']),
       ignoreExpiryValidation:
-          Input.asOptionalInput<bool>(map['ignoreExpiryValidation']),
+          pulumi.Input.asOptionalInput<bool>(map['ignoreExpiryValidation']),
       ignoreNewlineValidation:
-          Input.asOptionalInput<bool>(map['ignoreNewlineValidation']),
-      keystoreId: Input.asInput<String>(map['keystoreId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      password: Input.asOptionalInput<String>(map['password']),
+          pulumi.Input.asOptionalInput<bool>(map['ignoreNewlineValidation']),
+      keystoreId: pulumi.Input.asInput<String>(map['keystoreId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      password: pulumi.Input.asOptionalInput<String>(map['password']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_column_schema.dart';
 
 /// Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
@@ -16,7 +16,8 @@ class GoogleCloudDatacatalogV1Schema {
     final map = <String, dynamic>{};
     final columnsValue = columns;
     if (columnsValue != null) {
-      map['columns'] = Input.encodeList<GoogleCloudDatacatalogV1ColumnSchema,
+      map['columns'] = pulumi.Input.encodeList<
+          GoogleCloudDatacatalogV1ColumnSchema,
           Map<String, dynamic>>(columnsValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +27,7 @@ class GoogleCloudDatacatalogV1Schema {
     return GoogleCloudDatacatalogV1Schema(
       columns: map['columns'] == null
           ? null
-          : Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(
+          : pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(
               map['columns'],
               (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap(
                   (value as Map).cast<String, dynamic>())),

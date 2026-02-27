@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'display_data_response.dart';
 import 'execution_stage_summary_response.dart';
 import 'transform_summary_response.dart';
@@ -29,13 +29,13 @@ class PipelineDescriptionResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['displayData'] =
-        Input.encodeList<DisplayDataResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DisplayDataResponse, Map<String, dynamic>>(
             displayData, (value) => value.toMap());
-    map['executionPipelineStage'] =
-        Input.encodeList<ExecutionStageSummaryResponse, Map<String, dynamic>>(
-            executionPipelineStage, (value) => value.toMap());
+    map['executionPipelineStage'] = pulumi.Input.encodeList<
+        ExecutionStageSummaryResponse,
+        Map<String, dynamic>>(executionPipelineStage, (value) => value.toMap());
     map['originalPipelineTransform'] =
-        Input.encodeList<TransformSummaryResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TransformSummaryResponse, Map<String, dynamic>>(
             originalPipelineTransform, (value) => value.toMap());
     map['stepNamesHash'] = stepNamesHash;
     return map;
@@ -43,18 +43,20 @@ class PipelineDescriptionResponse {
 
   factory PipelineDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return PipelineDescriptionResponse(
-      displayData: Input.decodeList<DisplayDataResponse>(
+      displayData: pulumi.Input.decodeList<DisplayDataResponse>(
           map['displayData'],
           (value) => DisplayDataResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      executionPipelineStage: Input.decodeList<ExecutionStageSummaryResponse>(
-          map['executionPipelineStage'],
-          (value) => ExecutionStageSummaryResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      originalPipelineTransform: Input.decodeList<TransformSummaryResponse>(
-          map['originalPipelineTransform'],
-          (value) => TransformSummaryResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      executionPipelineStage:
+          pulumi.Input.decodeList<ExecutionStageSummaryResponse>(
+              map['executionPipelineStage'],
+              (value) => ExecutionStageSummaryResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      originalPipelineTransform:
+          pulumi.Input.decodeList<TransformSummaryResponse>(
+              map['originalPipelineTransform'],
+              (value) => TransformSummaryResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       stepNamesHash: map['stepNamesHash'] as String,
     );
   }

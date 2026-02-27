@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_image.dart';
 import 'runtime_software_config_post_startup_script_behavior.dart';
 
@@ -82,8 +82,9 @@ class RuntimeSoftwareConfig {
     }
     final kernelsValue = kernels;
     if (kernelsValue != null) {
-      map['kernels'] = Input.encodeList<ContainerImage, Map<String, dynamic>>(
-          kernelsValue, (value) => value.toMap());
+      map['kernels'] =
+          pulumi.Input.encodeList<ContainerImage, Map<String, dynamic>>(
+              kernelsValue, (value) => value.toMap());
     }
     final mixerDisabledValue = mixerDisabled;
     if (mixerDisabledValue != null) {
@@ -125,7 +126,7 @@ class RuntimeSoftwareConfig {
           : map['installGpuDriver'] as bool,
       kernels: map['kernels'] == null
           ? null
-          : Input.decodeList<ContainerImage>(
+          : pulumi.Input.decodeList<ContainerImage>(
               map['kernels'],
               (value) => ContainerImage.fromMap(
                   (value as Map).cast<String, dynamic>())),

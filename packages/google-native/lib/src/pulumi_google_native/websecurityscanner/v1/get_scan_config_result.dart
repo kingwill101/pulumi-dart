@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'authentication_response2.dart';
-import 'schedule_response3.dart';
+import 'authentication_response_websecurityscanner_v1.dart';
+import 'schedule_response_websecurityscanner_v1.dart';
 
 /// Result data returned by getScanConfig.
 class GetScanConfigResult {
   /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
-  final AuthenticationResponse2 authentication;
+  final AuthenticationResponseWebsecurityscannerV1 authentication;
 
   /// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
   final List<String> blacklistPatterns;
@@ -33,7 +33,7 @@ class GetScanConfigResult {
   final String riskLevel;
 
   /// The schedule of the ScanConfig.
-  final ScheduleResponse3 schedule;
+  final ScheduleResponseWebsecurityscannerV1 schedule;
 
   /// The starting URLs from which the scanner finds site pages.
   final List<String> startingUrls;
@@ -80,7 +80,7 @@ class GetScanConfigResult {
 
   factory GetScanConfigResult.fromMap(Map<String, dynamic> map) {
     return GetScanConfigResult(
-      authentication: AuthenticationResponse2.fromMap(
+      authentication: AuthenticationResponseWebsecurityscannerV1.fromMap(
           (map['authentication'] as Map).cast<String, dynamic>()),
       blacklistPatterns: (map['blacklistPatterns'] as List).cast<String>(),
       displayName: map['displayName'] as String,
@@ -91,7 +91,7 @@ class GetScanConfigResult {
       maxQps: map['maxQps'] as int,
       name: map['name'] as String,
       riskLevel: map['riskLevel'] as String,
-      schedule: ScheduleResponse3.fromMap(
+      schedule: ScheduleResponseWebsecurityscannerV1.fromMap(
           (map['schedule'] as Map).cast<String, dynamic>()),
       startingUrls: (map['startingUrls'] as List).cast<String>(),
       staticIpScan: map['staticIpScan'] as bool,

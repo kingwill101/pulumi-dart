@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_page_detected_language.dart';
 import 'google_cloud_documentai_v1_document_page_layout.dart';
 import 'google_cloud_documentai_v1_document_page_token_detected_break.dart';
@@ -41,7 +41,7 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
     }
     final detectedLanguagesValue = detectedLanguages;
     if (detectedLanguagesValue != null) {
-      map['detectedLanguages'] = Input.encodeList<
+      map['detectedLanguages'] = pulumi.Input.encodeList<
               GoogleCloudDocumentaiV1DocumentPageDetectedLanguage,
               Map<String, dynamic>>(
           detectedLanguagesValue, (value) => value.toMap());
@@ -70,7 +70,7 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
               (map['detectedBreak'] as Map).cast<String, dynamic>()),
       detectedLanguages: map['detectedLanguages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(
               map['detectedLanguages'],
               (value) =>

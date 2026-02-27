@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grpc_route_route_rule_response.dart';
 
 /// Result data returned by getGrpcRoute.
@@ -57,9 +57,8 @@ class GetGrpcRouteResult {
     map['labels'] = labels;
     map['meshes'] = meshes;
     map['name'] = name;
-    map['rules'] =
-        Input.encodeList<GrpcRouteRouteRuleResponse, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
+    map['rules'] = pulumi.Input.encodeList<GrpcRouteRouteRuleResponse,
+        Map<String, dynamic>>(rules, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['updateTime'] = updateTime;
     return map;
@@ -74,7 +73,7 @@ class GetGrpcRouteResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       meshes: (map['meshes'] as List).cast<String>(),
       name: map['name'] as String,
-      rules: Input.decodeList<GrpcRouteRouteRuleResponse>(
+      rules: pulumi.Input.decodeList<GrpcRouteRouteRuleResponse>(
           map['rules'],
           (value) => GrpcRouteRouteRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

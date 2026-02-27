@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_machine_series_allocation_response.dart';
 
 /// A set of findings that applies to assets destined for Compute Engine.
@@ -30,7 +30,7 @@ class ReportSummaryComputeEngineFindingResponse {
     map['allocatedAssetCount'] = allocatedAssetCount;
     map['allocatedDiskTypes'] = allocatedDiskTypes;
     map['allocatedRegions'] = allocatedRegions;
-    map['machineSeriesAllocations'] = Input.encodeList<
+    map['machineSeriesAllocations'] = pulumi.Input.encodeList<
             ReportSummaryMachineSeriesAllocationResponse, Map<String, dynamic>>(
         machineSeriesAllocations, (value) => value.toMap());
     return map;
@@ -43,7 +43,7 @@ class ReportSummaryComputeEngineFindingResponse {
       allocatedDiskTypes: (map['allocatedDiskTypes'] as List).cast<String>(),
       allocatedRegions: (map['allocatedRegions'] as List).cast<String>(),
       machineSeriesAllocations:
-          Input.decodeList<ReportSummaryMachineSeriesAllocationResponse>(
+          pulumi.Input.decodeList<ReportSummaryMachineSeriesAllocationResponse>(
               map['machineSeriesAllocations'],
               (value) => ReportSummaryMachineSeriesAllocationResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMembership.
 class GetMembershipArgs {
-  final Input<String> groupId;
-  final Input<String> membershipId;
+  final pulumi.Input<String> groupId;
+  final pulumi.Input<String> membershipId;
 
   GetMembershipArgs({
     required this.groupId,
@@ -21,8 +21,8 @@ class GetMembershipArgs {
 
   factory GetMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GetMembershipArgs(
-      groupId: Input.asInput<String>(map['groupId']),
-      membershipId: Input.asInput<String>(map['membershipId']),
+      groupId: pulumi.Input.asInput<String>(map['groupId']),
+      membershipId: pulumi.Input.asInput<String>(map['membershipId']),
     );
   }
 }

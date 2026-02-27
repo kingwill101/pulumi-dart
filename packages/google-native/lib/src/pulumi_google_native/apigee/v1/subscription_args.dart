@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Subscription.
 class SubscriptionArgs {
   /// Name of the API product for which the developer is purchasing a subscription.
-  final Input<String>? apiproduct;
-  final Input<String> developerId;
+  final pulumi.Input<String>? apiproduct;
+  final pulumi.Input<String> developerId;
 
   /// Time when the API product subscription ends in milliseconds since epoch.
-  final Input<String>? endTime;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String> organizationId;
 
   /// Time when the API product subscription starts in milliseconds since epoch.
-  final Input<String>? startTime;
+  final pulumi.Input<String>? startTime;
 
   SubscriptionArgs({
     this.apiproduct,
@@ -44,11 +44,11 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      apiproduct: Input.asOptionalInput<String>(map['apiproduct']),
-      developerId: Input.asInput<String>(map['developerId']),
-      endTime: Input.asOptionalInput<String>(map['endTime']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      startTime: Input.asOptionalInput<String>(map['startTime']),
+      apiproduct: pulumi.Input.asOptionalInput<String>(map['apiproduct']),
+      developerId: pulumi.Input.asInput<String>(map['developerId']),
+      endTime: pulumi.Input.asOptionalInput<String>(map['endTime']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      startTime: pulumi.Input.asOptionalInput<String>(map['startTime']),
     );
   }
 }

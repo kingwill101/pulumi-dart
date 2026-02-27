@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Schema.
 class SchemaArgs {
-  final Input<String> collectionId;
-  final Input<String> dataStoreId;
+  final pulumi.Input<String> collectionId;
+  final pulumi.Input<String> dataStoreId;
 
   /// The JSON representation of the schema.
-  final Input<String>? jsonSchema;
-  final Input<String>? location;
+  final pulumi.Input<String>? jsonSchema;
+  final pulumi.Input<String>? location;
 
   /// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Required. The ID to use for the Schema, which will become the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
-  final Input<String> schemaId;
+  final pulumi.Input<String> schemaId;
 
   /// The structured representation of the schema.
-  final Input<Map<String, String>>? structSchema;
+  final pulumi.Input<Map<String, String>>? structSchema;
 
   SchemaArgs({
     required this.collectionId,
@@ -62,15 +62,15 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      collectionId: Input.asInput<String>(map['collectionId']),
-      dataStoreId: Input.asInput<String>(map['dataStoreId']),
-      jsonSchema: Input.asOptionalInput<String>(map['jsonSchema']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      schemaId: Input.asInput<String>(map['schemaId']),
-      structSchema:
-          Input.asOptionalInput<Map<String, String>>(map['structSchema']),
+      collectionId: pulumi.Input.asInput<String>(map['collectionId']),
+      dataStoreId: pulumi.Input.asInput<String>(map['dataStoreId']),
+      jsonSchema: pulumi.Input.asOptionalInput<String>(map['jsonSchema']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      schemaId: pulumi.Input.asInput<String>(map['schemaId']),
+      structSchema: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['structSchema']),
     );
   }
 }

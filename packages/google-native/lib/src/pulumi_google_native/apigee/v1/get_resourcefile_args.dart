@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResourcefile.
 class GetResourcefileArgs {
-  final Input<String> environmentId;
-  final Input<String> name;
-  final Input<String> organizationId;
-  final Input<String> type;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> type;
 
   GetResourcefileArgs({
     required this.environmentId,
@@ -27,10 +27,10 @@ class GetResourcefileArgs {
 
   factory GetResourcefileArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcefileArgs(
-      environmentId: Input.asInput<String>(map['environmentId']),
-      name: Input.asInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      type: Input.asInput<String>(map['type']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

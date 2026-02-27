@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getManagementServerIamPolicy.
 class GetManagementServerIamPolicyArgs {
-  final Input<String> location;
-  final Input<String> managementServerId;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> managementServerId;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetManagementServerIamPolicyArgs({
     required this.location,
@@ -33,11 +33,12 @@ class GetManagementServerIamPolicyArgs {
 
   factory GetManagementServerIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementServerIamPolicyArgs(
-      location: Input.asInput<String>(map['location']),
-      managementServerId: Input.asInput<String>(map['managementServerId']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      managementServerId:
+          pulumi.Input.asInput<String>(map['managementServerId']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

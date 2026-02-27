@@ -1,42 +1,42 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_health.dart';
 import 'scheduling_config.dart';
 
 /// The set of arguments for Node.
 class NodeArgs {
   /// The type of hardware accelerators associated with this node.
-  final Input<String> acceleratorType;
+  final pulumi.Input<String> acceleratorType;
 
   /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
-  final Input<String>? cidrBlock;
+  final pulumi.Input<String>? cidrBlock;
 
   /// The user-supplied description of the TPU. Maximum of 512 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The health status of the TPU node.
-  final Input<NodeHealth>? health;
+  final pulumi.Input<NodeHealth>? health;
 
   /// Resource labels to represent user-provided metadata.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
-  final Input<String>? network;
+  final pulumi.Input<String>? network;
 
   /// The unqualified resource name.
-  final Input<String>? nodeId;
-  final Input<String>? project;
+  final pulumi.Input<String>? nodeId;
+  final pulumi.Input<String>? project;
 
   /// The scheduling options for this node.
-  final Input<SchedulingConfig>? schedulingConfig;
+  final pulumi.Input<SchedulingConfig>? schedulingConfig;
 
   /// The version of Tensorflow running in the Node.
-  final Input<String> tensorflowVersion;
+  final pulumi.Input<String> tensorflowVersion;
 
   /// Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
-  final Input<bool>? useServiceNetworking;
+  final pulumi.Input<bool>? useServiceNetworking;
 
   NodeArgs({
     required this.acceleratorType,
@@ -66,7 +66,7 @@ class NodeArgs {
     }
     final healthValue = health;
     if (healthValue != null) {
-      map['health'] = Input.mapOptionalInputValue<NodeHealth, String>(
+      map['health'] = pulumi.Input.mapOptionalInputValue<NodeHealth, String>(
           healthValue, (value) => value.value);
     }
     final labelsValue = labels;
@@ -91,9 +91,9 @@ class NodeArgs {
     }
     final schedulingConfigValue = schedulingConfig;
     if (schedulingConfigValue != null) {
-      map['schedulingConfig'] =
-          Input.mapOptionalInputValue<SchedulingConfig, Map<String, dynamic>>(
-              schedulingConfigValue, (value) => value.toMap());
+      map['schedulingConfig'] = pulumi.Input.mapOptionalInputValue<
+              SchedulingConfig, Map<String, dynamic>>(
+          schedulingConfigValue, (value) => value.toMap());
     }
     map['tensorflowVersion'] = tensorflowVersion;
     final useServiceNetworkingValue = useServiceNetworking;
@@ -105,20 +105,20 @@ class NodeArgs {
 
   factory NodeArgs.fromMap(Map<String, dynamic> map) {
     return NodeArgs(
-      acceleratorType: Input.asInput<String>(map['acceleratorType']),
-      cidrBlock: Input.asOptionalInput<String>(map['cidrBlock']),
-      description: Input.asOptionalInput<String>(map['description']),
-      health: Input.asOptionalInput<NodeHealth>(map['health']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      network: Input.asOptionalInput<String>(map['network']),
-      nodeId: Input.asOptionalInput<String>(map['nodeId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      schedulingConfig:
-          Input.asOptionalInput<SchedulingConfig>(map['schedulingConfig']),
-      tensorflowVersion: Input.asInput<String>(map['tensorflowVersion']),
+      acceleratorType: pulumi.Input.asInput<String>(map['acceleratorType']),
+      cidrBlock: pulumi.Input.asOptionalInput<String>(map['cidrBlock']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      health: pulumi.Input.asOptionalInput<NodeHealth>(map['health']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      network: pulumi.Input.asOptionalInput<String>(map['network']),
+      nodeId: pulumi.Input.asOptionalInput<String>(map['nodeId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      schedulingConfig: pulumi.Input.asOptionalInput<SchedulingConfig>(
+          map['schedulingConfig']),
+      tensorflowVersion: pulumi.Input.asInput<String>(map['tensorflowVersion']),
       useServiceNetworking:
-          Input.asOptionalInput<bool>(map['useServiceNetworking']),
+          pulumi.Input.asOptionalInput<bool>(map['useServiceNetworking']),
     );
   }
 }

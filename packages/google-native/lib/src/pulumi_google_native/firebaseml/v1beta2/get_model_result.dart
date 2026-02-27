@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_state_response.dart';
-import 'operation_response5.dart';
+import 'operation_response_firebaseml_v1beta2.dart';
 import 'tf_lite_model_response.dart';
 
 /// Result data returned by getModel.
 class GetModelResult {
   /// Lists operation ids associated with this model whose status is NOT done.
-  final List<OperationResponse5> activeOperations;
+  final List<OperationResponseFirebasemlV1beta2> activeOperations;
 
   /// Timestamp when this model was created in Firebase ML.
   final String createTime;
@@ -52,9 +52,9 @@ class GetModelResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['activeOperations'] =
-        Input.encodeList<OperationResponse5, Map<String, dynamic>>(
-            activeOperations, (value) => value.toMap());
+    map['activeOperations'] = pulumi.Input.encodeList<
+        OperationResponseFirebasemlV1beta2,
+        Map<String, dynamic>>(activeOperations, (value) => value.toMap());
     map['createTime'] = createTime;
     map['displayName'] = displayName;
     map['etag'] = etag;
@@ -69,10 +69,11 @@ class GetModelResult {
 
   factory GetModelResult.fromMap(Map<String, dynamic> map) {
     return GetModelResult(
-      activeOperations: Input.decodeList<OperationResponse5>(
-          map['activeOperations'],
-          (value) => OperationResponse5.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      activeOperations:
+          pulumi.Input.decodeList<OperationResponseFirebasemlV1beta2>(
+              map['activeOperations'],
+              (value) => OperationResponseFirebasemlV1beta2.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
       etag: map['etag'] as String,

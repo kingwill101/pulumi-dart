@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_api_server_argument.dart';
 import 'bare_metal_control_plane_node_pool_config.dart';
 
@@ -21,9 +21,8 @@ class BareMetalControlPlaneConfig {
     final map = <String, dynamic>{};
     final apiServerArgsValue = apiServerArgs;
     if (apiServerArgsValue != null) {
-      map['apiServerArgs'] =
-          Input.encodeList<BareMetalApiServerArgument, Map<String, dynamic>>(
-              apiServerArgsValue, (value) => value.toMap());
+      map['apiServerArgs'] = pulumi.Input.encodeList<BareMetalApiServerArgument,
+          Map<String, dynamic>>(apiServerArgsValue, (value) => value.toMap());
     }
     map['controlPlaneNodePoolConfig'] = controlPlaneNodePoolConfig.toMap();
     return map;
@@ -33,7 +32,7 @@ class BareMetalControlPlaneConfig {
     return BareMetalControlPlaneConfig(
       apiServerArgs: map['apiServerArgs'] == null
           ? null
-          : Input.decodeList<BareMetalApiServerArgument>(
+          : pulumi.Input.decodeList<BareMetalApiServerArgument>(
               map['apiServerArgs'],
               (value) => BareMetalApiServerArgument.fromMap(
                   (value as Map).cast<String, dynamic>())),

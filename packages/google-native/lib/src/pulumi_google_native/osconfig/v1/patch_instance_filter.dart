@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'patch_instance_filter_group_label.dart';
 
 /// A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
@@ -36,9 +36,9 @@ class PatchInstanceFilter {
     }
     final groupLabelsValue = groupLabels;
     if (groupLabelsValue != null) {
-      map['groupLabels'] =
-          Input.encodeList<PatchInstanceFilterGroupLabel, Map<String, dynamic>>(
-              groupLabelsValue, (value) => value.toMap());
+      map['groupLabels'] = pulumi.Input.encodeList<
+          PatchInstanceFilterGroupLabel,
+          Map<String, dynamic>>(groupLabelsValue, (value) => value.toMap());
     }
     final instanceNamePrefixesValue = instanceNamePrefixes;
     if (instanceNamePrefixesValue != null) {
@@ -60,7 +60,7 @@ class PatchInstanceFilter {
       all: map['all'] == null ? null : map['all'] as bool,
       groupLabels: map['groupLabels'] == null
           ? null
-          : Input.decodeList<PatchInstanceFilterGroupLabel>(
+          : pulumi.Input.decodeList<PatchInstanceFilterGroupLabel>(
               map['groupLabels'],
               (value) => PatchInstanceFilterGroupLabel.fromMap(
                   (value as Map).cast<String, dynamic>())),

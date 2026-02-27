@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_policy_response.dart';
 import 'vpc_network_source_response.dart';
 
@@ -46,7 +46,7 @@ class ConditionResponse {
     map['regions'] = regions;
     map['requiredAccessLevels'] = requiredAccessLevels;
     map['vpcNetworkSources'] =
-        Input.encodeList<VpcNetworkSourceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<VpcNetworkSourceResponse, Map<String, dynamic>>(
             vpcNetworkSources, (value) => value.toMap());
     return map;
   }
@@ -61,7 +61,7 @@ class ConditionResponse {
       regions: (map['regions'] as List).cast<String>(),
       requiredAccessLevels:
           (map['requiredAccessLevels'] as List).cast<String>(),
-      vpcNetworkSources: Input.decodeList<VpcNetworkSourceResponse>(
+      vpcNetworkSources: pulumi.Input.decodeList<VpcNetworkSourceResponse>(
           map['vpcNetworkSources'],
           (value) => VpcNetworkSourceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

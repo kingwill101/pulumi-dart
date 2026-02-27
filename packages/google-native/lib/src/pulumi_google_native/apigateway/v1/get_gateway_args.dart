@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGateway.
 class GetGatewayArgs {
-  final Input<String> gatewayId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> gatewayId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetGatewayArgs({
     required this.gatewayId,
@@ -27,9 +27,9 @@ class GetGatewayArgs {
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
-      gatewayId: Input.asInput<String>(map['gatewayId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      gatewayId: pulumi.Input.asInput<String>(map['gatewayId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

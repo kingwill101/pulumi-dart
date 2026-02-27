@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFleet.
 class GetFleetArgs {
-  final Input<String> fleetId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> fleetId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetFleetArgs({
     required this.fleetId,
@@ -27,9 +27,9 @@ class GetFleetArgs {
 
   factory GetFleetArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetArgs(
-      fleetId: Input.asInput<String>(map['fleetId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      fleetId: pulumi.Input.asInput<String>(map['fleetId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

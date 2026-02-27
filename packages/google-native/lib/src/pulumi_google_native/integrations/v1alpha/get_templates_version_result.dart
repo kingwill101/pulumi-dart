@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_teardown_response.dart';
 import 'enterprise_crm_frontends_eventbus_proto_task_config_response.dart';
 import 'enterprise_crm_frontends_eventbus_proto_trigger_config_response.dart';
@@ -80,7 +80,7 @@ class GetTemplatesVersionResult {
     map['createTime'] = createTime;
     map['databasePersistencePolicy'] = databasePersistencePolicy;
     map['description'] = description;
-    map['errorCatcherConfigs'] = Input.encodeList<
+    map['errorCatcherConfigs'] = pulumi.Input.encodeList<
         GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse,
         Map<String, dynamic>>(errorCatcherConfigs, (value) => value.toMap());
     map['lastModifierEmail'] = lastModifierEmail;
@@ -88,12 +88,12 @@ class GetTemplatesVersionResult {
     map['parentIntegrationVersionId'] = parentIntegrationVersionId;
     map['snapshotNumber'] = snapshotNumber;
     map['status'] = status;
-    map['taskConfigs'] = Input.encodeList<
+    map['taskConfigs'] = pulumi.Input.encodeList<
         EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse,
         Map<String, dynamic>>(taskConfigs, (value) => value.toMap());
     map['teardown'] = teardown.toMap();
     map['templateParameters'] = templateParameters.toMap();
-    map['triggerConfigs'] = Input.encodeList<
+    map['triggerConfigs'] = pulumi.Input.encodeList<
         EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse,
         Map<String, dynamic>>(triggerConfigs, (value) => value.toMap());
     map['updateTime'] = updateTime;
@@ -106,7 +106,7 @@ class GetTemplatesVersionResult {
       createTime: map['createTime'] as String,
       databasePersistencePolicy: map['databasePersistencePolicy'] as String,
       description: map['description'] as String,
-      errorCatcherConfigs: Input.decodeList<
+      errorCatcherConfigs: pulumi.Input.decodeList<
               GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>(
           map['errorCatcherConfigs'],
           (value) =>
@@ -117,7 +117,7 @@ class GetTemplatesVersionResult {
       parentIntegrationVersionId: map['parentIntegrationVersionId'] as String,
       snapshotNumber: map['snapshotNumber'] as String,
       status: map['status'] as String,
-      taskConfigs: Input.decodeList<
+      taskConfigs: pulumi.Input.decodeList<
               EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse>(
           map['taskConfigs'],
           (value) =>
@@ -128,7 +128,7 @@ class GetTemplatesVersionResult {
       templateParameters:
           EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse.fromMap(
               (map['templateParameters'] as Map).cast<String, dynamic>()),
-      triggerConfigs: Input.decodeList<
+      triggerConfigs: pulumi.Input.decodeList<
               EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse>(
           map['triggerConfigs'],
           (value) =>

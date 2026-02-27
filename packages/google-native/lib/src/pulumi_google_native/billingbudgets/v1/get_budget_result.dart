@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_billing_budgets_v1_budget_amount_response.dart';
 import 'google_cloud_billing_budgets_v1_filter_response.dart';
 import 'google_cloud_billing_budgets_v1_notifications_rule_response.dart';
@@ -50,7 +50,7 @@ class GetBudgetResult {
     map['name'] = name;
     map['notificationsRule'] = notificationsRule.toMap();
     map['ownershipScope'] = ownershipScope;
-    map['thresholdRules'] = Input.encodeList<
+    map['thresholdRules'] = pulumi.Input.encodeList<
         GoogleCloudBillingBudgetsV1ThresholdRuleResponse,
         Map<String, dynamic>>(thresholdRules, (value) => value.toMap());
     return map;
@@ -69,12 +69,11 @@ class GetBudgetResult {
           GoogleCloudBillingBudgetsV1NotificationsRuleResponse.fromMap(
               (map['notificationsRule'] as Map).cast<String, dynamic>()),
       ownershipScope: map['ownershipScope'] as String,
-      thresholdRules:
-          Input.decodeList<GoogleCloudBillingBudgetsV1ThresholdRuleResponse>(
-              map['thresholdRules'],
-              (value) =>
-                  GoogleCloudBillingBudgetsV1ThresholdRuleResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      thresholdRules: pulumi.Input.decodeList<
+              GoogleCloudBillingBudgetsV1ThresholdRuleResponse>(
+          map['thresholdRules'],
+          (value) => GoogleCloudBillingBudgetsV1ThresholdRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

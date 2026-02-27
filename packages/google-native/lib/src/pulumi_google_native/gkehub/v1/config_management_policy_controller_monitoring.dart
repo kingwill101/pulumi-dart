@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_management_policy_controller_monitoring_backends_item.dart';
 
 /// PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
@@ -16,7 +16,7 @@ class ConfigManagementPolicyControllerMonitoring {
     final map = <String, dynamic>{};
     final backendsValue = backends;
     if (backendsValue != null) {
-      map['backends'] = Input.encodeList<
+      map['backends'] = pulumi.Input.encodeList<
           ConfigManagementPolicyControllerMonitoringBackendsItem,
           String>(backendsValue, (value) => value.value);
     }
@@ -28,7 +28,7 @@ class ConfigManagementPolicyControllerMonitoring {
     return ConfigManagementPolicyControllerMonitoring(
       backends: map['backends'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ConfigManagementPolicyControllerMonitoringBackendsItem>(
               map['backends'],
               (value) => ConfigManagementPolicyControllerMonitoringBackendsItem

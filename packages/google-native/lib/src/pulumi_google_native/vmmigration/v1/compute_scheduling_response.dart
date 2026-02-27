@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'scheduling_node_affinity_response4.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'scheduling_node_affinity_response_vmmigration_v1.dart';
 
 /// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
 class ComputeSchedulingResponse {
@@ -9,7 +9,7 @@ class ComputeSchedulingResponse {
   final int minNodeCpus;
 
   /// A set of node affinity and anti-affinity configurations for sole tenant nodes.
-  final List<SchedulingNodeAffinityResponse4> nodeAffinities;
+  final List<SchedulingNodeAffinityResponseVmmigrationV1> nodeAffinities;
 
   /// How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
   final String onHostMaintenance;
@@ -27,9 +27,9 @@ class ComputeSchedulingResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['minNodeCpus'] = minNodeCpus;
-    map['nodeAffinities'] =
-        Input.encodeList<SchedulingNodeAffinityResponse4, Map<String, dynamic>>(
-            nodeAffinities, (value) => value.toMap());
+    map['nodeAffinities'] = pulumi.Input.encodeList<
+        SchedulingNodeAffinityResponseVmmigrationV1,
+        Map<String, dynamic>>(nodeAffinities, (value) => value.toMap());
     map['onHostMaintenance'] = onHostMaintenance;
     map['restartType'] = restartType;
     return map;
@@ -38,10 +38,11 @@ class ComputeSchedulingResponse {
   factory ComputeSchedulingResponse.fromMap(Map<String, dynamic> map) {
     return ComputeSchedulingResponse(
       minNodeCpus: map['minNodeCpus'] as int,
-      nodeAffinities: Input.decodeList<SchedulingNodeAffinityResponse4>(
-          map['nodeAffinities'],
-          (value) => SchedulingNodeAffinityResponse4.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nodeAffinities:
+          pulumi.Input.decodeList<SchedulingNodeAffinityResponseVmmigrationV1>(
+              map['nodeAffinities'],
+              (value) => SchedulingNodeAffinityResponseVmmigrationV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       onHostMaintenance: map['onHostMaintenance'] as String,
       restartType: map['restartType'] as String,
     );

@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_backup_args.dart';
 import 'get_backup_result.dart';
 
 /// Gets details of a single Backup.
 Future<GetBackupResult> getBackup(
   GetBackupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:alloydb/v1:getBackup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupResult.fromMap(result);
 }

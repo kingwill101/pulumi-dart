@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_assertion.dart';
 import 'google_cloud_integrations_v1alpha_mock_config.dart';
 
@@ -29,7 +29,7 @@ class GoogleCloudIntegrationsV1alphaTestTaskConfig {
     final map = <String, dynamic>{};
     final assertionsValue = assertions;
     if (assertionsValue != null) {
-      map['assertions'] = Input.encodeList<
+      map['assertions'] = pulumi.Input.encodeList<
           GoogleCloudIntegrationsV1alphaAssertion,
           Map<String, dynamic>>(assertionsValue, (value) => value.toMap());
     }
@@ -47,7 +47,7 @@ class GoogleCloudIntegrationsV1alphaTestTaskConfig {
     return GoogleCloudIntegrationsV1alphaTestTaskConfig(
       assertions: map['assertions'] == null
           ? null
-          : Input.decodeList<GoogleCloudIntegrationsV1alphaAssertion>(
+          : pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaAssertion>(
               map['assertions'],
               (value) => GoogleCloudIntegrationsV1alphaAssertion.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRollout.
 class GetRolloutArgs {
-  final Input<String> deliveryPipelineId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> releaseId;
-  final Input<String> rolloutId;
+  final pulumi.Input<String> deliveryPipelineId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> releaseId;
+  final pulumi.Input<String> rolloutId;
 
   GetRolloutArgs({
     required this.deliveryPipelineId,
@@ -33,11 +33,12 @@ class GetRolloutArgs {
 
   factory GetRolloutArgs.fromMap(Map<String, dynamic> map) {
     return GetRolloutArgs(
-      deliveryPipelineId: Input.asInput<String>(map['deliveryPipelineId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      releaseId: Input.asInput<String>(map['releaseId']),
-      rolloutId: Input.asInput<String>(map['rolloutId']),
+      deliveryPipelineId:
+          pulumi.Input.asInput<String>(map['deliveryPipelineId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      releaseId: pulumi.Input.asInput<String>(map['releaseId']),
+      rolloutId: pulumi.Input.asInput<String>(map['rolloutId']),
     );
   }
 }

@@ -1,39 +1,41 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dicom_store_args.dart';
 import 'google_cloud_healthcare_v1_dicom_stream_config_response.dart';
-import 'notification_config_response3.dart';
+import 'notification_config_response_healthcare_v1.dart';
 
 /// Creates a new DICOM store within the parent dataset.
-class DicomStore extends CustomResource {
-  late final Output<String> datasetId;
+class DicomStore extends pulumi.CustomResource {
+  late final pulumi.Output<String> datasetId;
 
   /// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
-  late final Output<String?> dicomStoreId;
+  late final pulumi.Output<String?> dicomStoreId;
 
   /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Notification destination for new DICOM instances. Supplied by the client.
-  late final Output<NotificationConfigResponse3> notificationConfig;
-  late final Output<String> project;
+  late final pulumi.Output<NotificationConfigResponseHealthcareV1>
+      notificationConfig;
+  late final pulumi.Output<String> project;
 
   /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
-  late final Output<List<GoogleCloudHealthcareV1DicomStreamConfigResponse>>
+  late final pulumi
+      .Output<List<GoogleCloudHealthcareV1DicomStreamConfigResponse>>
       streamConfigs;
 
   DicomStore(
     String name, {
     DicomStoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:healthcare/v1:DicomStore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.datasetId = registerOutput<String>('datasetId');
     this.dicomStoreId = registerOutput<String?>('dicomStoreId');
@@ -41,7 +43,8 @@ class DicomStore extends CustomResource {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.notificationConfig =
-        registerOutput<NotificationConfigResponse3>('notificationConfig');
+        registerOutput<NotificationConfigResponseHealthcareV1>(
+            'notificationConfig');
     this.project = registerOutput<String>('project');
     this.streamConfigs =
         registerOutput<List<GoogleCloudHealthcareV1DicomStreamConfigResponse>>(

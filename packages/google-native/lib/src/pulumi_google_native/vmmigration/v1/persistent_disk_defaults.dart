@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'encryption2.dart';
+import 'encryption_vmmigration_v1.dart';
 import 'persistent_disk_defaults_disk_type.dart';
 import 'vm_attachment_details.dart';
 
@@ -16,7 +16,7 @@ class PersistentDiskDefaults {
   final PersistentDiskDefaultsDiskType? diskType;
 
   /// Optional. The encryption to apply to the disk.
-  final Encryption2? encryption;
+  final EncryptionVmmigrationV1? encryption;
 
   /// The ordinal number of the source VM disk.
   final int sourceDiskNumber;
@@ -70,7 +70,7 @@ class PersistentDiskDefaults {
           : PersistentDiskDefaultsDiskType.fromValue(map['diskType'] as String),
       encryption: map['encryption'] == null
           ? null
-          : Encryption2.fromMap(
+          : EncryptionVmmigrationV1.fromMap(
               (map['encryption'] as Map).cast<String, dynamic>()),
       sourceDiskNumber: map['sourceDiskNumber'] as int,
       vmAttachmentDetails: map['vmAttachmentDetails'] == null

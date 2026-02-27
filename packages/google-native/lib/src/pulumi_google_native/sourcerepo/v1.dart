@@ -1,14 +1,14 @@
 library module_sourcerepo_v1;
 
-export 'v1/audit_config68.dart';
-export 'v1/audit_config_response68.dart';
-export 'v1/audit_log_config68.dart';
-export 'v1/audit_log_config_log_type68.dart';
-export 'v1/audit_log_config_response68.dart';
-export 'v1/binding99.dart';
-export 'v1/binding_response99.dart';
-export 'v1/expr105.dart';
-export 'v1/expr_response105.dart';
+export 'v1/audit_config_response_sourcerepo_v1.dart';
+export 'v1/audit_config_sourcerepo_v1.dart';
+export 'v1/audit_log_config_log_type_sourcerepo_v1.dart';
+export 'v1/audit_log_config_response_sourcerepo_v1.dart';
+export 'v1/audit_log_config_sourcerepo_v1.dart';
+export 'v1/binding_response_sourcerepo_v1.dart';
+export 'v1/binding_sourcerepo_v1.dart';
+export 'v1/expr_response_sourcerepo_v1.dart';
+export 'v1/expr_sourcerepo_v1.dart';
 export 'v1/get_repo.dart';
 export 'v1/get_repo_args.dart';
 export 'v1/get_repo_iam_policy.dart';

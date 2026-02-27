@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTagKeyIamPolicy.
 class GetTagKeyIamPolicyArgs {
-  final Input<String> tagKeyId;
+  final pulumi.Input<String> tagKeyId;
 
   GetTagKeyIamPolicyArgs({
     required this.tagKeyId,
@@ -18,7 +18,7 @@ class GetTagKeyIamPolicyArgs {
 
   factory GetTagKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagKeyIamPolicyArgs(
-      tagKeyId: Input.asInput<String>(map['tagKeyId']),
+      tagKeyId: pulumi.Input.asInput<String>(map['tagKeyId']),
     );
   }
 }

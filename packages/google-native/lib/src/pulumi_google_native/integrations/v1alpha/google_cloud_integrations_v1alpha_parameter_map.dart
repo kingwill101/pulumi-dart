@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_parameter_map_entry.dart';
 import 'google_cloud_integrations_v1alpha_parameter_map_key_type.dart';
 import 'google_cloud_integrations_v1alpha_parameter_map_value_type.dart';
@@ -26,7 +26,7 @@ class GoogleCloudIntegrationsV1alphaParameterMap {
     final map = <String, dynamic>{};
     final entriesValue = entries;
     if (entriesValue != null) {
-      map['entries'] = Input.encodeList<
+      map['entries'] = pulumi.Input.encodeList<
           GoogleCloudIntegrationsV1alphaParameterMapEntry,
           Map<String, dynamic>>(entriesValue, (value) => value.toMap());
     }
@@ -46,7 +46,8 @@ class GoogleCloudIntegrationsV1alphaParameterMap {
     return GoogleCloudIntegrationsV1alphaParameterMap(
       entries: map['entries'] == null
           ? null
-          : Input.decodeList<GoogleCloudIntegrationsV1alphaParameterMapEntry>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudIntegrationsV1alphaParameterMapEntry>(
               map['entries'],
               (value) =>
                   GoogleCloudIntegrationsV1alphaParameterMapEntry.fromMap(

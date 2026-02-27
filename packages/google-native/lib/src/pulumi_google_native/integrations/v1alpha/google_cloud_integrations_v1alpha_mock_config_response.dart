@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_event_parameter_response.dart';
 
 /// The configuration for mocking of a task during test execution Next available id: 4
@@ -24,7 +24,7 @@ class GoogleCloudIntegrationsV1alphaMockConfigResponse {
     final map = <String, dynamic>{};
     map['failedExecutions'] = failedExecutions;
     map['mockStrategy'] = mockStrategy;
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GoogleCloudIntegrationsV1alphaEventParameterResponse,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     return map;
@@ -35,7 +35,7 @@ class GoogleCloudIntegrationsV1alphaMockConfigResponse {
     return GoogleCloudIntegrationsV1alphaMockConfigResponse(
       failedExecutions: map['failedExecutions'] as String,
       mockStrategy: map['mockStrategy'] as String,
-      parameters: Input.decodeList<
+      parameters: pulumi.Input.decodeList<
               GoogleCloudIntegrationsV1alphaEventParameterResponse>(
           map['parameters'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gsuite_principal_response.dart';
 
 /// Result data returned by getDataSource.
@@ -51,7 +51,7 @@ class GetDataSourceResult {
     map['displayName'] = displayName;
     map['indexingServiceAccounts'] = indexingServiceAccounts;
     map['itemsVisibility'] =
-        Input.encodeList<GSuitePrincipalResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GSuitePrincipalResponse, Map<String, dynamic>>(
             itemsVisibility, (value) => value.toMap());
     map['name'] = name;
     map['operationIds'] = operationIds;
@@ -67,7 +67,7 @@ class GetDataSourceResult {
       displayName: map['displayName'] as String,
       indexingServiceAccounts:
           (map['indexingServiceAccounts'] as List).cast<String>(),
-      itemsVisibility: Input.decodeList<GSuitePrincipalResponse>(
+      itemsVisibility: pulumi.Input.decodeList<GSuitePrincipalResponse>(
           map['itemsVisibility'],
           (value) => GSuitePrincipalResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

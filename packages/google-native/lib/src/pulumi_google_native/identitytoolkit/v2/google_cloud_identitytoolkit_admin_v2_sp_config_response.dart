@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_sp_certificate_response.dart';
 
 /// The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
@@ -24,7 +24,7 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['callbackUri'] = callbackUri;
-    map['spCertificates'] = Input.encodeList<
+    map['spCertificates'] = pulumi.Input.encodeList<
         GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse,
         Map<String, dynamic>>(spCertificates, (value) => value.toMap());
     map['spEntityId'] = spEntityId;
@@ -35,7 +35,7 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfigResponse {
       Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2SpConfigResponse(
       callbackUri: map['callbackUri'] as String,
-      spCertificates: Input.decodeList<
+      spCertificates: pulumi.Input.decodeList<
               GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse>(
           map['spCertificates'],
           (value) =>

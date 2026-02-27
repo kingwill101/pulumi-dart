@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_adaptive_protection_config_response.dart';
 import 'security_policy_advanced_options_config_response.dart';
 import 'security_policy_association_response.dart';
@@ -98,7 +98,8 @@ class GetSecurityPolicyResult {
     final map = <String, dynamic>{};
     map['adaptiveProtectionConfig'] = adaptiveProtectionConfig.toMap();
     map['advancedOptionsConfig'] = advancedOptionsConfig.toMap();
-    map['associations'] = Input.encodeList<SecurityPolicyAssociationResponse,
+    map['associations'] = pulumi.Input.encodeList<
+        SecurityPolicyAssociationResponse,
         Map<String, dynamic>>(associations, (value) => value.toMap());
     map['cloudArmorConfig'] = cloudArmorConfig.toMap();
     map['creationTimestamp'] = creationTimestamp;
@@ -114,13 +115,12 @@ class GetSecurityPolicyResult {
     map['recaptchaOptionsConfig'] = recaptchaOptionsConfig.toMap();
     map['region'] = region;
     map['ruleTupleCount'] = ruleTupleCount;
-    map['rules'] =
-        Input.encodeList<SecurityPolicyRuleResponse, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
+    map['rules'] = pulumi.Input.encodeList<SecurityPolicyRuleResponse,
+        Map<String, dynamic>>(rules, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['selfLinkWithId'] = selfLinkWithId;
     map['type'] = type;
-    map['userDefinedFields'] = Input.encodeList<
+    map['userDefinedFields'] = pulumi.Input.encodeList<
         SecurityPolicyUserDefinedFieldResponse,
         Map<String, dynamic>>(userDefinedFields, (value) => value.toMap());
     return map;
@@ -134,7 +134,7 @@ class GetSecurityPolicyResult {
       advancedOptionsConfig:
           SecurityPolicyAdvancedOptionsConfigResponse.fromMap(
               (map['advancedOptionsConfig'] as Map).cast<String, dynamic>()),
-      associations: Input.decodeList<SecurityPolicyAssociationResponse>(
+      associations: pulumi.Input.decodeList<SecurityPolicyAssociationResponse>(
           map['associations'],
           (value) => SecurityPolicyAssociationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -156,7 +156,7 @@ class GetSecurityPolicyResult {
               (map['recaptchaOptionsConfig'] as Map).cast<String, dynamic>()),
       region: map['region'] as String,
       ruleTupleCount: map['ruleTupleCount'] as int,
-      rules: Input.decodeList<SecurityPolicyRuleResponse>(
+      rules: pulumi.Input.decodeList<SecurityPolicyRuleResponse>(
           map['rules'],
           (value) => SecurityPolicyRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -164,7 +164,7 @@ class GetSecurityPolicyResult {
       selfLinkWithId: map['selfLinkWithId'] as String,
       type: map['type'] as String,
       userDefinedFields:
-          Input.decodeList<SecurityPolicyUserDefinedFieldResponse>(
+          pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldResponse>(
               map['userDefinedFields'],
               (value) => SecurityPolicyUserDefinedFieldResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

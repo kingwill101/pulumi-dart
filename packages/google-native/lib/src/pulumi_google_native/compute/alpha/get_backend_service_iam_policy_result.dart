@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'audit_config_response22.dart';
-import 'binding_response32.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'audit_config_response_compute_alpha.dart';
+import 'binding_response_compute_alpha.dart';
 import 'rule_response.dart';
 
 /// Result data returned by getBackendServiceIamPolicy.
 class GetBackendServiceIamPolicyResult {
   /// Specifies cloud audit logging configuration for this policy.
-  final List<AuditConfigResponse22> auditConfigs;
+  final List<AuditConfigResponseComputeAlpha> auditConfigs;
 
   /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
-  final List<BindingResponse32> bindings;
+  final List<BindingResponseComputeAlpha> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
   final String etag;
@@ -32,13 +32,13 @@ class GetBackendServiceIamPolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['auditConfigs'] =
-        Input.encodeList<AuditConfigResponse22, Map<String, dynamic>>(
-            auditConfigs, (value) => value.toMap());
-    map['bindings'] = Input.encodeList<BindingResponse32, Map<String, dynamic>>(
-        bindings, (value) => value.toMap());
+    map['auditConfigs'] = pulumi.Input.encodeList<
+        AuditConfigResponseComputeAlpha,
+        Map<String, dynamic>>(auditConfigs, (value) => value.toMap());
+    map['bindings'] = pulumi.Input.encodeList<BindingResponseComputeAlpha,
+        Map<String, dynamic>>(bindings, (value) => value.toMap());
     map['etag'] = etag;
-    map['rules'] = Input.encodeList<RuleResponse, Map<String, dynamic>>(
+    map['rules'] = pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(
         rules, (value) => value.toMap());
     map['version'] = version;
     return map;
@@ -46,16 +46,16 @@ class GetBackendServiceIamPolicyResult {
 
   factory GetBackendServiceIamPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceIamPolicyResult(
-      auditConfigs: Input.decodeList<AuditConfigResponse22>(
+      auditConfigs: pulumi.Input.decodeList<AuditConfigResponseComputeAlpha>(
           map['auditConfigs'],
-          (value) => AuditConfigResponse22.fromMap(
+          (value) => AuditConfigResponseComputeAlpha.fromMap(
               (value as Map).cast<String, dynamic>())),
-      bindings: Input.decodeList<BindingResponse32>(
+      bindings: pulumi.Input.decodeList<BindingResponseComputeAlpha>(
           map['bindings'],
-          (value) => BindingResponse32.fromMap(
+          (value) => BindingResponseComputeAlpha.fromMap(
               (value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
-      rules: Input.decodeList<RuleResponse>(
+      rules: pulumi.Input.decodeList<RuleResponse>(
           map['rules'],
           (value) =>
               RuleResponse.fromMap((value as Map).cast<String, dynamic>())),

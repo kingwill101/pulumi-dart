@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'accelerator_config_response6.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'accelerator_config_response_dataproc_v1.dart';
 import 'disk_config_response.dart';
 import 'instance_flexibility_policy_response.dart';
 import 'instance_reference_response.dart';
@@ -11,7 +11,7 @@ import 'startup_config_response.dart';
 /// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
 class InstanceGroupConfigResponse {
   /// Optional. The Compute Engine accelerator configuration for these instances.
-  final List<AcceleratorConfigResponse6> accelerators;
+  final List<AcceleratorConfigResponseDataprocV1> accelerators;
 
   /// Optional. Disk option config settings.
   final DiskConfigResponse diskConfig;
@@ -71,16 +71,16 @@ class InstanceGroupConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accelerators'] =
-        Input.encodeList<AcceleratorConfigResponse6, Map<String, dynamic>>(
-            accelerators, (value) => value.toMap());
+    map['accelerators'] = pulumi.Input.encodeList<
+        AcceleratorConfigResponseDataprocV1,
+        Map<String, dynamic>>(accelerators, (value) => value.toMap());
     map['diskConfig'] = diskConfig.toMap();
     map['imageUri'] = imageUri;
     map['instanceFlexibilityPolicy'] = instanceFlexibilityPolicy.toMap();
     map['instanceNames'] = instanceNames;
-    map['instanceReferences'] =
-        Input.encodeList<InstanceReferenceResponse, Map<String, dynamic>>(
-            instanceReferences, (value) => value.toMap());
+    map['instanceReferences'] = pulumi.Input.encodeList<
+        InstanceReferenceResponse,
+        Map<String, dynamic>>(instanceReferences, (value) => value.toMap());
     map['isPreemptible'] = isPreemptible;
     map['machineTypeUri'] = machineTypeUri;
     map['managedGroupConfig'] = managedGroupConfig.toMap();
@@ -94,17 +94,18 @@ class InstanceGroupConfigResponse {
 
   factory InstanceGroupConfigResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupConfigResponse(
-      accelerators: Input.decodeList<AcceleratorConfigResponse6>(
-          map['accelerators'],
-          (value) => AcceleratorConfigResponse6.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      accelerators:
+          pulumi.Input.decodeList<AcceleratorConfigResponseDataprocV1>(
+              map['accelerators'],
+              (value) => AcceleratorConfigResponseDataprocV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       diskConfig: DiskConfigResponse.fromMap(
           (map['diskConfig'] as Map).cast<String, dynamic>()),
       imageUri: map['imageUri'] as String,
       instanceFlexibilityPolicy: InstanceFlexibilityPolicyResponse.fromMap(
           (map['instanceFlexibilityPolicy'] as Map).cast<String, dynamic>()),
       instanceNames: (map['instanceNames'] as List).cast<String>(),
-      instanceReferences: Input.decodeList<InstanceReferenceResponse>(
+      instanceReferences: pulumi.Input.decodeList<InstanceReferenceResponse>(
           map['instanceReferences'],
           (value) => InstanceReferenceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

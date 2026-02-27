@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for FeedbackMessage.
 class FeedbackMessageArgs {
-  final Input<String> annotatedDatasetId;
+  final pulumi.Input<String> annotatedDatasetId;
 
   /// String content of the feedback. Maximum of 10000 characters.
-  final Input<String>? body;
+  final pulumi.Input<String>? body;
 
   /// Create time.
-  final Input<String>? createTime;
-  final Input<String> datasetId;
-  final Input<String> feedbackThreadId;
+  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> feedbackThreadId;
 
   /// The image storing this feedback if the feedback is an image representing operator's comments.
-  final Input<String>? image;
+  final pulumi.Input<String>? image;
 
   /// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
-  final Input<String>? name;
-  final Input<Map<String, dynamic>>? operatorFeedbackMetadata;
-  final Input<String>? project;
-  final Input<Map<String, dynamic>>? requesterFeedbackMetadata;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<Map<String, dynamic>>? operatorFeedbackMetadata;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, dynamic>>? requesterFeedbackMetadata;
 
   FeedbackMessageArgs({
     required this.annotatedDatasetId,
@@ -74,18 +74,21 @@ class FeedbackMessageArgs {
 
   factory FeedbackMessageArgs.fromMap(Map<String, dynamic> map) {
     return FeedbackMessageArgs(
-      annotatedDatasetId: Input.asInput<String>(map['annotatedDatasetId']),
-      body: Input.asOptionalInput<String>(map['body']),
-      createTime: Input.asOptionalInput<String>(map['createTime']),
-      datasetId: Input.asInput<String>(map['datasetId']),
-      feedbackThreadId: Input.asInput<String>(map['feedbackThreadId']),
-      image: Input.asOptionalInput<String>(map['image']),
-      name: Input.asOptionalInput<String>(map['name']),
-      operatorFeedbackMetadata: Input.asOptionalInput<Map<String, dynamic>>(
-          map['operatorFeedbackMetadata']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requesterFeedbackMetadata: Input.asOptionalInput<Map<String, dynamic>>(
-          map['requesterFeedbackMetadata']),
+      annotatedDatasetId:
+          pulumi.Input.asInput<String>(map['annotatedDatasetId']),
+      body: pulumi.Input.asOptionalInput<String>(map['body']),
+      createTime: pulumi.Input.asOptionalInput<String>(map['createTime']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      feedbackThreadId: pulumi.Input.asInput<String>(map['feedbackThreadId']),
+      image: pulumi.Input.asOptionalInput<String>(map['image']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      operatorFeedbackMetadata:
+          pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+              map['operatorFeedbackMetadata']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requesterFeedbackMetadata:
+          pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+              map['requesterFeedbackMetadata']),
     );
   }
 }

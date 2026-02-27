@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCustomer.
 class GetCustomerArgs {
-  final Input<String> accountId;
-  final Input<String> channelPartnerLinkId;
-  final Input<String> customerId;
+  final pulumi.Input<String> accountId;
+  final pulumi.Input<String> channelPartnerLinkId;
+  final pulumi.Input<String> customerId;
 
   GetCustomerArgs({
     required this.accountId,
@@ -24,9 +24,10 @@ class GetCustomerArgs {
 
   factory GetCustomerArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomerArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      channelPartnerLinkId: Input.asInput<String>(map['channelPartnerLinkId']),
-      customerId: Input.asInput<String>(map['customerId']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      channelPartnerLinkId:
+          pulumi.Input.asInput<String>(map['channelPartnerLinkId']),
+      customerId: pulumi.Input.asInput<String>(map['customerId']),
     );
   }
 }

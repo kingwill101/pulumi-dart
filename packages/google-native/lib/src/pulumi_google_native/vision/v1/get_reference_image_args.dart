@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReferenceImage.
 class GetReferenceImageArgs {
-  final Input<String> location;
-  final Input<String> productId;
-  final Input<String>? project;
-  final Input<String> referenceImageId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> productId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> referenceImageId;
 
   GetReferenceImageArgs({
     required this.location,
@@ -30,10 +30,10 @@ class GetReferenceImageArgs {
 
   factory GetReferenceImageArgs.fromMap(Map<String, dynamic> map) {
     return GetReferenceImageArgs(
-      location: Input.asInput<String>(map['location']),
-      productId: Input.asInput<String>(map['productId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      referenceImageId: Input.asInput<String>(map['referenceImageId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      productId: pulumi.Input.asInput<String>(map['productId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      referenceImageId: pulumi.Input.asInput<String>(map['referenceImageId']),
     );
   }
 }

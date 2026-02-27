@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'commitment_resource_status_response.dart';
 import 'license_resource_commitment_response.dart';
 import 'reservation_response.dart';
@@ -114,12 +114,11 @@ class GetRegionCommitmentResult {
     map['plan'] = plan;
     map['region'] = region;
     map['reservations'] =
-        Input.encodeList<ReservationResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ReservationResponse, Map<String, dynamic>>(
             reservations, (value) => value.toMap());
     map['resourceStatus'] = resourceStatus.toMap();
-    map['resources'] =
-        Input.encodeList<ResourceCommitmentResponse, Map<String, dynamic>>(
-            resources, (value) => value.toMap());
+    map['resources'] = pulumi.Input.encodeList<ResourceCommitmentResponse,
+        Map<String, dynamic>>(resources, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['selfLinkWithId'] = selfLinkWithId;
     map['splitSourceCommitment'] = splitSourceCommitment;
@@ -147,13 +146,13 @@ class GetRegionCommitmentResult {
       name: map['name'] as String,
       plan: map['plan'] as String,
       region: map['region'] as String,
-      reservations: Input.decodeList<ReservationResponse>(
+      reservations: pulumi.Input.decodeList<ReservationResponse>(
           map['reservations'],
           (value) => ReservationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       resourceStatus: CommitmentResourceStatusResponse.fromMap(
           (map['resourceStatus'] as Map).cast<String, dynamic>()),
-      resources: Input.decodeList<ResourceCommitmentResponse>(
+      resources: pulumi.Input.decodeList<ResourceCommitmentResponse>(
           map['resources'],
           (value) => ResourceCommitmentResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

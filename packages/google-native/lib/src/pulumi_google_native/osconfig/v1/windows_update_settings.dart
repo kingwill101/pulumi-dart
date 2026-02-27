@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'windows_update_settings_classifications_item.dart';
 
 /// Windows patching is performed using the Windows Update Agent.
@@ -24,9 +24,9 @@ class WindowsUpdateSettings {
     final map = <String, dynamic>{};
     final classificationsValue = classifications;
     if (classificationsValue != null) {
-      map['classifications'] =
-          Input.encodeList<WindowsUpdateSettingsClassificationsItem, String>(
-              classificationsValue, (value) => value.value);
+      map['classifications'] = pulumi.Input.encodeList<
+          WindowsUpdateSettingsClassificationsItem,
+          String>(classificationsValue, (value) => value.value);
     }
     final excludesValue = excludes;
     if (excludesValue != null) {
@@ -43,7 +43,7 @@ class WindowsUpdateSettings {
     return WindowsUpdateSettings(
       classifications: map['classifications'] == null
           ? null
-          : Input.decodeList<WindowsUpdateSettingsClassificationsItem>(
+          : pulumi.Input.decodeList<WindowsUpdateSettingsClassificationsItem>(
               map['classifications'],
               (value) => WindowsUpdateSettingsClassificationsItem.fromValue(
                   value as String)),

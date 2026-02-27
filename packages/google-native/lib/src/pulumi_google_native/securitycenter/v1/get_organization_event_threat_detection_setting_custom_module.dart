@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_organization_event_threat_detection_setting_custom_module_args.dart';
 import 'get_organization_event_threat_detection_setting_custom_module_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_organization_event_threat_detection_setting_custom_module_result.dar
 Future<GetOrganizationEventThreatDetectionSettingCustomModuleResult>
     getOrganizationEventThreatDetectionSettingCustomModule(
   GetOrganizationEventThreatDetectionSettingCustomModuleArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:securitycenter/v1:getOrganizationEventThreatDetectionSettingCustomModule',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationEventThreatDetectionSettingCustomModuleResult.fromMap(
       result);

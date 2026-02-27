@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_manifest_response.dart';
 import 'resource_options_response.dart';
 
@@ -28,11 +28,11 @@ class KubernetesResourceResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['connectResources'] =
-        Input.encodeList<ResourceManifestResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ResourceManifestResponse, Map<String, dynamic>>(
             connectResources, (value) => value.toMap());
     map['membershipCrManifest'] = membershipCrManifest;
     map['membershipResources'] =
-        Input.encodeList<ResourceManifestResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ResourceManifestResponse, Map<String, dynamic>>(
             membershipResources, (value) => value.toMap());
     map['resourceOptions'] = resourceOptions.toMap();
     return map;
@@ -40,12 +40,12 @@ class KubernetesResourceResponse {
 
   factory KubernetesResourceResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesResourceResponse(
-      connectResources: Input.decodeList<ResourceManifestResponse>(
+      connectResources: pulumi.Input.decodeList<ResourceManifestResponse>(
           map['connectResources'],
           (value) => ResourceManifestResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       membershipCrManifest: map['membershipCrManifest'] as String,
-      membershipResources: Input.decodeList<ResourceManifestResponse>(
+      membershipResources: pulumi.Input.decodeList<ResourceManifestResponse>(
           map['membershipResources'],
           (value) => ResourceManifestResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

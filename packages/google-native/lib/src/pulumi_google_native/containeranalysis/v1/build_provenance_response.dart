@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifact_response.dart';
 import 'command_response.dart';
-import 'source_response6.dart';
+import 'source_response_containeranalysis_v1.dart';
 
 /// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
 class BuildProvenanceResponse {
@@ -35,7 +35,7 @@ class BuildProvenanceResponse {
   final String project;
 
   /// Details of the Source input to the build.
-  final SourceResponse6 sourceProvenance;
+  final SourceResponseContaineranalysisV1 sourceProvenance;
 
   /// Time at which execution of the build was started.
   final String startTime;
@@ -63,10 +63,11 @@ class BuildProvenanceResponse {
     map['buildOptions'] = buildOptions;
     map['builderVersion'] = builderVersion;
     map['builtArtifacts'] =
-        Input.encodeList<ArtifactResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ArtifactResponse, Map<String, dynamic>>(
             builtArtifacts, (value) => value.toMap());
-    map['commands'] = Input.encodeList<CommandResponse, Map<String, dynamic>>(
-        commands, (value) => value.toMap());
+    map['commands'] =
+        pulumi.Input.encodeList<CommandResponse, Map<String, dynamic>>(
+            commands, (value) => value.toMap());
     map['createTime'] = createTime;
     map['creator'] = creator;
     map['endTime'] = endTime;
@@ -82,11 +83,11 @@ class BuildProvenanceResponse {
     return BuildProvenanceResponse(
       buildOptions: (map['buildOptions'] as Map).cast<String, String>(),
       builderVersion: map['builderVersion'] as String,
-      builtArtifacts: Input.decodeList<ArtifactResponse>(
+      builtArtifacts: pulumi.Input.decodeList<ArtifactResponse>(
           map['builtArtifacts'],
           (value) =>
               ArtifactResponse.fromMap((value as Map).cast<String, dynamic>())),
-      commands: Input.decodeList<CommandResponse>(
+      commands: pulumi.Input.decodeList<CommandResponse>(
           map['commands'],
           (value) =>
               CommandResponse.fromMap((value as Map).cast<String, dynamic>())),
@@ -95,7 +96,7 @@ class BuildProvenanceResponse {
       endTime: map['endTime'] as String,
       logsUri: map['logsUri'] as String,
       project: map['project'] as String,
-      sourceProvenance: SourceResponse6.fromMap(
+      sourceProvenance: SourceResponseContaineranalysisV1.fromMap(
           (map['sourceProvenance'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] as String,
       triggerId: map['triggerId'] as String,

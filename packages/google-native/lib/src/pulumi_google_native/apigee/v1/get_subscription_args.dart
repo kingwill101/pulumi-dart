@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSubscription.
 class GetSubscriptionArgs {
-  final Input<String> developerId;
-  final Input<String> organizationId;
-  final Input<String> subscriptionId;
+  final pulumi.Input<String> developerId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> subscriptionId;
 
   GetSubscriptionArgs({
     required this.developerId,
@@ -24,9 +24,9 @@ class GetSubscriptionArgs {
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
-      developerId: Input.asInput<String>(map['developerId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      subscriptionId: Input.asInput<String>(map['subscriptionId']),
+      developerId: pulumi.Input.asInput<String>(map['developerId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      subscriptionId: pulumi.Input.asInput<String>(map['subscriptionId']),
     );
   }
 }

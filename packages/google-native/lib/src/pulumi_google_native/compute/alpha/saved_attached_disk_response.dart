@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_encryption_key_response.dart';
 import 'guest_os_feature_response.dart';
 
@@ -82,7 +82,7 @@ class SavedAttachedDiskResponse {
     map['diskSizeGb'] = diskSizeGb;
     map['diskType'] = diskType;
     map['guestOsFeatures'] =
-        Input.encodeList<GuestOsFeatureResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GuestOsFeatureResponse, Map<String, dynamic>>(
             guestOsFeatures, (value) => value.toMap());
     map['index'] = index;
     map['interface'] = interface;
@@ -105,7 +105,7 @@ class SavedAttachedDiskResponse {
           (map['diskEncryptionKey'] as Map).cast<String, dynamic>()),
       diskSizeGb: map['diskSizeGb'] as String,
       diskType: map['diskType'] as String,
-      guestOsFeatures: Input.decodeList<GuestOsFeatureResponse>(
+      guestOsFeatures: pulumi.Input.decodeList<GuestOsFeatureResponse>(
           map['guestOsFeatures'],
           (value) => GuestOsFeatureResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

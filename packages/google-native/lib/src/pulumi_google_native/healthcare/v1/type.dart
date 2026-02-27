@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'field.dart';
 import 'type_primitive.dart';
 
@@ -25,7 +25,7 @@ class Type {
     final map = <String, dynamic>{};
     final fieldsValue = fields;
     if (fieldsValue != null) {
-      map['fields'] = Input.encodeList<Field, Map<String, dynamic>>(
+      map['fields'] = pulumi.Input.encodeList<Field, Map<String, dynamic>>(
           fieldsValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -43,7 +43,7 @@ class Type {
     return Type(
       fields: map['fields'] == null
           ? null
-          : Input.decodeList<Field>(map['fields'],
+          : pulumi.Input.decodeList<Field>(map['fields'],
               (value) => Field.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
       primitive: map['primitive'] == null

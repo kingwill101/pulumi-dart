@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_rule_matcher_response.dart';
 import 'firewall_policy_rule_secure_tag_response.dart';
 
@@ -83,7 +83,7 @@ class FirewallPolicyRuleResponse {
     map['ruleTupleCount'] = ruleTupleCount;
     map['securityProfileGroup'] = securityProfileGroup;
     map['targetResources'] = targetResources;
-    map['targetSecureTags'] = Input.encodeList<
+    map['targetSecureTags'] = pulumi.Input.encodeList<
         FirewallPolicyRuleSecureTagResponse,
         Map<String, dynamic>>(targetSecureTags, (value) => value.toMap());
     map['targetServiceAccounts'] = targetServiceAccounts;
@@ -106,10 +106,11 @@ class FirewallPolicyRuleResponse {
       ruleTupleCount: map['ruleTupleCount'] as int,
       securityProfileGroup: map['securityProfileGroup'] as String,
       targetResources: (map['targetResources'] as List).cast<String>(),
-      targetSecureTags: Input.decodeList<FirewallPolicyRuleSecureTagResponse>(
-          map['targetSecureTags'],
-          (value) => FirewallPolicyRuleSecureTagResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      targetSecureTags:
+          pulumi.Input.decodeList<FirewallPolicyRuleSecureTagResponse>(
+              map['targetSecureTags'],
+              (value) => FirewallPolicyRuleSecureTagResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       targetServiceAccounts:
           (map['targetServiceAccounts'] as List).cast<String>(),
       tlsInspect: map['tlsInspect'] as bool,

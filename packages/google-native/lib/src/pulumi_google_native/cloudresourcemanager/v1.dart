@@ -1,14 +1,14 @@
 library module_cloudresourcemanager_v1;
 
-export 'v1/audit_config17.dart';
-export 'v1/audit_config_response17.dart';
-export 'v1/audit_log_config17.dart';
-export 'v1/audit_log_config_log_type17.dart';
-export 'v1/audit_log_config_response17.dart';
-export 'v1/binding24.dart';
-export 'v1/binding_response24.dart';
-export 'v1/expr26.dart';
-export 'v1/expr_response26.dart';
+export 'v1/audit_config_cloudresourcemanager_v1.dart';
+export 'v1/audit_config_response_cloudresourcemanager_v1.dart';
+export 'v1/audit_log_config_cloudresourcemanager_v1.dart';
+export 'v1/audit_log_config_log_type_cloudresourcemanager_v1.dart';
+export 'v1/audit_log_config_response_cloudresourcemanager_v1.dart';
+export 'v1/binding_cloudresourcemanager_v1.dart';
+export 'v1/binding_response_cloudresourcemanager_v1.dart';
+export 'v1/expr_cloudresourcemanager_v1.dart';
+export 'v1/expr_response_cloudresourcemanager_v1.dart';
 export 'v1/get_lien.dart';
 export 'v1/get_lien_args.dart';
 export 'v1/get_lien_result.dart';

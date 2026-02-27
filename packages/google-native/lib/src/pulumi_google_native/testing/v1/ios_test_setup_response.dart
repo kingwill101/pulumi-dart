@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_reference_response.dart';
 import 'ios_device_file_response.dart';
 
@@ -28,30 +28,30 @@ class IosTestSetupResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['additionalIpas'] =
-        Input.encodeList<FileReferenceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<FileReferenceResponse, Map<String, dynamic>>(
             additionalIpas, (value) => value.toMap());
     map['networkProfile'] = networkProfile;
     map['pullDirectories'] =
-        Input.encodeList<IosDeviceFileResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<IosDeviceFileResponse, Map<String, dynamic>>(
             pullDirectories, (value) => value.toMap());
     map['pushFiles'] =
-        Input.encodeList<IosDeviceFileResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<IosDeviceFileResponse, Map<String, dynamic>>(
             pushFiles, (value) => value.toMap());
     return map;
   }
 
   factory IosTestSetupResponse.fromMap(Map<String, dynamic> map) {
     return IosTestSetupResponse(
-      additionalIpas: Input.decodeList<FileReferenceResponse>(
+      additionalIpas: pulumi.Input.decodeList<FileReferenceResponse>(
           map['additionalIpas'],
           (value) => FileReferenceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       networkProfile: map['networkProfile'] as String,
-      pullDirectories: Input.decodeList<IosDeviceFileResponse>(
+      pullDirectories: pulumi.Input.decodeList<IosDeviceFileResponse>(
           map['pullDirectories'],
           (value) => IosDeviceFileResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      pushFiles: Input.decodeList<IosDeviceFileResponse>(
+      pushFiles: pulumi.Input.decodeList<IosDeviceFileResponse>(
           map['pushFiles'],
           (value) => IosDeviceFileResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

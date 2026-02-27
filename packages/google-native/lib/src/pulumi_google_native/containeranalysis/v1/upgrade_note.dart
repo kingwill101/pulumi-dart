@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'upgrade_distribution.dart';
 import 'version.dart';
 import 'windows_update.dart';
@@ -31,7 +31,7 @@ class UpgradeNote {
     final distributionsValue = distributions;
     if (distributionsValue != null) {
       map['distributions'] =
-          Input.encodeList<UpgradeDistribution, Map<String, dynamic>>(
+          pulumi.Input.encodeList<UpgradeDistribution, Map<String, dynamic>>(
               distributionsValue, (value) => value.toMap());
     }
     final packageValue = package;
@@ -53,7 +53,7 @@ class UpgradeNote {
     return UpgradeNote(
       distributions: map['distributions'] == null
           ? null
-          : Input.decodeList<UpgradeDistribution>(
+          : pulumi.Input.decodeList<UpgradeDistribution>(
               map['distributions'],
               (value) => UpgradeDistribution.fromMap(
                   (value as Map).cast<String, dynamic>())),

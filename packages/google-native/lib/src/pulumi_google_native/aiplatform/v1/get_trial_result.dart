@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_measurement_response.dart';
 import 'google_cloud_aiplatform_v1_trial_parameter_response.dart';
 
@@ -60,11 +60,11 @@ class GetTrialResult {
     map['endTime'] = endTime;
     map['finalMeasurement'] = finalMeasurement.toMap();
     map['infeasibleReason'] = infeasibleReason;
-    map['measurements'] = Input.encodeList<
+    map['measurements'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1MeasurementResponse,
         Map<String, dynamic>>(measurements, (value) => value.toMap());
     map['name'] = name;
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1TrialParameterResponse,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['startTime'] = startTime;
@@ -82,16 +82,16 @@ class GetTrialResult {
           (map['finalMeasurement'] as Map).cast<String, dynamic>()),
       infeasibleReason: map['infeasibleReason'] as String,
       measurements:
-          Input.decodeList<GoogleCloudAiplatformV1MeasurementResponse>(
+          pulumi.Input.decodeList<GoogleCloudAiplatformV1MeasurementResponse>(
               map['measurements'],
               (value) => GoogleCloudAiplatformV1MeasurementResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      parameters:
-          Input.decodeList<GoogleCloudAiplatformV1TrialParameterResponse>(
-              map['parameters'],
-              (value) => GoogleCloudAiplatformV1TrialParameterResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1TrialParameterResponse>(
+          map['parameters'],
+          (value) => GoogleCloudAiplatformV1TrialParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       startTime: map['startTime'] as String,
       state: map['state'] as String,
       webAccessUris: (map['webAccessUris'] as Map).cast<String, String>(),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_fulfillment_conditional_cases_case_case_content_response.dart';
 
 /// Each case has a Boolean condition. When it is evaluated to be True, the corresponding messages will be selected and evaluated recursively.
@@ -20,7 +20,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['caseContent'] = Input.encodeList<
+    map['caseContent'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentResponse,
         Map<String, dynamic>>(caseContent, (value) => value.toMap());
     map['condition'] = condition;
@@ -30,7 +30,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponse {
   factory GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponse(
-      caseContent: Input.decodeList<
+      caseContent: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentResponse>(
           map['caseContent'],
           (value) =>

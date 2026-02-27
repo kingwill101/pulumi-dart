@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifact_rule_response.dart';
 import 'signing_key_response.dart';
 
@@ -35,13 +35,13 @@ class InTotoResponse {
     final map = <String, dynamic>{};
     map['expectedCommand'] = expectedCommand;
     map['expectedMaterials'] =
-        Input.encodeList<ArtifactRuleResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ArtifactRuleResponse, Map<String, dynamic>>(
             expectedMaterials, (value) => value.toMap());
     map['expectedProducts'] =
-        Input.encodeList<ArtifactRuleResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ArtifactRuleResponse, Map<String, dynamic>>(
             expectedProducts, (value) => value.toMap());
     map['signingKeys'] =
-        Input.encodeList<SigningKeyResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SigningKeyResponse, Map<String, dynamic>>(
             signingKeys, (value) => value.toMap());
     map['stepName'] = stepName;
     map['threshold'] = threshold;
@@ -51,15 +51,15 @@ class InTotoResponse {
   factory InTotoResponse.fromMap(Map<String, dynamic> map) {
     return InTotoResponse(
       expectedCommand: (map['expectedCommand'] as List).cast<String>(),
-      expectedMaterials: Input.decodeList<ArtifactRuleResponse>(
+      expectedMaterials: pulumi.Input.decodeList<ArtifactRuleResponse>(
           map['expectedMaterials'],
           (value) => ArtifactRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      expectedProducts: Input.decodeList<ArtifactRuleResponse>(
+      expectedProducts: pulumi.Input.decodeList<ArtifactRuleResponse>(
           map['expectedProducts'],
           (value) => ArtifactRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      signingKeys: Input.decodeList<SigningKeyResponse>(
+      signingKeys: pulumi.Input.decodeList<SigningKeyResponse>(
           map['signingKeys'],
           (value) => SigningKeyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

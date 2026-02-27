@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ds_record_response.dart';
 
 /// Configuration for an arbitrary DNS provider.
@@ -18,15 +18,16 @@ class CustomDnsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dsRecords'] = Input.encodeList<DsRecordResponse, Map<String, dynamic>>(
-        dsRecords, (value) => value.toMap());
+    map['dsRecords'] =
+        pulumi.Input.encodeList<DsRecordResponse, Map<String, dynamic>>(
+            dsRecords, (value) => value.toMap());
     map['nameServers'] = nameServers;
     return map;
   }
 
   factory CustomDnsResponse.fromMap(Map<String, dynamic> map) {
     return CustomDnsResponse(
-      dsRecords: Input.decodeList<DsRecordResponse>(
+      dsRecords: pulumi.Input.decodeList<DsRecordResponse>(
           map['dsRecords'],
           (value) =>
               DsRecordResponse.fromMap((value as Map).cast<String, dynamic>())),

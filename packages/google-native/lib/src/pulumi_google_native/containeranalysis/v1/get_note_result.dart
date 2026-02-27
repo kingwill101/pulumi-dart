@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_note_response.dart';
 import 'build_note_response.dart';
 import 'compliance_note_response.dart';
@@ -121,7 +121,7 @@ class GetNoteResult {
     map['package'] = package.toMap();
     map['relatedNoteNames'] = relatedNoteNames;
     map['relatedUrl'] =
-        Input.encodeList<RelatedUrlResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RelatedUrlResponse, Map<String, dynamic>>(
             relatedUrl, (value) => value.toMap());
     map['sbomReference'] = sbomReference.toMap();
     map['shortDescription'] = shortDescription;
@@ -156,7 +156,7 @@ class GetNoteResult {
       package: PackageNoteResponse.fromMap(
           (map['package'] as Map).cast<String, dynamic>()),
       relatedNoteNames: (map['relatedNoteNames'] as List).cast<String>(),
-      relatedUrl: Input.decodeList<RelatedUrlResponse>(
+      relatedUrl: pulumi.Input.decodeList<RelatedUrlResponse>(
           map['relatedUrl'],
           (value) => RelatedUrlResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

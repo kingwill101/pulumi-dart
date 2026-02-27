@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'display_data.dart';
 import 'transform_summary_kind.dart';
 
@@ -37,8 +37,9 @@ class TransformSummary {
     final map = <String, dynamic>{};
     final displayDataValue = displayData;
     if (displayDataValue != null) {
-      map['displayData'] = Input.encodeList<DisplayData, Map<String, dynamic>>(
-          displayDataValue, (value) => value.toMap());
+      map['displayData'] =
+          pulumi.Input.encodeList<DisplayData, Map<String, dynamic>>(
+              displayDataValue, (value) => value.toMap());
     }
     final idValue = id;
     if (idValue != null) {
@@ -67,7 +68,7 @@ class TransformSummary {
     return TransformSummary(
       displayData: map['displayData'] == null
           ? null
-          : Input.decodeList<DisplayData>(
+          : pulumi.Input.decodeList<DisplayData>(
               map['displayData'],
               (value) =>
                   DisplayData.fromMap((value as Map).cast<String, dynamic>())),

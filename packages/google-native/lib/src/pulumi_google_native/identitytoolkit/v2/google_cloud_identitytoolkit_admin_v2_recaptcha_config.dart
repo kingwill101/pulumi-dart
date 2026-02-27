@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_recaptcha_config_email_password_enforcement_state.dart';
 import 'google_cloud_identitytoolkit_admin_v2_recaptcha_managed_rule.dart';
 
@@ -32,7 +32,7 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
     }
     final managedRulesValue = managedRules;
     if (managedRulesValue != null) {
-      map['managedRules'] = Input.encodeList<
+      map['managedRules'] = pulumi.Input.encodeList<
           GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule,
           Map<String, dynamic>>(managedRulesValue, (value) => value.toMap());
     }
@@ -53,7 +53,7 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
               .fromValue(map['emailPasswordEnforcementState'] as String),
       managedRules: map['managedRules'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>(
               map['managedRules'],
               (value) =>

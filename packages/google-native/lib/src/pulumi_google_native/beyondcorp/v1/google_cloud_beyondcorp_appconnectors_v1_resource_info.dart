@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_beyondcorp_appconnectors_v1_resource_info_status.dart';
 
 /// ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
@@ -41,7 +41,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
     }
     final subValue = sub;
     if (subValue != null) {
-      map['sub'] = Input.encodeList<
+      map['sub'] = pulumi.Input.encodeList<
           GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
           Map<String, dynamic>>(subValue, (value) => value.toMap());
     }
@@ -65,7 +65,8 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
               map['status'] as String),
       sub: map['sub'] == null
           ? null
-          : Input.decodeList<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>(
               map['sub'],
               (value) =>
                   GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromMap(

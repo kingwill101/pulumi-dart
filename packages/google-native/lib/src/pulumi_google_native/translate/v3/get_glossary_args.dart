@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGlossary.
 class GetGlossaryArgs {
-  final Input<String> glossaryId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> glossaryId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetGlossaryArgs({
     required this.glossaryId,
@@ -27,9 +27,9 @@ class GetGlossaryArgs {
 
   factory GetGlossaryArgs.fromMap(Map<String, dynamic> map) {
     return GetGlossaryArgs(
-      glossaryId: Input.asInput<String>(map['glossaryId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      glossaryId: pulumi.Input.asInput<String>(map['glossaryId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

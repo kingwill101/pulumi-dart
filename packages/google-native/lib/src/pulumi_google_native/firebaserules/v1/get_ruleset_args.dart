@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRuleset.
 class GetRulesetArgs {
-  final Input<String>? project;
-  final Input<String> rulesetId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> rulesetId;
 
   GetRulesetArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetRulesetArgs {
 
   factory GetRulesetArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesetArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      rulesetId: Input.asInput<String>(map['rulesetId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      rulesetId: pulumi.Input.asInput<String>(map['rulesetId']),
     );
   }
 }

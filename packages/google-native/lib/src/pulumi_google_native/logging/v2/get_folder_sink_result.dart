@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'big_query_options_response.dart';
 import 'log_exclusion_response.dart';
 
@@ -65,7 +65,7 @@ class GetFolderSinkResult {
     map['destination'] = destination;
     map['disabled'] = disabled;
     map['exclusions'] =
-        Input.encodeList<LogExclusionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<LogExclusionResponse, Map<String, dynamic>>(
             exclusions, (value) => value.toMap());
     map['filter'] = filter;
     map['includeChildren'] = includeChildren;
@@ -84,7 +84,7 @@ class GetFolderSinkResult {
       description: map['description'] as String,
       destination: map['destination'] as String,
       disabled: map['disabled'] as bool,
-      exclusions: Input.decodeList<LogExclusionResponse>(
+      exclusions: pulumi.Input.decodeList<LogExclusionResponse>(
           map['exclusions'],
           (value) => LogExclusionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

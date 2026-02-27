@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_reference.dart';
 import 'ios_device_file.dart';
 
@@ -30,7 +30,7 @@ class IosTestSetup {
     final additionalIpasValue = additionalIpas;
     if (additionalIpasValue != null) {
       map['additionalIpas'] =
-          Input.encodeList<FileReference, Map<String, dynamic>>(
+          pulumi.Input.encodeList<FileReference, Map<String, dynamic>>(
               additionalIpasValue, (value) => value.toMap());
     }
     final networkProfileValue = networkProfile;
@@ -40,13 +40,14 @@ class IosTestSetup {
     final pullDirectoriesValue = pullDirectories;
     if (pullDirectoriesValue != null) {
       map['pullDirectories'] =
-          Input.encodeList<IosDeviceFile, Map<String, dynamic>>(
+          pulumi.Input.encodeList<IosDeviceFile, Map<String, dynamic>>(
               pullDirectoriesValue, (value) => value.toMap());
     }
     final pushFilesValue = pushFiles;
     if (pushFilesValue != null) {
-      map['pushFiles'] = Input.encodeList<IosDeviceFile, Map<String, dynamic>>(
-          pushFilesValue, (value) => value.toMap());
+      map['pushFiles'] =
+          pulumi.Input.encodeList<IosDeviceFile, Map<String, dynamic>>(
+              pushFilesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -55,7 +56,7 @@ class IosTestSetup {
     return IosTestSetup(
       additionalIpas: map['additionalIpas'] == null
           ? null
-          : Input.decodeList<FileReference>(
+          : pulumi.Input.decodeList<FileReference>(
               map['additionalIpas'],
               (value) => FileReference.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -64,13 +65,13 @@ class IosTestSetup {
           : map['networkProfile'] as String,
       pullDirectories: map['pullDirectories'] == null
           ? null
-          : Input.decodeList<IosDeviceFile>(
+          : pulumi.Input.decodeList<IosDeviceFile>(
               map['pullDirectories'],
               (value) => IosDeviceFile.fromMap(
                   (value as Map).cast<String, dynamic>())),
       pushFiles: map['pushFiles'] == null
           ? null
-          : Input.decodeList<IosDeviceFile>(
+          : pulumi.Input.decodeList<IosDeviceFile>(
               map['pushFiles'],
               (value) => IosDeviceFile.fromMap(
                   (value as Map).cast<String, dynamic>())),

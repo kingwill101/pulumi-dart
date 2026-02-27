@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_attributes.dart';
 import 'enterprise_crm_eventbus_proto_node_identifier.dart';
 import 'enterprise_crm_frontends_eventbus_proto_parameter_value_type.dart';
@@ -76,7 +76,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
     }
     final childrenValue = children;
     if (childrenValue != null) {
-      map['children'] = Input.encodeList<
+      map['children'] = pulumi.Input.encodeList<
           EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry,
           Map<String, dynamic>>(childrenValue, (value) => value.toMap());
     }
@@ -140,7 +140,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
               (map['attributes'] as Map).cast<String, dynamic>()),
       children: map['children'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>(
               map['children'],
               (value) =>

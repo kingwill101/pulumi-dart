@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_options_sample_method.dart';
 import 'google_privacy_dlp_v2_big_query_table.dart';
 import 'google_privacy_dlp_v2_field_id.dart';
@@ -40,21 +40,19 @@ class GooglePrivacyDlpV2BigQueryOptions {
     final map = <String, dynamic>{};
     final excludedFieldsValue = excludedFields;
     if (excludedFieldsValue != null) {
-      map['excludedFields'] =
-          Input.encodeList<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(
-              excludedFieldsValue, (value) => value.toMap());
+      map['excludedFields'] = pulumi.Input.encodeList<GooglePrivacyDlpV2FieldId,
+          Map<String, dynamic>>(excludedFieldsValue, (value) => value.toMap());
     }
     final identifyingFieldsValue = identifyingFields;
     if (identifyingFieldsValue != null) {
-      map['identifyingFields'] =
-          Input.encodeList<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(
-              identifyingFieldsValue, (value) => value.toMap());
+      map['identifyingFields'] = pulumi.Input.encodeList<
+              GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(
+          identifyingFieldsValue, (value) => value.toMap());
     }
     final includedFieldsValue = includedFields;
     if (includedFieldsValue != null) {
-      map['includedFields'] =
-          Input.encodeList<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(
-              includedFieldsValue, (value) => value.toMap());
+      map['includedFields'] = pulumi.Input.encodeList<GooglePrivacyDlpV2FieldId,
+          Map<String, dynamic>>(includedFieldsValue, (value) => value.toMap());
     }
     final rowsLimitValue = rowsLimit;
     if (rowsLimitValue != null) {
@@ -79,19 +77,19 @@ class GooglePrivacyDlpV2BigQueryOptions {
     return GooglePrivacyDlpV2BigQueryOptions(
       excludedFields: map['excludedFields'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2FieldId>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(
               map['excludedFields'],
               (value) => GooglePrivacyDlpV2FieldId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       identifyingFields: map['identifyingFields'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2FieldId>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(
               map['identifyingFields'],
               (value) => GooglePrivacyDlpV2FieldId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       includedFields: map['includedFields'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2FieldId>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(
               map['includedFields'],
               (value) => GooglePrivacyDlpV2FieldId.fromMap(
                   (value as Map).cast<String, dynamic>())),

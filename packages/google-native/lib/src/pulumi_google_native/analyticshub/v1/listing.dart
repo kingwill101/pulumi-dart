@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'big_query_dataset_source_response.dart';
 import 'data_provider_response.dart';
 import 'listing_args.dart';
@@ -7,61 +7,62 @@ import 'restricted_export_config_response.dart';
 
 /// Creates a new listing.
 /// Auto-naming is currently not supported for this resource.
-class Listing extends CustomResource {
+class Listing extends pulumi.CustomResource {
   /// Shared dataset i.e. BigQuery dataset source.
-  late final Output<BigQueryDatasetSourceResponse> bigqueryDataset;
+  late final pulumi.Output<BigQueryDatasetSourceResponse> bigqueryDataset;
 
   /// Optional. Categories of the listing. Up to two categories are allowed.
-  late final Output<List<String>> categories;
-  late final Output<String> dataExchangeId;
+  late final pulumi.Output<List<String>> categories;
+  late final pulumi.Output<String> dataExchangeId;
 
   /// Optional. Details of the data provider who owns the source data.
-  late final Output<DataProviderResponse> dataProvider;
+  late final pulumi.Output<DataProviderResponse> dataProvider;
 
   /// Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Optional. Documentation describing the listing.
-  late final Output<String> documentation;
+  late final pulumi.Output<String> documentation;
 
   /// Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
-  late final Output<String> icon;
+  late final pulumi.Output<String> icon;
 
   /// Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
-  late final Output<String> listingId;
-  late final Output<String> location;
+  late final pulumi.Output<String> listingId;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the listing. e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
-  late final Output<String> primaryContact;
-  late final Output<String> project;
+  late final pulumi.Output<String> primaryContact;
+  late final pulumi.Output<String> project;
 
   /// Optional. Details of the publisher who owns the listing and who can share the source data.
-  late final Output<PublisherResponse> publisher;
+  late final pulumi.Output<PublisherResponse> publisher;
 
   /// Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
-  late final Output<String> requestAccess;
+  late final pulumi.Output<String> requestAccess;
 
   /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-  late final Output<RestrictedExportConfigResponse> restrictedExportConfig;
+  late final pulumi.Output<RestrictedExportConfigResponse>
+      restrictedExportConfig;
 
   /// Current state of the listing.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   Listing(
     String name, {
     ListingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:analyticshub/v1:Listing',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bigqueryDataset =
         registerOutput<BigQueryDatasetSourceResponse>('bigqueryDataset');

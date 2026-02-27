@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'condition3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'condition_compute_alpha.dart';
 import 'log_config.dart';
 import 'rule_action.dart';
 
@@ -11,7 +11,7 @@ class Rule {
   final RuleAction? action;
 
   /// This is deprecated and has no effect. Do not use.
-  final List<Condition3>? conditions;
+  final List<ConditionComputeAlpha>? conditions;
 
   /// This is deprecated and has no effect. Do not use.
   final String? description;
@@ -46,8 +46,9 @@ class Rule {
     }
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<Condition3, Map<String, dynamic>>(
-          conditionsValue, (value) => value.toMap());
+      map['conditions'] =
+          pulumi.Input.encodeList<ConditionComputeAlpha, Map<String, dynamic>>(
+              conditionsValue, (value) => value.toMap());
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -59,8 +60,9 @@ class Rule {
     }
     final logConfigsValue = logConfigs;
     if (logConfigsValue != null) {
-      map['logConfigs'] = Input.encodeList<LogConfig, Map<String, dynamic>>(
-          logConfigsValue, (value) => value.toMap());
+      map['logConfigs'] =
+          pulumi.Input.encodeList<LogConfig, Map<String, dynamic>>(
+              logConfigsValue, (value) => value.toMap());
     }
     final notInsValue = notIns;
     if (notInsValue != null) {
@@ -80,16 +82,16 @@ class Rule {
           : RuleAction.fromValue(map['action'] as String),
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<Condition3>(
+          : pulumi.Input.decodeList<ConditionComputeAlpha>(
               map['conditions'],
-              (value) =>
-                  Condition3.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => ConditionComputeAlpha.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       description:
           map['description'] == null ? null : map['description'] as String,
       ins: map['ins'] == null ? null : (map['ins'] as List).cast<String>(),
       logConfigs: map['logConfigs'] == null
           ? null
-          : Input.decodeList<LogConfig>(
+          : pulumi.Input.decodeList<LogConfig>(
               map['logConfigs'],
               (value) =>
                   LogConfig.fromMap((value as Map).cast<String, dynamic>())),

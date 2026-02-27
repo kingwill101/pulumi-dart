@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_label_matcher_metadata_label_match_criteria.dart';
 import 'metadata_labels.dart';
 
@@ -27,7 +27,7 @@ class MetadataLabelMatcher {
     final metadataLabelsValue = metadataLabels;
     if (metadataLabelsValue != null) {
       map['metadataLabels'] =
-          Input.encodeList<MetadataLabels, Map<String, dynamic>>(
+          pulumi.Input.encodeList<MetadataLabels, Map<String, dynamic>>(
               metadataLabelsValue, (value) => value.toMap());
     }
     return map;
@@ -41,7 +41,7 @@ class MetadataLabelMatcher {
               map['metadataLabelMatchCriteria'] as String),
       metadataLabels: map['metadataLabels'] == null
           ? null
-          : Input.decodeList<MetadataLabels>(
+          : pulumi.Input.decodeList<MetadataLabels>(
               map['metadataLabels'],
               (value) => MetadataLabels.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'apt_repository2.dart';
+import 'apt_repository_osconfig_v1beta.dart';
 import 'goo_repository.dart';
-import 'yum_repository2.dart';
+import 'yum_repository_osconfig_v1beta.dart';
 import 'zypper_repository.dart';
 
 /// A package repository.
 class PackageRepository {
   /// An Apt Repository.
-  final AptRepository2? apt;
+  final AptRepositoryOsconfigV1beta? apt;
 
   /// A Goo Repository.
   final GooRepository? goo;
 
   /// A Yum Repository.
-  final YumRepository2? yum;
+  final YumRepositoryOsconfigV1beta? yum;
 
   /// A Zypper Repository.
   final ZypperRepository? zypper;
@@ -51,13 +51,15 @@ class PackageRepository {
     return PackageRepository(
       apt: map['apt'] == null
           ? null
-          : AptRepository2.fromMap((map['apt'] as Map).cast<String, dynamic>()),
+          : AptRepositoryOsconfigV1beta.fromMap(
+              (map['apt'] as Map).cast<String, dynamic>()),
       goo: map['goo'] == null
           ? null
           : GooRepository.fromMap((map['goo'] as Map).cast<String, dynamic>()),
       yum: map['yum'] == null
           ? null
-          : YumRepository2.fromMap((map['yum'] as Map).cast<String, dynamic>()),
+          : YumRepositoryOsconfigV1beta.fromMap(
+              (map['yum'] as Map).cast<String, dynamic>()),
       zypper: map['zypper'] == null
           ? null
           : ZypperRepository.fromMap(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_fulfillment_feature.dart';
 import 'google_cloud_dialogflow_v2beta1_fulfillment_generic_web_service.dart';
 
@@ -42,7 +42,7 @@ class GoogleCloudDialogflowV2beta1Fulfillment {
     }
     final featuresValue = features;
     if (featuresValue != null) {
-      map['features'] = Input.encodeList<
+      map['features'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowV2beta1FulfillmentFeature,
           Map<String, dynamic>>(featuresValue, (value) => value.toMap());
     }
@@ -62,7 +62,8 @@ class GoogleCloudDialogflowV2beta1Fulfillment {
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       features: map['features'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowV2beta1FulfillmentFeature>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDialogflowV2beta1FulfillmentFeature>(
               map['features'],
               (value) => GoogleCloudDialogflowV2beta1FulfillmentFeature.fromMap(
                   (value as Map).cast<String, dynamic>())),

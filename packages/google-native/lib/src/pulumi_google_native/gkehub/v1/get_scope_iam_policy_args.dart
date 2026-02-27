@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getScopeIamPolicy.
 class GetScopeIamPolicyArgs {
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
-  final Input<String> scopeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> scopeId;
 
   GetScopeIamPolicyArgs({
     required this.location,
@@ -33,11 +33,11 @@ class GetScopeIamPolicyArgs {
 
   factory GetScopeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeIamPolicyArgs(
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
-      scopeId: Input.asInput<String>(map['scopeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      scopeId: pulumi.Input.asInput<String>(map['scopeId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_advertised_ip_range.dart';
 import 'router_bgp_advertise_mode.dart';
 import 'router_bgp_advertised_groups_item.dart';
@@ -42,14 +42,14 @@ class RouterBgp {
     final advertisedGroupsValue = advertisedGroups;
     if (advertisedGroupsValue != null) {
       map['advertisedGroups'] =
-          Input.encodeList<RouterBgpAdvertisedGroupsItem, String>(
+          pulumi.Input.encodeList<RouterBgpAdvertisedGroupsItem, String>(
               advertisedGroupsValue, (value) => value.value);
     }
     final advertisedIpRangesValue = advertisedIpRanges;
     if (advertisedIpRangesValue != null) {
-      map['advertisedIpRanges'] =
-          Input.encodeList<RouterAdvertisedIpRange, Map<String, dynamic>>(
-              advertisedIpRangesValue, (value) => value.toMap());
+      map['advertisedIpRanges'] = pulumi.Input.encodeList<
+              RouterAdvertisedIpRange, Map<String, dynamic>>(
+          advertisedIpRangesValue, (value) => value.toMap());
     }
     final asnValue = asn;
     if (asnValue != null) {
@@ -73,13 +73,13 @@ class RouterBgp {
           : RouterBgpAdvertiseMode.fromValue(map['advertiseMode'] as String),
       advertisedGroups: map['advertisedGroups'] == null
           ? null
-          : Input.decodeList<RouterBgpAdvertisedGroupsItem>(
+          : pulumi.Input.decodeList<RouterBgpAdvertisedGroupsItem>(
               map['advertisedGroups'],
               (value) =>
                   RouterBgpAdvertisedGroupsItem.fromValue(value as String)),
       advertisedIpRanges: map['advertisedIpRanges'] == null
           ? null
-          : Input.decodeList<RouterAdvertisedIpRange>(
+          : pulumi.Input.decodeList<RouterAdvertisedIpRange>(
               map['advertisedIpRanges'],
               (value) => RouterAdvertisedIpRange.fromMap(
                   (value as Map).cast<String, dynamic>())),

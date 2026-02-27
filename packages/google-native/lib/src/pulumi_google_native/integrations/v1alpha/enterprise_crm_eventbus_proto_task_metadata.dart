@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_task_metadata_admin.dart';
 import 'enterprise_crm_eventbus_proto_task_metadata_category.dart';
 import 'enterprise_crm_eventbus_proto_task_metadata_default_json_validation_option.dart';
@@ -103,7 +103,7 @@ class EnterpriseCrmEventbusProtoTaskMetadata {
     }
     final adminsValue = admins;
     if (adminsValue != null) {
-      map['admins'] = Input.encodeList<
+      map['admins'] = pulumi.Input.encodeList<
           EnterpriseCrmEventbusProtoTaskMetadataAdmin,
           Map<String, dynamic>>(adminsValue, (value) => value.toMap());
     }
@@ -199,7 +199,8 @@ class EnterpriseCrmEventbusProtoTaskMetadata {
           : map['activeTaskName'] as String,
       admins: map['admins'] == null
           ? null
-          : Input.decodeList<EnterpriseCrmEventbusProtoTaskMetadataAdmin>(
+          : pulumi.Input.decodeList<
+                  EnterpriseCrmEventbusProtoTaskMetadataAdmin>(
               map['admins'],
               (value) => EnterpriseCrmEventbusProtoTaskMetadataAdmin.fromMap(
                   (value as Map).cast<String, dynamic>())),

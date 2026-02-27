@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allowed_client.dart';
 import 'nfs_share_storage_type.dart';
 
 /// The set of arguments for NfsShare.
 class NfsShareArgs {
   /// List of allowed access points.
-  final Input<List<AllowedClient>>? allowedClients;
+  final pulumi.Input<List<AllowedClient>>? allowedClients;
 
   /// Labels as key value pairs.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Immutable. The name of the NFS share.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
-  final Input<String>? pod;
-  final Input<String>? project;
+  final pulumi.Input<String>? pod;
+  final pulumi.Input<String>? project;
 
   /// The requested size, in GiB.
-  final Input<String>? requestedSizeGib;
+  final pulumi.Input<String>? requestedSizeGib;
 
   /// Immutable. The storage type of the underlying volume.
-  final Input<NfsShareStorageType>? storageType;
+  final pulumi.Input<NfsShareStorageType>? storageType;
 
   NfsShareArgs({
     this.allowedClients,
@@ -41,11 +41,12 @@ class NfsShareArgs {
     final map = <String, dynamic>{};
     final allowedClientsValue = allowedClients;
     if (allowedClientsValue != null) {
-      map['allowedClients'] = Input.mapOptionalInputValue<List<AllowedClient>,
-              List<Map<String, dynamic>>>(
+      map['allowedClients'] = pulumi.Input.mapOptionalInputValue<
+              List<AllowedClient>, List<Map<String, dynamic>>>(
           allowedClientsValue,
-          (value) => Input.encodeList<AllowedClient, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<AllowedClient, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -74,7 +75,7 @@ class NfsShareArgs {
     final storageTypeValue = storageType;
     if (storageTypeValue != null) {
       map['storageType'] =
-          Input.mapOptionalInputValue<NfsShareStorageType, String>(
+          pulumi.Input.mapOptionalInputValue<NfsShareStorageType, String>(
               storageTypeValue, (value) => value.value);
     }
     return map;
@@ -82,16 +83,17 @@ class NfsShareArgs {
 
   factory NfsShareArgs.fromMap(Map<String, dynamic> map) {
     return NfsShareArgs(
-      allowedClients:
-          Input.asOptionalInput<List<AllowedClient>>(map['allowedClients']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      pod: Input.asOptionalInput<String>(map['pod']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestedSizeGib: Input.asOptionalInput<String>(map['requestedSizeGib']),
+      allowedClients: pulumi.Input.asOptionalInput<List<AllowedClient>>(
+          map['allowedClients']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      pod: pulumi.Input.asOptionalInput<String>(map['pod']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestedSizeGib:
+          pulumi.Input.asOptionalInput<String>(map['requestedSizeGib']),
       storageType:
-          Input.asOptionalInput<NfsShareStorageType>(map['storageType']),
+          pulumi.Input.asOptionalInput<NfsShareStorageType>(map['storageType']),
     );
   }
 }

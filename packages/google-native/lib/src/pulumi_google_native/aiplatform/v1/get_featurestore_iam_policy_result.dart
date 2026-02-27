@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_iam_v1_binding_response.dart';
 
 /// Result data returned by getFeaturestoreIamPolicy.
@@ -22,9 +22,8 @@ class GetFeaturestoreIamPolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bindings'] =
-        Input.encodeList<GoogleIamV1BindingResponse, Map<String, dynamic>>(
-            bindings, (value) => value.toMap());
+    map['bindings'] = pulumi.Input.encodeList<GoogleIamV1BindingResponse,
+        Map<String, dynamic>>(bindings, (value) => value.toMap());
     map['etag'] = etag;
     map['version'] = version;
     return map;
@@ -32,7 +31,7 @@ class GetFeaturestoreIamPolicyResult {
 
   factory GetFeaturestoreIamPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetFeaturestoreIamPolicyResult(
-      bindings: Input.decodeList<GoogleIamV1BindingResponse>(
+      bindings: pulumi.Input.decodeList<GoogleIamV1BindingResponse>(
           map['bindings'],
           (value) => GoogleIamV1BindingResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

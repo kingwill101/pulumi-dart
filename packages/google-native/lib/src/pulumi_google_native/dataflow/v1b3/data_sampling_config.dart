@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_sampling_config_behaviors_item.dart';
 
 /// Configuration options for sampling elements.
@@ -17,7 +17,7 @@ class DataSamplingConfig {
     final behaviorsValue = behaviors;
     if (behaviorsValue != null) {
       map['behaviors'] =
-          Input.encodeList<DataSamplingConfigBehaviorsItem, String>(
+          pulumi.Input.encodeList<DataSamplingConfigBehaviorsItem, String>(
               behaviorsValue, (value) => value.value);
     }
     return map;
@@ -27,7 +27,7 @@ class DataSamplingConfig {
     return DataSamplingConfig(
       behaviors: map['behaviors'] == null
           ? null
-          : Input.decodeList<DataSamplingConfigBehaviorsItem>(
+          : pulumi.Input.decodeList<DataSamplingConfigBehaviorsItem>(
               map['behaviors'],
               (value) =>
                   DataSamplingConfigBehaviorsItem.fromValue(value as String)),

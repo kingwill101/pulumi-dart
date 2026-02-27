@@ -1,47 +1,47 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notification_args.dart';
 
 /// Creates a notification subscription for a given bucket.
 /// Auto-naming is currently not supported for this resource.
-class Notification extends CustomResource {
-  late final Output<String> bucket;
+class Notification extends pulumi.CustomResource {
+  late final pulumi.Output<String> bucket;
 
   /// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
-  late final Output<Map<String, String>> customAttributes;
+  late final pulumi.Output<Map<String, String>> customAttributes;
 
   /// HTTP 1.1 Entity tag for this subscription notification.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
-  late final Output<List<String>> eventTypes;
+  late final pulumi.Output<List<String>> eventTypes;
 
   /// The kind of item this is. For notifications, this is always storage#notification.
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// If present, only apply this notification configuration to object names that begin with this prefix.
-  late final Output<String> objectNamePrefix;
+  late final pulumi.Output<String> objectNamePrefix;
 
   /// The desired content of the Payload.
-  late final Output<String> payloadFormat;
+  late final pulumi.Output<String> payloadFormat;
 
   /// The canonical URL of this notification.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-  late final Output<String> topic;
+  late final pulumi.Output<String> topic;
 
   /// The project to be billed for this request. Required for Requester Pays buckets.
-  late final Output<String?> userProject;
+  late final pulumi.Output<String?> userProject;
 
   Notification(
     String name, {
     NotificationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:storage/v1:Notification',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.customAttributes =

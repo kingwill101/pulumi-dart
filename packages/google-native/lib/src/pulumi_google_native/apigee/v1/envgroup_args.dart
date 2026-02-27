@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Envgroup.
 class EnvgroupArgs {
   /// Host names for this environment group.
-  final Input<List<String>> hostnames;
+  final pulumi.Input<List<String>> hostnames;
 
   /// ID of the environment group.
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   EnvgroupArgs({
     required this.hostnames,
@@ -30,9 +30,9 @@ class EnvgroupArgs {
 
   factory EnvgroupArgs.fromMap(Map<String, dynamic> map) {
     return EnvgroupArgs(
-      hostnames: Input.asInput<List<String>>(map['hostnames']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      hostnames: pulumi.Input.asInput<List<String>>(map['hostnames']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

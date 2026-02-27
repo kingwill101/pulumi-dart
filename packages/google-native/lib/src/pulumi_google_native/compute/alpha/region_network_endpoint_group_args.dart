@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_endpoint_group_app_engine.dart';
 import 'network_endpoint_group_cloud_function.dart';
 import 'network_endpoint_group_cloud_run.dart';
@@ -13,57 +13,58 @@ import 'region_network_endpoint_group_type.dart';
 /// The set of arguments for RegionNetworkEndpointGroup.
 class RegionNetworkEndpointGroupArgs {
   /// Metadata defined as annotations on the network endpoint group.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-  final Input<NetworkEndpointGroupAppEngine>? appEngine;
+  final pulumi.Input<NetworkEndpointGroupAppEngine>? appEngine;
 
   /// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
-  final Input<RegionNetworkEndpointGroupClientPortMappingMode>?
+  final pulumi.Input<RegionNetworkEndpointGroupClientPortMappingMode>?
       clientPortMappingMode;
 
   /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-  final Input<NetworkEndpointGroupCloudFunction>? cloudFunction;
+  final pulumi.Input<NetworkEndpointGroupCloudFunction>? cloudFunction;
 
   /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-  final Input<NetworkEndpointGroupCloudRun>? cloudRun;
+  final pulumi.Input<NetworkEndpointGroupCloudRun>? cloudRun;
 
   /// The default port used if the port number is not specified in the network endpoint.
-  final Input<int>? defaultPort;
+  final pulumi.Input<int>? defaultPort;
 
   /// An optional description of this resource. Provide this property when you create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
-  final Input<NetworkEndpointGroupLbNetworkEndpointGroup>? loadBalancer;
+  final pulumi.Input<NetworkEndpointGroupLbNetworkEndpointGroup>? loadBalancer;
 
   /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
-  final Input<String>? network;
+  final pulumi.Input<String>? network;
 
   /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
-  final Input<RegionNetworkEndpointGroupNetworkEndpointType>?
+  final pulumi.Input<RegionNetworkEndpointGroupNetworkEndpointType>?
       networkEndpointType;
-  final Input<String>? project;
-  final Input<Map<String, dynamic>>? pscData;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, dynamic>>? pscData;
 
   /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
-  final Input<String>? pscTargetService;
-  final Input<String> region;
+  final pulumi.Input<String>? pscTargetService;
+  final pulumi.Input<String> region;
 
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
-  final Input<NetworkEndpointGroupServerlessDeployment>? serverlessDeployment;
+  final pulumi.Input<NetworkEndpointGroupServerlessDeployment>?
+      serverlessDeployment;
 
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
-  final Input<String>? subnetwork;
+  final pulumi.Input<String>? subnetwork;
 
   /// Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
-  final Input<RegionNetworkEndpointGroupType>? type;
+  final pulumi.Input<RegionNetworkEndpointGroupType>? type;
 
   RegionNetworkEndpointGroupArgs({
     this.annotations,
@@ -95,25 +96,25 @@ class RegionNetworkEndpointGroupArgs {
     }
     final appEngineValue = appEngine;
     if (appEngineValue != null) {
-      map['appEngine'] = Input.mapOptionalInputValue<
+      map['appEngine'] = pulumi.Input.mapOptionalInputValue<
           NetworkEndpointGroupAppEngine,
           Map<String, dynamic>>(appEngineValue, (value) => value.toMap());
     }
     final clientPortMappingModeValue = clientPortMappingMode;
     if (clientPortMappingModeValue != null) {
-      map['clientPortMappingMode'] = Input.mapOptionalInputValue<
+      map['clientPortMappingMode'] = pulumi.Input.mapOptionalInputValue<
           RegionNetworkEndpointGroupClientPortMappingMode,
           String>(clientPortMappingModeValue, (value) => value.value);
     }
     final cloudFunctionValue = cloudFunction;
     if (cloudFunctionValue != null) {
-      map['cloudFunction'] = Input.mapOptionalInputValue<
+      map['cloudFunction'] = pulumi.Input.mapOptionalInputValue<
           NetworkEndpointGroupCloudFunction,
           Map<String, dynamic>>(cloudFunctionValue, (value) => value.toMap());
     }
     final cloudRunValue = cloudRun;
     if (cloudRunValue != null) {
-      map['cloudRun'] = Input.mapOptionalInputValue<
+      map['cloudRun'] = pulumi.Input.mapOptionalInputValue<
           NetworkEndpointGroupCloudRun,
           Map<String, dynamic>>(cloudRunValue, (value) => value.toMap());
     }
@@ -127,7 +128,7 @@ class RegionNetworkEndpointGroupArgs {
     }
     final loadBalancerValue = loadBalancer;
     if (loadBalancerValue != null) {
-      map['loadBalancer'] = Input.mapOptionalInputValue<
+      map['loadBalancer'] = pulumi.Input.mapOptionalInputValue<
           NetworkEndpointGroupLbNetworkEndpointGroup,
           Map<String, dynamic>>(loadBalancerValue, (value) => value.toMap());
     }
@@ -141,7 +142,7 @@ class RegionNetworkEndpointGroupArgs {
     }
     final networkEndpointTypeValue = networkEndpointType;
     if (networkEndpointTypeValue != null) {
-      map['networkEndpointType'] = Input.mapOptionalInputValue<
+      map['networkEndpointType'] = pulumi.Input.mapOptionalInputValue<
           RegionNetworkEndpointGroupNetworkEndpointType,
           String>(networkEndpointTypeValue, (value) => value.value);
     }
@@ -164,7 +165,7 @@ class RegionNetworkEndpointGroupArgs {
     }
     final serverlessDeploymentValue = serverlessDeployment;
     if (serverlessDeploymentValue != null) {
-      map['serverlessDeployment'] = Input.mapOptionalInputValue<
+      map['serverlessDeployment'] = pulumi.Input.mapOptionalInputValue<
               NetworkEndpointGroupServerlessDeployment, Map<String, dynamic>>(
           serverlessDeploymentValue, (value) => value.toMap());
     }
@@ -174,9 +175,9 @@ class RegionNetworkEndpointGroupArgs {
     }
     final typeValue = type;
     if (typeValue != null) {
-      map['type'] =
-          Input.mapOptionalInputValue<RegionNetworkEndpointGroupType, String>(
-              typeValue, (value) => value.value);
+      map['type'] = pulumi.Input.mapOptionalInputValue<
+          RegionNetworkEndpointGroupType,
+          String>(typeValue, (value) => value.value);
     }
     return map;
   }
@@ -184,36 +185,39 @@ class RegionNetworkEndpointGroupArgs {
   factory RegionNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      appEngine: Input.asOptionalInput<NetworkEndpointGroupAppEngine>(
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      appEngine: pulumi.Input.asOptionalInput<NetworkEndpointGroupAppEngine>(
           map['appEngine']),
-      clientPortMappingMode: Input.asOptionalInput<
+      clientPortMappingMode: pulumi.Input.asOptionalInput<
               RegionNetworkEndpointGroupClientPortMappingMode>(
           map['clientPortMappingMode']),
-      cloudFunction: Input.asOptionalInput<NetworkEndpointGroupCloudFunction>(
-          map['cloudFunction']),
-      cloudRun:
-          Input.asOptionalInput<NetworkEndpointGroupCloudRun>(map['cloudRun']),
-      defaultPort: Input.asOptionalInput<int>(map['defaultPort']),
-      description: Input.asOptionalInput<String>(map['description']),
-      loadBalancer:
-          Input.asOptionalInput<NetworkEndpointGroupLbNetworkEndpointGroup>(
-              map['loadBalancer']),
-      name: Input.asOptionalInput<String>(map['name']),
-      network: Input.asOptionalInput<String>(map['network']),
-      networkEndpointType:
-          Input.asOptionalInput<RegionNetworkEndpointGroupNetworkEndpointType>(
-              map['networkEndpointType']),
-      project: Input.asOptionalInput<String>(map['project']),
-      pscData: Input.asOptionalInput<Map<String, dynamic>>(map['pscData']),
-      pscTargetService: Input.asOptionalInput<String>(map['pscTargetService']),
-      region: Input.asInput<String>(map['region']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      serverlessDeployment:
-          Input.asOptionalInput<NetworkEndpointGroupServerlessDeployment>(
-              map['serverlessDeployment']),
-      subnetwork: Input.asOptionalInput<String>(map['subnetwork']),
-      type: Input.asOptionalInput<RegionNetworkEndpointGroupType>(map['type']),
+      cloudFunction:
+          pulumi.Input.asOptionalInput<NetworkEndpointGroupCloudFunction>(
+              map['cloudFunction']),
+      cloudRun: pulumi.Input.asOptionalInput<NetworkEndpointGroupCloudRun>(
+          map['cloudRun']),
+      defaultPort: pulumi.Input.asOptionalInput<int>(map['defaultPort']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      loadBalancer: pulumi.Input.asOptionalInput<
+          NetworkEndpointGroupLbNetworkEndpointGroup>(map['loadBalancer']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      network: pulumi.Input.asOptionalInput<String>(map['network']),
+      networkEndpointType: pulumi.Input.asOptionalInput<
+              RegionNetworkEndpointGroupNetworkEndpointType>(
+          map['networkEndpointType']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      pscData:
+          pulumi.Input.asOptionalInput<Map<String, dynamic>>(map['pscData']),
+      pscTargetService:
+          pulumi.Input.asOptionalInput<String>(map['pscTargetService']),
+      region: pulumi.Input.asInput<String>(map['region']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      serverlessDeployment: pulumi.Input.asOptionalInput<
+              NetworkEndpointGroupServerlessDeployment>(
+          map['serverlessDeployment']),
+      subnetwork: pulumi.Input.asOptionalInput<String>(map['subnetwork']),
+      type: pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupType>(
+          map['type']),
     );
   }
 }

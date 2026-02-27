@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'android_device.dart';
 
 /// The set of arguments for DeviceSession.
 class DeviceSessionArgs {
   /// The requested device
-  final Input<AndroidDevice> androidDevice;
+  final pulumi.Input<AndroidDevice> androidDevice;
 
   /// Optional. If the device is still in use at this time, any connections will be ended and the SessionState will transition from ACTIVE to FINISHED.
-  final Input<String>? expireTime;
+  final pulumi.Input<String>? expireTime;
 
   /// Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
-  final Input<String>? ttl;
+  final pulumi.Input<String>? ttl;
 
   DeviceSessionArgs({
     required this.androidDevice,
@@ -29,7 +29,7 @@ class DeviceSessionArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['androidDevice'] =
-        Input.mapInputValue<AndroidDevice, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<AndroidDevice, Map<String, dynamic>>(
             androidDevice, (value) => value.toMap());
     final expireTimeValue = expireTime;
     if (expireTimeValue != null) {
@@ -52,11 +52,11 @@ class DeviceSessionArgs {
 
   factory DeviceSessionArgs.fromMap(Map<String, dynamic> map) {
     return DeviceSessionArgs(
-      androidDevice: Input.asInput<AndroidDevice>(map['androidDevice']),
-      expireTime: Input.asOptionalInput<String>(map['expireTime']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      ttl: Input.asOptionalInput<String>(map['ttl']),
+      androidDevice: pulumi.Input.asInput<AndroidDevice>(map['androidDevice']),
+      expireTime: pulumi.Input.asOptionalInput<String>(map['expireTime']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      ttl: pulumi.Input.asOptionalInput<String>(map['ttl']),
     );
   }
 }

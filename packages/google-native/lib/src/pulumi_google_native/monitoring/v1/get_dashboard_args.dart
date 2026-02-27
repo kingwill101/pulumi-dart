@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDashboard.
 class GetDashboardArgs {
-  final Input<String> dashboardId;
-  final Input<String>? project;
+  final pulumi.Input<String> dashboardId;
+  final pulumi.Input<String>? project;
 
   GetDashboardArgs({
     required this.dashboardId,
@@ -24,8 +24,8 @@ class GetDashboardArgs {
 
   factory GetDashboardArgs.fromMap(Map<String, dynamic> map) {
     return GetDashboardArgs(
-      dashboardId: Input.asInput<String>(map['dashboardId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      dashboardId: pulumi.Input.asInput<String>(map['dashboardId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

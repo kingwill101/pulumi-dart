@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_asset_aggregate_stats_response.dart';
 import 'report_summary_group_preference_set_finding_response.dart';
 
@@ -36,7 +36,7 @@ class ReportSummaryGroupFindingResponse {
     map['description'] = description;
     map['displayName'] = displayName;
     map['overlappingAssetCount'] = overlappingAssetCount;
-    map['preferenceSetFindings'] = Input.encodeList<
+    map['preferenceSetFindings'] = pulumi.Input.encodeList<
         ReportSummaryGroupPreferenceSetFindingResponse,
         Map<String, dynamic>>(preferenceSetFindings, (value) => value.toMap());
     return map;
@@ -49,11 +49,11 @@ class ReportSummaryGroupFindingResponse {
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       overlappingAssetCount: map['overlappingAssetCount'] as String,
-      preferenceSetFindings:
-          Input.decodeList<ReportSummaryGroupPreferenceSetFindingResponse>(
-              map['preferenceSetFindings'],
-              (value) => ReportSummaryGroupPreferenceSetFindingResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      preferenceSetFindings: pulumi.Input.decodeList<
+              ReportSummaryGroupPreferenceSetFindingResponse>(
+          map['preferenceSetFindings'],
+          (value) => ReportSummaryGroupPreferenceSetFindingResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'google_type_date_response5.dart';
-import 'google_type_time_of_day_response4.dart';
+import 'google_type_date_response_dlp_v2.dart';
+import 'google_type_time_of_day_response_dlp_v2.dart';
 
 /// Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data.
 class GooglePrivacyDlpV2ValueResponse {
@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2ValueResponse {
   final bool booleanValue;
 
   /// date
-  final GoogleTypeDateResponse5 dateValue;
+  final GoogleTypeDateResponseDlpV2 dateValue;
 
   /// day of week
   final String dayOfWeekValue;
@@ -24,7 +24,7 @@ class GooglePrivacyDlpV2ValueResponse {
   final String stringValue;
 
   /// time of day
-  final GoogleTypeTimeOfDayResponse4 timeValue;
+  final GoogleTypeTimeOfDayResponseDlpV2 timeValue;
 
   /// timestamp
   final String timestampValue;
@@ -56,13 +56,13 @@ class GooglePrivacyDlpV2ValueResponse {
   factory GooglePrivacyDlpV2ValueResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ValueResponse(
       booleanValue: map['booleanValue'] as bool,
-      dateValue: GoogleTypeDateResponse5.fromMap(
+      dateValue: GoogleTypeDateResponseDlpV2.fromMap(
           (map['dateValue'] as Map).cast<String, dynamic>()),
       dayOfWeekValue: map['dayOfWeekValue'] as String,
       floatValue: map['floatValue'] as double,
       integerValue: map['integerValue'] as String,
       stringValue: map['stringValue'] as String,
-      timeValue: GoogleTypeTimeOfDayResponse4.fromMap(
+      timeValue: GoogleTypeTimeOfDayResponseDlpV2.fromMap(
           (map['timeValue'] as Map).cast<String, dynamic>()),
       timestampValue: map['timestampValue'] as String,
     );

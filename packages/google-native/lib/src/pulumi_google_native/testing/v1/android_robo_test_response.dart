@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_bundle_response.dart';
 import 'file_reference_response.dart';
 import 'robo_directive_response.dart';
@@ -60,13 +60,12 @@ class AndroidRoboTestResponse {
     map['maxDepth'] = maxDepth;
     map['maxSteps'] = maxSteps;
     map['roboDirectives'] =
-        Input.encodeList<RoboDirectiveResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RoboDirectiveResponse, Map<String, dynamic>>(
             roboDirectives, (value) => value.toMap());
     map['roboMode'] = roboMode;
     map['roboScript'] = roboScript.toMap();
-    map['startingIntents'] =
-        Input.encodeList<RoboStartingIntentResponse, Map<String, dynamic>>(
-            startingIntents, (value) => value.toMap());
+    map['startingIntents'] = pulumi.Input.encodeList<RoboStartingIntentResponse,
+        Map<String, dynamic>>(startingIntents, (value) => value.toMap());
     return map;
   }
 
@@ -80,14 +79,14 @@ class AndroidRoboTestResponse {
       appPackageId: map['appPackageId'] as String,
       maxDepth: map['maxDepth'] as int,
       maxSteps: map['maxSteps'] as int,
-      roboDirectives: Input.decodeList<RoboDirectiveResponse>(
+      roboDirectives: pulumi.Input.decodeList<RoboDirectiveResponse>(
           map['roboDirectives'],
           (value) => RoboDirectiveResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       roboMode: map['roboMode'] as String,
       roboScript: FileReferenceResponse.fromMap(
           (map['roboScript'] as Map).cast<String, dynamic>()),
-      startingIntents: Input.decodeList<RoboStartingIntentResponse>(
+      startingIntents: pulumi.Input.decodeList<RoboStartingIntentResponse>(
           map['startingIntents'],
           (value) => RoboStartingIntentResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

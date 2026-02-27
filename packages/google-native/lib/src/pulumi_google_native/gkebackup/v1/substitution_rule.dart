@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_kind.dart';
 
 /// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic.
@@ -41,7 +41,7 @@ class SubstitutionRule {
     final targetGroupKindsValue = targetGroupKinds;
     if (targetGroupKindsValue != null) {
       map['targetGroupKinds'] =
-          Input.encodeList<GroupKind, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GroupKind, Map<String, dynamic>>(
               targetGroupKindsValue, (value) => value.toMap());
     }
     map['targetJsonPath'] = targetJsonPath;
@@ -60,7 +60,7 @@ class SubstitutionRule {
           : map['originalValuePattern'] as String,
       targetGroupKinds: map['targetGroupKinds'] == null
           ? null
-          : Input.decodeList<GroupKind>(
+          : pulumi.Input.decodeList<GroupKind>(
               map['targetGroupKinds'],
               (value) =>
                   GroupKind.fromMap((value as Map).cast<String, dynamic>())),

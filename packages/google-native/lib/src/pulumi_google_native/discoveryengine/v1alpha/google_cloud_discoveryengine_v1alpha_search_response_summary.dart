@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_discoveryengine_v1alpha_search_response_summary_safety_attributes.dart';
 import 'google_cloud_discoveryengine_v1alpha_search_response_summary_summary_skipped_reasons_item.dart';
 
@@ -32,7 +32,7 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary {
     }
     final summarySkippedReasonsValue = summarySkippedReasons;
     if (summarySkippedReasonsValue != null) {
-      map['summarySkippedReasons'] = Input.encodeList<
+      map['summarySkippedReasons'] = pulumi.Input.encodeList<
           GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem,
           String>(summarySkippedReasonsValue, (value) => value.value);
     }
@@ -53,7 +53,7 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary {
                   (map['safetyAttributes'] as Map).cast<String, dynamic>()),
       summarySkippedReasons: map['summarySkippedReasons'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem>(
               map['summarySkippedReasons'],
               (value) =>

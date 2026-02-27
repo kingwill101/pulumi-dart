@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDicomStore.
 class GetDicomStoreArgs {
-  final Input<String> datasetId;
-  final Input<String> dicomStoreId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> dicomStoreId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDicomStoreArgs({
     required this.datasetId,
@@ -30,10 +30,10 @@ class GetDicomStoreArgs {
 
   factory GetDicomStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetDicomStoreArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      dicomStoreId: Input.asInput<String>(map['dicomStoreId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      dicomStoreId: pulumi.Input.asInput<String>(map['dicomStoreId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

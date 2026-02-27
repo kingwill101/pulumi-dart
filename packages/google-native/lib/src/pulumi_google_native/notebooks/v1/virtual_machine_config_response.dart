@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_image_response.dart';
-import 'encryption_config_response14.dart';
-import 'local_disk_response4.dart';
+import 'encryption_config_response_notebooks_v1.dart';
+import 'local_disk_response_notebooks_v1.dart';
 import 'runtime_accelerator_config_response.dart';
 import 'runtime_shielded_instance_config_response.dart';
 
@@ -19,10 +19,10 @@ class VirtualMachineConfigResponse {
   final List<ContainerImageResponse> containerImages;
 
   /// Data disk option configuration settings.
-  final LocalDiskResponse4 dataDisk;
+  final LocalDiskResponseNotebooksV1 dataDisk;
 
   /// Optional. Encryption settings for virtual machine data disk.
-  final EncryptionConfigResponse14 encryptionConfig;
+  final EncryptionConfigResponseNotebooksV1 encryptionConfig;
 
   /// The Compute Engine guest attributes. (see [Project and instance guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)).
   final Map<String, String> guestAttributes;
@@ -85,7 +85,7 @@ class VirtualMachineConfigResponse {
     map['acceleratorConfig'] = acceleratorConfig.toMap();
     map['bootImage'] = bootImage;
     map['containerImages'] =
-        Input.encodeList<ContainerImageResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ContainerImageResponse, Map<String, dynamic>>(
             containerImages, (value) => value.toMap());
     map['dataDisk'] = dataDisk.toMap();
     map['encryptionConfig'] = encryptionConfig.toMap();
@@ -109,13 +109,13 @@ class VirtualMachineConfigResponse {
       acceleratorConfig: RuntimeAcceleratorConfigResponse.fromMap(
           (map['acceleratorConfig'] as Map).cast<String, dynamic>()),
       bootImage: (map['bootImage'] as Map).cast<String, dynamic>(),
-      containerImages: Input.decodeList<ContainerImageResponse>(
+      containerImages: pulumi.Input.decodeList<ContainerImageResponse>(
           map['containerImages'],
           (value) => ContainerImageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      dataDisk: LocalDiskResponse4.fromMap(
+      dataDisk: LocalDiskResponseNotebooksV1.fromMap(
           (map['dataDisk'] as Map).cast<String, dynamic>()),
-      encryptionConfig: EncryptionConfigResponse14.fromMap(
+      encryptionConfig: EncryptionConfigResponseNotebooksV1.fromMap(
           (map['encryptionConfig'] as Map).cast<String, dynamic>()),
       guestAttributes: (map['guestAttributes'] as Map).cast<String, String>(),
       internalIpOnly: map['internalIpOnly'] as bool,

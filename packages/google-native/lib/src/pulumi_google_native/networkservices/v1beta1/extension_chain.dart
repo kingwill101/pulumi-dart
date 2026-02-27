@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extension_chain_extension.dart';
 import 'extension_chain_match_condition.dart';
 
@@ -24,7 +24,7 @@ class ExtensionChain {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['extensions'] =
-        Input.encodeList<ExtensionChainExtension, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ExtensionChainExtension, Map<String, dynamic>>(
             extensions, (value) => value.toMap());
     map['matchCondition'] = matchCondition.toMap();
     map['name'] = name;
@@ -33,7 +33,7 @@ class ExtensionChain {
 
   factory ExtensionChain.fromMap(Map<String, dynamic> map) {
     return ExtensionChain(
-      extensions: Input.decodeList<ExtensionChainExtension>(
+      extensions: pulumi.Input.decodeList<ExtensionChainExtension>(
           map['extensions'],
           (value) => ExtensionChainExtension.fromMap(
               (value as Map).cast<String, dynamic>())),

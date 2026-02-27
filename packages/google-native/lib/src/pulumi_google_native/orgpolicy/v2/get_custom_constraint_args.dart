@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCustomConstraint.
 class GetCustomConstraintArgs {
-  final Input<String> customConstraintId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> customConstraintId;
+  final pulumi.Input<String> organizationId;
 
   GetCustomConstraintArgs({
     required this.customConstraintId,
@@ -21,8 +21,9 @@ class GetCustomConstraintArgs {
 
   factory GetCustomConstraintArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomConstraintArgs(
-      customConstraintId: Input.asInput<String>(map['customConstraintId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      customConstraintId:
+          pulumi.Input.asInput<String>(map['customConstraintId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

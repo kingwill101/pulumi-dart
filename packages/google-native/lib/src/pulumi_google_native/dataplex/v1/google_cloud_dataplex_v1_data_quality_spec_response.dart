@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_data_quality_rule_response.dart';
 import 'google_cloud_dataplex_v1_data_quality_spec_post_scan_actions_response.dart';
 
@@ -30,7 +30,7 @@ class GoogleCloudDataplexV1DataQualitySpecResponse {
     final map = <String, dynamic>{};
     map['postScanActions'] = postScanActions.toMap();
     map['rowFilter'] = rowFilter;
-    map['rules'] = Input.encodeList<
+    map['rules'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1DataQualityRuleResponse,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     map['samplingPercent'] = samplingPercent;
@@ -44,10 +44,11 @@ class GoogleCloudDataplexV1DataQualitySpecResponse {
           GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse.fromMap(
               (map['postScanActions'] as Map).cast<String, dynamic>()),
       rowFilter: map['rowFilter'] as String,
-      rules: Input.decodeList<GoogleCloudDataplexV1DataQualityRuleResponse>(
-          map['rules'],
-          (value) => GoogleCloudDataplexV1DataQualityRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rules:
+          pulumi.Input.decodeList<GoogleCloudDataplexV1DataQualityRuleResponse>(
+              map['rules'],
+              (value) => GoogleCloudDataplexV1DataQualityRuleResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       samplingPercent: map['samplingPercent'] as double,
     );
   }

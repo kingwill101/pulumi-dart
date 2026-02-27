@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_provenance_parent.dart';
 import 'google_cloud_documentai_v1_document_provenance_type.dart';
 
@@ -33,7 +33,7 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
     }
     final parentsValue = parents;
     if (parentsValue != null) {
-      map['parents'] = Input.encodeList<
+      map['parents'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentProvenanceParent,
           Map<String, dynamic>>(parentsValue, (value) => value.toMap());
     }
@@ -54,7 +54,8 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
       id: map['id'] == null ? null : map['id'] as int,
       parents: map['parents'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenanceParent>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDocumentaiV1DocumentProvenanceParent>(
               map['parents'],
               (value) =>
                   GoogleCloudDocumentaiV1DocumentProvenanceParent.fromMap(

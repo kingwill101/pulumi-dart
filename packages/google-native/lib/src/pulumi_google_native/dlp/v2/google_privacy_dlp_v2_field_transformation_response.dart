@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_field_id_response.dart';
 import 'google_privacy_dlp_v2_info_type_transformations_response.dart';
 import 'google_privacy_dlp_v2_primitive_transformation_response.dart';
@@ -32,7 +32,7 @@ class GooglePrivacyDlpV2FieldTransformationResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['condition'] = condition.toMap();
-    map['fields'] = Input.encodeList<GooglePrivacyDlpV2FieldIdResponse,
+    map['fields'] = pulumi.Input.encodeList<GooglePrivacyDlpV2FieldIdResponse,
         Map<String, dynamic>>(fields, (value) => value.toMap());
     map['infoTypeTransformations'] = infoTypeTransformations.toMap();
     map['primitiveTransformation'] = primitiveTransformation.toMap();
@@ -44,7 +44,7 @@ class GooglePrivacyDlpV2FieldTransformationResponse {
     return GooglePrivacyDlpV2FieldTransformationResponse(
       condition: GooglePrivacyDlpV2RecordConditionResponse.fromMap(
           (map['condition'] as Map).cast<String, dynamic>()),
-      fields: Input.decodeList<GooglePrivacyDlpV2FieldIdResponse>(
+      fields: pulumi.Input.decodeList<GooglePrivacyDlpV2FieldIdResponse>(
           map['fields'],
           (value) => GooglePrivacyDlpV2FieldIdResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

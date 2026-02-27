@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSecurityProfile.
 class GetSecurityProfileArgs {
-  final Input<String> organizationId;
-  final Input<String> securityProfileId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> securityProfileId;
 
   GetSecurityProfileArgs({
     required this.organizationId,
@@ -21,8 +21,8 @@ class GetSecurityProfileArgs {
 
   factory GetSecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityProfileArgs(
-      organizationId: Input.asInput<String>(map['organizationId']),
-      securityProfileId: Input.asInput<String>(map['securityProfileId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      securityProfileId: pulumi.Input.asInput<String>(map['securityProfileId']),
     );
   }
 }

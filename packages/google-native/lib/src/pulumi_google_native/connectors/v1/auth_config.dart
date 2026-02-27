@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_config_auth_type.dart';
 import 'config_variable.dart';
 import 'oauth2_auth_code_flow.dart';
 import 'oauth2_client_credentials.dart';
 import 'oauth2_jwt_bearer.dart';
 import 'ssh_public_key.dart';
-import 'user_password4.dart';
+import 'user_password_connectors_v1.dart';
 
 /// AuthConfig defines details of a authentication type.
 class AuthConfig {
@@ -33,7 +33,7 @@ class AuthConfig {
   final SshPublicKey? sshPublicKey;
 
   /// UserPassword.
-  final UserPassword4? userPassword;
+  final UserPasswordConnectorsV1? userPassword;
 
   AuthConfig({
     this.additionalVariables,
@@ -51,7 +51,7 @@ class AuthConfig {
     final additionalVariablesValue = additionalVariables;
     if (additionalVariablesValue != null) {
       map['additionalVariables'] =
-          Input.encodeList<ConfigVariable, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ConfigVariable, Map<String, dynamic>>(
               additionalVariablesValue, (value) => value.toMap());
     }
     final authKeyValue = authKey;
@@ -89,7 +89,7 @@ class AuthConfig {
     return AuthConfig(
       additionalVariables: map['additionalVariables'] == null
           ? null
-          : Input.decodeList<ConfigVariable>(
+          : pulumi.Input.decodeList<ConfigVariable>(
               map['additionalVariables'],
               (value) => ConfigVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -115,7 +115,7 @@ class AuthConfig {
               (map['sshPublicKey'] as Map).cast<String, dynamic>()),
       userPassword: map['userPassword'] == null
           ? null
-          : UserPassword4.fromMap(
+          : UserPasswordConnectorsV1.fromMap(
               (map['userPassword'] as Map).cast<String, dynamic>()),
     );
   }

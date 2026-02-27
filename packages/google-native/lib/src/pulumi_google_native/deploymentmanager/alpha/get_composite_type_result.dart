@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'composite_type_label_entry_response.dart';
-import 'operation_response2.dart';
+import 'operation_response_deploymentmanager_alpha.dart';
 import 'template_contents_response.dart';
 
 /// Result data returned by getCompositeType.
@@ -20,7 +20,7 @@ class GetCompositeTypeResult {
   final String name;
 
   /// The Operation that most recently ran, or is currently running, on this composite type.
-  final OperationResponse2 operation;
+  final OperationResponseDeploymentmanagerAlpha operation;
 
   /// Server defined URL for the resource.
   final String selfLink;
@@ -44,9 +44,8 @@ class GetCompositeTypeResult {
     final map = <String, dynamic>{};
     map['description'] = description;
     map['insertTime'] = insertTime;
-    map['labels'] =
-        Input.encodeList<CompositeTypeLabelEntryResponse, Map<String, dynamic>>(
-            labels, (value) => value.toMap());
+    map['labels'] = pulumi.Input.encodeList<CompositeTypeLabelEntryResponse,
+        Map<String, dynamic>>(labels, (value) => value.toMap());
     map['name'] = name;
     map['operation'] = operation.toMap();
     map['selfLink'] = selfLink;
@@ -59,12 +58,12 @@ class GetCompositeTypeResult {
     return GetCompositeTypeResult(
       description: map['description'] as String,
       insertTime: map['insertTime'] as String,
-      labels: Input.decodeList<CompositeTypeLabelEntryResponse>(
+      labels: pulumi.Input.decodeList<CompositeTypeLabelEntryResponse>(
           map['labels'],
           (value) => CompositeTypeLabelEntryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      operation: OperationResponse2.fromMap(
+      operation: OperationResponseDeploymentmanagerAlpha.fromMap(
           (map['operation'] as Map).cast<String, dynamic>()),
       selfLink: map['selfLink'] as String,
       status: map['status'] as String,

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'external_vpn_gateway_interface_response.dart';
 
 /// Result data returned by getExternalVpnGateway.
@@ -48,7 +48,8 @@ class GetExternalVpnGatewayResult {
     final map = <String, dynamic>{};
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
-    map['interfaces'] = Input.encodeList<ExternalVpnGatewayInterfaceResponse,
+    map['interfaces'] = pulumi.Input.encodeList<
+        ExternalVpnGatewayInterfaceResponse,
         Map<String, dynamic>>(interfaces, (value) => value.toMap());
     map['kind'] = kind;
     map['labelFingerprint'] = labelFingerprint;
@@ -63,7 +64,7 @@ class GetExternalVpnGatewayResult {
     return GetExternalVpnGatewayResult(
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
-      interfaces: Input.decodeList<ExternalVpnGatewayInterfaceResponse>(
+      interfaces: pulumi.Input.decodeList<ExternalVpnGatewayInterfaceResponse>(
           map['interfaces'],
           (value) => ExternalVpnGatewayInterfaceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

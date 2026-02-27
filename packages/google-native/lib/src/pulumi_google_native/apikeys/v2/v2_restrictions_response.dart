@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_android_key_restrictions_response.dart';
 import 'v2_api_target_response.dart';
 import 'v2_browser_key_restrictions_response.dart';
@@ -36,7 +36,7 @@ class V2RestrictionsResponse {
     final map = <String, dynamic>{};
     map['androidKeyRestrictions'] = androidKeyRestrictions.toMap();
     map['apiTargets'] =
-        Input.encodeList<V2ApiTargetResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<V2ApiTargetResponse, Map<String, dynamic>>(
             apiTargets, (value) => value.toMap());
     map['browserKeyRestrictions'] = browserKeyRestrictions.toMap();
     map['iosKeyRestrictions'] = iosKeyRestrictions.toMap();
@@ -48,7 +48,7 @@ class V2RestrictionsResponse {
     return V2RestrictionsResponse(
       androidKeyRestrictions: V2AndroidKeyRestrictionsResponse.fromMap(
           (map['androidKeyRestrictions'] as Map).cast<String, dynamic>()),
-      apiTargets: Input.decodeList<V2ApiTargetResponse>(
+      apiTargets: pulumi.Input.decodeList<V2ApiTargetResponse>(
           map['apiTargets'],
           (value) => V2ApiTargetResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNoteIamPolicy.
 class GetNoteIamPolicyArgs {
-  final Input<String> noteId;
-  final Input<String>? project;
+  final pulumi.Input<String> noteId;
+  final pulumi.Input<String>? project;
 
   GetNoteIamPolicyArgs({
     required this.noteId,
@@ -24,8 +24,8 @@ class GetNoteIamPolicyArgs {
 
   factory GetNoteIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetNoteIamPolicyArgs(
-      noteId: Input.asInput<String>(map['noteId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      noteId: pulumi.Input.asInput<String>(map['noteId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

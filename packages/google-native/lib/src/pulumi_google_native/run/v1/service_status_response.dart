@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'addressable_response.dart';
 import 'google_cloud_run_v1_condition_response.dart';
 import 'traffic_target_response.dart';
@@ -41,13 +41,14 @@ class ServiceStatusResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['address'] = address.toMap();
-    map['conditions'] = Input.encodeList<GoogleCloudRunV1ConditionResponse,
+    map['conditions'] = pulumi.Input.encodeList<
+        GoogleCloudRunV1ConditionResponse,
         Map<String, dynamic>>(conditions, (value) => value.toMap());
     map['latestCreatedRevisionName'] = latestCreatedRevisionName;
     map['latestReadyRevisionName'] = latestReadyRevisionName;
     map['observedGeneration'] = observedGeneration;
     map['traffic'] =
-        Input.encodeList<TrafficTargetResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TrafficTargetResponse, Map<String, dynamic>>(
             traffic, (value) => value.toMap());
     map['url'] = url;
     return map;
@@ -57,14 +58,14 @@ class ServiceStatusResponse {
     return ServiceStatusResponse(
       address: AddressableResponse.fromMap(
           (map['address'] as Map).cast<String, dynamic>()),
-      conditions: Input.decodeList<GoogleCloudRunV1ConditionResponse>(
+      conditions: pulumi.Input.decodeList<GoogleCloudRunV1ConditionResponse>(
           map['conditions'],
           (value) => GoogleCloudRunV1ConditionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       latestCreatedRevisionName: map['latestCreatedRevisionName'] as String,
       latestReadyRevisionName: map['latestReadyRevisionName'] as String,
       observedGeneration: map['observedGeneration'] as int,
-      traffic: Input.decodeList<TrafficTargetResponse>(
+      traffic: pulumi.Input.decodeList<TrafficTargetResponse>(
           map['traffic'],
           (value) => TrafficTargetResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

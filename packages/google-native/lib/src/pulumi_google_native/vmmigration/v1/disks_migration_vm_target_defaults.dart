@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'boot_disk_defaults.dart';
 import 'compute_scheduling.dart';
-import 'encryption2.dart';
-import 'network_interface6.dart';
+import 'encryption_vmmigration_v1.dart';
+import 'network_interface_vmmigration_v1.dart';
 
 /// Details for creation of a VM that migrated data disks will be attached to.
 class DisksMigrationVmTargetDefaults {
@@ -18,7 +18,7 @@ class DisksMigrationVmTargetDefaults {
   final ComputeScheduling? computeScheduling;
 
   /// Optional. The encryption to apply to the VM.
-  final Encryption2? encryption;
+  final EncryptionVmmigrationV1? encryption;
 
   /// Optional. The hostname to assign to the VM.
   final String? hostname;
@@ -36,7 +36,7 @@ class DisksMigrationVmTargetDefaults {
   final Map<String, String>? metadata;
 
   /// Optional. NICs to attach to the VM.
-  final List<NetworkInterface6>? networkInterfaces;
+  final List<NetworkInterfaceVmmigrationV1>? networkInterfaces;
 
   /// Optional. A list of network tags to associate with the VM.
   final List<String>? networkTags;
@@ -104,9 +104,9 @@ class DisksMigrationVmTargetDefaults {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] =
-          Input.encodeList<NetworkInterface6, Map<String, dynamic>>(
-              networkInterfacesValue, (value) => value.toMap());
+      map['networkInterfaces'] = pulumi.Input.encodeList<
+              NetworkInterfaceVmmigrationV1, Map<String, dynamic>>(
+          networkInterfacesValue, (value) => value.toMap());
     }
     final networkTagsValue = networkTags;
     if (networkTagsValue != null) {
@@ -139,7 +139,7 @@ class DisksMigrationVmTargetDefaults {
               (map['computeScheduling'] as Map).cast<String, dynamic>()),
       encryption: map['encryption'] == null
           ? null
-          : Encryption2.fromMap(
+          : EncryptionVmmigrationV1.fromMap(
               (map['encryption'] as Map).cast<String, dynamic>()),
       hostname: map['hostname'] == null ? null : map['hostname'] as String,
       labels: map['labels'] == null
@@ -154,9 +154,9 @@ class DisksMigrationVmTargetDefaults {
           : (map['metadata'] as Map).cast<String, String>(),
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<NetworkInterface6>(
+          : pulumi.Input.decodeList<NetworkInterfaceVmmigrationV1>(
               map['networkInterfaces'],
-              (value) => NetworkInterface6.fromMap(
+              (value) => NetworkInterfaceVmmigrationV1.fromMap(
                   (value as Map).cast<String, dynamic>())),
       networkTags: map['networkTags'] == null
           ? null

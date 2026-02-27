@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'expr107.dart';
+import 'expr_storage_v1.dart';
 
 class ManagedFolderIamPolicyBindingsItem {
   /// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
-  final Expr107? condition;
+  final ExprStorageV1? condition;
 
   /// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
   /// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
@@ -58,7 +58,8 @@ class ManagedFolderIamPolicyBindingsItem {
     return ManagedFolderIamPolicyBindingsItem(
       condition: map['condition'] == null
           ? null
-          : Expr107.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+          : ExprStorageV1.fromMap(
+              (map['condition'] as Map).cast<String, dynamic>()),
       members: map['members'] == null
           ? null
           : (map['members'] as List).cast<String>(),

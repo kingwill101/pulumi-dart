@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_coordinate_response.dart';
 import 'enterprise_crm_eventbus_proto_failure_policy_response.dart';
 import 'enterprise_crm_eventbus_proto_next_task_response.dart';
@@ -128,7 +128,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['alertConfigs'] = Input.encodeList<
+    map['alertConfigs'] = pulumi.Input.encodeList<
         EnterpriseCrmEventbusProtoTaskAlertConfigResponse,
         Map<String, dynamic>>(alertConfigs, (value) => value.toMap());
     map['createTime'] = createTime;
@@ -142,7 +142,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse {
     map['jsonValidationOption'] = jsonValidationOption;
     map['label'] = label;
     map['lastModifiedTime'] = lastModifiedTime;
-    map['nextTasks'] = Input.encodeList<
+    map['nextTasks'] = pulumi.Input.encodeList<
         EnterpriseCrmEventbusProtoNextTaskResponse,
         Map<String, dynamic>>(nextTasks, (value) => value.toMap());
     map['nextTasksExecutionPolicy'] = nextTasksExecutionPolicy;
@@ -166,12 +166,11 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse {
   factory EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse(
-      alertConfigs:
-          Input.decodeList<EnterpriseCrmEventbusProtoTaskAlertConfigResponse>(
-              map['alertConfigs'],
-              (value) =>
-                  EnterpriseCrmEventbusProtoTaskAlertConfigResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      alertConfigs: pulumi.Input.decodeList<
+              EnterpriseCrmEventbusProtoTaskAlertConfigResponse>(
+          map['alertConfigs'],
+          (value) => EnterpriseCrmEventbusProtoTaskAlertConfigResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       creatorEmail: map['creatorEmail'] as String,
       description: map['description'] as String,
@@ -184,10 +183,11 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse {
       jsonValidationOption: map['jsonValidationOption'] as String,
       label: map['label'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
-      nextTasks: Input.decodeList<EnterpriseCrmEventbusProtoNextTaskResponse>(
-          map['nextTasks'],
-          (value) => EnterpriseCrmEventbusProtoNextTaskResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nextTasks:
+          pulumi.Input.decodeList<EnterpriseCrmEventbusProtoNextTaskResponse>(
+              map['nextTasks'],
+              (value) => EnterpriseCrmEventbusProtoNextTaskResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] as String,
       parameters: (map['parameters'] as Map).cast<String, String>(),
       position: EnterpriseCrmEventbusProtoCoordinateResponse.fromMap(

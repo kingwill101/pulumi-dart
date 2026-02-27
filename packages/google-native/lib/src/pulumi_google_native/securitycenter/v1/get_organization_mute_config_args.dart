@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationMuteConfig.
 class GetOrganizationMuteConfigArgs {
-  final Input<String> muteConfigId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> muteConfigId;
+  final pulumi.Input<String> organizationId;
 
   GetOrganizationMuteConfigArgs({
     required this.muteConfigId,
@@ -21,8 +21,8 @@ class GetOrganizationMuteConfigArgs {
 
   factory GetOrganizationMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationMuteConfigArgs(
-      muteConfigId: Input.asInput<String>(map['muteConfigId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      muteConfigId: pulumi.Input.asInput<String>(map['muteConfigId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

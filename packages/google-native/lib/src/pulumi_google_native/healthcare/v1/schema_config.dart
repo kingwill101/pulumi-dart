@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'schema_config_schema_type.dart';
-import 'time_partitioning2.dart';
+import 'time_partitioning_healthcare_v1.dart';
 
 /// Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
 class SchemaConfig {
   /// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
-  final TimePartitioning2? lastUpdatedPartitionConfig;
+  final TimePartitioningHealthcareV1? lastUpdatedPartitionConfig;
 
   /// The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
   final String? recursiveStructureDepth;
@@ -42,8 +42,9 @@ class SchemaConfig {
     return SchemaConfig(
       lastUpdatedPartitionConfig: map['lastUpdatedPartitionConfig'] == null
           ? null
-          : TimePartitioning2.fromMap((map['lastUpdatedPartitionConfig'] as Map)
-              .cast<String, dynamic>()),
+          : TimePartitioningHealthcareV1.fromMap(
+              (map['lastUpdatedPartitionConfig'] as Map)
+                  .cast<String, dynamic>()),
       recursiveStructureDepth: map['recursiveStructureDepth'] == null
           ? null
           : map['recursiveStructureDepth'] as String,

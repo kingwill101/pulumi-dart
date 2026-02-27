@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBuild.
 class GetBuildArgs {
-  final Input<String> buildId;
-  final Input<String> id;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> projectId;
+  final pulumi.Input<String> buildId;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> projectId;
 
   GetBuildArgs({
     required this.buildId,
@@ -33,11 +33,11 @@ class GetBuildArgs {
 
   factory GetBuildArgs.fromMap(Map<String, dynamic> map) {
     return GetBuildArgs(
-      buildId: Input.asInput<String>(map['buildId']),
-      id: Input.asInput<String>(map['id']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      projectId: Input.asInput<String>(map['projectId']),
+      buildId: pulumi.Input.asInput<String>(map['buildId']),
+      id: pulumi.Input.asInput<String>(map['id']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      projectId: pulumi.Input.asInput<String>(map['projectId']),
     );
   }
 }

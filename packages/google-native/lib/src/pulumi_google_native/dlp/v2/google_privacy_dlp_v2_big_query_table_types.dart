@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_table_types_types_item.dart';
 
 /// The types of BigQuery tables supported by Cloud DLP.
@@ -16,7 +16,7 @@ class GooglePrivacyDlpV2BigQueryTableTypes {
     final map = <String, dynamic>{};
     final typesValue = types;
     if (typesValue != null) {
-      map['types'] = Input.encodeList<
+      map['types'] = pulumi.Input.encodeList<
           GooglePrivacyDlpV2BigQueryTableTypesTypesItem,
           String>(typesValue, (value) => value.value);
     }
@@ -28,7 +28,8 @@ class GooglePrivacyDlpV2BigQueryTableTypes {
     return GooglePrivacyDlpV2BigQueryTableTypes(
       types: map['types'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2BigQueryTableTypesTypesItem>(
+          : pulumi.Input.decodeList<
+                  GooglePrivacyDlpV2BigQueryTableTypesTypesItem>(
               map['types'],
               (value) =>
                   GooglePrivacyDlpV2BigQueryTableTypesTypesItem.fromValue(

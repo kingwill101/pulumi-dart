@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLien.
 class GetLienArgs {
-  final Input<String> lienId;
+  final pulumi.Input<String> lienId;
 
   GetLienArgs({
     required this.lienId,
@@ -18,7 +18,7 @@ class GetLienArgs {
 
   factory GetLienArgs.fromMap(Map<String, dynamic> map) {
     return GetLienArgs(
-      lienId: Input.asInput<String>(map['lienId']),
+      lienId: pulumi.Input.asInput<String>(map['lienId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_assuredworkloads_v1_workload_compliance_status_response.dart';
 import 'google_cloud_assuredworkloads_v1_workload_ekm_provisioning_response_response.dart';
 import 'google_cloud_assuredworkloads_v1_workload_kmssettings_response.dart';
@@ -123,10 +123,10 @@ class GetWorkloadResult {
     map['partnerPermissions'] = partnerPermissions.toMap();
     map['provisionedResourcesParent'] = provisionedResourcesParent;
     map['resourceMonitoringEnabled'] = resourceMonitoringEnabled;
-    map['resourceSettings'] = Input.encodeList<
+    map['resourceSettings'] = pulumi.Input.encodeList<
         GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse,
         Map<String, dynamic>>(resourceSettings, (value) => value.toMap());
-    map['resources'] = Input.encodeList<
+    map['resources'] = pulumi.Input.encodeList<
         GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse,
         Map<String, dynamic>>(resources, (value) => value.toMap());
     map['saaEnrollmentResponse'] = saaEnrollmentResponse.toMap();
@@ -164,13 +164,13 @@ class GetWorkloadResult {
                   (map['partnerPermissions'] as Map).cast<String, dynamic>()),
       provisionedResourcesParent: map['provisionedResourcesParent'] as String,
       resourceMonitoringEnabled: map['resourceMonitoringEnabled'] as bool,
-      resourceSettings: Input.decodeList<
+      resourceSettings: pulumi.Input.decodeList<
               GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse>(
           map['resourceSettings'],
           (value) =>
               GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse
                   .fromMap((value as Map).cast<String, dynamic>())),
-      resources: Input.decodeList<
+      resources: pulumi.Input.decodeList<
               GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse>(
           map['resources'],
           (value) =>

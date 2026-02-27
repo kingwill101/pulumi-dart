@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allowed_client_response.dart';
 
 /// Result data returned by getNfsShare.
@@ -47,7 +47,7 @@ class GetNfsShareResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['allowedClients'] =
-        Input.encodeList<AllowedClientResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AllowedClientResponse, Map<String, dynamic>>(
             allowedClients, (value) => value.toMap());
     map['labels'] = labels;
     map['name'] = name;
@@ -62,7 +62,7 @@ class GetNfsShareResult {
 
   factory GetNfsShareResult.fromMap(Map<String, dynamic> map) {
     return GetNfsShareResult(
-      allowedClients: Input.decodeList<AllowedClientResponse>(
+      allowedClients: pulumi.Input.decodeList<AllowedClientResponse>(
           map['allowedClients'],
           (value) => AllowedClientResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

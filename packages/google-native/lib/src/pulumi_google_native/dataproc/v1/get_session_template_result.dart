@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'environment_config_response3.dart';
+import 'environment_config_response_dataproc_v1.dart';
 import 'jupyter_config_response.dart';
-import 'runtime_config_response2.dart';
+import 'runtime_config_response_dataproc_v1.dart';
 
 /// Result data returned by getSessionTemplate.
 class GetSessionTemplateResult {
@@ -16,7 +16,7 @@ class GetSessionTemplateResult {
   final String description;
 
   /// Optional. Environment configuration for session execution.
-  final EnvironmentConfigResponse3 environmentConfig;
+  final EnvironmentConfigResponseDataprocV1 environmentConfig;
 
   /// Optional. Jupyter session config.
   final JupyterConfigResponse jupyterSession;
@@ -28,7 +28,7 @@ class GetSessionTemplateResult {
   final String name;
 
   /// Optional. Runtime configuration for session execution.
-  final RuntimeConfigResponse2 runtimeConfig;
+  final RuntimeConfigResponseDataprocV1 runtimeConfig;
 
   /// The time the template was last updated.
   final String updateTime;
@@ -69,13 +69,13 @@ class GetSessionTemplateResult {
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
       description: map['description'] as String,
-      environmentConfig: EnvironmentConfigResponse3.fromMap(
+      environmentConfig: EnvironmentConfigResponseDataprocV1.fromMap(
           (map['environmentConfig'] as Map).cast<String, dynamic>()),
       jupyterSession: JupyterConfigResponse.fromMap(
           (map['jupyterSession'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      runtimeConfig: RuntimeConfigResponse2.fromMap(
+      runtimeConfig: RuntimeConfigResponseDataprocV1.fromMap(
           (map['runtimeConfig'] as Map).cast<String, dynamic>()),
       updateTime: map['updateTime'] as String,
       uuid: map['uuid'] as String,

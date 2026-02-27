@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'intermediate_caresponse.dart';
 import 'trust_anchor_response.dart';
 
@@ -20,21 +20,21 @@ class TrustStoreResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['intermediateCas'] =
-        Input.encodeList<IntermediateCAResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<IntermediateCAResponse, Map<String, dynamic>>(
             intermediateCas, (value) => value.toMap());
     map['trustAnchors'] =
-        Input.encodeList<TrustAnchorResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TrustAnchorResponse, Map<String, dynamic>>(
             trustAnchors, (value) => value.toMap());
     return map;
   }
 
   factory TrustStoreResponse.fromMap(Map<String, dynamic> map) {
     return TrustStoreResponse(
-      intermediateCas: Input.decodeList<IntermediateCAResponse>(
+      intermediateCas: pulumi.Input.decodeList<IntermediateCAResponse>(
           map['intermediateCas'],
           (value) => IntermediateCAResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      trustAnchors: Input.decodeList<TrustAnchorResponse>(
+      trustAnchors: pulumi.Input.decodeList<TrustAnchorResponse>(
           map['trustAnchors'],
           (value) => TrustAnchorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

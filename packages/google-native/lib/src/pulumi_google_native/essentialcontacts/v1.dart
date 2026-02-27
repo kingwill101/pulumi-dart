@@ -1,7 +1,7 @@
 library module_essentialcontacts_v1;
 
-export 'v1/contact4.dart';
 export 'v1/contact_args.dart';
+export 'v1/contact_essentialcontacts_v1.dart';
 export 'v1/contact_notification_category_subscriptions_item.dart';
 export 'v1/contact_validation_state.dart';
 export 'v1/folder_contact.dart';

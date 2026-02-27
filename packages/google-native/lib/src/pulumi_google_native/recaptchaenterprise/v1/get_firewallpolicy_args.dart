@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFirewallpolicy.
 class GetFirewallpolicyArgs {
-  final Input<String> firewallpolicyId;
-  final Input<String>? project;
+  final pulumi.Input<String> firewallpolicyId;
+  final pulumi.Input<String>? project;
 
   GetFirewallpolicyArgs({
     required this.firewallpolicyId,
@@ -24,8 +24,8 @@ class GetFirewallpolicyArgs {
 
   factory GetFirewallpolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallpolicyArgs(
-      firewallpolicyId: Input.asInput<String>(map['firewallpolicyId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      firewallpolicyId: pulumi.Input.asInput<String>(map['firewallpolicyId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

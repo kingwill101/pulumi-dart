@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bitbucket_server_repository_id_response.dart';
 import 'bitbucket_server_secrets_response.dart';
 
@@ -56,7 +56,7 @@ class GetBitbucketServerConfigResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['apiKey'] = apiKey;
-    map['connectedRepositories'] = Input.encodeList<
+    map['connectedRepositories'] = pulumi.Input.encodeList<
         BitbucketServerRepositoryIdResponse,
         Map<String, dynamic>>(connectedRepositories, (value) => value.toMap());
     map['createTime'] = createTime;
@@ -75,7 +75,7 @@ class GetBitbucketServerConfigResult {
     return GetBitbucketServerConfigResult(
       apiKey: map['apiKey'] as String,
       connectedRepositories:
-          Input.decodeList<BitbucketServerRepositoryIdResponse>(
+          pulumi.Input.decodeList<BitbucketServerRepositoryIdResponse>(
               map['connectedRepositories'],
               (value) => BitbucketServerRepositoryIdResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

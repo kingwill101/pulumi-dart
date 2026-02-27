@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_config_response.dart';
 import 'config_variable_response.dart';
 import 'destination_config_response.dart';
@@ -41,7 +41,7 @@ class EventingConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['additionalVariables'] =
-        Input.encodeList<ConfigVariableResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ConfigVariableResponse, Map<String, dynamic>>(
             additionalVariables, (value) => value.toMap());
     map['authConfig'] = authConfig.toMap();
     map['encryptionKey'] = encryptionKey.toMap();
@@ -55,7 +55,7 @@ class EventingConfigResponse {
 
   factory EventingConfigResponse.fromMap(Map<String, dynamic> map) {
     return EventingConfigResponse(
-      additionalVariables: Input.decodeList<ConfigVariableResponse>(
+      additionalVariables: pulumi.Input.decodeList<ConfigVariableResponse>(
           map['additionalVariables'],
           (value) => ConfigVariableResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

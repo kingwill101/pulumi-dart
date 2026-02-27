@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'status_response23.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'status_response_networkmanagement_v1.dart';
 import 'trace_response.dart';
 
 /// Results of the configuration analysis from the last run of the test.
 class ReachabilityDetailsResponse {
   /// The details of a failure or a cancellation of reachability analysis.
-  final StatusResponse23 error;
+  final StatusResponseNetworkmanagementV1 error;
 
   /// The overall result of the test's configuration analysis.
   final String result;
@@ -29,18 +29,19 @@ class ReachabilityDetailsResponse {
     final map = <String, dynamic>{};
     map['error'] = error.toMap();
     map['result'] = result;
-    map['traces'] = Input.encodeList<TraceResponse, Map<String, dynamic>>(
-        traces, (value) => value.toMap());
+    map['traces'] =
+        pulumi.Input.encodeList<TraceResponse, Map<String, dynamic>>(
+            traces, (value) => value.toMap());
     map['verifyTime'] = verifyTime;
     return map;
   }
 
   factory ReachabilityDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ReachabilityDetailsResponse(
-      error: StatusResponse23.fromMap(
+      error: StatusResponseNetworkmanagementV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       result: map['result'] as String,
-      traces: Input.decodeList<TraceResponse>(
+      traces: pulumi.Input.decodeList<TraceResponse>(
           map['traces'],
           (value) =>
               TraceResponse.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'duration_response4.dart';
+import 'duration_response_toolresults_v1beta3.dart';
 
 /// Testing timing break down to know phases.
 class TestTimingResponse {
   /// How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
-  final DurationResponse4 testProcessDuration;
+  final DurationResponseToolresultsV1beta3 testProcessDuration;
 
   TestTimingResponse({
     required this.testProcessDuration,
@@ -19,7 +19,7 @@ class TestTimingResponse {
 
   factory TestTimingResponse.fromMap(Map<String, dynamic> map) {
     return TestTimingResponse(
-      testProcessDuration: DurationResponse4.fromMap(
+      testProcessDuration: DurationResponseToolresultsV1beta3.fromMap(
           (map['testProcessDuration'] as Map).cast<String, dynamic>()),
     );
   }

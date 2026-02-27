@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCloneJob.
 class GetCloneJobArgs {
-  final Input<String> cloneJobId;
-  final Input<String> location;
-  final Input<String> migratingVmId;
-  final Input<String>? project;
-  final Input<String> sourceId;
+  final pulumi.Input<String> cloneJobId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> migratingVmId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sourceId;
 
   GetCloneJobArgs({
     required this.cloneJobId,
@@ -33,11 +33,11 @@ class GetCloneJobArgs {
 
   factory GetCloneJobArgs.fromMap(Map<String, dynamic> map) {
     return GetCloneJobArgs(
-      cloneJobId: Input.asInput<String>(map['cloneJobId']),
-      location: Input.asInput<String>(map['location']),
-      migratingVmId: Input.asInput<String>(map['migratingVmId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sourceId: Input.asInput<String>(map['sourceId']),
+      cloneJobId: pulumi.Input.asInput<String>(map['cloneJobId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      migratingVmId: pulumi.Input.asInput<String>(map['migratingVmId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sourceId: pulumi.Input.asInput<String>(map['sourceId']),
     );
   }
 }

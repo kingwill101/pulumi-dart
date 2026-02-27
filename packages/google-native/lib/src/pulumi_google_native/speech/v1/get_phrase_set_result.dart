@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'phrase_response.dart';
 
 /// Result data returned by getPhraseSet.
@@ -71,8 +71,9 @@ class GetPhraseSetResult {
     map['kmsKeyName'] = kmsKeyName;
     map['kmsKeyVersionName'] = kmsKeyVersionName;
     map['name'] = name;
-    map['phrases'] = Input.encodeList<PhraseResponse, Map<String, dynamic>>(
-        phrases, (value) => value.toMap());
+    map['phrases'] =
+        pulumi.Input.encodeList<PhraseResponse, Map<String, dynamic>>(
+            phrases, (value) => value.toMap());
     map['reconciling'] = reconciling;
     map['state'] = state;
     map['uid'] = uid;
@@ -90,7 +91,7 @@ class GetPhraseSetResult {
       kmsKeyName: map['kmsKeyName'] as String,
       kmsKeyVersionName: map['kmsKeyVersionName'] as String,
       name: map['name'] as String,
-      phrases: Input.decodeList<PhraseResponse>(
+      phrases: pulumi.Input.decodeList<PhraseResponse>(
           map['phrases'],
           (value) =>
               PhraseResponse.fromMap((value as Map).cast<String, dynamic>())),

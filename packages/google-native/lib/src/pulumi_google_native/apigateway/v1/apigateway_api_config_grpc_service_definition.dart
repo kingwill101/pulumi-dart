@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apigateway_api_config_file.dart';
 
 /// A gRPC service definition.
@@ -24,9 +24,8 @@ class ApigatewayApiConfigGrpcServiceDefinition {
     }
     final sourceValue = source;
     if (sourceValue != null) {
-      map['source'] =
-          Input.encodeList<ApigatewayApiConfigFile, Map<String, dynamic>>(
-              sourceValue, (value) => value.toMap());
+      map['source'] = pulumi.Input.encodeList<ApigatewayApiConfigFile,
+          Map<String, dynamic>>(sourceValue, (value) => value.toMap());
     }
     return map;
   }
@@ -40,7 +39,7 @@ class ApigatewayApiConfigGrpcServiceDefinition {
               (map['fileDescriptorSet'] as Map).cast<String, dynamic>()),
       source: map['source'] == null
           ? null
-          : Input.decodeList<ApigatewayApiConfigFile>(
+          : pulumi.Input.decodeList<ApigatewayApiConfigFile>(
               map['source'],
               (value) => ApigatewayApiConfigFile.fromMap(
                   (value as Map).cast<String, dynamic>())),

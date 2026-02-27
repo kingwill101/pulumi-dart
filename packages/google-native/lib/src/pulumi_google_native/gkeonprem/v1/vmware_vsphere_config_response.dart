@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_vsphere_tag_response.dart';
 
 /// VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
@@ -25,7 +25,7 @@ class VmwareVsphereConfigResponse {
     map['datastore'] = datastore;
     map['hostGroups'] = hostGroups;
     map['tags'] =
-        Input.encodeList<VmwareVsphereTagResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<VmwareVsphereTagResponse, Map<String, dynamic>>(
             tags, (value) => value.toMap());
     return map;
   }
@@ -34,7 +34,7 @@ class VmwareVsphereConfigResponse {
     return VmwareVsphereConfigResponse(
       datastore: map['datastore'] as String,
       hostGroups: (map['hostGroups'] as List).cast<String>(),
-      tags: Input.decodeList<VmwareVsphereTagResponse>(
+      tags: pulumi.Input.decodeList<VmwareVsphereTagResponse>(
           map['tags'],
           (value) => VmwareVsphereTagResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

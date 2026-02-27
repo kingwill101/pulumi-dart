@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hl7_v2_notification_config_response.dart';
 import 'parser_config_response.dart';
 
@@ -33,9 +33,9 @@ class GetHl7V2StoreResult {
     final map = <String, dynamic>{};
     map['labels'] = labels;
     map['name'] = name;
-    map['notificationConfigs'] =
-        Input.encodeList<Hl7V2NotificationConfigResponse, Map<String, dynamic>>(
-            notificationConfigs, (value) => value.toMap());
+    map['notificationConfigs'] = pulumi.Input.encodeList<
+        Hl7V2NotificationConfigResponse,
+        Map<String, dynamic>>(notificationConfigs, (value) => value.toMap());
     map['parserConfig'] = parserConfig.toMap();
     map['rejectDuplicateMessage'] = rejectDuplicateMessage;
     return map;
@@ -45,10 +45,11 @@ class GetHl7V2StoreResult {
     return GetHl7V2StoreResult(
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      notificationConfigs: Input.decodeList<Hl7V2NotificationConfigResponse>(
-          map['notificationConfigs'],
-          (value) => Hl7V2NotificationConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      notificationConfigs:
+          pulumi.Input.decodeList<Hl7V2NotificationConfigResponse>(
+              map['notificationConfigs'],
+              (value) => Hl7V2NotificationConfigResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       parserConfig: ParserConfigResponse.fromMap(
           (map['parserConfig'] as Map).cast<String, dynamic>()),
       rejectDuplicateMessage: map['rejectDuplicateMessage'] as bool,

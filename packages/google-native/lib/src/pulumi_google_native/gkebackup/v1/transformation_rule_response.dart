@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_filter_response.dart';
 import 'transformation_rule_action_response.dart';
 
@@ -24,7 +24,8 @@ class TransformationRuleResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['description'] = description;
-    map['fieldActions'] = Input.encodeList<TransformationRuleActionResponse,
+    map['fieldActions'] = pulumi.Input.encodeList<
+        TransformationRuleActionResponse,
         Map<String, dynamic>>(fieldActions, (value) => value.toMap());
     map['resourceFilter'] = resourceFilter.toMap();
     return map;
@@ -33,7 +34,7 @@ class TransformationRuleResponse {
   factory TransformationRuleResponse.fromMap(Map<String, dynamic> map) {
     return TransformationRuleResponse(
       description: map['description'] as String,
-      fieldActions: Input.decodeList<TransformationRuleActionResponse>(
+      fieldActions: pulumi.Input.decodeList<TransformationRuleActionResponse>(
           map['fieldActions'],
           (value) => TransformationRuleActionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

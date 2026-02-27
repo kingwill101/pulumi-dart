@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifact.dart';
 import 'command.dart';
-import 'source6.dart';
+import 'source_containeranalysis_v1.dart';
 
 /// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
 class BuildProvenance {
@@ -38,7 +38,7 @@ class BuildProvenance {
   final String? project;
 
   /// Details of the Source input to the build.
-  final Source6? sourceProvenance;
+  final SourceContaineranalysisV1? sourceProvenance;
 
   /// Time at which execution of the build was started.
   final String? startTime;
@@ -74,12 +74,13 @@ class BuildProvenance {
     }
     final builtArtifactsValue = builtArtifacts;
     if (builtArtifactsValue != null) {
-      map['builtArtifacts'] = Input.encodeList<Artifact, Map<String, dynamic>>(
-          builtArtifactsValue, (value) => value.toMap());
+      map['builtArtifacts'] =
+          pulumi.Input.encodeList<Artifact, Map<String, dynamic>>(
+              builtArtifactsValue, (value) => value.toMap());
     }
     final commandsValue = commands;
     if (commandsValue != null) {
-      map['commands'] = Input.encodeList<Command, Map<String, dynamic>>(
+      map['commands'] = pulumi.Input.encodeList<Command, Map<String, dynamic>>(
           commandsValue, (value) => value.toMap());
     }
     final createTimeValue = createTime;
@@ -128,13 +129,13 @@ class BuildProvenance {
           : map['builderVersion'] as String,
       builtArtifacts: map['builtArtifacts'] == null
           ? null
-          : Input.decodeList<Artifact>(
+          : pulumi.Input.decodeList<Artifact>(
               map['builtArtifacts'],
               (value) =>
                   Artifact.fromMap((value as Map).cast<String, dynamic>())),
       commands: map['commands'] == null
           ? null
-          : Input.decodeList<Command>(
+          : pulumi.Input.decodeList<Command>(
               map['commands'],
               (value) =>
                   Command.fromMap((value as Map).cast<String, dynamic>())),
@@ -147,7 +148,7 @@ class BuildProvenance {
       project: map['project'] == null ? null : map['project'] as String,
       sourceProvenance: map['sourceProvenance'] == null
           ? null
-          : Source6.fromMap(
+          : SourceContaineranalysisV1.fromMap(
               (map['sourceProvenance'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] == null ? null : map['startTime'] as String,
       triggerId: map['triggerId'] == null ? null : map['triggerId'] as String,

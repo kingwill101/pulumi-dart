@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_graph_qloperation_config_response.dart';
 
 /// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
@@ -20,7 +20,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroupResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['operationConfigType'] = operationConfigType;
-    map['operationConfigs'] = Input.encodeList<
+    map['operationConfigs'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1GraphQLOperationConfigResponse,
         Map<String, dynamic>>(operationConfigs, (value) => value.toMap());
     return map;
@@ -30,12 +30,11 @@ class GoogleCloudApigeeV1GraphQLOperationGroupResponse {
       Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GraphQLOperationGroupResponse(
       operationConfigType: map['operationConfigType'] as String,
-      operationConfigs:
-          Input.decodeList<GoogleCloudApigeeV1GraphQLOperationConfigResponse>(
-              map['operationConfigs'],
-              (value) =>
-                  GoogleCloudApigeeV1GraphQLOperationConfigResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      operationConfigs: pulumi.Input.decodeList<
+              GoogleCloudApigeeV1GraphQLOperationConfigResponse>(
+          map['operationConfigs'],
+          (value) => GoogleCloudApigeeV1GraphQLOperationConfigResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

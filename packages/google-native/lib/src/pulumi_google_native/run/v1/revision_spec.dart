@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'container2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'container_run_v1.dart';
 import 'local_object_reference.dart';
-import 'volume5.dart';
+import 'volume_run_v1.dart';
 
 /// RevisionSpec holds the desired state of the Revision (from the client).
 class RevisionSpec {
@@ -11,7 +11,7 @@ class RevisionSpec {
   final int? containerConcurrency;
 
   /// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
-  final List<Container2>? containers;
+  final List<ContainerRunV1>? containers;
 
   /// Not supported by Cloud Run.
   final bool? enableServiceLinks;
@@ -24,7 +24,7 @@ class RevisionSpec {
 
   /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
   final int? timeoutSeconds;
-  final List<Volume5>? volumes;
+  final List<VolumeRunV1>? volumes;
 
   RevisionSpec({
     this.containerConcurrency,
@@ -44,8 +44,9 @@ class RevisionSpec {
     }
     final containersValue = containers;
     if (containersValue != null) {
-      map['containers'] = Input.encodeList<Container2, Map<String, dynamic>>(
-          containersValue, (value) => value.toMap());
+      map['containers'] =
+          pulumi.Input.encodeList<ContainerRunV1, Map<String, dynamic>>(
+              containersValue, (value) => value.toMap());
     }
     final enableServiceLinksValue = enableServiceLinks;
     if (enableServiceLinksValue != null) {
@@ -54,7 +55,7 @@ class RevisionSpec {
     final imagePullSecretsValue = imagePullSecrets;
     if (imagePullSecretsValue != null) {
       map['imagePullSecrets'] =
-          Input.encodeList<LocalObjectReference, Map<String, dynamic>>(
+          pulumi.Input.encodeList<LocalObjectReference, Map<String, dynamic>>(
               imagePullSecretsValue, (value) => value.toMap());
     }
     final serviceAccountNameValue = serviceAccountName;
@@ -67,8 +68,9 @@ class RevisionSpec {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] = Input.encodeList<Volume5, Map<String, dynamic>>(
-          volumesValue, (value) => value.toMap());
+      map['volumes'] =
+          pulumi.Input.encodeList<VolumeRunV1, Map<String, dynamic>>(
+              volumesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -80,16 +82,16 @@ class RevisionSpec {
           : map['containerConcurrency'] as int,
       containers: map['containers'] == null
           ? null
-          : Input.decodeList<Container2>(
+          : pulumi.Input.decodeList<ContainerRunV1>(
               map['containers'],
-              (value) =>
-                  Container2.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => ContainerRunV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       enableServiceLinks: map['enableServiceLinks'] == null
           ? null
           : map['enableServiceLinks'] as bool,
       imagePullSecrets: map['imagePullSecrets'] == null
           ? null
-          : Input.decodeList<LocalObjectReference>(
+          : pulumi.Input.decodeList<LocalObjectReference>(
               map['imagePullSecrets'],
               (value) => LocalObjectReference.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -100,10 +102,10 @@ class RevisionSpec {
           map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<Volume5>(
+          : pulumi.Input.decodeList<VolumeRunV1>(
               map['volumes'],
               (value) =>
-                  Volume5.fromMap((value as Map).cast<String, dynamic>())),
+                  VolumeRunV1.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

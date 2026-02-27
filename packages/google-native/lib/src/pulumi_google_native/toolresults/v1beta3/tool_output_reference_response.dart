@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'file_reference_response2.dart';
+import 'file_reference_response_toolresults_v1beta3.dart';
 import 'test_case_reference_response.dart';
 import 'timestamp_response.dart';
 
@@ -10,7 +10,7 @@ class ToolOutputReferenceResponse {
   final TimestampResponse creationTime;
 
   /// A FileReference to an output file. - In response: always set - In create/update request: always set
-  final FileReferenceResponse2 output;
+  final FileReferenceResponseToolresultsV1beta3 output;
 
   /// The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
   final TestCaseReferenceResponse testCase;
@@ -33,7 +33,7 @@ class ToolOutputReferenceResponse {
     return ToolOutputReferenceResponse(
       creationTime: TimestampResponse.fromMap(
           (map['creationTime'] as Map).cast<String, dynamic>()),
-      output: FileReferenceResponse2.fromMap(
+      output: FileReferenceResponseToolresultsV1beta3.fromMap(
           (map['output'] as Map).cast<String, dynamic>()),
       testCase: TestCaseReferenceResponse.fromMap(
           (map['testCase'] as Map).cast<String, dynamic>()),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mysql_database_response.dart';
 
 /// MySQL database structure
@@ -15,14 +15,14 @@ class MysqlRdbmsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['mysqlDatabases'] =
-        Input.encodeList<MysqlDatabaseResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MysqlDatabaseResponse, Map<String, dynamic>>(
             mysqlDatabases, (value) => value.toMap());
     return map;
   }
 
   factory MysqlRdbmsResponse.fromMap(Map<String, dynamic> map) {
     return MysqlRdbmsResponse(
-      mysqlDatabases: Input.decodeList<MysqlDatabaseResponse>(
+      mysqlDatabases: pulumi.Input.decodeList<MysqlDatabaseResponse>(
           map['mysqlDatabases'],
           (value) => MysqlDatabaseResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

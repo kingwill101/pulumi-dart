@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_policy_group_placement_policy.dart';
 import 'resource_policy_instance_schedule_policy.dart';
 import 'resource_policy_snapshot_schedule_policy.dart';
@@ -8,30 +8,32 @@ import 'resource_policy_vm_maintenance_policy.dart';
 
 /// The set of arguments for ResourcePolicy.
 class ResourcePolicyArgs {
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Resource policy for disk consistency groups.
-  final Input<Map<String, dynamic>>? diskConsistencyGroupPolicy;
+  final pulumi.Input<Map<String, dynamic>>? diskConsistencyGroupPolicy;
 
   /// Resource policy for instances for placement configuration.
-  final Input<ResourcePolicyGroupPlacementPolicy>? groupPlacementPolicy;
+  final pulumi.Input<ResourcePolicyGroupPlacementPolicy>? groupPlacementPolicy;
 
   /// Resource policy for scheduling instance operations.
-  final Input<ResourcePolicyInstanceSchedulePolicy>? instanceSchedulePolicy;
+  final pulumi.Input<ResourcePolicyInstanceSchedulePolicy>?
+      instanceSchedulePolicy;
 
   /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final Input<String>? name;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Resource policy for persistent disks for creating snapshots.
-  final Input<ResourcePolicySnapshotSchedulePolicy>? snapshotSchedulePolicy;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicy>?
+      snapshotSchedulePolicy;
 
   /// Resource policy applicable to VMs for infrastructure maintenance.
-  final Input<ResourcePolicyVmMaintenancePolicy>? vmMaintenancePolicy;
+  final pulumi.Input<ResourcePolicyVmMaintenancePolicy>? vmMaintenancePolicy;
 
   ResourcePolicyArgs({
     this.description,
@@ -58,13 +60,13 @@ class ResourcePolicyArgs {
     }
     final groupPlacementPolicyValue = groupPlacementPolicy;
     if (groupPlacementPolicyValue != null) {
-      map['groupPlacementPolicy'] = Input.mapOptionalInputValue<
+      map['groupPlacementPolicy'] = pulumi.Input.mapOptionalInputValue<
               ResourcePolicyGroupPlacementPolicy, Map<String, dynamic>>(
           groupPlacementPolicyValue, (value) => value.toMap());
     }
     final instanceSchedulePolicyValue = instanceSchedulePolicy;
     if (instanceSchedulePolicyValue != null) {
-      map['instanceSchedulePolicy'] = Input.mapOptionalInputValue<
+      map['instanceSchedulePolicy'] = pulumi.Input.mapOptionalInputValue<
               ResourcePolicyInstanceSchedulePolicy, Map<String, dynamic>>(
           instanceSchedulePolicyValue, (value) => value.toMap());
     }
@@ -83,13 +85,13 @@ class ResourcePolicyArgs {
     }
     final snapshotSchedulePolicyValue = snapshotSchedulePolicy;
     if (snapshotSchedulePolicyValue != null) {
-      map['snapshotSchedulePolicy'] = Input.mapOptionalInputValue<
+      map['snapshotSchedulePolicy'] = pulumi.Input.mapOptionalInputValue<
               ResourcePolicySnapshotSchedulePolicy, Map<String, dynamic>>(
           snapshotSchedulePolicyValue, (value) => value.toMap());
     }
     final vmMaintenancePolicyValue = vmMaintenancePolicy;
     if (vmMaintenancePolicyValue != null) {
-      map['vmMaintenancePolicy'] = Input.mapOptionalInputValue<
+      map['vmMaintenancePolicy'] = pulumi.Input.mapOptionalInputValue<
               ResourcePolicyVmMaintenancePolicy, Map<String, dynamic>>(
           vmMaintenancePolicyValue, (value) => value.toMap());
     }
@@ -98,24 +100,25 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      diskConsistencyGroupPolicy: Input.asOptionalInput<Map<String, dynamic>>(
-          map['diskConsistencyGroupPolicy']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      diskConsistencyGroupPolicy:
+          pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+              map['diskConsistencyGroupPolicy']),
       groupPlacementPolicy:
-          Input.asOptionalInput<ResourcePolicyGroupPlacementPolicy>(
+          pulumi.Input.asOptionalInput<ResourcePolicyGroupPlacementPolicy>(
               map['groupPlacementPolicy']),
       instanceSchedulePolicy:
-          Input.asOptionalInput<ResourcePolicyInstanceSchedulePolicy>(
+          pulumi.Input.asOptionalInput<ResourcePolicyInstanceSchedulePolicy>(
               map['instanceSchedulePolicy']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
       snapshotSchedulePolicy:
-          Input.asOptionalInput<ResourcePolicySnapshotSchedulePolicy>(
+          pulumi.Input.asOptionalInput<ResourcePolicySnapshotSchedulePolicy>(
               map['snapshotSchedulePolicy']),
       vmMaintenancePolicy:
-          Input.asOptionalInput<ResourcePolicyVmMaintenancePolicy>(
+          pulumi.Input.asOptionalInput<ResourcePolicyVmMaintenancePolicy>(
               map['vmMaintenancePolicy']),
     );
   }

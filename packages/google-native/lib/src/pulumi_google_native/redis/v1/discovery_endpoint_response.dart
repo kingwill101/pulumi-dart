@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'psc_config_response3.dart';
+import 'psc_config_response_redis_v1.dart';
 
 /// Endpoints on each network, for Redis clients to connect to the cluster.
 class DiscoveryEndpointResponse {
@@ -11,7 +11,7 @@ class DiscoveryEndpointResponse {
   final int port;
 
   /// Customer configuration for where the endpoint is created and accessed from.
-  final PscConfigResponse3 pscConfig;
+  final PscConfigResponseRedisV1 pscConfig;
 
   DiscoveryEndpointResponse({
     required this.address,
@@ -31,7 +31,7 @@ class DiscoveryEndpointResponse {
     return DiscoveryEndpointResponse(
       address: map['address'] as String,
       port: map['port'] as int,
-      pscConfig: PscConfigResponse3.fromMap(
+      pscConfig: PscConfigResponseRedisV1.fromMap(
           (map['pscConfig'] as Map).cast<String, dynamic>()),
     );
   }

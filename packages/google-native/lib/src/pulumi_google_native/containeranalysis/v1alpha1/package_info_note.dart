@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'external_ref.dart';
-import 'license2.dart';
+import 'license_containeranalysis_v1alpha1.dart';
 
 /// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
 class PackageInfoNote {
@@ -34,7 +34,7 @@ class PackageInfoNote {
   final String? homePage;
 
   /// List the licenses that have been declared by the authors of the package
-  final License2? licenseDeclared;
+  final LicenseContaineranalysisV1alpha1? licenseDeclared;
 
   /// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
   final String? originator;
@@ -105,8 +105,9 @@ class PackageInfoNote {
     }
     final externalRefsValue = externalRefs;
     if (externalRefsValue != null) {
-      map['externalRefs'] = Input.encodeList<ExternalRef, Map<String, dynamic>>(
-          externalRefsValue, (value) => value.toMap());
+      map['externalRefs'] =
+          pulumi.Input.encodeList<ExternalRef, Map<String, dynamic>>(
+              externalRefsValue, (value) => value.toMap());
     }
     final filesLicenseInfoValue = filesLicenseInfo;
     if (filesLicenseInfoValue != null) {
@@ -166,7 +167,7 @@ class PackageInfoNote {
           : map['downloadLocation'] as String,
       externalRefs: map['externalRefs'] == null
           ? null
-          : Input.decodeList<ExternalRef>(
+          : pulumi.Input.decodeList<ExternalRef>(
               map['externalRefs'],
               (value) =>
                   ExternalRef.fromMap((value as Map).cast<String, dynamic>())),
@@ -176,7 +177,7 @@ class PackageInfoNote {
       homePage: map['homePage'] == null ? null : map['homePage'] as String,
       licenseDeclared: map['licenseDeclared'] == null
           ? null
-          : License2.fromMap(
+          : LicenseContaineranalysisV1alpha1.fromMap(
               (map['licenseDeclared'] as Map).cast<String, dynamic>()),
       originator:
           map['originator'] == null ? null : map['originator'] as String,

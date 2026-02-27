@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_info_status.dart';
 
 /// ResourceInfo represents the information/status of the associated resource.
@@ -41,7 +41,7 @@ class ResourceInfo {
     }
     final subValue = sub;
     if (subValue != null) {
-      map['sub'] = Input.encodeList<ResourceInfo, Map<String, dynamic>>(
+      map['sub'] = pulumi.Input.encodeList<ResourceInfo, Map<String, dynamic>>(
           subValue, (value) => value.toMap());
     }
     final timeValue = time;
@@ -62,7 +62,7 @@ class ResourceInfo {
           : ResourceInfoStatus.fromValue(map['status'] as String),
       sub: map['sub'] == null
           ? null
-          : Input.decodeList<ResourceInfo>(
+          : pulumi.Input.decodeList<ResourceInfo>(
               map['sub'],
               (value) =>
                   ResourceInfo.fromMap((value as Map).cast<String, dynamic>())),

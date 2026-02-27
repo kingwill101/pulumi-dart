@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getManagedZone.
 class GetManagedZoneArgs {
-  final Input<String> managedZone;
-  final Input<String>? project;
+  final pulumi.Input<String> managedZone;
+  final pulumi.Input<String>? project;
 
   GetManagedZoneArgs({
     required this.managedZone,
@@ -24,8 +24,8 @@ class GetManagedZoneArgs {
 
   factory GetManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedZoneArgs(
-      managedZone: Input.asInput<String>(map['managedZone']),
-      project: Input.asOptionalInput<String>(map['project']),
+      managedZone: pulumi.Input.asInput<String>(map['managedZone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

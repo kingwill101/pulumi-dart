@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'in_toto_provenance_response.dart';
 import 'slsa_provenance_response.dart';
 import 'slsa_provenance_zero_two_response.dart';
@@ -33,8 +33,9 @@ class InTotoStatementResponse {
     map['provenance'] = provenance.toMap();
     map['slsaProvenance'] = slsaProvenance.toMap();
     map['slsaProvenanceZeroTwo'] = slsaProvenanceZeroTwo.toMap();
-    map['subject'] = Input.encodeList<SubjectResponse, Map<String, dynamic>>(
-        subject, (value) => value.toMap());
+    map['subject'] =
+        pulumi.Input.encodeList<SubjectResponse, Map<String, dynamic>>(
+            subject, (value) => value.toMap());
     map['type'] = type;
     return map;
   }
@@ -48,7 +49,7 @@ class InTotoStatementResponse {
           (map['slsaProvenance'] as Map).cast<String, dynamic>()),
       slsaProvenanceZeroTwo: SlsaProvenanceZeroTwoResponse.fromMap(
           (map['slsaProvenanceZeroTwo'] as Map).cast<String, dynamic>()),
-      subject: Input.decodeList<SubjectResponse>(
+      subject: pulumi.Input.decodeList<SubjectResponse>(
           map['subject'],
           (value) =>
               SubjectResponse.fromMap((value as Map).cast<String, dynamic>())),

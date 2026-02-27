@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'audit_config_response52.dart';
-import 'binding_response76.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'audit_config_response_metastore_v1alpha.dart';
+import 'binding_response_metastore_v1alpha.dart';
 
 /// Result data returned by getServiceDatabaseTableIamPolicy.
 class GetServiceDatabaseTableIamPolicyResult {
   /// Specifies cloud audit logging configuration for this policy.
-  final List<AuditConfigResponse52> auditConfigs;
+  final List<AuditConfigResponseMetastoreV1alpha> auditConfigs;
 
   /// Associates a list of members, or principals, with a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one principal.The bindings in a Policy can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the bindings grant 50 different roles to user:alice@example.com, and not to any other principal, then you can add another 1,450 principals to the bindings in the Policy.
-  final List<BindingResponse76> bindings;
+  final List<BindingResponseMetastoreV1alpha> bindings;
 
   /// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.Important: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.
   final String etag;
@@ -27,11 +27,11 @@ class GetServiceDatabaseTableIamPolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['auditConfigs'] =
-        Input.encodeList<AuditConfigResponse52, Map<String, dynamic>>(
-            auditConfigs, (value) => value.toMap());
-    map['bindings'] = Input.encodeList<BindingResponse76, Map<String, dynamic>>(
-        bindings, (value) => value.toMap());
+    map['auditConfigs'] = pulumi.Input.encodeList<
+        AuditConfigResponseMetastoreV1alpha,
+        Map<String, dynamic>>(auditConfigs, (value) => value.toMap());
+    map['bindings'] = pulumi.Input.encodeList<BindingResponseMetastoreV1alpha,
+        Map<String, dynamic>>(bindings, (value) => value.toMap());
     map['etag'] = etag;
     map['version'] = version;
     return map;
@@ -40,13 +40,14 @@ class GetServiceDatabaseTableIamPolicyResult {
   factory GetServiceDatabaseTableIamPolicyResult.fromMap(
       Map<String, dynamic> map) {
     return GetServiceDatabaseTableIamPolicyResult(
-      auditConfigs: Input.decodeList<AuditConfigResponse52>(
-          map['auditConfigs'],
-          (value) => AuditConfigResponse52.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      bindings: Input.decodeList<BindingResponse76>(
+      auditConfigs:
+          pulumi.Input.decodeList<AuditConfigResponseMetastoreV1alpha>(
+              map['auditConfigs'],
+              (value) => AuditConfigResponseMetastoreV1alpha.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      bindings: pulumi.Input.decodeList<BindingResponseMetastoreV1alpha>(
           map['bindings'],
-          (value) => BindingResponse76.fromMap(
+          (value) => BindingResponseMetastoreV1alpha.fromMap(
               (value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
       version: map['version'] as int,

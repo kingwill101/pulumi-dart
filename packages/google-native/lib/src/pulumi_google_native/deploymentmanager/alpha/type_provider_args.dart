@@ -1,37 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collection_override.dart';
 import 'credential.dart';
-import 'options2.dart';
+import 'options_deploymentmanager_alpha.dart';
 import 'type_provider_label_entry.dart';
 
 /// The set of arguments for TypeProvider.
 class TypeProviderArgs {
   /// Allows resource handling overrides for specific collections
-  final Input<List<CollectionOverride>>? collectionOverrides;
+  final pulumi.Input<List<CollectionOverride>>? collectionOverrides;
 
   /// Credential used when interacting with this type.
-  final Input<Credential>? credential;
+  final pulumi.Input<Credential>? credential;
 
   /// List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
-  final Input<List<String>>? customCertificateAuthorityRoots;
+  final pulumi.Input<List<String>>? customCertificateAuthorityRoots;
 
   /// An optional textual description of the resource; provided by the client when the resource is created.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Descriptor Url for the this type provider.
-  final Input<String>? descriptorUrl;
+  final pulumi.Input<String>? descriptorUrl;
 
   /// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
-  final Input<List<TypeProviderLabelEntry>>? labels;
+  final pulumi.Input<List<TypeProviderLabelEntry>>? labels;
 
   /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Options to apply when handling any resources in this service.
-  final Input<Options2>? options;
-  final Input<String>? project;
+  final pulumi.Input<OptionsDeploymentmanagerAlpha>? options;
+  final pulumi.Input<String>? project;
 
   TypeProviderArgs({
     this.collectionOverrides,
@@ -49,16 +49,17 @@ class TypeProviderArgs {
     final map = <String, dynamic>{};
     final collectionOverridesValue = collectionOverrides;
     if (collectionOverridesValue != null) {
-      map['collectionOverrides'] = Input.mapOptionalInputValue<
+      map['collectionOverrides'] = pulumi.Input.mapOptionalInputValue<
               List<CollectionOverride>, List<Map<String, dynamic>>>(
           collectionOverridesValue,
-          (value) => Input.encodeList<CollectionOverride, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<CollectionOverride, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final credentialValue = credential;
     if (credentialValue != null) {
       map['credential'] =
-          Input.mapOptionalInputValue<Credential, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<Credential, Map<String, dynamic>>(
               credentialValue, (value) => value.toMap());
     }
     final customCertificateAuthorityRootsValue =
@@ -77,12 +78,11 @@ class TypeProviderArgs {
     }
     final labelsValue = labels;
     if (labelsValue != null) {
-      map['labels'] = Input.mapOptionalInputValue<List<TypeProviderLabelEntry>,
-              List<Map<String, dynamic>>>(
+      map['labels'] = pulumi.Input.mapOptionalInputValue<
+              List<TypeProviderLabelEntry>, List<Map<String, dynamic>>>(
           labelsValue,
-          (value) =>
-              Input.encodeList<TypeProviderLabelEntry, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<TypeProviderLabelEntry,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -90,9 +90,9 @@ class TypeProviderArgs {
     }
     final optionsValue = options;
     if (optionsValue != null) {
-      map['options'] =
-          Input.mapOptionalInputValue<Options2, Map<String, dynamic>>(
-              optionsValue, (value) => value.toMap());
+      map['options'] = pulumi.Input.mapOptionalInputValue<
+          OptionsDeploymentmanagerAlpha,
+          Map<String, dynamic>>(optionsValue, (value) => value.toMap());
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -103,18 +103,21 @@ class TypeProviderArgs {
 
   factory TypeProviderArgs.fromMap(Map<String, dynamic> map) {
     return TypeProviderArgs(
-      collectionOverrides: Input.asOptionalInput<List<CollectionOverride>>(
-          map['collectionOverrides']),
-      credential: Input.asOptionalInput<Credential>(map['credential']),
-      customCertificateAuthorityRoots: Input.asOptionalInput<List<String>>(
-          map['customCertificateAuthorityRoots']),
-      description: Input.asOptionalInput<String>(map['description']),
-      descriptorUrl: Input.asOptionalInput<String>(map['descriptorUrl']),
-      labels:
-          Input.asOptionalInput<List<TypeProviderLabelEntry>>(map['labels']),
-      name: Input.asOptionalInput<String>(map['name']),
-      options: Input.asOptionalInput<Options2>(map['options']),
-      project: Input.asOptionalInput<String>(map['project']),
+      collectionOverrides:
+          pulumi.Input.asOptionalInput<List<CollectionOverride>>(
+              map['collectionOverrides']),
+      credential: pulumi.Input.asOptionalInput<Credential>(map['credential']),
+      customCertificateAuthorityRoots:
+          pulumi.Input.asOptionalInput<List<String>>(
+              map['customCertificateAuthorityRoots']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      descriptorUrl: pulumi.Input.asOptionalInput<String>(map['descriptorUrl']),
+      labels: pulumi.Input.asOptionalInput<List<TypeProviderLabelEntry>>(
+          map['labels']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      options: pulumi.Input.asOptionalInput<OptionsDeploymentmanagerAlpha>(
+          map['options']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

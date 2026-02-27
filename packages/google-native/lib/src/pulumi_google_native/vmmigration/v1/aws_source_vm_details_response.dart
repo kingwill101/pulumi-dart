@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aws_disk_details_response.dart';
 import 'vm_capabilities_response.dart';
 
@@ -29,7 +29,7 @@ class AwsSourceVmDetailsResponse {
     final map = <String, dynamic>{};
     map['committedStorageBytes'] = committedStorageBytes;
     map['disks'] =
-        Input.encodeList<AwsDiskDetailsResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AwsDiskDetailsResponse, Map<String, dynamic>>(
             disks, (value) => value.toMap());
     map['firmware'] = firmware;
     map['vmCapabilitiesInfo'] = vmCapabilitiesInfo.toMap();
@@ -39,7 +39,7 @@ class AwsSourceVmDetailsResponse {
   factory AwsSourceVmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AwsSourceVmDetailsResponse(
       committedStorageBytes: map['committedStorageBytes'] as String,
-      disks: Input.decodeList<AwsDiskDetailsResponse>(
+      disks: pulumi.Input.decodeList<AwsDiskDetailsResponse>(
           map['disks'],
           (value) => AwsDiskDetailsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

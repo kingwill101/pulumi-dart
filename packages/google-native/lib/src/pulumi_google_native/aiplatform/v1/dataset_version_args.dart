@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DatasetVersion.
 class DatasetVersionArgs {
-  final Input<String> datasetId;
+  final pulumi.Input<String> datasetId;
 
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final Input<String>? etag;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String>? etag;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   DatasetVersionArgs({
     required this.datasetId,
@@ -38,10 +38,10 @@ class DatasetVersionArgs {
 
   factory DatasetVersionArgs.fromMap(Map<String, dynamic> map) {
     return DatasetVersionArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

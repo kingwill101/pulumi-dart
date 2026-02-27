@@ -1,36 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_store_content_config.dart';
 import 'data_store_industry_vertical.dart';
 import 'data_store_solution_types_item.dart';
 
 /// The set of arguments for DataStore.
 class DataStoreArgs {
-  final Input<String> collectionId;
+  final pulumi.Input<String> collectionId;
 
   /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
-  final Input<DataStoreContentConfig>? contentConfig;
+  final pulumi.Input<DataStoreContentConfig>? contentConfig;
 
   /// A boolean flag indicating whether user want to directly create an advanced data store for site search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE content_config), this flag will be ignored.
-  final Input<bool>? createAdvancedSiteSearch;
+  final pulumi.Input<bool>? createAdvancedSiteSearch;
 
   /// Required. The ID to use for the DataStore, which will become the final component of the DataStore's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-  final Input<String> dataStoreId;
+  final pulumi.Input<String> dataStoreId;
 
   /// The data store display name. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Immutable. The industry vertical that the data store registers.
-  final Input<DataStoreIndustryVertical>? industryVertical;
-  final Input<String>? location;
+  final pulumi.Input<DataStoreIndustryVertical>? industryVertical;
+  final pulumi.Input<String>? location;
 
   /// Immutable. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
-  final Input<List<DataStoreSolutionTypesItem>>? solutionTypes;
+  final pulumi.Input<List<DataStoreSolutionTypesItem>>? solutionTypes;
 
   DataStoreArgs({
     required this.collectionId,
@@ -51,7 +51,7 @@ class DataStoreArgs {
     final contentConfigValue = contentConfig;
     if (contentConfigValue != null) {
       map['contentConfig'] =
-          Input.mapOptionalInputValue<DataStoreContentConfig, String>(
+          pulumi.Input.mapOptionalInputValue<DataStoreContentConfig, String>(
               contentConfigValue, (value) => value.value);
     }
     final createAdvancedSiteSearchValue = createAdvancedSiteSearch;
@@ -63,7 +63,7 @@ class DataStoreArgs {
     final industryVerticalValue = industryVertical;
     if (industryVerticalValue != null) {
       map['industryVertical'] =
-          Input.mapOptionalInputValue<DataStoreIndustryVertical, String>(
+          pulumi.Input.mapOptionalInputValue<DataStoreIndustryVertical, String>(
               industryVerticalValue, (value) => value.value);
     }
     final locationValue = location;
@@ -80,31 +80,33 @@ class DataStoreArgs {
     }
     final solutionTypesValue = solutionTypes;
     if (solutionTypesValue != null) {
-      map['solutionTypes'] = Input.mapOptionalInputValue<
+      map['solutionTypes'] = pulumi.Input.mapOptionalInputValue<
               List<DataStoreSolutionTypesItem>, List<String>>(
           solutionTypesValue,
-          (value) => Input.encodeList<DataStoreSolutionTypesItem, String>(
-              value, (value) => value.value));
+          (value) =>
+              pulumi.Input.encodeList<DataStoreSolutionTypesItem, String>(
+                  value, (value) => value.value));
     }
     return map;
   }
 
   factory DataStoreArgs.fromMap(Map<String, dynamic> map) {
     return DataStoreArgs(
-      collectionId: Input.asInput<String>(map['collectionId']),
-      contentConfig:
-          Input.asOptionalInput<DataStoreContentConfig>(map['contentConfig']),
+      collectionId: pulumi.Input.asInput<String>(map['collectionId']),
+      contentConfig: pulumi.Input.asOptionalInput<DataStoreContentConfig>(
+          map['contentConfig']),
       createAdvancedSiteSearch:
-          Input.asOptionalInput<bool>(map['createAdvancedSiteSearch']),
-      dataStoreId: Input.asInput<String>(map['dataStoreId']),
-      displayName: Input.asInput<String>(map['displayName']),
-      industryVertical: Input.asOptionalInput<DataStoreIndustryVertical>(
+          pulumi.Input.asOptionalInput<bool>(map['createAdvancedSiteSearch']),
+      dataStoreId: pulumi.Input.asInput<String>(map['dataStoreId']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      industryVertical: pulumi.Input.asOptionalInput<DataStoreIndustryVertical>(
           map['industryVertical']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      solutionTypes: Input.asOptionalInput<List<DataStoreSolutionTypesItem>>(
-          map['solutionTypes']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      solutionTypes:
+          pulumi.Input.asOptionalInput<List<DataStoreSolutionTypesItem>>(
+              map['solutionTypes']),
     );
   }
 }

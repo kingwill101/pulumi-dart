@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'file_reference_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'file_reference_response_toolresults_v1beta3.dart';
 import 'tool_exit_code_response.dart';
 import 'tool_output_reference_response.dart';
 
@@ -14,7 +14,7 @@ class ToolExecutionResponse {
   final ToolExitCodeResponse exitCode;
 
   /// References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
-  final List<FileReferenceResponse2> toolLogs;
+  final List<FileReferenceResponseToolresultsV1beta3> toolLogs;
 
   /// References to opaque files of any format output by the tool execution. The maximum allowed number of tool outputs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
   final List<ToolOutputReferenceResponse> toolOutputs;
@@ -30,12 +30,11 @@ class ToolExecutionResponse {
     final map = <String, dynamic>{};
     map['commandLineArguments'] = commandLineArguments;
     map['exitCode'] = exitCode.toMap();
-    map['toolLogs'] =
-        Input.encodeList<FileReferenceResponse2, Map<String, dynamic>>(
-            toolLogs, (value) => value.toMap());
-    map['toolOutputs'] =
-        Input.encodeList<ToolOutputReferenceResponse, Map<String, dynamic>>(
-            toolOutputs, (value) => value.toMap());
+    map['toolLogs'] = pulumi.Input.encodeList<
+        FileReferenceResponseToolresultsV1beta3,
+        Map<String, dynamic>>(toolLogs, (value) => value.toMap());
+    map['toolOutputs'] = pulumi.Input.encodeList<ToolOutputReferenceResponse,
+        Map<String, dynamic>>(toolOutputs, (value) => value.toMap());
     return map;
   }
 
@@ -45,11 +44,12 @@ class ToolExecutionResponse {
           (map['commandLineArguments'] as List).cast<String>(),
       exitCode: ToolExitCodeResponse.fromMap(
           (map['exitCode'] as Map).cast<String, dynamic>()),
-      toolLogs: Input.decodeList<FileReferenceResponse2>(
-          map['toolLogs'],
-          (value) => FileReferenceResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      toolOutputs: Input.decodeList<ToolOutputReferenceResponse>(
+      toolLogs:
+          pulumi.Input.decodeList<FileReferenceResponseToolresultsV1beta3>(
+              map['toolLogs'],
+              (value) => FileReferenceResponseToolresultsV1beta3.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      toolOutputs: pulumi.Input.decodeList<ToolOutputReferenceResponse>(
           map['toolOutputs'],
           (value) => ToolOutputReferenceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

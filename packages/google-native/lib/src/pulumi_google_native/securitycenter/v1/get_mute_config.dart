@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_mute_config_args.dart';
 import 'get_mute_config_result.dart';
 
 /// Gets a mute config.
 Future<GetMuteConfigResult> getMuteConfig(
   GetMuteConfigArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:securitycenter/v1:getMuteConfig',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMuteConfigResult.fromMap(result);
 }

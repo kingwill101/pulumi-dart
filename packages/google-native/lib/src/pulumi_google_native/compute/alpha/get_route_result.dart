@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_as_path_response.dart';
 import 'route_warnings_item_response.dart';
 
@@ -125,7 +125,7 @@ class GetRouteResult {
     final map = <String, dynamic>{};
     map['allowConflictingSubnetworks'] = allowConflictingSubnetworks;
     map['asPaths'] =
-        Input.encodeList<RouteAsPathResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RouteAsPathResponse, Map<String, dynamic>>(
             asPaths, (value) => value.toMap());
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
@@ -152,16 +152,15 @@ class GetRouteResult {
     map['selfLink'] = selfLink;
     map['selfLinkWithId'] = selfLinkWithId;
     map['tags'] = tags;
-    map['warnings'] =
-        Input.encodeList<RouteWarningsItemResponse, Map<String, dynamic>>(
-            warnings, (value) => value.toMap());
+    map['warnings'] = pulumi.Input.encodeList<RouteWarningsItemResponse,
+        Map<String, dynamic>>(warnings, (value) => value.toMap());
     return map;
   }
 
   factory GetRouteResult.fromMap(Map<String, dynamic> map) {
     return GetRouteResult(
       allowConflictingSubnetworks: map['allowConflictingSubnetworks'] as bool,
-      asPaths: Input.decodeList<RouteAsPathResponse>(
+      asPaths: pulumi.Input.decodeList<RouteAsPathResponse>(
           map['asPaths'],
           (value) => RouteAsPathResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -191,7 +190,7 @@ class GetRouteResult {
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
       tags: (map['tags'] as List).cast<String>(),
-      warnings: Input.decodeList<RouteWarningsItemResponse>(
+      warnings: pulumi.Input.decodeList<RouteWarningsItemResponse>(
           map['warnings'],
           (value) => RouteWarningsItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

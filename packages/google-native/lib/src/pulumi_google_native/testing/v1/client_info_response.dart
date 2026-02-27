@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_info_detail_response.dart';
 
 /// Information about the client which invoked the test.
@@ -19,7 +19,7 @@ class ClientInfoResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['clientInfoDetails'] =
-        Input.encodeList<ClientInfoDetailResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ClientInfoDetailResponse, Map<String, dynamic>>(
             clientInfoDetails, (value) => value.toMap());
     map['name'] = name;
     return map;
@@ -27,7 +27,7 @@ class ClientInfoResponse {
 
   factory ClientInfoResponse.fromMap(Map<String, dynamic> map) {
     return ClientInfoResponse(
-      clientInfoDetails: Input.decodeList<ClientInfoDetailResponse>(
+      clientInfoDetails: pulumi.Input.decodeList<ClientInfoDetailResponse>(
           map['clientInfoDetails'],
           (value) => ClientInfoDetailResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

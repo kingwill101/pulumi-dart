@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_export_response.dart';
 import 'restore_response.dart';
 
@@ -20,20 +20,21 @@ class MetadataManagementActivityResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['metadataExports'] =
-        Input.encodeList<MetadataExportResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MetadataExportResponse, Map<String, dynamic>>(
             metadataExports, (value) => value.toMap());
-    map['restores'] = Input.encodeList<RestoreResponse, Map<String, dynamic>>(
-        restores, (value) => value.toMap());
+    map['restores'] =
+        pulumi.Input.encodeList<RestoreResponse, Map<String, dynamic>>(
+            restores, (value) => value.toMap());
     return map;
   }
 
   factory MetadataManagementActivityResponse.fromMap(Map<String, dynamic> map) {
     return MetadataManagementActivityResponse(
-      metadataExports: Input.decodeList<MetadataExportResponse>(
+      metadataExports: pulumi.Input.decodeList<MetadataExportResponse>(
           map['metadataExports'],
           (value) => MetadataExportResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      restores: Input.decodeList<RestoreResponse>(
+      restores: pulumi.Input.decodeList<RestoreResponse>(
           map['restores'],
           (value) =>
               RestoreResponse.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dynamic_group_metadata_response.dart';
 import 'entity_key_response.dart';
 
@@ -52,7 +52,7 @@ class GetGroupResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['additionalGroupKeys'] =
-        Input.encodeList<EntityKeyResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<EntityKeyResponse, Map<String, dynamic>>(
             additionalGroupKeys, (value) => value.toMap());
     map['createTime'] = createTime;
     map['description'] = description;
@@ -68,7 +68,7 @@ class GetGroupResult {
 
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
-      additionalGroupKeys: Input.decodeList<EntityKeyResponse>(
+      additionalGroupKeys: pulumi.Input.decodeList<EntityKeyResponse>(
           map['additionalGroupKeys'],
           (value) => EntityKeyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

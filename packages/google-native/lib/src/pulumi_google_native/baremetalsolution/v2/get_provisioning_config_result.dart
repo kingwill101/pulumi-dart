@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_config_response.dart';
-import 'network_config_response5.dart';
+import 'network_config_response_baremetalsolution_v2.dart';
 import 'volume_config_response.dart';
 
 /// Result data returned by getProvisioningConfig.
@@ -29,7 +29,7 @@ class GetProvisioningConfigResult {
   final String name;
 
   /// Networks to be created.
-  final List<NetworkConfigResponse5> networks;
+  final List<NetworkConfigResponseBaremetalsolutionV2> networks;
 
   /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
   final String pod;
@@ -77,20 +77,20 @@ class GetProvisioningConfigResult {
     map['email'] = email;
     map['handoverServiceAccount'] = handoverServiceAccount;
     map['instances'] =
-        Input.encodeList<InstanceConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<InstanceConfigResponse, Map<String, dynamic>>(
             instances, (value) => value.toMap());
     map['location'] = location;
     map['name'] = name;
-    map['networks'] =
-        Input.encodeList<NetworkConfigResponse5, Map<String, dynamic>>(
-            networks, (value) => value.toMap());
+    map['networks'] = pulumi.Input.encodeList<
+        NetworkConfigResponseBaremetalsolutionV2,
+        Map<String, dynamic>>(networks, (value) => value.toMap());
     map['pod'] = pod;
     map['state'] = state;
     map['statusMessage'] = statusMessage;
     map['ticketId'] = ticketId;
     map['updateTime'] = updateTime;
     map['volumes'] =
-        Input.encodeList<VolumeConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<VolumeConfigResponse, Map<String, dynamic>>(
             volumes, (value) => value.toMap());
     map['vpcScEnabled'] = vpcScEnabled;
     return map;
@@ -102,22 +102,23 @@ class GetProvisioningConfigResult {
       customId: map['customId'] as String,
       email: map['email'] as String,
       handoverServiceAccount: map['handoverServiceAccount'] as String,
-      instances: Input.decodeList<InstanceConfigResponse>(
+      instances: pulumi.Input.decodeList<InstanceConfigResponse>(
           map['instances'],
           (value) => InstanceConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
-      networks: Input.decodeList<NetworkConfigResponse5>(
-          map['networks'],
-          (value) => NetworkConfigResponse5.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networks:
+          pulumi.Input.decodeList<NetworkConfigResponseBaremetalsolutionV2>(
+              map['networks'],
+              (value) => NetworkConfigResponseBaremetalsolutionV2.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       pod: map['pod'] as String,
       state: map['state'] as String,
       statusMessage: map['statusMessage'] as String,
       ticketId: map['ticketId'] as String,
       updateTime: map['updateTime'] as String,
-      volumes: Input.decodeList<VolumeConfigResponse>(
+      volumes: pulumi.Input.decodeList<VolumeConfigResponse>(
           map['volumes'],
           (value) => VolumeConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

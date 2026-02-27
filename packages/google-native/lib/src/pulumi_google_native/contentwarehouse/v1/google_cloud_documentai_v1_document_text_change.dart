@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_provenance.dart';
 import 'google_cloud_documentai_v1_document_text_anchor.dart';
 
@@ -29,7 +29,7 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
     }
     final provenanceValue = provenance;
     if (provenanceValue != null) {
-      map['provenance'] = Input.encodeList<
+      map['provenance'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentProvenance,
           Map<String, dynamic>>(provenanceValue, (value) => value.toMap());
     }
@@ -47,7 +47,7 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
           map['changedText'] == null ? null : map['changedText'] as String,
       provenance: map['provenance'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenance>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenance>(
               map['provenance'],
               (value) => GoogleCloudDocumentaiV1DocumentProvenance.fromMap(
                   (value as Map).cast<String, dynamic>())),

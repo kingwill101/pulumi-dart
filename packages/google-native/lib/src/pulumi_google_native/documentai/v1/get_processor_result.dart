@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_processor_version_alias_response.dart';
 
 /// Result data returned by getProcessor.
@@ -53,7 +53,7 @@ class GetProcessorResult {
     map['kmsKeyName'] = kmsKeyName;
     map['name'] = name;
     map['processEndpoint'] = processEndpoint;
-    map['processorVersionAliases'] = Input.encodeList<
+    map['processorVersionAliases'] = pulumi.Input.encodeList<
             GoogleCloudDocumentaiV1ProcessorVersionAliasResponse,
             Map<String, dynamic>>(
         processorVersionAliases, (value) => value.toMap());
@@ -70,7 +70,7 @@ class GetProcessorResult {
       kmsKeyName: map['kmsKeyName'] as String,
       name: map['name'] as String,
       processEndpoint: map['processEndpoint'] as String,
-      processorVersionAliases: Input.decodeList<
+      processorVersionAliases: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1ProcessorVersionAliasResponse>(
           map['processorVersionAliases'],
           (value) =>

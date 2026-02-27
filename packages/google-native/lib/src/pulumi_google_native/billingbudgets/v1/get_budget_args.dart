@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBudget.
 class GetBudgetArgs {
-  final Input<String> billingAccountId;
-  final Input<String> budgetId;
+  final pulumi.Input<String> billingAccountId;
+  final pulumi.Input<String> budgetId;
 
   GetBudgetArgs({
     required this.billingAccountId,
@@ -21,8 +21,8 @@ class GetBudgetArgs {
 
   factory GetBudgetArgs.fromMap(Map<String, dynamic> map) {
     return GetBudgetArgs(
-      billingAccountId: Input.asInput<String>(map['billingAccountId']),
-      budgetId: Input.asInput<String>(map['budgetId']),
+      billingAccountId: pulumi.Input.asInput<String>(map['billingAccountId']),
+      budgetId: pulumi.Input.asInput<String>(map['budgetId']),
     );
   }
 }

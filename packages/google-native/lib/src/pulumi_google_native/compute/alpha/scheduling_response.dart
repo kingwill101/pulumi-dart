@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration_response.dart';
 import 'scheduling_graceful_shutdown_response.dart';
 import 'scheduling_node_affinity_response.dart';
@@ -100,9 +100,9 @@ class SchedulingResponse {
     map['maintenanceInterval'] = maintenanceInterval;
     map['maxRunDuration'] = maxRunDuration.toMap();
     map['minNodeCpus'] = minNodeCpus;
-    map['nodeAffinities'] =
-        Input.encodeList<SchedulingNodeAffinityResponse, Map<String, dynamic>>(
-            nodeAffinities, (value) => value.toMap());
+    map['nodeAffinities'] = pulumi.Input.encodeList<
+        SchedulingNodeAffinityResponse,
+        Map<String, dynamic>>(nodeAffinities, (value) => value.toMap());
     map['onHostMaintenance'] = onHostMaintenance;
     map['preemptible'] = preemptible;
     map['provisioningModel'] = provisioningModel;
@@ -130,7 +130,7 @@ class SchedulingResponse {
       maxRunDuration: DurationResponse.fromMap(
           (map['maxRunDuration'] as Map).cast<String, dynamic>()),
       minNodeCpus: map['minNodeCpus'] as int,
-      nodeAffinities: Input.decodeList<SchedulingNodeAffinityResponse>(
+      nodeAffinities: pulumi.Input.decodeList<SchedulingNodeAffinityResponse>(
           map['nodeAffinities'],
           (value) => SchedulingNodeAffinityResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

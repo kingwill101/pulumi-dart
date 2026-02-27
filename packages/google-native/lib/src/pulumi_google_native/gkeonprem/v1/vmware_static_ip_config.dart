@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_ip_block.dart';
 
 /// Represents the network configuration required for the VMware user clusters with Static IP configurations.
@@ -16,8 +16,9 @@ class VmwareStaticIpConfig {
     final map = <String, dynamic>{};
     final ipBlocksValue = ipBlocks;
     if (ipBlocksValue != null) {
-      map['ipBlocks'] = Input.encodeList<VmwareIpBlock, Map<String, dynamic>>(
-          ipBlocksValue, (value) => value.toMap());
+      map['ipBlocks'] =
+          pulumi.Input.encodeList<VmwareIpBlock, Map<String, dynamic>>(
+              ipBlocksValue, (value) => value.toMap());
     }
     return map;
   }
@@ -26,7 +27,7 @@ class VmwareStaticIpConfig {
     return VmwareStaticIpConfig(
       ipBlocks: map['ipBlocks'] == null
           ? null
-          : Input.decodeList<VmwareIpBlock>(
+          : pulumi.Input.decodeList<VmwareIpBlock>(
               map['ipBlocks'],
               (value) => VmwareIpBlock.fromMap(
                   (value as Map).cast<String, dynamic>())),

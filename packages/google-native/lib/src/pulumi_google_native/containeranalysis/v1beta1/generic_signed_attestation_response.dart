@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'signature_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'signature_response_containeranalysis_v1beta1.dart';
 
 /// An attestation wrapper that uses the Grafeas `Signature` message. This attestation must define the `serialized_payload` that the `signatures` verify and any metadata necessary to interpret that plaintext. The signatures should always be over the `serialized_payload` bytestring.
 class GenericSignedAttestationResponse {
@@ -12,7 +12,7 @@ class GenericSignedAttestationResponse {
   final String serializedPayload;
 
   /// One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
-  final List<SignatureResponse2> signatures;
+  final List<SignatureResponseContaineranalysisV1beta1> signatures;
 
   GenericSignedAttestationResponse({
     required this.contentType,
@@ -24,9 +24,9 @@ class GenericSignedAttestationResponse {
     final map = <String, dynamic>{};
     map['contentType'] = contentType;
     map['serializedPayload'] = serializedPayload;
-    map['signatures'] =
-        Input.encodeList<SignatureResponse2, Map<String, dynamic>>(
-            signatures, (value) => value.toMap());
+    map['signatures'] = pulumi.Input.encodeList<
+        SignatureResponseContaineranalysisV1beta1,
+        Map<String, dynamic>>(signatures, (value) => value.toMap());
     return map;
   }
 
@@ -34,10 +34,11 @@ class GenericSignedAttestationResponse {
     return GenericSignedAttestationResponse(
       contentType: map['contentType'] as String,
       serializedPayload: map['serializedPayload'] as String,
-      signatures: Input.decodeList<SignatureResponse2>(
-          map['signatures'],
-          (value) => SignatureResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      signatures:
+          pulumi.Input.decodeList<SignatureResponseContaineranalysisV1beta1>(
+              map['signatures'],
+              (value) => SignatureResponseContaineranalysisV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

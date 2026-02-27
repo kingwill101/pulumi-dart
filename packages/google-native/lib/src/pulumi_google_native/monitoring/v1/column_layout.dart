@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'column.dart';
 
 /// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
@@ -16,7 +16,7 @@ class ColumnLayout {
     final map = <String, dynamic>{};
     final columnsValue = columns;
     if (columnsValue != null) {
-      map['columns'] = Input.encodeList<Column, Map<String, dynamic>>(
+      map['columns'] = pulumi.Input.encodeList<Column, Map<String, dynamic>>(
           columnsValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +26,7 @@ class ColumnLayout {
     return ColumnLayout(
       columns: map['columns'] == null
           ? null
-          : Input.decodeList<Column>(
+          : pulumi.Input.decodeList<Column>(
               map['columns'],
               (value) =>
                   Column.fromMap((value as Map).cast<String, dynamic>())),

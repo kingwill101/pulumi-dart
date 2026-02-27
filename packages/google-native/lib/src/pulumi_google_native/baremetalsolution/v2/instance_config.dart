@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_baremetalsolution_v2_logical_interface.dart';
 import 'instance_config_network_config.dart';
 import 'network_address.dart';
@@ -86,7 +86,7 @@ class InstanceConfig {
     }
     final logicalInterfacesValue = logicalInterfaces;
     if (logicalInterfacesValue != null) {
-      map['logicalInterfaces'] = Input.encodeList<
+      map['logicalInterfaces'] = pulumi.Input.encodeList<
               GoogleCloudBaremetalsolutionV2LogicalInterface,
               Map<String, dynamic>>(
           logicalInterfacesValue, (value) => value.toMap());
@@ -138,7 +138,8 @@ class InstanceConfig {
           map['instanceType'] == null ? null : map['instanceType'] as String,
       logicalInterfaces: map['logicalInterfaces'] == null
           ? null
-          : Input.decodeList<GoogleCloudBaremetalsolutionV2LogicalInterface>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudBaremetalsolutionV2LogicalInterface>(
               map['logicalInterfaces'],
               (value) => GoogleCloudBaremetalsolutionV2LogicalInterface.fromMap(
                   (value as Map).cast<String, dynamic>())),

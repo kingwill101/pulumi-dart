@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_content_buffer.dart';
 
 /// Initial State for shielded instance, these are public keys which are safe to store in public
@@ -28,18 +28,21 @@ class InitialStateConfig {
     final map = <String, dynamic>{};
     final dbsValue = dbs;
     if (dbsValue != null) {
-      map['dbs'] = Input.encodeList<FileContentBuffer, Map<String, dynamic>>(
-          dbsValue, (value) => value.toMap());
+      map['dbs'] =
+          pulumi.Input.encodeList<FileContentBuffer, Map<String, dynamic>>(
+              dbsValue, (value) => value.toMap());
     }
     final dbxsValue = dbxs;
     if (dbxsValue != null) {
-      map['dbxs'] = Input.encodeList<FileContentBuffer, Map<String, dynamic>>(
-          dbxsValue, (value) => value.toMap());
+      map['dbxs'] =
+          pulumi.Input.encodeList<FileContentBuffer, Map<String, dynamic>>(
+              dbxsValue, (value) => value.toMap());
     }
     final keksValue = keks;
     if (keksValue != null) {
-      map['keks'] = Input.encodeList<FileContentBuffer, Map<String, dynamic>>(
-          keksValue, (value) => value.toMap());
+      map['keks'] =
+          pulumi.Input.encodeList<FileContentBuffer, Map<String, dynamic>>(
+              keksValue, (value) => value.toMap());
     }
     final pkValue = pk;
     if (pkValue != null) {
@@ -52,19 +55,19 @@ class InitialStateConfig {
     return InitialStateConfig(
       dbs: map['dbs'] == null
           ? null
-          : Input.decodeList<FileContentBuffer>(
+          : pulumi.Input.decodeList<FileContentBuffer>(
               map['dbs'],
               (value) => FileContentBuffer.fromMap(
                   (value as Map).cast<String, dynamic>())),
       dbxs: map['dbxs'] == null
           ? null
-          : Input.decodeList<FileContentBuffer>(
+          : pulumi.Input.decodeList<FileContentBuffer>(
               map['dbxs'],
               (value) => FileContentBuffer.fromMap(
                   (value as Map).cast<String, dynamic>())),
       keks: map['keks'] == null
           ? null
-          : Input.decodeList<FileContentBuffer>(
+          : pulumi.Input.decodeList<FileContentBuffer>(
               map['keks'],
               (value) => FileContentBuffer.fromMap(
                   (value as Map).cast<String, dynamic>())),

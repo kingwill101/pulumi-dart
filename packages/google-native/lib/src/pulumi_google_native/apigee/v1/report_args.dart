@@ -1,62 +1,62 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_custom_report_metric.dart';
 import 'google_cloud_apigee_v1_report_property.dart';
 
 /// The set of arguments for Report.
 class ReportArgs {
   /// This field contains the chart type for the report
-  final Input<String>? chartType;
+  final pulumi.Input<String>? chartType;
 
   /// Legacy field: not used. This field contains a list of comments associated with custom report
-  final Input<List<String>>? comments;
+  final pulumi.Input<List<String>>? comments;
 
   /// This contains the list of dimensions for the report
-  final Input<List<String>>? dimensions;
+  final pulumi.Input<List<String>>? dimensions;
 
   /// This is the display name for the report
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// This field contains the filter expression
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// Legacy field: not used. Contains the from time for the report
-  final Input<String>? fromTime;
+  final pulumi.Input<String>? fromTime;
 
   /// Legacy field: not used This field contains the limit for the result retrieved
-  final Input<String>? limit;
+  final pulumi.Input<String>? limit;
 
   /// This contains the list of metrics
-  final Input<List<GoogleCloudApigeeV1CustomReportMetric>> metrics;
+  final pulumi.Input<List<GoogleCloudApigeeV1CustomReportMetric>> metrics;
 
   /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Legacy field: not used. This field contains the offset for the data
-  final Input<String>? offset;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? offset;
+  final pulumi.Input<String> organizationId;
 
   /// This field contains report properties such as ui metadata etc.
-  final Input<List<GoogleCloudApigeeV1ReportProperty>>? properties;
+  final pulumi.Input<List<GoogleCloudApigeeV1ReportProperty>>? properties;
 
   /// Legacy field: not used much. Contains the list of sort by columns
-  final Input<List<String>>? sortByCols;
+  final pulumi.Input<List<String>>? sortByCols;
 
   /// Legacy field: not used much. Contains the sort order for the sort columns
-  final Input<String>? sortOrder;
+  final pulumi.Input<String>? sortOrder;
 
   /// Legacy field: not used. This field contains a list of tags associated with custom report
-  final Input<List<String>>? tags;
+  final pulumi.Input<List<String>>? tags;
 
   /// This field contains the time unit of aggregation for the report
-  final Input<String>? timeUnit;
+  final pulumi.Input<String>? timeUnit;
 
   /// Legacy field: not used. Contains the end time for the report
-  final Input<String>? toTime;
+  final pulumi.Input<String>? toTime;
 
   /// Legacy field: not used. This field contains the top k parameter value for restricting the result
-  final Input<String>? topk;
+  final pulumi.Input<String>? topk;
 
   ReportArgs({
     this.chartType,
@@ -109,11 +109,12 @@ class ReportArgs {
     if (limitValue != null) {
       map['limit'] = limitValue;
     }
-    map['metrics'] = Input.mapInputValue<
+    map['metrics'] = pulumi.Input.mapInputValue<
             List<GoogleCloudApigeeV1CustomReportMetric>,
             List<Map<String, dynamic>>>(
         metrics,
-        (value) => Input.encodeList<GoogleCloudApigeeV1CustomReportMetric,
+        (value) => pulumi.Input.encodeList<
+            GoogleCloudApigeeV1CustomReportMetric,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     final nameValue = name;
     if (nameValue != null) {
@@ -126,11 +127,11 @@ class ReportArgs {
     map['organizationId'] = organizationId;
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.mapOptionalInputValue<
+      map['properties'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudApigeeV1ReportProperty>,
               List<Map<String, dynamic>>>(
           propertiesValue,
-          (value) => Input.encodeList<GoogleCloudApigeeV1ReportProperty,
+          (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1ReportProperty,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final sortByColsValue = sortByCols;
@@ -162,27 +163,28 @@ class ReportArgs {
 
   factory ReportArgs.fromMap(Map<String, dynamic> map) {
     return ReportArgs(
-      chartType: Input.asOptionalInput<String>(map['chartType']),
-      comments: Input.asOptionalInput<List<String>>(map['comments']),
-      dimensions: Input.asOptionalInput<List<String>>(map['dimensions']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      filter: Input.asOptionalInput<String>(map['filter']),
-      fromTime: Input.asOptionalInput<String>(map['fromTime']),
-      limit: Input.asOptionalInput<String>(map['limit']),
-      metrics: Input.asInput<List<GoogleCloudApigeeV1CustomReportMetric>>(
-          map['metrics']),
-      name: Input.asOptionalInput<String>(map['name']),
-      offset: Input.asOptionalInput<String>(map['offset']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      chartType: pulumi.Input.asOptionalInput<String>(map['chartType']),
+      comments: pulumi.Input.asOptionalInput<List<String>>(map['comments']),
+      dimensions: pulumi.Input.asOptionalInput<List<String>>(map['dimensions']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      fromTime: pulumi.Input.asOptionalInput<String>(map['fromTime']),
+      limit: pulumi.Input.asOptionalInput<String>(map['limit']),
+      metrics:
+          pulumi.Input.asInput<List<GoogleCloudApigeeV1CustomReportMetric>>(
+              map['metrics']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      offset: pulumi.Input.asOptionalInput<String>(map['offset']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
       properties:
-          Input.asOptionalInput<List<GoogleCloudApigeeV1ReportProperty>>(
+          pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1ReportProperty>>(
               map['properties']),
-      sortByCols: Input.asOptionalInput<List<String>>(map['sortByCols']),
-      sortOrder: Input.asOptionalInput<String>(map['sortOrder']),
-      tags: Input.asOptionalInput<List<String>>(map['tags']),
-      timeUnit: Input.asOptionalInput<String>(map['timeUnit']),
-      toTime: Input.asOptionalInput<String>(map['toTime']),
-      topk: Input.asOptionalInput<String>(map['topk']),
+      sortByCols: pulumi.Input.asOptionalInput<List<String>>(map['sortByCols']),
+      sortOrder: pulumi.Input.asOptionalInput<String>(map['sortOrder']),
+      tags: pulumi.Input.asOptionalInput<List<String>>(map['tags']),
+      timeUnit: pulumi.Input.asOptionalInput<String>(map['timeUnit']),
+      toTime: pulumi.Input.asOptionalInput<String>(map['toTime']),
+      topk: pulumi.Input.asOptionalInput<String>(map['topk']),
     );
   }
 }

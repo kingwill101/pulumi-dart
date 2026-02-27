@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_feature_stats_anomaly_response.dart';
 import 'google_cloud_aiplatform_v1beta1_threshold_config_response.dart';
 
@@ -29,7 +29,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricSt
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['featureDisplayName'] = featureDisplayName;
-    map['predictionStats'] = Input.encodeList<
+    map['predictionStats'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse,
         Map<String, dynamic>>(predictionStats, (value) => value.toMap());
     map['threshold'] = threshold.toMap();
@@ -41,7 +41,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricSt
       Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse(
       featureDisplayName: map['featureDisplayName'] as String,
-      predictionStats: Input.decodeList<
+      predictionStats: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse>(
           map['predictionStats'],
           (value) =>

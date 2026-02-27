@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'clustering_response.dart';
 import 'connection_property_response.dart';
 import 'dataset_reference_response.dart';
@@ -119,9 +119,9 @@ class JobConfigurationQueryResponse {
     final map = <String, dynamic>{};
     map['allowLargeResults'] = allowLargeResults;
     map['clustering'] = clustering.toMap();
-    map['connectionProperties'] =
-        Input.encodeList<ConnectionPropertyResponse, Map<String, dynamic>>(
-            connectionProperties, (value) => value.toMap());
+    map['connectionProperties'] = pulumi.Input.encodeList<
+        ConnectionPropertyResponse,
+        Map<String, dynamic>>(connectionProperties, (value) => value.toMap());
     map['continuous'] = continuous;
     map['createDisposition'] = createDisposition;
     map['createSession'] = createSession;
@@ -137,7 +137,7 @@ class JobConfigurationQueryResponse {
     map['priority'] = priority;
     map['query'] = query;
     map['queryParameters'] =
-        Input.encodeList<QueryParameterResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<QueryParameterResponse, Map<String, dynamic>>(
             queryParameters, (value) => value.toMap());
     map['rangePartitioning'] = rangePartitioning.toMap();
     map['schemaUpdateOptions'] = schemaUpdateOptions;
@@ -145,7 +145,7 @@ class JobConfigurationQueryResponse {
     map['timePartitioning'] = timePartitioning.toMap();
     map['useLegacySql'] = useLegacySql;
     map['useQueryCache'] = useQueryCache;
-    map['userDefinedFunctionResources'] = Input.encodeList<
+    map['userDefinedFunctionResources'] = pulumi.Input.encodeList<
             UserDefinedFunctionResourceResponse, Map<String, dynamic>>(
         userDefinedFunctionResources, (value) => value.toMap());
     map['writeDisposition'] = writeDisposition;
@@ -157,7 +157,7 @@ class JobConfigurationQueryResponse {
       allowLargeResults: map['allowLargeResults'] as bool,
       clustering: ClusteringResponse.fromMap(
           (map['clustering'] as Map).cast<String, dynamic>()),
-      connectionProperties: Input.decodeList<ConnectionPropertyResponse>(
+      connectionProperties: pulumi.Input.decodeList<ConnectionPropertyResponse>(
           map['connectionProperties'],
           (value) => ConnectionPropertyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -179,7 +179,7 @@ class JobConfigurationQueryResponse {
       preserveNulls: map['preserveNulls'] as bool,
       priority: map['priority'] as String,
       query: map['query'] as String,
-      queryParameters: Input.decodeList<QueryParameterResponse>(
+      queryParameters: pulumi.Input.decodeList<QueryParameterResponse>(
           map['queryParameters'],
           (value) => QueryParameterResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -192,7 +192,7 @@ class JobConfigurationQueryResponse {
       useLegacySql: map['useLegacySql'] as bool,
       useQueryCache: map['useQueryCache'] as bool,
       userDefinedFunctionResources:
-          Input.decodeList<UserDefinedFunctionResourceResponse>(
+          pulumi.Input.decodeList<UserDefinedFunctionResourceResponse>(
               map['userDefinedFunctionResources'],
               (value) => UserDefinedFunctionResourceResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

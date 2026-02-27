@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMigratingVm.
 class GetMigratingVmArgs {
-  final Input<String> location;
-  final Input<String> migratingVmId;
-  final Input<String>? project;
-  final Input<String> sourceId;
-  final Input<String>? view;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> migratingVmId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sourceId;
+  final pulumi.Input<String>? view;
 
   GetMigratingVmArgs({
     required this.location,
@@ -36,11 +36,11 @@ class GetMigratingVmArgs {
 
   factory GetMigratingVmArgs.fromMap(Map<String, dynamic> map) {
     return GetMigratingVmArgs(
-      location: Input.asInput<String>(map['location']),
-      migratingVmId: Input.asInput<String>(map['migratingVmId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sourceId: Input.asInput<String>(map['sourceId']),
-      view: Input.asOptionalInput<String>(map['view']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      migratingVmId: pulumi.Input.asInput<String>(map['migratingVmId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sourceId: pulumi.Input.asInput<String>(map['sourceId']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

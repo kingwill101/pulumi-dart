@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tcp_route_route_rule.dart';
 
 /// The set of arguments for TcpRoute.
 class TcpRouteArgs {
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-  final Input<List<String>>? gateways;
+  final pulumi.Input<List<String>>? gateways;
 
   /// Optional. Set of label tags associated with the TcpRoute resource.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
-  final Input<List<String>>? meshes;
+  final pulumi.Input<List<String>>? meshes;
 
   /// Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
-  final Input<List<TcpRouteRouteRule>> rules;
+  final pulumi.Input<List<TcpRouteRouteRule>> rules;
 
   /// Required. Short name of the TcpRoute resource to be created.
-  final Input<String> tcpRouteId;
+  final pulumi.Input<String> tcpRouteId;
 
   TcpRouteArgs({
     this.description,
@@ -70,26 +70,27 @@ class TcpRouteArgs {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['rules'] = Input.mapInputValue<List<TcpRouteRouteRule>,
+    map['rules'] = pulumi.Input.mapInputValue<List<TcpRouteRouteRule>,
             List<Map<String, dynamic>>>(
         rules,
-        (value) => Input.encodeList<TcpRouteRouteRule, Map<String, dynamic>>(
-            value, (value) => value.toMap()));
+        (value) =>
+            pulumi.Input.encodeList<TcpRouteRouteRule, Map<String, dynamic>>(
+                value, (value) => value.toMap()));
     map['tcpRouteId'] = tcpRouteId;
     return map;
   }
 
   factory TcpRouteArgs.fromMap(Map<String, dynamic> map) {
     return TcpRouteArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      gateways: Input.asOptionalInput<List<String>>(map['gateways']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      meshes: Input.asOptionalInput<List<String>>(map['meshes']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      rules: Input.asInput<List<TcpRouteRouteRule>>(map['rules']),
-      tcpRouteId: Input.asInput<String>(map['tcpRouteId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      gateways: pulumi.Input.asOptionalInput<List<String>>(map['gateways']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      meshes: pulumi.Input.asOptionalInput<List<String>>(map['meshes']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      rules: pulumi.Input.asInput<List<TcpRouteRouteRule>>(map['rules']),
+      tcpRouteId: pulumi.Input.asInput<String>(map['tcpRouteId']),
     );
   }
 }

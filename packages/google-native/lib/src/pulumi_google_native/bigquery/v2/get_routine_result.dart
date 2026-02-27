@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'argument_response.dart';
 import 'remote_function_options_response.dart';
 import 'routine_reference_response.dart';
@@ -87,8 +87,9 @@ class GetRoutineResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['arguments'] = Input.encodeList<ArgumentResponse, Map<String, dynamic>>(
-        arguments, (value) => value.toMap());
+    map['arguments'] =
+        pulumi.Input.encodeList<ArgumentResponse, Map<String, dynamic>>(
+            arguments, (value) => value.toMap());
     map['creationTime'] = creationTime;
     map['dataGovernanceType'] = dataGovernanceType;
     map['definitionBody'] = definitionBody;
@@ -111,7 +112,7 @@ class GetRoutineResult {
 
   factory GetRoutineResult.fromMap(Map<String, dynamic> map) {
     return GetRoutineResult(
-      arguments: Input.decodeList<ArgumentResponse>(
+      arguments: pulumi.Input.decodeList<ArgumentResponse>(
           map['arguments'],
           (value) =>
               ArgumentResponse.fromMap((value as Map).cast<String, dynamic>())),

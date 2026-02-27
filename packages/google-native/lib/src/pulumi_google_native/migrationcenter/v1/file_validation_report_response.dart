@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'import_error_response.dart';
 import 'import_row_error_response.dart';
 
@@ -28,25 +28,25 @@ class FileValidationReportResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['fileErrors'] =
-        Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(
             fileErrors, (value) => value.toMap());
     map['fileName'] = fileName;
     map['partialReport'] = partialReport;
     map['rowErrors'] =
-        Input.encodeList<ImportRowErrorResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ImportRowErrorResponse, Map<String, dynamic>>(
             rowErrors, (value) => value.toMap());
     return map;
   }
 
   factory FileValidationReportResponse.fromMap(Map<String, dynamic> map) {
     return FileValidationReportResponse(
-      fileErrors: Input.decodeList<ImportErrorResponse>(
+      fileErrors: pulumi.Input.decodeList<ImportErrorResponse>(
           map['fileErrors'],
           (value) => ImportErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       fileName: map['fileName'] as String,
       partialReport: map['partialReport'] as bool,
-      rowErrors: Input.decodeList<ImportRowErrorResponse>(
+      rowErrors: pulumi.Input.decodeList<ImportRowErrorResponse>(
           map['rowErrors'],
           (value) => ImportRowErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

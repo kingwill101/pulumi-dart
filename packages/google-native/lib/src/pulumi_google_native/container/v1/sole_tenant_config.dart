@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_affinity.dart';
 
 /// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
@@ -17,7 +17,7 @@ class SoleTenantConfig {
     final nodeAffinitiesValue = nodeAffinities;
     if (nodeAffinitiesValue != null) {
       map['nodeAffinities'] =
-          Input.encodeList<NodeAffinity, Map<String, dynamic>>(
+          pulumi.Input.encodeList<NodeAffinity, Map<String, dynamic>>(
               nodeAffinitiesValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class SoleTenantConfig {
     return SoleTenantConfig(
       nodeAffinities: map['nodeAffinities'] == null
           ? null
-          : Input.decodeList<NodeAffinity>(
+          : pulumi.Input.decodeList<NodeAffinity>(
               map['nodeAffinities'],
               (value) =>
                   NodeAffinity.fromMap((value as Map).cast<String, dynamic>())),

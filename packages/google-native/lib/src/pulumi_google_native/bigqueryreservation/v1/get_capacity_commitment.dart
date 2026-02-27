@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_capacity_commitment_args.dart';
 import 'get_capacity_commitment_result.dart';
 
 /// Returns information about the capacity commitment.
 Future<GetCapacityCommitmentResult> getCapacityCommitment(
   GetCapacityCommitmentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:bigqueryreservation/v1:getCapacityCommitment',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCapacityCommitmentResult.fromMap(result);
 }

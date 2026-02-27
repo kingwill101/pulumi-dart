@@ -2,9 +2,9 @@
 
 import 'monthly_schedule.dart';
 import 'recurring_schedule_frequency.dart';
-import 'time_of_day4.dart';
+import 'time_of_day_osconfig_v1.dart';
 import 'time_zone.dart';
-import 'weekly_schedule4.dart';
+import 'weekly_schedule_osconfig_v1.dart';
 
 /// Sets the time for recurring patch deployments.
 class RecurringSchedule {
@@ -21,13 +21,13 @@ class RecurringSchedule {
   final String? startTime;
 
   /// Time of the day to run a recurring deployment.
-  final TimeOfDay4 timeOfDay;
+  final TimeOfDayOsconfigV1 timeOfDay;
 
   /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
   final TimeZone timeZone;
 
   /// Schedule with weekly executions.
-  final WeeklySchedule4 weekly;
+  final WeeklyScheduleOsconfigV1 weekly;
 
   RecurringSchedule({
     this.endTime,
@@ -65,11 +65,11 @@ class RecurringSchedule {
       monthly: MonthlySchedule.fromMap(
           (map['monthly'] as Map).cast<String, dynamic>()),
       startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      timeOfDay:
-          TimeOfDay4.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>()),
+      timeOfDay: TimeOfDayOsconfigV1.fromMap(
+          (map['timeOfDay'] as Map).cast<String, dynamic>()),
       timeZone:
           TimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
-      weekly: WeeklySchedule4.fromMap(
+      weekly: WeeklyScheduleOsconfigV1.fromMap(
           (map['weekly'] as Map).cast<String, dynamic>()),
     );
   }

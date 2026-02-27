@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCustomDomain.
 class GetCustomDomainArgs {
-  final Input<String> customDomainId;
-  final Input<String>? project;
-  final Input<String> siteId;
+  final pulumi.Input<String> customDomainId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> siteId;
 
   GetCustomDomainArgs({
     required this.customDomainId,
@@ -27,9 +27,9 @@ class GetCustomDomainArgs {
 
   factory GetCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainArgs(
-      customDomainId: Input.asInput<String>(map['customDomainId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      siteId: Input.asInput<String>(map['siteId']),
+      customDomainId: pulumi.Input.asInput<String>(map['customDomainId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      siteId: pulumi.Input.asInput<String>(map['siteId']),
     );
   }
 }

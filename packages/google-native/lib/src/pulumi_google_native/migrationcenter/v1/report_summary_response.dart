@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_asset_aggregate_stats_response.dart';
 import 'report_summary_group_finding_response.dart';
 
@@ -20,7 +20,8 @@ class ReportSummaryResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['allAssetsStats'] = allAssetsStats.toMap();
-    map['groupFindings'] = Input.encodeList<ReportSummaryGroupFindingResponse,
+    map['groupFindings'] = pulumi.Input.encodeList<
+        ReportSummaryGroupFindingResponse,
         Map<String, dynamic>>(groupFindings, (value) => value.toMap());
     return map;
   }
@@ -29,7 +30,7 @@ class ReportSummaryResponse {
     return ReportSummaryResponse(
       allAssetsStats: ReportSummaryAssetAggregateStatsResponse.fromMap(
           (map['allAssetsStats'] as Map).cast<String, dynamic>()),
-      groupFindings: Input.decodeList<ReportSummaryGroupFindingResponse>(
+      groupFindings: pulumi.Input.decodeList<ReportSummaryGroupFindingResponse>(
           map['groupFindings'],
           (value) => ReportSummaryGroupFindingResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_custom_report_metric_response.dart';
 import 'google_cloud_apigee_v1_report_property_response.dart';
 
@@ -110,13 +110,13 @@ class GetReportResult {
     map['lastModifiedAt'] = lastModifiedAt;
     map['lastViewedAt'] = lastViewedAt;
     map['limit'] = limit;
-    map['metrics'] = Input.encodeList<
+    map['metrics'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1CustomReportMetricResponse,
         Map<String, dynamic>>(metrics, (value) => value.toMap());
     map['name'] = name;
     map['offset'] = offset;
     map['organization'] = organization;
-    map['properties'] = Input.encodeList<
+    map['properties'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1ReportPropertyResponse,
         Map<String, dynamic>>(properties, (value) => value.toMap());
     map['sortByCols'] = sortByCols;
@@ -141,17 +141,19 @@ class GetReportResult {
       lastModifiedAt: map['lastModifiedAt'] as String,
       lastViewedAt: map['lastViewedAt'] as String,
       limit: map['limit'] as String,
-      metrics: Input.decodeList<GoogleCloudApigeeV1CustomReportMetricResponse>(
+      metrics: pulumi.Input.decodeList<
+              GoogleCloudApigeeV1CustomReportMetricResponse>(
           map['metrics'],
           (value) => GoogleCloudApigeeV1CustomReportMetricResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       offset: map['offset'] as String,
       organization: map['organization'] as String,
-      properties: Input.decodeList<GoogleCloudApigeeV1ReportPropertyResponse>(
-          map['properties'],
-          (value) => GoogleCloudApigeeV1ReportPropertyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      properties:
+          pulumi.Input.decodeList<GoogleCloudApigeeV1ReportPropertyResponse>(
+              map['properties'],
+              (value) => GoogleCloudApigeeV1ReportPropertyResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       sortByCols: (map['sortByCols'] as List).cast<String>(),
       sortOrder: map['sortOrder'] as String,
       tags: (map['tags'] as List).cast<String>(),

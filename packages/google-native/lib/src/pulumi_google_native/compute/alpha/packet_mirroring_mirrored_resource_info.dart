@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'packet_mirroring_mirrored_resource_info_instance_info.dart';
 import 'packet_mirroring_mirrored_resource_info_subnet_info.dart';
 
@@ -24,13 +24,13 @@ class PacketMirroringMirroredResourceInfo {
     final map = <String, dynamic>{};
     final instancesValue = instances;
     if (instancesValue != null) {
-      map['instances'] = Input.encodeList<
+      map['instances'] = pulumi.Input.encodeList<
           PacketMirroringMirroredResourceInfoInstanceInfo,
           Map<String, dynamic>>(instancesValue, (value) => value.toMap());
     }
     final subnetworksValue = subnetworks;
     if (subnetworksValue != null) {
-      map['subnetworks'] = Input.encodeList<
+      map['subnetworks'] = pulumi.Input.encodeList<
           PacketMirroringMirroredResourceInfoSubnetInfo,
           Map<String, dynamic>>(subnetworksValue, (value) => value.toMap());
     }
@@ -46,14 +46,16 @@ class PacketMirroringMirroredResourceInfo {
     return PacketMirroringMirroredResourceInfo(
       instances: map['instances'] == null
           ? null
-          : Input.decodeList<PacketMirroringMirroredResourceInfoInstanceInfo>(
+          : pulumi.Input.decodeList<
+                  PacketMirroringMirroredResourceInfoInstanceInfo>(
               map['instances'],
               (value) =>
                   PacketMirroringMirroredResourceInfoInstanceInfo.fromMap(
                       (value as Map).cast<String, dynamic>())),
       subnetworks: map['subnetworks'] == null
           ? null
-          : Input.decodeList<PacketMirroringMirroredResourceInfoSubnetInfo>(
+          : pulumi.Input.decodeList<
+                  PacketMirroringMirroredResourceInfoSubnetInfo>(
               map['subnetworks'],
               (value) => PacketMirroringMirroredResourceInfoSubnetInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),

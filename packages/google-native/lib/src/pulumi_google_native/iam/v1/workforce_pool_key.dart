@@ -1,40 +1,40 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_data_response.dart';
 import 'workforce_pool_key_args.dart';
 
 /// Creates a new WorkforcePoolProviderKey in a WorkforcePoolProvider.
 /// Auto-naming is currently not supported for this resource.
-class WorkforcePoolKey extends CustomResource {
+class WorkforcePoolKey extends pulumi.CustomResource {
   /// The time after which the key will be permanently deleted and cannot be recovered. Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// Immutable. Public half of the asymmetric key.
-  late final Output<KeyDataResponse> keyData;
-  late final Output<String> location;
+  late final pulumi.Output<KeyDataResponse> keyData;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the key.
-  late final Output<String> name;
-  late final Output<String> providerId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> providerId;
 
   /// The state of the key.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The purpose of the key.
-  late final Output<String> use;
-  late final Output<String> workforcePoolId;
+  late final pulumi.Output<String> use;
+  late final pulumi.Output<String> workforcePoolId;
 
   /// Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
-  late final Output<String> workforcePoolProviderKeyId;
+  late final pulumi.Output<String> workforcePoolProviderKeyId;
 
   WorkforcePoolKey(
     String name, {
     WorkforcePoolKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:iam/v1:WorkforcePoolKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.expireTime = registerOutput<String>('expireTime');
     this.keyData = registerOutput<KeyDataResponse>('keyData');

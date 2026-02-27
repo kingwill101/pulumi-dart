@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_metadata_response.dart';
 import 'sdkinfo_response.dart';
 
@@ -19,16 +19,15 @@ class RuntimeMetadataResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['parameters'] =
-        Input.encodeList<ParameterMetadataResponse, Map<String, dynamic>>(
-            parameters, (value) => value.toMap());
+    map['parameters'] = pulumi.Input.encodeList<ParameterMetadataResponse,
+        Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['sdkInfo'] = sdkInfo.toMap();
     return map;
   }
 
   factory RuntimeMetadataResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeMetadataResponse(
-      parameters: Input.decodeList<ParameterMetadataResponse>(
+      parameters: pulumi.Input.decodeList<ParameterMetadataResponse>(
           map['parameters'],
           (value) => ParameterMetadataResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

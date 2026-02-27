@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'label_descriptor_response3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'label_descriptor_response_servicemanagement_v1.dart';
 
 /// An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API.
 class MonitoredResourceDescriptorResponse {
@@ -12,7 +12,7 @@ class MonitoredResourceDescriptorResponse {
   final String displayName;
 
   /// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
-  final List<LabelDescriptorResponse3> labels;
+  final List<LabelDescriptorResponseServicemanagementV1> labels;
 
   /// Optional. The launch stage of the monitored resource definition.
   final String launchStage;
@@ -36,9 +36,9 @@ class MonitoredResourceDescriptorResponse {
     final map = <String, dynamic>{};
     map['description'] = description;
     map['displayName'] = displayName;
-    map['labels'] =
-        Input.encodeList<LabelDescriptorResponse3, Map<String, dynamic>>(
-            labels, (value) => value.toMap());
+    map['labels'] = pulumi.Input.encodeList<
+        LabelDescriptorResponseServicemanagementV1,
+        Map<String, dynamic>>(labels, (value) => value.toMap());
     map['launchStage'] = launchStage;
     map['name'] = name;
     map['type'] = type;
@@ -50,10 +50,11 @@ class MonitoredResourceDescriptorResponse {
     return MonitoredResourceDescriptorResponse(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      labels: Input.decodeList<LabelDescriptorResponse3>(
-          map['labels'],
-          (value) => LabelDescriptorResponse3.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      labels:
+          pulumi.Input.decodeList<LabelDescriptorResponseServicemanagementV1>(
+              map['labels'],
+              (value) => LabelDescriptorResponseServicemanagementV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       launchStage: map['launchStage'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

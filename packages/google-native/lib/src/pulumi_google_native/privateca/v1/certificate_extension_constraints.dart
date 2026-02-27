@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_extension_constraints_known_extensions_item.dart';
 import 'object_id.dart';
 
@@ -23,12 +23,12 @@ class CertificateExtensionConstraints {
     final additionalExtensionsValue = additionalExtensions;
     if (additionalExtensionsValue != null) {
       map['additionalExtensions'] =
-          Input.encodeList<ObjectId, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ObjectId, Map<String, dynamic>>(
               additionalExtensionsValue, (value) => value.toMap());
     }
     final knownExtensionsValue = knownExtensions;
     if (knownExtensionsValue != null) {
-      map['knownExtensions'] = Input.encodeList<
+      map['knownExtensions'] = pulumi.Input.encodeList<
           CertificateExtensionConstraintsKnownExtensionsItem,
           String>(knownExtensionsValue, (value) => value.value);
     }
@@ -39,13 +39,13 @@ class CertificateExtensionConstraints {
     return CertificateExtensionConstraints(
       additionalExtensions: map['additionalExtensions'] == null
           ? null
-          : Input.decodeList<ObjectId>(
+          : pulumi.Input.decodeList<ObjectId>(
               map['additionalExtensions'],
               (value) =>
                   ObjectId.fromMap((value as Map).cast<String, dynamic>())),
       knownExtensions: map['knownExtensions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateExtensionConstraintsKnownExtensionsItem>(
               map['knownExtensions'],
               (value) =>

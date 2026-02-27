@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'digest_response2.dart';
-import 'distribution_response2.dart';
-import 'license_response2.dart';
-import 'version_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'digest_response_containeranalysis_v1alpha1.dart';
+import 'distribution_response_containeranalysis_v1alpha1.dart';
+import 'license_response_containeranalysis_v1alpha1.dart';
+import 'version_response_containeranalysis_v1alpha1.dart';
 
 /// This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
 class PackageResponse {
@@ -18,13 +18,13 @@ class PackageResponse {
   final String description;
 
   /// Hash value, typically a file digest, that allows unique identification a specific package.
-  final List<DigestResponse2> digest;
+  final List<DigestResponseContaineranalysisV1alpha1> digest;
 
   /// The various channels by which a package is distributed.
-  final List<DistributionResponse2> distribution;
+  final List<DistributionResponseContaineranalysisV1alpha1> distribution;
 
   /// Licenses that have been declared by the authors of the package.
-  final LicenseResponse2 license;
+  final LicenseResponseContaineranalysisV1alpha1 license;
 
   /// A freeform text denoting the maintainer of this package.
   final String maintainer;
@@ -39,7 +39,7 @@ class PackageResponse {
   final String url;
 
   /// The version of the package.
-  final VersionResponse2 version;
+  final VersionResponseContaineranalysisV1alpha1 version;
 
   PackageResponse({
     required this.architecture,
@@ -60,11 +60,12 @@ class PackageResponse {
     map['architecture'] = architecture;
     map['cpeUri'] = cpeUri;
     map['description'] = description;
-    map['digest'] = Input.encodeList<DigestResponse2, Map<String, dynamic>>(
-        digest, (value) => value.toMap());
-    map['distribution'] =
-        Input.encodeList<DistributionResponse2, Map<String, dynamic>>(
-            distribution, (value) => value.toMap());
+    map['digest'] = pulumi.Input.encodeList<
+        DigestResponseContaineranalysisV1alpha1,
+        Map<String, dynamic>>(digest, (value) => value.toMap());
+    map['distribution'] = pulumi.Input.encodeList<
+        DistributionResponseContaineranalysisV1alpha1,
+        Map<String, dynamic>>(distribution, (value) => value.toMap());
     map['license'] = license.toMap();
     map['maintainer'] = maintainer;
     map['name'] = name;
@@ -79,21 +80,22 @@ class PackageResponse {
       architecture: map['architecture'] as String,
       cpeUri: map['cpeUri'] as String,
       description: map['description'] as String,
-      digest: Input.decodeList<DigestResponse2>(
+      digest: pulumi.Input.decodeList<DigestResponseContaineranalysisV1alpha1>(
           map['digest'],
-          (value) =>
-              DigestResponse2.fromMap((value as Map).cast<String, dynamic>())),
-      distribution: Input.decodeList<DistributionResponse2>(
-          map['distribution'],
-          (value) => DistributionResponse2.fromMap(
+          (value) => DigestResponseContaineranalysisV1alpha1.fromMap(
               (value as Map).cast<String, dynamic>())),
-      license: LicenseResponse2.fromMap(
+      distribution: pulumi.Input.decodeList<
+              DistributionResponseContaineranalysisV1alpha1>(
+          map['distribution'],
+          (value) => DistributionResponseContaineranalysisV1alpha1.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      license: LicenseResponseContaineranalysisV1alpha1.fromMap(
           (map['license'] as Map).cast<String, dynamic>()),
       maintainer: map['maintainer'] as String,
       name: map['name'] as String,
       packageType: map['packageType'] as String,
       url: map['url'] as String,
-      version: VersionResponse2.fromMap(
+      version: VersionResponseContaineranalysisV1alpha1.fromMap(
           (map['version'] as Map).cast<String, dynamic>()),
     );
   }

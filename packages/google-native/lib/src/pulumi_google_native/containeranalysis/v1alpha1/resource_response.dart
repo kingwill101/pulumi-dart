@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'hash_response2.dart';
+import 'hash_response_containeranalysis_v1alpha1.dart';
 
 /// Resource is an entity that can have metadata. E.g., a Docker image.
 class ResourceResponse {
   /// The hash of the resource content. E.g., the Docker digest.
-  final HashResponse2 contentHash;
+  final HashResponseContaineranalysisV1alpha1 contentHash;
 
   /// The name of the resource. E.g., the name of a Docker image - "Debian".
   final String name;
@@ -29,7 +29,7 @@ class ResourceResponse {
 
   factory ResourceResponse.fromMap(Map<String, dynamic> map) {
     return ResourceResponse(
-      contentHash: HashResponse2.fromMap(
+      contentHash: HashResponseContaineranalysisV1alpha1.fromMap(
           (map['contentHash'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       uri: map['uri'] as String,

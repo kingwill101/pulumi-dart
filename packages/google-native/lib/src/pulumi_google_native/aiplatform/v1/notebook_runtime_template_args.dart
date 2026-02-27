@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_machine_spec.dart';
 import 'google_cloud_aiplatform_v1_network_spec.dart';
 import 'google_cloud_aiplatform_v1_notebook_euc_config.dart';
@@ -11,44 +11,45 @@ import 'notebook_runtime_template_notebook_runtime_type.dart';
 /// The set of arguments for NotebookRuntimeTemplate.
 class NotebookRuntimeTemplateArgs {
   /// Optional. The specification of persistent disk attached to the runtime as data disk storage.
-  final Input<GoogleCloudAiplatformV1PersistentDiskSpec>?
+  final pulumi.Input<GoogleCloudAiplatformV1PersistentDiskSpec>?
       dataPersistentDiskSpec;
 
   /// The description of the NotebookRuntimeTemplate.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// EUC configuration of the NotebookRuntimeTemplate.
-  final Input<GoogleCloudAiplatformV1NotebookEucConfig>? eucConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1NotebookEucConfig>? eucConfig;
 
   /// The idle shutdown configuration of NotebookRuntimeTemplate. This config will only be set when idle shutdown is enabled.
-  final Input<GoogleCloudAiplatformV1NotebookIdleShutdownConfig>?
+  final pulumi.Input<GoogleCloudAiplatformV1NotebookIdleShutdownConfig>?
       idleShutdownConfig;
 
   /// The labels with user-defined metadata to organize the NotebookRuntimeTemplates. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Optional. Immutable. The specification of a single machine for the template.
-  final Input<GoogleCloudAiplatformV1MachineSpec>? machineSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1MachineSpec>? machineSpec;
 
   /// Optional. Network spec.
-  final Input<GoogleCloudAiplatformV1NetworkSpec>? networkSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1NetworkSpec>? networkSpec;
 
   /// Optional. User specified ID for the notebook runtime template.
-  final Input<String>? notebookRuntimeTemplateId;
+  final pulumi.Input<String>? notebookRuntimeTemplateId;
 
   /// Optional. Immutable. The type of the notebook runtime template.
-  final Input<NotebookRuntimeTemplateNotebookRuntimeType>? notebookRuntimeType;
-  final Input<String>? project;
+  final pulumi.Input<NotebookRuntimeTemplateNotebookRuntimeType>?
+      notebookRuntimeType;
+  final pulumi.Input<String>? project;
 
   /// The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-  final Input<String>? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
 
   NotebookRuntimeTemplateArgs({
     this.dataPersistentDiskSpec,
@@ -71,7 +72,7 @@ class NotebookRuntimeTemplateArgs {
     final map = <String, dynamic>{};
     final dataPersistentDiskSpecValue = dataPersistentDiskSpec;
     if (dataPersistentDiskSpecValue != null) {
-      map['dataPersistentDiskSpec'] = Input.mapOptionalInputValue<
+      map['dataPersistentDiskSpec'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudAiplatformV1PersistentDiskSpec, Map<String, dynamic>>(
           dataPersistentDiskSpecValue, (value) => value.toMap());
     }
@@ -86,13 +87,13 @@ class NotebookRuntimeTemplateArgs {
     }
     final eucConfigValue = eucConfig;
     if (eucConfigValue != null) {
-      map['eucConfig'] = Input.mapOptionalInputValue<
+      map['eucConfig'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudAiplatformV1NotebookEucConfig,
           Map<String, dynamic>>(eucConfigValue, (value) => value.toMap());
     }
     final idleShutdownConfigValue = idleShutdownConfig;
     if (idleShutdownConfigValue != null) {
-      map['idleShutdownConfig'] = Input.mapOptionalInputValue<
+      map['idleShutdownConfig'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudAiplatformV1NotebookIdleShutdownConfig,
               Map<String, dynamic>>(
           idleShutdownConfigValue, (value) => value.toMap());
@@ -107,13 +108,13 @@ class NotebookRuntimeTemplateArgs {
     }
     final machineSpecValue = machineSpec;
     if (machineSpecValue != null) {
-      map['machineSpec'] = Input.mapOptionalInputValue<
+      map['machineSpec'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudAiplatformV1MachineSpec,
           Map<String, dynamic>>(machineSpecValue, (value) => value.toMap());
     }
     final networkSpecValue = networkSpec;
     if (networkSpecValue != null) {
-      map['networkSpec'] = Input.mapOptionalInputValue<
+      map['networkSpec'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudAiplatformV1NetworkSpec,
           Map<String, dynamic>>(networkSpecValue, (value) => value.toMap());
     }
@@ -123,7 +124,7 @@ class NotebookRuntimeTemplateArgs {
     }
     final notebookRuntimeTypeValue = notebookRuntimeType;
     if (notebookRuntimeTypeValue != null) {
-      map['notebookRuntimeType'] = Input.mapOptionalInputValue<
+      map['notebookRuntimeType'] = pulumi.Input.mapOptionalInputValue<
           NotebookRuntimeTemplateNotebookRuntimeType,
           String>(notebookRuntimeTypeValue, (value) => value.value);
     }
@@ -140,31 +141,33 @@ class NotebookRuntimeTemplateArgs {
 
   factory NotebookRuntimeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return NotebookRuntimeTemplateArgs(
-      dataPersistentDiskSpec:
-          Input.asOptionalInput<GoogleCloudAiplatformV1PersistentDiskSpec>(
-              map['dataPersistentDiskSpec']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      eucConfig:
-          Input.asOptionalInput<GoogleCloudAiplatformV1NotebookEucConfig>(
-              map['eucConfig']),
-      idleShutdownConfig: Input.asOptionalInput<
+      dataPersistentDiskSpec: pulumi.Input.asOptionalInput<
+              GoogleCloudAiplatformV1PersistentDiskSpec>(
+          map['dataPersistentDiskSpec']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      eucConfig: pulumi.Input.asOptionalInput<
+          GoogleCloudAiplatformV1NotebookEucConfig>(map['eucConfig']),
+      idleShutdownConfig: pulumi.Input.asOptionalInput<
               GoogleCloudAiplatformV1NotebookIdleShutdownConfig>(
           map['idleShutdownConfig']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      machineSpec: Input.asOptionalInput<GoogleCloudAiplatformV1MachineSpec>(
-          map['machineSpec']),
-      networkSpec: Input.asOptionalInput<GoogleCloudAiplatformV1NetworkSpec>(
-          map['networkSpec']),
-      notebookRuntimeTemplateId:
-          Input.asOptionalInput<String>(map['notebookRuntimeTemplateId']),
-      notebookRuntimeType:
-          Input.asOptionalInput<NotebookRuntimeTemplateNotebookRuntimeType>(
-              map['notebookRuntimeType']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceAccount: Input.asOptionalInput<String>(map['serviceAccount']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      machineSpec:
+          pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1MachineSpec>(
+              map['machineSpec']),
+      networkSpec:
+          pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1NetworkSpec>(
+              map['networkSpec']),
+      notebookRuntimeTemplateId: pulumi.Input.asOptionalInput<String>(
+          map['notebookRuntimeTemplateId']),
+      notebookRuntimeType: pulumi.Input.asOptionalInput<
+              NotebookRuntimeTemplateNotebookRuntimeType>(
+          map['notebookRuntimeType']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceAccount:
+          pulumi.Input.asOptionalInput<String>(map['serviceAccount']),
     );
   }
 }

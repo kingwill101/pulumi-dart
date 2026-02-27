@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_user.dart';
 
 /// Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.
@@ -16,8 +16,9 @@ class Authorization {
     final map = <String, dynamic>{};
     final adminUsersValue = adminUsers;
     if (adminUsersValue != null) {
-      map['adminUsers'] = Input.encodeList<ClusterUser, Map<String, dynamic>>(
-          adminUsersValue, (value) => value.toMap());
+      map['adminUsers'] =
+          pulumi.Input.encodeList<ClusterUser, Map<String, dynamic>>(
+              adminUsersValue, (value) => value.toMap());
     }
     return map;
   }
@@ -26,7 +27,7 @@ class Authorization {
     return Authorization(
       adminUsers: map['adminUsers'] == null
           ? null
-          : Input.decodeList<ClusterUser>(
+          : pulumi.Input.decodeList<ClusterUser>(
               map['adminUsers'],
               (value) =>
                   ClusterUser.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWaiter.
 class GetWaiterArgs {
-  final Input<String> configId;
-  final Input<String>? project;
-  final Input<String> waiterId;
+  final pulumi.Input<String> configId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> waiterId;
 
   GetWaiterArgs({
     required this.configId,
@@ -27,9 +27,9 @@ class GetWaiterArgs {
 
   factory GetWaiterArgs.fromMap(Map<String, dynamic> map) {
     return GetWaiterArgs(
-      configId: Input.asInput<String>(map['configId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      waiterId: Input.asInput<String>(map['waiterId']),
+      configId: pulumi.Input.asInput<String>(map['configId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      waiterId: pulumi.Input.asInput<String>(map['waiterId']),
     );
   }
 }

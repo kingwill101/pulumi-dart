@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'oracle_column.dart';
 
 /// Oracle table.
@@ -21,7 +21,7 @@ class OracleTable {
     final oracleColumnsValue = oracleColumns;
     if (oracleColumnsValue != null) {
       map['oracleColumns'] =
-          Input.encodeList<OracleColumn, Map<String, dynamic>>(
+          pulumi.Input.encodeList<OracleColumn, Map<String, dynamic>>(
               oracleColumnsValue, (value) => value.toMap());
     }
     final tableValue = table;
@@ -35,7 +35,7 @@ class OracleTable {
     return OracleTable(
       oracleColumns: map['oracleColumns'] == null
           ? null
-          : Input.decodeList<OracleColumn>(
+          : pulumi.Input.decodeList<OracleColumn>(
               map['oracleColumns'],
               (value) =>
                   OracleColumn.fromMap((value as Map).cast<String, dynamic>())),

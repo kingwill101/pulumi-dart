@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_notification_config_response.dart';
 import 'http_config_response.dart';
 import 'mqtt_config_response.dart';
@@ -42,12 +42,11 @@ class GetRegistryResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['credentials'] =
-        Input.encodeList<RegistryCredentialResponse, Map<String, dynamic>>(
-            credentials, (value) => value.toMap());
-    map['eventNotificationConfigs'] =
-        Input.encodeList<EventNotificationConfigResponse, Map<String, dynamic>>(
-            eventNotificationConfigs, (value) => value.toMap());
+    map['credentials'] = pulumi.Input.encodeList<RegistryCredentialResponse,
+        Map<String, dynamic>>(credentials, (value) => value.toMap());
+    map['eventNotificationConfigs'] = pulumi.Input.encodeList<
+            EventNotificationConfigResponse, Map<String, dynamic>>(
+        eventNotificationConfigs, (value) => value.toMap());
     map['httpConfig'] = httpConfig.toMap();
     map['logLevel'] = logLevel;
     map['mqttConfig'] = mqttConfig.toMap();
@@ -58,12 +57,12 @@ class GetRegistryResult {
 
   factory GetRegistryResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryResult(
-      credentials: Input.decodeList<RegistryCredentialResponse>(
+      credentials: pulumi.Input.decodeList<RegistryCredentialResponse>(
           map['credentials'],
           (value) => RegistryCredentialResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       eventNotificationConfigs:
-          Input.decodeList<EventNotificationConfigResponse>(
+          pulumi.Input.decodeList<EventNotificationConfigResponse>(
               map['eventNotificationConfigs'],
               (value) => EventNotificationConfigResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

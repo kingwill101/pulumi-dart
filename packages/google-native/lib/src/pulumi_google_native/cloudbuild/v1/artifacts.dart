@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifact_objects.dart';
 import 'maven_artifact.dart';
 import 'npm_package.dart';
@@ -40,13 +40,14 @@ class Artifacts {
     final mavenArtifactsValue = mavenArtifacts;
     if (mavenArtifactsValue != null) {
       map['mavenArtifacts'] =
-          Input.encodeList<MavenArtifact, Map<String, dynamic>>(
+          pulumi.Input.encodeList<MavenArtifact, Map<String, dynamic>>(
               mavenArtifactsValue, (value) => value.toMap());
     }
     final npmPackagesValue = npmPackages;
     if (npmPackagesValue != null) {
-      map['npmPackages'] = Input.encodeList<NpmPackage, Map<String, dynamic>>(
-          npmPackagesValue, (value) => value.toMap());
+      map['npmPackages'] =
+          pulumi.Input.encodeList<NpmPackage, Map<String, dynamic>>(
+              npmPackagesValue, (value) => value.toMap());
     }
     final objectsValue = objects;
     if (objectsValue != null) {
@@ -55,7 +56,7 @@ class Artifacts {
     final pythonPackagesValue = pythonPackages;
     if (pythonPackagesValue != null) {
       map['pythonPackages'] =
-          Input.encodeList<PythonPackage, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PythonPackage, Map<String, dynamic>>(
               pythonPackagesValue, (value) => value.toMap());
     }
     return map;
@@ -67,13 +68,13 @@ class Artifacts {
           map['images'] == null ? null : (map['images'] as List).cast<String>(),
       mavenArtifacts: map['mavenArtifacts'] == null
           ? null
-          : Input.decodeList<MavenArtifact>(
+          : pulumi.Input.decodeList<MavenArtifact>(
               map['mavenArtifacts'],
               (value) => MavenArtifact.fromMap(
                   (value as Map).cast<String, dynamic>())),
       npmPackages: map['npmPackages'] == null
           ? null
-          : Input.decodeList<NpmPackage>(
+          : pulumi.Input.decodeList<NpmPackage>(
               map['npmPackages'],
               (value) =>
                   NpmPackage.fromMap((value as Map).cast<String, dynamic>())),
@@ -83,7 +84,7 @@ class Artifacts {
               (map['objects'] as Map).cast<String, dynamic>()),
       pythonPackages: map['pythonPackages'] == null
           ? null
-          : Input.decodeList<PythonPackage>(
+          : pulumi.Input.decodeList<PythonPackage>(
               map['pythonPackages'],
               (value) => PythonPackage.fromMap(
                   (value as Map).cast<String, dynamic>())),

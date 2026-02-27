@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_to_path.dart';
 
 /// Not supported by Cloud Run. Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
@@ -32,7 +32,7 @@ class ConfigMapVolumeSource {
     }
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<KeyToPath, Map<String, dynamic>>(
+      map['items'] = pulumi.Input.encodeList<KeyToPath, Map<String, dynamic>>(
           itemsValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -52,7 +52,7 @@ class ConfigMapVolumeSource {
           map['defaultMode'] == null ? null : map['defaultMode'] as int,
       items: map['items'] == null
           ? null
-          : Input.decodeList<KeyToPath>(
+          : pulumi.Input.decodeList<KeyToPath>(
               map['items'],
               (value) =>
                   KeyToPath.fromMap((value as Map).cast<String, dynamic>())),

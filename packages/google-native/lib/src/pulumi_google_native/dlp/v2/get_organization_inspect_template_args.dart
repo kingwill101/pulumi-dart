@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationInspectTemplate.
 class GetOrganizationInspectTemplateArgs {
-  final Input<String> inspectTemplateId;
-  final Input<String> location;
-  final Input<String> organizationId;
+  final pulumi.Input<String> inspectTemplateId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> organizationId;
 
   GetOrganizationInspectTemplateArgs({
     required this.inspectTemplateId,
@@ -24,9 +24,9 @@ class GetOrganizationInspectTemplateArgs {
 
   factory GetOrganizationInspectTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationInspectTemplateArgs(
-      inspectTemplateId: Input.asInput<String>(map['inspectTemplateId']),
-      location: Input.asInput<String>(map['location']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      inspectTemplateId: pulumi.Input.asInput<String>(map['inspectTemplateId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

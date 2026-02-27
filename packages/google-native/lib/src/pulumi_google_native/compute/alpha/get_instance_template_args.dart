@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceTemplate.
 class GetInstanceTemplateArgs {
-  final Input<String> instanceTemplate;
-  final Input<String>? project;
-  final Input<String>? view;
+  final pulumi.Input<String> instanceTemplate;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
 
   GetInstanceTemplateArgs({
     required this.instanceTemplate,
@@ -30,9 +30,9 @@ class GetInstanceTemplateArgs {
 
   factory GetInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateArgs(
-      instanceTemplate: Input.asInput<String>(map['instanceTemplate']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
+      instanceTemplate: pulumi.Input.asInput<String>(map['instanceTemplate']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

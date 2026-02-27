@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'logging_component_config_enable_components_item.dart';
 
 /// LoggingComponentConfig is cluster logging component configuration.
@@ -16,9 +16,9 @@ class LoggingComponentConfig {
     final map = <String, dynamic>{};
     final enableComponentsValue = enableComponents;
     if (enableComponentsValue != null) {
-      map['enableComponents'] =
-          Input.encodeList<LoggingComponentConfigEnableComponentsItem, String>(
-              enableComponentsValue, (value) => value.value);
+      map['enableComponents'] = pulumi.Input.encodeList<
+          LoggingComponentConfigEnableComponentsItem,
+          String>(enableComponentsValue, (value) => value.value);
     }
     return map;
   }
@@ -27,7 +27,7 @@ class LoggingComponentConfig {
     return LoggingComponentConfig(
       enableComponents: map['enableComponents'] == null
           ? null
-          : Input.decodeList<LoggingComponentConfigEnableComponentsItem>(
+          : pulumi.Input.decodeList<LoggingComponentConfigEnableComponentsItem>(
               map['enableComponents'],
               (value) => LoggingComponentConfigEnableComponentsItem.fromValue(
                   value as String)),

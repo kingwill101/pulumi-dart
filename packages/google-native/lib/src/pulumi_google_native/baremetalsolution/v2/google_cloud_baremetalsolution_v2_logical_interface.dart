@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'logical_network_interface.dart';
 
 /// Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
@@ -28,9 +28,9 @@ class GoogleCloudBaremetalsolutionV2LogicalInterface {
     }
     final logicalNetworkInterfacesValue = logicalNetworkInterfaces;
     if (logicalNetworkInterfacesValue != null) {
-      map['logicalNetworkInterfaces'] =
-          Input.encodeList<LogicalNetworkInterface, Map<String, dynamic>>(
-              logicalNetworkInterfacesValue, (value) => value.toMap());
+      map['logicalNetworkInterfaces'] = pulumi.Input.encodeList<
+              LogicalNetworkInterface, Map<String, dynamic>>(
+          logicalNetworkInterfacesValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -46,7 +46,7 @@ class GoogleCloudBaremetalsolutionV2LogicalInterface {
           map['interfaceIndex'] == null ? null : map['interfaceIndex'] as int,
       logicalNetworkInterfaces: map['logicalNetworkInterfaces'] == null
           ? null
-          : Input.decodeList<LogicalNetworkInterface>(
+          : pulumi.Input.decodeList<LogicalNetworkInterface>(
               map['logicalNetworkInterfaces'],
               (value) => LogicalNetworkInterface.fromMap(
                   (value as Map).cast<String, dynamic>())),

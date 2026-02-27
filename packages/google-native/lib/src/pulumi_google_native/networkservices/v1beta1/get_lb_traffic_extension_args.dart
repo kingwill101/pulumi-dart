@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLbTrafficExtension.
 class GetLbTrafficExtensionArgs {
-  final Input<String> lbTrafficExtensionId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> lbTrafficExtensionId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetLbTrafficExtensionArgs({
     required this.lbTrafficExtensionId,
@@ -27,9 +27,10 @@ class GetLbTrafficExtensionArgs {
 
   factory GetLbTrafficExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetLbTrafficExtensionArgs(
-      lbTrafficExtensionId: Input.asInput<String>(map['lbTrafficExtensionId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      lbTrafficExtensionId:
+          pulumi.Input.asInput<String>(map['lbTrafficExtensionId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_article_suggestion_model_metadata_response.dart';
 import 'google_cloud_dialogflow_v2_input_dataset_response.dart';
 import 'google_cloud_dialogflow_v2_smart_reply_model_metadata_response.dart';
@@ -49,7 +49,7 @@ class GetConversationModelResult {
     map['articleSuggestionModelMetadata'] =
         articleSuggestionModelMetadata.toMap();
     map['createTime'] = createTime;
-    map['datasets'] = Input.encodeList<
+    map['datasets'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2InputDatasetResponse,
         Map<String, dynamic>>(datasets, (value) => value.toMap());
     map['displayName'] = displayName;
@@ -67,10 +67,11 @@ class GetConversationModelResult {
               (map['articleSuggestionModelMetadata'] as Map)
                   .cast<String, dynamic>()),
       createTime: map['createTime'] as String,
-      datasets: Input.decodeList<GoogleCloudDialogflowV2InputDatasetResponse>(
-          map['datasets'],
-          (value) => GoogleCloudDialogflowV2InputDatasetResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      datasets:
+          pulumi.Input.decodeList<GoogleCloudDialogflowV2InputDatasetResponse>(
+              map['datasets'],
+              (value) => GoogleCloudDialogflowV2InputDatasetResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       displayName: map['displayName'] as String,
       languageCode: map['languageCode'] as String,
       name: map['name'] as String,

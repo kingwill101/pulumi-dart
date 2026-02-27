@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNasJob.
 class GetNasJobArgs {
-  final Input<String> location;
-  final Input<String> nasJobId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> nasJobId;
+  final pulumi.Input<String>? project;
 
   GetNasJobArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetNasJobArgs {
 
   factory GetNasJobArgs.fromMap(Map<String, dynamic> map) {
     return GetNasJobArgs(
-      location: Input.asInput<String>(map['location']),
-      nasJobId: Input.asInput<String>(map['nasJobId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      nasJobId: pulumi.Input.asInput<String>(map['nasJobId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

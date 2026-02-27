@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDatabase.
 class GetDatabaseArgs {
-  final Input<String> catalogId;
-  final Input<String> databaseId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> catalogId;
+  final pulumi.Input<String> databaseId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDatabaseArgs({
     required this.catalogId,
@@ -30,10 +30,10 @@ class GetDatabaseArgs {
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
-      catalogId: Input.asInput<String>(map['catalogId']),
-      databaseId: Input.asInput<String>(map['databaseId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      catalogId: pulumi.Input.asInput<String>(map['catalogId']),
+      databaseId: pulumi.Input.asInput<String>(map['databaseId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

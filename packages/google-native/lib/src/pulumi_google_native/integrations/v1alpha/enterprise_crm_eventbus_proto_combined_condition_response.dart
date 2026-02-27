@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_condition_response.dart';
 
 /// This message recursively combines constituent conditions using logical AND.
@@ -14,7 +14,7 @@ class EnterpriseCrmEventbusProtoCombinedConditionResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['conditions'] = Input.encodeList<
+    map['conditions'] = pulumi.Input.encodeList<
         EnterpriseCrmEventbusProtoConditionResponse,
         Map<String, dynamic>>(conditions, (value) => value.toMap());
     return map;
@@ -23,10 +23,11 @@ class EnterpriseCrmEventbusProtoCombinedConditionResponse {
   factory EnterpriseCrmEventbusProtoCombinedConditionResponse.fromMap(
       Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoCombinedConditionResponse(
-      conditions: Input.decodeList<EnterpriseCrmEventbusProtoConditionResponse>(
-          map['conditions'],
-          (value) => EnterpriseCrmEventbusProtoConditionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      conditions:
+          pulumi.Input.decodeList<EnterpriseCrmEventbusProtoConditionResponse>(
+              map['conditions'],
+              (value) => EnterpriseCrmEventbusProtoConditionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

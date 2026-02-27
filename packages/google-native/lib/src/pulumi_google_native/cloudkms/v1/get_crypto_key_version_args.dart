@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCryptoKeyVersion.
 class GetCryptoKeyVersionArgs {
-  final Input<String> cryptoKeyId;
-  final Input<String> cryptoKeyVersionId;
-  final Input<String> keyRingId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> cryptoKeyId;
+  final pulumi.Input<String> cryptoKeyVersionId;
+  final pulumi.Input<String> keyRingId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetCryptoKeyVersionArgs({
     required this.cryptoKeyId,
@@ -33,11 +33,12 @@ class GetCryptoKeyVersionArgs {
 
   factory GetCryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyVersionArgs(
-      cryptoKeyId: Input.asInput<String>(map['cryptoKeyId']),
-      cryptoKeyVersionId: Input.asInput<String>(map['cryptoKeyVersionId']),
-      keyRingId: Input.asInput<String>(map['keyRingId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      cryptoKeyId: pulumi.Input.asInput<String>(map['cryptoKeyId']),
+      cryptoKeyVersionId:
+          pulumi.Input.asInput<String>(map['cryptoKeyVersionId']),
+      keyRingId: pulumi.Input.asInput<String>(map['keyRingId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

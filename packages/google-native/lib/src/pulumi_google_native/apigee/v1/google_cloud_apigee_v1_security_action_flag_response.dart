@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_security_action_http_header_response.dart';
 
 /// The message that should be set in the case of a Flag action.
@@ -14,7 +14,7 @@ class GoogleCloudApigeeV1SecurityActionFlagResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['headers'] = Input.encodeList<
+    map['headers'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1SecurityActionHttpHeaderResponse,
         Map<String, dynamic>>(headers, (value) => value.toMap());
     return map;
@@ -23,12 +23,12 @@ class GoogleCloudApigeeV1SecurityActionFlagResponse {
   factory GoogleCloudApigeeV1SecurityActionFlagResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionFlagResponse(
-      headers:
-          Input.decodeList<GoogleCloudApigeeV1SecurityActionHttpHeaderResponse>(
-              map['headers'],
-              (value) =>
-                  GoogleCloudApigeeV1SecurityActionHttpHeaderResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      headers: pulumi.Input.decodeList<
+              GoogleCloudApigeeV1SecurityActionHttpHeaderResponse>(
+          map['headers'],
+          (value) =>
+              GoogleCloudApigeeV1SecurityActionHttpHeaderResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

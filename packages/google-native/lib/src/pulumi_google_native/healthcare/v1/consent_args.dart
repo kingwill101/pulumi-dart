@@ -1,38 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'consent_state.dart';
 import 'google_cloud_healthcare_v1_consent_policy.dart';
 
 /// The set of arguments for Consent.
 class ConsentArgs {
   /// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-  final Input<String> consentArtifact;
-  final Input<String> consentStoreId;
-  final Input<String> datasetId;
+  final pulumi.Input<String> consentArtifact;
+  final pulumi.Input<String> consentStoreId;
+  final pulumi.Input<String> datasetId;
 
   /// Timestamp in UTC of when this Consent is considered expired.
-  final Input<String>? expireTime;
-  final Input<String>? location;
+  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String>? location;
 
   /// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
-  final Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
 
   /// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-  final Input<List<GoogleCloudHealthcareV1ConsentPolicy>>? policies;
-  final Input<String>? project;
+  final pulumi.Input<List<GoogleCloudHealthcareV1ConsentPolicy>>? policies;
+  final pulumi.Input<String>? project;
 
   /// Indicates the current state of this Consent.
-  final Input<ConsentState> state;
+  final pulumi.Input<ConsentState> state;
 
   /// Input only. The time to live for this Consent from when it is created.
-  final Input<String>? ttl;
+  final pulumi.Input<String>? ttl;
 
   /// User's UUID provided by the client.
-  final Input<String> userId;
+  final pulumi.Input<String> userId;
 
   ConsentArgs({
     required this.consentArtifact,
@@ -72,18 +72,19 @@ class ConsentArgs {
     }
     final policiesValue = policies;
     if (policiesValue != null) {
-      map['policies'] = Input.mapOptionalInputValue<
+      map['policies'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudHealthcareV1ConsentPolicy>,
               List<Map<String, dynamic>>>(
           policiesValue,
-          (value) => Input.encodeList<GoogleCloudHealthcareV1ConsentPolicy,
+          (value) => pulumi.Input.encodeList<
+              GoogleCloudHealthcareV1ConsentPolicy,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['state'] = Input.mapInputValue<ConsentState, String>(
+    map['state'] = pulumi.Input.mapInputValue<ConsentState, String>(
         state, (value) => value.value);
     final ttlValue = ttl;
     if (ttlValue != null) {
@@ -95,20 +96,20 @@ class ConsentArgs {
 
   factory ConsentArgs.fromMap(Map<String, dynamic> map) {
     return ConsentArgs(
-      consentArtifact: Input.asInput<String>(map['consentArtifact']),
-      consentStoreId: Input.asInput<String>(map['consentStoreId']),
-      datasetId: Input.asInput<String>(map['datasetId']),
-      expireTime: Input.asOptionalInput<String>(map['expireTime']),
-      location: Input.asOptionalInput<String>(map['location']),
-      metadata: Input.asOptionalInput<Map<String, String>>(map['metadata']),
-      name: Input.asOptionalInput<String>(map['name']),
-      policies:
-          Input.asOptionalInput<List<GoogleCloudHealthcareV1ConsentPolicy>>(
-              map['policies']),
-      project: Input.asOptionalInput<String>(map['project']),
-      state: Input.asInput<ConsentState>(map['state']),
-      ttl: Input.asOptionalInput<String>(map['ttl']),
-      userId: Input.asInput<String>(map['userId']),
+      consentArtifact: pulumi.Input.asInput<String>(map['consentArtifact']),
+      consentStoreId: pulumi.Input.asInput<String>(map['consentStoreId']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      expireTime: pulumi.Input.asOptionalInput<String>(map['expireTime']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      metadata:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['metadata']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      policies: pulumi.Input.asOptionalInput<
+          List<GoogleCloudHealthcareV1ConsentPolicy>>(map['policies']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      state: pulumi.Input.asInput<ConsentState>(map['state']),
+      ttl: pulumi.Input.asOptionalInput<String>(map['ttl']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
     );
   }
 }

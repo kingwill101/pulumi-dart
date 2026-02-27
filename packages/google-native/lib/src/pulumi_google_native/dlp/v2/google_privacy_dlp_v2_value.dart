@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'google_privacy_dlp_v2_value_day_of_week_value.dart';
-import 'google_type_date5.dart';
-import 'google_type_time_of_day4.dart';
+import 'google_type_date_dlp_v2.dart';
+import 'google_type_time_of_day_dlp_v2.dart';
 
 /// Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data.
 class GooglePrivacyDlpV2Value {
@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2Value {
   final bool? booleanValue;
 
   /// date
-  final GoogleTypeDate5? dateValue;
+  final GoogleTypeDateDlpV2? dateValue;
 
   /// day of week
   final GooglePrivacyDlpV2ValueDayOfWeekValue? dayOfWeekValue;
@@ -25,7 +25,7 @@ class GooglePrivacyDlpV2Value {
   final String? stringValue;
 
   /// time of day
-  final GoogleTypeTimeOfDay4? timeValue;
+  final GoogleTypeTimeOfDayDlpV2? timeValue;
 
   /// timestamp
   final String? timestampValue;
@@ -84,7 +84,7 @@ class GooglePrivacyDlpV2Value {
           map['booleanValue'] == null ? null : map['booleanValue'] as bool,
       dateValue: map['dateValue'] == null
           ? null
-          : GoogleTypeDate5.fromMap(
+          : GoogleTypeDateDlpV2.fromMap(
               (map['dateValue'] as Map).cast<String, dynamic>()),
       dayOfWeekValue: map['dayOfWeekValue'] == null
           ? null
@@ -98,7 +98,7 @@ class GooglePrivacyDlpV2Value {
           map['stringValue'] == null ? null : map['stringValue'] as String,
       timeValue: map['timeValue'] == null
           ? null
-          : GoogleTypeTimeOfDay4.fromMap(
+          : GoogleTypeTimeOfDayDlpV2.fromMap(
               (map['timeValue'] as Map).cast<String, dynamic>()),
       timestampValue: map['timestampValue'] == null
           ? null

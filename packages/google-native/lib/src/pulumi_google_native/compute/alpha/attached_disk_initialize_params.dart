@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attached_disk_initialize_params_architecture.dart';
 import 'attached_disk_initialize_params_interface.dart';
 import 'attached_disk_initialize_params_on_update_action.dart';
@@ -137,7 +137,7 @@ class AttachedDiskInitializeParams {
     final guestOsFeaturesValue = guestOsFeatures;
     if (guestOsFeaturesValue != null) {
       map['guestOsFeatures'] =
-          Input.encodeList<GuestOsFeature, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GuestOsFeature, Map<String, dynamic>>(
               guestOsFeaturesValue, (value) => value.toMap());
     }
     final interfaceValue = interface;
@@ -229,7 +229,7 @@ class AttachedDiskInitializeParams {
           : map['enableConfidentialCompute'] as bool,
       guestOsFeatures: map['guestOsFeatures'] == null
           ? null
-          : Input.decodeList<GuestOsFeature>(
+          : pulumi.Input.decodeList<GuestOsFeature>(
               map['guestOsFeatures'],
               (value) => GuestOsFeature.fromMap(
                   (value as Map).cast<String, dynamic>())),

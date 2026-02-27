@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_apple_sign_in_config.dart';
 
 /// The set of arguments for DefaultSupportedIdpConfig.
 class DefaultSupportedIdpConfigArgs {
   /// Additional config for Apple-based projects.
-  final Input<GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig>?
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig>?
       appleSignInConfig;
 
   /// OAuth client ID.
-  final Input<String>? clientId;
+  final pulumi.Input<String>? clientId;
 
   /// OAuth client secret.
-  final Input<String>? clientSecret;
+  final pulumi.Input<String>? clientSecret;
 
   /// True if allows the user to sign in with the provider.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps.
-  final Input<String>? idpId;
+  final pulumi.Input<String>? idpId;
 
   /// The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-  final Input<String>? name;
-  final Input<String>? project;
-  final Input<String> tenantId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> tenantId;
 
   DefaultSupportedIdpConfigArgs({
     this.appleSignInConfig,
@@ -41,7 +41,7 @@ class DefaultSupportedIdpConfigArgs {
     final map = <String, dynamic>{};
     final appleSignInConfigValue = appleSignInConfig;
     if (appleSignInConfigValue != null) {
-      map['appleSignInConfig'] = Input.mapOptionalInputValue<
+      map['appleSignInConfig'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig,
               Map<String, dynamic>>(
           appleSignInConfigValue, (value) => value.toMap());
@@ -76,16 +76,16 @@ class DefaultSupportedIdpConfigArgs {
 
   factory DefaultSupportedIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return DefaultSupportedIdpConfigArgs(
-      appleSignInConfig: Input.asOptionalInput<
+      appleSignInConfig: pulumi.Input.asOptionalInput<
               GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig>(
           map['appleSignInConfig']),
-      clientId: Input.asOptionalInput<String>(map['clientId']),
-      clientSecret: Input.asOptionalInput<String>(map['clientSecret']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      idpId: Input.asOptionalInput<String>(map['idpId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tenantId: Input.asInput<String>(map['tenantId']),
+      clientId: pulumi.Input.asOptionalInput<String>(map['clientId']),
+      clientSecret: pulumi.Input.asOptionalInput<String>(map['clientSecret']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      idpId: pulumi.Input.asOptionalInput<String>(map['idpId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tenantId: pulumi.Input.asInput<String>(map['tenantId']),
     );
   }
 }

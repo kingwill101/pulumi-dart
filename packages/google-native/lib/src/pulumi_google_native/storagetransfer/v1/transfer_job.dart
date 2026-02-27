@@ -1,61 +1,63 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_stream_response.dart';
-import 'logging_config_response5.dart';
-import 'notification_config_response5.dart';
-import 'schedule_response2.dart';
+import 'logging_config_response_storagetransfer_v1.dart';
+import 'notification_config_response_storagetransfer_v1.dart';
+import 'schedule_response_storagetransfer_v1.dart';
 import 'transfer_job_args.dart';
 import 'transfer_spec_response.dart';
 
 /// Creates a transfer job that runs periodically.
-class TransferJob extends CustomResource {
+class TransferJob extends pulumi.CustomResource {
   /// The time that the transfer job was created.
-  late final Output<String> creationTime;
+  late final pulumi.Output<String> creationTime;
 
   /// The time that the transfer job was deleted.
-  late final Output<String> deletionTime;
+  late final pulumi.Output<String> deletionTime;
 
   /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
-  late final Output<EventStreamResponse> eventStream;
+  late final pulumi.Output<EventStreamResponse> eventStream;
 
   /// The time that the transfer job was last modified.
-  late final Output<String> lastModificationTime;
+  late final pulumi.Output<String> lastModificationTime;
 
   /// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
-  late final Output<String> latestOperationName;
+  late final pulumi.Output<String> latestOperationName;
 
   /// Logging configuration.
-  late final Output<LoggingConfigResponse5> loggingConfig;
+  late final pulumi.Output<LoggingConfigResponseStoragetransferV1>
+      loggingConfig;
 
   /// A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with `transferJobs/OPI` specifically. For all other transfer types, this name must not start with `transferJobs/OPI`. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Notification configuration. This is not supported for transfers involving PosixFilesystem.
-  late final Output<NotificationConfigResponse5> notificationConfig;
+  late final pulumi.Output<NotificationConfigResponseStoragetransferV1>
+      notificationConfig;
 
   /// The ID of the Google Cloud project that owns the job.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
-  late final Output<ScheduleResponse2> schedule;
+  late final pulumi.Output<ScheduleResponseStoragetransferV1> schedule;
 
   /// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Transfer specification.
-  late final Output<TransferSpecResponse> transferSpec;
+  late final pulumi.Output<TransferSpecResponse> transferSpec;
 
   TransferJob(
     String name, {
     TransferJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:storagetransfer/v1:TransferJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTime = registerOutput<String>('creationTime');
     this.deletionTime = registerOutput<String>('deletionTime');
@@ -64,12 +66,14 @@ class TransferJob extends CustomResource {
     this.lastModificationTime = registerOutput<String>('lastModificationTime');
     this.latestOperationName = registerOutput<String>('latestOperationName');
     this.loggingConfig =
-        registerOutput<LoggingConfigResponse5>('loggingConfig');
+        registerOutput<LoggingConfigResponseStoragetransferV1>('loggingConfig');
     this.name = registerOutput<String>('name');
     this.notificationConfig =
-        registerOutput<NotificationConfigResponse5>('notificationConfig');
+        registerOutput<NotificationConfigResponseStoragetransferV1>(
+            'notificationConfig');
     this.project = registerOutput<String>('project');
-    this.schedule = registerOutput<ScheduleResponse2>('schedule');
+    this.schedule =
+        registerOutput<ScheduleResponseStoragetransferV1>('schedule');
     this.status = registerOutput<String>('status');
     this.transferSpec = registerOutput<TransferSpecResponse>('transferSpec');
   }

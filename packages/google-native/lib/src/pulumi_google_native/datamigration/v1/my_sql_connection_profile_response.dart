@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'ssl_config_response5.dart';
+import 'ssl_config_response_datamigration_v1.dart';
 
 /// Specifies connection parameters required specifically for MySQL databases.
 class MySqlConnectionProfileResponse {
@@ -20,7 +20,7 @@ class MySqlConnectionProfileResponse {
   final int port;
 
   /// SSL configuration for the destination to connect to the source database.
-  final SslConfigResponse5 ssl;
+  final SslConfigResponseDatamigrationV1 ssl;
 
   /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
   final String username;
@@ -54,7 +54,7 @@ class MySqlConnectionProfileResponse {
       password: map['password'] as String,
       passwordSet: map['passwordSet'] as bool,
       port: map['port'] as int,
-      ssl: SslConfigResponse5.fromMap(
+      ssl: SslConfigResponseDatamigrationV1.fromMap(
           (map['ssl'] as Map).cast<String, dynamic>()),
       username: map['username'] as String,
     );

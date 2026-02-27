@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'origin_authentication_method_response.dart';
 import 'peer_authentication_method_response.dart';
 import 'tls_context_response.dart';
@@ -28,9 +28,9 @@ class AuthenticationPolicyResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['origins'] = Input.encodeList<OriginAuthenticationMethodResponse,
+    map['origins'] = pulumi.Input.encodeList<OriginAuthenticationMethodResponse,
         Map<String, dynamic>>(origins, (value) => value.toMap());
-    map['peers'] = Input.encodeList<PeerAuthenticationMethodResponse,
+    map['peers'] = pulumi.Input.encodeList<PeerAuthenticationMethodResponse,
         Map<String, dynamic>>(peers, (value) => value.toMap());
     map['principalBinding'] = principalBinding;
     map['serverTlsContext'] = serverTlsContext.toMap();
@@ -39,11 +39,11 @@ class AuthenticationPolicyResponse {
 
   factory AuthenticationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationPolicyResponse(
-      origins: Input.decodeList<OriginAuthenticationMethodResponse>(
+      origins: pulumi.Input.decodeList<OriginAuthenticationMethodResponse>(
           map['origins'],
           (value) => OriginAuthenticationMethodResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      peers: Input.decodeList<PeerAuthenticationMethodResponse>(
+      peers: pulumi.Input.decodeList<PeerAuthenticationMethodResponse>(
           map['peers'],
           (value) => PeerAuthenticationMethodResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

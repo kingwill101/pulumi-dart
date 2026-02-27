@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLake.
 class GetLakeArgs {
-  final Input<String> lakeId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> lakeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetLakeArgs({
     required this.lakeId,
@@ -27,9 +27,9 @@ class GetLakeArgs {
 
   factory GetLakeArgs.fromMap(Map<String, dynamic> map) {
     return GetLakeArgs(
-      lakeId: Input.asInput<String>(map['lakeId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      lakeId: pulumi.Input.asInput<String>(map['lakeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

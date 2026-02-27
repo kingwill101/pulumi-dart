@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDeveloperApp.
 class GetDeveloperAppArgs {
-  final Input<String> appId;
-  final Input<String> developerId;
-  final Input<String>? entity;
-  final Input<String> organizationId;
-  final Input<String>? query;
+  final pulumi.Input<String> appId;
+  final pulumi.Input<String> developerId;
+  final pulumi.Input<String>? entity;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String>? query;
 
   GetDeveloperAppArgs({
     required this.appId,
@@ -36,11 +36,11 @@ class GetDeveloperAppArgs {
 
   factory GetDeveloperAppArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperAppArgs(
-      appId: Input.asInput<String>(map['appId']),
-      developerId: Input.asInput<String>(map['developerId']),
-      entity: Input.asOptionalInput<String>(map['entity']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      query: Input.asOptionalInput<String>(map['query']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
+      developerId: pulumi.Input.asInput<String>(map['developerId']),
+      entity: pulumi.Input.asOptionalInput<String>(map['entity']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      query: pulumi.Input.asOptionalInput<String>(map['query']),
     );
   }
 }

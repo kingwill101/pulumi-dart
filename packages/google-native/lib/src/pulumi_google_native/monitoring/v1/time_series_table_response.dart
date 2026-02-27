@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'column_settings_response.dart';
 import 'table_data_set_response.dart';
 
@@ -24,10 +24,10 @@ class TimeSeriesTableResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['columnSettings'] =
-        Input.encodeList<ColumnSettingsResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ColumnSettingsResponse, Map<String, dynamic>>(
             columnSettings, (value) => value.toMap());
     map['dataSets'] =
-        Input.encodeList<TableDataSetResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TableDataSetResponse, Map<String, dynamic>>(
             dataSets, (value) => value.toMap());
     map['metricVisualization'] = metricVisualization;
     return map;
@@ -35,11 +35,11 @@ class TimeSeriesTableResponse {
 
   factory TimeSeriesTableResponse.fromMap(Map<String, dynamic> map) {
     return TimeSeriesTableResponse(
-      columnSettings: Input.decodeList<ColumnSettingsResponse>(
+      columnSettings: pulumi.Input.decodeList<ColumnSettingsResponse>(
           map['columnSettings'],
           (value) => ColumnSettingsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      dataSets: Input.decodeList<TableDataSetResponse>(
+      dataSets: pulumi.Input.decodeList<TableDataSetResponse>(
           map['dataSets'],
           (value) => TableDataSetResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

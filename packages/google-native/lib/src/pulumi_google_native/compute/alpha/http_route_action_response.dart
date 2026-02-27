@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cors_policy_response.dart';
 import 'duration_response.dart';
 import 'http_fault_injection_response.dart';
@@ -54,9 +54,9 @@ class HttpRouteActionResponse {
     map['retryPolicy'] = retryPolicy.toMap();
     map['timeout'] = timeout.toMap();
     map['urlRewrite'] = urlRewrite.toMap();
-    map['weightedBackendServices'] =
-        Input.encodeList<WeightedBackendServiceResponse, Map<String, dynamic>>(
-            weightedBackendServices, (value) => value.toMap());
+    map['weightedBackendServices'] = pulumi.Input.encodeList<
+            WeightedBackendServiceResponse, Map<String, dynamic>>(
+        weightedBackendServices, (value) => value.toMap());
     return map;
   }
 
@@ -76,10 +76,11 @@ class HttpRouteActionResponse {
           (map['timeout'] as Map).cast<String, dynamic>()),
       urlRewrite: UrlRewriteResponse.fromMap(
           (map['urlRewrite'] as Map).cast<String, dynamic>()),
-      weightedBackendServices: Input.decodeList<WeightedBackendServiceResponse>(
-          map['weightedBackendServices'],
-          (value) => WeightedBackendServiceResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      weightedBackendServices:
+          pulumi.Input.decodeList<WeightedBackendServiceResponse>(
+              map['weightedBackendServices'],
+              (value) => WeightedBackendServiceResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

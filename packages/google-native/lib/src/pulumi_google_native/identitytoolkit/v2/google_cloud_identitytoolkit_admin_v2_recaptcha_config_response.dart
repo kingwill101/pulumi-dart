@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_recaptcha_key_response.dart';
 import 'google_cloud_identitytoolkit_admin_v2_recaptcha_managed_rule_response.dart';
 
@@ -30,10 +30,10 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['emailPasswordEnforcementState'] = emailPasswordEnforcementState;
-    map['managedRules'] = Input.encodeList<
+    map['managedRules'] = pulumi.Input.encodeList<
         GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse,
         Map<String, dynamic>>(managedRules, (value) => value.toMap());
-    map['recaptchaKeys'] = Input.encodeList<
+    map['recaptchaKeys'] = pulumi.Input.encodeList<
         GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse,
         Map<String, dynamic>>(recaptchaKeys, (value) => value.toMap());
     map['useAccountDefender'] = useAccountDefender;
@@ -45,13 +45,13 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse(
       emailPasswordEnforcementState:
           map['emailPasswordEnforcementState'] as String,
-      managedRules: Input.decodeList<
+      managedRules: pulumi.Input.decodeList<
               GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse>(
           map['managedRules'],
           (value) =>
               GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse
                   .fromMap((value as Map).cast<String, dynamic>())),
-      recaptchaKeys: Input.decodeList<
+      recaptchaKeys: pulumi.Input.decodeList<
               GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse>(
           map['recaptchaKeys'],
           (value) =>

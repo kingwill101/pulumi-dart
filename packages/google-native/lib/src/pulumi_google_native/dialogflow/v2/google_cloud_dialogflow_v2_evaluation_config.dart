@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_evaluation_config_smart_compose_config.dart';
 import 'google_cloud_dialogflow_v2_evaluation_config_smart_reply_config.dart';
 import 'google_cloud_dialogflow_v2_input_dataset.dart';
@@ -26,7 +26,8 @@ class GoogleCloudDialogflowV2EvaluationConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['datasets'] = Input.encodeList<GoogleCloudDialogflowV2InputDataset,
+    map['datasets'] = pulumi.Input.encodeList<
+        GoogleCloudDialogflowV2InputDataset,
         Map<String, dynamic>>(datasets, (value) => value.toMap());
     final smartComposeConfigValue = smartComposeConfig;
     if (smartComposeConfigValue != null) {
@@ -42,7 +43,7 @@ class GoogleCloudDialogflowV2EvaluationConfig {
   factory GoogleCloudDialogflowV2EvaluationConfig.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2EvaluationConfig(
-      datasets: Input.decodeList<GoogleCloudDialogflowV2InputDataset>(
+      datasets: pulumi.Input.decodeList<GoogleCloudDialogflowV2InputDataset>(
           map['datasets'],
           (value) => GoogleCloudDialogflowV2InputDataset.fromMap(
               (value as Map).cast<String, dynamic>())),

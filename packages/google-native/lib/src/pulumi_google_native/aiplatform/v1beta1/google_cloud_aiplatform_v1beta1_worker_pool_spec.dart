@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_container_spec.dart';
 import 'google_cloud_aiplatform_v1beta1_disk_spec.dart';
 import 'google_cloud_aiplatform_v1beta1_machine_spec.dart';
@@ -52,7 +52,8 @@ class GoogleCloudAiplatformV1beta1WorkerPoolSpec {
     }
     final nfsMountsValue = nfsMounts;
     if (nfsMountsValue != null) {
-      map['nfsMounts'] = Input.encodeList<GoogleCloudAiplatformV1beta1NfsMount,
+      map['nfsMounts'] = pulumi.Input.encodeList<
+          GoogleCloudAiplatformV1beta1NfsMount,
           Map<String, dynamic>>(nfsMountsValue, (value) => value.toMap());
     }
     final pythonPackageSpecValue = pythonPackageSpec;
@@ -83,7 +84,7 @@ class GoogleCloudAiplatformV1beta1WorkerPoolSpec {
               (map['machineSpec'] as Map).cast<String, dynamic>()),
       nfsMounts: map['nfsMounts'] == null
           ? null
-          : Input.decodeList<GoogleCloudAiplatformV1beta1NfsMount>(
+          : pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1NfsMount>(
               map['nfsMounts'],
               (value) => GoogleCloudAiplatformV1beta1NfsMount.fromMap(
                   (value as Map).cast<String, dynamic>())),

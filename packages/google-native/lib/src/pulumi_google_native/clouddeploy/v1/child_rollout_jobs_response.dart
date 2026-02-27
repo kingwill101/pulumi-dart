@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_response.dart';
 
 /// ChildRollouts job composition
@@ -19,21 +19,21 @@ class ChildRolloutJobsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['advanceRolloutJobs'] =
-        Input.encodeList<JobResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(
             advanceRolloutJobs, (value) => value.toMap());
     map['createRolloutJobs'] =
-        Input.encodeList<JobResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<JobResponse, Map<String, dynamic>>(
             createRolloutJobs, (value) => value.toMap());
     return map;
   }
 
   factory ChildRolloutJobsResponse.fromMap(Map<String, dynamic> map) {
     return ChildRolloutJobsResponse(
-      advanceRolloutJobs: Input.decodeList<JobResponse>(
+      advanceRolloutJobs: pulumi.Input.decodeList<JobResponse>(
           map['advanceRolloutJobs'],
           (value) =>
               JobResponse.fromMap((value as Map).cast<String, dynamic>())),
-      createRolloutJobs: Input.decodeList<JobResponse>(
+      createRolloutJobs: pulumi.Input.decodeList<JobResponse>(
           map['createRolloutJobs'],
           (value) =>
               JobResponse.fromMap((value as Map).cast<String, dynamic>())),

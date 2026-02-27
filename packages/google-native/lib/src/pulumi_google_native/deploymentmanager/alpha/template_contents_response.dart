@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'import_file_response.dart';
 
 /// Files that make up the template contents of a template type.
@@ -30,8 +30,9 @@ class TemplateContentsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['imports'] = Input.encodeList<ImportFileResponse, Map<String, dynamic>>(
-        imports, (value) => value.toMap());
+    map['imports'] =
+        pulumi.Input.encodeList<ImportFileResponse, Map<String, dynamic>>(
+            imports, (value) => value.toMap());
     map['interpreter'] = interpreter;
     map['mainTemplate'] = mainTemplate;
     map['schema'] = schema;
@@ -41,7 +42,7 @@ class TemplateContentsResponse {
 
   factory TemplateContentsResponse.fromMap(Map<String, dynamic> map) {
     return TemplateContentsResponse(
-      imports: Input.decodeList<ImportFileResponse>(
+      imports: pulumi.Input.decodeList<ImportFileResponse>(
           map['imports'],
           (value) => ImportFileResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

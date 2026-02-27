@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_rule_network_matcher_user_defined_field_match_response.dart';
 
 /// Represents a match condition that incoming network traffic is evaluated against.
@@ -50,7 +50,7 @@ class SecurityPolicyRuleNetworkMatcherResponse {
     map['srcIpRanges'] = srcIpRanges;
     map['srcPorts'] = srcPorts;
     map['srcRegionCodes'] = srcRegionCodes;
-    map['userDefinedFields'] = Input.encodeList<
+    map['userDefinedFields'] = pulumi.Input.encodeList<
         SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse,
         Map<String, dynamic>>(userDefinedFields, (value) => value.toMap());
     return map;
@@ -66,7 +66,7 @@ class SecurityPolicyRuleNetworkMatcherResponse {
       srcIpRanges: (map['srcIpRanges'] as List).cast<String>(),
       srcPorts: (map['srcPorts'] as List).cast<String>(),
       srcRegionCodes: (map['srcRegionCodes'] as List).cast<String>(),
-      userDefinedFields: Input.decodeList<
+      userDefinedFields: pulumi.Input.decodeList<
               SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse>(
           map['userDefinedFields'],
           (value) =>

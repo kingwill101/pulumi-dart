@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAuthorizedCertificate.
 class GetAuthorizedCertificateArgs {
-  final Input<String> appId;
-  final Input<String> authorizedCertificateId;
-  final Input<String>? view;
+  final pulumi.Input<String> appId;
+  final pulumi.Input<String> authorizedCertificateId;
+  final pulumi.Input<String>? view;
 
   GetAuthorizedCertificateArgs({
     required this.appId,
@@ -27,10 +27,10 @@ class GetAuthorizedCertificateArgs {
 
   factory GetAuthorizedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizedCertificateArgs(
-      appId: Input.asInput<String>(map['appId']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
       authorizedCertificateId:
-          Input.asInput<String>(map['authorizedCertificateId']),
-      view: Input.asOptionalInput<String>(map['view']),
+          pulumi.Input.asInput<String>(map['authorizedCertificateId']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

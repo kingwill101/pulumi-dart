@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contactcenterinsights_v1_call_annotation_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_level_sentiment_response.dart';
 import 'google_cloud_contactcenterinsights_v1_issue_model_result_response.dart';
@@ -40,14 +40,14 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['annotations'] = Input.encodeList<
+    map['annotations'] = pulumi.Input.encodeList<
         GoogleCloudContactcenterinsightsV1CallAnnotationResponse,
         Map<String, dynamic>>(annotations, (value) => value.toMap());
     map['entities'] = entities;
     map['intents'] = intents;
     map['issueModelResult'] = issueModelResult.toMap();
     map['phraseMatchers'] = phraseMatchers;
-    map['sentiments'] = Input.encodeList<
+    map['sentiments'] = pulumi.Input.encodeList<
         GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse,
         Map<String, dynamic>>(sentiments, (value) => value.toMap());
     return map;
@@ -56,7 +56,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
   factory GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse(
-      annotations: Input.decodeList<
+      annotations: pulumi.Input.decodeList<
               GoogleCloudContactcenterinsightsV1CallAnnotationResponse>(
           map['annotations'],
           (value) =>
@@ -68,7 +68,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
           GoogleCloudContactcenterinsightsV1IssueModelResultResponse.fromMap(
               (map['issueModelResult'] as Map).cast<String, dynamic>()),
       phraseMatchers: (map['phraseMatchers'] as Map).cast<String, String>(),
-      sentiments: Input.decodeList<
+      sentiments: pulumi.Input.decodeList<
               GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse>(
           map['sentiments'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'type.dart';
 import 'version_source.dart';
 
@@ -21,13 +21,14 @@ class Hl7TypesConfig {
     final map = <String, dynamic>{};
     final typeValue = type;
     if (typeValue != null) {
-      map['type'] = Input.encodeList<Type, Map<String, dynamic>>(
+      map['type'] = pulumi.Input.encodeList<Type, Map<String, dynamic>>(
           typeValue, (value) => value.toMap());
     }
     final versionValue = version;
     if (versionValue != null) {
-      map['version'] = Input.encodeList<VersionSource, Map<String, dynamic>>(
-          versionValue, (value) => value.toMap());
+      map['version'] =
+          pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(
+              versionValue, (value) => value.toMap());
     }
     return map;
   }
@@ -36,11 +37,11 @@ class Hl7TypesConfig {
     return Hl7TypesConfig(
       type: map['type'] == null
           ? null
-          : Input.decodeList<Type>(map['type'],
+          : pulumi.Input.decodeList<Type>(map['type'],
               (value) => Type.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] == null
           ? null
-          : Input.decodeList<VersionSource>(
+          : pulumi.Input.decodeList<VersionSource>(
               map['version'],
               (value) => VersionSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

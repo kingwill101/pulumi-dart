@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceConfig.
 class GetInstanceConfigArgs {
-  final Input<String> instanceConfigId;
-  final Input<String>? project;
+  final pulumi.Input<String> instanceConfigId;
+  final pulumi.Input<String>? project;
 
   GetInstanceConfigArgs({
     required this.instanceConfigId,
@@ -24,8 +24,8 @@ class GetInstanceConfigArgs {
 
   factory GetInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceConfigArgs(
-      instanceConfigId: Input.asInput<String>(map['instanceConfigId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      instanceConfigId: pulumi.Input.asInput<String>(map['instanceConfigId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2_condition_query_term.dart';
 import 'google_cloud_retail_v2_condition_time_range.dart';
 
@@ -25,7 +25,7 @@ class GoogleCloudRetailV2Condition {
     final map = <String, dynamic>{};
     final activeTimeRangeValue = activeTimeRange;
     if (activeTimeRangeValue != null) {
-      map['activeTimeRange'] = Input.encodeList<
+      map['activeTimeRange'] = pulumi.Input.encodeList<
           GoogleCloudRetailV2ConditionTimeRange,
           Map<String, dynamic>>(activeTimeRangeValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class GoogleCloudRetailV2Condition {
     }
     final queryTermsValue = queryTerms;
     if (queryTermsValue != null) {
-      map['queryTerms'] = Input.encodeList<
+      map['queryTerms'] = pulumi.Input.encodeList<
           GoogleCloudRetailV2ConditionQueryTerm,
           Map<String, dynamic>>(queryTermsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class GoogleCloudRetailV2Condition {
     return GoogleCloudRetailV2Condition(
       activeTimeRange: map['activeTimeRange'] == null
           ? null
-          : Input.decodeList<GoogleCloudRetailV2ConditionTimeRange>(
+          : pulumi.Input.decodeList<GoogleCloudRetailV2ConditionTimeRange>(
               map['activeTimeRange'],
               (value) => GoogleCloudRetailV2ConditionTimeRange.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -55,7 +55,7 @@ class GoogleCloudRetailV2Condition {
           : (map['pageCategories'] as List).cast<String>(),
       queryTerms: map['queryTerms'] == null
           ? null
-          : Input.decodeList<GoogleCloudRetailV2ConditionQueryTerm>(
+          : pulumi.Input.decodeList<GoogleCloudRetailV2ConditionQueryTerm>(
               map['queryTerms'],
               (value) => GoogleCloudRetailV2ConditionQueryTerm.fromMap(
                   (value as Map).cast<String, dynamic>())),

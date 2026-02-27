@@ -2,7 +2,7 @@
 
 import 'appliance_cluster.dart';
 import 'edge_cluster.dart';
-import 'gke_cluster2.dart';
+import 'gke_cluster_gkehub_v1.dart';
 import 'kubernetes_resource.dart';
 import 'multi_cloud_cluster.dart';
 import 'on_prem_cluster.dart';
@@ -16,7 +16,7 @@ class MembershipEndpoint {
   final EdgeCluster? edgeCluster;
 
   /// Optional. Specific information for a GKE-on-GCP cluster.
-  final GkeCluster2? gkeCluster;
+  final GkeClusterGkehubV1? gkeCluster;
 
   /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
   final KubernetesResource? kubernetesResource;
@@ -77,7 +77,7 @@ class MembershipEndpoint {
               (map['edgeCluster'] as Map).cast<String, dynamic>()),
       gkeCluster: map['gkeCluster'] == null
           ? null
-          : GkeCluster2.fromMap(
+          : GkeClusterGkehubV1.fromMap(
               (map['gkeCluster'] as Map).cast<String, dynamic>()),
       kubernetesResource: map['kubernetesResource'] == null
           ? null

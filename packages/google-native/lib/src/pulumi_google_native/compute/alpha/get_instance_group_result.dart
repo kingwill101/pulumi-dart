@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'named_port_response.dart';
 
 /// Result data returned by getInstanceGroup.
@@ -68,7 +68,7 @@ class GetInstanceGroupResult {
     map['kind'] = kind;
     map['name'] = name;
     map['namedPorts'] =
-        Input.encodeList<NamedPortResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<NamedPortResponse, Map<String, dynamic>>(
             namedPorts, (value) => value.toMap());
     map['network'] = network;
     map['region'] = region;
@@ -87,7 +87,7 @@ class GetInstanceGroupResult {
       fingerprint: map['fingerprint'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      namedPorts: Input.decodeList<NamedPortResponse>(
+      namedPorts: pulumi.Input.decodeList<NamedPortResponse>(
           map['namedPorts'],
           (value) => NamedPortResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_property.dart';
 
 /// Property values.
@@ -16,7 +16,7 @@ class GoogleCloudContentwarehouseV1PropertyArray {
     final map = <String, dynamic>{};
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.encodeList<
+      map['properties'] = pulumi.Input.encodeList<
           GoogleCloudContentwarehouseV1Property,
           Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class GoogleCloudContentwarehouseV1PropertyArray {
     return GoogleCloudContentwarehouseV1PropertyArray(
       properties: map['properties'] == null
           ? null
-          : Input.decodeList<GoogleCloudContentwarehouseV1Property>(
+          : pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Property>(
               map['properties'],
               (value) => GoogleCloudContentwarehouseV1Property.fromMap(
                   (value as Map).cast<String, dynamic>())),

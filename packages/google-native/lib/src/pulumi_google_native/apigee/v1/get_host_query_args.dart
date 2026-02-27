@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHostQuery.
 class GetHostQueryArgs {
-  final Input<String> hostQueryId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> hostQueryId;
+  final pulumi.Input<String> organizationId;
 
   GetHostQueryArgs({
     required this.hostQueryId,
@@ -21,8 +21,8 @@ class GetHostQueryArgs {
 
   factory GetHostQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetHostQueryArgs(
-      hostQueryId: Input.asInput<String>(map['hostQueryId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      hostQueryId: pulumi.Input.asInput<String>(map['hostQueryId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

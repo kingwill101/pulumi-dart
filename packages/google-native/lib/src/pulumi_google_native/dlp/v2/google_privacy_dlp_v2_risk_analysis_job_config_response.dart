@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_action_response.dart';
 import 'google_privacy_dlp_v2_big_query_table_response.dart';
 import 'google_privacy_dlp_v2_privacy_metric_response.dart';
@@ -24,7 +24,7 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] = Input.encodeList<GooglePrivacyDlpV2ActionResponse,
+    map['actions'] = pulumi.Input.encodeList<GooglePrivacyDlpV2ActionResponse,
         Map<String, dynamic>>(actions, (value) => value.toMap());
     map['privacyMetric'] = privacyMetric.toMap();
     map['sourceTable'] = sourceTable.toMap();
@@ -34,7 +34,7 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
   factory GooglePrivacyDlpV2RiskAnalysisJobConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RiskAnalysisJobConfigResponse(
-      actions: Input.decodeList<GooglePrivacyDlpV2ActionResponse>(
+      actions: pulumi.Input.decodeList<GooglePrivacyDlpV2ActionResponse>(
           map['actions'],
           (value) => GooglePrivacyDlpV2ActionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

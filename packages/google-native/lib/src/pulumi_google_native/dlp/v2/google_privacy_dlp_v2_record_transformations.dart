@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_field_transformation.dart';
 import 'google_privacy_dlp_v2_record_suppression.dart';
 
@@ -21,13 +21,13 @@ class GooglePrivacyDlpV2RecordTransformations {
     final map = <String, dynamic>{};
     final fieldTransformationsValue = fieldTransformations;
     if (fieldTransformationsValue != null) {
-      map['fieldTransformations'] = Input.encodeList<
+      map['fieldTransformations'] = pulumi.Input.encodeList<
               GooglePrivacyDlpV2FieldTransformation, Map<String, dynamic>>(
           fieldTransformationsValue, (value) => value.toMap());
     }
     final recordSuppressionsValue = recordSuppressions;
     if (recordSuppressionsValue != null) {
-      map['recordSuppressions'] = Input.encodeList<
+      map['recordSuppressions'] = pulumi.Input.encodeList<
               GooglePrivacyDlpV2RecordSuppression, Map<String, dynamic>>(
           recordSuppressionsValue, (value) => value.toMap());
     }
@@ -39,13 +39,13 @@ class GooglePrivacyDlpV2RecordTransformations {
     return GooglePrivacyDlpV2RecordTransformations(
       fieldTransformations: map['fieldTransformations'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2FieldTransformation>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldTransformation>(
               map['fieldTransformations'],
               (value) => GooglePrivacyDlpV2FieldTransformation.fromMap(
                   (value as Map).cast<String, dynamic>())),
       recordSuppressions: map['recordSuppressions'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2RecordSuppression>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2RecordSuppression>(
               map['recordSuppressions'],
               (value) => GooglePrivacyDlpV2RecordSuppression.fromMap(
                   (value as Map).cast<String, dynamic>())),

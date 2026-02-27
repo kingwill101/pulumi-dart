@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'filter_response4.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'filter_response_networkconnectivity_v1.dart';
 import 'interconnect_attachment_response.dart';
 import 'virtual_machine_response.dart';
 import 'warnings_response.dart';
@@ -15,7 +15,7 @@ class GetPolicyBasedRouteResult {
   final String description;
 
   /// The filter to match L4 traffic.
-  final FilterResponse4 filter;
+  final FilterResponseNetworkconnectivityV1 filter;
 
   /// Optional. The interconnect attachments that this policy-based route applies to.
   final InterconnectAttachmentResponse interconnectAttachment;
@@ -87,8 +87,9 @@ class GetPolicyBasedRouteResult {
     map['selfLink'] = selfLink;
     map['updateTime'] = updateTime;
     map['virtualMachine'] = virtualMachine.toMap();
-    map['warnings'] = Input.encodeList<WarningsResponse, Map<String, dynamic>>(
-        warnings, (value) => value.toMap());
+    map['warnings'] =
+        pulumi.Input.encodeList<WarningsResponse, Map<String, dynamic>>(
+            warnings, (value) => value.toMap());
     return map;
   }
 
@@ -96,7 +97,7 @@ class GetPolicyBasedRouteResult {
     return GetPolicyBasedRouteResult(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      filter: FilterResponse4.fromMap(
+      filter: FilterResponseNetworkconnectivityV1.fromMap(
           (map['filter'] as Map).cast<String, dynamic>()),
       interconnectAttachment: InterconnectAttachmentResponse.fromMap(
           (map['interconnectAttachment'] as Map).cast<String, dynamic>()),
@@ -111,7 +112,7 @@ class GetPolicyBasedRouteResult {
       updateTime: map['updateTime'] as String,
       virtualMachine: VirtualMachineResponse.fromMap(
           (map['virtualMachine'] as Map).cast<String, dynamic>()),
-      warnings: Input.decodeList<WarningsResponse>(
+      warnings: pulumi.Input.decodeList<WarningsResponse>(
           map['warnings'],
           (value) =>
               WarningsResponse.fromMap((value as Map).cast<String, dynamic>())),

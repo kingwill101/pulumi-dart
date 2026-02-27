@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEvaluation.
 class GetEvaluationArgs {
-  final Input<String> conversationModelId;
-  final Input<String> evaluationId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> conversationModelId;
+  final pulumi.Input<String> evaluationId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetEvaluationArgs({
     required this.conversationModelId,
@@ -30,10 +30,11 @@ class GetEvaluationArgs {
 
   factory GetEvaluationArgs.fromMap(Map<String, dynamic> map) {
     return GetEvaluationArgs(
-      conversationModelId: Input.asInput<String>(map['conversationModelId']),
-      evaluationId: Input.asInput<String>(map['evaluationId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      conversationModelId:
+          pulumi.Input.asInput<String>(map['conversationModelId']),
+      evaluationId: pulumi.Input.asInput<String>(map['evaluationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

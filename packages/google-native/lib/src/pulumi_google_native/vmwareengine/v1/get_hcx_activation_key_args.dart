@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHcxActivationKey.
 class GetHcxActivationKeyArgs {
-  final Input<String> hcxActivationKeyId;
-  final Input<String> location;
-  final Input<String> privateCloudId;
-  final Input<String>? project;
+  final pulumi.Input<String> hcxActivationKeyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> privateCloudId;
+  final pulumi.Input<String>? project;
 
   GetHcxActivationKeyArgs({
     required this.hcxActivationKeyId,
@@ -30,10 +30,11 @@ class GetHcxActivationKeyArgs {
 
   factory GetHcxActivationKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetHcxActivationKeyArgs(
-      hcxActivationKeyId: Input.asInput<String>(map['hcxActivationKeyId']),
-      location: Input.asInput<String>(map['location']),
-      privateCloudId: Input.asInput<String>(map['privateCloudId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      hcxActivationKeyId:
+          pulumi.Input.asInput<String>(map['hcxActivationKeyId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      privateCloudId: pulumi.Input.asInput<String>(map['privateCloudId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

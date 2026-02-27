@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backfill_all_strategy_response.dart';
-import 'destination_config_response2.dart';
+import 'destination_config_response_datastream_v1.dart';
 import 'error_response.dart';
-import 'source_config_response2.dart';
+import 'source_config_response_datastream_v1.dart';
 
 /// Result data returned by getStream.
 class GetStreamResult {
@@ -21,7 +21,7 @@ class GetStreamResult {
   final String customerManagedEncryptionKey;
 
   /// Destination connection profile configuration.
-  final DestinationConfigResponse2 destinationConfig;
+  final DestinationConfigResponseDatastreamV1 destinationConfig;
 
   /// Display name.
   final String displayName;
@@ -39,7 +39,7 @@ class GetStreamResult {
   final String name;
 
   /// Source connection profile configuration.
-  final SourceConfigResponse2 sourceConfig;
+  final SourceConfigResponseDatastreamV1 sourceConfig;
 
   /// The state of the stream.
   final String state;
@@ -71,8 +71,9 @@ class GetStreamResult {
     map['customerManagedEncryptionKey'] = customerManagedEncryptionKey;
     map['destinationConfig'] = destinationConfig.toMap();
     map['displayName'] = displayName;
-    map['errors'] = Input.encodeList<ErrorResponse, Map<String, dynamic>>(
-        errors, (value) => value.toMap());
+    map['errors'] =
+        pulumi.Input.encodeList<ErrorResponse, Map<String, dynamic>>(
+            errors, (value) => value.toMap());
     map['labels'] = labels;
     map['lastRecoveryTime'] = lastRecoveryTime;
     map['name'] = name;
@@ -90,17 +91,17 @@ class GetStreamResult {
       createTime: map['createTime'] as String,
       customerManagedEncryptionKey:
           map['customerManagedEncryptionKey'] as String,
-      destinationConfig: DestinationConfigResponse2.fromMap(
+      destinationConfig: DestinationConfigResponseDatastreamV1.fromMap(
           (map['destinationConfig'] as Map).cast<String, dynamic>()),
       displayName: map['displayName'] as String,
-      errors: Input.decodeList<ErrorResponse>(
+      errors: pulumi.Input.decodeList<ErrorResponse>(
           map['errors'],
           (value) =>
               ErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
       lastRecoveryTime: map['lastRecoveryTime'] as String,
       name: map['name'] as String,
-      sourceConfig: SourceConfigResponse2.fromMap(
+      sourceConfig: SourceConfigResponseDatastreamV1.fromMap(
           (map['sourceConfig'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,

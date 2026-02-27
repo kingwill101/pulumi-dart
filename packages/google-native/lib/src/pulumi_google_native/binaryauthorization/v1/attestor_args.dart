@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_owned_grafeas_note.dart';
 
 /// The set of arguments for Attestor.
 class AttestorArgs {
   /// Required. The attestors ID.
-  final Input<String> attestorId;
+  final pulumi.Input<String> attestorId;
 
   /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// This specifies how an attestation will be read, and how it will be used during policy enforcement.
-  final Input<UserOwnedGrafeasNote>? userOwnedGrafeasNote;
+  final pulumi.Input<UserOwnedGrafeasNote>? userOwnedGrafeasNote;
 
   AttestorArgs({
     required this.attestorId,
@@ -51,7 +51,7 @@ class AttestorArgs {
     }
     final userOwnedGrafeasNoteValue = userOwnedGrafeasNote;
     if (userOwnedGrafeasNoteValue != null) {
-      map['userOwnedGrafeasNote'] = Input.mapOptionalInputValue<
+      map['userOwnedGrafeasNote'] = pulumi.Input.mapOptionalInputValue<
               UserOwnedGrafeasNote, Map<String, dynamic>>(
           userOwnedGrafeasNoteValue, (value) => value.toMap());
     }
@@ -60,12 +60,12 @@ class AttestorArgs {
 
   factory AttestorArgs.fromMap(Map<String, dynamic> map) {
     return AttestorArgs(
-      attestorId: Input.asInput<String>(map['attestorId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      userOwnedGrafeasNote: Input.asOptionalInput<UserOwnedGrafeasNote>(
+      attestorId: pulumi.Input.asInput<String>(map['attestorId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      userOwnedGrafeasNote: pulumi.Input.asOptionalInput<UserOwnedGrafeasNote>(
           map['userOwnedGrafeasNote']),
     );
   }

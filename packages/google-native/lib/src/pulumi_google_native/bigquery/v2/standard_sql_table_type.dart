@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'standard_sql_field.dart';
 
 /// A table type
@@ -16,8 +16,9 @@ class StandardSqlTableType {
     final map = <String, dynamic>{};
     final columnsValue = columns;
     if (columnsValue != null) {
-      map['columns'] = Input.encodeList<StandardSqlField, Map<String, dynamic>>(
-          columnsValue, (value) => value.toMap());
+      map['columns'] =
+          pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(
+              columnsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -26,7 +27,7 @@ class StandardSqlTableType {
     return StandardSqlTableType(
       columns: map['columns'] == null
           ? null
-          : Input.decodeList<StandardSqlField>(
+          : pulumi.Input.decodeList<StandardSqlField>(
               map['columns'],
               (value) => StandardSqlField.fromMap(
                   (value as Map).cast<String, dynamic>())),

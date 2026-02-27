@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UrlList.
 class UrlListArgs {
   /// Optional. Free-text description of the resource.
-  final Input<String>? description;
-  final Input<String>? location;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String>? location;
 
   /// Name of the resource provided by the user. Name is of the form projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Required. Short name of the UrlList resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "url_list".
-  final Input<String> urlListId;
+  final pulumi.Input<String> urlListId;
 
   /// FQDNs and URLs.
-  final Input<List<String>> values;
+  final pulumi.Input<List<String>> values;
 
   UrlListArgs({
     this.description,
@@ -52,12 +52,12 @@ class UrlListArgs {
 
   factory UrlListArgs.fromMap(Map<String, dynamic> map) {
     return UrlListArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      urlListId: Input.asInput<String>(map['urlListId']),
-      values: Input.asInput<List<String>>(map['values']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      urlListId: pulumi.Input.asInput<String>(map['urlListId']),
+      values: pulumi.Input.asInput<List<String>>(map['values']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_normalized_vertex_response.dart';
 import 'google_cloud_documentai_v1_vertex_response.dart';
 
@@ -20,10 +20,11 @@ class GoogleCloudDocumentaiV1BoundingPolyResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['normalizedVertices'] = Input.encodeList<
+    map['normalizedVertices'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1NormalizedVertexResponse,
         Map<String, dynamic>>(normalizedVertices, (value) => value.toMap());
-    map['vertices'] = Input.encodeList<GoogleCloudDocumentaiV1VertexResponse,
+    map['vertices'] = pulumi.Input.encodeList<
+        GoogleCloudDocumentaiV1VertexResponse,
         Map<String, dynamic>>(vertices, (value) => value.toMap());
     return map;
   }
@@ -31,13 +32,12 @@ class GoogleCloudDocumentaiV1BoundingPolyResponse {
   factory GoogleCloudDocumentaiV1BoundingPolyResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1BoundingPolyResponse(
-      normalizedVertices:
-          Input.decodeList<GoogleCloudDocumentaiV1NormalizedVertexResponse>(
-              map['normalizedVertices'],
-              (value) =>
-                  GoogleCloudDocumentaiV1NormalizedVertexResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      vertices: Input.decodeList<GoogleCloudDocumentaiV1VertexResponse>(
+      normalizedVertices: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1NormalizedVertexResponse>(
+          map['normalizedVertices'],
+          (value) => GoogleCloudDocumentaiV1NormalizedVertexResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      vertices: pulumi.Input.decodeList<GoogleCloudDocumentaiV1VertexResponse>(
           map['vertices'],
           (value) => GoogleCloudDocumentaiV1VertexResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

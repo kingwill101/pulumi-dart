@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute_response.dart';
 
 /// Result data returned by getDeveloperAppKey.
@@ -47,7 +47,8 @@ class GetDeveloperAppKeyResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['apiProducts'] = apiProducts;
-    map['attributes'] = Input.encodeList<GoogleCloudApigeeV1AttributeResponse,
+    map['attributes'] = pulumi.Input.encodeList<
+        GoogleCloudApigeeV1AttributeResponse,
         Map<String, dynamic>>(attributes, (value) => value.toMap());
     map['consumerKey'] = consumerKey;
     map['consumerSecret'] = consumerSecret;
@@ -62,7 +63,7 @@ class GetDeveloperAppKeyResult {
   factory GetDeveloperAppKeyResult.fromMap(Map<String, dynamic> map) {
     return GetDeveloperAppKeyResult(
       apiProducts: (map['apiProducts'] as List).cast<dynamic>(),
-      attributes: Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
+      attributes: pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
           map['attributes'],
           (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationSink.
 class GetOrganizationSinkArgs {
-  final Input<String> organizationId;
-  final Input<String> sinkId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> sinkId;
 
   GetOrganizationSinkArgs({
     required this.organizationId,
@@ -21,8 +21,8 @@ class GetOrganizationSinkArgs {
 
   factory GetOrganizationSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSinkArgs(
-      organizationId: Input.asInput<String>(map['organizationId']),
-      sinkId: Input.asInput<String>(map['sinkId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      sinkId: pulumi.Input.asInput<String>(map['sinkId']),
     );
   }
 }

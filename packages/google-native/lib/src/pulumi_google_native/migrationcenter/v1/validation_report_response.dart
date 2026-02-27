@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_validation_report_response.dart';
 import 'import_error_response.dart';
 
@@ -19,22 +19,22 @@ class ValidationReportResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fileValidations'] =
-        Input.encodeList<FileValidationReportResponse, Map<String, dynamic>>(
-            fileValidations, (value) => value.toMap());
+    map['fileValidations'] = pulumi.Input.encodeList<
+        FileValidationReportResponse,
+        Map<String, dynamic>>(fileValidations, (value) => value.toMap());
     map['jobErrors'] =
-        Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(
             jobErrors, (value) => value.toMap());
     return map;
   }
 
   factory ValidationReportResponse.fromMap(Map<String, dynamic> map) {
     return ValidationReportResponse(
-      fileValidations: Input.decodeList<FileValidationReportResponse>(
+      fileValidations: pulumi.Input.decodeList<FileValidationReportResponse>(
           map['fileValidations'],
           (value) => FileValidationReportResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      jobErrors: Input.decodeList<ImportErrorResponse>(
+      jobErrors: pulumi.Input.decodeList<ImportErrorResponse>(
           map['jobErrors'],
           (value) => ImportErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

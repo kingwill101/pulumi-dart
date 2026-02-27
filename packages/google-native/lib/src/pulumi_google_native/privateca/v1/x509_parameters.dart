@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ca_options.dart';
 import 'key_usage.dart';
 import 'name_constraints.dart';
@@ -41,7 +41,7 @@ class X509Parameters {
     final additionalExtensionsValue = additionalExtensions;
     if (additionalExtensionsValue != null) {
       map['additionalExtensions'] =
-          Input.encodeList<X509Extension, Map<String, dynamic>>(
+          pulumi.Input.encodeList<X509Extension, Map<String, dynamic>>(
               additionalExtensionsValue, (value) => value.toMap());
     }
     final aiaOcspServersValue = aiaOcspServers;
@@ -62,8 +62,9 @@ class X509Parameters {
     }
     final policyIdsValue = policyIds;
     if (policyIdsValue != null) {
-      map['policyIds'] = Input.encodeList<ObjectId, Map<String, dynamic>>(
-          policyIdsValue, (value) => value.toMap());
+      map['policyIds'] =
+          pulumi.Input.encodeList<ObjectId, Map<String, dynamic>>(
+              policyIdsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -72,7 +73,7 @@ class X509Parameters {
     return X509Parameters(
       additionalExtensions: map['additionalExtensions'] == null
           ? null
-          : Input.decodeList<X509Extension>(
+          : pulumi.Input.decodeList<X509Extension>(
               map['additionalExtensions'],
               (value) => X509Extension.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -92,7 +93,7 @@ class X509Parameters {
               (map['nameConstraints'] as Map).cast<String, dynamic>()),
       policyIds: map['policyIds'] == null
           ? null
-          : Input.decodeList<ObjectId>(
+          : pulumi.Input.decodeList<ObjectId>(
               map['policyIds'],
               (value) =>
                   ObjectId.fromMap((value as Map).cast<String, dynamic>())),

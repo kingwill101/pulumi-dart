@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_env_var.dart';
 import 'google_cloud_aiplatform_v1beta1_port.dart';
 import 'google_cloud_aiplatform_v1beta1_probe.dart';
@@ -70,7 +70,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpec {
     }
     final envValue = env;
     if (envValue != null) {
-      map['env'] = Input.encodeList<GoogleCloudAiplatformV1beta1EnvVar,
+      map['env'] = pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1EnvVar,
           Map<String, dynamic>>(envValue, (value) => value.toMap());
     }
     final healthProbeValue = healthProbe;
@@ -84,7 +84,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpec {
     map['imageUri'] = imageUri;
     final portsValue = ports;
     if (portsValue != null) {
-      map['ports'] = Input.encodeList<GoogleCloudAiplatformV1beta1Port,
+      map['ports'] = pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1Port,
           Map<String, dynamic>>(portsValue, (value) => value.toMap());
     }
     final predictRouteValue = predictRoute;
@@ -114,7 +114,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpec {
           : map['deploymentTimeout'] as String,
       env: map['env'] == null
           ? null
-          : Input.decodeList<GoogleCloudAiplatformV1beta1EnvVar>(
+          : pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1EnvVar>(
               map['env'],
               (value) => GoogleCloudAiplatformV1beta1EnvVar.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -127,7 +127,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpec {
       imageUri: map['imageUri'] as String,
       ports: map['ports'] == null
           ? null
-          : Input.decodeList<GoogleCloudAiplatformV1beta1Port>(
+          : pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1Port>(
               map['ports'],
               (value) => GoogleCloudAiplatformV1beta1Port.fromMap(
                   (value as Map).cast<String, dynamic>())),

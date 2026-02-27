@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDomainBackupIamPolicy.
 class GetDomainBackupIamPolicyArgs {
-  final Input<String> backupId;
-  final Input<String> domainId;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> backupId;
+  final pulumi.Input<String> domainId;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetDomainBackupIamPolicyArgs({
     required this.backupId,
@@ -33,11 +33,11 @@ class GetDomainBackupIamPolicyArgs {
 
   factory GetDomainBackupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainBackupIamPolicyArgs(
-      backupId: Input.asInput<String>(map['backupId']),
-      domainId: Input.asInput<String>(map['domainId']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      backupId: pulumi.Input.asInput<String>(map['backupId']),
+      domainId: pulumi.Input.asInput<String>(map['domainId']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

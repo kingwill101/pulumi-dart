@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_event_response.dart';
 
 /// Job status.
@@ -29,7 +29,7 @@ class JobStatusResponse {
     map['runDuration'] = runDuration;
     map['state'] = state;
     map['statusEvents'] =
-        Input.encodeList<StatusEventResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StatusEventResponse, Map<String, dynamic>>(
             statusEvents, (value) => value.toMap());
     map['taskGroups'] = taskGroups;
     return map;
@@ -39,7 +39,7 @@ class JobStatusResponse {
     return JobStatusResponse(
       runDuration: map['runDuration'] as String,
       state: map['state'] as String,
-      statusEvents: Input.decodeList<StatusEventResponse>(
+      statusEvents: pulumi.Input.decodeList<StatusEventResponse>(
           map['statusEvents'],
           (value) => StatusEventResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

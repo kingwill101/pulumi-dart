@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'big_query_iodetails.dart';
 import 'big_table_iodetails.dart';
 import 'datastore_iodetails.dart';
@@ -51,31 +51,31 @@ class JobMetadata {
     final bigTableDetailsValue = bigTableDetails;
     if (bigTableDetailsValue != null) {
       map['bigTableDetails'] =
-          Input.encodeList<BigTableIODetails, Map<String, dynamic>>(
+          pulumi.Input.encodeList<BigTableIODetails, Map<String, dynamic>>(
               bigTableDetailsValue, (value) => value.toMap());
     }
     final bigqueryDetailsValue = bigqueryDetails;
     if (bigqueryDetailsValue != null) {
       map['bigqueryDetails'] =
-          Input.encodeList<BigQueryIODetails, Map<String, dynamic>>(
+          pulumi.Input.encodeList<BigQueryIODetails, Map<String, dynamic>>(
               bigqueryDetailsValue, (value) => value.toMap());
     }
     final datastoreDetailsValue = datastoreDetails;
     if (datastoreDetailsValue != null) {
       map['datastoreDetails'] =
-          Input.encodeList<DatastoreIODetails, Map<String, dynamic>>(
+          pulumi.Input.encodeList<DatastoreIODetails, Map<String, dynamic>>(
               datastoreDetailsValue, (value) => value.toMap());
     }
     final fileDetailsValue = fileDetails;
     if (fileDetailsValue != null) {
       map['fileDetails'] =
-          Input.encodeList<FileIODetails, Map<String, dynamic>>(
+          pulumi.Input.encodeList<FileIODetails, Map<String, dynamic>>(
               fileDetailsValue, (value) => value.toMap());
     }
     final pubsubDetailsValue = pubsubDetails;
     if (pubsubDetailsValue != null) {
       map['pubsubDetails'] =
-          Input.encodeList<PubSubIODetails, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PubSubIODetails, Map<String, dynamic>>(
               pubsubDetailsValue, (value) => value.toMap());
     }
     final sdkVersionValue = sdkVersion;
@@ -85,7 +85,7 @@ class JobMetadata {
     final spannerDetailsValue = spannerDetails;
     if (spannerDetailsValue != null) {
       map['spannerDetails'] =
-          Input.encodeList<SpannerIODetails, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SpannerIODetails, Map<String, dynamic>>(
               spannerDetailsValue, (value) => value.toMap());
     }
     final userDisplayPropertiesValue = userDisplayProperties;
@@ -99,31 +99,31 @@ class JobMetadata {
     return JobMetadata(
       bigTableDetails: map['bigTableDetails'] == null
           ? null
-          : Input.decodeList<BigTableIODetails>(
+          : pulumi.Input.decodeList<BigTableIODetails>(
               map['bigTableDetails'],
               (value) => BigTableIODetails.fromMap(
                   (value as Map).cast<String, dynamic>())),
       bigqueryDetails: map['bigqueryDetails'] == null
           ? null
-          : Input.decodeList<BigQueryIODetails>(
+          : pulumi.Input.decodeList<BigQueryIODetails>(
               map['bigqueryDetails'],
               (value) => BigQueryIODetails.fromMap(
                   (value as Map).cast<String, dynamic>())),
       datastoreDetails: map['datastoreDetails'] == null
           ? null
-          : Input.decodeList<DatastoreIODetails>(
+          : pulumi.Input.decodeList<DatastoreIODetails>(
               map['datastoreDetails'],
               (value) => DatastoreIODetails.fromMap(
                   (value as Map).cast<String, dynamic>())),
       fileDetails: map['fileDetails'] == null
           ? null
-          : Input.decodeList<FileIODetails>(
+          : pulumi.Input.decodeList<FileIODetails>(
               map['fileDetails'],
               (value) => FileIODetails.fromMap(
                   (value as Map).cast<String, dynamic>())),
       pubsubDetails: map['pubsubDetails'] == null
           ? null
-          : Input.decodeList<PubSubIODetails>(
+          : pulumi.Input.decodeList<PubSubIODetails>(
               map['pubsubDetails'],
               (value) => PubSubIODetails.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -133,7 +133,7 @@ class JobMetadata {
               (map['sdkVersion'] as Map).cast<String, dynamic>()),
       spannerDetails: map['spannerDetails'] == null
           ? null
-          : Input.decodeList<SpannerIODetails>(
+          : pulumi.Input.decodeList<SpannerIODetails>(
               map['spannerDetails'],
               (value) => SpannerIODetails.fromMap(
                   (value as Map).cast<String, dynamic>())),

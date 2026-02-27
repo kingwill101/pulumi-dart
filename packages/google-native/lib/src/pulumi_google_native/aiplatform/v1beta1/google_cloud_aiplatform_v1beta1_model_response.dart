@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_deployed_model_ref_response.dart';
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_explanation_spec_response.dart';
@@ -135,7 +135,7 @@ class GoogleCloudAiplatformV1beta1ModelResponse {
     map['artifactUri'] = artifactUri;
     map['containerSpec'] = containerSpec.toMap();
     map['createTime'] = createTime;
-    map['deployedModels'] = Input.encodeList<
+    map['deployedModels'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1DeployedModelRefResponse,
         Map<String, dynamic>>(deployedModels, (value) => value.toMap());
     map['description'] = description;
@@ -153,7 +153,7 @@ class GoogleCloudAiplatformV1beta1ModelResponse {
     map['predictSchemata'] = predictSchemata.toMap();
     map['supportedDeploymentResourcesTypes'] =
         supportedDeploymentResourcesTypes;
-    map['supportedExportFormats'] = Input.encodeList<
+    map['supportedExportFormats'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1ModelExportFormatResponse,
         Map<String, dynamic>>(supportedExportFormats, (value) => value.toMap());
     map['supportedInputStorageFormats'] = supportedInputStorageFormats;
@@ -176,7 +176,7 @@ class GoogleCloudAiplatformV1beta1ModelResponse {
           GoogleCloudAiplatformV1beta1ModelContainerSpecResponse.fromMap(
               (map['containerSpec'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
-      deployedModels: Input.decodeList<
+      deployedModels: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1beta1DeployedModelRefResponse>(
           map['deployedModels'],
           (value) =>
@@ -207,7 +207,7 @@ class GoogleCloudAiplatformV1beta1ModelResponse {
               (map['predictSchemata'] as Map).cast<String, dynamic>()),
       supportedDeploymentResourcesTypes:
           (map['supportedDeploymentResourcesTypes'] as List).cast<String>(),
-      supportedExportFormats: Input.decodeList<
+      supportedExportFormats: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1beta1ModelExportFormatResponse>(
           map['supportedExportFormats'],
           (value) =>

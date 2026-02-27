@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'field_metadata.dart';
 
 /// Specifies how to handle de-identification of a FHIR store.
@@ -25,7 +25,7 @@ class FhirConfig {
     final fieldMetadataListValue = fieldMetadataList;
     if (fieldMetadataListValue != null) {
       map['fieldMetadataList'] =
-          Input.encodeList<FieldMetadata, Map<String, dynamic>>(
+          pulumi.Input.encodeList<FieldMetadata, Map<String, dynamic>>(
               fieldMetadataListValue, (value) => value.toMap());
     }
     return map;
@@ -38,7 +38,7 @@ class FhirConfig {
           : map['defaultKeepExtensions'] as bool,
       fieldMetadataList: map['fieldMetadataList'] == null
           ? null
-          : Input.decodeList<FieldMetadata>(
+          : pulumi.Input.decodeList<FieldMetadata>(
               map['fieldMetadataList'],
               (value) => FieldMetadata.fromMap(
                   (value as Map).cast<String, dynamic>())),

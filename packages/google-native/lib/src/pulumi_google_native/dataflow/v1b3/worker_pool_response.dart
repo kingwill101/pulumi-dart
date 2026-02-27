@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscaling_settings_response.dart';
-import 'disk_response2.dart';
-import 'package_response3.dart';
+import 'disk_response_dataflow_v1b3.dart';
+import 'package_response_dataflow_v1b3.dart';
 import 'sdk_harness_container_image_response.dart';
 import 'task_runner_settings_response.dart';
 
@@ -13,7 +13,7 @@ class WorkerPoolResponse {
   final AutoscalingSettingsResponse autoscalingSettings;
 
   /// Data disks that are used by a VM in this workflow.
-  final List<DiskResponse2> dataDisks;
+  final List<DiskResponseDataflowV1b3> dataDisks;
 
   /// The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
   final String defaultPackageSet;
@@ -52,7 +52,7 @@ class WorkerPoolResponse {
   final String onHostMaintenance;
 
   /// Packages to be installed on workers.
-  final List<PackageResponse3> packages;
+  final List<PackageResponseDataflowV1b3> packages;
 
   /// Extra arguments for this worker pool.
   final Map<String, String> poolArgs;
@@ -103,8 +103,9 @@ class WorkerPoolResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['autoscalingSettings'] = autoscalingSettings.toMap();
-    map['dataDisks'] = Input.encodeList<DiskResponse2, Map<String, dynamic>>(
-        dataDisks, (value) => value.toMap());
+    map['dataDisks'] =
+        pulumi.Input.encodeList<DiskResponseDataflowV1b3, Map<String, dynamic>>(
+            dataDisks, (value) => value.toMap());
     map['defaultPackageSet'] = defaultPackageSet;
     map['diskSizeGb'] = diskSizeGb;
     map['diskSourceImage'] = diskSourceImage;
@@ -117,10 +118,10 @@ class WorkerPoolResponse {
     map['numThreadsPerWorker'] = numThreadsPerWorker;
     map['numWorkers'] = numWorkers;
     map['onHostMaintenance'] = onHostMaintenance;
-    map['packages'] = Input.encodeList<PackageResponse3, Map<String, dynamic>>(
-        packages, (value) => value.toMap());
+    map['packages'] = pulumi.Input.encodeList<PackageResponseDataflowV1b3,
+        Map<String, dynamic>>(packages, (value) => value.toMap());
     map['poolArgs'] = poolArgs;
-    map['sdkHarnessContainerImages'] = Input.encodeList<
+    map['sdkHarnessContainerImages'] = pulumi.Input.encodeList<
             SdkHarnessContainerImageResponse, Map<String, dynamic>>(
         sdkHarnessContainerImages, (value) => value.toMap());
     map['subnetwork'] = subnetwork;
@@ -135,10 +136,10 @@ class WorkerPoolResponse {
     return WorkerPoolResponse(
       autoscalingSettings: AutoscalingSettingsResponse.fromMap(
           (map['autoscalingSettings'] as Map).cast<String, dynamic>()),
-      dataDisks: Input.decodeList<DiskResponse2>(
+      dataDisks: pulumi.Input.decodeList<DiskResponseDataflowV1b3>(
           map['dataDisks'],
-          (value) =>
-              DiskResponse2.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => DiskResponseDataflowV1b3.fromMap(
+              (value as Map).cast<String, dynamic>())),
       defaultPackageSet: map['defaultPackageSet'] as String,
       diskSizeGb: map['diskSizeGb'] as int,
       diskSourceImage: map['diskSourceImage'] as String,
@@ -151,13 +152,13 @@ class WorkerPoolResponse {
       numThreadsPerWorker: map['numThreadsPerWorker'] as int,
       numWorkers: map['numWorkers'] as int,
       onHostMaintenance: map['onHostMaintenance'] as String,
-      packages: Input.decodeList<PackageResponse3>(
+      packages: pulumi.Input.decodeList<PackageResponseDataflowV1b3>(
           map['packages'],
-          (value) =>
-              PackageResponse3.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => PackageResponseDataflowV1b3.fromMap(
+              (value as Map).cast<String, dynamic>())),
       poolArgs: (map['poolArgs'] as Map).cast<String, String>(),
       sdkHarnessContainerImages:
-          Input.decodeList<SdkHarnessContainerImageResponse>(
+          pulumi.Input.decodeList<SdkHarnessContainerImageResponse>(
               map['sdkHarnessContainerImages'],
               (value) => SdkHarnessContainerImageResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

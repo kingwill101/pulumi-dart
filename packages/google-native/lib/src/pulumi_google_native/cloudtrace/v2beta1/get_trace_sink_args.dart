@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTraceSink.
 class GetTraceSinkArgs {
-  final Input<String>? project;
-  final Input<String> traceSinkId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> traceSinkId;
 
   GetTraceSinkArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetTraceSinkArgs {
 
   factory GetTraceSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetTraceSinkArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      traceSinkId: Input.asInput<String>(map['traceSinkId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      traceSinkId: pulumi.Input.asInput<String>(map['traceSinkId']),
     );
   }
 }

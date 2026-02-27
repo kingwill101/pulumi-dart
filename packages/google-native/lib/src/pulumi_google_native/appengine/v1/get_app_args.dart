@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getApp.
 class GetAppArgs {
-  final Input<String> appId;
-  final Input<String>? includeExtraData;
+  final pulumi.Input<String> appId;
+  final pulumi.Input<String>? includeExtraData;
 
   GetAppArgs({
     required this.appId,
@@ -24,8 +24,9 @@ class GetAppArgs {
 
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
-      appId: Input.asInput<String>(map['appId']),
-      includeExtraData: Input.asOptionalInput<String>(map['includeExtraData']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
+      includeExtraData:
+          pulumi.Input.asOptionalInput<String>(map['includeExtraData']),
     );
   }
 }

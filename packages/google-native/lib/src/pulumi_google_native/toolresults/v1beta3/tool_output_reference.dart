@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'file_reference2.dart';
+import 'file_reference_toolresults_v1beta3.dart';
 import 'test_case_reference.dart';
 import 'timestamp.dart';
 
@@ -10,7 +10,7 @@ class ToolOutputReference {
   final Timestamp? creationTime;
 
   /// A FileReference to an output file. - In response: always set - In create/update request: always set
-  final FileReference2? output;
+  final FileReferenceToolresultsV1beta3? output;
 
   /// The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
   final TestCaseReference? testCase;
@@ -46,7 +46,7 @@ class ToolOutputReference {
               (map['creationTime'] as Map).cast<String, dynamic>()),
       output: map['output'] == null
           ? null
-          : FileReference2.fromMap(
+          : FileReferenceToolresultsV1beta3.fromMap(
               (map['output'] as Map).cast<String, dynamic>()),
       testCase: map['testCase'] == null
           ? null

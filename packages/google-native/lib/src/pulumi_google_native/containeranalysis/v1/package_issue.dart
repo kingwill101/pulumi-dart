@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grafeas_v1_file_location.dart';
 import 'version.dart';
 
@@ -49,7 +49,7 @@ class PackageIssue {
     final fileLocationValue = fileLocation;
     if (fileLocationValue != null) {
       map['fileLocation'] =
-          Input.encodeList<GrafeasV1FileLocation, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GrafeasV1FileLocation, Map<String, dynamic>>(
               fileLocationValue, (value) => value.toMap());
     }
     final fixedCpeUriValue = fixedCpeUri;
@@ -76,7 +76,7 @@ class PackageIssue {
           (map['affectedVersion'] as Map).cast<String, dynamic>()),
       fileLocation: map['fileLocation'] == null
           ? null
-          : Input.decodeList<GrafeasV1FileLocation>(
+          : pulumi.Input.decodeList<GrafeasV1FileLocation>(
               map['fileLocation'],
               (value) => GrafeasV1FileLocation.fromMap(
                   (value as Map).cast<String, dynamic>())),

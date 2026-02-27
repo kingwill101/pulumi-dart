@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'permission.dart';
 import 'principal.dart';
 
@@ -28,13 +28,15 @@ class RbacPolicy {
     }
     final permissionsValue = permissions;
     if (permissionsValue != null) {
-      map['permissions'] = Input.encodeList<Permission, Map<String, dynamic>>(
-          permissionsValue, (value) => value.toMap());
+      map['permissions'] =
+          pulumi.Input.encodeList<Permission, Map<String, dynamic>>(
+              permissionsValue, (value) => value.toMap());
     }
     final principalsValue = principals;
     if (principalsValue != null) {
-      map['principals'] = Input.encodeList<Principal, Map<String, dynamic>>(
-          principalsValue, (value) => value.toMap());
+      map['principals'] =
+          pulumi.Input.encodeList<Principal, Map<String, dynamic>>(
+              principalsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -44,13 +46,13 @@ class RbacPolicy {
       name: map['name'] == null ? null : map['name'] as String,
       permissions: map['permissions'] == null
           ? null
-          : Input.decodeList<Permission>(
+          : pulumi.Input.decodeList<Permission>(
               map['permissions'],
               (value) =>
                   Permission.fromMap((value as Map).cast<String, dynamic>())),
       principals: map['principals'] == null
           ? null
-          : Input.decodeList<Principal>(
+          : pulumi.Input.decodeList<Principal>(
               map['principals'],
               (value) =>
                   Principal.fromMap((value as Map).cast<String, dynamic>())),

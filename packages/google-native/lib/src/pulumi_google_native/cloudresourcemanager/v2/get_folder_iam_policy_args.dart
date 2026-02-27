@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolderIamPolicy.
 class GetFolderIamPolicyArgs {
-  final Input<String> folderId;
+  final pulumi.Input<String> folderId;
 
   GetFolderIamPolicyArgs({
     required this.folderId,
@@ -18,7 +18,7 @@ class GetFolderIamPolicyArgs {
 
   factory GetFolderIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderIamPolicyArgs(
-      folderId: Input.asInput<String>(map['folderId']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
     );
   }
 }

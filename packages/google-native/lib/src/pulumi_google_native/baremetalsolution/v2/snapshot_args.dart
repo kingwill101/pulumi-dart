@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Snapshot.
 class SnapshotArgs {
   /// The description of the snapshot.
-  final Input<String>? description;
-  final Input<String>? location;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String>? location;
 
   /// The name of the snapshot.
-  final Input<String>? name;
-  final Input<String>? project;
-  final Input<String> volumeId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> volumeId;
 
   SnapshotArgs({
     this.description,
@@ -45,11 +45,11 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      volumeId: Input.asInput<String>(map['volumeId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      volumeId: pulumi.Input.asInput<String>(map['volumeId']),
     );
   }
 }

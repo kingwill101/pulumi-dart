@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_kanonymity_equivalence_class_response.dart';
 
 /// Histogram of k-anonymity equivalence classes.
@@ -32,7 +32,7 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse {
     final map = <String, dynamic>{};
     map['bucketSize'] = bucketSize;
     map['bucketValueCount'] = bucketValueCount;
-    map['bucketValues'] = Input.encodeList<
+    map['bucketValues'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse,
         Map<String, dynamic>>(bucketValues, (value) => value.toMap());
     map['equivalenceClassSizeLowerBound'] = equivalenceClassSizeLowerBound;
@@ -45,7 +45,7 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse {
     return GooglePrivacyDlpV2KAnonymityHistogramBucketResponse(
       bucketSize: map['bucketSize'] as String,
       bucketValueCount: map['bucketValueCount'] as String,
-      bucketValues: Input.decodeList<
+      bucketValues: pulumi.Input.decodeList<
               GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse>(
           map['bucketValues'],
           (value) =>

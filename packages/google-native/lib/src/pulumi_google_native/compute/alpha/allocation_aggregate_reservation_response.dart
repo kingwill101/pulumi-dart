@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocation_aggregate_reservation_reserved_resource_info_response.dart';
 
 /// This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
@@ -28,10 +28,10 @@ class AllocationAggregateReservationResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['inUseResources'] = Input.encodeList<
+    map['inUseResources'] = pulumi.Input.encodeList<
         AllocationAggregateReservationReservedResourceInfoResponse,
         Map<String, dynamic>>(inUseResources, (value) => value.toMap());
-    map['reservedResources'] = Input.encodeList<
+    map['reservedResources'] = pulumi.Input.encodeList<
         AllocationAggregateReservationReservedResourceInfoResponse,
         Map<String, dynamic>>(reservedResources, (value) => value.toMap());
     map['vmFamily'] = vmFamily;
@@ -42,12 +42,12 @@ class AllocationAggregateReservationResponse {
   factory AllocationAggregateReservationResponse.fromMap(
       Map<String, dynamic> map) {
     return AllocationAggregateReservationResponse(
-      inUseResources: Input.decodeList<
+      inUseResources: pulumi.Input.decodeList<
               AllocationAggregateReservationReservedResourceInfoResponse>(
           map['inUseResources'],
           (value) => AllocationAggregateReservationReservedResourceInfoResponse
               .fromMap((value as Map).cast<String, dynamic>())),
-      reservedResources: Input.decodeList<
+      reservedResources: pulumi.Input.decodeList<
               AllocationAggregateReservationReservedResourceInfoResponse>(
           map['reservedResources'],
           (value) => AllocationAggregateReservationReservedResourceInfoResponse

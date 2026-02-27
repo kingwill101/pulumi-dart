@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_data.dart';
 import 'workload_identity_pool_key_use.dart';
 
 /// The set of arguments for WorkloadIdentityPoolKey.
 class WorkloadIdentityPoolKeyArgs {
   /// Immutable. Public half of the asymmetric key.
-  final Input<KeyData>? keyData;
-  final Input<String>? location;
-  final Input<String>? project;
-  final Input<String> providerId;
+  final pulumi.Input<KeyData>? keyData;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> providerId;
 
   /// The purpose of the key.
-  final Input<WorkloadIdentityPoolKeyUse> use;
-  final Input<String> workloadIdentityPoolId;
+  final pulumi.Input<WorkloadIdentityPoolKeyUse> use;
+  final pulumi.Input<String> workloadIdentityPoolId;
 
   /// Required. The ID to use for the key, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].
-  final Input<String> workloadIdentityPoolProviderKeyId;
+  final pulumi.Input<String> workloadIdentityPoolProviderKeyId;
 
   WorkloadIdentityPoolKeyArgs({
     this.keyData,
@@ -34,7 +34,7 @@ class WorkloadIdentityPoolKeyArgs {
     final keyDataValue = keyData;
     if (keyDataValue != null) {
       map['keyData'] =
-          Input.mapOptionalInputValue<KeyData, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<KeyData, Map<String, dynamic>>(
               keyDataValue, (value) => value.toMap());
     }
     final locationValue = location;
@@ -46,7 +46,7 @@ class WorkloadIdentityPoolKeyArgs {
       map['project'] = projectValue;
     }
     map['providerId'] = providerId;
-    map['use'] = Input.mapInputValue<WorkloadIdentityPoolKeyUse, String>(
+    map['use'] = pulumi.Input.mapInputValue<WorkloadIdentityPoolKeyUse, String>(
         use, (value) => value.value);
     map['workloadIdentityPoolId'] = workloadIdentityPoolId;
     map['workloadIdentityPoolProviderKeyId'] =
@@ -56,15 +56,15 @@ class WorkloadIdentityPoolKeyArgs {
 
   factory WorkloadIdentityPoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolKeyArgs(
-      keyData: Input.asOptionalInput<KeyData>(map['keyData']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      providerId: Input.asInput<String>(map['providerId']),
-      use: Input.asInput<WorkloadIdentityPoolKeyUse>(map['use']),
+      keyData: pulumi.Input.asOptionalInput<KeyData>(map['keyData']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      providerId: pulumi.Input.asInput<String>(map['providerId']),
+      use: pulumi.Input.asInput<WorkloadIdentityPoolKeyUse>(map['use']),
       workloadIdentityPoolId:
-          Input.asInput<String>(map['workloadIdentityPoolId']),
-      workloadIdentityPoolProviderKeyId:
-          Input.asInput<String>(map['workloadIdentityPoolProviderKeyId']),
+          pulumi.Input.asInput<String>(map['workloadIdentityPoolId']),
+      workloadIdentityPoolProviderKeyId: pulumi.Input.asInput<String>(
+          map['workloadIdentityPoolProviderKeyId']),
     );
   }
 }

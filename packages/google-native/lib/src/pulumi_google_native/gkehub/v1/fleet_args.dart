@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_cluster_config.dart';
 
 /// The set of arguments for Fleet.
 class FleetArgs {
   /// Optional. The default cluster configurations to apply across the fleet.
-  final Input<DefaultClusterConfig>? defaultClusterConfig;
+  final pulumi.Input<DefaultClusterConfig>? defaultClusterConfig;
 
   /// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. Labels for this Fleet.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   FleetArgs({
     this.defaultClusterConfig,
@@ -28,7 +28,7 @@ class FleetArgs {
     final map = <String, dynamic>{};
     final defaultClusterConfigValue = defaultClusterConfig;
     if (defaultClusterConfigValue != null) {
-      map['defaultClusterConfig'] = Input.mapOptionalInputValue<
+      map['defaultClusterConfig'] = pulumi.Input.mapOptionalInputValue<
               DefaultClusterConfig, Map<String, dynamic>>(
           defaultClusterConfigValue, (value) => value.toMap());
     }
@@ -53,12 +53,12 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      defaultClusterConfig: Input.asOptionalInput<DefaultClusterConfig>(
+      defaultClusterConfig: pulumi.Input.asOptionalInput<DefaultClusterConfig>(
           map['defaultClusterConfig']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

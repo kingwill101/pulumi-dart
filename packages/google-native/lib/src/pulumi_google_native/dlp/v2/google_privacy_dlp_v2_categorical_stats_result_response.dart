@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_categorical_stats_histogram_bucket_response.dart';
 
 /// Result of the categorical stats computation.
@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2CategoricalStatsResultResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['valueFrequencyHistogramBuckets'] = Input.encodeList<
+    map['valueFrequencyHistogramBuckets'] = pulumi.Input.encodeList<
             GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse,
             Map<String, dynamic>>(
         valueFrequencyHistogramBuckets, (value) => value.toMap());
@@ -25,7 +25,7 @@ class GooglePrivacyDlpV2CategoricalStatsResultResponse {
   factory GooglePrivacyDlpV2CategoricalStatsResultResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CategoricalStatsResultResponse(
-      valueFrequencyHistogramBuckets: Input.decodeList<
+      valueFrequencyHistogramBuckets: pulumi.Input.decodeList<
               GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse>(
           map['valueFrequencyHistogramBuckets'],
           (value) =>

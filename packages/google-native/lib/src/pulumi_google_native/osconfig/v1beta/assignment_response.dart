@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assignment_group_label_response.dart';
 import 'assignment_os_type_response.dart';
 
@@ -31,13 +31,12 @@ class AssignmentResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['groupLabels'] =
-        Input.encodeList<AssignmentGroupLabelResponse, Map<String, dynamic>>(
-            groupLabels, (value) => value.toMap());
+    map['groupLabels'] = pulumi.Input.encodeList<AssignmentGroupLabelResponse,
+        Map<String, dynamic>>(groupLabels, (value) => value.toMap());
     map['instanceNamePrefixes'] = instanceNamePrefixes;
     map['instances'] = instances;
     map['osTypes'] =
-        Input.encodeList<AssignmentOsTypeResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AssignmentOsTypeResponse, Map<String, dynamic>>(
             osTypes, (value) => value.toMap());
     map['zones'] = zones;
     return map;
@@ -45,14 +44,14 @@ class AssignmentResponse {
 
   factory AssignmentResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentResponse(
-      groupLabels: Input.decodeList<AssignmentGroupLabelResponse>(
+      groupLabels: pulumi.Input.decodeList<AssignmentGroupLabelResponse>(
           map['groupLabels'],
           (value) => AssignmentGroupLabelResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       instanceNamePrefixes:
           (map['instanceNamePrefixes'] as List).cast<String>(),
       instances: (map['instances'] as List).cast<String>(),
-      osTypes: Input.decodeList<AssignmentOsTypeResponse>(
+      osTypes: pulumi.Input.decodeList<AssignmentOsTypeResponse>(
           map['osTypes'],
           (value) => AssignmentOsTypeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

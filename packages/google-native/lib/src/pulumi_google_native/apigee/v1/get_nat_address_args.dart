@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNatAddress.
 class GetNatAddressArgs {
-  final Input<String> instanceId;
-  final Input<String> natAddressId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> natAddressId;
+  final pulumi.Input<String> organizationId;
 
   GetNatAddressArgs({
     required this.instanceId,
@@ -24,9 +24,9 @@ class GetNatAddressArgs {
 
   factory GetNatAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetNatAddressArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      natAddressId: Input.asInput<String>(map['natAddressId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      natAddressId: pulumi.Input.asInput<String>(map['natAddressId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

@@ -1,33 +1,33 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'envgroup_args.dart';
 
 /// Creates a new environment group.
-class Envgroup extends CustomResource {
+class Envgroup extends pulumi.CustomResource {
   /// The time at which the environment group was created as milliseconds since epoch.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Host names for this environment group.
-  late final Output<List<String>> hostnames;
+  late final pulumi.Output<List<String>> hostnames;
 
   /// The time at which the environment group was last updated as milliseconds since epoch.
-  late final Output<String> lastModifiedAt;
+  late final pulumi.Output<String> lastModifiedAt;
 
   /// ID of the environment group. Overrides any ID in the environment_group resource.
-  late final Output<String> name;
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> organizationId;
 
   /// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   Envgroup(
     String name, {
     EnvgroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:apigee/v1:Envgroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createdAt = registerOutput<String>('createdAt');
     this.hostnames = registerOutput<List<String>>('hostnames');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_urls_response.dart';
 import 'certificate_config_response.dart';
 import 'certificate_description_response.dart';
@@ -83,9 +83,9 @@ class GetCertificateAuthorityResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['accessUrls'] = accessUrls.toMap();
-    map['caCertificateDescriptions'] =
-        Input.encodeList<CertificateDescriptionResponse, Map<String, dynamic>>(
-            caCertificateDescriptions, (value) => value.toMap());
+    map['caCertificateDescriptions'] = pulumi.Input.encodeList<
+            CertificateDescriptionResponse, Map<String, dynamic>>(
+        caCertificateDescriptions, (value) => value.toMap());
     map['config'] = config.toMap();
     map['createTime'] = createTime;
     map['deleteTime'] = deleteTime;
@@ -109,7 +109,7 @@ class GetCertificateAuthorityResult {
       accessUrls: AccessUrlsResponse.fromMap(
           (map['accessUrls'] as Map).cast<String, dynamic>()),
       caCertificateDescriptions:
-          Input.decodeList<CertificateDescriptionResponse>(
+          pulumi.Input.decodeList<CertificateDescriptionResponse>(
               map['caCertificateDescriptions'],
               (value) => CertificateDescriptionResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

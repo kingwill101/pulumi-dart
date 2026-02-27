@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLbRouteExtension.
 class GetLbRouteExtensionArgs {
-  final Input<String> lbRouteExtensionId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> lbRouteExtensionId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetLbRouteExtensionArgs({
     required this.lbRouteExtensionId,
@@ -27,9 +27,10 @@ class GetLbRouteExtensionArgs {
 
   factory GetLbRouteExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetLbRouteExtensionArgs(
-      lbRouteExtensionId: Input.asInput<String>(map['lbRouteExtensionId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      lbRouteExtensionId:
+          pulumi.Input.asInput<String>(map['lbRouteExtensionId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

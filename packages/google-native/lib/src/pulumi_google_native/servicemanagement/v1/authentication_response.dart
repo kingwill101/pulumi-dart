@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_provider_response.dart';
 import 'authentication_rule_response.dart';
 
@@ -20,21 +20,20 @@ class AuthenticationResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['providers'] =
-        Input.encodeList<AuthProviderResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AuthProviderResponse, Map<String, dynamic>>(
             providers, (value) => value.toMap());
-    map['rules'] =
-        Input.encodeList<AuthenticationRuleResponse, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
+    map['rules'] = pulumi.Input.encodeList<AuthenticationRuleResponse,
+        Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
   }
 
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
-      providers: Input.decodeList<AuthProviderResponse>(
+      providers: pulumi.Input.decodeList<AuthProviderResponse>(
           map['providers'],
           (value) => AuthProviderResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      rules: Input.decodeList<AuthenticationRuleResponse>(
+      rules: pulumi.Input.decodeList<AuthenticationRuleResponse>(
           map['rules'],
           (value) => AuthenticationRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anthos_cluster_response.dart';
 import 'cloud_run_location_response.dart';
 import 'execution_config_response.dart';
@@ -85,7 +85,7 @@ class TargetResponse {
     map['description'] = description;
     map['etag'] = etag;
     map['executionConfigs'] =
-        Input.encodeList<ExecutionConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ExecutionConfigResponse, Map<String, dynamic>>(
             executionConfigs, (value) => value.toMap());
     map['gke'] = gke.toMap();
     map['labels'] = labels;
@@ -108,7 +108,7 @@ class TargetResponse {
       deployParameters: (map['deployParameters'] as Map).cast<String, String>(),
       description: map['description'] as String,
       etag: map['etag'] as String,
-      executionConfigs: Input.decodeList<ExecutionConfigResponse>(
+      executionConfigs: pulumi.Input.decodeList<ExecutionConfigResponse>(
           map['executionConfigs'],
           (value) => ExecutionConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

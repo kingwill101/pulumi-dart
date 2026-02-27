@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for KnowledgeBase.
 class KnowledgeBaseArgs {
   /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
-  final Input<String>? languageCode;
-  final Input<String>? location;
+  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String>? location;
 
   /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   KnowledgeBaseArgs({
     required this.displayName,
@@ -47,11 +47,11 @@ class KnowledgeBaseArgs {
 
   factory KnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return KnowledgeBaseArgs(
-      displayName: Input.asInput<String>(map['displayName']),
-      languageCode: Input.asOptionalInput<String>(map['languageCode']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      languageCode: pulumi.Input.asOptionalInput<String>(map['languageCode']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

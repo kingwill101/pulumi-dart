@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDefaultSupportedIdpConfig.
 class GetDefaultSupportedIdpConfigArgs {
-  final Input<String> defaultSupportedIdpConfigId;
-  final Input<String>? project;
-  final Input<String> tenantId;
+  final pulumi.Input<String> defaultSupportedIdpConfigId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> tenantId;
 
   GetDefaultSupportedIdpConfigArgs({
     required this.defaultSupportedIdpConfigId,
@@ -28,9 +28,9 @@ class GetDefaultSupportedIdpConfigArgs {
   factory GetDefaultSupportedIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetDefaultSupportedIdpConfigArgs(
       defaultSupportedIdpConfigId:
-          Input.asInput<String>(map['defaultSupportedIdpConfigId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tenantId: Input.asInput<String>(map['tenantId']),
+          pulumi.Input.asInput<String>(map['defaultSupportedIdpConfigId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tenantId: pulumi.Input.asInput<String>(map['tenantId']),
     );
   }
 }

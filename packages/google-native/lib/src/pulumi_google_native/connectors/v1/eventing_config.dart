@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_config.dart';
 import 'config_variable.dart';
 import 'destination_config.dart';
@@ -43,7 +43,7 @@ class EventingConfig {
     final additionalVariablesValue = additionalVariables;
     if (additionalVariablesValue != null) {
       map['additionalVariables'] =
-          Input.encodeList<ConfigVariable, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ConfigVariable, Map<String, dynamic>>(
               additionalVariablesValue, (value) => value.toMap());
     }
     final authConfigValue = authConfig;
@@ -78,7 +78,7 @@ class EventingConfig {
     return EventingConfig(
       additionalVariables: map['additionalVariables'] == null
           ? null
-          : Input.decodeList<ConfigVariable>(
+          : pulumi.Input.decodeList<ConfigVariable>(
               map['additionalVariables'],
               (value) => ConfigVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),

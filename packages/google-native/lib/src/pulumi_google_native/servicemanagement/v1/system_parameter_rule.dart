@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_parameter.dart';
 
 /// Define a system parameter rule mapping system parameter definitions to methods.
@@ -21,7 +21,7 @@ class SystemParameterRule {
     final parametersValue = parameters;
     if (parametersValue != null) {
       map['parameters'] =
-          Input.encodeList<SystemParameter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SystemParameter, Map<String, dynamic>>(
               parametersValue, (value) => value.toMap());
     }
     final selectorValue = selector;
@@ -35,7 +35,7 @@ class SystemParameterRule {
     return SystemParameterRule(
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<SystemParameter>(
+          : pulumi.Input.decodeList<SystemParameter>(
               map['parameters'],
               (value) => SystemParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

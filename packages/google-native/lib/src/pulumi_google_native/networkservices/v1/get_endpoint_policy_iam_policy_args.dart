@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEndpointPolicyIamPolicy.
 class GetEndpointPolicyIamPolicyArgs {
-  final Input<String> endpointPolicyId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> endpointPolicyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetEndpointPolicyIamPolicyArgs({
     required this.endpointPolicyId,
@@ -33,11 +33,11 @@ class GetEndpointPolicyIamPolicyArgs {
 
   factory GetEndpointPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointPolicyIamPolicyArgs(
-      endpointPolicyId: Input.asInput<String>(map['endpointPolicyId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      endpointPolicyId: pulumi.Input.asInput<String>(map['endpointPolicyId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

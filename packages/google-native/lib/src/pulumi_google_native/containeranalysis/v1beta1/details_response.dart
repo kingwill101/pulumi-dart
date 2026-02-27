@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'attestation_response2.dart';
+import 'attestation_response_containeranalysis_v1beta1.dart';
 
 /// Details of an attestation occurrence.
 class DetailsResponse {
   /// Attestation for the resource.
-  final AttestationResponse2 attestation;
+  final AttestationResponseContaineranalysisV1beta1 attestation;
 
   DetailsResponse({
     required this.attestation,
@@ -19,7 +19,7 @@ class DetailsResponse {
 
   factory DetailsResponse.fromMap(Map<String, dynamic> map) {
     return DetailsResponse(
-      attestation: AttestationResponse2.fromMap(
+      attestation: AttestationResponseContaineranalysisV1beta1.fromMap(
           (map['attestation'] as Map).cast<String, dynamic>()),
     );
   }

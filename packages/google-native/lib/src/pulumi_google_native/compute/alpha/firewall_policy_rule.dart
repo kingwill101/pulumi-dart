@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_rule_direction.dart';
 import 'firewall_policy_rule_matcher.dart';
 import 'firewall_policy_rule_secure_tag.dart';
@@ -106,9 +106,9 @@ class FirewallPolicyRule {
     }
     final targetSecureTagsValue = targetSecureTags;
     if (targetSecureTagsValue != null) {
-      map['targetSecureTags'] =
-          Input.encodeList<FirewallPolicyRuleSecureTag, Map<String, dynamic>>(
-              targetSecureTagsValue, (value) => value.toMap());
+      map['targetSecureTags'] = pulumi.Input.encodeList<
+              FirewallPolicyRuleSecureTag, Map<String, dynamic>>(
+          targetSecureTagsValue, (value) => value.toMap());
     }
     final targetServiceAccountsValue = targetServiceAccounts;
     if (targetServiceAccountsValue != null) {
@@ -146,7 +146,7 @@ class FirewallPolicyRule {
           : (map['targetResources'] as List).cast<String>(),
       targetSecureTags: map['targetSecureTags'] == null
           ? null
-          : Input.decodeList<FirewallPolicyRuleSecureTag>(
+          : pulumi.Input.decodeList<FirewallPolicyRuleSecureTag>(
               map['targetSecureTags'],
               (value) => FirewallPolicyRuleSecureTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

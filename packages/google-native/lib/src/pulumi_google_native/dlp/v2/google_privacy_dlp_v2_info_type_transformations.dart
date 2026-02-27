@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_info_type_transformation.dart';
 
 /// A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['transformations'] = Input.encodeList<
+    map['transformations'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2InfoTypeTransformation,
         Map<String, dynamic>>(transformations, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoTypeTransformations(
       transformations:
-          Input.decodeList<GooglePrivacyDlpV2InfoTypeTransformation>(
+          pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeTransformation>(
               map['transformations'],
               (value) => GooglePrivacyDlpV2InfoTypeTransformation.fromMap(
                   (value as Map).cast<String, dynamic>())),

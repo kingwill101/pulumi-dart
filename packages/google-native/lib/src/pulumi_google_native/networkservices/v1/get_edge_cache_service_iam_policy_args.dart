@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEdgeCacheServiceIamPolicy.
 class GetEdgeCacheServiceIamPolicyArgs {
-  final Input<String> edgeCacheServiceId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> edgeCacheServiceId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetEdgeCacheServiceIamPolicyArgs({
     required this.edgeCacheServiceId,
@@ -33,11 +33,12 @@ class GetEdgeCacheServiceIamPolicyArgs {
 
   factory GetEdgeCacheServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeCacheServiceIamPolicyArgs(
-      edgeCacheServiceId: Input.asInput<String>(map['edgeCacheServiceId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      edgeCacheServiceId:
+          pulumi.Input.asInput<String>(map['edgeCacheServiceId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

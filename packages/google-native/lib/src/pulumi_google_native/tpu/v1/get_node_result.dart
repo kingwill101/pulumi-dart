@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_endpoint_response.dart';
 import 'scheduling_config_response.dart';
 import 'symptom_response.dart';
@@ -100,14 +100,15 @@ class GetNodeResult {
     map['name'] = name;
     map['network'] = network;
     map['networkEndpoints'] =
-        Input.encodeList<NetworkEndpointResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<NetworkEndpointResponse, Map<String, dynamic>>(
             networkEndpoints, (value) => value.toMap());
     map['port'] = port;
     map['schedulingConfig'] = schedulingConfig.toMap();
     map['serviceAccount'] = serviceAccount;
     map['state'] = state;
-    map['symptoms'] = Input.encodeList<SymptomResponse, Map<String, dynamic>>(
-        symptoms, (value) => value.toMap());
+    map['symptoms'] =
+        pulumi.Input.encodeList<SymptomResponse, Map<String, dynamic>>(
+            symptoms, (value) => value.toMap());
     map['tensorflowVersion'] = tensorflowVersion;
     map['useServiceNetworking'] = useServiceNetworking;
     return map;
@@ -126,7 +127,7 @@ class GetNodeResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       network: map['network'] as String,
-      networkEndpoints: Input.decodeList<NetworkEndpointResponse>(
+      networkEndpoints: pulumi.Input.decodeList<NetworkEndpointResponse>(
           map['networkEndpoints'],
           (value) => NetworkEndpointResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -135,7 +136,7 @@ class GetNodeResult {
           (map['schedulingConfig'] as Map).cast<String, dynamic>()),
       serviceAccount: map['serviceAccount'] as String,
       state: map['state'] as String,
-      symptoms: Input.decodeList<SymptomResponse>(
+      symptoms: pulumi.Input.decodeList<SymptomResponse>(
           map['symptoms'],
           (value) =>
               SymptomResponse.fromMap((value as Map).cast<String, dynamic>())),

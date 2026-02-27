@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'fingerprint_response2.dart';
-import 'layer_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'fingerprint_response_containeranalysis_v1alpha1.dart';
+import 'layer_response_containeranalysis_v1alpha1.dart';
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 class DerivedResponse {
@@ -13,10 +13,10 @@ class DerivedResponse {
   final int distance;
 
   /// The fingerprint of the derived image.
-  final FingerprintResponse2 fingerprint;
+  final FingerprintResponseContaineranalysisV1alpha1 fingerprint;
 
   /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  final List<LayerResponse2> layerInfo;
+  final List<LayerResponseContaineranalysisV1alpha1> layerInfo;
 
   DerivedResponse({
     required this.baseResourceUrl,
@@ -30,8 +30,9 @@ class DerivedResponse {
     map['baseResourceUrl'] = baseResourceUrl;
     map['distance'] = distance;
     map['fingerprint'] = fingerprint.toMap();
-    map['layerInfo'] = Input.encodeList<LayerResponse2, Map<String, dynamic>>(
-        layerInfo, (value) => value.toMap());
+    map['layerInfo'] = pulumi.Input.encodeList<
+        LayerResponseContaineranalysisV1alpha1,
+        Map<String, dynamic>>(layerInfo, (value) => value.toMap());
     return map;
   }
 
@@ -39,12 +40,13 @@ class DerivedResponse {
     return DerivedResponse(
       baseResourceUrl: map['baseResourceUrl'] as String,
       distance: map['distance'] as int,
-      fingerprint: FingerprintResponse2.fromMap(
+      fingerprint: FingerprintResponseContaineranalysisV1alpha1.fromMap(
           (map['fingerprint'] as Map).cast<String, dynamic>()),
-      layerInfo: Input.decodeList<LayerResponse2>(
-          map['layerInfo'],
-          (value) =>
-              LayerResponse2.fromMap((value as Map).cast<String, dynamic>())),
+      layerInfo:
+          pulumi.Input.decodeList<LayerResponseContaineranalysisV1alpha1>(
+              map['layerInfo'],
+              (value) => LayerResponseContaineranalysisV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

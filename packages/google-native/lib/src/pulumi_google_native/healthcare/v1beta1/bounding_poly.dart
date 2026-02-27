@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vertex.dart';
 
 /// A bounding polygon for the detected image annotation.
@@ -24,7 +24,7 @@ class BoundingPoly {
     }
     final verticesValue = vertices;
     if (verticesValue != null) {
-      map['vertices'] = Input.encodeList<Vertex, Map<String, dynamic>>(
+      map['vertices'] = pulumi.Input.encodeList<Vertex, Map<String, dynamic>>(
           verticesValue, (value) => value.toMap());
     }
     return map;
@@ -35,7 +35,7 @@ class BoundingPoly {
       label: map['label'] == null ? null : map['label'] as String,
       vertices: map['vertices'] == null
           ? null
-          : Input.decodeList<Vertex>(
+          : pulumi.Input.decodeList<Vertex>(
               map['vertices'],
               (value) =>
                   Vertex.fromMap((value as Map).cast<String, dynamic>())),

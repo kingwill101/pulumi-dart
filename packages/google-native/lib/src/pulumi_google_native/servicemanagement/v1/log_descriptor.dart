@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'label_descriptor3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'label_descriptor_servicemanagement_v1.dart';
 
 /// A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history description: The history of borrowing and returning library items. display_name: Activity labels: - key: /customer_id description: Identifier of a library customer
 class LogDescriptor {
@@ -12,7 +12,7 @@ class LogDescriptor {
   final String? displayName;
 
   /// The set of labels that are available to describe a specific log entry. Runtime requests that contain labels not specified here are considered invalid.
-  final List<LabelDescriptor3>? labels;
+  final List<LabelDescriptorServicemanagementV1>? labels;
 
   /// The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.].
   final String? name;
@@ -36,8 +36,9 @@ class LogDescriptor {
     }
     final labelsValue = labels;
     if (labelsValue != null) {
-      map['labels'] = Input.encodeList<LabelDescriptor3, Map<String, dynamic>>(
-          labelsValue, (value) => value.toMap());
+      map['labels'] = pulumi.Input.encodeList<
+          LabelDescriptorServicemanagementV1,
+          Map<String, dynamic>>(labelsValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -54,9 +55,9 @@ class LogDescriptor {
           map['displayName'] == null ? null : map['displayName'] as String,
       labels: map['labels'] == null
           ? null
-          : Input.decodeList<LabelDescriptor3>(
+          : pulumi.Input.decodeList<LabelDescriptorServicemanagementV1>(
               map['labels'],
-              (value) => LabelDescriptor3.fromMap(
+              (value) => LabelDescriptorServicemanagementV1.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
     );

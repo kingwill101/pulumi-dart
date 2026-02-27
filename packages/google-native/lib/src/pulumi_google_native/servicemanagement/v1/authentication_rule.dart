@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_requirement.dart';
 import 'oauth_requirements.dart';
 
@@ -38,7 +38,7 @@ class AuthenticationRule {
     final requirementsValue = requirements;
     if (requirementsValue != null) {
       map['requirements'] =
-          Input.encodeList<AuthRequirement, Map<String, dynamic>>(
+          pulumi.Input.encodeList<AuthRequirement, Map<String, dynamic>>(
               requirementsValue, (value) => value.toMap());
     }
     final selectorValue = selector;
@@ -59,7 +59,7 @@ class AuthenticationRule {
               (map['oauth'] as Map).cast<String, dynamic>()),
       requirements: map['requirements'] == null
           ? null
-          : Input.decodeList<AuthRequirement>(
+          : pulumi.Input.decodeList<AuthRequirement>(
               map['requirements'],
               (value) => AuthRequirement.fromMap(
                   (value as Map).cast<String, dynamic>())),

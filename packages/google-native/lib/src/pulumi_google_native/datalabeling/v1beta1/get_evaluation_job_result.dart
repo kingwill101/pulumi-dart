@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datalabeling_v1beta1_attempt_response.dart';
 import 'google_cloud_datalabeling_v1beta1_evaluation_job_config_response.dart';
 
@@ -53,7 +53,7 @@ class GetEvaluationJobResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['annotationSpecSet'] = annotationSpecSet;
-    map['attempts'] = Input.encodeList<
+    map['attempts'] = pulumi.Input.encodeList<
         GoogleCloudDatalabelingV1beta1AttemptResponse,
         Map<String, dynamic>>(attempts, (value) => value.toMap());
     map['createTime'] = createTime;
@@ -70,7 +70,8 @@ class GetEvaluationJobResult {
   factory GetEvaluationJobResult.fromMap(Map<String, dynamic> map) {
     return GetEvaluationJobResult(
       annotationSpecSet: map['annotationSpecSet'] as String,
-      attempts: Input.decodeList<GoogleCloudDatalabelingV1beta1AttemptResponse>(
+      attempts: pulumi.Input.decodeList<
+              GoogleCloudDatalabelingV1beta1AttemptResponse>(
           map['attempts'],
           (value) => GoogleCloudDatalabelingV1beta1AttemptResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

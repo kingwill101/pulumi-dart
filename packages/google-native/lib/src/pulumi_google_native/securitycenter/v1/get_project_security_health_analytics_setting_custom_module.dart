@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_project_security_health_analytics_setting_custom_module_args.dart';
 import 'get_project_security_health_analytics_setting_custom_module_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_project_security_health_analytics_setting_custom_module_result.dart'
 Future<GetProjectSecurityHealthAnalyticsSettingCustomModuleResult>
     getProjectSecurityHealthAnalyticsSettingCustomModule(
   GetProjectSecurityHealthAnalyticsSettingCustomModuleArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:securitycenter/v1:getProjectSecurityHealthAnalyticsSettingCustomModule',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectSecurityHealthAnalyticsSettingCustomModuleResult.fromMap(
       result);

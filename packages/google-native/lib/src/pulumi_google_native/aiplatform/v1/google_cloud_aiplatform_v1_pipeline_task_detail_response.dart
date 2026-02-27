@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_execution_response.dart';
 import 'google_cloud_aiplatform_v1_pipeline_task_detail_pipeline_task_status_response.dart';
 import 'google_cloud_aiplatform_v1_pipeline_task_executor_detail_response.dart';
@@ -76,7 +76,7 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse {
     map['inputs'] = inputs;
     map['outputs'] = outputs;
     map['parentTaskId'] = parentTaskId;
-    map['pipelineTaskStatus'] = Input.encodeList<
+    map['pipelineTaskStatus'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse,
         Map<String, dynamic>>(pipelineTaskStatus, (value) => value.toMap());
     map['startTime'] = startTime;
@@ -101,7 +101,7 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse {
       inputs: (map['inputs'] as Map).cast<String, String>(),
       outputs: (map['outputs'] as Map).cast<String, String>(),
       parentTaskId: map['parentTaskId'] as String,
-      pipelineTaskStatus: Input.decodeList<
+      pipelineTaskStatus: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse>(
           map['pipelineTaskStatus'],
           (value) =>

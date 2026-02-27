@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response14.dart';
+import 'status_response_dataform_v1beta1.dart';
 
 /// A record of an attempt to create a compilation result for this release config.
 class ScheduledReleaseRecordResponse {
@@ -8,7 +8,7 @@ class ScheduledReleaseRecordResponse {
   final String compilationResult;
 
   /// The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
-  final StatusResponse14 errorStatus;
+  final StatusResponseDataformV1beta1 errorStatus;
 
   /// The timestamp of this release attempt.
   final String releaseTime;
@@ -30,7 +30,7 @@ class ScheduledReleaseRecordResponse {
   factory ScheduledReleaseRecordResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledReleaseRecordResponse(
       compilationResult: map['compilationResult'] as String,
-      errorStatus: StatusResponse14.fromMap(
+      errorStatus: StatusResponseDataformV1beta1.fromMap(
           (map['errorStatus'] as Map).cast<String, dynamic>()),
       releaseTime: map['releaseTime'] as String,
     );

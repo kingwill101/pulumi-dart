@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_env_var.dart';
 
 /// The spec of a Container.
@@ -36,9 +36,8 @@ class GoogleCloudAiplatformV1ContainerSpec {
     }
     final envValue = env;
     if (envValue != null) {
-      map['env'] =
-          Input.encodeList<GoogleCloudAiplatformV1EnvVar, Map<String, dynamic>>(
-              envValue, (value) => value.toMap());
+      map['env'] = pulumi.Input.encodeList<GoogleCloudAiplatformV1EnvVar,
+          Map<String, dynamic>>(envValue, (value) => value.toMap());
     }
     map['imageUri'] = imageUri;
     return map;
@@ -53,7 +52,7 @@ class GoogleCloudAiplatformV1ContainerSpec {
           : (map['command'] as List).cast<String>(),
       env: map['env'] == null
           ? null
-          : Input.decodeList<GoogleCloudAiplatformV1EnvVar>(
+          : pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(
               map['env'],
               (value) => GoogleCloudAiplatformV1EnvVar.fromMap(
                   (value as Map).cast<String, dynamic>())),

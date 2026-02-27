@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute.dart';
 
 /// The set of arguments for Appgroup.
 class AppgroupArgs {
   /// A list of attributes
-  final Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
 
   /// channel identifier identifies the owner maintaing this grouping.
-  final Input<String>? channelId;
+  final pulumi.Input<String>? channelId;
 
   /// A reference to the associated storefront/marketplace.
-  final Input<String>? channelUri;
+  final pulumi.Input<String>? channelUri;
 
   /// app group name displayed in the UI
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Immutable. Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._\-$ %.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Immutable. the org the app group is created
-  final Input<String>? organization;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? organization;
+  final pulumi.Input<String> organizationId;
 
   AppgroupArgs({
     this.attributes,
@@ -38,10 +38,10 @@ class AppgroupArgs {
     final map = <String, dynamic>{};
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.mapOptionalInputValue<
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudApigeeV1Attribute>, List<Map<String, dynamic>>>(
           attributesValue,
-          (value) => Input.encodeList<GoogleCloudApigeeV1Attribute,
+          (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1Attribute,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final channelIdValue = channelId;
@@ -70,14 +70,15 @@ class AppgroupArgs {
 
   factory AppgroupArgs.fromMap(Map<String, dynamic> map) {
     return AppgroupArgs(
-      attributes: Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(
-          map['attributes']),
-      channelId: Input.asOptionalInput<String>(map['channelId']),
-      channelUri: Input.asOptionalInput<String>(map['channelUri']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organization: Input.asOptionalInput<String>(map['organization']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      attributes:
+          pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(
+              map['attributes']),
+      channelId: pulumi.Input.asOptionalInput<String>(map['channelId']),
+      channelUri: pulumi.Input.asOptionalInput<String>(map['channelUri']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organization: pulumi.Input.asOptionalInput<String>(map['organization']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

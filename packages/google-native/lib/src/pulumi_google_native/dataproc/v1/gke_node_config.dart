@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gke_node_pool_accelerator_config.dart';
 
 /// Parameters that describe cluster nodes.
@@ -40,9 +40,9 @@ class GkeNodeConfig {
     final map = <String, dynamic>{};
     final acceleratorsValue = accelerators;
     if (acceleratorsValue != null) {
-      map['accelerators'] =
-          Input.encodeList<GkeNodePoolAcceleratorConfig, Map<String, dynamic>>(
-              acceleratorsValue, (value) => value.toMap());
+      map['accelerators'] = pulumi.Input.encodeList<
+          GkeNodePoolAcceleratorConfig,
+          Map<String, dynamic>>(acceleratorsValue, (value) => value.toMap());
     }
     final bootDiskKmsKeyValue = bootDiskKmsKey;
     if (bootDiskKmsKeyValue != null) {
@@ -75,7 +75,7 @@ class GkeNodeConfig {
     return GkeNodeConfig(
       accelerators: map['accelerators'] == null
           ? null
-          : Input.decodeList<GkeNodePoolAcceleratorConfig>(
+          : pulumi.Input.decodeList<GkeNodePoolAcceleratorConfig>(
               map['accelerators'],
               (value) => GkeNodePoolAcceleratorConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

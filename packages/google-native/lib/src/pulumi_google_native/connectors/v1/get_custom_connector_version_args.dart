@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCustomConnectorVersion.
 class GetCustomConnectorVersionArgs {
-  final Input<String> customConnectorId;
-  final Input<String> customConnectorVersionId;
-  final Input<String>? project;
+  final pulumi.Input<String> customConnectorId;
+  final pulumi.Input<String> customConnectorVersionId;
+  final pulumi.Input<String>? project;
 
   GetCustomConnectorVersionArgs({
     required this.customConnectorId,
@@ -27,10 +27,10 @@ class GetCustomConnectorVersionArgs {
 
   factory GetCustomConnectorVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomConnectorVersionArgs(
-      customConnectorId: Input.asInput<String>(map['customConnectorId']),
+      customConnectorId: pulumi.Input.asInput<String>(map['customConnectorId']),
       customConnectorVersionId:
-          Input.asInput<String>(map['customConnectorVersionId']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['customConnectorVersionId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

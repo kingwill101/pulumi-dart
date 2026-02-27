@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscaler_status_details_response.dart';
 import 'autoscaling_policy_response.dart';
 
@@ -78,9 +78,9 @@ class GetAutoscalerResult {
     map['selfLink'] = selfLink;
     map['selfLinkWithId'] = selfLinkWithId;
     map['status'] = status;
-    map['statusDetails'] =
-        Input.encodeList<AutoscalerStatusDetailsResponse, Map<String, dynamic>>(
-            statusDetails, (value) => value.toMap());
+    map['statusDetails'] = pulumi.Input.encodeList<
+        AutoscalerStatusDetailsResponse,
+        Map<String, dynamic>>(statusDetails, (value) => value.toMap());
     map['target'] = target;
     map['zone'] = zone;
     return map;
@@ -101,7 +101,7 @@ class GetAutoscalerResult {
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
       status: map['status'] as String,
-      statusDetails: Input.decodeList<AutoscalerStatusDetailsResponse>(
+      statusDetails: pulumi.Input.decodeList<AutoscalerStatusDetailsResponse>(
           map['statusDetails'],
           (value) => AutoscalerStatusDetailsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

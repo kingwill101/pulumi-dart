@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTable.
 class GetTableArgs {
-  final Input<String> catalogId;
-  final Input<String> databaseId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> tableId;
+  final pulumi.Input<String> catalogId;
+  final pulumi.Input<String> databaseId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> tableId;
 
   GetTableArgs({
     required this.catalogId,
@@ -33,11 +33,11 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      catalogId: Input.asInput<String>(map['catalogId']),
-      databaseId: Input.asInput<String>(map['databaseId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tableId: Input.asInput<String>(map['tableId']),
+      catalogId: pulumi.Input.asInput<String>(map['catalogId']),
+      databaseId: pulumi.Input.asInput<String>(map['databaseId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tableId: pulumi.Input.asInput<String>(map['tableId']),
     );
   }
 }

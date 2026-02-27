@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDestGroup.
 class GetDestGroupArgs {
-  final Input<String> destGroupId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> destGroupId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDestGroupArgs({
     required this.destGroupId,
@@ -27,9 +27,9 @@ class GetDestGroupArgs {
 
   factory GetDestGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDestGroupArgs(
-      destGroupId: Input.asInput<String>(map['destGroupId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      destGroupId: pulumi.Input.asInput<String>(map['destGroupId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

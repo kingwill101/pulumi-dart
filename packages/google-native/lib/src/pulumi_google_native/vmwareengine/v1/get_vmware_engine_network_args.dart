@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getVmwareEngineNetwork.
 class GetVmwareEngineNetworkArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> vmwareEngineNetworkId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> vmwareEngineNetworkId;
 
   GetVmwareEngineNetworkArgs({
     required this.location,
@@ -27,10 +27,10 @@ class GetVmwareEngineNetworkArgs {
 
   factory GetVmwareEngineNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareEngineNetworkArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       vmwareEngineNetworkId:
-          Input.asInput<String>(map['vmwareEngineNetworkId']),
+          pulumi.Input.asInput<String>(map['vmwareEngineNetworkId']),
     );
   }
 }

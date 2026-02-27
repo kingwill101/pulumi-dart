@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'weekly_maintenance_window2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'weekly_maintenance_window_memcache_v1beta2.dart';
 
 /// Maintenance policy per instance.
 class GoogleCloudMemcacheV1beta2MaintenancePolicy {
@@ -9,7 +9,7 @@ class GoogleCloudMemcacheV1beta2MaintenancePolicy {
   final String? description;
 
   /// Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
-  final List<WeeklyMaintenanceWindow2> weeklyMaintenanceWindow;
+  final List<WeeklyMaintenanceWindowMemcacheV1beta2> weeklyMaintenanceWindow;
 
   GoogleCloudMemcacheV1beta2MaintenancePolicy({
     this.description,
@@ -22,9 +22,9 @@ class GoogleCloudMemcacheV1beta2MaintenancePolicy {
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
     }
-    map['weeklyMaintenanceWindow'] =
-        Input.encodeList<WeeklyMaintenanceWindow2, Map<String, dynamic>>(
-            weeklyMaintenanceWindow, (value) => value.toMap());
+    map['weeklyMaintenanceWindow'] = pulumi.Input.encodeList<
+            WeeklyMaintenanceWindowMemcacheV1beta2, Map<String, dynamic>>(
+        weeklyMaintenanceWindow, (value) => value.toMap());
     return map;
   }
 
@@ -33,10 +33,11 @@ class GoogleCloudMemcacheV1beta2MaintenancePolicy {
     return GoogleCloudMemcacheV1beta2MaintenancePolicy(
       description:
           map['description'] == null ? null : map['description'] as String,
-      weeklyMaintenanceWindow: Input.decodeList<WeeklyMaintenanceWindow2>(
-          map['weeklyMaintenanceWindow'],
-          (value) => WeeklyMaintenanceWindow2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      weeklyMaintenanceWindow:
+          pulumi.Input.decodeList<WeeklyMaintenanceWindowMemcacheV1beta2>(
+              map['weeklyMaintenanceWindow'],
+              (value) => WeeklyMaintenanceWindowMemcacheV1beta2.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

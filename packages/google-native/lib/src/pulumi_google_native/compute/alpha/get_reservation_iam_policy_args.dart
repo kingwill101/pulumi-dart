@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReservationIamPolicy.
 class GetReservationIamPolicyArgs {
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
-  final Input<String> resource;
-  final Input<String> zone;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> resource;
+  final pulumi.Input<String> zone;
 
   GetReservationIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
@@ -33,11 +33,11 @@ class GetReservationIamPolicyArgs {
 
   factory GetReservationIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resource: Input.asInput<String>(map['resource']),
-      zone: Input.asInput<String>(map['zone']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resource: pulumi.Input.asInput<String>(map['resource']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

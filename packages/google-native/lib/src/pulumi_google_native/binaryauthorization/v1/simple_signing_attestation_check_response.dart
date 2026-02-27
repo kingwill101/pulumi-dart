@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_authenticator_response.dart';
 
 /// Require a signed [DSSE](https://github.com/secure-systems-lab/dsse) attestation with type SimpleSigning.
@@ -18,7 +18,7 @@ class SimpleSigningAttestationCheckResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['attestationAuthenticators'] = Input.encodeList<
+    map['attestationAuthenticators'] = pulumi.Input.encodeList<
             AttestationAuthenticatorResponse, Map<String, dynamic>>(
         attestationAuthenticators, (value) => value.toMap());
     map['containerAnalysisAttestationProjects'] =
@@ -30,7 +30,7 @@ class SimpleSigningAttestationCheckResponse {
       Map<String, dynamic> map) {
     return SimpleSigningAttestationCheckResponse(
       attestationAuthenticators:
-          Input.decodeList<AttestationAuthenticatorResponse>(
+          pulumi.Input.decodeList<AttestationAuthenticatorResponse>(
               map['attestationAuthenticators'],
               (value) => AttestationAuthenticatorResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

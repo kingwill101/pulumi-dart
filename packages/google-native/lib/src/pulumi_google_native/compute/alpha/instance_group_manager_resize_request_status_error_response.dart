@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_manager_resize_request_status_error_errors_item_response.dart';
 
 /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
@@ -15,7 +15,7 @@ class InstanceGroupManagerResizeRequestStatusErrorResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['errors'] = Input.encodeList<
+    map['errors'] = pulumi.Input.encodeList<
         InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse,
         Map<String, dynamic>>(errors, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class InstanceGroupManagerResizeRequestStatusErrorResponse {
   factory InstanceGroupManagerResizeRequestStatusErrorResponse.fromMap(
       Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestStatusErrorResponse(
-      errors: Input.decodeList<
+      errors: pulumi.Input.decodeList<
               InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse>(
           map['errors'],
           (value) =>

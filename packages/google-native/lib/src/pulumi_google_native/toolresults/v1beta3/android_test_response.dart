@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'android_app_info_response.dart';
-import 'android_instrumentation_test_response2.dart';
-import 'android_robo_test_response2.dart';
-import 'duration_response4.dart';
+import 'android_instrumentation_test_response_toolresults_v1beta3.dart';
+import 'android_robo_test_response_toolresults_v1beta3.dart';
+import 'duration_response_toolresults_v1beta3.dart';
 
 /// An Android mobile test specification.
 class AndroidTestResponse {
@@ -11,16 +11,17 @@ class AndroidTestResponse {
   final AndroidAppInfoResponse androidAppInfo;
 
   /// An Android instrumentation test.
-  final AndroidInstrumentationTestResponse2 androidInstrumentationTest;
+  final AndroidInstrumentationTestResponseToolresultsV1beta3
+      androidInstrumentationTest;
 
   /// An Android robo test.
-  final AndroidRoboTestResponse2 androidRoboTest;
+  final AndroidRoboTestResponseToolresultsV1beta3 androidRoboTest;
 
   /// An Android test loop.
   final Map<String, dynamic> androidTestLoop;
 
   /// Max time a test is allowed to run before it is automatically cancelled.
-  final DurationResponse4 testTimeout;
+  final DurationResponseToolresultsV1beta3 testTimeout;
 
   AndroidTestResponse({
     required this.androidAppInfo,
@@ -44,12 +45,14 @@ class AndroidTestResponse {
     return AndroidTestResponse(
       androidAppInfo: AndroidAppInfoResponse.fromMap(
           (map['androidAppInfo'] as Map).cast<String, dynamic>()),
-      androidInstrumentationTest: AndroidInstrumentationTestResponse2.fromMap(
-          (map['androidInstrumentationTest'] as Map).cast<String, dynamic>()),
-      androidRoboTest: AndroidRoboTestResponse2.fromMap(
+      androidInstrumentationTest:
+          AndroidInstrumentationTestResponseToolresultsV1beta3.fromMap(
+              (map['androidInstrumentationTest'] as Map)
+                  .cast<String, dynamic>()),
+      androidRoboTest: AndroidRoboTestResponseToolresultsV1beta3.fromMap(
           (map['androidRoboTest'] as Map).cast<String, dynamic>()),
       androidTestLoop: (map['androidTestLoop'] as Map).cast<String, dynamic>(),
-      testTimeout: DurationResponse4.fromMap(
+      testTimeout: DurationResponseToolresultsV1beta3.fromMap(
           (map['testTimeout'] as Map).cast<String, dynamic>()),
     );
   }

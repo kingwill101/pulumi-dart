@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolderExclusion.
 class GetFolderExclusionArgs {
-  final Input<String> exclusionId;
-  final Input<String> folderId;
+  final pulumi.Input<String> exclusionId;
+  final pulumi.Input<String> folderId;
 
   GetFolderExclusionArgs({
     required this.exclusionId,
@@ -21,8 +21,8 @@ class GetFolderExclusionArgs {
 
   factory GetFolderExclusionArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderExclusionArgs(
-      exclusionId: Input.asInput<String>(map['exclusionId']),
-      folderId: Input.asInput<String>(map['folderId']),
+      exclusionId: pulumi.Input.asInput<String>(map['exclusionId']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'component_source.dart';
 import 'component_transform.dart';
 import 'execution_stage_summary_kind.dart';
@@ -48,13 +48,13 @@ class ExecutionStageSummary {
     final componentSourceValue = componentSource;
     if (componentSourceValue != null) {
       map['componentSource'] =
-          Input.encodeList<ComponentSource, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ComponentSource, Map<String, dynamic>>(
               componentSourceValue, (value) => value.toMap());
     }
     final componentTransformValue = componentTransform;
     if (componentTransformValue != null) {
       map['componentTransform'] =
-          Input.encodeList<ComponentTransform, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ComponentTransform, Map<String, dynamic>>(
               componentTransformValue, (value) => value.toMap());
     }
     final idValue = id;
@@ -63,8 +63,9 @@ class ExecutionStageSummary {
     }
     final inputSourceValue = inputSource;
     if (inputSourceValue != null) {
-      map['inputSource'] = Input.encodeList<StageSource, Map<String, dynamic>>(
-          inputSourceValue, (value) => value.toMap());
+      map['inputSource'] =
+          pulumi.Input.encodeList<StageSource, Map<String, dynamic>>(
+              inputSourceValue, (value) => value.toMap());
     }
     final kindValue = kind;
     if (kindValue != null) {
@@ -76,8 +77,9 @@ class ExecutionStageSummary {
     }
     final outputSourceValue = outputSource;
     if (outputSourceValue != null) {
-      map['outputSource'] = Input.encodeList<StageSource, Map<String, dynamic>>(
-          outputSourceValue, (value) => value.toMap());
+      map['outputSource'] =
+          pulumi.Input.encodeList<StageSource, Map<String, dynamic>>(
+              outputSourceValue, (value) => value.toMap());
     }
     final prerequisiteStageValue = prerequisiteStage;
     if (prerequisiteStageValue != null) {
@@ -90,20 +92,20 @@ class ExecutionStageSummary {
     return ExecutionStageSummary(
       componentSource: map['componentSource'] == null
           ? null
-          : Input.decodeList<ComponentSource>(
+          : pulumi.Input.decodeList<ComponentSource>(
               map['componentSource'],
               (value) => ComponentSource.fromMap(
                   (value as Map).cast<String, dynamic>())),
       componentTransform: map['componentTransform'] == null
           ? null
-          : Input.decodeList<ComponentTransform>(
+          : pulumi.Input.decodeList<ComponentTransform>(
               map['componentTransform'],
               (value) => ComponentTransform.fromMap(
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] == null ? null : map['id'] as String,
       inputSource: map['inputSource'] == null
           ? null
-          : Input.decodeList<StageSource>(
+          : pulumi.Input.decodeList<StageSource>(
               map['inputSource'],
               (value) =>
                   StageSource.fromMap((value as Map).cast<String, dynamic>())),
@@ -113,7 +115,7 @@ class ExecutionStageSummary {
       name: map['name'] == null ? null : map['name'] as String,
       outputSource: map['outputSource'] == null
           ? null
-          : Input.decodeList<StageSource>(
+          : pulumi.Input.decodeList<StageSource>(
               map['outputSource'],
               (value) =>
                   StageSource.fromMap((value as Map).cast<String, dynamic>())),

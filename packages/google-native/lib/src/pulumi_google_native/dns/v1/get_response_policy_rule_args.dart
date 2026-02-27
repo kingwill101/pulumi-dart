@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResponsePolicyRule.
 class GetResponsePolicyRuleArgs {
-  final Input<String>? clientOperationId;
-  final Input<String>? project;
-  final Input<String> responsePolicy;
-  final Input<String> responsePolicyRule;
+  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> responsePolicy;
+  final pulumi.Input<String> responsePolicyRule;
 
   GetResponsePolicyRuleArgs({
     this.clientOperationId,
@@ -34,10 +34,11 @@ class GetResponsePolicyRuleArgs {
   factory GetResponsePolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetResponsePolicyRuleArgs(
       clientOperationId:
-          Input.asOptionalInput<String>(map['clientOperationId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      responsePolicy: Input.asInput<String>(map['responsePolicy']),
-      responsePolicyRule: Input.asInput<String>(map['responsePolicyRule']),
+          pulumi.Input.asOptionalInput<String>(map['clientOperationId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      responsePolicy: pulumi.Input.asInput<String>(map['responsePolicy']),
+      responsePolicyRule:
+          pulumi.Input.asInput<String>(map['responsePolicyRule']),
     );
   }
 }

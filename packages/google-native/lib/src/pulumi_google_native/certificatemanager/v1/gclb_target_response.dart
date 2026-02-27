@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_config_response.dart';
 
 /// Describes a Target Proxy that uses this Certificate Map.
@@ -22,8 +22,9 @@ class GclbTargetResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['ipConfigs'] = Input.encodeList<IpConfigResponse, Map<String, dynamic>>(
-        ipConfigs, (value) => value.toMap());
+    map['ipConfigs'] =
+        pulumi.Input.encodeList<IpConfigResponse, Map<String, dynamic>>(
+            ipConfigs, (value) => value.toMap());
     map['targetHttpsProxy'] = targetHttpsProxy;
     map['targetSslProxy'] = targetSslProxy;
     return map;
@@ -31,7 +32,7 @@ class GclbTargetResponse {
 
   factory GclbTargetResponse.fromMap(Map<String, dynamic> map) {
     return GclbTargetResponse(
-      ipConfigs: Input.decodeList<IpConfigResponse>(
+      ipConfigs: pulumi.Input.decodeList<IpConfigResponse>(
           map['ipConfigs'],
           (value) =>
               IpConfigResponse.fromMap((value as Map).cast<String, dynamic>())),

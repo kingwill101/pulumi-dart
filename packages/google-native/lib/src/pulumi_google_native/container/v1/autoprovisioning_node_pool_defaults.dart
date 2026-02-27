@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'node_management.dart';
-import 'shielded_instance_config4.dart';
+import 'shielded_instance_config_container_v1.dart';
 import 'upgrade_settings.dart';
 
 /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
@@ -34,7 +34,7 @@ class AutoprovisioningNodePoolDefaults {
   final String? serviceAccount;
 
   /// Shielded Instance options.
-  final ShieldedInstanceConfig4? shieldedInstanceConfig;
+  final ShieldedInstanceConfigContainerV1? shieldedInstanceConfig;
 
   /// Specifies the upgrade settings for NAP created node pools
   final UpgradeSettings? upgradeSettings;
@@ -131,7 +131,7 @@ class AutoprovisioningNodePoolDefaults {
           : map['serviceAccount'] as String,
       shieldedInstanceConfig: map['shieldedInstanceConfig'] == null
           ? null
-          : ShieldedInstanceConfig4.fromMap(
+          : ShieldedInstanceConfigContainerV1.fromMap(
               (map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
       upgradeSettings: map['upgradeSettings'] == null
           ? null

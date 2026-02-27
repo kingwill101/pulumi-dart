@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'condition_response.dart';
 
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
@@ -20,7 +20,7 @@ class BasicLevelResponse {
     final map = <String, dynamic>{};
     map['combiningFunction'] = combiningFunction;
     map['conditions'] =
-        Input.encodeList<ConditionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(
             conditions, (value) => value.toMap());
     return map;
   }
@@ -28,7 +28,7 @@ class BasicLevelResponse {
   factory BasicLevelResponse.fromMap(Map<String, dynamic> map) {
     return BasicLevelResponse(
       combiningFunction: map['combiningFunction'] as String,
-      conditions: Input.decodeList<ConditionResponse>(
+      conditions: pulumi.Input.decodeList<ConditionResponse>(
           map['conditions'],
           (value) => ConditionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

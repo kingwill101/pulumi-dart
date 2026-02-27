@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_task_metadata_admin_response.dart';
 
 /// TaskMetadata are attributes that are associated to every common Task we have.
@@ -91,7 +91,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['activeTaskName'] = activeTaskName;
-    map['admins'] = Input.encodeList<
+    map['admins'] = pulumi.Input.encodeList<
         EnterpriseCrmEventbusProtoTaskMetadataAdminResponse,
         Map<String, dynamic>>(admins, (value) => value.toMap());
     map['category'] = category;
@@ -121,12 +121,12 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse {
       Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskMetadataResponse(
       activeTaskName: map['activeTaskName'] as String,
-      admins:
-          Input.decodeList<EnterpriseCrmEventbusProtoTaskMetadataAdminResponse>(
-              map['admins'],
-              (value) =>
-                  EnterpriseCrmEventbusProtoTaskMetadataAdminResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      admins: pulumi.Input.decodeList<
+              EnterpriseCrmEventbusProtoTaskMetadataAdminResponse>(
+          map['admins'],
+          (value) =>
+              EnterpriseCrmEventbusProtoTaskMetadataAdminResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       category: map['category'] as String,
       codeSearchLink: map['codeSearchLink'] as String,
       defaultJsonValidationOption: map['defaultJsonValidationOption'] as String,

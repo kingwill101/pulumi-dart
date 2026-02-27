@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'google_cloud_orgpolicy_v2_policy_spec_policy_rule_string_values.dart';
-import 'google_type_expr10.dart';
+import 'google_type_expr_orgpolicy_v2.dart';
 
 /// A rule used to express this policy.
 class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
@@ -9,7 +9,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   final bool? allowAll;
 
   /// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
-  final GoogleTypeExpr10? condition;
+  final GoogleTypeExprOrgpolicyV2? condition;
 
   /// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
   final bool? denyAll;
@@ -59,7 +59,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
       allowAll: map['allowAll'] == null ? null : map['allowAll'] as bool,
       condition: map['condition'] == null
           ? null
-          : GoogleTypeExpr10.fromMap(
+          : GoogleTypeExprOrgpolicyV2.fromMap(
               (map['condition'] as Map).cast<String, dynamic>()),
       denyAll: map['denyAll'] == null ? null : map['denyAll'] as bool,
       enforce: map['enforce'] == null ? null : map['enforce'] as bool,

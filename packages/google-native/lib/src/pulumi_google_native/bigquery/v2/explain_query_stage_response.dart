@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'explain_query_step_response.dart';
 
 class ExplainQueryStageResponse {
@@ -146,7 +146,7 @@ class ExplainQueryStageResponse {
     map['startMs'] = startMs;
     map['status'] = status;
     map['steps'] =
-        Input.encodeList<ExplainQueryStepResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ExplainQueryStepResponse, Map<String, dynamic>>(
             steps, (value) => value.toMap());
     map['waitMsAvg'] = waitMsAvg;
     map['waitMsMax'] = waitMsMax;
@@ -181,7 +181,7 @@ class ExplainQueryStageResponse {
       slotMs: map['slotMs'] as String,
       startMs: map['startMs'] as String,
       status: map['status'] as String,
-      steps: Input.decodeList<ExplainQueryStepResponse>(
+      steps: pulumi.Input.decodeList<ExplainQueryStepResponse>(
           map['steps'],
           (value) => ExplainQueryStepResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

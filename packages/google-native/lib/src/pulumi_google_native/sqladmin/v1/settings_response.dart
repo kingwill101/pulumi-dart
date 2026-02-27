@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'advanced_machine_features_response6.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'advanced_machine_features_response_sqladmin_v1.dart';
 import 'backup_configuration_response.dart';
-import 'data_cache_config_response2.dart';
+import 'data_cache_config_response_sqladmin_v1.dart';
 import 'database_flags_response.dart';
-import 'deny_maintenance_period_response2.dart';
+import 'deny_maintenance_period_response_sqladmin_v1.dart';
 import 'insights_config_response.dart';
 import 'ip_configuration_response.dart';
 import 'location_preference_response.dart';
-import 'maintenance_window_response9.dart';
+import 'maintenance_window_response_sqladmin_v1.dart';
 import 'password_validation_policy_response.dart';
 import 'sql_active_directory_config_response.dart';
 import 'sql_server_audit_config_response.dart';
@@ -23,7 +23,7 @@ class SettingsResponse {
   final SqlActiveDirectoryConfigResponse activeDirectoryConfig;
 
   /// Specifies advance machine configuration for the instance relevant only for SQL Server.
-  final AdvancedMachineFeaturesResponse6 advancedMachineFeatures;
+  final AdvancedMachineFeaturesResponseSqladminV1 advancedMachineFeatures;
 
   /// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
   final List<String> authorizedGaeApplications;
@@ -44,7 +44,7 @@ class SettingsResponse {
   final bool crashSafeReplicationEnabled;
 
   /// Configuration for data cache.
-  final DataCacheConfigResponse2 dataCacheConfig;
+  final DataCacheConfigResponseSqladminV1 dataCacheConfig;
 
   /// The size of data disk, in GB. The data disk size minimum is 10GB.
   final String dataDiskSizeGb;
@@ -62,7 +62,7 @@ class SettingsResponse {
   final bool deletionProtectionEnabled;
 
   /// Deny maintenance periods
-  final List<DenyMaintenancePeriodResponse2> denyMaintenancePeriods;
+  final List<DenyMaintenancePeriodResponseSqladminV1> denyMaintenancePeriods;
 
   /// Optional. The edition of the instance.
   final String edition;
@@ -80,7 +80,7 @@ class SettingsResponse {
   final LocationPreferenceResponse locationPreference;
 
   /// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
-  final MaintenanceWindowResponse9 maintenanceWindow;
+  final MaintenanceWindowResponseSqladminV1 maintenanceWindow;
 
   /// The local user password validation policy of the instance.
   final PasswordValidationPolicyResponse passwordValidationPolicy;
@@ -162,13 +162,13 @@ class SettingsResponse {
     map['dataDiskSizeGb'] = dataDiskSizeGb;
     map['dataDiskType'] = dataDiskType;
     map['databaseFlags'] =
-        Input.encodeList<DatabaseFlagsResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DatabaseFlagsResponse, Map<String, dynamic>>(
             databaseFlags, (value) => value.toMap());
     map['databaseReplicationEnabled'] = databaseReplicationEnabled;
     map['deletionProtectionEnabled'] = deletionProtectionEnabled;
-    map['denyMaintenancePeriods'] =
-        Input.encodeList<DenyMaintenancePeriodResponse2, Map<String, dynamic>>(
-            denyMaintenancePeriods, (value) => value.toMap());
+    map['denyMaintenancePeriods'] = pulumi.Input.encodeList<
+        DenyMaintenancePeriodResponseSqladminV1,
+        Map<String, dynamic>>(denyMaintenancePeriods, (value) => value.toMap());
     map['edition'] = edition;
     map['insightsConfig'] = insightsConfig.toMap();
     map['ipConfiguration'] = ipConfiguration.toMap();
@@ -193,8 +193,9 @@ class SettingsResponse {
       activationPolicy: map['activationPolicy'] as String,
       activeDirectoryConfig: SqlActiveDirectoryConfigResponse.fromMap(
           (map['activeDirectoryConfig'] as Map).cast<String, dynamic>()),
-      advancedMachineFeatures: AdvancedMachineFeaturesResponse6.fromMap(
-          (map['advancedMachineFeatures'] as Map).cast<String, dynamic>()),
+      advancedMachineFeatures:
+          AdvancedMachineFeaturesResponseSqladminV1.fromMap(
+              (map['advancedMachineFeatures'] as Map).cast<String, dynamic>()),
       authorizedGaeApplications:
           (map['authorizedGaeApplications'] as List).cast<String>(),
       availabilityType: map['availabilityType'] as String,
@@ -203,20 +204,21 @@ class SettingsResponse {
       collation: map['collation'] as String,
       connectorEnforcement: map['connectorEnforcement'] as String,
       crashSafeReplicationEnabled: map['crashSafeReplicationEnabled'] as bool,
-      dataCacheConfig: DataCacheConfigResponse2.fromMap(
+      dataCacheConfig: DataCacheConfigResponseSqladminV1.fromMap(
           (map['dataCacheConfig'] as Map).cast<String, dynamic>()),
       dataDiskSizeGb: map['dataDiskSizeGb'] as String,
       dataDiskType: map['dataDiskType'] as String,
-      databaseFlags: Input.decodeList<DatabaseFlagsResponse>(
+      databaseFlags: pulumi.Input.decodeList<DatabaseFlagsResponse>(
           map['databaseFlags'],
           (value) => DatabaseFlagsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       databaseReplicationEnabled: map['databaseReplicationEnabled'] as bool,
       deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
-      denyMaintenancePeriods: Input.decodeList<DenyMaintenancePeriodResponse2>(
-          map['denyMaintenancePeriods'],
-          (value) => DenyMaintenancePeriodResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      denyMaintenancePeriods:
+          pulumi.Input.decodeList<DenyMaintenancePeriodResponseSqladminV1>(
+              map['denyMaintenancePeriods'],
+              (value) => DenyMaintenancePeriodResponseSqladminV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       edition: map['edition'] as String,
       insightsConfig: InsightsConfigResponse.fromMap(
           (map['insightsConfig'] as Map).cast<String, dynamic>()),
@@ -225,7 +227,7 @@ class SettingsResponse {
       kind: map['kind'] as String,
       locationPreference: LocationPreferenceResponse.fromMap(
           (map['locationPreference'] as Map).cast<String, dynamic>()),
-      maintenanceWindow: MaintenanceWindowResponse9.fromMap(
+      maintenanceWindow: MaintenanceWindowResponseSqladminV1.fromMap(
           (map['maintenanceWindow'] as Map).cast<String, dynamic>()),
       passwordValidationPolicy: PasswordValidationPolicyResponse.fromMap(
           (map['passwordValidationPolicy'] as Map).cast<String, dynamic>()),

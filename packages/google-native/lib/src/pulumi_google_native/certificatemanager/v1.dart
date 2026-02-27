@@ -1,12 +1,12 @@
 library module_certificatemanager_v1;
 
 export 'v1/authorization_attempt_info_response.dart';
-export 'v1/certificate2.dart';
 export 'v1/certificate_args.dart';
 export 'v1/certificate_authority_config.dart';
 export 'v1/certificate_authority_config_response.dart';
 export 'v1/certificate_authority_service_config.dart';
 export 'v1/certificate_authority_service_config_response.dart';
+export 'v1/certificate_certificatemanager_v1.dart';
 export 'v1/certificate_issuance_config.dart';
 export 'v1/certificate_issuance_config_args.dart';
 export 'v1/certificate_issuance_config_key_algorithm.dart';
@@ -42,7 +42,7 @@ export 'v1/intermediate_ca.dart';
 export 'v1/intermediate_caresponse.dart';
 export 'v1/ip_config_response.dart';
 export 'v1/managed_certificate.dart';
-export 'v1/managed_certificate_response4.dart';
+export 'v1/managed_certificate_response_certificatemanager_v1.dart';
 export 'v1/provisioning_issue_response.dart';
 export 'v1/self_managed_certificate.dart';
 export 'v1/self_managed_certificate_response.dart';

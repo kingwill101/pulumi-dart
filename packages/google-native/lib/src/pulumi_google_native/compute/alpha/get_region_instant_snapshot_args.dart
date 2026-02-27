@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionInstantSnapshot.
 class GetRegionInstantSnapshotArgs {
-  final Input<String> instantSnapshot;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> instantSnapshot;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetRegionInstantSnapshotArgs({
     required this.instantSnapshot,
@@ -27,9 +27,9 @@ class GetRegionInstantSnapshotArgs {
 
   factory GetRegionInstantSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstantSnapshotArgs(
-      instantSnapshot: Input.asInput<String>(map['instantSnapshot']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      instantSnapshot: pulumi.Input.asInput<String>(map['instantSnapshot']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

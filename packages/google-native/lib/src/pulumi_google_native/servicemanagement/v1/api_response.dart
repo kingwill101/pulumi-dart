@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'method_response.dart';
 import 'mixin_response.dart';
 import 'option_response.dart';
-import 'source_context_response3.dart';
+import 'source_context_response_servicemanagement_v1.dart';
 
 /// Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology.
 class ApiResponse {
@@ -21,7 +21,7 @@ class ApiResponse {
   final List<OptionResponse> options;
 
   /// Source context for the protocol buffer service represented by this message.
-  final SourceContextResponse3 sourceContext;
+  final SourceContextResponseServicemanagementV1 sourceContext;
 
   /// The source syntax of the service.
   final String syntax;
@@ -41,13 +41,16 @@ class ApiResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['methods'] = Input.encodeList<MethodResponse, Map<String, dynamic>>(
-        methods, (value) => value.toMap());
-    map['mixins'] = Input.encodeList<MixinResponse, Map<String, dynamic>>(
-        mixins, (value) => value.toMap());
+    map['methods'] =
+        pulumi.Input.encodeList<MethodResponse, Map<String, dynamic>>(
+            methods, (value) => value.toMap());
+    map['mixins'] =
+        pulumi.Input.encodeList<MixinResponse, Map<String, dynamic>>(
+            mixins, (value) => value.toMap());
     map['name'] = name;
-    map['options'] = Input.encodeList<OptionResponse, Map<String, dynamic>>(
-        options, (value) => value.toMap());
+    map['options'] =
+        pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(
+            options, (value) => value.toMap());
     map['sourceContext'] = sourceContext.toMap();
     map['syntax'] = syntax;
     map['version'] = version;
@@ -56,20 +59,20 @@ class ApiResponse {
 
   factory ApiResponse.fromMap(Map<String, dynamic> map) {
     return ApiResponse(
-      methods: Input.decodeList<MethodResponse>(
+      methods: pulumi.Input.decodeList<MethodResponse>(
           map['methods'],
           (value) =>
               MethodResponse.fromMap((value as Map).cast<String, dynamic>())),
-      mixins: Input.decodeList<MixinResponse>(
+      mixins: pulumi.Input.decodeList<MixinResponse>(
           map['mixins'],
           (value) =>
               MixinResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      options: Input.decodeList<OptionResponse>(
+      options: pulumi.Input.decodeList<OptionResponse>(
           map['options'],
           (value) =>
               OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceContext: SourceContextResponse3.fromMap(
+      sourceContext: SourceContextResponseServicemanagementV1.fromMap(
           (map['sourceContext'] as Map).cast<String, dynamic>()),
       syntax: map['syntax'] as String,
       version: map['version'] as String,

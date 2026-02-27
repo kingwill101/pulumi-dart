@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'invocation_config.dart';
 
 /// The set of arguments for WorkflowInvocation.
 class WorkflowInvocationArgs {
   /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
-  final Input<String>? compilationResult;
+  final pulumi.Input<String>? compilationResult;
 
   /// Immutable. If left unset, a default InvocationConfig will be used.
-  final Input<InvocationConfig>? invocationConfig;
-  final Input<String>? location;
-  final Input<String>? project;
-  final Input<String> repositoryId;
+  final pulumi.Input<InvocationConfig>? invocationConfig;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> repositoryId;
 
   /// Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
-  final Input<String>? workflowConfig;
+  final pulumi.Input<String>? workflowConfig;
 
   WorkflowInvocationArgs({
     this.compilationResult,
@@ -34,9 +34,9 @@ class WorkflowInvocationArgs {
     }
     final invocationConfigValue = invocationConfig;
     if (invocationConfigValue != null) {
-      map['invocationConfig'] =
-          Input.mapOptionalInputValue<InvocationConfig, Map<String, dynamic>>(
-              invocationConfigValue, (value) => value.toMap());
+      map['invocationConfig'] = pulumi.Input.mapOptionalInputValue<
+              InvocationConfig, Map<String, dynamic>>(
+          invocationConfigValue, (value) => value.toMap());
     }
     final locationValue = location;
     if (locationValue != null) {
@@ -57,13 +57,14 @@ class WorkflowInvocationArgs {
   factory WorkflowInvocationArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowInvocationArgs(
       compilationResult:
-          Input.asOptionalInput<String>(map['compilationResult']),
-      invocationConfig:
-          Input.asOptionalInput<InvocationConfig>(map['invocationConfig']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      repositoryId: Input.asInput<String>(map['repositoryId']),
-      workflowConfig: Input.asOptionalInput<String>(map['workflowConfig']),
+          pulumi.Input.asOptionalInput<String>(map['compilationResult']),
+      invocationConfig: pulumi.Input.asOptionalInput<InvocationConfig>(
+          map['invocationConfig']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      repositoryId: pulumi.Input.asInput<String>(map['repositoryId']),
+      workflowConfig:
+          pulumi.Input.asOptionalInput<String>(map['workflowConfig']),
     );
   }
 }

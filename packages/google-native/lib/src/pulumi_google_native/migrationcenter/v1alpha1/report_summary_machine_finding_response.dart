@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'report_summary_machine_series_allocation_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'report_summary_machine_series_allocation_response_migrationcenter_v1alpha1.dart';
 
 /// A set of findings that applies to assets of type Virtual/Physical Machine.
 class ReportSummaryMachineFindingResponse {
@@ -15,7 +15,8 @@ class ReportSummaryMachineFindingResponse {
   final List<String> allocatedRegions;
 
   /// Distribution of assets based on the Machine Series.
-  final List<ReportSummaryMachineSeriesAllocationResponse2>
+  final List<
+          ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1>
       machineSeriesAllocations;
 
   ReportSummaryMachineFindingResponse({
@@ -30,8 +31,8 @@ class ReportSummaryMachineFindingResponse {
     map['allocatedAssetCount'] = allocatedAssetCount;
     map['allocatedDiskTypes'] = allocatedDiskTypes;
     map['allocatedRegions'] = allocatedRegions;
-    map['machineSeriesAllocations'] = Input.encodeList<
-            ReportSummaryMachineSeriesAllocationResponse2,
+    map['machineSeriesAllocations'] = pulumi.Input.encodeList<
+            ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1,
             Map<String, dynamic>>(
         machineSeriesAllocations, (value) => value.toMap());
     return map;
@@ -43,11 +44,12 @@ class ReportSummaryMachineFindingResponse {
       allocatedAssetCount: map['allocatedAssetCount'] as String,
       allocatedDiskTypes: (map['allocatedDiskTypes'] as List).cast<String>(),
       allocatedRegions: (map['allocatedRegions'] as List).cast<String>(),
-      machineSeriesAllocations:
-          Input.decodeList<ReportSummaryMachineSeriesAllocationResponse2>(
-              map['machineSeriesAllocations'],
-              (value) => ReportSummaryMachineSeriesAllocationResponse2.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      machineSeriesAllocations: pulumi.Input.decodeList<
+              ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1>(
+          map['machineSeriesAllocations'],
+          (value) =>
+              ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1
+                  .fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

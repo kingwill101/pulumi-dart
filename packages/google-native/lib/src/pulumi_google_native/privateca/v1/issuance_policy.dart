@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allowed_key_type.dart';
 import 'certificate_extension_constraints.dart';
 import 'certificate_identity_constraints.dart';
@@ -45,7 +45,7 @@ class IssuancePolicy {
     final allowedKeyTypesValue = allowedKeyTypes;
     if (allowedKeyTypesValue != null) {
       map['allowedKeyTypes'] =
-          Input.encodeList<AllowedKeyType, Map<String, dynamic>>(
+          pulumi.Input.encodeList<AllowedKeyType, Map<String, dynamic>>(
               allowedKeyTypesValue, (value) => value.toMap());
     }
     final baselineValuesValue = baselineValues;
@@ -75,7 +75,7 @@ class IssuancePolicy {
               (map['allowedIssuanceModes'] as Map).cast<String, dynamic>()),
       allowedKeyTypes: map['allowedKeyTypes'] == null
           ? null
-          : Input.decodeList<AllowedKeyType>(
+          : pulumi.Input.decodeList<AllowedKeyType>(
               map['allowedKeyTypes'],
               (value) => AllowedKeyType.fromMap(
                   (value as Map).cast<String, dynamic>())),

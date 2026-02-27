@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_combined_condition_response.dart';
 
 /// The task that is next in line to be executed, if the condition specified evaluated to true.
@@ -35,7 +35,7 @@ class EnterpriseCrmEventbusProtoNextTaskResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['combinedConditions'] = Input.encodeList<
+    map['combinedConditions'] = pulumi.Input.encodeList<
         EnterpriseCrmEventbusProtoCombinedConditionResponse,
         Map<String, dynamic>>(combinedConditions, (value) => value.toMap());
     map['condition'] = condition;
@@ -49,12 +49,12 @@ class EnterpriseCrmEventbusProtoNextTaskResponse {
   factory EnterpriseCrmEventbusProtoNextTaskResponse.fromMap(
       Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoNextTaskResponse(
-      combinedConditions:
-          Input.decodeList<EnterpriseCrmEventbusProtoCombinedConditionResponse>(
-              map['combinedConditions'],
-              (value) =>
-                  EnterpriseCrmEventbusProtoCombinedConditionResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      combinedConditions: pulumi.Input.decodeList<
+              EnterpriseCrmEventbusProtoCombinedConditionResponse>(
+          map['combinedConditions'],
+          (value) =>
+              EnterpriseCrmEventbusProtoCombinedConditionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       condition: map['condition'] as String,
       description: map['description'] as String,
       label: map['label'] as String,

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_header_option_response.dart';
 
 /// The request and response header transformations that take effect before the request is passed along to the selected backendService.
@@ -27,11 +27,11 @@ class HttpHeaderActionResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['requestHeadersToAdd'] =
-        Input.encodeList<HttpHeaderOptionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<HttpHeaderOptionResponse, Map<String, dynamic>>(
             requestHeadersToAdd, (value) => value.toMap());
     map['requestHeadersToRemove'] = requestHeadersToRemove;
     map['responseHeadersToAdd'] =
-        Input.encodeList<HttpHeaderOptionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<HttpHeaderOptionResponse, Map<String, dynamic>>(
             responseHeadersToAdd, (value) => value.toMap());
     map['responseHeadersToRemove'] = responseHeadersToRemove;
     return map;
@@ -39,13 +39,13 @@ class HttpHeaderActionResponse {
 
   factory HttpHeaderActionResponse.fromMap(Map<String, dynamic> map) {
     return HttpHeaderActionResponse(
-      requestHeadersToAdd: Input.decodeList<HttpHeaderOptionResponse>(
+      requestHeadersToAdd: pulumi.Input.decodeList<HttpHeaderOptionResponse>(
           map['requestHeadersToAdd'],
           (value) => HttpHeaderOptionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       requestHeadersToRemove:
           (map['requestHeadersToRemove'] as List).cast<String>(),
-      responseHeadersToAdd: Input.decodeList<HttpHeaderOptionResponse>(
+      responseHeadersToAdd: pulumi.Input.decodeList<HttpHeaderOptionResponse>(
           map['responseHeadersToAdd'],
           (value) => HttpHeaderOptionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

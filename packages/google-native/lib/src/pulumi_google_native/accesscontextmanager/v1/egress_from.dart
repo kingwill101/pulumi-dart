@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'egress_from_identity_type.dart';
 import 'egress_from_source_restriction.dart';
 import 'egress_source.dart';
@@ -42,8 +42,9 @@ class EgressFrom {
     }
     final sourcesValue = sources;
     if (sourcesValue != null) {
-      map['sources'] = Input.encodeList<EgressSource, Map<String, dynamic>>(
-          sourcesValue, (value) => value.toMap());
+      map['sources'] =
+          pulumi.Input.encodeList<EgressSource, Map<String, dynamic>>(
+              sourcesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -62,7 +63,7 @@ class EgressFrom {
               map['sourceRestriction'] as String),
       sources: map['sources'] == null
           ? null
-          : Input.decodeList<EgressSource>(
+          : pulumi.Input.decodeList<EgressSource>(
               map['sources'],
               (value) =>
                   EgressSource.fromMap((value as Map).cast<String, dynamic>())),

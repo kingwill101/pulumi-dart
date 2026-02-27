@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'service_account2.dart';
+import 'service_account_beyondcorp_v1alpha.dart';
 
 /// PrincipalInfo represents an Identity oneof.
 class PrincipalInfo {
   /// A GCP service account.
-  final ServiceAccount2? serviceAccount;
+  final ServiceAccountBeyondcorpV1alpha? serviceAccount;
 
   PrincipalInfo({
     this.serviceAccount,
@@ -24,7 +24,7 @@ class PrincipalInfo {
     return PrincipalInfo(
       serviceAccount: map['serviceAccount'] == null
           ? null
-          : ServiceAccount2.fromMap(
+          : ServiceAccountBeyondcorpV1alpha.fromMap(
               (map['serviceAccount'] as Map).cast<String, dynamic>()),
     );
   }

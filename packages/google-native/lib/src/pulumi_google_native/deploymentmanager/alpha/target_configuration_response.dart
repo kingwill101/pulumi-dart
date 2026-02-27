@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_file_response.dart';
 import 'import_file_response.dart';
 
@@ -19,8 +19,9 @@ class TargetConfigurationResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['config'] = config.toMap();
-    map['imports'] = Input.encodeList<ImportFileResponse, Map<String, dynamic>>(
-        imports, (value) => value.toMap());
+    map['imports'] =
+        pulumi.Input.encodeList<ImportFileResponse, Map<String, dynamic>>(
+            imports, (value) => value.toMap());
     return map;
   }
 
@@ -28,7 +29,7 @@ class TargetConfigurationResponse {
     return TargetConfigurationResponse(
       config: ConfigFileResponse.fromMap(
           (map['config'] as Map).cast<String, dynamic>()),
-      imports: Input.decodeList<ImportFileResponse>(
+      imports: pulumi.Input.decodeList<ImportFileResponse>(
           map['imports'],
           (value) => ImportFileResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

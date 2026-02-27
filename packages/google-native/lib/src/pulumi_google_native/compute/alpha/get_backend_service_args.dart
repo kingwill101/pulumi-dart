@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBackendService.
 class GetBackendServiceArgs {
-  final Input<String> backendService;
-  final Input<String>? project;
+  final pulumi.Input<String> backendService;
+  final pulumi.Input<String>? project;
 
   GetBackendServiceArgs({
     required this.backendService,
@@ -24,8 +24,8 @@ class GetBackendServiceArgs {
 
   factory GetBackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceArgs(
-      backendService: Input.asInput<String>(map['backendService']),
-      project: Input.asOptionalInput<String>(map['project']),
+      backendService: pulumi.Input.asInput<String>(map['backendService']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMetric.
 class GetMetricArgs {
-  final Input<String> metricId;
-  final Input<String>? project;
+  final pulumi.Input<String> metricId;
+  final pulumi.Input<String>? project;
 
   GetMetricArgs({
     required this.metricId,
@@ -24,8 +24,8 @@ class GetMetricArgs {
 
   factory GetMetricArgs.fromMap(Map<String, dynamic> map) {
     return GetMetricArgs(
-      metricId: Input.asInput<String>(map['metricId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      metricId: pulumi.Input.asInput<String>(map['metricId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

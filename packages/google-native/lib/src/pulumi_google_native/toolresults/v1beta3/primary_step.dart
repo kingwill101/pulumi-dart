@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'individual_outcome.dart';
 import 'primary_step_roll_up.dart';
 
@@ -22,7 +22,7 @@ class PrimaryStep {
     final individualOutcomeValue = individualOutcome;
     if (individualOutcomeValue != null) {
       map['individualOutcome'] =
-          Input.encodeList<IndividualOutcome, Map<String, dynamic>>(
+          pulumi.Input.encodeList<IndividualOutcome, Map<String, dynamic>>(
               individualOutcomeValue, (value) => value.toMap());
     }
     final rollUpValue = rollUp;
@@ -36,7 +36,7 @@ class PrimaryStep {
     return PrimaryStep(
       individualOutcome: map['individualOutcome'] == null
           ? null
-          : Input.decodeList<IndividualOutcome>(
+          : pulumi.Input.decodeList<IndividualOutcome>(
               map['individualOutcome'],
               (value) => IndividualOutcome.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAnnotation.
 class GetAnnotationArgs {
-  final Input<String> annotationId;
-  final Input<String> annotationStoreId;
-  final Input<String> datasetId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> annotationId;
+  final pulumi.Input<String> annotationStoreId;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetAnnotationArgs({
     required this.annotationId,
@@ -33,11 +33,11 @@ class GetAnnotationArgs {
 
   factory GetAnnotationArgs.fromMap(Map<String, dynamic> map) {
     return GetAnnotationArgs(
-      annotationId: Input.asInput<String>(map['annotationId']),
-      annotationStoreId: Input.asInput<String>(map['annotationStoreId']),
-      datasetId: Input.asInput<String>(map['datasetId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      annotationId: pulumi.Input.asInput<String>(map['annotationId']),
+      annotationStoreId: pulumi.Input.asInput<String>(map['annotationStoreId']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

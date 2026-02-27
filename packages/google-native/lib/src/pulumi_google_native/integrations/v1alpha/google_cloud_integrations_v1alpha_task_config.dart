@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_coordinate.dart';
 import 'google_cloud_integrations_v1alpha_failure_policy.dart';
 import 'google_cloud_integrations_v1alpha_next_task.dart';
@@ -112,7 +112,7 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
     }
     final nextTasksValue = nextTasks;
     if (nextTasksValue != null) {
-      map['nextTasks'] = Input.encodeList<
+      map['nextTasks'] = pulumi.Input.encodeList<
           GoogleCloudIntegrationsV1alphaNextTask,
           Map<String, dynamic>>(nextTasksValue, (value) => value.toMap());
     }
@@ -177,7 +177,7 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
               .fromValue(map['jsonValidationOption'] as String),
       nextTasks: map['nextTasks'] == null
           ? null
-          : Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(
+          : pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(
               map['nextTasks'],
               (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'permission_response.dart';
 import 'principal_response.dart';
 
@@ -24,10 +24,10 @@ class RbacPolicyResponse {
     final map = <String, dynamic>{};
     map['name'] = name;
     map['permissions'] =
-        Input.encodeList<PermissionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PermissionResponse, Map<String, dynamic>>(
             permissions, (value) => value.toMap());
     map['principals'] =
-        Input.encodeList<PrincipalResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PrincipalResponse, Map<String, dynamic>>(
             principals, (value) => value.toMap());
     return map;
   }
@@ -35,11 +35,11 @@ class RbacPolicyResponse {
   factory RbacPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RbacPolicyResponse(
       name: map['name'] as String,
-      permissions: Input.decodeList<PermissionResponse>(
+      permissions: pulumi.Input.decodeList<PermissionResponse>(
           map['permissions'],
           (value) => PermissionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      principals: Input.decodeList<PrincipalResponse>(
+      principals: pulumi.Input.decodeList<PrincipalResponse>(
           map['principals'],
           (value) => PrincipalResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assessment_state.dart';
 import 'justification.dart';
 import 'related_url.dart';
@@ -67,13 +67,15 @@ class Assessment {
     }
     final relatedUrisValue = relatedUris;
     if (relatedUrisValue != null) {
-      map['relatedUris'] = Input.encodeList<RelatedUrl, Map<String, dynamic>>(
-          relatedUrisValue, (value) => value.toMap());
+      map['relatedUris'] =
+          pulumi.Input.encodeList<RelatedUrl, Map<String, dynamic>>(
+              relatedUrisValue, (value) => value.toMap());
     }
     final remediationsValue = remediations;
     if (remediationsValue != null) {
-      map['remediations'] = Input.encodeList<Remediation, Map<String, dynamic>>(
-          remediationsValue, (value) => value.toMap());
+      map['remediations'] =
+          pulumi.Input.encodeList<Remediation, Map<String, dynamic>>(
+              remediationsValue, (value) => value.toMap());
     }
     final shortDescriptionValue = shortDescription;
     if (shortDescriptionValue != null) {
@@ -105,13 +107,13 @@ class Assessment {
           : map['longDescription'] as String,
       relatedUris: map['relatedUris'] == null
           ? null
-          : Input.decodeList<RelatedUrl>(
+          : pulumi.Input.decodeList<RelatedUrl>(
               map['relatedUris'],
               (value) =>
                   RelatedUrl.fromMap((value as Map).cast<String, dynamic>())),
       remediations: map['remediations'] == null
           ? null
-          : Input.decodeList<Remediation>(
+          : pulumi.Input.decodeList<Remediation>(
               map['remediations'],
               (value) =>
                   Remediation.fromMap((value as Map).cast<String, dynamic>())),

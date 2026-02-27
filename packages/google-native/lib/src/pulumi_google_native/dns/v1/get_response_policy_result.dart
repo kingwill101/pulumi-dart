@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'response_policy_gkecluster_response.dart';
 import 'response_policy_network_response.dart';
 
@@ -34,13 +34,13 @@ class GetResponsePolicyResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['description'] = description;
-    map['gkeClusters'] = Input.encodeList<ResponsePolicyGKEClusterResponse,
+    map['gkeClusters'] = pulumi.Input.encodeList<
+        ResponsePolicyGKEClusterResponse,
         Map<String, dynamic>>(gkeClusters, (value) => value.toMap());
     map['kind'] = kind;
     map['labels'] = labels;
-    map['networks'] =
-        Input.encodeList<ResponsePolicyNetworkResponse, Map<String, dynamic>>(
-            networks, (value) => value.toMap());
+    map['networks'] = pulumi.Input.encodeList<ResponsePolicyNetworkResponse,
+        Map<String, dynamic>>(networks, (value) => value.toMap());
     map['responsePolicyName'] = responsePolicyName;
     return map;
   }
@@ -48,13 +48,13 @@ class GetResponsePolicyResult {
   factory GetResponsePolicyResult.fromMap(Map<String, dynamic> map) {
     return GetResponsePolicyResult(
       description: map['description'] as String,
-      gkeClusters: Input.decodeList<ResponsePolicyGKEClusterResponse>(
+      gkeClusters: pulumi.Input.decodeList<ResponsePolicyGKEClusterResponse>(
           map['gkeClusters'],
           (value) => ResponsePolicyGKEClusterResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      networks: Input.decodeList<ResponsePolicyNetworkResponse>(
+      networks: pulumi.Input.decodeList<ResponsePolicyNetworkResponse>(
           map['networks'],
           (value) => ResponsePolicyNetworkResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

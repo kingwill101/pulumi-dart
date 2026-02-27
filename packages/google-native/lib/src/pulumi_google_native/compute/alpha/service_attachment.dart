@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_attachment_args.dart';
 import 'service_attachment_connected_endpoint_response.dart';
 import 'service_attachment_consumer_project_limit_response.dart';
@@ -6,80 +6,81 @@ import 'service_attachment_tunneling_config_response.dart';
 import 'uint128_response.dart';
 
 /// Creates a ServiceAttachment in the specified project in the given scope using the parameters that are included in the request.
-class ServiceAttachment extends CustomResource {
+class ServiceAttachment extends pulumi.CustomResource {
   /// An array of connections for all the consumers connected to this service attachment.
-  late final Output<List<ServiceAttachmentConnectedEndpointResponse>>
+  late final pulumi.Output<List<ServiceAttachmentConnectedEndpointResponse>>
       connectedEndpoints;
 
   /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
-  late final Output<String> connectionPreference;
+  late final pulumi.Output<String> connectionPreference;
 
   /// Projects that are allowed to connect to this service attachment.
-  late final Output<List<ServiceAttachmentConsumerProjectLimitResponse>>
+  late final pulumi.Output<List<ServiceAttachmentConsumerProjectLimitResponse>>
       consumerAcceptLists;
 
   /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
-  late final Output<List<String>> consumerRejectLists;
+  late final pulumi.Output<List<String>> consumerRejectLists;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property when you create the resource.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
-  late final Output<List<String>> domainNames;
+  late final pulumi.Output<List<String>> domainNames;
 
   /// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
-  late final Output<bool> enableProxyProtocol;
+  late final pulumi.Output<bool> enableProxyProtocol;
 
   /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// Type of the resource. Always compute#serviceAttachment for service attachments.
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
-  late final Output<List<String>> natSubnets;
+  late final pulumi.Output<List<String>> natSubnets;
 
   /// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
-  late final Output<String> producerForwardingRule;
-  late final Output<String> project;
+  late final pulumi.Output<String> producerForwardingRule;
+  late final pulumi.Output<String> project;
 
   /// The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
-  late final Output<int> propagatedConnectionLimit;
+  late final pulumi.Output<int> propagatedConnectionLimit;
 
   /// An 128-bit global unique ID of the PSC service attachment.
-  late final Output<Uint128Response> pscServiceAttachmentId;
+  late final pulumi.Output<Uint128Response> pscServiceAttachmentId;
 
   /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
-  late final Output<bool> reconcileConnections;
-  late final Output<String> region;
+  late final pulumi.Output<bool> reconcileConnections;
+  late final pulumi.Output<String> region;
 
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  late final Output<String?> requestId;
+  late final pulumi.Output<String?> requestId;
 
   /// Server-defined URL for the resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The URL of a service serving the endpoint identified by this service attachment.
-  late final Output<String> targetService;
+  late final pulumi.Output<String> targetService;
 
   /// When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. -
-  late final Output<ServiceAttachmentTunnelingConfigResponse> tunnelingConfig;
+  late final pulumi.Output<ServiceAttachmentTunnelingConfigResponse>
+      tunnelingConfig;
 
   ServiceAttachment(
     String name, {
     ServiceAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:compute/alpha:ServiceAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.connectedEndpoints =
         registerOutput<List<ServiceAttachmentConnectedEndpointResponse>>(

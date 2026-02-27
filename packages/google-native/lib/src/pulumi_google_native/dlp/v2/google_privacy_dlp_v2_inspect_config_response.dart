@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_custom_info_type_response.dart';
 import 'google_privacy_dlp_v2_finding_limits_response.dart';
 import 'google_privacy_dlp_v2_info_type_likelihood_response.dart';
@@ -52,19 +52,20 @@ class GooglePrivacyDlpV2InspectConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['contentOptions'] = contentOptions;
-    map['customInfoTypes'] = Input.encodeList<
+    map['customInfoTypes'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2CustomInfoTypeResponse,
         Map<String, dynamic>>(customInfoTypes, (value) => value.toMap());
     map['excludeInfoTypes'] = excludeInfoTypes;
     map['includeQuote'] = includeQuote;
-    map['infoTypes'] = Input.encodeList<GooglePrivacyDlpV2InfoTypeResponse,
+    map['infoTypes'] = pulumi.Input.encodeList<
+        GooglePrivacyDlpV2InfoTypeResponse,
         Map<String, dynamic>>(infoTypes, (value) => value.toMap());
     map['limits'] = limits.toMap();
     map['minLikelihood'] = minLikelihood;
-    map['minLikelihoodPerInfoType'] = Input.encodeList<
+    map['minLikelihoodPerInfoType'] = pulumi.Input.encodeList<
             GooglePrivacyDlpV2InfoTypeLikelihoodResponse, Map<String, dynamic>>(
         minLikelihoodPerInfoType, (value) => value.toMap());
-    map['ruleSet'] = Input.encodeList<
+    map['ruleSet'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2InspectionRuleSetResponse,
         Map<String, dynamic>>(ruleSet, (value) => value.toMap());
     return map;
@@ -75,13 +76,13 @@ class GooglePrivacyDlpV2InspectConfigResponse {
     return GooglePrivacyDlpV2InspectConfigResponse(
       contentOptions: (map['contentOptions'] as List).cast<String>(),
       customInfoTypes:
-          Input.decodeList<GooglePrivacyDlpV2CustomInfoTypeResponse>(
+          pulumi.Input.decodeList<GooglePrivacyDlpV2CustomInfoTypeResponse>(
               map['customInfoTypes'],
               (value) => GooglePrivacyDlpV2CustomInfoTypeResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       excludeInfoTypes: map['excludeInfoTypes'] as bool,
       includeQuote: map['includeQuote'] as bool,
-      infoTypes: Input.decodeList<GooglePrivacyDlpV2InfoTypeResponse>(
+      infoTypes: pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeResponse>(
           map['infoTypes'],
           (value) => GooglePrivacyDlpV2InfoTypeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -89,14 +90,15 @@ class GooglePrivacyDlpV2InspectConfigResponse {
           (map['limits'] as Map).cast<String, dynamic>()),
       minLikelihood: map['minLikelihood'] as String,
       minLikelihoodPerInfoType:
-          Input.decodeList<GooglePrivacyDlpV2InfoTypeLikelihoodResponse>(
+          pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLikelihoodResponse>(
               map['minLikelihoodPerInfoType'],
               (value) => GooglePrivacyDlpV2InfoTypeLikelihoodResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      ruleSet: Input.decodeList<GooglePrivacyDlpV2InspectionRuleSetResponse>(
-          map['ruleSet'],
-          (value) => GooglePrivacyDlpV2InspectionRuleSetResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ruleSet:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2InspectionRuleSetResponse>(
+              map['ruleSet'],
+              (value) => GooglePrivacyDlpV2InspectionRuleSetResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

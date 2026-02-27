@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_field_id_response.dart';
 
 /// l-diversity metric, used for analysis of reidentification risk.
@@ -18,7 +18,7 @@ class GooglePrivacyDlpV2LDiversityConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['quasiIds'] = Input.encodeList<GooglePrivacyDlpV2FieldIdResponse,
+    map['quasiIds'] = pulumi.Input.encodeList<GooglePrivacyDlpV2FieldIdResponse,
         Map<String, dynamic>>(quasiIds, (value) => value.toMap());
     map['sensitiveAttribute'] = sensitiveAttribute.toMap();
     return map;
@@ -27,7 +27,7 @@ class GooglePrivacyDlpV2LDiversityConfigResponse {
   factory GooglePrivacyDlpV2LDiversityConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LDiversityConfigResponse(
-      quasiIds: Input.decodeList<GooglePrivacyDlpV2FieldIdResponse>(
+      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2FieldIdResponse>(
           map['quasiIds'],
           (value) => GooglePrivacyDlpV2FieldIdResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_pub_sub_condition.dart';
 import 'google_privacy_dlp_v2_pub_sub_expressions_logical_operator.dart';
 
@@ -21,7 +21,8 @@ class GooglePrivacyDlpV2PubSubExpressions {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<GooglePrivacyDlpV2PubSubCondition,
+      map['conditions'] = pulumi.Input.encodeList<
+          GooglePrivacyDlpV2PubSubCondition,
           Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final logicalOperatorValue = logicalOperator;
@@ -36,7 +37,7 @@ class GooglePrivacyDlpV2PubSubExpressions {
     return GooglePrivacyDlpV2PubSubExpressions(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2PubSubCondition>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2PubSubCondition>(
               map['conditions'],
               (value) => GooglePrivacyDlpV2PubSubCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),

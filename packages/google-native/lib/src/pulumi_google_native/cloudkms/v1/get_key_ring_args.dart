@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKeyRing.
 class GetKeyRingArgs {
-  final Input<String> keyRingId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> keyRingId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetKeyRingArgs({
     required this.keyRingId,
@@ -27,9 +27,9 @@ class GetKeyRingArgs {
 
   factory GetKeyRingArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyRingArgs(
-      keyRingId: Input.asInput<String>(map['keyRingId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      keyRingId: pulumi.Input.asInput<String>(map['keyRingId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

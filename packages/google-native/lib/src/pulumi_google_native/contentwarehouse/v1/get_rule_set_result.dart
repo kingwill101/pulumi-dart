@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_rule_response.dart';
 
 /// Result data returned by getRuleSet.
@@ -28,7 +28,8 @@ class GetRuleSetResult {
     final map = <String, dynamic>{};
     map['description'] = description;
     map['name'] = name;
-    map['rules'] = Input.encodeList<GoogleCloudContentwarehouseV1RuleResponse,
+    map['rules'] = pulumi.Input.encodeList<
+        GoogleCloudContentwarehouseV1RuleResponse,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     map['source'] = source;
     return map;
@@ -38,7 +39,7 @@ class GetRuleSetResult {
     return GetRuleSetResult(
       description: map['description'] as String,
       name: map['name'] as String,
-      rules: Input.decodeList<GoogleCloudContentwarehouseV1RuleResponse>(
+      rules: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1RuleResponse>(
           map['rules'],
           (value) => GoogleCloudContentwarehouseV1RuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

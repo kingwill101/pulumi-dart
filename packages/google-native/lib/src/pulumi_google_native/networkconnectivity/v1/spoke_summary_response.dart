@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spoke_state_count_response.dart';
 import 'spoke_state_reason_count_response.dart';
 import 'spoke_type_count_response.dart';
@@ -25,28 +25,29 @@ class SpokeSummaryResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['spokeStateCounts'] =
-        Input.encodeList<SpokeStateCountResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SpokeStateCountResponse, Map<String, dynamic>>(
             spokeStateCounts, (value) => value.toMap());
-    map['spokeStateReasonCounts'] =
-        Input.encodeList<SpokeStateReasonCountResponse, Map<String, dynamic>>(
-            spokeStateReasonCounts, (value) => value.toMap());
+    map['spokeStateReasonCounts'] = pulumi.Input.encodeList<
+        SpokeStateReasonCountResponse,
+        Map<String, dynamic>>(spokeStateReasonCounts, (value) => value.toMap());
     map['spokeTypeCounts'] =
-        Input.encodeList<SpokeTypeCountResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SpokeTypeCountResponse, Map<String, dynamic>>(
             spokeTypeCounts, (value) => value.toMap());
     return map;
   }
 
   factory SpokeSummaryResponse.fromMap(Map<String, dynamic> map) {
     return SpokeSummaryResponse(
-      spokeStateCounts: Input.decodeList<SpokeStateCountResponse>(
+      spokeStateCounts: pulumi.Input.decodeList<SpokeStateCountResponse>(
           map['spokeStateCounts'],
           (value) => SpokeStateCountResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      spokeStateReasonCounts: Input.decodeList<SpokeStateReasonCountResponse>(
-          map['spokeStateReasonCounts'],
-          (value) => SpokeStateReasonCountResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      spokeTypeCounts: Input.decodeList<SpokeTypeCountResponse>(
+      spokeStateReasonCounts:
+          pulumi.Input.decodeList<SpokeStateReasonCountResponse>(
+              map['spokeStateReasonCounts'],
+              (value) => SpokeStateReasonCountResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      spokeTypeCounts: pulumi.Input.decodeList<SpokeTypeCountResponse>(
           map['spokeTypeCounts'],
           (value) => SpokeTypeCountResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

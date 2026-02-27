@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'digest.dart';
 import 'distribution.dart';
 import 'license.dart';
@@ -72,13 +72,13 @@ class PackageNote {
     }
     final digestValue = digest;
     if (digestValue != null) {
-      map['digest'] = Input.encodeList<Digest, Map<String, dynamic>>(
+      map['digest'] = pulumi.Input.encodeList<Digest, Map<String, dynamic>>(
           digestValue, (value) => value.toMap());
     }
     final distributionValue = distribution;
     if (distributionValue != null) {
       map['distribution'] =
-          Input.encodeList<Distribution, Map<String, dynamic>>(
+          pulumi.Input.encodeList<Distribution, Map<String, dynamic>>(
               distributionValue, (value) => value.toMap());
     }
     final licenseValue = license;
@@ -115,13 +115,13 @@ class PackageNote {
           map['description'] == null ? null : map['description'] as String,
       digest: map['digest'] == null
           ? null
-          : Input.decodeList<Digest>(
+          : pulumi.Input.decodeList<Digest>(
               map['digest'],
               (value) =>
                   Digest.fromMap((value as Map).cast<String, dynamic>())),
       distribution: map['distribution'] == null
           ? null
-          : Input.decodeList<Distribution>(
+          : pulumi.Input.decodeList<Distribution>(
               map['distribution'],
               (value) =>
                   Distribution.fromMap((value as Map).cast<String, dynamic>())),

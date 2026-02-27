@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'multi_node_params_response.dart';
-import 'node_response6.dart';
+import 'node_response_tpu_v2alpha1.dart';
 
 /// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
 class NodeSpecResponse {
@@ -9,7 +9,7 @@ class NodeSpecResponse {
   final MultiNodeParamsResponse multiNodeParams;
 
   /// The node.
-  final NodeResponse6 node;
+  final NodeResponseTpuV2alpha1 node;
 
   /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
   final String nodeId;
@@ -37,7 +37,8 @@ class NodeSpecResponse {
     return NodeSpecResponse(
       multiNodeParams: MultiNodeParamsResponse.fromMap(
           (map['multiNodeParams'] as Map).cast<String, dynamic>()),
-      node: NodeResponse6.fromMap((map['node'] as Map).cast<String, dynamic>()),
+      node: NodeResponseTpuV2alpha1.fromMap(
+          (map['node'] as Map).cast<String, dynamic>()),
       nodeId: map['nodeId'] as String,
       parent: map['parent'] as String,
     );

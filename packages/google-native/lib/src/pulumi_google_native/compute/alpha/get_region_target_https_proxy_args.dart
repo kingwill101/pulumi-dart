@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionTargetHttpsProxy.
 class GetRegionTargetHttpsProxyArgs {
-  final Input<String>? project;
-  final Input<String> region;
-  final Input<String> targetHttpsProxy;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+  final pulumi.Input<String> targetHttpsProxy;
 
   GetRegionTargetHttpsProxyArgs({
     this.project,
@@ -27,9 +27,9 @@ class GetRegionTargetHttpsProxyArgs {
 
   factory GetRegionTargetHttpsProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionTargetHttpsProxyArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
-      targetHttpsProxy: Input.asInput<String>(map['targetHttpsProxy']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
+      targetHttpsProxy: pulumi.Input.asInput<String>(map['targetHttpsProxy']),
     );
   }
 }

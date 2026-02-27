@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config_response3.dart';
+import 'logging_config_response_dataproc_v1.dart';
 
 /// A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
 class HadoopJobResponse {
@@ -17,7 +17,7 @@ class HadoopJobResponse {
   final List<String> jarFileUris;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfigResponse3 loggingConfig;
+  final LoggingConfigResponseDataprocV1 loggingConfig;
 
   /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
   final String mainClass;
@@ -58,7 +58,7 @@ class HadoopJobResponse {
       args: (map['args'] as List).cast<String>(),
       fileUris: (map['fileUris'] as List).cast<String>(),
       jarFileUris: (map['jarFileUris'] as List).cast<String>(),
-      loggingConfig: LoggingConfigResponse3.fromMap(
+      loggingConfig: LoggingConfigResponseDataprocV1.fromMap(
           (map['loggingConfig'] as Map).cast<String, dynamic>()),
       mainClass: map['mainClass'] as String,
       mainJarFileUri: map['mainJarFileUri'] as String,

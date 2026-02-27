@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for View.
 class ViewArgs {
   /// The human-readable display name of the view.
-  final Input<String>? displayName;
-  final Input<String>? location;
+  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String>? location;
 
   /// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// String with specific view properties, must be non-empty.
-  final Input<String>? value;
+  final pulumi.Input<String>? value;
 
   ViewArgs({
     this.displayName,
@@ -50,11 +50,11 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      value: Input.asOptionalInput<String>(map['value']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      value: pulumi.Input.asOptionalInput<String>(map['value']),
     );
   }
 }

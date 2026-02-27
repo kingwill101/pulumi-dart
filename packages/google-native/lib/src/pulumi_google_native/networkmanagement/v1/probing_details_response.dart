@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'edge_location_response.dart';
-import 'endpoint_info_response2.dart';
+import 'endpoint_info_response_networkmanagement_v1.dart';
 import 'latency_distribution_response.dart';
-import 'status_response23.dart';
+import 'status_response_networkmanagement_v1.dart';
 
 /// Results of active probing from the last run of the test.
 class ProbingDetailsResponse {
@@ -14,10 +14,10 @@ class ProbingDetailsResponse {
   final EdgeLocationResponse destinationEgressLocation;
 
   /// The source and destination endpoints derived from the test input and used for active probing.
-  final EndpointInfoResponse2 endpointInfo;
+  final EndpointInfoResponseNetworkmanagementV1 endpointInfo;
 
   /// Details about an internal failure or the cancellation of active probing.
-  final StatusResponse23 error;
+  final StatusResponseNetworkmanagementV1 error;
 
   /// Latency as measured by active probing in one direction: from the source to the destination endpoint.
   final LatencyDistributionResponse probingLatency;
@@ -65,9 +65,9 @@ class ProbingDetailsResponse {
       abortCause: map['abortCause'] as String,
       destinationEgressLocation: EdgeLocationResponse.fromMap(
           (map['destinationEgressLocation'] as Map).cast<String, dynamic>()),
-      endpointInfo: EndpointInfoResponse2.fromMap(
+      endpointInfo: EndpointInfoResponseNetworkmanagementV1.fromMap(
           (map['endpointInfo'] as Map).cast<String, dynamic>()),
-      error: StatusResponse23.fromMap(
+      error: StatusResponseNetworkmanagementV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       probingLatency: LatencyDistributionResponse.fromMap(
           (map['probingLatency'] as Map).cast<String, dynamic>()),

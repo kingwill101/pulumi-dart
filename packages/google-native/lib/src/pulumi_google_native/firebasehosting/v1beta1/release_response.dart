@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'acting_user_response.dart';
-import 'version_response6.dart';
+import 'version_response_firebasehosting_v1beta1.dart';
 
 /// A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
 class ReleaseResponse {
@@ -21,7 +21,7 @@ class ReleaseResponse {
   final String type;
 
   /// The configuration and content that was released.
-  final VersionResponse6 version;
+  final VersionResponseFirebasehostingV1beta1 version;
 
   ReleaseResponse({
     required this.message,
@@ -51,7 +51,7 @@ class ReleaseResponse {
       releaseUser: ActingUserResponse.fromMap(
           (map['releaseUser'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      version: VersionResponse6.fromMap(
+      version: VersionResponseFirebasehostingV1beta1.fromMap(
           (map['version'] as Map).cast<String, dynamic>()),
     );
   }

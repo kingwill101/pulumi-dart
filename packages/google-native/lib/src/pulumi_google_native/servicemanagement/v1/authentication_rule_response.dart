@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_requirement_response.dart';
 import 'oauth_requirements_response.dart';
 
@@ -30,7 +30,7 @@ class AuthenticationRuleResponse {
     map['allowWithoutCredential'] = allowWithoutCredential;
     map['oauth'] = oauth.toMap();
     map['requirements'] =
-        Input.encodeList<AuthRequirementResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AuthRequirementResponse, Map<String, dynamic>>(
             requirements, (value) => value.toMap());
     map['selector'] = selector;
     return map;
@@ -41,7 +41,7 @@ class AuthenticationRuleResponse {
       allowWithoutCredential: map['allowWithoutCredential'] as bool,
       oauth: OAuthRequirementsResponse.fromMap(
           (map['oauth'] as Map).cast<String, dynamic>()),
-      requirements: Input.decodeList<AuthRequirementResponse>(
+      requirements: pulumi.Input.decodeList<AuthRequirementResponse>(
           map['requirements'],
           (value) => AuthRequirementResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

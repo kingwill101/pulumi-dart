@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_to_path.dart';
 
 /// A volume representing a secret stored in Google Secret Manager. The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
@@ -32,7 +32,7 @@ class SecretVolumeSource {
     }
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<KeyToPath, Map<String, dynamic>>(
+      map['items'] = pulumi.Input.encodeList<KeyToPath, Map<String, dynamic>>(
           itemsValue, (value) => value.toMap());
     }
     final optionalValue = optional;
@@ -52,7 +52,7 @@ class SecretVolumeSource {
           map['defaultMode'] == null ? null : map['defaultMode'] as int,
       items: map['items'] == null
           ? null
-          : Input.decodeList<KeyToPath>(
+          : pulumi.Input.decodeList<KeyToPath>(
               map['items'],
               (value) =>
                   KeyToPath.fromMap((value as Map).cast<String, dynamic>())),

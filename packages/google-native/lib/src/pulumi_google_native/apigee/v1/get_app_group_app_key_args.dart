@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAppGroupAppKey.
 class GetAppGroupAppKeyArgs {
-  final Input<String> appId;
-  final Input<String> appgroupId;
-  final Input<String> keyId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> appId;
+  final pulumi.Input<String> appgroupId;
+  final pulumi.Input<String> keyId;
+  final pulumi.Input<String> organizationId;
 
   GetAppGroupAppKeyArgs({
     required this.appId,
@@ -27,10 +27,10 @@ class GetAppGroupAppKeyArgs {
 
   factory GetAppGroupAppKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetAppGroupAppKeyArgs(
-      appId: Input.asInput<String>(map['appId']),
-      appgroupId: Input.asInput<String>(map['appgroupId']),
-      keyId: Input.asInput<String>(map['keyId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
+      appgroupId: pulumi.Input.asInput<String>(map['appgroupId']),
+      keyId: pulumi.Input.asInput<String>(map['keyId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

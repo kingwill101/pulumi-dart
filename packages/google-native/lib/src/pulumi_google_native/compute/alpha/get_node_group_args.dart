@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNodeGroup.
 class GetNodeGroupArgs {
-  final Input<String> nodeGroup;
-  final Input<String>? project;
-  final Input<String> zone;
+  final pulumi.Input<String> nodeGroup;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> zone;
 
   GetNodeGroupArgs({
     required this.nodeGroup,
@@ -27,9 +27,9 @@ class GetNodeGroupArgs {
 
   factory GetNodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupArgs(
-      nodeGroup: Input.asInput<String>(map['nodeGroup']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asInput<String>(map['zone']),
+      nodeGroup: pulumi.Input.asInput<String>(map['nodeGroup']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

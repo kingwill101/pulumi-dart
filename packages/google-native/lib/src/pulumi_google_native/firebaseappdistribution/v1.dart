@@ -1,7 +1,7 @@
 library module_firebaseappdistribution_v1;
 
-export 'v1/get_group3.dart';
-export 'v1/get_group_args3.dart';
-export 'v1/get_group_result3.dart';
-export 'v1/group3.dart';
-export 'v1/group_args3.dart';
+export 'v1/get_group_firebaseappdistribution_v1.dart';
+export 'v1/get_group_firebaseappdistribution_v1_args.dart';
+export 'v1/get_group_firebaseappdistribution_v1_result.dart';
+export 'v1/group_firebaseappdistribution_v1.dart';
+export 'v1/group_firebaseappdistribution_v1_args.dart';

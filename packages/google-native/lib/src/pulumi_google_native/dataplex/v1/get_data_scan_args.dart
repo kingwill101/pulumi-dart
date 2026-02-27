@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDataScan.
 class GetDataScanArgs {
-  final Input<String> dataScanId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? view;
+  final pulumi.Input<String> dataScanId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
 
   GetDataScanArgs({
     required this.dataScanId,
@@ -33,10 +33,10 @@ class GetDataScanArgs {
 
   factory GetDataScanArgs.fromMap(Map<String, dynamic> map) {
     return GetDataScanArgs(
-      dataScanId: Input.asInput<String>(map['dataScanId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
+      dataScanId: pulumi.Input.asInput<String>(map['dataScanId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

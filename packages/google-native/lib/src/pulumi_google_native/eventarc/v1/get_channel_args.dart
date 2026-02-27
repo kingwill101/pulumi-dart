@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getChannel.
 class GetChannelArgs {
-  final Input<String> channelId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> channelId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetChannelArgs({
     required this.channelId,
@@ -27,9 +27,9 @@ class GetChannelArgs {
 
   factory GetChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelArgs(
-      channelId: Input.asInput<String>(map['channelId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      channelId: pulumi.Input.asInput<String>(map['channelId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

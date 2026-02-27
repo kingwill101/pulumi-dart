@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grpc_route_destination_response.dart';
 import 'grpc_route_fault_injection_policy_response.dart';
 import 'grpc_route_retry_policy_response.dart';
@@ -33,9 +33,8 @@ class GrpcRouteRouteActionResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['destinations'] =
-        Input.encodeList<GrpcRouteDestinationResponse, Map<String, dynamic>>(
-            destinations, (value) => value.toMap());
+    map['destinations'] = pulumi.Input.encodeList<GrpcRouteDestinationResponse,
+        Map<String, dynamic>>(destinations, (value) => value.toMap());
     map['faultInjectionPolicy'] = faultInjectionPolicy.toMap();
     map['retryPolicy'] = retryPolicy.toMap();
     map['statefulSessionAffinity'] = statefulSessionAffinity.toMap();
@@ -45,7 +44,7 @@ class GrpcRouteRouteActionResponse {
 
   factory GrpcRouteRouteActionResponse.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteActionResponse(
-      destinations: Input.decodeList<GrpcRouteDestinationResponse>(
+      destinations: pulumi.Input.decodeList<GrpcRouteDestinationResponse>(
           map['destinations'],
           (value) => GrpcRouteDestinationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

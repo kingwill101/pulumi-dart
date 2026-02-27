@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFeatureGroupFeature.
 class GetFeatureGroupFeatureArgs {
-  final Input<String> featureGroupId;
-  final Input<String> featureId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> featureGroupId;
+  final pulumi.Input<String> featureId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetFeatureGroupFeatureArgs({
     required this.featureGroupId,
@@ -30,10 +30,10 @@ class GetFeatureGroupFeatureArgs {
 
   factory GetFeatureGroupFeatureArgs.fromMap(Map<String, dynamic> map) {
     return GetFeatureGroupFeatureArgs(
-      featureGroupId: Input.asInput<String>(map['featureGroupId']),
-      featureId: Input.asInput<String>(map['featureId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      featureGroupId: pulumi.Input.asInput<String>(map['featureGroupId']),
+      featureId: pulumi.Input.asInput<String>(map['featureId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

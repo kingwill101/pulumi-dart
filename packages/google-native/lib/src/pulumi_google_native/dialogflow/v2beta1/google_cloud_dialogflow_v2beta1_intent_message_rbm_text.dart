@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_suggestion.dart';
 
 /// Rich Business Messaging (RBM) text response with suggestions.
@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
     final map = <String, dynamic>{};
     final rbmSuggestionValue = rbmSuggestion;
     if (rbmSuggestionValue != null) {
-      map['rbmSuggestion'] = Input.encodeList<
+      map['rbmSuggestion'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion,
           Map<String, dynamic>>(rbmSuggestionValue, (value) => value.toMap());
     }
@@ -34,7 +34,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmText(
       rbmSuggestion: map['rbmSuggestion'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(
               map['rbmSuggestion'],
               (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion

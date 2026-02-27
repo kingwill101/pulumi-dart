@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKeystore.
 class GetKeystoreArgs {
-  final Input<String> environmentId;
-  final Input<String> keystoreId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> keystoreId;
+  final pulumi.Input<String> organizationId;
 
   GetKeystoreArgs({
     required this.environmentId,
@@ -24,9 +24,9 @@ class GetKeystoreArgs {
 
   factory GetKeystoreArgs.fromMap(Map<String, dynamic> map) {
     return GetKeystoreArgs(
-      environmentId: Input.asInput<String>(map['environmentId']),
-      keystoreId: Input.asInput<String>(map['keystoreId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      keystoreId: pulumi.Input.asInput<String>(map['keystoreId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

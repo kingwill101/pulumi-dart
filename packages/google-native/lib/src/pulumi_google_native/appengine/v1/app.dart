@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_args.dart';
 import 'feature_settings_response.dart';
 import 'identity_aware_proxy_response.dart';
@@ -8,59 +8,59 @@ import 'url_dispatch_rule_response.dart';
 /// Auto-naming is currently not supported for this resource.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class App extends CustomResource {
+class App extends pulumi.CustomResource {
   /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
-  late final Output<String> authDomain;
+  late final pulumi.Output<String> authDomain;
 
   /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
-  late final Output<String> codeBucket;
+  late final pulumi.Output<String> codeBucket;
 
   /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-  late final Output<String> databaseType;
+  late final pulumi.Output<String> databaseType;
 
   /// Google Cloud Storage bucket that can be used by this application to store content.
-  late final Output<String> defaultBucket;
+  late final pulumi.Output<String> defaultBucket;
 
   /// Cookie expiration policy for this application.
-  late final Output<String> defaultCookieExpiration;
+  late final pulumi.Output<String> defaultCookieExpiration;
 
   /// Hostname used to reach this application, as resolved by App Engine.
-  late final Output<String> defaultHostname;
+  late final pulumi.Output<String> defaultHostname;
 
   /// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
-  late final Output<List<UrlDispatchRuleResponse>> dispatchRules;
+  late final pulumi.Output<List<UrlDispatchRuleResponse>> dispatchRules;
 
   /// The feature specific settings to be used in the application.
-  late final Output<FeatureSettingsResponse> featureSettings;
+  late final pulumi.Output<FeatureSettingsResponse> featureSettings;
 
   /// The Google Container Registry domain used for storing managed build docker images for this application.
-  late final Output<String> gcrDomain;
+  late final pulumi.Output<String> gcrDomain;
 
   /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
-  late final Output<Map<String, String>> generatedCustomerMetadata;
-  late final Output<IdentityAwareProxyResponse> iap;
+  late final pulumi.Output<Map<String, String>> generatedCustomerMetadata;
+  late final pulumi.Output<IdentityAwareProxyResponse> iap;
 
   /// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Full path to the Application resource in the API. Example: apps/myapp.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
-  late final Output<String> serviceAccount;
+  late final pulumi.Output<String> serviceAccount;
 
   /// Serving status of this application.
-  late final Output<String> servingStatus;
+  late final pulumi.Output<String> servingStatus;
 
   App(
     String name, {
     AppArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:appengine/v1:App',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authDomain = registerOutput<String>('authDomain');
     this.codeBucket = registerOutput<String>('codeBucket');

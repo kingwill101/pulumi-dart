@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'secret_env_var2.dart';
-import 'secret_volume2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'secret_env_var_cloudfunctions_v2.dart';
+import 'secret_volume_cloudfunctions_v2.dart';
 import 'service_config_ingress_settings.dart';
 import 'service_config_security_level.dart';
 import 'service_config_vpc_connector_egress_settings.dart';
@@ -34,10 +34,10 @@ class ServiceConfig {
   final int? minInstanceCount;
 
   /// Secret environment variables configuration.
-  final List<SecretEnvVar2>? secretEnvironmentVariables;
+  final List<SecretEnvVarCloudfunctionsV2>? secretEnvironmentVariables;
 
   /// Secret volumes configuration.
-  final List<SecretVolume2>? secretVolumes;
+  final List<SecretVolumeCloudfunctionsV2>? secretVolumes;
 
   /// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
   final ServiceConfigSecurityLevel? securityLevel;
@@ -108,15 +108,15 @@ class ServiceConfig {
     }
     final secretEnvironmentVariablesValue = secretEnvironmentVariables;
     if (secretEnvironmentVariablesValue != null) {
-      map['secretEnvironmentVariables'] =
-          Input.encodeList<SecretEnvVar2, Map<String, dynamic>>(
-              secretEnvironmentVariablesValue, (value) => value.toMap());
+      map['secretEnvironmentVariables'] = pulumi.Input.encodeList<
+              SecretEnvVarCloudfunctionsV2, Map<String, dynamic>>(
+          secretEnvironmentVariablesValue, (value) => value.toMap());
     }
     final secretVolumesValue = secretVolumes;
     if (secretVolumesValue != null) {
-      map['secretVolumes'] =
-          Input.encodeList<SecretVolume2, Map<String, dynamic>>(
-              secretVolumesValue, (value) => value.toMap());
+      map['secretVolumes'] = pulumi.Input.encodeList<
+          SecretVolumeCloudfunctionsV2,
+          Map<String, dynamic>>(secretVolumesValue, (value) => value.toMap());
     }
     final securityLevelValue = securityLevel;
     if (securityLevelValue != null) {
@@ -170,15 +170,15 @@ class ServiceConfig {
           : map['minInstanceCount'] as int,
       secretEnvironmentVariables: map['secretEnvironmentVariables'] == null
           ? null
-          : Input.decodeList<SecretEnvVar2>(
+          : pulumi.Input.decodeList<SecretEnvVarCloudfunctionsV2>(
               map['secretEnvironmentVariables'],
-              (value) => SecretEnvVar2.fromMap(
+              (value) => SecretEnvVarCloudfunctionsV2.fromMap(
                   (value as Map).cast<String, dynamic>())),
       secretVolumes: map['secretVolumes'] == null
           ? null
-          : Input.decodeList<SecretVolume2>(
+          : pulumi.Input.decodeList<SecretVolumeCloudfunctionsV2>(
               map['secretVolumes'],
-              (value) => SecretVolume2.fromMap(
+              (value) => SecretVolumeCloudfunctionsV2.fromMap(
                   (value as Map).cast<String, dynamic>())),
       securityLevel: map['securityLevel'] == null
           ? null

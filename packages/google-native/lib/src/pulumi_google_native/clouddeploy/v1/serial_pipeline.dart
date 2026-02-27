@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stage.dart';
 
 /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -16,7 +16,7 @@ class SerialPipeline {
     final map = <String, dynamic>{};
     final stagesValue = stages;
     if (stagesValue != null) {
-      map['stages'] = Input.encodeList<Stage, Map<String, dynamic>>(
+      map['stages'] = pulumi.Input.encodeList<Stage, Map<String, dynamic>>(
           stagesValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +26,7 @@ class SerialPipeline {
     return SerialPipeline(
       stages: map['stages'] == null
           ? null
-          : Input.decodeList<Stage>(map['stages'],
+          : pulumi.Input.decodeList<Stage>(map['stages'],
               (value) => Stage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

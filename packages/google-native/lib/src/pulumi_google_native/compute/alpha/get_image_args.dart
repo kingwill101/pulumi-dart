@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getImage.
 class GetImageArgs {
-  final Input<String> image;
-  final Input<String>? project;
+  final pulumi.Input<String> image;
+  final pulumi.Input<String>? project;
 
   GetImageArgs({
     required this.image,
@@ -24,8 +24,8 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      image: Input.asInput<String>(map['image']),
-      project: Input.asOptionalInput<String>(map['project']),
+      image: pulumi.Input.asInput<String>(map['image']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

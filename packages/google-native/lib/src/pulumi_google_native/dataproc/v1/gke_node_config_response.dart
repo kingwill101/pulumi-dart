@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gke_node_pool_accelerator_config_response.dart';
 
 /// Parameters that describe cluster nodes.
@@ -38,7 +38,8 @@ class GkeNodeConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accelerators'] = Input.encodeList<GkeNodePoolAcceleratorConfigResponse,
+    map['accelerators'] = pulumi.Input.encodeList<
+        GkeNodePoolAcceleratorConfigResponse,
         Map<String, dynamic>>(accelerators, (value) => value.toMap());
     map['bootDiskKmsKey'] = bootDiskKmsKey;
     map['localSsdCount'] = localSsdCount;
@@ -51,10 +52,11 @@ class GkeNodeConfigResponse {
 
   factory GkeNodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return GkeNodeConfigResponse(
-      accelerators: Input.decodeList<GkeNodePoolAcceleratorConfigResponse>(
-          map['accelerators'],
-          (value) => GkeNodePoolAcceleratorConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      accelerators:
+          pulumi.Input.decodeList<GkeNodePoolAcceleratorConfigResponse>(
+              map['accelerators'],
+              (value) => GkeNodePoolAcceleratorConfigResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       bootDiskKmsKey: map['bootDiskKmsKey'] as String,
       localSsdCount: map['localSsdCount'] as int,
       machineType: map['machineType'] as String,

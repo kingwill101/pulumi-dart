@@ -1,44 +1,45 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_webhook_generic_web_service_response.dart';
 import 'google_cloud_dialogflow_cx_v3_webhook_service_directory_config_response.dart';
 import 'webhook_args.dart';
 
 /// Creates a webhook in the specified agent.
-class Webhook extends CustomResource {
-  late final Output<String> agentId;
+class Webhook extends pulumi.CustomResource {
+  late final pulumi.Output<String> agentId;
 
   /// Indicates whether the webhook is disabled.
-  late final Output<bool> disabled;
+  late final pulumi.Output<bool> disabled;
 
   /// The human-readable name of the webhook, unique within the agent.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Configuration for a generic web service.
-  late final Output<GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse>
+  late final pulumi
+      .Output<GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse>
       genericWebService;
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
-  late final Output<
-          GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse>
+  late final pulumi
+      .Output<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse>
       serviceDirectory;
 
   /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-  late final Output<String> timeout;
+  late final pulumi.Output<String> timeout;
 
   Webhook(
     String name, {
     WebhookArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:dialogflow/v3:Webhook',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.agentId = registerOutput<String>('agentId');
     this.disabled = registerOutput<bool>('disabled');

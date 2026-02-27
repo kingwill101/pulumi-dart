@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_resolver_response.dart';
 
 /// Result data returned by getEkmConnection.
@@ -40,7 +40,7 @@ class GetEkmConnectionResult {
     map['keyManagementMode'] = keyManagementMode;
     map['name'] = name;
     map['serviceResolvers'] =
-        Input.encodeList<ServiceResolverResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ServiceResolverResponse, Map<String, dynamic>>(
             serviceResolvers, (value) => value.toMap());
     return map;
   }
@@ -52,7 +52,7 @@ class GetEkmConnectionResult {
       etag: map['etag'] as String,
       keyManagementMode: map['keyManagementMode'] as String,
       name: map['name'] as String,
-      serviceResolvers: Input.decodeList<ServiceResolverResponse>(
+      serviceResolvers: pulumi.Input.decodeList<ServiceResolverResponse>(
           map['serviceResolvers'],
           (value) => ServiceResolverResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

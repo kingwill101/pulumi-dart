@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Notification.
 class NotificationArgs {
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
-  final Input<Map<String, String>>? customAttributes;
+  final pulumi.Input<Map<String, String>>? customAttributes;
 
   /// HTTP 1.1 Entity tag for this subscription notification.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
-  final Input<List<String>>? eventTypes;
+  final pulumi.Input<List<String>>? eventTypes;
 
   /// The ID of the notification.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// The kind of item this is. For notifications, this is always storage#notification.
-  final Input<String>? kind;
+  final pulumi.Input<String>? kind;
 
   /// If present, only apply this notification configuration to object names that begin with this prefix.
-  final Input<String>? objectNamePrefix;
+  final pulumi.Input<String>? objectNamePrefix;
 
   /// The desired content of the Payload.
-  final Input<String>? payloadFormat;
+  final pulumi.Input<String>? payloadFormat;
 
   /// The canonical URL of this notification.
-  final Input<String>? selfLink;
+  final pulumi.Input<String>? selfLink;
 
   /// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-  final Input<String>? topic;
+  final pulumi.Input<String>? topic;
 
   /// The project to be billed for this request. Required for Requester Pays buckets.
-  final Input<String>? userProject;
+  final pulumi.Input<String>? userProject;
 
   NotificationArgs({
     required this.bucket,
@@ -98,18 +98,19 @@ class NotificationArgs {
 
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      customAttributes:
-          Input.asOptionalInput<Map<String, String>>(map['customAttributes']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      eventTypes: Input.asOptionalInput<List<String>>(map['eventTypes']),
-      id: Input.asOptionalInput<String>(map['id']),
-      kind: Input.asOptionalInput<String>(map['kind']),
-      objectNamePrefix: Input.asOptionalInput<String>(map['objectNamePrefix']),
-      payloadFormat: Input.asOptionalInput<String>(map['payloadFormat']),
-      selfLink: Input.asOptionalInput<String>(map['selfLink']),
-      topic: Input.asOptionalInput<String>(map['topic']),
-      userProject: Input.asOptionalInput<String>(map['userProject']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      customAttributes: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['customAttributes']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      eventTypes: pulumi.Input.asOptionalInput<List<String>>(map['eventTypes']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      kind: pulumi.Input.asOptionalInput<String>(map['kind']),
+      objectNamePrefix:
+          pulumi.Input.asOptionalInput<String>(map['objectNamePrefix']),
+      payloadFormat: pulumi.Input.asOptionalInput<String>(map['payloadFormat']),
+      selfLink: pulumi.Input.asOptionalInput<String>(map['selfLink']),
+      topic: pulumi.Input.asOptionalInput<String>(map['topic']),
+      userProject: pulumi.Input.asOptionalInput<String>(map['userProject']),
     );
   }
 }

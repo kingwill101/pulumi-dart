@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config3.dart';
+import 'logging_config_dataproc_v1.dart';
 
 /// A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
 class SparkRJob {
@@ -14,7 +14,7 @@ class SparkRJob {
   final List<String>? fileUris;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfig3? loggingConfig;
+  final LoggingConfigDataprocV1? loggingConfig;
 
   /// The HCFS URI of the main R file to use as the driver. Must be a .R file.
   final String mainRFileUri;
@@ -68,7 +68,7 @@ class SparkRJob {
           : (map['fileUris'] as List).cast<String>(),
       loggingConfig: map['loggingConfig'] == null
           ? null
-          : LoggingConfig3.fromMap(
+          : LoggingConfigDataprocV1.fromMap(
               (map['loggingConfig'] as Map).cast<String, dynamic>()),
       mainRFileUri: map['mainRFileUri'] as String,
       properties: map['properties'] == null

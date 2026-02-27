@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'disk_image_defaults_response.dart';
-import 'encryption_response2.dart';
+import 'encryption_response_vmmigration_v1.dart';
 
 /// BootDiskDefaults hold information about the boot disk of a VM.
 class BootDiskDefaultsResponse {
@@ -15,7 +15,7 @@ class BootDiskDefaultsResponse {
   final String diskType;
 
   /// Optional. The encryption to apply to the boot disk.
-  final EncryptionResponse2 encryption;
+  final EncryptionResponseVmmigrationV1 encryption;
 
   /// The image to use when creating the disk.
   final DiskImageDefaultsResponse image;
@@ -43,7 +43,7 @@ class BootDiskDefaultsResponse {
       deviceName: map['deviceName'] as String,
       diskName: map['diskName'] as String,
       diskType: map['diskType'] as String,
-      encryption: EncryptionResponse2.fromMap(
+      encryption: EncryptionResponseVmmigrationV1.fromMap(
           (map['encryption'] as Map).cast<String, dynamic>()),
       image: DiskImageDefaultsResponse.fromMap(
           (map['image'] as Map).cast<String, dynamic>()),

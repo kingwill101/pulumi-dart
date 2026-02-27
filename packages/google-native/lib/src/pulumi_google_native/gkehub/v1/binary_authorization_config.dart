@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'binary_authorization_config_evaluation_mode.dart';
-import 'policy_binding2.dart';
+import 'policy_binding_gkehub_v1.dart';
 
 /// BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
 class BinaryAuthorizationConfig {
@@ -10,7 +10,7 @@ class BinaryAuthorizationConfig {
   final BinaryAuthorizationConfigEvaluationMode? evaluationMode;
 
   /// Optional. Binauthz policies that apply to this cluster.
-  final List<PolicyBinding2>? policyBindings;
+  final List<PolicyBindingGkehubV1>? policyBindings;
 
   BinaryAuthorizationConfig({
     this.evaluationMode,
@@ -26,7 +26,7 @@ class BinaryAuthorizationConfig {
     final policyBindingsValue = policyBindings;
     if (policyBindingsValue != null) {
       map['policyBindings'] =
-          Input.encodeList<PolicyBinding2, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PolicyBindingGkehubV1, Map<String, dynamic>>(
               policyBindingsValue, (value) => value.toMap());
     }
     return map;
@@ -40,9 +40,9 @@ class BinaryAuthorizationConfig {
               map['evaluationMode'] as String),
       policyBindings: map['policyBindings'] == null
           ? null
-          : Input.decodeList<PolicyBinding2>(
+          : pulumi.Input.decodeList<PolicyBindingGkehubV1>(
               map['policyBindings'],
-              (value) => PolicyBinding2.fromMap(
+              (value) => PolicyBindingGkehubV1.fromMap(
                   (value as Map).cast<String, dynamic>())),
     );
   }

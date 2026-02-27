@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_column_schema_highest_indexing_type.dart';
 import 'google_cloud_datacatalog_v1_column_schema_looker_column_spec.dart';
 
@@ -83,7 +83,8 @@ class GoogleCloudDatacatalogV1ColumnSchema {
     }
     final subcolumnsValue = subcolumns;
     if (subcolumnsValue != null) {
-      map['subcolumns'] = Input.encodeList<GoogleCloudDatacatalogV1ColumnSchema,
+      map['subcolumns'] = pulumi.Input.encodeList<
+          GoogleCloudDatacatalogV1ColumnSchema,
           Map<String, dynamic>>(subcolumnsValue, (value) => value.toMap());
     }
     map['type'] = type;
@@ -112,7 +113,7 @@ class GoogleCloudDatacatalogV1ColumnSchema {
           map['ordinalPosition'] == null ? null : map['ordinalPosition'] as int,
       subcolumns: map['subcolumns'] == null
           ? null
-          : Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(
+          : pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(
               map['subcolumns'],
               (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap(
                   (value as Map).cast<String, dynamic>())),

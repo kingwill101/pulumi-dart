@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ios_device.dart';
 
 /// A list of iOS device configurations in which the test is to be executed.
@@ -14,14 +14,15 @@ class IosDeviceList {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['iosDevices'] = Input.encodeList<IosDevice, Map<String, dynamic>>(
-        iosDevices, (value) => value.toMap());
+    map['iosDevices'] =
+        pulumi.Input.encodeList<IosDevice, Map<String, dynamic>>(
+            iosDevices, (value) => value.toMap());
     return map;
   }
 
   factory IosDeviceList.fromMap(Map<String, dynamic> map) {
     return IosDeviceList(
-      iosDevices: Input.decodeList<IosDevice>(map['iosDevices'],
+      iosDevices: pulumi.Input.decodeList<IosDevice>(map['iosDevices'],
           (value) => IosDevice.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

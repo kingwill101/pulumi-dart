@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'secret_env_var_response2.dart';
-import 'secret_volume_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'secret_env_var_response_cloudfunctions_v2.dart';
+import 'secret_volume_response_cloudfunctions_v2.dart';
 
 /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
 class ServiceConfigResponse {
@@ -34,10 +34,10 @@ class ServiceConfigResponse {
   final String revision;
 
   /// Secret environment variables configuration.
-  final List<SecretEnvVarResponse2> secretEnvironmentVariables;
+  final List<SecretEnvVarResponseCloudfunctionsV2> secretEnvironmentVariables;
 
   /// Secret volumes configuration.
-  final List<SecretVolumeResponse2> secretVolumes;
+  final List<SecretVolumeResponseCloudfunctionsV2> secretVolumes;
 
   /// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
   final String securityLevel;
@@ -92,12 +92,12 @@ class ServiceConfigResponse {
     map['maxInstanceRequestConcurrency'] = maxInstanceRequestConcurrency;
     map['minInstanceCount'] = minInstanceCount;
     map['revision'] = revision;
-    map['secretEnvironmentVariables'] =
-        Input.encodeList<SecretEnvVarResponse2, Map<String, dynamic>>(
-            secretEnvironmentVariables, (value) => value.toMap());
-    map['secretVolumes'] =
-        Input.encodeList<SecretVolumeResponse2, Map<String, dynamic>>(
-            secretVolumes, (value) => value.toMap());
+    map['secretEnvironmentVariables'] = pulumi.Input.encodeList<
+            SecretEnvVarResponseCloudfunctionsV2, Map<String, dynamic>>(
+        secretEnvironmentVariables, (value) => value.toMap());
+    map['secretVolumes'] = pulumi.Input.encodeList<
+        SecretVolumeResponseCloudfunctionsV2,
+        Map<String, dynamic>>(secretVolumes, (value) => value.toMap());
     map['securityLevel'] = securityLevel;
     map['service'] = service;
     map['serviceAccountEmail'] = serviceAccountEmail;
@@ -121,14 +121,16 @@ class ServiceConfigResponse {
           map['maxInstanceRequestConcurrency'] as int,
       minInstanceCount: map['minInstanceCount'] as int,
       revision: map['revision'] as String,
-      secretEnvironmentVariables: Input.decodeList<SecretEnvVarResponse2>(
-          map['secretEnvironmentVariables'],
-          (value) => SecretEnvVarResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      secretVolumes: Input.decodeList<SecretVolumeResponse2>(
-          map['secretVolumes'],
-          (value) => SecretVolumeResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      secretEnvironmentVariables:
+          pulumi.Input.decodeList<SecretEnvVarResponseCloudfunctionsV2>(
+              map['secretEnvironmentVariables'],
+              (value) => SecretEnvVarResponseCloudfunctionsV2.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      secretVolumes:
+          pulumi.Input.decodeList<SecretVolumeResponseCloudfunctionsV2>(
+              map['secretVolumes'],
+              (value) => SecretVolumeResponseCloudfunctionsV2.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       securityLevel: map['securityLevel'] as String,
       service: map['service'] as String,
       serviceAccountEmail: map['serviceAccountEmail'] as String,

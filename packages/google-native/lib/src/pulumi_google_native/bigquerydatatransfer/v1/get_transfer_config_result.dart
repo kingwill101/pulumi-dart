@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'email_preferences_response.dart';
-import 'encryption_configuration_response2.dart';
+import 'encryption_configuration_response_bigquerydatatransfer_v1.dart';
 import 'schedule_options_response.dart';
 import 'user_info_response.dart';
 
@@ -29,7 +29,8 @@ class GetTransferConfigResult {
   final EmailPreferencesResponse emailPreferences;
 
   /// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
-  final EncryptionConfigurationResponse2 encryptionConfiguration;
+  final EncryptionConfigurationResponseBigquerydatatransferV1
+      encryptionConfiguration;
 
   /// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
   final String name;
@@ -115,8 +116,9 @@ class GetTransferConfigResult {
       displayName: map['displayName'] as String,
       emailPreferences: EmailPreferencesResponse.fromMap(
           (map['emailPreferences'] as Map).cast<String, dynamic>()),
-      encryptionConfiguration: EncryptionConfigurationResponse2.fromMap(
-          (map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
+      encryptionConfiguration:
+          EncryptionConfigurationResponseBigquerydatatransferV1.fromMap(
+              (map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       nextRunTime: map['nextRunTime'] as String,
       notificationPubsubTopic: map['notificationPubsubTopic'] as String,

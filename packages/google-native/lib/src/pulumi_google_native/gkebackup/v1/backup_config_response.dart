@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'encryption_key_response2.dart';
+import 'encryption_key_response_gkebackup_v1.dart';
 import 'namespaced_names_response.dart';
 import 'namespaces_response.dart';
 
@@ -10,7 +10,7 @@ class BackupConfigResponse {
   final bool allNamespaces;
 
   /// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
-  final EncryptionKeyResponse2 encryptionKey;
+  final EncryptionKeyResponseGkebackupV1 encryptionKey;
 
   /// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
   final bool includeSecrets;
@@ -47,7 +47,7 @@ class BackupConfigResponse {
   factory BackupConfigResponse.fromMap(Map<String, dynamic> map) {
     return BackupConfigResponse(
       allNamespaces: map['allNamespaces'] as bool,
-      encryptionKey: EncryptionKeyResponse2.fromMap(
+      encryptionKey: EncryptionKeyResponseGkebackupV1.fromMap(
           (map['encryptionKey'] as Map).cast<String, dynamic>()),
       includeSecrets: map['includeSecrets'] as bool,
       includeVolumeData: map['includeVolumeData'] as bool,

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config3.dart';
+import 'logging_config_dataproc_v1.dart';
 import 'query_list.dart';
 
 /// A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
@@ -12,7 +12,7 @@ class TrinoJob {
   final bool? continueOnFailure;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfig3? loggingConfig;
+  final LoggingConfigDataprocV1? loggingConfig;
 
   /// Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
   final String? outputFormat;
@@ -79,7 +79,7 @@ class TrinoJob {
           : map['continueOnFailure'] as bool,
       loggingConfig: map['loggingConfig'] == null
           ? null
-          : LoggingConfig3.fromMap(
+          : LoggingConfigDataprocV1.fromMap(
               (map['loggingConfig'] as Map).cast<String, dynamic>()),
       outputFormat:
           map['outputFormat'] == null ? null : map['outputFormat'] as String,

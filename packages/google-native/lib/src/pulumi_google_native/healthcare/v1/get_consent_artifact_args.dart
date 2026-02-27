@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getConsentArtifact.
 class GetConsentArtifactArgs {
-  final Input<String> consentArtifactId;
-  final Input<String> consentStoreId;
-  final Input<String> datasetId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> consentArtifactId;
+  final pulumi.Input<String> consentStoreId;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetConsentArtifactArgs({
     required this.consentArtifactId,
@@ -33,11 +33,11 @@ class GetConsentArtifactArgs {
 
   factory GetConsentArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetConsentArtifactArgs(
-      consentArtifactId: Input.asInput<String>(map['consentArtifactId']),
-      consentStoreId: Input.asInput<String>(map['consentStoreId']),
-      datasetId: Input.asInput<String>(map['datasetId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      consentArtifactId: pulumi.Input.asInput<String>(map['consentArtifactId']),
+      consentStoreId: pulumi.Input.asInput<String>(map['consentStoreId']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

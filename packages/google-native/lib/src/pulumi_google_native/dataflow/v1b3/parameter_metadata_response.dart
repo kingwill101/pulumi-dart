@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_metadata_enum_option_response.dart';
 
 /// Metadata for a specific parameter.
@@ -60,7 +60,8 @@ class ParameterMetadataResponse {
     final map = <String, dynamic>{};
     map['customMetadata'] = customMetadata;
     map['defaultValue'] = defaultValue;
-    map['enumOptions'] = Input.encodeList<ParameterMetadataEnumOptionResponse,
+    map['enumOptions'] = pulumi.Input.encodeList<
+        ParameterMetadataEnumOptionResponse,
         Map<String, dynamic>>(enumOptions, (value) => value.toMap());
     map['groupName'] = groupName;
     map['helpText'] = helpText;
@@ -78,7 +79,7 @@ class ParameterMetadataResponse {
     return ParameterMetadataResponse(
       customMetadata: (map['customMetadata'] as Map).cast<String, String>(),
       defaultValue: map['defaultValue'] as String,
-      enumOptions: Input.decodeList<ParameterMetadataEnumOptionResponse>(
+      enumOptions: pulumi.Input.decodeList<ParameterMetadataEnumOptionResponse>(
           map['enumOptions'],
           (value) => ParameterMetadataEnumOptionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

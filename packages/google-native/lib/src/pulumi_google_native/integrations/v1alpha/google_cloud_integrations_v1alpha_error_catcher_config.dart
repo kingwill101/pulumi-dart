@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_coordinate.dart';
 import 'google_cloud_integrations_v1alpha_next_task.dart';
 
@@ -49,7 +49,7 @@ class GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
     if (positionValue != null) {
       map['position'] = positionValue.toMap();
     }
-    map['startErrorTasks'] = Input.encodeList<
+    map['startErrorTasks'] = pulumi.Input.encodeList<
         GoogleCloudIntegrationsV1alphaNextTask,
         Map<String, dynamic>>(startErrorTasks, (value) => value.toMap());
     return map;
@@ -67,10 +67,11 @@ class GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
           ? null
           : GoogleCloudIntegrationsV1alphaCoordinate.fromMap(
               (map['position'] as Map).cast<String, dynamic>()),
-      startErrorTasks: Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(
-          map['startErrorTasks'],
-          (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      startErrorTasks:
+          pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(
+              map['startErrorTasks'],
+              (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

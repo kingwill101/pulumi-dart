@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_scope.dart';
 import 'managed_certificate.dart';
 import 'self_managed_certificate.dart';
@@ -8,27 +8,27 @@ import 'self_managed_certificate.dart';
 /// The set of arguments for Certificate.
 class CertificateArgs {
   /// Required. A user-provided name of the certificate.
-  final Input<String> certificateId;
+  final pulumi.Input<String> certificateId;
 
   /// One or more paragraphs of text description of a certificate.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Set of labels associated with a Certificate.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// If set, contains configuration and state of a managed certificate.
-  final Input<ManagedCertificate>? managed;
+  final pulumi.Input<ManagedCertificate>? managed;
 
   /// A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Immutable. The scope of the certificate.
-  final Input<CertificateScope>? scope;
+  final pulumi.Input<CertificateScope>? scope;
 
   /// If set, defines data of a self-managed certificate.
-  final Input<SelfManagedCertificate>? selfManaged;
+  final pulumi.Input<SelfManagedCertificate>? selfManaged;
 
   CertificateArgs({
     required this.certificateId,
@@ -59,9 +59,8 @@ class CertificateArgs {
     }
     final managedValue = managed;
     if (managedValue != null) {
-      map['managed'] =
-          Input.mapOptionalInputValue<ManagedCertificate, Map<String, dynamic>>(
-              managedValue, (value) => value.toMap());
+      map['managed'] = pulumi.Input.mapOptionalInputValue<ManagedCertificate,
+          Map<String, dynamic>>(managedValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -73,12 +72,14 @@ class CertificateArgs {
     }
     final scopeValue = scope;
     if (scopeValue != null) {
-      map['scope'] = Input.mapOptionalInputValue<CertificateScope, String>(
-          scopeValue, (value) => value.value);
+      map['scope'] =
+          pulumi.Input.mapOptionalInputValue<CertificateScope, String>(
+              scopeValue, (value) => value.value);
     }
     final selfManagedValue = selfManaged;
     if (selfManagedValue != null) {
-      map['selfManaged'] = Input.mapOptionalInputValue<SelfManagedCertificate,
+      map['selfManaged'] = pulumi.Input.mapOptionalInputValue<
+          SelfManagedCertificate,
           Map<String, dynamic>>(selfManagedValue, (value) => value.toMap());
     }
     return map;
@@ -86,16 +87,16 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateId: Input.asInput<String>(map['certificateId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      managed: Input.asOptionalInput<ManagedCertificate>(map['managed']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      scope: Input.asOptionalInput<CertificateScope>(map['scope']),
-      selfManaged:
-          Input.asOptionalInput<SelfManagedCertificate>(map['selfManaged']),
+      certificateId: pulumi.Input.asInput<String>(map['certificateId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      managed: pulumi.Input.asOptionalInput<ManagedCertificate>(map['managed']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      scope: pulumi.Input.asOptionalInput<CertificateScope>(map['scope']),
+      selfManaged: pulumi.Input.asOptionalInput<SelfManagedCertificate>(
+          map['selfManaged']),
     );
   }
 }

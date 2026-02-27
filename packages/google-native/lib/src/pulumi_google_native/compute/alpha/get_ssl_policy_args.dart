@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSslPolicy.
 class GetSslPolicyArgs {
-  final Input<String>? project;
-  final Input<String> sslPolicy;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sslPolicy;
 
   GetSslPolicyArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetSslPolicyArgs {
 
   factory GetSslPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSslPolicyArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      sslPolicy: Input.asInput<String>(map['sslPolicy']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sslPolicy: pulumi.Input.asInput<String>(map['sslPolicy']),
     );
   }
 }

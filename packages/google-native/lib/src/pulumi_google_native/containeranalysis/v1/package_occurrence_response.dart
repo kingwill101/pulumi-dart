@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'license_response.dart';
 import 'location_response.dart';
 import 'version_response.dart';
@@ -43,8 +43,9 @@ class PackageOccurrenceResponse {
     map['architecture'] = architecture;
     map['cpeUri'] = cpeUri;
     map['license'] = license.toMap();
-    map['location'] = Input.encodeList<LocationResponse, Map<String, dynamic>>(
-        location, (value) => value.toMap());
+    map['location'] =
+        pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(
+            location, (value) => value.toMap());
     map['name'] = name;
     map['packageType'] = packageType;
     map['version'] = version.toMap();
@@ -57,7 +58,7 @@ class PackageOccurrenceResponse {
       cpeUri: map['cpeUri'] as String,
       license: LicenseResponse.fromMap(
           (map['license'] as Map).cast<String, dynamic>()),
-      location: Input.decodeList<LocationResponse>(
+      location: pulumi.Input.decodeList<LocationResponse>(
           map['location'],
           (value) =>
               LocationResponse.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bounding_poly.dart';
 
 /// Image annotation.
@@ -21,7 +21,7 @@ class ImageAnnotation {
     final boundingPolysValue = boundingPolys;
     if (boundingPolysValue != null) {
       map['boundingPolys'] =
-          Input.encodeList<BoundingPoly, Map<String, dynamic>>(
+          pulumi.Input.encodeList<BoundingPoly, Map<String, dynamic>>(
               boundingPolysValue, (value) => value.toMap());
     }
     final frameIndexValue = frameIndex;
@@ -35,7 +35,7 @@ class ImageAnnotation {
     return ImageAnnotation(
       boundingPolys: map['boundingPolys'] == null
           ? null
-          : Input.decodeList<BoundingPoly>(
+          : pulumi.Input.decodeList<BoundingPoly>(
               map['boundingPolys'],
               (value) =>
                   BoundingPoly.fromMap((value as Map).cast<String, dynamic>())),

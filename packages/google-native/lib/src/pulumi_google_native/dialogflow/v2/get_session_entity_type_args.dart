@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSessionEntityType.
 class GetSessionEntityTypeArgs {
-  final Input<String> entityTypeId;
-  final Input<String> environmentId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> sessionId;
-  final Input<String> userId;
+  final pulumi.Input<String> entityTypeId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sessionId;
+  final pulumi.Input<String> userId;
 
   GetSessionEntityTypeArgs({
     required this.entityTypeId,
@@ -36,12 +36,12 @@ class GetSessionEntityTypeArgs {
 
   factory GetSessionEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionEntityTypeArgs(
-      entityTypeId: Input.asInput<String>(map['entityTypeId']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sessionId: Input.asInput<String>(map['sessionId']),
-      userId: Input.asInput<String>(map['userId']),
+      entityTypeId: pulumi.Input.asInput<String>(map['entityTypeId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sessionId: pulumi.Input.asInput<String>(map['sessionId']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
     );
   }
 }

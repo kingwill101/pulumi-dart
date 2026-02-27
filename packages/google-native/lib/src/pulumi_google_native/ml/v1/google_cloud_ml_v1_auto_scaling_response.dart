@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_metric_spec_response.dart';
 
 /// Options for automatically scaling a model.
@@ -23,7 +23,7 @@ class GoogleCloudMlV1AutoScalingResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['maxNodes'] = maxNodes;
-    map['metrics'] = Input.encodeList<GoogleCloudMlV1MetricSpecResponse,
+    map['metrics'] = pulumi.Input.encodeList<GoogleCloudMlV1MetricSpecResponse,
         Map<String, dynamic>>(metrics, (value) => value.toMap());
     map['minNodes'] = minNodes;
     return map;
@@ -32,7 +32,7 @@ class GoogleCloudMlV1AutoScalingResponse {
   factory GoogleCloudMlV1AutoScalingResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutoScalingResponse(
       maxNodes: map['maxNodes'] as int,
-      metrics: Input.decodeList<GoogleCloudMlV1MetricSpecResponse>(
+      metrics: pulumi.Input.decodeList<GoogleCloudMlV1MetricSpecResponse>(
           map['metrics'],
           (value) => GoogleCloudMlV1MetricSpecResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

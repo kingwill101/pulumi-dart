@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_backend_response.dart';
 
 /// For display only. Metadata associated with a load balancer.
@@ -32,9 +32,8 @@ class LoadBalancerInfoResponse {
     final map = <String, dynamic>{};
     map['backendType'] = backendType;
     map['backendUri'] = backendUri;
-    map['backends'] =
-        Input.encodeList<LoadBalancerBackendResponse, Map<String, dynamic>>(
-            backends, (value) => value.toMap());
+    map['backends'] = pulumi.Input.encodeList<LoadBalancerBackendResponse,
+        Map<String, dynamic>>(backends, (value) => value.toMap());
     map['healthCheckUri'] = healthCheckUri;
     map['loadBalancerType'] = loadBalancerType;
     return map;
@@ -44,7 +43,7 @@ class LoadBalancerInfoResponse {
     return LoadBalancerInfoResponse(
       backendType: map['backendType'] as String,
       backendUri: map['backendUri'] as String,
-      backends: Input.decodeList<LoadBalancerBackendResponse>(
+      backends: pulumi.Input.decodeList<LoadBalancerBackendResponse>(
           map['backends'],
           (value) => LoadBalancerBackendResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

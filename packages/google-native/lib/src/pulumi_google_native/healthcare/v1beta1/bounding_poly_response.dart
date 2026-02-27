@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vertex_response.dart';
 
 /// A bounding polygon for the detected image annotation.
@@ -19,15 +19,16 @@ class BoundingPolyResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['label'] = label;
-    map['vertices'] = Input.encodeList<VertexResponse, Map<String, dynamic>>(
-        vertices, (value) => value.toMap());
+    map['vertices'] =
+        pulumi.Input.encodeList<VertexResponse, Map<String, dynamic>>(
+            vertices, (value) => value.toMap());
     return map;
   }
 
   factory BoundingPolyResponse.fromMap(Map<String, dynamic> map) {
     return BoundingPolyResponse(
       label: map['label'] as String,
-      vertices: Input.decodeList<VertexResponse>(
+      vertices: pulumi.Input.decodeList<VertexResponse>(
           map['vertices'],
           (value) =>
               VertexResponse.fromMap((value as Map).cast<String, dynamic>())),

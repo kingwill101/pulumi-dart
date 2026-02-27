@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_resource_restore_scope.dart';
 import 'namespaced_names.dart';
 import 'namespaces.dart';
@@ -101,13 +101,13 @@ class RestoreConfig {
     final substitutionRulesValue = substitutionRules;
     if (substitutionRulesValue != null) {
       map['substitutionRules'] =
-          Input.encodeList<SubstitutionRule, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SubstitutionRule, Map<String, dynamic>>(
               substitutionRulesValue, (value) => value.toMap());
     }
     final transformationRulesValue = transformationRules;
     if (transformationRulesValue != null) {
       map['transformationRules'] =
-          Input.encodeList<TransformationRule, Map<String, dynamic>>(
+          pulumi.Input.encodeList<TransformationRule, Map<String, dynamic>>(
               transformationRulesValue, (value) => value.toMap());
     }
     final volumeDataRestorePolicyValue = volumeDataRestorePolicy;
@@ -152,13 +152,13 @@ class RestoreConfig {
               (map['selectedNamespaces'] as Map).cast<String, dynamic>()),
       substitutionRules: map['substitutionRules'] == null
           ? null
-          : Input.decodeList<SubstitutionRule>(
+          : pulumi.Input.decodeList<SubstitutionRule>(
               map['substitutionRules'],
               (value) => SubstitutionRule.fromMap(
                   (value as Map).cast<String, dynamic>())),
       transformationRules: map['transformationRules'] == null
           ? null
-          : Input.decodeList<TransformationRule>(
+          : pulumi.Input.decodeList<TransformationRule>(
               map['transformationRules'],
               (value) => TransformationRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

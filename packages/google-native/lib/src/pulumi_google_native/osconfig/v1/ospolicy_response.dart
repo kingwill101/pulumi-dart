@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ospolicy_resource_group_response.dart';
 
 /// An OS policy defines the desired state configuration for a VM.
@@ -29,9 +29,9 @@ class OSPolicyResponse {
     map['allowNoResourceGroupMatch'] = allowNoResourceGroupMatch;
     map['description'] = description;
     map['mode'] = mode;
-    map['resourceGroups'] =
-        Input.encodeList<OSPolicyResourceGroupResponse, Map<String, dynamic>>(
-            resourceGroups, (value) => value.toMap());
+    map['resourceGroups'] = pulumi.Input.encodeList<
+        OSPolicyResourceGroupResponse,
+        Map<String, dynamic>>(resourceGroups, (value) => value.toMap());
     return map;
   }
 
@@ -40,7 +40,7 @@ class OSPolicyResponse {
       allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] as bool,
       description: map['description'] as String,
       mode: map['mode'] as String,
-      resourceGroups: Input.decodeList<OSPolicyResourceGroupResponse>(
+      resourceGroups: pulumi.Input.decodeList<OSPolicyResourceGroupResponse>(
           map['resourceGroups'],
           (value) => OSPolicyResourceGroupResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

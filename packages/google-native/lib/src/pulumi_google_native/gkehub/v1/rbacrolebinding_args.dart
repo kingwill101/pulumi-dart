@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role.dart';
 
 /// The set of arguments for Rbacrolebinding.
 class RbacrolebindingArgs {
   /// group is the group, as seen by the kubernetes cluster.
-  final Input<String>? group;
+  final pulumi.Input<String>? group;
 
   /// Optional. Labels for this RBACRolebinding.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// The resource name for the rbacrolebinding `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-  final Input<String> rbacrolebindingId;
+  final pulumi.Input<String> rbacrolebindingId;
 
   /// Role to bind to the principal
-  final Input<Role> role;
-  final Input<String> scopeId;
+  final pulumi.Input<Role> role;
+  final pulumi.Input<String> scopeId;
 
   /// user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
-  final Input<String>? user;
+  final pulumi.Input<String>? user;
 
   RbacrolebindingArgs({
     this.group,
@@ -61,7 +61,7 @@ class RbacrolebindingArgs {
       map['project'] = projectValue;
     }
     map['rbacrolebindingId'] = rbacrolebindingId;
-    map['role'] = Input.mapInputValue<Role, Map<String, dynamic>>(
+    map['role'] = pulumi.Input.mapInputValue<Role, Map<String, dynamic>>(
         role, (value) => value.toMap());
     map['scopeId'] = scopeId;
     final userValue = user;
@@ -73,15 +73,15 @@ class RbacrolebindingArgs {
 
   factory RbacrolebindingArgs.fromMap(Map<String, dynamic> map) {
     return RbacrolebindingArgs(
-      group: Input.asOptionalInput<String>(map['group']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      rbacrolebindingId: Input.asInput<String>(map['rbacrolebindingId']),
-      role: Input.asInput<Role>(map['role']),
-      scopeId: Input.asInput<String>(map['scopeId']),
-      user: Input.asOptionalInput<String>(map['user']),
+      group: pulumi.Input.asOptionalInput<String>(map['group']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      rbacrolebindingId: pulumi.Input.asInput<String>(map['rbacrolebindingId']),
+      role: pulumi.Input.asInput<Role>(map['role']),
+      scopeId: pulumi.Input.asInput<String>(map['scopeId']),
+      user: pulumi.Input.asOptionalInput<String>(map['user']),
     );
   }
 }

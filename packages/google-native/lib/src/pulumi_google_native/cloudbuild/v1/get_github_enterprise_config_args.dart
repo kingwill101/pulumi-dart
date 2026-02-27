@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGithubEnterpriseConfig.
 class GetGithubEnterpriseConfigArgs {
-  final Input<String>? configId;
-  final Input<String> githubEnterpriseConfigId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? projectId;
+  final pulumi.Input<String>? configId;
+  final pulumi.Input<String> githubEnterpriseConfigId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? projectId;
 
   GetGithubEnterpriseConfigArgs({
     this.configId,
@@ -39,12 +39,12 @@ class GetGithubEnterpriseConfigArgs {
 
   factory GetGithubEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetGithubEnterpriseConfigArgs(
-      configId: Input.asOptionalInput<String>(map['configId']),
+      configId: pulumi.Input.asOptionalInput<String>(map['configId']),
       githubEnterpriseConfigId:
-          Input.asInput<String>(map['githubEnterpriseConfigId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      projectId: Input.asOptionalInput<String>(map['projectId']),
+          pulumi.Input.asInput<String>(map['githubEnterpriseConfigId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      projectId: pulumi.Input.asOptionalInput<String>(map['projectId']),
     );
   }
 }

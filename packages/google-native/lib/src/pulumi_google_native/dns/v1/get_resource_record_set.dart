@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_resource_record_set_args.dart';
 import 'get_resource_record_set_result.dart';
 
 /// Fetches the representation of an existing ResourceRecordSet.
 Future<GetResourceRecordSetResult> getResourceRecordSet(
   GetResourceRecordSetArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:dns/v1:getResourceRecordSet',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceRecordSetResult.fromMap(result);
 }

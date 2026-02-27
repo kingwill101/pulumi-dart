@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hash_response.dart';
 
 /// Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.
@@ -14,14 +14,15 @@ class FileHashesResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fileHash'] = Input.encodeList<HashResponse, Map<String, dynamic>>(
-        fileHash, (value) => value.toMap());
+    map['fileHash'] =
+        pulumi.Input.encodeList<HashResponse, Map<String, dynamic>>(
+            fileHash, (value) => value.toMap());
     return map;
   }
 
   factory FileHashesResponse.fromMap(Map<String, dynamic> map) {
     return FileHashesResponse(
-      fileHash: Input.decodeList<HashResponse>(
+      fileHash: pulumi.Input.decodeList<HashResponse>(
           map['fileHash'],
           (value) =>
               HashResponse.fromMap((value as Map).cast<String, dynamic>())),

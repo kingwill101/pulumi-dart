@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'phase_config_response.dart';
 
 /// CustomCanaryDeployment represents the custom canary deployment configuration.
@@ -15,14 +15,14 @@ class CustomCanaryDeploymentResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['phaseConfigs'] =
-        Input.encodeList<PhaseConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PhaseConfigResponse, Map<String, dynamic>>(
             phaseConfigs, (value) => value.toMap());
     return map;
   }
 
   factory CustomCanaryDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return CustomCanaryDeploymentResponse(
-      phaseConfigs: Input.decodeList<PhaseConfigResponse>(
+      phaseConfigs: pulumi.Input.decodeList<PhaseConfigResponse>(
           map['phaseConfigs'],
           (value) => PhaseConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'option_response.dart';
 
 /// Enum value definition.
@@ -24,8 +24,9 @@ class EnumValueResponse {
     final map = <String, dynamic>{};
     map['name'] = name;
     map['number'] = number;
-    map['options'] = Input.encodeList<OptionResponse, Map<String, dynamic>>(
-        options, (value) => value.toMap());
+    map['options'] =
+        pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(
+            options, (value) => value.toMap());
     return map;
   }
 
@@ -33,7 +34,7 @@ class EnumValueResponse {
     return EnumValueResponse(
       name: map['name'] as String,
       number: map['number'] as int,
-      options: Input.decodeList<OptionResponse>(
+      options: pulumi.Input.decodeList<OptionResponse>(
           map['options'],
           (value) =>
               OptionResponse.fromMap((value as Map).cast<String, dynamic>())),

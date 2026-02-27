@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitored_resource_response.dart';
 
 /// A widget that displays a list of incidents
@@ -18,16 +18,16 @@ class IncidentListResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['monitoredResources'] =
-        Input.encodeList<MonitoredResourceResponse, Map<String, dynamic>>(
-            monitoredResources, (value) => value.toMap());
+    map['monitoredResources'] = pulumi.Input.encodeList<
+        MonitoredResourceResponse,
+        Map<String, dynamic>>(monitoredResources, (value) => value.toMap());
     map['policyNames'] = policyNames;
     return map;
   }
 
   factory IncidentListResponse.fromMap(Map<String, dynamic> map) {
     return IncidentListResponse(
-      monitoredResources: Input.decodeList<MonitoredResourceResponse>(
+      monitoredResources: pulumi.Input.decodeList<MonitoredResourceResponse>(
           map['monitoredResources'],
           (value) => MonitoredResourceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

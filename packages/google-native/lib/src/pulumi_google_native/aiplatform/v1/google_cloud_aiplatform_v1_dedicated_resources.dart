@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_autoscaling_metric_spec.dart';
 import 'google_cloud_aiplatform_v1_machine_spec.dart';
 
@@ -30,7 +30,7 @@ class GoogleCloudAiplatformV1DedicatedResources {
     final map = <String, dynamic>{};
     final autoscalingMetricSpecsValue = autoscalingMetricSpecs;
     if (autoscalingMetricSpecsValue != null) {
-      map['autoscalingMetricSpecs'] = Input.encodeList<
+      map['autoscalingMetricSpecs'] = pulumi.Input.encodeList<
               GoogleCloudAiplatformV1AutoscalingMetricSpec,
               Map<String, dynamic>>(
           autoscalingMetricSpecsValue, (value) => value.toMap());
@@ -49,7 +49,8 @@ class GoogleCloudAiplatformV1DedicatedResources {
     return GoogleCloudAiplatformV1DedicatedResources(
       autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null
           ? null
-          : Input.decodeList<GoogleCloudAiplatformV1AutoscalingMetricSpec>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudAiplatformV1AutoscalingMetricSpec>(
               map['autoscalingMetricSpecs'],
               (value) => GoogleCloudAiplatformV1AutoscalingMetricSpec.fromMap(
                   (value as Map).cast<String, dynamic>())),

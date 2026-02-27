@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_response.dart';
 import 'backend_service_cdn_policy_response.dart';
 import 'backend_service_connection_tracking_policy_response.dart';
@@ -194,8 +194,9 @@ class GetRegionBackendServiceResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['affinityCookieTtlSec'] = affinityCookieTtlSec;
-    map['backends'] = Input.encodeList<BackendResponse, Map<String, dynamic>>(
-        backends, (value) => value.toMap());
+    map['backends'] =
+        pulumi.Input.encodeList<BackendResponse, Map<String, dynamic>>(
+            backends, (value) => value.toMap());
     map['cdnPolicy'] = cdnPolicy.toMap();
     map['circuitBreakers'] = circuitBreakers.toMap();
     map['compressionMode'] = compressionMode;
@@ -215,7 +216,7 @@ class GetRegionBackendServiceResult {
     map['ipAddressSelectionPolicy'] = ipAddressSelectionPolicy;
     map['kind'] = kind;
     map['loadBalancingScheme'] = loadBalancingScheme;
-    map['localityLbPolicies'] = Input.encodeList<
+    map['localityLbPolicies'] = pulumi.Input.encodeList<
         BackendServiceLocalityLoadBalancingPolicyConfigResponse,
         Map<String, dynamic>>(localityLbPolicies, (value) => value.toMap());
     map['localityLbPolicy'] = localityLbPolicy;
@@ -238,9 +239,8 @@ class GetRegionBackendServiceResult {
     map['sessionAffinity'] = sessionAffinity;
     map['subsetting'] = subsetting.toMap();
     map['timeoutSec'] = timeoutSec;
-    map['usedBy'] =
-        Input.encodeList<BackendServiceUsedByResponse, Map<String, dynamic>>(
-            usedBy, (value) => value.toMap());
+    map['usedBy'] = pulumi.Input.encodeList<BackendServiceUsedByResponse,
+        Map<String, dynamic>>(usedBy, (value) => value.toMap());
     map['vpcNetworkScope'] = vpcNetworkScope;
     return map;
   }
@@ -248,7 +248,7 @@ class GetRegionBackendServiceResult {
   factory GetRegionBackendServiceResult.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceResult(
       affinityCookieTtlSec: map['affinityCookieTtlSec'] as int,
-      backends: Input.decodeList<BackendResponse>(
+      backends: pulumi.Input.decodeList<BackendResponse>(
           map['backends'],
           (value) =>
               BackendResponse.fromMap((value as Map).cast<String, dynamic>())),
@@ -281,7 +281,7 @@ class GetRegionBackendServiceResult {
       ipAddressSelectionPolicy: map['ipAddressSelectionPolicy'] as String,
       kind: map['kind'] as String,
       loadBalancingScheme: map['loadBalancingScheme'] as String,
-      localityLbPolicies: Input.decodeList<
+      localityLbPolicies: pulumi.Input.decodeList<
               BackendServiceLocalityLoadBalancingPolicyConfigResponse>(
           map['localityLbPolicies'],
           (value) =>
@@ -312,7 +312,7 @@ class GetRegionBackendServiceResult {
       subsetting: SubsettingResponse.fromMap(
           (map['subsetting'] as Map).cast<String, dynamic>()),
       timeoutSec: map['timeoutSec'] as int,
-      usedBy: Input.decodeList<BackendServiceUsedByResponse>(
+      usedBy: pulumi.Input.decodeList<BackendServiceUsedByResponse>(
           map['usedBy'],
           (value) => BackendServiceUsedByResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

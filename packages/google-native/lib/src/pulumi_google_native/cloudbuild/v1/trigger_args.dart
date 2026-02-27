@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'approval_config.dart';
 import 'bitbucket_server_trigger_config.dart';
 import 'build.dart';
@@ -18,84 +18,85 @@ import 'webhook_config.dart';
 /// The set of arguments for Trigger.
 class TriggerArgs {
   /// Configuration for manual approval to start a build invocation of this BuildTrigger.
-  final Input<ApprovalConfig>? approvalConfig;
+  final pulumi.Input<ApprovalConfig>? approvalConfig;
 
   /// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
-  final Input<bool>? autodetect;
+  final pulumi.Input<bool>? autodetect;
 
   /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
-  final Input<BitbucketServerTriggerConfig>? bitbucketServerTriggerConfig;
+  final pulumi.Input<BitbucketServerTriggerConfig>?
+      bitbucketServerTriggerConfig;
 
   /// Contents of the build template.
-  final Input<Build>? build;
+  final pulumi.Input<Build>? build;
 
   /// Human-readable description of this trigger.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// If true, the trigger will never automatically execute a build.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
-  final Input<TriggerEventType>? eventType;
+  final pulumi.Input<TriggerEventType>? eventType;
 
   /// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
-  final Input<String>? filename;
+  final pulumi.Input<String>? filename;
 
   /// A Common Expression Language string.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The file source describing the local or remote Build template.
-  final Input<GitFileSource>? gitFileSource;
+  final pulumi.Input<GitFileSource>? gitFileSource;
 
   /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
-  final Input<GitHubEventsConfig>? github;
+  final pulumi.Input<GitHubEventsConfig>? github;
 
   /// GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
-  final Input<GitLabEventsConfig>? gitlabEnterpriseEventsConfig;
+  final pulumi.Input<GitLabEventsConfig>? gitlabEnterpriseEventsConfig;
 
   /// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
-  final Input<List<String>>? ignoredFiles;
+  final pulumi.Input<List<String>>? ignoredFiles;
 
   /// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
-  final Input<TriggerIncludeBuildLogs>? includeBuildLogs;
+  final pulumi.Input<TriggerIncludeBuildLogs>? includeBuildLogs;
 
   /// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
-  final Input<List<String>>? includedFiles;
-  final Input<String>? location;
+  final pulumi.Input<List<String>>? includedFiles;
+  final pulumi.Input<String>? location;
 
   /// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Required. ID of the project for which to configure automatic builds.
-  final Input<String> projectId;
+  final pulumi.Input<String> projectId;
 
   /// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
-  final Input<PubsubConfig>? pubsubConfig;
+  final pulumi.Input<PubsubConfig>? pubsubConfig;
 
   /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
-  final Input<RepositoryEventConfig>? repositoryEventConfig;
+  final pulumi.Input<RepositoryEventConfig>? repositoryEventConfig;
 
   /// The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service.
-  final Input<String>? resourceName;
+  final pulumi.Input<String>? resourceName;
 
   /// The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build service account ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
-  final Input<String>? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
 
   /// The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-  final Input<GitRepoSource>? sourceToBuild;
+  final pulumi.Input<GitRepoSource>? sourceToBuild;
 
   /// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
-  final Input<Map<String, String>>? substitutions;
+  final pulumi.Input<Map<String, String>>? substitutions;
 
   /// Tags for annotation of a `BuildTrigger`
-  final Input<List<String>>? tags;
+  final pulumi.Input<List<String>>? tags;
 
   /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
-  final Input<RepoSource>? triggerTemplate;
+  final pulumi.Input<RepoSource>? triggerTemplate;
 
   /// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
-  final Input<WebhookConfig>? webhookConfig;
+  final pulumi.Input<WebhookConfig>? webhookConfig;
 
   TriggerArgs({
     this.approvalConfig,
@@ -132,9 +133,8 @@ class TriggerArgs {
     final map = <String, dynamic>{};
     final approvalConfigValue = approvalConfig;
     if (approvalConfigValue != null) {
-      map['approvalConfig'] =
-          Input.mapOptionalInputValue<ApprovalConfig, Map<String, dynamic>>(
-              approvalConfigValue, (value) => value.toMap());
+      map['approvalConfig'] = pulumi.Input.mapOptionalInputValue<ApprovalConfig,
+          Map<String, dynamic>>(approvalConfigValue, (value) => value.toMap());
     }
     final autodetectValue = autodetect;
     if (autodetectValue != null) {
@@ -142,14 +142,15 @@ class TriggerArgs {
     }
     final bitbucketServerTriggerConfigValue = bitbucketServerTriggerConfig;
     if (bitbucketServerTriggerConfigValue != null) {
-      map['bitbucketServerTriggerConfig'] = Input.mapOptionalInputValue<
+      map['bitbucketServerTriggerConfig'] = pulumi.Input.mapOptionalInputValue<
               BitbucketServerTriggerConfig, Map<String, dynamic>>(
           bitbucketServerTriggerConfigValue, (value) => value.toMap());
     }
     final buildValue = build;
     if (buildValue != null) {
-      map['build'] = Input.mapOptionalInputValue<Build, Map<String, dynamic>>(
-          buildValue, (value) => value.toMap());
+      map['build'] =
+          pulumi.Input.mapOptionalInputValue<Build, Map<String, dynamic>>(
+              buildValue, (value) => value.toMap());
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -161,8 +162,9 @@ class TriggerArgs {
     }
     final eventTypeValue = eventType;
     if (eventTypeValue != null) {
-      map['eventType'] = Input.mapOptionalInputValue<TriggerEventType, String>(
-          eventTypeValue, (value) => value.value);
+      map['eventType'] =
+          pulumi.Input.mapOptionalInputValue<TriggerEventType, String>(
+              eventTypeValue, (value) => value.value);
     }
     final filenameValue = filename;
     if (filenameValue != null) {
@@ -174,21 +176,19 @@ class TriggerArgs {
     }
     final gitFileSourceValue = gitFileSource;
     if (gitFileSourceValue != null) {
-      map['gitFileSource'] =
-          Input.mapOptionalInputValue<GitFileSource, Map<String, dynamic>>(
-              gitFileSourceValue, (value) => value.toMap());
+      map['gitFileSource'] = pulumi.Input.mapOptionalInputValue<GitFileSource,
+          Map<String, dynamic>>(gitFileSourceValue, (value) => value.toMap());
     }
     final githubValue = github;
     if (githubValue != null) {
-      map['github'] =
-          Input.mapOptionalInputValue<GitHubEventsConfig, Map<String, dynamic>>(
-              githubValue, (value) => value.toMap());
+      map['github'] = pulumi.Input.mapOptionalInputValue<GitHubEventsConfig,
+          Map<String, dynamic>>(githubValue, (value) => value.toMap());
     }
     final gitlabEnterpriseEventsConfigValue = gitlabEnterpriseEventsConfig;
     if (gitlabEnterpriseEventsConfigValue != null) {
-      map['gitlabEnterpriseEventsConfig'] =
-          Input.mapOptionalInputValue<GitLabEventsConfig, Map<String, dynamic>>(
-              gitlabEnterpriseEventsConfigValue, (value) => value.toMap());
+      map['gitlabEnterpriseEventsConfig'] = pulumi.Input.mapOptionalInputValue<
+              GitLabEventsConfig, Map<String, dynamic>>(
+          gitlabEnterpriseEventsConfigValue, (value) => value.toMap());
     }
     final ignoredFilesValue = ignoredFiles;
     if (ignoredFilesValue != null) {
@@ -197,7 +197,7 @@ class TriggerArgs {
     final includeBuildLogsValue = includeBuildLogs;
     if (includeBuildLogsValue != null) {
       map['includeBuildLogs'] =
-          Input.mapOptionalInputValue<TriggerIncludeBuildLogs, String>(
+          pulumi.Input.mapOptionalInputValue<TriggerIncludeBuildLogs, String>(
               includeBuildLogsValue, (value) => value.value);
     }
     final includedFilesValue = includedFiles;
@@ -219,13 +219,12 @@ class TriggerArgs {
     map['projectId'] = projectId;
     final pubsubConfigValue = pubsubConfig;
     if (pubsubConfigValue != null) {
-      map['pubsubConfig'] =
-          Input.mapOptionalInputValue<PubsubConfig, Map<String, dynamic>>(
-              pubsubConfigValue, (value) => value.toMap());
+      map['pubsubConfig'] = pulumi.Input.mapOptionalInputValue<PubsubConfig,
+          Map<String, dynamic>>(pubsubConfigValue, (value) => value.toMap());
     }
     final repositoryEventConfigValue = repositoryEventConfig;
     if (repositoryEventConfigValue != null) {
-      map['repositoryEventConfig'] = Input.mapOptionalInputValue<
+      map['repositoryEventConfig'] = pulumi.Input.mapOptionalInputValue<
               RepositoryEventConfig, Map<String, dynamic>>(
           repositoryEventConfigValue, (value) => value.toMap());
     }
@@ -239,9 +238,8 @@ class TriggerArgs {
     }
     final sourceToBuildValue = sourceToBuild;
     if (sourceToBuildValue != null) {
-      map['sourceToBuild'] =
-          Input.mapOptionalInputValue<GitRepoSource, Map<String, dynamic>>(
-              sourceToBuildValue, (value) => value.toMap());
+      map['sourceToBuild'] = pulumi.Input.mapOptionalInputValue<GitRepoSource,
+          Map<String, dynamic>>(sourceToBuildValue, (value) => value.toMap());
     }
     final substitutionsValue = substitutions;
     if (substitutionsValue != null) {
@@ -254,14 +252,13 @@ class TriggerArgs {
     final triggerTemplateValue = triggerTemplate;
     if (triggerTemplateValue != null) {
       map['triggerTemplate'] =
-          Input.mapOptionalInputValue<RepoSource, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<RepoSource, Map<String, dynamic>>(
               triggerTemplateValue, (value) => value.toMap());
     }
     final webhookConfigValue = webhookConfig;
     if (webhookConfigValue != null) {
-      map['webhookConfig'] =
-          Input.mapOptionalInputValue<WebhookConfig, Map<String, dynamic>>(
-              webhookConfigValue, (value) => value.toMap());
+      map['webhookConfig'] = pulumi.Input.mapOptionalInputValue<WebhookConfig,
+          Map<String, dynamic>>(webhookConfigValue, (value) => value.toMap());
     }
     return map;
   }
@@ -269,41 +266,51 @@ class TriggerArgs {
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
       approvalConfig:
-          Input.asOptionalInput<ApprovalConfig>(map['approvalConfig']),
-      autodetect: Input.asOptionalInput<bool>(map['autodetect']),
+          pulumi.Input.asOptionalInput<ApprovalConfig>(map['approvalConfig']),
+      autodetect: pulumi.Input.asOptionalInput<bool>(map['autodetect']),
       bitbucketServerTriggerConfig:
-          Input.asOptionalInput<BitbucketServerTriggerConfig>(
+          pulumi.Input.asOptionalInput<BitbucketServerTriggerConfig>(
               map['bitbucketServerTriggerConfig']),
-      build: Input.asOptionalInput<Build>(map['build']),
-      description: Input.asOptionalInput<String>(map['description']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      eventType: Input.asOptionalInput<TriggerEventType>(map['eventType']),
-      filename: Input.asOptionalInput<String>(map['filename']),
-      filter: Input.asOptionalInput<String>(map['filter']),
-      gitFileSource: Input.asOptionalInput<GitFileSource>(map['gitFileSource']),
-      github: Input.asOptionalInput<GitHubEventsConfig>(map['github']),
-      gitlabEnterpriseEventsConfig: Input.asOptionalInput<GitLabEventsConfig>(
-          map['gitlabEnterpriseEventsConfig']),
-      ignoredFiles: Input.asOptionalInput<List<String>>(map['ignoredFiles']),
-      includeBuildLogs: Input.asOptionalInput<TriggerIncludeBuildLogs>(
+      build: pulumi.Input.asOptionalInput<Build>(map['build']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      eventType:
+          pulumi.Input.asOptionalInput<TriggerEventType>(map['eventType']),
+      filename: pulumi.Input.asOptionalInput<String>(map['filename']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      gitFileSource:
+          pulumi.Input.asOptionalInput<GitFileSource>(map['gitFileSource']),
+      github: pulumi.Input.asOptionalInput<GitHubEventsConfig>(map['github']),
+      gitlabEnterpriseEventsConfig:
+          pulumi.Input.asOptionalInput<GitLabEventsConfig>(
+              map['gitlabEnterpriseEventsConfig']),
+      ignoredFiles:
+          pulumi.Input.asOptionalInput<List<String>>(map['ignoredFiles']),
+      includeBuildLogs: pulumi.Input.asOptionalInput<TriggerIncludeBuildLogs>(
           map['includeBuildLogs']),
-      includedFiles: Input.asOptionalInput<List<String>>(map['includedFiles']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      projectId: Input.asInput<String>(map['projectId']),
-      pubsubConfig: Input.asOptionalInput<PubsubConfig>(map['pubsubConfig']),
-      repositoryEventConfig: Input.asOptionalInput<RepositoryEventConfig>(
-          map['repositoryEventConfig']),
-      resourceName: Input.asOptionalInput<String>(map['resourceName']),
-      serviceAccount: Input.asOptionalInput<String>(map['serviceAccount']),
-      sourceToBuild: Input.asOptionalInput<GitRepoSource>(map['sourceToBuild']),
-      substitutions:
-          Input.asOptionalInput<Map<String, String>>(map['substitutions']),
-      tags: Input.asOptionalInput<List<String>>(map['tags']),
+      includedFiles:
+          pulumi.Input.asOptionalInput<List<String>>(map['includedFiles']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      projectId: pulumi.Input.asInput<String>(map['projectId']),
+      pubsubConfig:
+          pulumi.Input.asOptionalInput<PubsubConfig>(map['pubsubConfig']),
+      repositoryEventConfig:
+          pulumi.Input.asOptionalInput<RepositoryEventConfig>(
+              map['repositoryEventConfig']),
+      resourceName: pulumi.Input.asOptionalInput<String>(map['resourceName']),
+      serviceAccount:
+          pulumi.Input.asOptionalInput<String>(map['serviceAccount']),
+      sourceToBuild:
+          pulumi.Input.asOptionalInput<GitRepoSource>(map['sourceToBuild']),
+      substitutions: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['substitutions']),
+      tags: pulumi.Input.asOptionalInput<List<String>>(map['tags']),
       triggerTemplate:
-          Input.asOptionalInput<RepoSource>(map['triggerTemplate']),
-      webhookConfig: Input.asOptionalInput<WebhookConfig>(map['webhookConfig']),
+          pulumi.Input.asOptionalInput<RepoSource>(map['triggerTemplate']),
+      webhookConfig:
+          pulumi.Input.asOptionalInput<WebhookConfig>(map['webhookConfig']),
     );
   }
 }

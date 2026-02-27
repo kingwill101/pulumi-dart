@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_teardown_task_config.dart';
 
 class EnterpriseCrmEventbusProtoTeardown {
@@ -13,7 +13,7 @@ class EnterpriseCrmEventbusProtoTeardown {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['teardownTaskConfigs'] = Input.encodeList<
+    map['teardownTaskConfigs'] = pulumi.Input.encodeList<
         EnterpriseCrmEventbusProtoTeardownTaskConfig,
         Map<String, dynamic>>(teardownTaskConfigs, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class EnterpriseCrmEventbusProtoTeardown {
   factory EnterpriseCrmEventbusProtoTeardown.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTeardown(
       teardownTaskConfigs:
-          Input.decodeList<EnterpriseCrmEventbusProtoTeardownTaskConfig>(
+          pulumi.Input.decodeList<EnterpriseCrmEventbusProtoTeardownTaskConfig>(
               map['teardownTaskConfigs'],
               (value) => EnterpriseCrmEventbusProtoTeardownTaskConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

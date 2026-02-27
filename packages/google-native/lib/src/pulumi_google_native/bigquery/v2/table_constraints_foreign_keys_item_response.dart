@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_constraints_foreign_keys_item_column_references_item_response.dart';
 import 'table_constraints_foreign_keys_item_referenced_table_response.dart';
 
@@ -18,7 +18,7 @@ class TableConstraintsForeignKeysItemResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['columnReferences'] = Input.encodeList<
+    map['columnReferences'] = pulumi.Input.encodeList<
         TableConstraintsForeignKeysItemColumnReferencesItemResponse,
         Map<String, dynamic>>(columnReferences, (value) => value.toMap());
     map['name'] = name;
@@ -29,7 +29,7 @@ class TableConstraintsForeignKeysItemResponse {
   factory TableConstraintsForeignKeysItemResponse.fromMap(
       Map<String, dynamic> map) {
     return TableConstraintsForeignKeysItemResponse(
-      columnReferences: Input.decodeList<
+      columnReferences: pulumi.Input.decodeList<
               TableConstraintsForeignKeysItemColumnReferencesItemResponse>(
           map['columnReferences'],
           (value) => TableConstraintsForeignKeysItemColumnReferencesItemResponse

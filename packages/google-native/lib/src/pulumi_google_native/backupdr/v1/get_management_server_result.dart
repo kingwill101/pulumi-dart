@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_uriresponse.dart';
-import 'network_config_response4.dart';
+import 'network_config_response_backupdr_v1.dart';
 import 'workforce_identity_based_management_uriresponse.dart';
 import 'workforce_identity_based_oauth2_client_idresponse.dart';
 
@@ -27,7 +27,7 @@ class GetManagementServerResult {
   final String name;
 
   /// VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
-  final List<NetworkConfigResponse4> networks;
+  final List<NetworkConfigResponseBackupdrV1> networks;
 
   /// The OAuth 2.0 client id is required to make API calls to the BackupDR instance API of this ManagementServer. This is the value that should be provided in the ‘aud’ field of the OIDC ID Token (see openid specification https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
   final String oauth2ClientId;
@@ -73,9 +73,8 @@ class GetManagementServerResult {
     map['labels'] = labels;
     map['managementUri'] = managementUri.toMap();
     map['name'] = name;
-    map['networks'] =
-        Input.encodeList<NetworkConfigResponse4, Map<String, dynamic>>(
-            networks, (value) => value.toMap());
+    map['networks'] = pulumi.Input.encodeList<NetworkConfigResponseBackupdrV1,
+        Map<String, dynamic>>(networks, (value) => value.toMap());
     map['oauth2ClientId'] = oauth2ClientId;
     map['state'] = state;
     map['type'] = type;
@@ -96,9 +95,9 @@ class GetManagementServerResult {
       managementUri: ManagementURIResponse.fromMap(
           (map['managementUri'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      networks: Input.decodeList<NetworkConfigResponse4>(
+      networks: pulumi.Input.decodeList<NetworkConfigResponseBackupdrV1>(
           map['networks'],
-          (value) => NetworkConfigResponse4.fromMap(
+          (value) => NetworkConfigResponseBackupdrV1.fromMap(
               (value as Map).cast<String, dynamic>())),
       oauth2ClientId: map['oauth2ClientId'] as String,
       state: map['state'] as String,

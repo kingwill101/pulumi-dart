@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_intent_parameter.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_intent_training_phrase.dart';
 
@@ -63,7 +63,7 @@ class GoogleCloudDialogflowCxV3beta1Intent {
     }
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowCxV3beta1IntentParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -73,7 +73,7 @@ class GoogleCloudDialogflowCxV3beta1Intent {
     }
     final trainingPhrasesValue = trainingPhrases;
     if (trainingPhrasesValue != null) {
-      map['trainingPhrases'] = Input.encodeList<
+      map['trainingPhrases'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase,
           Map<String, dynamic>>(trainingPhrasesValue, (value) => value.toMap());
     }
@@ -93,14 +93,15 @@ class GoogleCloudDialogflowCxV3beta1Intent {
       name: map['name'] == null ? null : map['name'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentParameter>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDialogflowCxV3beta1IntentParameter>(
               map['parameters'],
               (value) => GoogleCloudDialogflowCxV3beta1IntentParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       priority: map['priority'] == null ? null : map['priority'] as int,
       trainingPhrases: map['trainingPhrases'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>(
               map['trainingPhrases'],
               (value) =>

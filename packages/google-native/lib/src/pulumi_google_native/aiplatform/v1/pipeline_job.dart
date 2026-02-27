@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1_pipeline_job_detail_response.dart';
 import 'google_cloud_aiplatform_v1_pipeline_job_runtime_config_response.dart';
@@ -8,81 +8,84 @@ import 'pipeline_job_args.dart';
 
 /// Creates a PipelineJob. A PipelineJob will run immediately when created.
 /// Auto-naming is currently not supported for this resource.
-class PipelineJob extends CustomResource {
+class PipelineJob extends pulumi.CustomResource {
   /// Pipeline creation time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Customer-managed encryption key spec for a pipelineJob. If set, this PipelineJob and all of its sub-resources will be secured by this key.
-  late final Output<GoogleCloudAiplatformV1EncryptionSpecResponse>
+  late final pulumi.Output<GoogleCloudAiplatformV1EncryptionSpecResponse>
       encryptionSpec;
 
   /// Pipeline end time.
-  late final Output<String> endTime;
+  late final pulumi.Output<String> endTime;
 
   /// The error that occurred during pipeline execution. Only populated when the pipeline's state is FAILED or CANCELLED.
-  late final Output<GoogleRpcStatusResponse> error;
+  late final pulumi.Output<GoogleRpcStatusResponse> error;
 
   /// The details of pipeline run. Not available in the list view.
-  late final Output<GoogleCloudAiplatformV1PipelineJobDetailResponse> jobDetail;
+  late final pulumi.Output<GoogleCloudAiplatformV1PipelineJobDetailResponse>
+      jobDetail;
 
   /// The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the PipelineJob.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
-  late final Output<String?> pipelineJobId;
+  late final pulumi.Output<String?> pipelineJobId;
 
   /// The spec of the pipeline.
-  late final Output<Map<String, String>> pipelineSpec;
-  late final Output<String> project;
+  late final pulumi.Output<Map<String, String>> pipelineSpec;
+  late final pulumi.Output<String> project;
 
   /// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
-  late final Output<List<String>> reservedIpRanges;
+  late final pulumi.Output<List<String>> reservedIpRanges;
 
   /// Runtime config of the pipeline.
-  late final Output<GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse>
+  late final pulumi
+      .Output<GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse>
       runtimeConfig;
 
   /// The schedule resource name. Only returned if the Pipeline is created by Schedule API.
-  late final Output<String> scheduleName;
+  late final pulumi.Output<String> scheduleName;
 
   /// The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
-  late final Output<String> serviceAccount;
+  late final pulumi.Output<String> serviceAccount;
 
   /// Pipeline start time.
-  late final Output<String> startTime;
+  late final pulumi.Output<String> startTime;
 
   /// The detailed state of the job.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Pipeline template metadata. Will fill up fields if PipelineJob.template_uri is from supported template registry.
-  late final Output<GoogleCloudAiplatformV1PipelineTemplateMetadataResponse>
+  late final pulumi
+      .Output<GoogleCloudAiplatformV1PipelineTemplateMetadataResponse>
       templateMetadata;
 
   /// A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
-  late final Output<String> templateUri;
+  late final pulumi.Output<String> templateUri;
 
   /// Timestamp when this PipelineJob was most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   PipelineJob(
     String name, {
     PipelineJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:aiplatform/v1:PipelineJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');

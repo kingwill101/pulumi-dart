@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInternalRange.
 class GetInternalRangeArgs {
-  final Input<String> internalRangeId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> internalRangeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetInternalRangeArgs({
     required this.internalRangeId,
@@ -27,9 +27,9 @@ class GetInternalRangeArgs {
 
   factory GetInternalRangeArgs.fromMap(Map<String, dynamic> map) {
     return GetInternalRangeArgs(
-      internalRangeId: Input.asInput<String>(map['internalRangeId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      internalRangeId: pulumi.Input.asInput<String>(map['internalRangeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingress_from_identity_type.dart';
 import 'ingress_source.dart';
 
@@ -33,8 +33,9 @@ class IngressFrom {
     }
     final sourcesValue = sources;
     if (sourcesValue != null) {
-      map['sources'] = Input.encodeList<IngressSource, Map<String, dynamic>>(
-          sourcesValue, (value) => value.toMap());
+      map['sources'] =
+          pulumi.Input.encodeList<IngressSource, Map<String, dynamic>>(
+              sourcesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -49,7 +50,7 @@ class IngressFrom {
           : IngressFromIdentityType.fromValue(map['identityType'] as String),
       sources: map['sources'] == null
           ? null
-          : Input.decodeList<IngressSource>(
+          : pulumi.Input.decodeList<IngressSource>(
               map['sources'],
               (value) => IngressSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

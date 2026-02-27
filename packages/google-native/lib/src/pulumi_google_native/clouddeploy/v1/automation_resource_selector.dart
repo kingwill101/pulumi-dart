@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_attribute.dart';
 
 /// AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
@@ -16,8 +16,9 @@ class AutomationResourceSelector {
     final map = <String, dynamic>{};
     final targetsValue = targets;
     if (targetsValue != null) {
-      map['targets'] = Input.encodeList<TargetAttribute, Map<String, dynamic>>(
-          targetsValue, (value) => value.toMap());
+      map['targets'] =
+          pulumi.Input.encodeList<TargetAttribute, Map<String, dynamic>>(
+              targetsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -26,7 +27,7 @@ class AutomationResourceSelector {
     return AutomationResourceSelector(
       targets: map['targets'] == null
           ? null
-          : Input.decodeList<TargetAttribute>(
+          : pulumi.Input.decodeList<TargetAttribute>(
               map['targets'],
               (value) => TargetAttribute.fromMap(
                   (value as Map).cast<String, dynamic>())),

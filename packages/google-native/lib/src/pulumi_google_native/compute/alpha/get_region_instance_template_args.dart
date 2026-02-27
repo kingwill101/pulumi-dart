@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionInstanceTemplate.
 class GetRegionInstanceTemplateArgs {
-  final Input<String> instanceTemplate;
-  final Input<String>? project;
-  final Input<String> region;
-  final Input<String>? view;
+  final pulumi.Input<String> instanceTemplate;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+  final pulumi.Input<String>? view;
 
   GetRegionInstanceTemplateArgs({
     required this.instanceTemplate,
@@ -33,10 +33,10 @@ class GetRegionInstanceTemplateArgs {
 
   factory GetRegionInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateArgs(
-      instanceTemplate: Input.asInput<String>(map['instanceTemplate']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
-      view: Input.asOptionalInput<String>(map['view']),
+      instanceTemplate: pulumi.Input.asInput<String>(map['instanceTemplate']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

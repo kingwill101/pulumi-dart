@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_pool.dart';
 import 'execution_config_usages_item.dart';
 import 'private_pool.dart';
@@ -60,7 +60,7 @@ class ExecutionConfig {
     if (serviceAccountValue != null) {
       map['serviceAccount'] = serviceAccountValue;
     }
-    map['usages'] = Input.encodeList<ExecutionConfigUsagesItem, String>(
+    map['usages'] = pulumi.Input.encodeList<ExecutionConfigUsagesItem, String>(
         usages, (value) => value.value);
     final workerPoolValue = workerPool;
     if (workerPoolValue != null) {
@@ -88,7 +88,7 @@ class ExecutionConfig {
       serviceAccount: map['serviceAccount'] == null
           ? null
           : map['serviceAccount'] as String,
-      usages: Input.decodeList<ExecutionConfigUsagesItem>(map['usages'],
+      usages: pulumi.Input.decodeList<ExecutionConfigUsagesItem>(map['usages'],
           (value) => ExecutionConfigUsagesItem.fromValue(value as String)),
       workerPool:
           map['workerPool'] == null ? null : map['workerPool'] as String,

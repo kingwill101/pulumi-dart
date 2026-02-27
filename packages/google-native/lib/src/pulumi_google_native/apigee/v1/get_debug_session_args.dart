@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDebugSession.
 class GetDebugSessionArgs {
-  final Input<String> apiId;
-  final Input<String> debugsessionId;
-  final Input<String> environmentId;
-  final Input<String> organizationId;
-  final Input<String> revisionId;
+  final pulumi.Input<String> apiId;
+  final pulumi.Input<String> debugsessionId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> revisionId;
 
   GetDebugSessionArgs({
     required this.apiId,
@@ -30,11 +30,11 @@ class GetDebugSessionArgs {
 
   factory GetDebugSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetDebugSessionArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      debugsessionId: Input.asInput<String>(map['debugsessionId']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      revisionId: Input.asInput<String>(map['revisionId']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      debugsessionId: pulumi.Input.asInput<String>(map['debugsessionId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      revisionId: pulumi.Input.asInput<String>(map['revisionId']),
     );
   }
 }

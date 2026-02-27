@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscaling_settings.dart';
-import 'disk2.dart';
-import 'package3.dart';
+import 'disk_dataflow_v1b3.dart';
+import 'package_dataflow_v1b3.dart';
 import 'sdk_harness_container_image.dart';
 import 'task_runner_settings.dart';
 import 'worker_pool_default_package_set.dart';
@@ -16,7 +16,7 @@ class WorkerPool {
   final AutoscalingSettings? autoscalingSettings;
 
   /// Data disks that are used by a VM in this workflow.
-  final List<Disk2>? dataDisks;
+  final List<DiskDataflowV1b3>? dataDisks;
 
   /// The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
   final WorkerPoolDefaultPackageSet? defaultPackageSet;
@@ -55,7 +55,7 @@ class WorkerPool {
   final String? onHostMaintenance;
 
   /// Packages to be installed on workers.
-  final List<Package3>? packages;
+  final List<PackageDataflowV1b3>? packages;
 
   /// Extra arguments for this worker pool.
   final Map<String, String>? poolArgs;
@@ -111,8 +111,9 @@ class WorkerPool {
     }
     final dataDisksValue = dataDisks;
     if (dataDisksValue != null) {
-      map['dataDisks'] = Input.encodeList<Disk2, Map<String, dynamic>>(
-          dataDisksValue, (value) => value.toMap());
+      map['dataDisks'] =
+          pulumi.Input.encodeList<DiskDataflowV1b3, Map<String, dynamic>>(
+              dataDisksValue, (value) => value.toMap());
     }
     final defaultPackageSetValue = defaultPackageSet;
     if (defaultPackageSetValue != null) {
@@ -164,8 +165,9 @@ class WorkerPool {
     }
     final packagesValue = packages;
     if (packagesValue != null) {
-      map['packages'] = Input.encodeList<Package3, Map<String, dynamic>>(
-          packagesValue, (value) => value.toMap());
+      map['packages'] =
+          pulumi.Input.encodeList<PackageDataflowV1b3, Map<String, dynamic>>(
+              packagesValue, (value) => value.toMap());
     }
     final poolArgsValue = poolArgs;
     if (poolArgsValue != null) {
@@ -173,9 +175,9 @@ class WorkerPool {
     }
     final sdkHarnessContainerImagesValue = sdkHarnessContainerImages;
     if (sdkHarnessContainerImagesValue != null) {
-      map['sdkHarnessContainerImages'] =
-          Input.encodeList<SdkHarnessContainerImage, Map<String, dynamic>>(
-              sdkHarnessContainerImagesValue, (value) => value.toMap());
+      map['sdkHarnessContainerImages'] = pulumi.Input.encodeList<
+              SdkHarnessContainerImage, Map<String, dynamic>>(
+          sdkHarnessContainerImagesValue, (value) => value.toMap());
     }
     final subnetworkValue = subnetwork;
     if (subnetworkValue != null) {
@@ -205,8 +207,10 @@ class WorkerPool {
               (map['autoscalingSettings'] as Map).cast<String, dynamic>()),
       dataDisks: map['dataDisks'] == null
           ? null
-          : Input.decodeList<Disk2>(map['dataDisks'],
-              (value) => Disk2.fromMap((value as Map).cast<String, dynamic>())),
+          : pulumi.Input.decodeList<DiskDataflowV1b3>(
+              map['dataDisks'],
+              (value) => DiskDataflowV1b3.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       defaultPackageSet: map['defaultPackageSet'] == null
           ? null
           : WorkerPoolDefaultPackageSet.fromValue(
@@ -236,16 +240,16 @@ class WorkerPool {
           : map['onHostMaintenance'] as String,
       packages: map['packages'] == null
           ? null
-          : Input.decodeList<Package3>(
+          : pulumi.Input.decodeList<PackageDataflowV1b3>(
               map['packages'],
-              (value) =>
-                  Package3.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => PackageDataflowV1b3.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       poolArgs: map['poolArgs'] == null
           ? null
           : (map['poolArgs'] as Map).cast<String, String>(),
       sdkHarnessContainerImages: map['sdkHarnessContainerImages'] == null
           ? null
-          : Input.decodeList<SdkHarnessContainerImage>(
+          : pulumi.Input.decodeList<SdkHarnessContainerImage>(
               map['sdkHarnessContainerImages'],
               (value) => SdkHarnessContainerImage.fromMap(
                   (value as Map).cast<String, dynamic>())),

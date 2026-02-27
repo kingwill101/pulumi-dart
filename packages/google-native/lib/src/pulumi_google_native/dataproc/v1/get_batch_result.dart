@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'environment_config_response3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'environment_config_response_dataproc_v1.dart';
 import 'py_spark_batch_response.dart';
-import 'runtime_config_response2.dart';
+import 'runtime_config_response_dataproc_v1.dart';
 import 'runtime_info_response.dart';
 import 'spark_batch_response.dart';
 import 'spark_rbatch_response.dart';
@@ -19,7 +19,7 @@ class GetBatchResult {
   final String creator;
 
   /// Optional. Environment configuration for the batch execution.
-  final EnvironmentConfigResponse3 environmentConfig;
+  final EnvironmentConfigResponseDataprocV1 environmentConfig;
 
   /// Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a batch.
   final Map<String, String> labels;
@@ -34,7 +34,7 @@ class GetBatchResult {
   final PySparkBatchResponse pysparkBatch;
 
   /// Optional. Runtime configuration for the batch execution.
-  final RuntimeConfigResponse2 runtimeConfig;
+  final RuntimeConfigResponseDataprocV1 runtimeConfig;
 
   /// Runtime information about batch execution.
   final RuntimeInfoResponse runtimeInfo;
@@ -99,7 +99,7 @@ class GetBatchResult {
     map['sparkSqlBatch'] = sparkSqlBatch.toMap();
     map['state'] = state;
     map['stateHistory'] =
-        Input.encodeList<StateHistoryResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StateHistoryResponse, Map<String, dynamic>>(
             stateHistory, (value) => value.toMap());
     map['stateMessage'] = stateMessage;
     map['stateTime'] = stateTime;
@@ -111,14 +111,14 @@ class GetBatchResult {
     return GetBatchResult(
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
-      environmentConfig: EnvironmentConfigResponse3.fromMap(
+      environmentConfig: EnvironmentConfigResponseDataprocV1.fromMap(
           (map['environmentConfig'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       operation: map['operation'] as String,
       pysparkBatch: PySparkBatchResponse.fromMap(
           (map['pysparkBatch'] as Map).cast<String, dynamic>()),
-      runtimeConfig: RuntimeConfigResponse2.fromMap(
+      runtimeConfig: RuntimeConfigResponseDataprocV1.fromMap(
           (map['runtimeConfig'] as Map).cast<String, dynamic>()),
       runtimeInfo: RuntimeInfoResponse.fromMap(
           (map['runtimeInfo'] as Map).cast<String, dynamic>()),
@@ -129,7 +129,7 @@ class GetBatchResult {
       sparkSqlBatch: SparkSqlBatchResponse.fromMap(
           (map['sparkSqlBatch'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      stateHistory: Input.decodeList<StateHistoryResponse>(
+      stateHistory: pulumi.Input.decodeList<StateHistoryResponse>(
           map['stateHistory'],
           (value) => StateHistoryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

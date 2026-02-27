@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'header4.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'header_connectors_v1.dart';
 
 /// Endpoint message includes details of the Destination endpoint.
 class EndPoint {
@@ -9,7 +9,7 @@ class EndPoint {
   final String? endpointUri;
 
   /// List of Header to be added to the Endpoint.
-  final List<Header4>? headers;
+  final List<HeaderConnectorsV1>? headers;
 
   EndPoint({
     this.endpointUri,
@@ -24,8 +24,9 @@ class EndPoint {
     }
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<Header4, Map<String, dynamic>>(
-          headersValue, (value) => value.toMap());
+      map['headers'] =
+          pulumi.Input.encodeList<HeaderConnectorsV1, Map<String, dynamic>>(
+              headersValue, (value) => value.toMap());
     }
     return map;
   }
@@ -36,10 +37,10 @@ class EndPoint {
           map['endpointUri'] == null ? null : map['endpointUri'] as String,
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<Header4>(
+          : pulumi.Input.decodeList<HeaderConnectorsV1>(
               map['headers'],
-              (value) =>
-                  Header4.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => HeaderConnectorsV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

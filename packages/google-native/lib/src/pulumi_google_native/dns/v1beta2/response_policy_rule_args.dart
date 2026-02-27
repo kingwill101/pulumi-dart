@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'response_policy_rule_behavior2.dart';
-import 'response_policy_rule_local_data2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'response_policy_rule_behavior_dns_v1beta2.dart';
+import 'response_policy_rule_local_data_dns_v1beta2.dart';
 
 /// The set of arguments for ResponsePolicyRule.
 class ResponsePolicyRuleArgs {
   /// Answer this query with a behavior rather than DNS data.
-  final Input<ResponsePolicyRuleBehavior2>? behavior;
+  final pulumi.Input<ResponsePolicyRuleBehaviorDnsV1beta2>? behavior;
 
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-  final Input<String>? clientOperationId;
+  final pulumi.Input<String>? clientOperationId;
 
   /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-  final Input<String>? dnsName;
-  final Input<String>? kind;
+  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String>? kind;
 
   /// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-  final Input<ResponsePolicyRuleLocalData2>? localData;
-  final Input<String>? project;
-  final Input<String> responsePolicy;
+  final pulumi.Input<ResponsePolicyRuleLocalDataDnsV1beta2>? localData;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> responsePolicy;
 
   /// An identifier for this rule. Must be unique with the ResponsePolicy.
-  final Input<String>? ruleName;
+  final pulumi.Input<String>? ruleName;
 
   ResponsePolicyRuleArgs({
     this.behavior,
@@ -39,9 +39,9 @@ class ResponsePolicyRuleArgs {
     final map = <String, dynamic>{};
     final behaviorValue = behavior;
     if (behaviorValue != null) {
-      map['behavior'] =
-          Input.mapOptionalInputValue<ResponsePolicyRuleBehavior2, String>(
-              behaviorValue, (value) => value.value);
+      map['behavior'] = pulumi.Input.mapOptionalInputValue<
+          ResponsePolicyRuleBehaviorDnsV1beta2,
+          String>(behaviorValue, (value) => value.value);
     }
     final clientOperationIdValue = clientOperationId;
     if (clientOperationIdValue != null) {
@@ -57,8 +57,8 @@ class ResponsePolicyRuleArgs {
     }
     final localDataValue = localData;
     if (localDataValue != null) {
-      map['localData'] = Input.mapOptionalInputValue<
-          ResponsePolicyRuleLocalData2,
+      map['localData'] = pulumi.Input.mapOptionalInputValue<
+          ResponsePolicyRuleLocalDataDnsV1beta2,
           Map<String, dynamic>>(localDataValue, (value) => value.toMap());
     }
     final projectValue = project;
@@ -76,16 +76,18 @@ class ResponsePolicyRuleArgs {
   factory ResponsePolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleArgs(
       behavior:
-          Input.asOptionalInput<ResponsePolicyRuleBehavior2>(map['behavior']),
+          pulumi.Input.asOptionalInput<ResponsePolicyRuleBehaviorDnsV1beta2>(
+              map['behavior']),
       clientOperationId:
-          Input.asOptionalInput<String>(map['clientOperationId']),
-      dnsName: Input.asOptionalInput<String>(map['dnsName']),
-      kind: Input.asOptionalInput<String>(map['kind']),
+          pulumi.Input.asOptionalInput<String>(map['clientOperationId']),
+      dnsName: pulumi.Input.asOptionalInput<String>(map['dnsName']),
+      kind: pulumi.Input.asOptionalInput<String>(map['kind']),
       localData:
-          Input.asOptionalInput<ResponsePolicyRuleLocalData2>(map['localData']),
-      project: Input.asOptionalInput<String>(map['project']),
-      responsePolicy: Input.asInput<String>(map['responsePolicy']),
-      ruleName: Input.asOptionalInput<String>(map['ruleName']),
+          pulumi.Input.asOptionalInput<ResponsePolicyRuleLocalDataDnsV1beta2>(
+              map['localData']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      responsePolicy: pulumi.Input.asInput<String>(map['responsePolicy']),
+      ruleName: pulumi.Input.asOptionalInput<String>(map['ruleName']),
     );
   }
 }

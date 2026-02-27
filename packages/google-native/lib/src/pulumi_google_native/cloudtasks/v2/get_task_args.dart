@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTask.
 class GetTaskArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> queueId;
-  final Input<String>? responseView;
-  final Input<String> taskId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> queueId;
+  final pulumi.Input<String>? responseView;
+  final pulumi.Input<String> taskId;
 
   GetTaskArgs({
     required this.location,
@@ -36,11 +36,11 @@ class GetTaskArgs {
 
   factory GetTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      queueId: Input.asInput<String>(map['queueId']),
-      responseView: Input.asOptionalInput<String>(map['responseView']),
-      taskId: Input.asInput<String>(map['taskId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      queueId: pulumi.Input.asInput<String>(map['queueId']),
+      responseView: pulumi.Input.asOptionalInput<String>(map['responseView']),
+      taskId: pulumi.Input.asInput<String>(map['taskId']),
     );
   }
 }

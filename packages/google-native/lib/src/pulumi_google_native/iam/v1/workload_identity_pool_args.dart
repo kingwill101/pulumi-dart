@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for WorkloadIdentityPool.
 class WorkloadIdentityPoolArgs {
   /// A description of the pool. Cannot exceed 256 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// A display name for the pool. Cannot exceed 32 characters.
-  final Input<String>? displayName;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  final Input<String> workloadIdentityPoolId;
+  final pulumi.Input<String> workloadIdentityPoolId;
 
   WorkloadIdentityPoolArgs({
     this.description,
@@ -55,13 +55,13 @@ class WorkloadIdentityPoolArgs {
 
   factory WorkloadIdentityPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       workloadIdentityPoolId:
-          Input.asInput<String>(map['workloadIdentityPoolId']),
+          pulumi.Input.asInput<String>(map['workloadIdentityPoolId']),
     );
   }
 }

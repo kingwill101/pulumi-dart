@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPrivateCloudHcxActivationKeyIamPolicy.
 class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
-  final Input<String> hcxActivationKeyId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String> privateCloudId;
-  final Input<String>? project;
+  final pulumi.Input<String> hcxActivationKeyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String> privateCloudId;
+  final pulumi.Input<String>? project;
 
   GetPrivateCloudHcxActivationKeyIamPolicyArgs({
     required this.hcxActivationKeyId,
@@ -37,12 +37,13 @@ class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
   factory GetPrivateCloudHcxActivationKeyIamPolicyArgs.fromMap(
       Map<String, dynamic> map) {
     return GetPrivateCloudHcxActivationKeyIamPolicyArgs(
-      hcxActivationKeyId: Input.asInput<String>(map['hcxActivationKeyId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      privateCloudId: Input.asInput<String>(map['privateCloudId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      hcxActivationKeyId:
+          pulumi.Input.asInput<String>(map['hcxActivationKeyId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      privateCloudId: pulumi.Input.asInput<String>(map['privateCloudId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

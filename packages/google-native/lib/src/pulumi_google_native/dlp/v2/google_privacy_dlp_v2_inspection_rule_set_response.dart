@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_info_type_response.dart';
 import 'google_privacy_dlp_v2_inspection_rule_response.dart';
 
@@ -19,9 +19,11 @@ class GooglePrivacyDlpV2InspectionRuleSetResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['infoTypes'] = Input.encodeList<GooglePrivacyDlpV2InfoTypeResponse,
+    map['infoTypes'] = pulumi.Input.encodeList<
+        GooglePrivacyDlpV2InfoTypeResponse,
         Map<String, dynamic>>(infoTypes, (value) => value.toMap());
-    map['rules'] = Input.encodeList<GooglePrivacyDlpV2InspectionRuleResponse,
+    map['rules'] = pulumi.Input.encodeList<
+        GooglePrivacyDlpV2InspectionRuleResponse,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
   }
@@ -29,11 +31,11 @@ class GooglePrivacyDlpV2InspectionRuleSetResponse {
   factory GooglePrivacyDlpV2InspectionRuleSetResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectionRuleSetResponse(
-      infoTypes: Input.decodeList<GooglePrivacyDlpV2InfoTypeResponse>(
+      infoTypes: pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeResponse>(
           map['infoTypes'],
           (value) => GooglePrivacyDlpV2InfoTypeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      rules: Input.decodeList<GooglePrivacyDlpV2InspectionRuleResponse>(
+      rules: pulumi.Input.decodeList<GooglePrivacyDlpV2InspectionRuleResponse>(
           map['rules'],
           (value) => GooglePrivacyDlpV2InspectionRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

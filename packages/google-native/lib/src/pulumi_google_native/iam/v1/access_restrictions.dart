@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'service_config4.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'service_config_iam_v1.dart';
 
 /// Access related restrictions on the workforce pool.
 class AccessRestrictions {
   /// Optional. Immutable. Services allowed for web sign-in with the workforce pool. If not set by default there are no restrictions.
-  final List<ServiceConfig4>? allowedServices;
+  final List<ServiceConfigIamV1>? allowedServices;
 
   /// Optional. Disable programmatic sign-in by disabling token issue via the Security Token API endpoint. See [Security Token Service API] (https://cloud.google.com/iam/docs/reference/sts/rest).
   final bool? disableProgrammaticSignin;
@@ -21,7 +21,7 @@ class AccessRestrictions {
     final allowedServicesValue = allowedServices;
     if (allowedServicesValue != null) {
       map['allowedServices'] =
-          Input.encodeList<ServiceConfig4, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ServiceConfigIamV1, Map<String, dynamic>>(
               allowedServicesValue, (value) => value.toMap());
     }
     final disableProgrammaticSigninValue = disableProgrammaticSignin;
@@ -35,9 +35,9 @@ class AccessRestrictions {
     return AccessRestrictions(
       allowedServices: map['allowedServices'] == null
           ? null
-          : Input.decodeList<ServiceConfig4>(
+          : pulumi.Input.decodeList<ServiceConfigIamV1>(
               map['allowedServices'],
-              (value) => ServiceConfig4.fromMap(
+              (value) => ServiceConfigIamV1.fromMap(
                   (value as Map).cast<String, dynamic>())),
       disableProgrammaticSignin: map['disableProgrammaticSignin'] == null
           ? null

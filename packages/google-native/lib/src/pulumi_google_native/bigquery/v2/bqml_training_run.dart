@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bqml_iteration_result.dart';
 import 'bqml_training_run_training_options.dart';
 
@@ -29,7 +29,7 @@ class BqmlTrainingRun {
     final iterationResultsValue = iterationResults;
     if (iterationResultsValue != null) {
       map['iterationResults'] =
-          Input.encodeList<BqmlIterationResult, Map<String, dynamic>>(
+          pulumi.Input.encodeList<BqmlIterationResult, Map<String, dynamic>>(
               iterationResultsValue, (value) => value.toMap());
     }
     final startTimeValue = startTime;
@@ -51,7 +51,7 @@ class BqmlTrainingRun {
     return BqmlTrainingRun(
       iterationResults: map['iterationResults'] == null
           ? null
-          : Input.decodeList<BqmlIterationResult>(
+          : pulumi.Input.decodeList<BqmlIterationResult>(
               map['iterationResults'],
               (value) => BqmlIterationResult.fromMap(
                   (value as Map).cast<String, dynamic>())),

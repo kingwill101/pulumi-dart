@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_ssl_policy_warnings_item_response.dart';
 import 'server_tls_settings_response.dart';
 
@@ -80,7 +80,8 @@ class GetRegionSslPolicyResult {
     map['selfLink'] = selfLink;
     map['selfLinkWithId'] = selfLinkWithId;
     map['tlsSettings'] = tlsSettings.toMap();
-    map['warnings'] = Input.encodeList<RegionSslPolicyWarningsItemResponse,
+    map['warnings'] = pulumi.Input.encodeList<
+        RegionSslPolicyWarningsItemResponse,
         Map<String, dynamic>>(warnings, (value) => value.toMap());
     return map;
   }
@@ -101,7 +102,7 @@ class GetRegionSslPolicyResult {
       selfLinkWithId: map['selfLinkWithId'] as String,
       tlsSettings: ServerTlsSettingsResponse.fromMap(
           (map['tlsSettings'] as Map).cast<String, dynamic>()),
-      warnings: Input.decodeList<RegionSslPolicyWarningsItemResponse>(
+      warnings: pulumi.Input.decodeList<RegionSslPolicyWarningsItemResponse>(
           map['warnings'],
           (value) => RegionSslPolicyWarningsItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

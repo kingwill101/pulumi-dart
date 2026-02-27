@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'private_service_connect_connectivity.dart';
-import 'ssl_config5.dart';
+import 'ssl_config_datamigration_v1.dart';
 
 /// Specifies connection parameters required specifically for PostgreSQL databases.
 class PostgreSqlConnectionProfile {
@@ -24,7 +24,7 @@ class PostgreSqlConnectionProfile {
   final PrivateServiceConnectConnectivity? privateServiceConnectConnectivity;
 
   /// SSL configuration for the destination to connect to the source database.
-  final SslConfig5? ssl;
+  final SslConfigDatamigrationV1? ssl;
 
   /// Static ip connectivity data (default, no additional details needed).
   final Map<String, dynamic>? staticIpConnectivity;
@@ -93,7 +93,8 @@ class PostgreSqlConnectionProfile {
                       .cast<String, dynamic>()),
       ssl: map['ssl'] == null
           ? null
-          : SslConfig5.fromMap((map['ssl'] as Map).cast<String, dynamic>()),
+          : SslConfigDatamigrationV1.fromMap(
+              (map['ssl'] as Map).cast<String, dynamic>()),
       staticIpConnectivity: map['staticIpConnectivity'] == null
           ? null
           : (map['staticIpConnectivity'] as Map).cast<String, dynamic>(),

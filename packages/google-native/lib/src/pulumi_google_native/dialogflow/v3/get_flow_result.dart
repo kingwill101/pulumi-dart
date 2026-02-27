@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_advanced_settings_response.dart';
 import 'google_cloud_dialogflow_cx_v3_event_handler_response.dart';
 import 'google_cloud_dialogflow_cx_v3_knowledge_connector_settings_response.dart';
@@ -54,14 +54,14 @@ class GetFlowResult {
     map['advancedSettings'] = advancedSettings.toMap();
     map['description'] = description;
     map['displayName'] = displayName;
-    map['eventHandlers'] = Input.encodeList<
+    map['eventHandlers'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3EventHandlerResponse,
         Map<String, dynamic>>(eventHandlers, (value) => value.toMap());
     map['knowledgeConnectorSettings'] = knowledgeConnectorSettings.toMap();
     map['name'] = name;
     map['nluSettings'] = nluSettings.toMap();
     map['transitionRouteGroups'] = transitionRouteGroups;
-    map['transitionRoutes'] = Input.encodeList<
+    map['transitionRoutes'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3TransitionRouteResponse,
         Map<String, dynamic>>(transitionRoutes, (value) => value.toMap());
     return map;
@@ -74,11 +74,11 @@ class GetFlowResult {
               (map['advancedSettings'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      eventHandlers:
-          Input.decodeList<GoogleCloudDialogflowCxV3EventHandlerResponse>(
-              map['eventHandlers'],
-              (value) => GoogleCloudDialogflowCxV3EventHandlerResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      eventHandlers: pulumi.Input.decodeList<
+              GoogleCloudDialogflowCxV3EventHandlerResponse>(
+          map['eventHandlers'],
+          (value) => GoogleCloudDialogflowCxV3EventHandlerResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       knowledgeConnectorSettings:
           GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse.fromMap(
               (map['knowledgeConnectorSettings'] as Map)
@@ -88,12 +88,11 @@ class GetFlowResult {
           (map['nluSettings'] as Map).cast<String, dynamic>()),
       transitionRouteGroups:
           (map['transitionRouteGroups'] as List).cast<String>(),
-      transitionRoutes:
-          Input.decodeList<GoogleCloudDialogflowCxV3TransitionRouteResponse>(
-              map['transitionRoutes'],
-              (value) =>
-                  GoogleCloudDialogflowCxV3TransitionRouteResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      transitionRoutes: pulumi.Input.decodeList<
+              GoogleCloudDialogflowCxV3TransitionRouteResponse>(
+          map['transitionRoutes'],
+          (value) => GoogleCloudDialogflowCxV3TransitionRouteResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

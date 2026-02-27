@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_library_settings_response.dart';
 import 'method_settings_response.dart';
 
@@ -56,11 +56,11 @@ class PublishingResponse {
     map['docTagPrefix'] = docTagPrefix;
     map['documentationUri'] = documentationUri;
     map['githubLabel'] = githubLabel;
-    map['librarySettings'] =
-        Input.encodeList<ClientLibrarySettingsResponse, Map<String, dynamic>>(
-            librarySettings, (value) => value.toMap());
+    map['librarySettings'] = pulumi.Input.encodeList<
+        ClientLibrarySettingsResponse,
+        Map<String, dynamic>>(librarySettings, (value) => value.toMap());
     map['methodSettings'] =
-        Input.encodeList<MethodSettingsResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MethodSettingsResponse, Map<String, dynamic>>(
             methodSettings, (value) => value.toMap());
     map['newIssueUri'] = newIssueUri;
     map['organization'] = organization;
@@ -76,11 +76,11 @@ class PublishingResponse {
       docTagPrefix: map['docTagPrefix'] as String,
       documentationUri: map['documentationUri'] as String,
       githubLabel: map['githubLabel'] as String,
-      librarySettings: Input.decodeList<ClientLibrarySettingsResponse>(
+      librarySettings: pulumi.Input.decodeList<ClientLibrarySettingsResponse>(
           map['librarySettings'],
           (value) => ClientLibrarySettingsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      methodSettings: Input.decodeList<MethodSettingsResponse>(
+      methodSettings: pulumi.Input.decodeList<MethodSettingsResponse>(
           map['methodSettings'],
           (value) => MethodSettingsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

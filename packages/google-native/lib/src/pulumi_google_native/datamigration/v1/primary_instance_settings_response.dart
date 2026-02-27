@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'machine_config_response4.dart';
+import 'machine_config_response_datamigration_v1.dart';
 
 /// Settings for the cluster's primary instance
 class PrimaryInstanceSettingsResponse {
@@ -11,7 +11,7 @@ class PrimaryInstanceSettingsResponse {
   final Map<String, String> labels;
 
   /// Configuration for the machines that host the underlying database engine.
-  final MachineConfigResponse4 machineConfig;
+  final MachineConfigResponseDatamigrationV1 machineConfig;
 
   /// The private IP address for the Instance. This is the connection endpoint for an end-user application.
   final String privateIp;
@@ -36,7 +36,7 @@ class PrimaryInstanceSettingsResponse {
     return PrimaryInstanceSettingsResponse(
       databaseFlags: (map['databaseFlags'] as Map).cast<String, String>(),
       labels: (map['labels'] as Map).cast<String, String>(),
-      machineConfig: MachineConfigResponse4.fromMap(
+      machineConfig: MachineConfigResponseDatamigrationV1.fromMap(
           (map['machineConfig'] as Map).cast<String, dynamic>()),
       privateIp: map['privateIp'] as String,
     );

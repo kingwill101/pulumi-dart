@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'no_wrapper_response.dart';
-import 'oidc_token_response6.dart';
+import 'oidc_token_response_pubsub_v1.dart';
 
 /// Configuration for a push delivery endpoint.
 class PushConfigResponse {
@@ -12,7 +12,7 @@ class PushConfigResponse {
   final NoWrapperResponse noWrapper;
 
   /// Optional. If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
-  final OidcTokenResponse6 oidcToken;
+  final OidcTokenResponsePubsubV1 oidcToken;
 
   /// Optional. When set, the payload to the push endpoint is in the form of the JSON representation of a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
   final Map<String, dynamic> pubsubWrapper;
@@ -43,7 +43,7 @@ class PushConfigResponse {
       attributes: (map['attributes'] as Map).cast<String, String>(),
       noWrapper: NoWrapperResponse.fromMap(
           (map['noWrapper'] as Map).cast<String, dynamic>()),
-      oidcToken: OidcTokenResponse6.fromMap(
+      oidcToken: OidcTokenResponsePubsubV1.fromMap(
           (map['oidcToken'] as Map).cast<String, dynamic>()),
       pubsubWrapper: (map['pubsubWrapper'] as Map).cast<String, dynamic>(),
       pushEndpoint: map['pushEndpoint'] as String,

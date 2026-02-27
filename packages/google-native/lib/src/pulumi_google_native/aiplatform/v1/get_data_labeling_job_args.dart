@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDataLabelingJob.
 class GetDataLabelingJobArgs {
-  final Input<String> dataLabelingJobId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> dataLabelingJobId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDataLabelingJobArgs({
     required this.dataLabelingJobId,
@@ -27,9 +27,9 @@ class GetDataLabelingJobArgs {
 
   factory GetDataLabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return GetDataLabelingJobArgs(
-      dataLabelingJobId: Input.asInput<String>(map['dataLabelingJobId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      dataLabelingJobId: pulumi.Input.asInput<String>(map['dataLabelingJobId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

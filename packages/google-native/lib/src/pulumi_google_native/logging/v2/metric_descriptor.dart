@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'label_descriptor.dart';
 import 'metric_descriptor_launch_stage.dart';
 import 'metric_descriptor_metadata.dart';
@@ -68,8 +68,9 @@ class MetricDescriptor {
     }
     final labelsValue = labels;
     if (labelsValue != null) {
-      map['labels'] = Input.encodeList<LabelDescriptor, Map<String, dynamic>>(
-          labelsValue, (value) => value.toMap());
+      map['labels'] =
+          pulumi.Input.encodeList<LabelDescriptor, Map<String, dynamic>>(
+              labelsValue, (value) => value.toMap());
     }
     final launchStageValue = launchStage;
     if (launchStageValue != null) {
@@ -114,7 +115,7 @@ class MetricDescriptor {
           map['displayName'] == null ? null : map['displayName'] as String,
       labels: map['labels'] == null
           ? null
-          : Input.decodeList<LabelDescriptor>(
+          : pulumi.Input.decodeList<LabelDescriptor>(
               map['labels'],
               (value) => LabelDescriptor.fromMap(
                   (value as Map).cast<String, dynamic>())),

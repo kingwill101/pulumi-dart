@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_resource_response.dart';
 import 'environment_response.dart';
 import 'lifecycle_policy_response.dart';
 import 'runnable_response.dart';
-import 'volume_response3.dart';
+import 'volume_response_batch_v1.dart';
 
 /// Spec of a task
 class TaskSpecResponse {
@@ -31,7 +31,7 @@ class TaskSpecResponse {
   final List<RunnableResponse> runnables;
 
   /// Volumes to mount before running Tasks using this TaskSpec.
-  final List<VolumeResponse3> volumes;
+  final List<VolumeResponseBatchV1> volumes;
 
   TaskSpecResponse({
     required this.computeResource,
@@ -50,14 +50,16 @@ class TaskSpecResponse {
     map['environment'] = environment.toMap();
     map['environments'] = environments;
     map['lifecyclePolicies'] =
-        Input.encodeList<LifecyclePolicyResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<LifecyclePolicyResponse, Map<String, dynamic>>(
             lifecyclePolicies, (value) => value.toMap());
     map['maxRetryCount'] = maxRetryCount;
     map['maxRunDuration'] = maxRunDuration;
-    map['runnables'] = Input.encodeList<RunnableResponse, Map<String, dynamic>>(
-        runnables, (value) => value.toMap());
-    map['volumes'] = Input.encodeList<VolumeResponse3, Map<String, dynamic>>(
-        volumes, (value) => value.toMap());
+    map['runnables'] =
+        pulumi.Input.encodeList<RunnableResponse, Map<String, dynamic>>(
+            runnables, (value) => value.toMap());
+    map['volumes'] =
+        pulumi.Input.encodeList<VolumeResponseBatchV1, Map<String, dynamic>>(
+            volumes, (value) => value.toMap());
     return map;
   }
 
@@ -68,20 +70,20 @@ class TaskSpecResponse {
       environment: EnvironmentResponse.fromMap(
           (map['environment'] as Map).cast<String, dynamic>()),
       environments: (map['environments'] as Map).cast<String, String>(),
-      lifecyclePolicies: Input.decodeList<LifecyclePolicyResponse>(
+      lifecyclePolicies: pulumi.Input.decodeList<LifecyclePolicyResponse>(
           map['lifecyclePolicies'],
           (value) => LifecyclePolicyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       maxRetryCount: map['maxRetryCount'] as int,
       maxRunDuration: map['maxRunDuration'] as String,
-      runnables: Input.decodeList<RunnableResponse>(
+      runnables: pulumi.Input.decodeList<RunnableResponse>(
           map['runnables'],
           (value) =>
               RunnableResponse.fromMap((value as Map).cast<String, dynamic>())),
-      volumes: Input.decodeList<VolumeResponse3>(
+      volumes: pulumi.Input.decodeList<VolumeResponseBatchV1>(
           map['volumes'],
-          (value) =>
-              VolumeResponse3.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => VolumeResponseBatchV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

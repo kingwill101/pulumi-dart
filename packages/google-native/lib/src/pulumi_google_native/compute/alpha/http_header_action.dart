@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_header_option.dart';
 
 /// The request and response header transformations that take effect before the request is passed along to the selected backendService.
@@ -29,7 +29,7 @@ class HttpHeaderAction {
     final requestHeadersToAddValue = requestHeadersToAdd;
     if (requestHeadersToAddValue != null) {
       map['requestHeadersToAdd'] =
-          Input.encodeList<HttpHeaderOption, Map<String, dynamic>>(
+          pulumi.Input.encodeList<HttpHeaderOption, Map<String, dynamic>>(
               requestHeadersToAddValue, (value) => value.toMap());
     }
     final requestHeadersToRemoveValue = requestHeadersToRemove;
@@ -39,7 +39,7 @@ class HttpHeaderAction {
     final responseHeadersToAddValue = responseHeadersToAdd;
     if (responseHeadersToAddValue != null) {
       map['responseHeadersToAdd'] =
-          Input.encodeList<HttpHeaderOption, Map<String, dynamic>>(
+          pulumi.Input.encodeList<HttpHeaderOption, Map<String, dynamic>>(
               responseHeadersToAddValue, (value) => value.toMap());
     }
     final responseHeadersToRemoveValue = responseHeadersToRemove;
@@ -53,7 +53,7 @@ class HttpHeaderAction {
     return HttpHeaderAction(
       requestHeadersToAdd: map['requestHeadersToAdd'] == null
           ? null
-          : Input.decodeList<HttpHeaderOption>(
+          : pulumi.Input.decodeList<HttpHeaderOption>(
               map['requestHeadersToAdd'],
               (value) => HttpHeaderOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -62,7 +62,7 @@ class HttpHeaderAction {
           : (map['requestHeadersToRemove'] as List).cast<String>(),
       responseHeadersToAdd: map['responseHeadersToAdd'] == null
           ? null
-          : Input.decodeList<HttpHeaderOption>(
+          : pulumi.Input.decodeList<HttpHeaderOption>(
               map['responseHeadersToAdd'],
               (value) => HttpHeaderOption.fromMap(
                   (value as Map).cast<String, dynamic>())),

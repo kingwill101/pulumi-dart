@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocation_aggregate_reservation_reserved_resource_info.dart';
 import 'allocation_aggregate_reservation_vm_family.dart';
 import 'allocation_aggregate_reservation_workload_type.dart';
@@ -27,7 +27,7 @@ class AllocationAggregateReservation {
     final map = <String, dynamic>{};
     final reservedResourcesValue = reservedResources;
     if (reservedResourcesValue != null) {
-      map['reservedResources'] = Input.encodeList<
+      map['reservedResources'] = pulumi.Input.encodeList<
               AllocationAggregateReservationReservedResourceInfo,
               Map<String, dynamic>>(
           reservedResourcesValue, (value) => value.toMap());
@@ -47,7 +47,7 @@ class AllocationAggregateReservation {
     return AllocationAggregateReservation(
       reservedResources: map['reservedResources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AllocationAggregateReservationReservedResourceInfo>(
               map['reservedResources'],
               (value) =>

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSynonymSet.
 class GetSynonymSetArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> synonymSetId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> synonymSetId;
 
   GetSynonymSetArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetSynonymSetArgs {
 
   factory GetSynonymSetArgs.fromMap(Map<String, dynamic> map) {
     return GetSynonymSetArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      synonymSetId: Input.asInput<String>(map['synonymSetId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      synonymSetId: pulumi.Input.asInput<String>(map['synonymSetId']),
     );
   }
 }

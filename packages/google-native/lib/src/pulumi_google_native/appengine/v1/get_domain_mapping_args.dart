@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDomainMapping.
 class GetDomainMappingArgs {
-  final Input<String> appId;
-  final Input<String> domainMappingId;
+  final pulumi.Input<String> appId;
+  final pulumi.Input<String> domainMappingId;
 
   GetDomainMappingArgs({
     required this.appId,
@@ -21,8 +21,8 @@ class GetDomainMappingArgs {
 
   factory GetDomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainMappingArgs(
-      appId: Input.asInput<String>(map['appId']),
-      domainMappingId: Input.asInput<String>(map['domainMappingId']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
+      domainMappingId: pulumi.Input.asInput<String>(map['domainMappingId']),
     );
   }
 }

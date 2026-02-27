@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'usage_rule.dart';
 
 /// Configuration controlling usage of a service.
@@ -32,7 +32,7 @@ class Usage {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<UsageRule, Map<String, dynamic>>(
+      map['rules'] = pulumi.Input.encodeList<UsageRule, Map<String, dynamic>>(
           rulesValue, (value) => value.toMap());
     }
     return map;
@@ -48,7 +48,7 @@ class Usage {
           : (map['requirements'] as List).cast<String>(),
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<UsageRule>(
+          : pulumi.Input.decodeList<UsageRule>(
               map['rules'],
               (value) =>
                   UsageRule.fromMap((value as Map).cast<String, dynamic>())),

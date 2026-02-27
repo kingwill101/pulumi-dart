@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_rule_http_header_action_http_header_option.dart';
 
 class SecurityPolicyRuleHttpHeaderAction {
@@ -16,7 +16,7 @@ class SecurityPolicyRuleHttpHeaderAction {
     final map = <String, dynamic>{};
     final requestHeadersToAddsValue = requestHeadersToAdds;
     if (requestHeadersToAddsValue != null) {
-      map['requestHeadersToAdds'] = Input.encodeList<
+      map['requestHeadersToAdds'] = pulumi.Input.encodeList<
               SecurityPolicyRuleHttpHeaderActionHttpHeaderOption,
               Map<String, dynamic>>(
           requestHeadersToAddsValue, (value) => value.toMap());
@@ -28,7 +28,7 @@ class SecurityPolicyRuleHttpHeaderAction {
     return SecurityPolicyRuleHttpHeaderAction(
       requestHeadersToAdds: map['requestHeadersToAdds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>(
               map['requestHeadersToAdds'],
               (value) =>

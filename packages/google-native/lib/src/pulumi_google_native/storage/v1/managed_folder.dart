@@ -1,37 +1,37 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_folder_args.dart';
 
 /// Creates a new managed folder.
-class ManagedFolder extends CustomResource {
-  late final Output<String> bucket;
+class ManagedFolder extends pulumi.CustomResource {
+  late final pulumi.Output<String> bucket;
 
   /// The creation time of the managed folder in RFC 3339 format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The kind of item this is. For managed folders, this is always storage#managedFolder.
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// The version of the metadata for this managed folder. Used for preconditions and for detecting changes in metadata.
-  late final Output<String> metageneration;
+  late final pulumi.Output<String> metageneration;
 
   /// The name of the managed folder. Required if not specified by URL parameter.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The link to this managed folder.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The last update time of the managed folder metadata in RFC 3339 format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ManagedFolder(
     String name, {
     ManagedFolderArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:storage/v1:ManagedFolder',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.createTime = registerOutput<String>('createTime');

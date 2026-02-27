@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grpc_route_route_action.dart';
 import 'grpc_route_route_match.dart';
 
@@ -23,7 +23,7 @@ class GrpcRouteRouteRule {
     final matchesValue = matches;
     if (matchesValue != null) {
       map['matches'] =
-          Input.encodeList<GrpcRouteRouteMatch, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GrpcRouteRouteMatch, Map<String, dynamic>>(
               matchesValue, (value) => value.toMap());
     }
     return map;
@@ -35,7 +35,7 @@ class GrpcRouteRouteRule {
           (map['action'] as Map).cast<String, dynamic>()),
       matches: map['matches'] == null
           ? null
-          : Input.decodeList<GrpcRouteRouteMatch>(
+          : pulumi.Input.decodeList<GrpcRouteRouteMatch>(
               map['matches'],
               (value) => GrpcRouteRouteMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),

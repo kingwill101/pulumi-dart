@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_descriptor.dart';
 
 class ProvenanceBuilder {
@@ -19,7 +19,7 @@ class ProvenanceBuilder {
     final builderDependenciesValue = builderDependencies;
     if (builderDependenciesValue != null) {
       map['builderDependencies'] =
-          Input.encodeList<ResourceDescriptor, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ResourceDescriptor, Map<String, dynamic>>(
               builderDependenciesValue, (value) => value.toMap());
     }
     final idValue = id;
@@ -37,7 +37,7 @@ class ProvenanceBuilder {
     return ProvenanceBuilder(
       builderDependencies: map['builderDependencies'] == null
           ? null
-          : Input.decodeList<ResourceDescriptor>(
+          : pulumi.Input.decodeList<ResourceDescriptor>(
               map['builderDependencies'],
               (value) => ResourceDescriptor.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_selection.dart';
 
 /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
@@ -17,7 +17,7 @@ class InstanceFlexibilityPolicy {
     final instanceSelectionListValue = instanceSelectionList;
     if (instanceSelectionListValue != null) {
       map['instanceSelectionList'] =
-          Input.encodeList<InstanceSelection, Map<String, dynamic>>(
+          pulumi.Input.encodeList<InstanceSelection, Map<String, dynamic>>(
               instanceSelectionListValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class InstanceFlexibilityPolicy {
     return InstanceFlexibilityPolicy(
       instanceSelectionList: map['instanceSelectionList'] == null
           ? null
-          : Input.decodeList<InstanceSelection>(
+          : pulumi.Input.decodeList<InstanceSelection>(
               map['instanceSelectionList'],
               (value) => InstanceSelection.fromMap(
                   (value as Map).cast<String, dynamic>())),

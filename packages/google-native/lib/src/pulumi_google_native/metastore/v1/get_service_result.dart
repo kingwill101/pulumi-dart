@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'encryption_config_response11.dart';
+import 'encryption_config_response_metastore_v1.dart';
 import 'hive_metastore_config_response.dart';
-import 'maintenance_window_response6.dart';
+import 'maintenance_window_response_metastore_v1.dart';
 import 'metadata_integration_response.dart';
 import 'metadata_management_activity_response.dart';
-import 'network_config_response16.dart';
+import 'network_config_response_metastore_v1.dart';
 import 'scaling_config_response.dart';
 import 'telemetry_config_response.dart';
 
@@ -21,7 +21,7 @@ class GetServiceResult {
   final String databaseType;
 
   /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
-  final EncryptionConfigResponse11 encryptionConfig;
+  final EncryptionConfigResponseMetastoreV1 encryptionConfig;
 
   /// The URI of the endpoint used to access the metastore service.
   final String endpointUri;
@@ -33,7 +33,7 @@ class GetServiceResult {
   final Map<String, String> labels;
 
   /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-  final MaintenanceWindowResponse6 maintenanceWindow;
+  final MaintenanceWindowResponseMetastoreV1 maintenanceWindow;
 
   /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
   final MetadataIntegrationResponse metadataIntegration;
@@ -48,7 +48,7 @@ class GetServiceResult {
   final String network;
 
   /// The configuration specifying the network settings for the Dataproc Metastore service.
-  final NetworkConfigResponse16 networkConfig;
+  final NetworkConfigResponseMetastoreV1 networkConfig;
 
   /// The TCP port at which the metastore service is reached. Default: 9083.
   final int port;
@@ -134,13 +134,13 @@ class GetServiceResult {
       artifactGcsUri: map['artifactGcsUri'] as String,
       createTime: map['createTime'] as String,
       databaseType: map['databaseType'] as String,
-      encryptionConfig: EncryptionConfigResponse11.fromMap(
+      encryptionConfig: EncryptionConfigResponseMetastoreV1.fromMap(
           (map['encryptionConfig'] as Map).cast<String, dynamic>()),
       endpointUri: map['endpointUri'] as String,
       hiveMetastoreConfig: HiveMetastoreConfigResponse.fromMap(
           (map['hiveMetastoreConfig'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
-      maintenanceWindow: MaintenanceWindowResponse6.fromMap(
+      maintenanceWindow: MaintenanceWindowResponseMetastoreV1.fromMap(
           (map['maintenanceWindow'] as Map).cast<String, dynamic>()),
       metadataIntegration: MetadataIntegrationResponse.fromMap(
           (map['metadataIntegration'] as Map).cast<String, dynamic>()),
@@ -148,7 +148,7 @@ class GetServiceResult {
           (map['metadataManagementActivity'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       network: map['network'] as String,
-      networkConfig: NetworkConfigResponse16.fromMap(
+      networkConfig: NetworkConfigResponseMetastoreV1.fromMap(
           (map['networkConfig'] as Map).cast<String, dynamic>()),
       port: map['port'] as int,
       releaseChannel: map['releaseChannel'] as String,

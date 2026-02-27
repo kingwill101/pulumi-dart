@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_encryption_key_response.dart';
 import 'guest_os_feature_response.dart';
 
@@ -178,7 +178,7 @@ class GetRegionSnapshotResult {
     map['enableConfidentialCompute'] = enableConfidentialCompute;
     map['guestFlush'] = guestFlush;
     map['guestOsFeatures'] =
-        Input.encodeList<GuestOsFeatureResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GuestOsFeatureResponse, Map<String, dynamic>>(
             guestOsFeatures, (value) => value.toMap());
     map['kind'] = kind;
     map['labelFingerprint'] = labelFingerprint;
@@ -224,7 +224,7 @@ class GetRegionSnapshotResult {
       downloadBytes: map['downloadBytes'] as String,
       enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
       guestFlush: map['guestFlush'] as bool,
-      guestOsFeatures: Input.decodeList<GuestOsFeatureResponse>(
+      guestOsFeatures: pulumi.Input.decodeList<GuestOsFeatureResponse>(
           map['guestOsFeatures'],
           (value) => GuestOsFeatureResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

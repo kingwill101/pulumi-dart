@@ -1,30 +1,31 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_synonym_set_synonym_response.dart';
 import 'synonym_set_args.dart';
 
 /// Creates a SynonymSet for a single context. Throws an ALREADY_EXISTS exception if a synonymset already exists for the context.
-class SynonymSet extends CustomResource {
+class SynonymSet extends pulumi.CustomResource {
   /// This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.
-  late final Output<String> context;
-  late final Output<String> location;
+  late final pulumi.Output<String> context;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the SynonymSet This is mandatory for google.api.resource. Format: projects/{project_number}/locations/{location}/synonymSets/{context}.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// List of Synonyms for the context.
-  late final Output<
-      List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>> synonyms;
+  late final pulumi
+      .Output<List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>>
+      synonyms;
 
   SynonymSet(
     String name, {
     SynonymSetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:contentwarehouse/v1:SynonymSet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.context = registerOutput<String>('context');
     this.location = registerOutput<String>('location');

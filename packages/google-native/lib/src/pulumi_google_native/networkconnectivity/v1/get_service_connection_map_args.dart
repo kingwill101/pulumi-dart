@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServiceConnectionMap.
 class GetServiceConnectionMapArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> serviceConnectionMapId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> serviceConnectionMapId;
 
   GetServiceConnectionMapArgs({
     required this.location,
@@ -27,10 +27,10 @@ class GetServiceConnectionMapArgs {
 
   factory GetServiceConnectionMapArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceConnectionMapArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       serviceConnectionMapId:
-          Input.asInput<String>(map['serviceConnectionMapId']),
+          pulumi.Input.asInput<String>(map['serviceConnectionMapId']),
     );
   }
 }

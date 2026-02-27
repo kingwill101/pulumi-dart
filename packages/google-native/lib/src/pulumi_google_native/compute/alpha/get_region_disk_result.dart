@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_encryption_key_response.dart';
 import 'disk_async_replication_response.dart';
 import 'disk_params_response.dart';
@@ -244,7 +244,7 @@ class GetRegionDiskResult {
     map['enableConfidentialCompute'] = enableConfidentialCompute;
     map['eraseWindowsVssSignature'] = eraseWindowsVssSignature;
     map['guestOsFeatures'] =
-        Input.encodeList<GuestOsFeatureResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GuestOsFeatureResponse, Map<String, dynamic>>(
             guestOsFeatures, (value) => value.toMap());
     map['interface'] = interface;
     map['kind'] = kind;
@@ -308,7 +308,7 @@ class GetRegionDiskResult {
           (map['diskEncryptionKey'] as Map).cast<String, dynamic>()),
       enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
       eraseWindowsVssSignature: map['eraseWindowsVssSignature'] as bool,
-      guestOsFeatures: Input.decodeList<GuestOsFeatureResponse>(
+      guestOsFeatures: pulumi.Input.decodeList<GuestOsFeatureResponse>(
           map['guestOsFeatures'],
           (value) => GuestOsFeatureResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

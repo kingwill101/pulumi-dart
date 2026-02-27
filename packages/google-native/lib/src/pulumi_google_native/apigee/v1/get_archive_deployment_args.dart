@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getArchiveDeployment.
 class GetArchiveDeploymentArgs {
-  final Input<String> archiveDeploymentId;
-  final Input<String> environmentId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> archiveDeploymentId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> organizationId;
 
   GetArchiveDeploymentArgs({
     required this.archiveDeploymentId,
@@ -24,9 +24,10 @@ class GetArchiveDeploymentArgs {
 
   factory GetArchiveDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetArchiveDeploymentArgs(
-      archiveDeploymentId: Input.asInput<String>(map['archiveDeploymentId']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      archiveDeploymentId:
+          pulumi.Input.asInput<String>(map['archiveDeploymentId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

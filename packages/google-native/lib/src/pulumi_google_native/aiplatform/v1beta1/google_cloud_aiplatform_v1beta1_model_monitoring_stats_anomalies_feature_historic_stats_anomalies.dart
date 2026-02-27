@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_feature_stats_anomaly.dart';
 import 'google_cloud_aiplatform_v1beta1_threshold_config.dart';
 
@@ -33,7 +33,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricSt
     }
     final predictionStatsValue = predictionStats;
     if (predictionStatsValue != null) {
-      map['predictionStats'] = Input.encodeList<
+      map['predictionStats'] = pulumi.Input.encodeList<
           GoogleCloudAiplatformV1beta1FeatureStatsAnomaly,
           Map<String, dynamic>>(predictionStatsValue, (value) => value.toMap());
     }
@@ -56,7 +56,8 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricSt
           : map['featureDisplayName'] as String,
       predictionStats: map['predictionStats'] == null
           ? null
-          : Input.decodeList<GoogleCloudAiplatformV1beta1FeatureStatsAnomaly>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudAiplatformV1beta1FeatureStatsAnomaly>(
               map['predictionStats'],
               (value) =>
                   GoogleCloudAiplatformV1beta1FeatureStatsAnomaly.fromMap(

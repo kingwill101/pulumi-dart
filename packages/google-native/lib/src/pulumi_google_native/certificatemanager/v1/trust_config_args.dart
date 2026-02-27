@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_store.dart';
 
 /// The set of arguments for TrustConfig.
 class TrustConfigArgs {
   /// One or more paragraphs of text description of a TrustConfig.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// Set of labels associated with a TrustConfig.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
-  final Input<String> trustConfigId;
+  final pulumi.Input<String> trustConfigId;
 
   /// Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
-  final Input<List<TrustStore>>? trustStores;
+  final pulumi.Input<List<TrustStore>>? trustStores;
 
   TrustConfigArgs({
     this.description,
@@ -65,10 +65,10 @@ class TrustConfigArgs {
     map['trustConfigId'] = trustConfigId;
     final trustStoresValue = trustStores;
     if (trustStoresValue != null) {
-      map['trustStores'] = Input.mapOptionalInputValue<List<TrustStore>,
+      map['trustStores'] = pulumi.Input.mapOptionalInputValue<List<TrustStore>,
               List<Map<String, dynamic>>>(
           trustStoresValue,
-          (value) => Input.encodeList<TrustStore, Map<String, dynamic>>(
+          (value) => pulumi.Input.encodeList<TrustStore, Map<String, dynamic>>(
               value, (value) => value.toMap()));
     }
     return map;
@@ -76,14 +76,15 @@ class TrustConfigArgs {
 
   factory TrustConfigArgs.fromMap(Map<String, dynamic> map) {
     return TrustConfigArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      trustConfigId: Input.asInput<String>(map['trustConfigId']),
-      trustStores: Input.asOptionalInput<List<TrustStore>>(map['trustStores']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      trustConfigId: pulumi.Input.asInput<String>(map['trustConfigId']),
+      trustStores:
+          pulumi.Input.asOptionalInput<List<TrustStore>>(map['trustStores']),
     );
   }
 }

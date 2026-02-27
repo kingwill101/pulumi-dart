@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionHealthCheck.
 class GetRegionHealthCheckArgs {
-  final Input<String> healthCheck;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> healthCheck;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetRegionHealthCheckArgs({
     required this.healthCheck,
@@ -27,9 +27,9 @@ class GetRegionHealthCheckArgs {
 
   factory GetRegionHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionHealthCheckArgs(
-      healthCheck: Input.asInput<String>(map['healthCheck']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      healthCheck: pulumi.Input.asInput<String>(map['healthCheck']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_resource_pool_response.dart';
 import 'google_cloud_aiplatform_v1beta1_resource_runtime_response.dart';
 import 'google_cloud_aiplatform_v1beta1_resource_runtime_spec_response.dart';
-import 'google_rpc_status_response2.dart';
+import 'google_rpc_status_response_aiplatform_v1beta1.dart';
 
 /// Result data returned by getPersistentResource.
 class GetPersistentResourceResult {
@@ -19,7 +19,7 @@ class GetPersistentResourceResult {
   final GoogleCloudAiplatformV1beta1EncryptionSpecResponse encryptionSpec;
 
   /// Only populated when persistent resource's state is `STOPPING` or `ERROR`.
-  final GoogleRpcStatusResponse2 error;
+  final GoogleRpcStatusResponseAiplatformV1beta1 error;
 
   /// Optional. The labels with user-defined metadata to organize PersistentResource. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   final Map<String, String> labels;
@@ -79,7 +79,7 @@ class GetPersistentResourceResult {
     map['name'] = name;
     map['network'] = network;
     map['reservedIpRanges'] = reservedIpRanges;
-    map['resourcePools'] = Input.encodeList<
+    map['resourcePools'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1ResourcePoolResponse,
         Map<String, dynamic>>(resourcePools, (value) => value.toMap());
     map['resourceRuntime'] = resourceRuntime.toMap();
@@ -97,18 +97,17 @@ class GetPersistentResourceResult {
       encryptionSpec:
           GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
               (map['encryptionSpec'] as Map).cast<String, dynamic>()),
-      error: GoogleRpcStatusResponse2.fromMap(
+      error: GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       network: map['network'] as String,
       reservedIpRanges: (map['reservedIpRanges'] as List).cast<String>(),
-      resourcePools:
-          Input.decodeList<GoogleCloudAiplatformV1beta1ResourcePoolResponse>(
-              map['resourcePools'],
-              (value) =>
-                  GoogleCloudAiplatformV1beta1ResourcePoolResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      resourcePools: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1beta1ResourcePoolResponse>(
+          map['resourcePools'],
+          (value) => GoogleCloudAiplatformV1beta1ResourcePoolResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       resourceRuntime:
           GoogleCloudAiplatformV1beta1ResourceRuntimeResponse.fromMap(
               (map['resourceRuntime'] as Map).cast<String, dynamic>()),

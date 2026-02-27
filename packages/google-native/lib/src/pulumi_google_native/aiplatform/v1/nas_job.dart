@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1_nas_job_output_response.dart';
 import 'google_cloud_aiplatform_v1_nas_job_spec_response.dart';
@@ -7,58 +7,60 @@ import 'nas_job_args.dart';
 
 /// Creates a NasJob
 /// Auto-naming is currently not supported for this resource.
-class NasJob extends CustomResource {
+class NasJob extends pulumi.CustomResource {
   /// Time when the NasJob was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The display name of the NasJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Optional. Enable a separation of Custom model training and restricted image training for tenant project.
-  late final Output<bool> enableRestrictedImageTraining;
+  late final pulumi.Output<bool> enableRestrictedImageTraining;
 
   /// Customer-managed encryption key options for a NasJob. If this is set, then all resources created by the NasJob will be encrypted with the provided encryption key.
-  late final Output<GoogleCloudAiplatformV1EncryptionSpecResponse>
+  late final pulumi.Output<GoogleCloudAiplatformV1EncryptionSpecResponse>
       encryptionSpec;
 
   /// Time when the NasJob entered any of the following states: `JOB_STATE_SUCCEEDED`, `JOB_STATE_FAILED`, `JOB_STATE_CANCELLED`.
-  late final Output<String> endTime;
+  late final pulumi.Output<String> endTime;
 
   /// Only populated when job's state is JOB_STATE_FAILED or JOB_STATE_CANCELLED.
-  late final Output<GoogleRpcStatusResponse> error;
+  late final pulumi.Output<GoogleRpcStatusResponse> error;
 
   /// The labels with user-defined metadata to organize NasJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// Resource name of the NasJob.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Output of the NasJob.
-  late final Output<GoogleCloudAiplatformV1NasJobOutputResponse> nasJobOutput;
+  late final pulumi.Output<GoogleCloudAiplatformV1NasJobOutputResponse>
+      nasJobOutput;
 
   /// The specification of a NasJob.
-  late final Output<GoogleCloudAiplatformV1NasJobSpecResponse> nasJobSpec;
-  late final Output<String> project;
+  late final pulumi.Output<GoogleCloudAiplatformV1NasJobSpecResponse>
+      nasJobSpec;
+  late final pulumi.Output<String> project;
 
   /// Time when the NasJob for the first time entered the `JOB_STATE_RUNNING` state.
-  late final Output<String> startTime;
+  late final pulumi.Output<String> startTime;
 
   /// The detailed state of the job.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Time when the NasJob was most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   NasJob(
     String name, {
     NasJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:aiplatform/v1:NasJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');

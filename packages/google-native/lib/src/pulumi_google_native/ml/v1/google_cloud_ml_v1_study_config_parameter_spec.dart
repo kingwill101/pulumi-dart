@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_study_config_parameter_spec_categorical_value_spec.dart';
 import 'google_cloud_ml_v1_study_config_parameter_spec_discrete_value_spec.dart';
 import 'google_cloud_ml_v1_study_config_parameter_spec_double_value_spec.dart';
@@ -68,7 +68,7 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
     }
     final childParameterSpecsValue = childParameterSpecs;
     if (childParameterSpecsValue != null) {
-      map['childParameterSpecs'] = Input.encodeList<
+      map['childParameterSpecs'] = pulumi.Input.encodeList<
               GoogleCloudMlV1StudyConfigParameterSpec, Map<String, dynamic>>(
           childParameterSpecsValue, (value) => value.toMap());
     }
@@ -114,7 +114,7 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
               (map['categoricalValueSpec'] as Map).cast<String, dynamic>()),
       childParameterSpecs: map['childParameterSpecs'] == null
           ? null
-          : Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpec>(
+          : pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpec>(
               map['childParameterSpecs'],
               (value) => GoogleCloudMlV1StudyConfigParameterSpec.fromMap(
                   (value as Map).cast<String, dynamic>())),

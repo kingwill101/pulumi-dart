@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'google_type_date_response6.dart';
+import 'google_type_date_response_policysimulator_v1.dart';
 
 /// Summary statistics about the replayed log entries.
 class GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse {
@@ -14,10 +14,10 @@ class GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse {
   final int logCount;
 
   /// The date of the newest log entry replayed.
-  final GoogleTypeDateResponse6 newestDate;
+  final GoogleTypeDateResponsePolicysimulatorV1 newestDate;
 
   /// The date of the oldest log entry replayed.
-  final GoogleTypeDateResponse6 oldestDate;
+  final GoogleTypeDateResponsePolicysimulatorV1 oldestDate;
 
   /// The number of replayed log entries with no difference between baseline and simulated policies.
   final int unchangedCount;
@@ -48,9 +48,9 @@ class GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse {
       differenceCount: map['differenceCount'] as int,
       errorCount: map['errorCount'] as int,
       logCount: map['logCount'] as int,
-      newestDate: GoogleTypeDateResponse6.fromMap(
+      newestDate: GoogleTypeDateResponsePolicysimulatorV1.fromMap(
           (map['newestDate'] as Map).cast<String, dynamic>()),
-      oldestDate: GoogleTypeDateResponse6.fromMap(
+      oldestDate: GoogleTypeDateResponsePolicysimulatorV1.fromMap(
           (map['oldestDate'] as Map).cast<String, dynamic>()),
       unchangedCount: map['unchangedCount'] as int,
     );

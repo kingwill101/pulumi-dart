@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRuntime.
 class GetRuntimeArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> runtimeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> runtimeId;
 
   GetRuntimeArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetRuntimeArgs {
 
   factory GetRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      runtimeId: Input.asInput<String>(map['runtimeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      runtimeId: pulumi.Input.asInput<String>(map['runtimeId']),
     );
   }
 }

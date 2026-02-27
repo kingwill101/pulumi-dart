@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2alpha_interval.dart';
 
 /// Specifies how a facet is computed.
@@ -56,7 +56,8 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey {
     }
     final intervalsValue = intervals;
     if (intervalsValue != null) {
-      map['intervals'] = Input.encodeList<GoogleCloudRetailV2alphaInterval,
+      map['intervals'] = pulumi.Input.encodeList<
+          GoogleCloudRetailV2alphaInterval,
           Map<String, dynamic>>(intervalsValue, (value) => value.toMap());
     }
     map['key'] = key;
@@ -94,7 +95,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey {
           : (map['contains'] as List).cast<String>(),
       intervals: map['intervals'] == null
           ? null
-          : Input.decodeList<GoogleCloudRetailV2alphaInterval>(
+          : pulumi.Input.decodeList<GoogleCloudRetailV2alphaInterval>(
               map['intervals'],
               (value) => GoogleCloudRetailV2alphaInterval.fromMap(
                   (value as Map).cast<String, dynamic>())),

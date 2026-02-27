@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEngine.
 class GetEngineArgs {
-  final Input<String> collectionId;
-  final Input<String> engineId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> collectionId;
+  final pulumi.Input<String> engineId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetEngineArgs({
     required this.collectionId,
@@ -30,10 +30,10 @@ class GetEngineArgs {
 
   factory GetEngineArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineArgs(
-      collectionId: Input.asInput<String>(map['collectionId']),
-      engineId: Input.asInput<String>(map['engineId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      collectionId: pulumi.Input.asInput<String>(map['collectionId']),
+      engineId: pulumi.Input.asInput<String>(map['engineId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

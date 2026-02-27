@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_time_series_args.dart';
 import 'get_time_series_result.dart';
 
 /// Gets a TensorboardTimeSeries.
 Future<GetTimeSeriesResult> getTimeSeries(
   GetTimeSeriesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:aiplatform/v1:getTimeSeries',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTimeSeriesResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_record_response.dart';
 import 'ssl_settings_response.dart';
 
@@ -25,7 +25,7 @@ class GetDomainMappingResult {
     final map = <String, dynamic>{};
     map['name'] = name;
     map['resourceRecords'] =
-        Input.encodeList<ResourceRecordResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ResourceRecordResponse, Map<String, dynamic>>(
             resourceRecords, (value) => value.toMap());
     map['sslSettings'] = sslSettings.toMap();
     return map;
@@ -34,7 +34,7 @@ class GetDomainMappingResult {
   factory GetDomainMappingResult.fromMap(Map<String, dynamic> map) {
     return GetDomainMappingResult(
       name: map['name'] as String,
-      resourceRecords: Input.decodeList<ResourceRecordResponse>(
+      resourceRecords: pulumi.Input.decodeList<ResourceRecordResponse>(
           map['resourceRecords'],
           (value) => ResourceRecordResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

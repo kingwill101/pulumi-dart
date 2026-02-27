@@ -1,11 +1,11 @@
 library module_remotebuildexecution_v1alpha;
 
-export 'v1alpha/get_instance22.dart';
-export 'v1alpha/get_instance_args22.dart';
-export 'v1alpha/get_instance_result22.dart';
-export 'v1alpha/get_worker_pool5.dart';
-export 'v1alpha/get_worker_pool_args5.dart';
-export 'v1alpha/get_worker_pool_result5.dart';
+export 'v1alpha/get_instance_remotebuildexecution_v1alpha.dart';
+export 'v1alpha/get_instance_remotebuildexecution_v1alpha_args.dart';
+export 'v1alpha/get_instance_remotebuildexecution_v1alpha_result.dart';
+export 'v1alpha/get_worker_pool_remotebuildexecution_v1alpha.dart';
+export 'v1alpha/get_worker_pool_remotebuildexecution_v1alpha_args.dart';
+export 'v1alpha/get_worker_pool_remotebuildexecution_v1alpha_result.dart';
 export 'v1alpha/google_devtools_remotebuildexecution_admin_v1alpha_accelerator_config.dart';
 export 'v1alpha/google_devtools_remotebuildexecution_admin_v1alpha_accelerator_config_response.dart';
 export 'v1alpha/google_devtools_remotebuildexecution_admin_v1alpha_autoscale.dart';
@@ -18,7 +18,7 @@ export 'v1alpha/google_devtools_remotebuildexecution_admin_v1alpha_feature_polic
 export 'v1alpha/google_devtools_remotebuildexecution_admin_v1alpha_feature_policy_response.dart';
 export 'v1alpha/google_devtools_remotebuildexecution_admin_v1alpha_worker_config.dart';
 export 'v1alpha/google_devtools_remotebuildexecution_admin_v1alpha_worker_config_response.dart';
-export 'v1alpha/instance22.dart';
-export 'v1alpha/instance_args22.dart';
-export 'v1alpha/worker_pool6.dart';
-export 'v1alpha/worker_pool_args5.dart';
+export 'v1alpha/instance_remotebuildexecution_v1alpha.dart';
+export 'v1alpha/instance_remotebuildexecution_v1alpha_args.dart';
+export 'v1alpha/worker_pool_remotebuildexecution_v1alpha.dart';
+export 'v1alpha/worker_pool_remotebuildexecution_v1alpha_args.dart';

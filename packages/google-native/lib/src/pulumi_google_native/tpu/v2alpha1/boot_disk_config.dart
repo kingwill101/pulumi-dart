@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'customer_encryption_key4.dart';
+import 'customer_encryption_key_tpu_v2alpha1.dart';
 
 /// Boot disk configurations.
 class BootDiskConfig {
   /// Optional. Customer encryption key for boot disk.
-  final CustomerEncryptionKey4? customerEncryptionKey;
+  final CustomerEncryptionKeyTpuV2alpha1? customerEncryptionKey;
 
   /// Optional. Whether the boot disk will be created with confidential compute mode.
   final bool? enableConfidentialCompute;
@@ -32,7 +32,7 @@ class BootDiskConfig {
     return BootDiskConfig(
       customerEncryptionKey: map['customerEncryptionKey'] == null
           ? null
-          : CustomerEncryptionKey4.fromMap(
+          : CustomerEncryptionKeyTpuV2alpha1.fromMap(
               (map['customerEncryptionKey'] as Map).cast<String, dynamic>()),
       enableConfidentialCompute: map['enableConfidentialCompute'] == null
           ? null

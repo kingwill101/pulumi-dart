@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'clustering.dart';
 import 'connection_property.dart';
 import 'dataset_reference.dart';
@@ -128,7 +128,7 @@ class JobConfigurationQuery {
     final connectionPropertiesValue = connectionProperties;
     if (connectionPropertiesValue != null) {
       map['connectionProperties'] =
-          Input.encodeList<ConnectionProperty, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ConnectionProperty, Map<String, dynamic>>(
               connectionPropertiesValue, (value) => value.toMap());
     }
     final continuousValue = continuous;
@@ -188,7 +188,7 @@ class JobConfigurationQuery {
     final queryParametersValue = queryParameters;
     if (queryParametersValue != null) {
       map['queryParameters'] =
-          Input.encodeList<QueryParameter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<QueryParameter, Map<String, dynamic>>(
               queryParametersValue, (value) => value.toMap());
     }
     final rangePartitioningValue = rangePartitioning;
@@ -217,9 +217,9 @@ class JobConfigurationQuery {
     }
     final userDefinedFunctionResourcesValue = userDefinedFunctionResources;
     if (userDefinedFunctionResourcesValue != null) {
-      map['userDefinedFunctionResources'] =
-          Input.encodeList<UserDefinedFunctionResource, Map<String, dynamic>>(
-              userDefinedFunctionResourcesValue, (value) => value.toMap());
+      map['userDefinedFunctionResources'] = pulumi.Input.encodeList<
+              UserDefinedFunctionResource, Map<String, dynamic>>(
+          userDefinedFunctionResourcesValue, (value) => value.toMap());
     }
     final writeDispositionValue = writeDisposition;
     if (writeDispositionValue != null) {
@@ -239,7 +239,7 @@ class JobConfigurationQuery {
               (map['clustering'] as Map).cast<String, dynamic>()),
       connectionProperties: map['connectionProperties'] == null
           ? null
-          : Input.decodeList<ConnectionProperty>(
+          : pulumi.Input.decodeList<ConnectionProperty>(
               map['connectionProperties'],
               (value) => ConnectionProperty.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -279,7 +279,7 @@ class JobConfigurationQuery {
       query: map['query'] == null ? null : map['query'] as String,
       queryParameters: map['queryParameters'] == null
           ? null
-          : Input.decodeList<QueryParameter>(
+          : pulumi.Input.decodeList<QueryParameter>(
               map['queryParameters'],
               (value) => QueryParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -303,7 +303,7 @@ class JobConfigurationQuery {
           map['useQueryCache'] == null ? null : map['useQueryCache'] as bool,
       userDefinedFunctionResources: map['userDefinedFunctionResources'] == null
           ? null
-          : Input.decodeList<UserDefinedFunctionResource>(
+          : pulumi.Input.decodeList<UserDefinedFunctionResource>(
               map['userDefinedFunctionResources'],
               (value) => UserDefinedFunctionResource.fromMap(
                   (value as Map).cast<String, dynamic>())),

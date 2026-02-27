@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOauthIdpConfig.
 class GetOauthIdpConfigArgs {
-  final Input<String> oauthIdpConfigId;
-  final Input<String>? project;
-  final Input<String> tenantId;
+  final pulumi.Input<String> oauthIdpConfigId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> tenantId;
 
   GetOauthIdpConfigArgs({
     required this.oauthIdpConfigId,
@@ -27,9 +27,9 @@ class GetOauthIdpConfigArgs {
 
   factory GetOauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetOauthIdpConfigArgs(
-      oauthIdpConfigId: Input.asInput<String>(map['oauthIdpConfigId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tenantId: Input.asInput<String>(map['tenantId']),
+      oauthIdpConfigId: pulumi.Input.asInput<String>(map['oauthIdpConfigId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tenantId: pulumi.Input.asInput<String>(map['tenantId']),
     );
   }
 }

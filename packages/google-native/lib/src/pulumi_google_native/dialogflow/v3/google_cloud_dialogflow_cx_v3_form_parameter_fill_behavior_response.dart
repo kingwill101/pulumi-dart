@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_event_handler_response.dart';
 import 'google_cloud_dialogflow_cx_v3_fulfillment_response.dart';
 
@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3FormParameterFillBehaviorResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['initialPromptFulfillment'] = initialPromptFulfillment.toMap();
-    map['repromptEventHandlers'] = Input.encodeList<
+    map['repromptEventHandlers'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3EventHandlerResponse,
         Map<String, dynamic>>(repromptEventHandlers, (value) => value.toMap());
     return map;
@@ -33,11 +33,11 @@ class GoogleCloudDialogflowCxV3FormParameterFillBehaviorResponse {
       initialPromptFulfillment:
           GoogleCloudDialogflowCxV3FulfillmentResponse.fromMap(
               (map['initialPromptFulfillment'] as Map).cast<String, dynamic>()),
-      repromptEventHandlers:
-          Input.decodeList<GoogleCloudDialogflowCxV3EventHandlerResponse>(
-              map['repromptEventHandlers'],
-              (value) => GoogleCloudDialogflowCxV3EventHandlerResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      repromptEventHandlers: pulumi.Input.decodeList<
+              GoogleCloudDialogflowCxV3EventHandlerResponse>(
+          map['repromptEventHandlers'],
+          (value) => GoogleCloudDialogflowCxV3EventHandlerResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

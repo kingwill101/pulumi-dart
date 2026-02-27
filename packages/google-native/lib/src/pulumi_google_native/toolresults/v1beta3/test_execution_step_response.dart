@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'test_issue_response.dart';
 import 'test_suite_overview_response.dart';
 import 'test_timing_response.dart';
@@ -30,11 +30,11 @@ class TestExecutionStepResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['testIssues'] =
-        Input.encodeList<TestIssueResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TestIssueResponse, Map<String, dynamic>>(
             testIssues, (value) => value.toMap());
-    map['testSuiteOverviews'] =
-        Input.encodeList<TestSuiteOverviewResponse, Map<String, dynamic>>(
-            testSuiteOverviews, (value) => value.toMap());
+    map['testSuiteOverviews'] = pulumi.Input.encodeList<
+        TestSuiteOverviewResponse,
+        Map<String, dynamic>>(testSuiteOverviews, (value) => value.toMap());
     map['testTiming'] = testTiming.toMap();
     map['toolExecution'] = toolExecution.toMap();
     return map;
@@ -42,11 +42,11 @@ class TestExecutionStepResponse {
 
   factory TestExecutionStepResponse.fromMap(Map<String, dynamic> map) {
     return TestExecutionStepResponse(
-      testIssues: Input.decodeList<TestIssueResponse>(
+      testIssues: pulumi.Input.decodeList<TestIssueResponse>(
           map['testIssues'],
           (value) => TestIssueResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      testSuiteOverviews: Input.decodeList<TestSuiteOverviewResponse>(
+      testSuiteOverviews: pulumi.Input.decodeList<TestSuiteOverviewResponse>(
           map['testSuiteOverviews'],
           (value) => TestSuiteOverviewResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

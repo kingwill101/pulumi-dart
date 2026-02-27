@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'clone_step_response.dart';
 import 'compute_engine_disks_target_details_response.dart';
 import 'compute_engine_target_details_response.dart';
-import 'status_response30.dart';
+import 'status_response_vmmigration_v1.dart';
 
 /// Result data returned by getCloneJob.
 class GetCloneJobResult {
@@ -21,7 +21,7 @@ class GetCloneJobResult {
   final String endTime;
 
   /// Provides details for the errors that led to the Clone Job's state.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// The name of the clone.
   final String name;
@@ -58,8 +58,9 @@ class GetCloneJobResult {
     map['name'] = name;
     map['state'] = state;
     map['stateTime'] = stateTime;
-    map['steps'] = Input.encodeList<CloneStepResponse, Map<String, dynamic>>(
-        steps, (value) => value.toMap());
+    map['steps'] =
+        pulumi.Input.encodeList<CloneStepResponse, Map<String, dynamic>>(
+            steps, (value) => value.toMap());
     return map;
   }
 
@@ -73,12 +74,12 @@ class GetCloneJobResult {
           (map['computeEngineTargetDetails'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       endTime: map['endTime'] as String,
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       state: map['state'] as String,
       stateTime: map['stateTime'] as String,
-      steps: Input.decodeList<CloneStepResponse>(
+      steps: pulumi.Input.decodeList<CloneStepResponse>(
           map['steps'],
           (value) => CloneStepResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

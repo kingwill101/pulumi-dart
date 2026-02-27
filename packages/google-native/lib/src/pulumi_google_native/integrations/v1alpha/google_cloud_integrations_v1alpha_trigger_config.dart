@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_cloud_scheduler_config.dart';
 import 'google_cloud_integrations_v1alpha_coordinate.dart';
 import 'google_cloud_integrations_v1alpha_integration_alert_config.dart';
@@ -71,7 +71,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
     final map = <String, dynamic>{};
     final alertConfigValue = alertConfig;
     if (alertConfigValue != null) {
-      map['alertConfig'] = Input.encodeList<
+      map['alertConfig'] = pulumi.Input.encodeList<
           GoogleCloudIntegrationsV1alphaIntegrationAlertConfig,
           Map<String, dynamic>>(alertConfigValue, (value) => value.toMap());
     }
@@ -105,7 +105,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
     }
     final startTasksValue = startTasks;
     if (startTasksValue != null) {
-      map['startTasks'] = Input.encodeList<
+      map['startTasks'] = pulumi.Input.encodeList<
           GoogleCloudIntegrationsV1alphaNextTask,
           Map<String, dynamic>>(startTasksValue, (value) => value.toMap());
     }
@@ -130,7 +130,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
     return GoogleCloudIntegrationsV1alphaTriggerConfig(
       alertConfig: map['alertConfig'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>(
               map['alertConfig'],
               (value) =>
@@ -159,7 +159,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfig {
           : (map['properties'] as Map).cast<String, String>(),
       startTasks: map['startTasks'] == null
           ? null
-          : Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(
+          : pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(
               map['startTasks'],
               (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap(
                   (value as Map).cast<String, dynamic>())),

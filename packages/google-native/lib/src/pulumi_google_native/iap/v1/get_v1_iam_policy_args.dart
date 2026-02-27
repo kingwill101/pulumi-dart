@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getV1IamPolicy.
 class GetV1IamPolicyArgs {
-  final Input<String> v1Id;
+  final pulumi.Input<String> v1Id;
 
   GetV1IamPolicyArgs({
     required this.v1Id,
@@ -18,7 +18,7 @@ class GetV1IamPolicyArgs {
 
   factory GetV1IamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetV1IamPolicyArgs(
-      v1Id: Input.asInput<String>(map['v1Id']),
+      v1Id: pulumi.Input.asInput<String>(map['v1Id']),
     );
   }
 }

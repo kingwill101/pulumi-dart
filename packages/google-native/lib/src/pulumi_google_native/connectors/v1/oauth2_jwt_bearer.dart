@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'jwt_claims.dart';
-import 'secret2.dart';
+import 'secret_connectors_v1.dart';
 
 /// Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details.
 class Oauth2JwtBearer {
   /// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
-  final Secret2? clientKey;
+  final SecretConnectorsV1? clientKey;
 
   /// JwtClaims providers fields to generate the token.
   final JwtClaims? jwtClaims;
@@ -33,7 +33,8 @@ class Oauth2JwtBearer {
     return Oauth2JwtBearer(
       clientKey: map['clientKey'] == null
           ? null
-          : Secret2.fromMap((map['clientKey'] as Map).cast<String, dynamic>()),
+          : SecretConnectorsV1.fromMap(
+              (map['clientKey'] as Map).cast<String, dynamic>()),
       jwtClaims: map['jwtClaims'] == null
           ? null
           : JwtClaims.fromMap(

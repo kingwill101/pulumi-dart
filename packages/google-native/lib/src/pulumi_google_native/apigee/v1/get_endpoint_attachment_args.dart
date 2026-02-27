@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEndpointAttachment.
 class GetEndpointAttachmentArgs {
-  final Input<String> endpointAttachmentId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> endpointAttachmentId;
+  final pulumi.Input<String> organizationId;
 
   GetEndpointAttachmentArgs({
     required this.endpointAttachmentId,
@@ -21,8 +21,9 @@ class GetEndpointAttachmentArgs {
 
   factory GetEndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAttachmentArgs(
-      endpointAttachmentId: Input.asInput<String>(map['endpointAttachmentId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      endpointAttachmentId:
+          pulumi.Input.asInput<String>(map['endpointAttachmentId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

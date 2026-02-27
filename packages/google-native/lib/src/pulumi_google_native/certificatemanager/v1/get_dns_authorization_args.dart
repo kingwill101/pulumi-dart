@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDnsAuthorization.
 class GetDnsAuthorizationArgs {
-  final Input<String> dnsAuthorizationId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> dnsAuthorizationId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDnsAuthorizationArgs({
     required this.dnsAuthorizationId,
@@ -27,9 +27,10 @@ class GetDnsAuthorizationArgs {
 
   factory GetDnsAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationArgs(
-      dnsAuthorizationId: Input.asInput<String>(map['dnsAuthorizationId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      dnsAuthorizationId:
+          pulumi.Input.asInput<String>(map['dnsAuthorizationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

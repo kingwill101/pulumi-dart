@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocation_policy_response.dart';
 import 'job_notification_response.dart';
 import 'job_status_response.dart';
@@ -64,12 +64,12 @@ class GetJobResult {
     map['logsPolicy'] = logsPolicy.toMap();
     map['name'] = name;
     map['notifications'] =
-        Input.encodeList<JobNotificationResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<JobNotificationResponse, Map<String, dynamic>>(
             notifications, (value) => value.toMap());
     map['priority'] = priority;
     map['status'] = status.toMap();
     map['taskGroups'] =
-        Input.encodeList<TaskGroupResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TaskGroupResponse, Map<String, dynamic>>(
             taskGroups, (value) => value.toMap());
     map['uid'] = uid;
     map['updateTime'] = updateTime;
@@ -85,14 +85,14 @@ class GetJobResult {
       logsPolicy: LogsPolicyResponse.fromMap(
           (map['logsPolicy'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      notifications: Input.decodeList<JobNotificationResponse>(
+      notifications: pulumi.Input.decodeList<JobNotificationResponse>(
           map['notifications'],
           (value) => JobNotificationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       priority: map['priority'] as String,
       status: JobStatusResponse.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
-      taskGroups: Input.decodeList<TaskGroupResponse>(
+      taskGroups: pulumi.Input.decodeList<TaskGroupResponse>(
           map['taskGroups'],
           (value) => TaskGroupResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

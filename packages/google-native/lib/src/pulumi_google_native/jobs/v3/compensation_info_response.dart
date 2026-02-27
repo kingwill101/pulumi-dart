@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compensation_entry_response.dart';
 import 'compensation_range_response.dart';
 
@@ -27,9 +27,8 @@ class CompensationInfoResponse {
         annualizedBaseCompensationRange.toMap();
     map['annualizedTotalCompensationRange'] =
         annualizedTotalCompensationRange.toMap();
-    map['entries'] =
-        Input.encodeList<CompensationEntryResponse, Map<String, dynamic>>(
-            entries, (value) => value.toMap());
+    map['entries'] = pulumi.Input.encodeList<CompensationEntryResponse,
+        Map<String, dynamic>>(entries, (value) => value.toMap());
     return map;
   }
 
@@ -41,7 +40,7 @@ class CompensationInfoResponse {
       annualizedTotalCompensationRange: CompensationRangeResponse.fromMap(
           (map['annualizedTotalCompensationRange'] as Map)
               .cast<String, dynamic>()),
-      entries: Input.decodeList<CompensationEntryResponse>(
+      entries: pulumi.Input.decodeList<CompensationEntryResponse>(
           map['entries'],
           (value) => CompensationEntryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

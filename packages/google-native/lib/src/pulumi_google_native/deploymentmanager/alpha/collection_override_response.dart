@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'method_map_response.dart';
-import 'options_response2.dart';
+import 'options_response_deploymentmanager_alpha.dart';
 
 /// CollectionOverride allows resource handling overrides for specific resources within a BaseType
 class CollectionOverrideResponse {
@@ -12,7 +12,7 @@ class CollectionOverrideResponse {
   final MethodMapResponse methodMap;
 
   /// The options to apply to this resource-level override
-  final OptionsResponse2 options;
+  final OptionsResponseDeploymentmanagerAlpha options;
 
   CollectionOverrideResponse({
     required this.collection,
@@ -33,7 +33,7 @@ class CollectionOverrideResponse {
       collection: map['collection'] as String,
       methodMap: MethodMapResponse.fromMap(
           (map['methodMap'] as Map).cast<String, dynamic>()),
-      options: OptionsResponse2.fromMap(
+      options: OptionsResponseDeploymentmanagerAlpha.fromMap(
           (map['options'] as Map).cast<String, dynamic>()),
     );
   }

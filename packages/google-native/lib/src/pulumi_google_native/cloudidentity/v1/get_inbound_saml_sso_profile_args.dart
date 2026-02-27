@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInboundSamlSsoProfile.
 class GetInboundSamlSsoProfileArgs {
-  final Input<String> inboundSamlSsoProfileId;
+  final pulumi.Input<String> inboundSamlSsoProfileId;
 
   GetInboundSamlSsoProfileArgs({
     required this.inboundSamlSsoProfileId,
@@ -19,7 +19,7 @@ class GetInboundSamlSsoProfileArgs {
   factory GetInboundSamlSsoProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlSsoProfileArgs(
       inboundSamlSsoProfileId:
-          Input.asInput<String>(map['inboundSamlSsoProfileId']),
+          pulumi.Input.asInput<String>(map['inboundSamlSsoProfileId']),
     );
   }
 }

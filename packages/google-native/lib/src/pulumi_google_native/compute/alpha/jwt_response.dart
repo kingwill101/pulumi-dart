@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'jwt_header_response.dart';
 
 /// [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
@@ -34,7 +34,7 @@ class JwtResponse {
     map['issuer'] = issuer;
     map['jwksPublicKeys'] = jwksPublicKeys;
     map['jwtHeaders'] =
-        Input.encodeList<JwtHeaderResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<JwtHeaderResponse, Map<String, dynamic>>(
             jwtHeaders, (value) => value.toMap());
     map['jwtParams'] = jwtParams;
     return map;
@@ -45,7 +45,7 @@ class JwtResponse {
       audiences: (map['audiences'] as List).cast<String>(),
       issuer: map['issuer'] as String,
       jwksPublicKeys: map['jwksPublicKeys'] as String,
-      jwtHeaders: Input.decodeList<JwtHeaderResponse>(
+      jwtHeaders: pulumi.Input.decodeList<JwtHeaderResponse>(
           map['jwtHeaders'],
           (value) => JwtHeaderResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

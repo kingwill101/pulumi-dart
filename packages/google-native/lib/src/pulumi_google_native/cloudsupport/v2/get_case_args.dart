@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCase.
 class GetCaseArgs {
-  final Input<String> caseId;
-  final Input<String> v2Id;
-  final Input<String> v2Id1;
+  final pulumi.Input<String> caseId;
+  final pulumi.Input<String> v2Id;
+  final pulumi.Input<String> v2Id1;
 
   GetCaseArgs({
     required this.caseId,
@@ -24,9 +24,9 @@ class GetCaseArgs {
 
   factory GetCaseArgs.fromMap(Map<String, dynamic> map) {
     return GetCaseArgs(
-      caseId: Input.asInput<String>(map['caseId']),
-      v2Id: Input.asInput<String>(map['v2Id']),
-      v2Id1: Input.asInput<String>(map['v2Id1']),
+      caseId: pulumi.Input.asInput<String>(map['caseId']),
+      v2Id: pulumi.Input.asInput<String>(map['v2Id']),
+      v2Id1: pulumi.Input.asInput<String>(map['v2Id1']),
     );
   }
 }

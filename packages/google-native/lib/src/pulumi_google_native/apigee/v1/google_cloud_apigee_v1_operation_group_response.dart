@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_operation_config_response.dart';
 
 /// List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
@@ -19,7 +19,7 @@ class GoogleCloudApigeeV1OperationGroupResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['operationConfigType'] = operationConfigType;
-    map['operationConfigs'] = Input.encodeList<
+    map['operationConfigs'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1OperationConfigResponse,
         Map<String, dynamic>>(operationConfigs, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GoogleCloudApigeeV1OperationGroupResponse {
     return GoogleCloudApigeeV1OperationGroupResponse(
       operationConfigType: map['operationConfigType'] as String,
       operationConfigs:
-          Input.decodeList<GoogleCloudApigeeV1OperationConfigResponse>(
+          pulumi.Input.decodeList<GoogleCloudApigeeV1OperationConfigResponse>(
               map['operationConfigs'],
               (value) => GoogleCloudApigeeV1OperationConfigResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

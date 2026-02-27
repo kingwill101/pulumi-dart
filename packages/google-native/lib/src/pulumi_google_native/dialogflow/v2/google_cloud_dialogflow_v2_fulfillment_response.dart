@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_fulfillment_feature_response.dart';
 import 'google_cloud_dialogflow_v2_fulfillment_generic_web_service_response.dart';
 
@@ -34,7 +34,7 @@ class GoogleCloudDialogflowV2FulfillmentResponse {
     final map = <String, dynamic>{};
     map['displayName'] = displayName;
     map['enabled'] = enabled;
-    map['features'] = Input.encodeList<
+    map['features'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2FulfillmentFeatureResponse,
         Map<String, dynamic>>(features, (value) => value.toMap());
     map['genericWebService'] = genericWebService.toMap();
@@ -47,12 +47,11 @@ class GoogleCloudDialogflowV2FulfillmentResponse {
     return GoogleCloudDialogflowV2FulfillmentResponse(
       displayName: map['displayName'] as String,
       enabled: map['enabled'] as bool,
-      features:
-          Input.decodeList<GoogleCloudDialogflowV2FulfillmentFeatureResponse>(
-              map['features'],
-              (value) =>
-                  GoogleCloudDialogflowV2FulfillmentFeatureResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      features: pulumi.Input.decodeList<
+              GoogleCloudDialogflowV2FulfillmentFeatureResponse>(
+          map['features'],
+          (value) => GoogleCloudDialogflowV2FulfillmentFeatureResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       genericWebService:
           GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.fromMap(
               (map['genericWebService'] as Map).cast<String, dynamic>()),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSite.
 class GetSiteArgs {
-  final Input<String>? project;
-  final Input<String> siteId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> siteId;
 
   GetSiteArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetSiteArgs {
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      siteId: Input.asInput<String>(map['siteId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      siteId: pulumi.Input.asInput<String>(map['siteId']),
     );
   }
 }

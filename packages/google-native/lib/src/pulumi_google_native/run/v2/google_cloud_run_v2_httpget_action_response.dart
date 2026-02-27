@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v2_httpheader_response.dart';
 
 /// HTTPGetAction describes an action based on HTTP Get requests.
@@ -22,7 +22,8 @@ class GoogleCloudRunV2HTTPGetActionResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['httpHeaders'] = Input.encodeList<GoogleCloudRunV2HTTPHeaderResponse,
+    map['httpHeaders'] = pulumi.Input.encodeList<
+        GoogleCloudRunV2HTTPHeaderResponse,
         Map<String, dynamic>>(httpHeaders, (value) => value.toMap());
     map['path'] = path;
     map['port'] = port;
@@ -32,7 +33,7 @@ class GoogleCloudRunV2HTTPGetActionResponse {
   factory GoogleCloudRunV2HTTPGetActionResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudRunV2HTTPGetActionResponse(
-      httpHeaders: Input.decodeList<GoogleCloudRunV2HTTPHeaderResponse>(
+      httpHeaders: pulumi.Input.decodeList<GoogleCloudRunV2HTTPHeaderResponse>(
           map['httpHeaders'],
           (value) => GoogleCloudRunV2HTTPHeaderResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

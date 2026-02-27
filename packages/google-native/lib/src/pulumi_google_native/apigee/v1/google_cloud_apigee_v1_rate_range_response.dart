@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'google_type_money_response3.dart';
+import 'google_type_money_response_apigee_v1.dart';
 
 /// API call volume range and the fees charged when the total number of API calls is within the range.
 class GoogleCloudApigeeV1RateRangeResponse {
@@ -8,7 +8,7 @@ class GoogleCloudApigeeV1RateRangeResponse {
   final String end;
 
   /// Fee to charge when total number of API calls falls within this range.
-  final GoogleTypeMoneyResponse3 fee;
+  final GoogleTypeMoneyResponseApigeeV1 fee;
 
   /// Starting value of the range. Set to 0 or `null` for the initial range of values.
   final String start;
@@ -31,7 +31,7 @@ class GoogleCloudApigeeV1RateRangeResponse {
       Map<String, dynamic> map) {
     return GoogleCloudApigeeV1RateRangeResponse(
       end: map['end'] as String,
-      fee: GoogleTypeMoneyResponse3.fromMap(
+      fee: GoogleTypeMoneyResponseApigeeV1.fromMap(
           (map['fee'] as Map).cast<String, dynamic>()),
       start: map['start'] as String,
     );

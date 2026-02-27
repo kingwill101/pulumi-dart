@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pie_chart_chart_type.dart';
 import 'pie_chart_data_set.dart';
 
@@ -24,8 +24,9 @@ class PieChart {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['chartType'] = chartType.value;
-    map['dataSets'] = Input.encodeList<PieChartDataSet, Map<String, dynamic>>(
-        dataSets, (value) => value.toMap());
+    map['dataSets'] =
+        pulumi.Input.encodeList<PieChartDataSet, Map<String, dynamic>>(
+            dataSets, (value) => value.toMap());
     final showLabelsValue = showLabels;
     if (showLabelsValue != null) {
       map['showLabels'] = showLabelsValue;
@@ -36,7 +37,7 @@ class PieChart {
   factory PieChart.fromMap(Map<String, dynamic> map) {
     return PieChart(
       chartType: PieChartChartType.fromValue(map['chartType'] as String),
-      dataSets: Input.decodeList<PieChartDataSet>(
+      dataSets: pulumi.Input.decodeList<PieChartDataSet>(
           map['dataSets'],
           (value) =>
               PieChartDataSet.fromMap((value as Map).cast<String, dynamic>())),

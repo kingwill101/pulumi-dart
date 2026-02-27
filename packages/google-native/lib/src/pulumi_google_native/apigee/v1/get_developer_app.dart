@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_developer_app_args.dart';
 import 'get_developer_app_result.dart';
 
 /// Returns the details for a developer app.
 Future<GetDeveloperAppResult> getDeveloperApp(
   GetDeveloperAppArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:apigee/v1:getDeveloperApp',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeveloperAppResult.fromMap(result);
 }

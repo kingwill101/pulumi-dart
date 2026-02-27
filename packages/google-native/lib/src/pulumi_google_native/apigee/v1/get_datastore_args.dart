@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDatastore.
 class GetDatastoreArgs {
-  final Input<String> datastoreId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> datastoreId;
+  final pulumi.Input<String> organizationId;
 
   GetDatastoreArgs({
     required this.datastoreId,
@@ -21,8 +21,8 @@ class GetDatastoreArgs {
 
   factory GetDatastoreArgs.fromMap(Map<String, dynamic> map) {
     return GetDatastoreArgs(
-      datastoreId: Input.asInput<String>(map['datastoreId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      datastoreId: pulumi.Input.asInput<String>(map['datastoreId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

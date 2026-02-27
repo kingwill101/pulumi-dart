@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'column_settings.dart';
 import 'table_data_set.dart';
 import 'time_series_table_metric_visualization.dart';
@@ -27,11 +27,12 @@ class TimeSeriesTable {
     final columnSettingsValue = columnSettings;
     if (columnSettingsValue != null) {
       map['columnSettings'] =
-          Input.encodeList<ColumnSettings, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ColumnSettings, Map<String, dynamic>>(
               columnSettingsValue, (value) => value.toMap());
     }
-    map['dataSets'] = Input.encodeList<TableDataSet, Map<String, dynamic>>(
-        dataSets, (value) => value.toMap());
+    map['dataSets'] =
+        pulumi.Input.encodeList<TableDataSet, Map<String, dynamic>>(
+            dataSets, (value) => value.toMap());
     final metricVisualizationValue = metricVisualization;
     if (metricVisualizationValue != null) {
       map['metricVisualization'] = metricVisualizationValue.value;
@@ -43,11 +44,11 @@ class TimeSeriesTable {
     return TimeSeriesTable(
       columnSettings: map['columnSettings'] == null
           ? null
-          : Input.decodeList<ColumnSettings>(
+          : pulumi.Input.decodeList<ColumnSettings>(
               map['columnSettings'],
               (value) => ColumnSettings.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      dataSets: Input.decodeList<TableDataSet>(
+      dataSets: pulumi.Input.decodeList<TableDataSet>(
           map['dataSets'],
           (value) =>
               TableDataSet.fromMap((value as Map).cast<String, dynamic>())),

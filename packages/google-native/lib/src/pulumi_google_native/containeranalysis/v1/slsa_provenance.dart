@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'material.dart';
 import 'slsa_builder.dart';
 import 'slsa_metadata.dart';
@@ -32,8 +32,9 @@ class SlsaProvenance {
     }
     final materialsValue = materials;
     if (materialsValue != null) {
-      map['materials'] = Input.encodeList<Material, Map<String, dynamic>>(
-          materialsValue, (value) => value.toMap());
+      map['materials'] =
+          pulumi.Input.encodeList<Material, Map<String, dynamic>>(
+              materialsValue, (value) => value.toMap());
     }
     final metadataValue = metadata;
     if (metadataValue != null) {
@@ -54,7 +55,7 @@ class SlsaProvenance {
               (map['builder'] as Map).cast<String, dynamic>()),
       materials: map['materials'] == null
           ? null
-          : Input.decodeList<Material>(
+          : pulumi.Input.decodeList<Material>(
               map['materials'],
               (value) =>
                   Material.fromMap((value as Map).cast<String, dynamic>())),

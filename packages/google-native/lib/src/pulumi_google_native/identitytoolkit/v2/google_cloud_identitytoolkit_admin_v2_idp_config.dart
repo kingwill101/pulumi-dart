@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_idp_certificate.dart';
 
 /// The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
@@ -28,7 +28,7 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfig {
     final map = <String, dynamic>{};
     final idpCertificatesValue = idpCertificates;
     if (idpCertificatesValue != null) {
-      map['idpCertificates'] = Input.encodeList<
+      map['idpCertificates'] = pulumi.Input.encodeList<
           GoogleCloudIdentitytoolkitAdminV2IdpCertificate,
           Map<String, dynamic>>(idpCertificatesValue, (value) => value.toMap());
     }
@@ -52,7 +52,8 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfig {
     return GoogleCloudIdentitytoolkitAdminV2IdpConfig(
       idpCertificates: map['idpCertificates'] == null
           ? null
-          : Input.decodeList<GoogleCloudIdentitytoolkitAdminV2IdpCertificate>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudIdentitytoolkitAdminV2IdpCertificate>(
               map['idpCertificates'],
               (value) =>
                   GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromMap(

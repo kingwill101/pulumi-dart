@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'os_constraint_response.dart';
 
 /// `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
@@ -37,7 +37,7 @@ class DevicePolicyResponse {
     map['allowedDeviceManagementLevels'] = allowedDeviceManagementLevels;
     map['allowedEncryptionStatuses'] = allowedEncryptionStatuses;
     map['osConstraints'] =
-        Input.encodeList<OsConstraintResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<OsConstraintResponse, Map<String, dynamic>>(
             osConstraints, (value) => value.toMap());
     map['requireAdminApproval'] = requireAdminApproval;
     map['requireCorpOwned'] = requireCorpOwned;
@@ -51,7 +51,7 @@ class DevicePolicyResponse {
           (map['allowedDeviceManagementLevels'] as List).cast<String>(),
       allowedEncryptionStatuses:
           (map['allowedEncryptionStatuses'] as List).cast<String>(),
-      osConstraints: Input.decodeList<OsConstraintResponse>(
+      osConstraints: pulumi.Input.decodeList<OsConstraintResponse>(
           map['osConstraints'],
           (value) => OsConstraintResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

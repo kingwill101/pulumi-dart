@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assignment_response.dart';
 import 'package_repository_response.dart';
-import 'package_response4.dart';
+import 'package_response_osconfig_v1beta.dart';
 import 'software_recipe_response.dart';
 
 /// Result data returned by getGuestPolicy.
@@ -27,7 +27,7 @@ class GetGuestPolicyResult {
   final List<PackageRepositoryResponse> packageRepositories;
 
   /// The software packages to be managed by this policy.
-  final List<PackageResponse4> packages;
+  final List<PackageResponseOsconfigV1beta> packages;
 
   /// A list of Recipes to install on the VM instance.
   final List<SoftwareRecipeResponse> recipes;
@@ -54,13 +54,13 @@ class GetGuestPolicyResult {
     map['description'] = description;
     map['etag'] = etag;
     map['name'] = name;
-    map['packageRepositories'] =
-        Input.encodeList<PackageRepositoryResponse, Map<String, dynamic>>(
-            packageRepositories, (value) => value.toMap());
-    map['packages'] = Input.encodeList<PackageResponse4, Map<String, dynamic>>(
-        packages, (value) => value.toMap());
+    map['packageRepositories'] = pulumi.Input.encodeList<
+        PackageRepositoryResponse,
+        Map<String, dynamic>>(packageRepositories, (value) => value.toMap());
+    map['packages'] = pulumi.Input.encodeList<PackageResponseOsconfigV1beta,
+        Map<String, dynamic>>(packages, (value) => value.toMap());
     map['recipes'] =
-        Input.encodeList<SoftwareRecipeResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SoftwareRecipeResponse, Map<String, dynamic>>(
             recipes, (value) => value.toMap());
     map['updateTime'] = updateTime;
     return map;
@@ -74,15 +74,15 @@ class GetGuestPolicyResult {
       description: map['description'] as String,
       etag: map['etag'] as String,
       name: map['name'] as String,
-      packageRepositories: Input.decodeList<PackageRepositoryResponse>(
+      packageRepositories: pulumi.Input.decodeList<PackageRepositoryResponse>(
           map['packageRepositories'],
           (value) => PackageRepositoryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      packages: Input.decodeList<PackageResponse4>(
+      packages: pulumi.Input.decodeList<PackageResponseOsconfigV1beta>(
           map['packages'],
-          (value) =>
-              PackageResponse4.fromMap((value as Map).cast<String, dynamic>())),
-      recipes: Input.decodeList<SoftwareRecipeResponse>(
+          (value) => PackageResponseOsconfigV1beta.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      recipes: pulumi.Input.decodeList<SoftwareRecipeResponse>(
           map['recipes'],
           (value) => SoftwareRecipeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

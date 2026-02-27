@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_property_definition_response.dart';
 
 /// Configurations for a nested structured data property.
@@ -15,7 +15,7 @@ class GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['propertyDefinitions'] = Input.encodeList<
+    map['propertyDefinitions'] = pulumi.Input.encodeList<
         GoogleCloudContentwarehouseV1PropertyDefinitionResponse,
         Map<String, dynamic>>(propertyDefinitions, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse {
   factory GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse(
-      propertyDefinitions: Input.decodeList<
+      propertyDefinitions: pulumi.Input.decodeList<
               GoogleCloudContentwarehouseV1PropertyDefinitionResponse>(
           map['propertyDefinitions'],
           (value) =>

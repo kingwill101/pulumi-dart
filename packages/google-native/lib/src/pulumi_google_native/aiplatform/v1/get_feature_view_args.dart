@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFeatureView.
 class GetFeatureViewArgs {
-  final Input<String> featureOnlineStoreId;
-  final Input<String> featureViewId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> featureOnlineStoreId;
+  final pulumi.Input<String> featureViewId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetFeatureViewArgs({
     required this.featureOnlineStoreId,
@@ -30,10 +30,11 @@ class GetFeatureViewArgs {
 
   factory GetFeatureViewArgs.fromMap(Map<String, dynamic> map) {
     return GetFeatureViewArgs(
-      featureOnlineStoreId: Input.asInput<String>(map['featureOnlineStoreId']),
-      featureViewId: Input.asInput<String>(map['featureViewId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      featureOnlineStoreId:
+          pulumi.Input.asInput<String>(map['featureOnlineStoreId']),
+      featureViewId: pulumi.Input.asInput<String>(map['featureViewId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

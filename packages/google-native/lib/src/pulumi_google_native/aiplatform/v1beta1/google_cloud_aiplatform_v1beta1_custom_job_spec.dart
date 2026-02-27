@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_gcs_destination.dart';
 import 'google_cloud_aiplatform_v1beta1_scheduling.dart';
 import 'google_cloud_aiplatform_v1beta1_worker_pool_spec.dart';
@@ -112,7 +112,7 @@ class GoogleCloudAiplatformV1beta1CustomJobSpec {
     if (tensorboardValue != null) {
       map['tensorboard'] = tensorboardValue;
     }
-    map['workerPoolSpecs'] = Input.encodeList<
+    map['workerPoolSpecs'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1WorkerPoolSpec,
         Map<String, dynamic>>(workerPoolSpecs, (value) => value.toMap());
     return map;
@@ -155,7 +155,7 @@ class GoogleCloudAiplatformV1beta1CustomJobSpec {
       tensorboard:
           map['tensorboard'] == null ? null : map['tensorboard'] as String,
       workerPoolSpecs:
-          Input.decodeList<GoogleCloudAiplatformV1beta1WorkerPoolSpec>(
+          pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1WorkerPoolSpec>(
               map['workerPoolSpecs'],
               (value) => GoogleCloudAiplatformV1beta1WorkerPoolSpec.fromMap(
                   (value as Map).cast<String, dynamic>())),

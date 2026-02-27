@@ -1,45 +1,45 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'debug_session_args.dart';
 
 /// Creates a debug session for a deployed API Proxy revision.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class DebugSession extends CustomResource {
-  late final Output<String> apiId;
+class DebugSession extends pulumi.CustomResource {
+  late final pulumi.Output<String> apiId;
 
   /// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
-  late final Output<int> count;
+  late final pulumi.Output<int> count;
 
   /// The first transaction creation timestamp, recorded by UAP.
-  late final Output<String> createTime;
-  late final Output<String> environmentId;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<String> environmentId;
 
   /// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
-  late final Output<String> filter;
+  late final pulumi.Output<String> filter;
 
   /// A unique ID for this DebugSession.
-  late final Output<String> name;
-  late final Output<String> organizationId;
-  late final Output<String> revisionId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> organizationId;
+  late final pulumi.Output<String> revisionId;
 
   /// Optional. The time in seconds after which this DebugSession should end. A timeout specified in DebugSession will overwrite this value.
-  late final Output<String> timeout;
+  late final pulumi.Output<String> timeout;
 
   /// Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
-  late final Output<int> tracesize;
+  late final pulumi.Output<int> tracesize;
 
   /// Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
-  late final Output<int> validity;
+  late final pulumi.Output<int> validity;
 
   DebugSession(
     String name, {
     DebugSessionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:apigee/v1:DebugSession',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiId = registerOutput<String>('apiId');
     this.count = registerOutput<int>('count');

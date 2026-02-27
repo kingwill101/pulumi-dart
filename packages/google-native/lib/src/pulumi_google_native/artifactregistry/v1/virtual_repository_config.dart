@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'upstream_policy.dart';
 
 /// Virtual repository configuration.
@@ -17,7 +17,7 @@ class VirtualRepositoryConfig {
     final upstreamPoliciesValue = upstreamPolicies;
     if (upstreamPoliciesValue != null) {
       map['upstreamPolicies'] =
-          Input.encodeList<UpstreamPolicy, Map<String, dynamic>>(
+          pulumi.Input.encodeList<UpstreamPolicy, Map<String, dynamic>>(
               upstreamPoliciesValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class VirtualRepositoryConfig {
     return VirtualRepositoryConfig(
       upstreamPolicies: map['upstreamPolicies'] == null
           ? null
-          : Input.decodeList<UpstreamPolicy>(
+          : pulumi.Input.decodeList<UpstreamPolicy>(
               map['upstreamPolicies'],
               (value) => UpstreamPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bounding_poly_response.dart';
 
 /// Image annotation.
@@ -19,7 +19,7 @@ class ImageAnnotationResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['boundingPolys'] =
-        Input.encodeList<BoundingPolyResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<BoundingPolyResponse, Map<String, dynamic>>(
             boundingPolys, (value) => value.toMap());
     map['frameIndex'] = frameIndex;
     return map;
@@ -27,7 +27,7 @@ class ImageAnnotationResponse {
 
   factory ImageAnnotationResponse.fromMap(Map<String, dynamic> map) {
     return ImageAnnotationResponse(
-      boundingPolys: Input.decodeList<BoundingPolyResponse>(
+      boundingPolys: pulumi.Input.decodeList<BoundingPolyResponse>(
           map['boundingPolys'],
           (value) => BoundingPolyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

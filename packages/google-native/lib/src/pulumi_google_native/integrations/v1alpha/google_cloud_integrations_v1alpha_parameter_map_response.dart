@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_parameter_map_entry_response.dart';
 
 /// A generic multi-map that holds key value pairs. They keys and values can be of any type, unless specified.
@@ -22,7 +22,7 @@ class GoogleCloudIntegrationsV1alphaParameterMapResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['entries'] = Input.encodeList<
+    map['entries'] = pulumi.Input.encodeList<
         GoogleCloudIntegrationsV1alphaParameterMapEntryResponse,
         Map<String, dynamic>>(entries, (value) => value.toMap());
     map['keyType'] = keyType;
@@ -33,7 +33,7 @@ class GoogleCloudIntegrationsV1alphaParameterMapResponse {
   factory GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaParameterMapResponse(
-      entries: Input.decodeList<
+      entries: pulumi.Input.decodeList<
               GoogleCloudIntegrationsV1alphaParameterMapEntryResponse>(
           map['entries'],
           (value) =>

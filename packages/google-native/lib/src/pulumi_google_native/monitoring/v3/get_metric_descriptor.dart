@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_metric_descriptor_args.dart';
 import 'get_metric_descriptor_result.dart';
 
 /// Gets a single metric descriptor.
 Future<GetMetricDescriptorResult> getMetricDescriptor(
   GetMetricDescriptorArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:monitoring/v3:getMetricDescriptor',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMetricDescriptorResult.fromMap(result);
 }

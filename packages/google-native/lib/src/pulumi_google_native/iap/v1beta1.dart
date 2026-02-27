@@ -1,9 +1,9 @@
 library module_iap_v1beta1;
 
-export 'v1beta1/binding69.dart';
-export 'v1beta1/binding_response69.dart';
-export 'v1beta1/expr73.dart';
-export 'v1beta1/expr_response73.dart';
+export 'v1beta1/binding_iap_v1beta1.dart';
+export 'v1beta1/binding_response_iap_v1beta1.dart';
+export 'v1beta1/expr_iap_v1beta1.dart';
+export 'v1beta1/expr_response_iap_v1beta1.dart';
 export 'v1beta1/get_v1beta1_iam_policy.dart';
 export 'v1beta1/get_v1beta1_iam_policy_args.dart';
 export 'v1beta1/get_v1beta1_iam_policy_result.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'aggregation2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'aggregation_monitoring_v3.dart';
 import 'forecast_options.dart';
 import 'metric_threshold_comparison.dart';
 import 'metric_threshold_evaluation_missing_data.dart';
@@ -10,13 +10,13 @@ import 'trigger.dart';
 /// A condition type that compares a collection of time series against a threshold.
 class MetricThreshold {
   /// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
-  final List<Aggregation2>? aggregations;
+  final List<AggregationMonitoringV3>? aggregations;
 
   /// The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
   final MetricThresholdComparison? comparison;
 
   /// Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
-  final List<Aggregation2>? denominatorAggregations;
+  final List<AggregationMonitoringV3>? denominatorAggregations;
 
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
   final String? denominatorFilter;
@@ -56,9 +56,8 @@ class MetricThreshold {
     final map = <String, dynamic>{};
     final aggregationsValue = aggregations;
     if (aggregationsValue != null) {
-      map['aggregations'] =
-          Input.encodeList<Aggregation2, Map<String, dynamic>>(
-              aggregationsValue, (value) => value.toMap());
+      map['aggregations'] = pulumi.Input.encodeList<AggregationMonitoringV3,
+          Map<String, dynamic>>(aggregationsValue, (value) => value.toMap());
     }
     final comparisonValue = comparison;
     if (comparisonValue != null) {
@@ -66,9 +65,9 @@ class MetricThreshold {
     }
     final denominatorAggregationsValue = denominatorAggregations;
     if (denominatorAggregationsValue != null) {
-      map['denominatorAggregations'] =
-          Input.encodeList<Aggregation2, Map<String, dynamic>>(
-              denominatorAggregationsValue, (value) => value.toMap());
+      map['denominatorAggregations'] = pulumi.Input.encodeList<
+              AggregationMonitoringV3, Map<String, dynamic>>(
+          denominatorAggregationsValue, (value) => value.toMap());
     }
     final denominatorFilterValue = denominatorFilter;
     if (denominatorFilterValue != null) {
@@ -102,19 +101,19 @@ class MetricThreshold {
     return MetricThreshold(
       aggregations: map['aggregations'] == null
           ? null
-          : Input.decodeList<Aggregation2>(
+          : pulumi.Input.decodeList<AggregationMonitoringV3>(
               map['aggregations'],
-              (value) =>
-                  Aggregation2.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => AggregationMonitoringV3.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       comparison: map['comparison'] == null
           ? null
           : MetricThresholdComparison.fromValue(map['comparison'] as String),
       denominatorAggregations: map['denominatorAggregations'] == null
           ? null
-          : Input.decodeList<Aggregation2>(
+          : pulumi.Input.decodeList<AggregationMonitoringV3>(
               map['denominatorAggregations'],
-              (value) =>
-                  Aggregation2.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => AggregationMonitoringV3.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       denominatorFilter: map['denominatorFilter'] == null
           ? null
           : map['denominatorFilter'] as String,

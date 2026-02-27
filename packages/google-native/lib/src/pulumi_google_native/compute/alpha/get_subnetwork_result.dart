@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnetwork_log_config_response.dart';
 import 'subnetwork_secondary_range_response.dart';
 
@@ -165,7 +165,7 @@ class GetSubnetworkResult {
     map['region'] = region;
     map['reservedInternalRange'] = reservedInternalRange;
     map['role'] = role;
-    map['secondaryIpRanges'] = Input.encodeList<
+    map['secondaryIpRanges'] = pulumi.Input.encodeList<
         SubnetworkSecondaryRangeResponse,
         Map<String, dynamic>>(secondaryIpRanges, (value) => value.toMap());
     map['selfLink'] = selfLink;
@@ -205,10 +205,11 @@ class GetSubnetworkResult {
       region: map['region'] as String,
       reservedInternalRange: map['reservedInternalRange'] as String,
       role: map['role'] as String,
-      secondaryIpRanges: Input.decodeList<SubnetworkSecondaryRangeResponse>(
-          map['secondaryIpRanges'],
-          (value) => SubnetworkSecondaryRangeResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      secondaryIpRanges:
+          pulumi.Input.decodeList<SubnetworkSecondaryRangeResponse>(
+              map['secondaryIpRanges'],
+              (value) => SubnetworkSecondaryRangeResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
       stackType: map['stackType'] as String,

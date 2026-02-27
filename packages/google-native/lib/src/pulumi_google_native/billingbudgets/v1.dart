@@ -21,5 +21,5 @@ export 'v1/google_cloud_billing_budgets_v1_threshold_rule_response.dart';
 export 'v1/google_cloud_billing_budgets_v1_threshold_rule_spend_basis.dart';
 export 'v1/google_type_date.dart';
 export 'v1/google_type_date_response.dart';
-export 'v1/google_type_money2.dart';
-export 'v1/google_type_money_response4.dart';
+export 'v1/google_type_money_billingbudgets_v1.dart';
+export 'v1/google_type_money_response_billingbudgets_v1.dart';

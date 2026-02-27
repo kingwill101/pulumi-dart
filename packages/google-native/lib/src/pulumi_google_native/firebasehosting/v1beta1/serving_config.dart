@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'header5.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'header_firebasehosting_v1beta1.dart';
 import 'i18n_config.dart';
 import 'redirect.dart';
 import 'rewrite.dart';
@@ -17,7 +17,7 @@ class ServingConfig {
   final bool? cleanUrls;
 
   /// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
-  final List<Header5>? headers;
+  final List<HeaderFirebasehostingV1beta1>? headers;
 
   /// Optional. Defines i18n rewrite behavior.
   final I18nConfig? i18n;
@@ -53,8 +53,8 @@ class ServingConfig {
     }
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<Header5, Map<String, dynamic>>(
-          headersValue, (value) => value.toMap());
+      map['headers'] = pulumi.Input.encodeList<HeaderFirebasehostingV1beta1,
+          Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
     final i18nValue = i18n;
     if (i18nValue != null) {
@@ -62,12 +62,13 @@ class ServingConfig {
     }
     final redirectsValue = redirects;
     if (redirectsValue != null) {
-      map['redirects'] = Input.encodeList<Redirect, Map<String, dynamic>>(
-          redirectsValue, (value) => value.toMap());
+      map['redirects'] =
+          pulumi.Input.encodeList<Redirect, Map<String, dynamic>>(
+              redirectsValue, (value) => value.toMap());
     }
     final rewritesValue = rewrites;
     if (rewritesValue != null) {
-      map['rewrites'] = Input.encodeList<Rewrite, Map<String, dynamic>>(
+      map['rewrites'] = pulumi.Input.encodeList<Rewrite, Map<String, dynamic>>(
           rewritesValue, (value) => value.toMap());
     }
     final trailingSlashBehaviorValue = trailingSlashBehavior;
@@ -86,22 +87,22 @@ class ServingConfig {
       cleanUrls: map['cleanUrls'] == null ? null : map['cleanUrls'] as bool,
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<Header5>(
+          : pulumi.Input.decodeList<HeaderFirebasehostingV1beta1>(
               map['headers'],
-              (value) =>
-                  Header5.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => HeaderFirebasehostingV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       i18n: map['i18n'] == null
           ? null
           : I18nConfig.fromMap((map['i18n'] as Map).cast<String, dynamic>()),
       redirects: map['redirects'] == null
           ? null
-          : Input.decodeList<Redirect>(
+          : pulumi.Input.decodeList<Redirect>(
               map['redirects'],
               (value) =>
                   Redirect.fromMap((value as Map).cast<String, dynamic>())),
       rewrites: map['rewrites'] == null
           ? null
-          : Input.decodeList<Rewrite>(
+          : pulumi.Input.decodeList<Rewrite>(
               map['rewrites'],
               (value) =>
                   Rewrite.fromMap((value as Map).cast<String, dynamic>())),

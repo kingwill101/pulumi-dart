@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'secret2.dart';
+import 'secret_connectors_v1.dart';
 
 /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
 class Oauth2ClientCredentials {
@@ -8,7 +8,7 @@ class Oauth2ClientCredentials {
   final String? clientId;
 
   /// Secret version reference containing the client secret.
-  final Secret2? clientSecret;
+  final SecretConnectorsV1? clientSecret;
 
   Oauth2ClientCredentials({
     this.clientId,
@@ -33,7 +33,7 @@ class Oauth2ClientCredentials {
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
       clientSecret: map['clientSecret'] == null
           ? null
-          : Secret2.fromMap(
+          : SecretConnectorsV1.fromMap(
               (map['clientSecret'] as Map).cast<String, dynamic>()),
     );
   }

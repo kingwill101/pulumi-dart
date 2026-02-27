@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_study_spec_convex_automated_stopping_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_study_spec_convex_stop_config_response.dart';
 import 'google_cloud_aiplatform_v1beta1_study_spec_decay_curve_automated_stopping_spec_response.dart';
@@ -74,11 +74,11 @@ class GoogleCloudAiplatformV1beta1StudySpecResponse {
     map['decayCurveStoppingSpec'] = decayCurveStoppingSpec.toMap();
     map['measurementSelectionType'] = measurementSelectionType;
     map['medianAutomatedStoppingSpec'] = medianAutomatedStoppingSpec.toMap();
-    map['metrics'] = Input.encodeList<
+    map['metrics'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponse,
         Map<String, dynamic>>(metrics, (value) => value.toMap());
     map['observationNoise'] = observationNoise;
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['studyStoppingConfig'] = studyStoppingConfig.toMap();
@@ -106,14 +106,14 @@ class GoogleCloudAiplatformV1beta1StudySpecResponse {
           GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecResponse
               .fromMap((map['medianAutomatedStoppingSpec'] as Map)
                   .cast<String, dynamic>()),
-      metrics: Input.decodeList<
+      metrics: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponse>(
           map['metrics'],
           (value) =>
               GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       observationNoise: map['observationNoise'] as String,
-      parameters: Input.decodeList<
+      parameters: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse>(
           map['parameters'],
           (value) => GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse

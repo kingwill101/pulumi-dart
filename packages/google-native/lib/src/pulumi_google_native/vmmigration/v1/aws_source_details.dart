@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_key_credentials.dart';
 import 'tag.dart';
 
@@ -45,8 +45,9 @@ class AwsSourceDetails {
     }
     final inventoryTagListValue = inventoryTagList;
     if (inventoryTagListValue != null) {
-      map['inventoryTagList'] = Input.encodeList<Tag, Map<String, dynamic>>(
-          inventoryTagListValue, (value) => value.toMap());
+      map['inventoryTagList'] =
+          pulumi.Input.encodeList<Tag, Map<String, dynamic>>(
+              inventoryTagListValue, (value) => value.toMap());
     }
     final migrationResourcesUserTagsValue = migrationResourcesUserTags;
     if (migrationResourcesUserTagsValue != null) {
@@ -67,7 +68,7 @@ class AwsSourceDetails {
           : (map['inventorySecurityGroupNames'] as List).cast<String>(),
       inventoryTagList: map['inventoryTagList'] == null
           ? null
-          : Input.decodeList<Tag>(map['inventoryTagList'],
+          : pulumi.Input.decodeList<Tag>(map['inventoryTagList'],
               (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
       migrationResourcesUserTags: map['migrationResourcesUserTags'] == null
           ? null

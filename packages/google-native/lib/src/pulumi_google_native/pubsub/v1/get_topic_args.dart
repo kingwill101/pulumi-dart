@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTopic.
 class GetTopicArgs {
-  final Input<String>? project;
-  final Input<String> topicId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> topicId;
 
   GetTopicArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetTopicArgs {
 
   factory GetTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      topicId: Input.asInput<String>(map['topicId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      topicId: pulumi.Input.asInput<String>(map['topicId']),
     );
   }
 }

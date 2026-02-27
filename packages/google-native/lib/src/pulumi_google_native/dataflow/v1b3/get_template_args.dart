@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTemplate.
 class GetTemplateArgs {
-  final Input<String> gcsPath;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? view;
+  final pulumi.Input<String> gcsPath;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
 
   GetTemplateArgs({
     required this.gcsPath,
@@ -33,10 +33,10 @@ class GetTemplateArgs {
 
   factory GetTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateArgs(
-      gcsPath: Input.asInput<String>(map['gcsPath']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
+      gcsPath: pulumi.Input.asInput<String>(map['gcsPath']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

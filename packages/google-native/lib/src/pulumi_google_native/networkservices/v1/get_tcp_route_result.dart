@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tcp_route_route_rule_response.dart';
 
 /// Result data returned by getTcpRoute.
@@ -52,9 +52,8 @@ class GetTcpRouteResult {
     map['labels'] = labels;
     map['meshes'] = meshes;
     map['name'] = name;
-    map['rules'] =
-        Input.encodeList<TcpRouteRouteRuleResponse, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
+    map['rules'] = pulumi.Input.encodeList<TcpRouteRouteRuleResponse,
+        Map<String, dynamic>>(rules, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['updateTime'] = updateTime;
     return map;
@@ -68,7 +67,7 @@ class GetTcpRouteResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       meshes: (map['meshes'] as List).cast<String>(),
       name: map['name'] as String,
-      rules: Input.decodeList<TcpRouteRouteRuleResponse>(
+      rules: pulumi.Input.decodeList<TcpRouteRouteRuleResponse>(
           map['rules'],
           (value) => TcpRouteRouteRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

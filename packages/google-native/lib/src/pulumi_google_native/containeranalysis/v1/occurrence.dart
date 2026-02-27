@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_occurrence_response.dart';
 import 'build_occurrence_response.dart';
 import 'compliance_occurrence_response.dart';
@@ -15,74 +15,74 @@ import 'vulnerability_occurrence_response.dart';
 
 /// Creates a new occurrence.
 /// Auto-naming is currently not supported for this resource.
-class Occurrence extends CustomResource {
+class Occurrence extends pulumi.CustomResource {
   /// Describes an attestation of an artifact.
-  late final Output<AttestationOccurrenceResponse> attestation;
+  late final pulumi.Output<AttestationOccurrenceResponse> attestation;
 
   /// Describes a verifiable build.
-  late final Output<BuildOccurrenceResponse> build;
+  late final pulumi.Output<BuildOccurrenceResponse> build;
 
   /// Describes a compliance violation on a linked resource.
-  late final Output<ComplianceOccurrenceResponse> compliance;
+  late final pulumi.Output<ComplianceOccurrenceResponse> compliance;
 
   /// The time this occurrence was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Describes the deployment of an artifact on a runtime.
-  late final Output<DeploymentOccurrenceResponse> deployment;
+  late final pulumi.Output<DeploymentOccurrenceResponse> deployment;
 
   /// Describes when a resource was discovered.
-  late final Output<DiscoveryOccurrenceResponse> discovery;
+  late final pulumi.Output<DiscoveryOccurrenceResponse> discovery;
 
   /// Describes an attestation of an artifact using dsse.
-  late final Output<DSSEAttestationOccurrenceResponse> dsseAttestation;
+  late final pulumi.Output<DSSEAttestationOccurrenceResponse> dsseAttestation;
 
   /// https://github.com/secure-systems-lab/dsse
-  late final Output<EnvelopeResponse> envelope;
+  late final pulumi.Output<EnvelopeResponse> envelope;
 
   /// Describes how this resource derives from the basis in the associated note.
-  late final Output<ImageOccurrenceResponse> image;
+  late final pulumi.Output<ImageOccurrenceResponse> image;
 
   /// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-  late final Output<String> noteName;
+  late final pulumi.Output<String> noteName;
 
   /// Describes the installation of a package on the linked resource.
-  late final Output<PackageOccurrenceResponse> package;
-  late final Output<String> project;
+  late final pulumi.Output<PackageOccurrenceResponse> package;
+  late final pulumi.Output<String> project;
 
   /// A description of actions that can be taken to remedy the note.
-  late final Output<String> remediation;
+  late final pulumi.Output<String> remediation;
 
   /// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
-  late final Output<String> resourceUri;
+  late final pulumi.Output<String> resourceUri;
 
   /// Describes a specific SBOM reference occurrences.
-  late final Output<SBOMReferenceOccurrenceResponse> sbomReference;
+  late final pulumi.Output<SBOMReferenceOccurrenceResponse> sbomReference;
 
   /// The time this occurrence was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Describes an available package upgrade on the linked resource.
-  late final Output<UpgradeOccurrenceResponse> upgrade;
+  late final pulumi.Output<UpgradeOccurrenceResponse> upgrade;
 
   /// Describes a security vulnerability.
-  late final Output<VulnerabilityOccurrenceResponse> vulnerability;
+  late final pulumi.Output<VulnerabilityOccurrenceResponse> vulnerability;
 
   Occurrence(
     String name, {
     OccurrenceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:containeranalysis/v1:Occurrence',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attestation =
         registerOutput<AttestationOccurrenceResponse>('attestation');

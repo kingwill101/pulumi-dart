@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReference.
 class GetReferenceArgs {
-  final Input<String> environmentId;
-  final Input<String> organizationId;
-  final Input<String> referenceId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> referenceId;
 
   GetReferenceArgs({
     required this.environmentId,
@@ -24,9 +24,9 @@ class GetReferenceArgs {
 
   factory GetReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetReferenceArgs(
-      environmentId: Input.asInput<String>(map['environmentId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      referenceId: Input.asInput<String>(map['referenceId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      referenceId: pulumi.Input.asInput<String>(map['referenceId']),
     );
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'database_config_response.dart';
-import 'encryption_config_response5.dart';
+import 'encryption_config_response_composer_v1.dart';
 import 'maintenance_window_response.dart';
 import 'master_authorized_networks_config_response.dart';
 import 'node_config_response.dart';
@@ -27,7 +27,7 @@ class EnvironmentConfigResponse {
   final DatabaseConfigResponse databaseConfig;
 
   /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-  final EncryptionConfigResponse5 encryptionConfig;
+  final EncryptionConfigResponseComposerV1 encryptionConfig;
 
   /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
   final String environmentSize;
@@ -121,7 +121,7 @@ class EnvironmentConfigResponse {
       dagGcsPrefix: map['dagGcsPrefix'] as String,
       databaseConfig: DatabaseConfigResponse.fromMap(
           (map['databaseConfig'] as Map).cast<String, dynamic>()),
-      encryptionConfig: EncryptionConfigResponse5.fromMap(
+      encryptionConfig: EncryptionConfigResponseComposerV1.fromMap(
           (map['encryptionConfig'] as Map).cast<String, dynamic>()),
       environmentSize: map['environmentSize'] as String,
       gkeCluster: map['gkeCluster'] as String,

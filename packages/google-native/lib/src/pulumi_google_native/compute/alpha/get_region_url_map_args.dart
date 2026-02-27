@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionUrlMap.
 class GetRegionUrlMapArgs {
-  final Input<String>? project;
-  final Input<String> region;
-  final Input<String> urlMap;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+  final pulumi.Input<String> urlMap;
 
   GetRegionUrlMapArgs({
     this.project,
@@ -27,9 +27,9 @@ class GetRegionUrlMapArgs {
 
   factory GetRegionUrlMapArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionUrlMapArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
-      urlMap: Input.asInput<String>(map['urlMap']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
+      urlMap: pulumi.Input.asInput<String>(map['urlMap']),
     );
   }
 }

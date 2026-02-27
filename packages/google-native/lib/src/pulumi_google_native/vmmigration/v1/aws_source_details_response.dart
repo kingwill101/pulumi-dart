@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_key_credentials_response.dart';
-import 'status_response30.dart';
+import 'status_response_vmmigration_v1.dart';
 import 'tag_response.dart';
 
 /// AwsSourceDetails message describes a specific source details for the AWS source type.
@@ -14,7 +14,7 @@ class AwsSourceDetailsResponse {
   final String awsRegion;
 
   /// Provides details on the state of the Source in case of an error.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// AWS security group names to limit the scope of the source inventory.
   final List<String> inventorySecurityGroupNames;
@@ -49,7 +49,7 @@ class AwsSourceDetailsResponse {
     map['error'] = error.toMap();
     map['inventorySecurityGroupNames'] = inventorySecurityGroupNames;
     map['inventoryTagList'] =
-        Input.encodeList<TagResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
             inventoryTagList, (value) => value.toMap());
     map['migrationResourcesUserTags'] = migrationResourcesUserTags;
     map['publicIp'] = publicIp;
@@ -62,11 +62,11 @@ class AwsSourceDetailsResponse {
       accessKeyCreds: AccessKeyCredentialsResponse.fromMap(
           (map['accessKeyCreds'] as Map).cast<String, dynamic>()),
       awsRegion: map['awsRegion'] as String,
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       inventorySecurityGroupNames:
           (map['inventorySecurityGroupNames'] as List).cast<String>(),
-      inventoryTagList: Input.decodeList<TagResponse>(
+      inventoryTagList: pulumi.Input.decodeList<TagResponse>(
           map['inventoryTagList'],
           (value) =>
               TagResponse.fromMap((value as Map).cast<String, dynamic>())),

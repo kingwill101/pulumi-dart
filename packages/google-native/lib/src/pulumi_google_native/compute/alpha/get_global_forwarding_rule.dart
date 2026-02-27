@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_global_forwarding_rule_args.dart';
 import 'get_global_forwarding_rule_result.dart';
 
 /// Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
 Future<GetGlobalForwardingRuleResult> getGlobalForwardingRule(
   GetGlobalForwardingRuleArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:compute/alpha:getGlobalForwardingRule',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalForwardingRuleResult.fromMap(result);
 }

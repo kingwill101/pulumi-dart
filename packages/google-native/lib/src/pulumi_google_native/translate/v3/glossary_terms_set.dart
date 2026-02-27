@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'glossary_term.dart';
 
 /// Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
@@ -16,8 +16,9 @@ class GlossaryTermsSet {
     final map = <String, dynamic>{};
     final termsValue = terms;
     if (termsValue != null) {
-      map['terms'] = Input.encodeList<GlossaryTerm, Map<String, dynamic>>(
-          termsValue, (value) => value.toMap());
+      map['terms'] =
+          pulumi.Input.encodeList<GlossaryTerm, Map<String, dynamic>>(
+              termsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -26,7 +27,7 @@ class GlossaryTermsSet {
     return GlossaryTermsSet(
       terms: map['terms'] == null
           ? null
-          : Input.decodeList<GlossaryTerm>(
+          : pulumi.Input.decodeList<GlossaryTerm>(
               map['terms'],
               (value) =>
                   GlossaryTerm.fromMap((value as Map).cast<String, dynamic>())),

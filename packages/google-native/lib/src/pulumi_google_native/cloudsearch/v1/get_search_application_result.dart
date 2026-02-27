@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_source_restriction_response.dart';
 import 'facet_options_response.dart';
 import 'query_interpretation_config_response.dart';
@@ -59,11 +59,11 @@ class GetSearchApplicationResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dataSourceRestrictions'] =
-        Input.encodeList<DataSourceRestrictionResponse, Map<String, dynamic>>(
-            dataSourceRestrictions, (value) => value.toMap());
+    map['dataSourceRestrictions'] = pulumi.Input.encodeList<
+        DataSourceRestrictionResponse,
+        Map<String, dynamic>>(dataSourceRestrictions, (value) => value.toMap());
     map['defaultFacetOptions'] =
-        Input.encodeList<FacetOptionsResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<FacetOptionsResponse, Map<String, dynamic>>(
             defaultFacetOptions, (value) => value.toMap());
     map['defaultSortOptions'] = defaultSortOptions.toMap();
     map['displayName'] = displayName;
@@ -74,18 +74,19 @@ class GetSearchApplicationResult {
     map['returnResultThumbnailUrls'] = returnResultThumbnailUrls;
     map['scoringConfig'] = scoringConfig.toMap();
     map['sourceConfig'] =
-        Input.encodeList<SourceConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SourceConfigResponse, Map<String, dynamic>>(
             sourceConfig, (value) => value.toMap());
     return map;
   }
 
   factory GetSearchApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetSearchApplicationResult(
-      dataSourceRestrictions: Input.decodeList<DataSourceRestrictionResponse>(
-          map['dataSourceRestrictions'],
-          (value) => DataSourceRestrictionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      defaultFacetOptions: Input.decodeList<FacetOptionsResponse>(
+      dataSourceRestrictions:
+          pulumi.Input.decodeList<DataSourceRestrictionResponse>(
+              map['dataSourceRestrictions'],
+              (value) => DataSourceRestrictionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      defaultFacetOptions: pulumi.Input.decodeList<FacetOptionsResponse>(
           map['defaultFacetOptions'],
           (value) => FacetOptionsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -100,7 +101,7 @@ class GetSearchApplicationResult {
       returnResultThumbnailUrls: map['returnResultThumbnailUrls'] as bool,
       scoringConfig: ScoringConfigResponse.fromMap(
           (map['scoringConfig'] as Map).cast<String, dynamic>()),
-      sourceConfig: Input.decodeList<SourceConfigResponse>(
+      sourceConfig: pulumi.Input.decodeList<SourceConfigResponse>(
           map['sourceConfig'],
           (value) => SourceConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

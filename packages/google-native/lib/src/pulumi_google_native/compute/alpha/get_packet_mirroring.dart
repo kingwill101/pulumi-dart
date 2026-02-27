@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_packet_mirroring_args.dart';
 import 'get_packet_mirroring_result.dart';
 
 /// Returns the specified PacketMirroring resource.
 Future<GetPacketMirroringResult> getPacketMirroring(
   GetPacketMirroringArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:compute/alpha:getPacketMirroring',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPacketMirroringResult.fromMap(result);
 }

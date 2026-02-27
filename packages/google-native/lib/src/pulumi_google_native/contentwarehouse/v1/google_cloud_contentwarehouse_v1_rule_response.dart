@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_action_response.dart';
 
 /// Represents the rule for a content warehouse trigger.
@@ -30,7 +30,7 @@ class GoogleCloudContentwarehouseV1RuleResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] = Input.encodeList<
+    map['actions'] = pulumi.Input.encodeList<
         GoogleCloudContentwarehouseV1ActionResponse,
         Map<String, dynamic>>(actions, (value) => value.toMap());
     map['condition'] = condition;
@@ -43,10 +43,11 @@ class GoogleCloudContentwarehouseV1RuleResponse {
   factory GoogleCloudContentwarehouseV1RuleResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1RuleResponse(
-      actions: Input.decodeList<GoogleCloudContentwarehouseV1ActionResponse>(
-          map['actions'],
-          (value) => GoogleCloudContentwarehouseV1ActionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      actions:
+          pulumi.Input.decodeList<GoogleCloudContentwarehouseV1ActionResponse>(
+              map['actions'],
+              (value) => GoogleCloudContentwarehouseV1ActionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       condition: map['condition'] as String,
       description: map['description'] as String,
       ruleId: map['ruleId'] as String,

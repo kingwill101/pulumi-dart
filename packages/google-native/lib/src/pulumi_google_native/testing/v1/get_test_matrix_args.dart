@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTestMatrix.
 class GetTestMatrixArgs {
-  final Input<String>? project;
-  final Input<String> testMatrixId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> testMatrixId;
 
   GetTestMatrixArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetTestMatrixArgs {
 
   factory GetTestMatrixArgs.fromMap(Map<String, dynamic> map) {
     return GetTestMatrixArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      testMatrixId: Input.asInput<String>(map['testMatrixId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      testMatrixId: pulumi.Input.asInput<String>(map['testMatrixId']),
     );
   }
 }

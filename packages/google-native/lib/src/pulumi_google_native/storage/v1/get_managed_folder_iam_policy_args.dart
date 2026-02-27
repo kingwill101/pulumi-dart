@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getManagedFolderIamPolicy.
 class GetManagedFolderIamPolicyArgs {
-  final Input<String> bucket;
-  final Input<String> managedFolder;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? userProject;
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<String> managedFolder;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? userProject;
 
   GetManagedFolderIamPolicyArgs({
     required this.bucket,
@@ -33,11 +33,11 @@ class GetManagedFolderIamPolicyArgs {
 
   factory GetManagedFolderIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderIamPolicyArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      managedFolder: Input.asInput<String>(map['managedFolder']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      userProject: Input.asOptionalInput<String>(map['userProject']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      managedFolder: pulumi.Input.asInput<String>(map['managedFolder']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      userProject: pulumi.Input.asOptionalInput<String>(map['userProject']),
     );
   }
 }

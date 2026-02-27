@@ -1,31 +1,31 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reference_args.dart';
 
 /// Creates a Reference in the specified environment.
-class Reference extends CustomResource {
+class Reference extends pulumi.CustomResource {
   /// Optional. A human-readable description of this reference.
-  late final Output<String> description;
-  late final Output<String> environmentId;
+  late final pulumi.Output<String> description;
+  late final pulumi.Output<String> environmentId;
 
   /// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-  late final Output<String> name;
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> organizationId;
 
   /// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
-  late final Output<String> refers;
+  late final pulumi.Output<String> refers;
 
   /// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   Reference(
     String name, {
     ReferenceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:apigee/v1:Reference',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String>('description');
     this.environmentId = registerOutput<String>('environmentId');

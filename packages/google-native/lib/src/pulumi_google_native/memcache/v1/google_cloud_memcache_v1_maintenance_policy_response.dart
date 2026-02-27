@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'weekly_maintenance_window_response.dart';
 
 /// Maintenance policy per instance.
@@ -29,9 +29,9 @@ class GoogleCloudMemcacheV1MaintenancePolicyResponse {
     map['createTime'] = createTime;
     map['description'] = description;
     map['updateTime'] = updateTime;
-    map['weeklyMaintenanceWindow'] =
-        Input.encodeList<WeeklyMaintenanceWindowResponse, Map<String, dynamic>>(
-            weeklyMaintenanceWindow, (value) => value.toMap());
+    map['weeklyMaintenanceWindow'] = pulumi.Input.encodeList<
+            WeeklyMaintenanceWindowResponse, Map<String, dynamic>>(
+        weeklyMaintenanceWindow, (value) => value.toMap());
     return map;
   }
 
@@ -42,7 +42,7 @@ class GoogleCloudMemcacheV1MaintenancePolicyResponse {
       description: map['description'] as String,
       updateTime: map['updateTime'] as String,
       weeklyMaintenanceWindow:
-          Input.decodeList<WeeklyMaintenanceWindowResponse>(
+          pulumi.Input.decodeList<WeeklyMaintenanceWindowResponse>(
               map['weeklyMaintenanceWindow'],
               (value) => WeeklyMaintenanceWindowResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

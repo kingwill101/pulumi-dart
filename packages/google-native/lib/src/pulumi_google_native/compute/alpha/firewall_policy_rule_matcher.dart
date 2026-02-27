@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_rule_matcher_layer4_config.dart';
 import 'firewall_policy_rule_secure_tag.dart';
 
@@ -81,7 +81,7 @@ class FirewallPolicyRuleMatcher {
     }
     final layer4ConfigsValue = layer4Configs;
     if (layer4ConfigsValue != null) {
-      map['layer4Configs'] = Input.encodeList<
+      map['layer4Configs'] = pulumi.Input.encodeList<
           FirewallPolicyRuleMatcherLayer4Config,
           Map<String, dynamic>>(layer4ConfigsValue, (value) => value.toMap());
     }
@@ -103,9 +103,9 @@ class FirewallPolicyRuleMatcher {
     }
     final srcSecureTagsValue = srcSecureTags;
     if (srcSecureTagsValue != null) {
-      map['srcSecureTags'] =
-          Input.encodeList<FirewallPolicyRuleSecureTag, Map<String, dynamic>>(
-              srcSecureTagsValue, (value) => value.toMap());
+      map['srcSecureTags'] = pulumi.Input.encodeList<
+          FirewallPolicyRuleSecureTag,
+          Map<String, dynamic>>(srcSecureTagsValue, (value) => value.toMap());
     }
     final srcThreatIntelligencesValue = srcThreatIntelligences;
     if (srcThreatIntelligencesValue != null) {
@@ -133,7 +133,7 @@ class FirewallPolicyRuleMatcher {
           : (map['destThreatIntelligences'] as List).cast<String>(),
       layer4Configs: map['layer4Configs'] == null
           ? null
-          : Input.decodeList<FirewallPolicyRuleMatcherLayer4Config>(
+          : pulumi.Input.decodeList<FirewallPolicyRuleMatcherLayer4Config>(
               map['layer4Configs'],
               (value) => FirewallPolicyRuleMatcherLayer4Config.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -151,7 +151,7 @@ class FirewallPolicyRuleMatcher {
           : (map['srcRegionCodes'] as List).cast<String>(),
       srcSecureTags: map['srcSecureTags'] == null
           ? null
-          : Input.decodeList<FirewallPolicyRuleSecureTag>(
+          : pulumi.Input.decodeList<FirewallPolicyRuleSecureTag>(
               map['srcSecureTags'],
               (value) => FirewallPolicyRuleSecureTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

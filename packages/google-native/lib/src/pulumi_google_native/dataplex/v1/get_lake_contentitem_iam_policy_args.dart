@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLakeContentitemIamPolicy.
 class GetLakeContentitemIamPolicyArgs {
-  final Input<String> contentitemId;
-  final Input<String> lakeId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> contentitemId;
+  final pulumi.Input<String> lakeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetLakeContentitemIamPolicyArgs({
     required this.contentitemId,
@@ -36,12 +36,12 @@ class GetLakeContentitemIamPolicyArgs {
 
   factory GetLakeContentitemIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetLakeContentitemIamPolicyArgs(
-      contentitemId: Input.asInput<String>(map['contentitemId']),
-      lakeId: Input.asInput<String>(map['lakeId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      contentitemId: pulumi.Input.asInput<String>(map['contentitemId']),
+      lakeId: pulumi.Input.asInput<String>(map['lakeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

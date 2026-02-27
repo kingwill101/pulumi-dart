@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cutover_job_args.dart';
 import 'get_cutover_job_result.dart';
 
 /// Gets details of a single CutoverJob.
 Future<GetCutoverJobResult> getCutoverJob(
   GetCutoverJobArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:vmmigration/v1:getCutoverJob',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCutoverJobResult.fromMap(result);
 }

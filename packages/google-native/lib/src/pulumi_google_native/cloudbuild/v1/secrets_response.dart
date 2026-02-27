@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inline_secret_response.dart';
 import 'secret_manager_secret_response.dart';
 
@@ -20,21 +20,20 @@ class SecretsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['inline'] =
-        Input.encodeList<InlineSecretResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<InlineSecretResponse, Map<String, dynamic>>(
             inline, (value) => value.toMap());
-    map['secretManager'] =
-        Input.encodeList<SecretManagerSecretResponse, Map<String, dynamic>>(
-            secretManager, (value) => value.toMap());
+    map['secretManager'] = pulumi.Input.encodeList<SecretManagerSecretResponse,
+        Map<String, dynamic>>(secretManager, (value) => value.toMap());
     return map;
   }
 
   factory SecretsResponse.fromMap(Map<String, dynamic> map) {
     return SecretsResponse(
-      inline: Input.decodeList<InlineSecretResponse>(
+      inline: pulumi.Input.decodeList<InlineSecretResponse>(
           map['inline'],
           (value) => InlineSecretResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      secretManager: Input.decodeList<SecretManagerSecretResponse>(
+      secretManager: pulumi.Input.decodeList<SecretManagerSecretResponse>(
           map['secretManager'],
           (value) => SecretManagerSecretResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

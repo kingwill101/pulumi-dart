@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mysql_column_response.dart';
 
 /// MySQL table.
@@ -19,7 +19,7 @@ class MysqlTableResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['mysqlColumns'] =
-        Input.encodeList<MysqlColumnResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MysqlColumnResponse, Map<String, dynamic>>(
             mysqlColumns, (value) => value.toMap());
     map['table'] = table;
     return map;
@@ -27,7 +27,7 @@ class MysqlTableResponse {
 
   factory MysqlTableResponse.fromMap(Map<String, dynamic> map) {
     return MysqlTableResponse(
-      mysqlColumns: Input.decodeList<MysqlColumnResponse>(
+      mysqlColumns: pulumi.Input.decodeList<MysqlColumnResponse>(
           map['mysqlColumns'],
           (value) => MysqlColumnResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

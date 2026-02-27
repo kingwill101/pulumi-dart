@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_baremetalsolution_v2_logical_interface_response.dart';
 import 'network_address_response.dart';
 
@@ -64,7 +64,7 @@ class InstanceConfigResponse {
     map['clientNetwork'] = clientNetwork.toMap();
     map['hyperthreading'] = hyperthreading;
     map['instanceType'] = instanceType;
-    map['logicalInterfaces'] = Input.encodeList<
+    map['logicalInterfaces'] = pulumi.Input.encodeList<
         GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse,
         Map<String, dynamic>>(logicalInterfaces, (value) => value.toMap());
     map['name'] = name;
@@ -84,7 +84,7 @@ class InstanceConfigResponse {
           (map['clientNetwork'] as Map).cast<String, dynamic>()),
       hyperthreading: map['hyperthreading'] as bool,
       instanceType: map['instanceType'] as String,
-      logicalInterfaces: Input.decodeList<
+      logicalInterfaces: pulumi.Input.decodeList<
               GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse>(
           map['logicalInterfaces'],
           (value) =>

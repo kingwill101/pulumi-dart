@@ -2,7 +2,7 @@
 
 import 'boot_disk_defaults_disk_type.dart';
 import 'disk_image_defaults.dart';
-import 'encryption2.dart';
+import 'encryption_vmmigration_v1.dart';
 
 /// BootDiskDefaults hold information about the boot disk of a VM.
 class BootDiskDefaults {
@@ -16,7 +16,7 @@ class BootDiskDefaults {
   final BootDiskDefaultsDiskType? diskType;
 
   /// Optional. The encryption to apply to the boot disk.
-  final Encryption2? encryption;
+  final EncryptionVmmigrationV1? encryption;
 
   /// The image to use when creating the disk.
   final DiskImageDefaults? image;
@@ -64,7 +64,7 @@ class BootDiskDefaults {
           : BootDiskDefaultsDiskType.fromValue(map['diskType'] as String),
       encryption: map['encryption'] == null
           ? null
-          : Encryption2.fromMap(
+          : EncryptionVmmigrationV1.fromMap(
               (map['encryption'] as Map).cast<String, dynamic>()),
       image: map['image'] == null
           ? null

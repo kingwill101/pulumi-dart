@@ -5,7 +5,7 @@ import 'database_type_response.dart';
 import 'dump_flags_response.dart';
 import 'performance_config_response.dart';
 import 'reverse_ssh_connectivity_response.dart';
-import 'status_response15.dart';
+import 'status_response_datamigration_v1.dart';
 import 'vpc_peering_connectivity_response.dart';
 
 /// Result data returned by getMigrationJob.
@@ -41,7 +41,7 @@ class GetMigrationJobResult {
   final String endTime;
 
   /// The error details in case of state FAILED.
-  final StatusResponse15 error;
+  final StatusResponseDatamigrationV1 error;
 
   /// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
   final String filter;
@@ -153,7 +153,7 @@ class GetMigrationJobResult {
       dumpPath: map['dumpPath'] as String,
       duration: map['duration'] as String,
       endTime: map['endTime'] as String,
-      error: StatusResponse15.fromMap(
+      error: StatusResponseDatamigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       filter: map['filter'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),

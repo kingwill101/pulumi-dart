@@ -4,7 +4,7 @@ import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_pipeline_job_detail_response.dart';
 import 'google_cloud_aiplatform_v1beta1_pipeline_job_runtime_config_response.dart';
 import 'google_cloud_aiplatform_v1beta1_pipeline_template_metadata_response.dart';
-import 'google_rpc_status_response2.dart';
+import 'google_rpc_status_response_aiplatform_v1beta1.dart';
 
 /// An instance of a machine learning PipelineJob.
 class GoogleCloudAiplatformV1beta1PipelineJobResponse {
@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1PipelineJobResponse {
   final String endTime;
 
   /// The error that occurred during pipeline execution. Only populated when the pipeline's state is FAILED or CANCELLED.
-  final GoogleRpcStatusResponse2 error;
+  final GoogleRpcStatusResponseAiplatformV1beta1 error;
 
   /// The details of pipeline run. Not available in the list view.
   final GoogleCloudAiplatformV1beta1PipelineJobDetailResponse jobDetail;
@@ -122,7 +122,7 @@ class GoogleCloudAiplatformV1beta1PipelineJobResponse {
           GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
               (map['encryptionSpec'] as Map).cast<String, dynamic>()),
       endTime: map['endTime'] as String,
-      error: GoogleRpcStatusResponse2.fromMap(
+      error: GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       jobDetail: GoogleCloudAiplatformV1beta1PipelineJobDetailResponse.fromMap(
           (map['jobDetail'] as Map).cast<String, dynamic>()),

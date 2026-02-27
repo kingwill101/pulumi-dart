@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'software_recipe_artifact.dart';
 import 'software_recipe_desired_state.dart';
 import 'software_recipe_step.dart';
@@ -39,7 +39,7 @@ class SoftwareRecipe {
     final artifactsValue = artifacts;
     if (artifactsValue != null) {
       map['artifacts'] =
-          Input.encodeList<SoftwareRecipeArtifact, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SoftwareRecipeArtifact, Map<String, dynamic>>(
               artifactsValue, (value) => value.toMap());
     }
     final desiredStateValue = desiredState;
@@ -49,14 +49,14 @@ class SoftwareRecipe {
     final installStepsValue = installSteps;
     if (installStepsValue != null) {
       map['installSteps'] =
-          Input.encodeList<SoftwareRecipeStep, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SoftwareRecipeStep, Map<String, dynamic>>(
               installStepsValue, (value) => value.toMap());
     }
     map['name'] = name;
     final updateStepsValue = updateSteps;
     if (updateStepsValue != null) {
       map['updateSteps'] =
-          Input.encodeList<SoftwareRecipeStep, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SoftwareRecipeStep, Map<String, dynamic>>(
               updateStepsValue, (value) => value.toMap());
     }
     final versionValue = version;
@@ -70,7 +70,7 @@ class SoftwareRecipe {
     return SoftwareRecipe(
       artifacts: map['artifacts'] == null
           ? null
-          : Input.decodeList<SoftwareRecipeArtifact>(
+          : pulumi.Input.decodeList<SoftwareRecipeArtifact>(
               map['artifacts'],
               (value) => SoftwareRecipeArtifact.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -79,14 +79,14 @@ class SoftwareRecipe {
           : SoftwareRecipeDesiredState.fromValue(map['desiredState'] as String),
       installSteps: map['installSteps'] == null
           ? null
-          : Input.decodeList<SoftwareRecipeStep>(
+          : pulumi.Input.decodeList<SoftwareRecipeStep>(
               map['installSteps'],
               (value) => SoftwareRecipeStep.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       updateSteps: map['updateSteps'] == null
           ? null
-          : Input.decodeList<SoftwareRecipeStep>(
+          : pulumi.Input.decodeList<SoftwareRecipeStep>(
               map['updateSteps'],
               (value) => SoftwareRecipeStep.fromMap(
                   (value as Map).cast<String, dynamic>())),

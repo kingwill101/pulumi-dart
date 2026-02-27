@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'available_updates_response.dart';
-import 'status_response30.dart';
+import 'status_response_vmmigration_v1.dart';
 import 'upgrade_status_response.dart';
 
 /// Result data returned by getDatacenterConnector.
@@ -22,7 +22,7 @@ class GetDatacenterConnectorResult {
   final String createTime;
 
   /// Provides details on the state of the Datacenter Connector in case of an error.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// The connector's name.
   final String name;
@@ -93,7 +93,7 @@ class GetDatacenterConnectorResult {
           (map['availableVersions'] as Map).cast<String, dynamic>()),
       bucket: map['bucket'] as String,
       createTime: map['createTime'] as String,
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       registrationId: map['registrationId'] as String,

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_items_item.dart';
 
 /// A metadata key/value entry.
@@ -16,8 +16,9 @@ class Metadata {
     final map = <String, dynamic>{};
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<MetadataItemsItem, Map<String, dynamic>>(
-          itemsValue, (value) => value.toMap());
+      map['items'] =
+          pulumi.Input.encodeList<MetadataItemsItem, Map<String, dynamic>>(
+              itemsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -26,7 +27,7 @@ class Metadata {
     return Metadata(
       items: map['items'] == null
           ? null
-          : Input.decodeList<MetadataItemsItem>(
+          : pulumi.Input.decodeList<MetadataItemsItem>(
               map['items'],
               (value) => MetadataItemsItem.fromMap(
                   (value as Map).cast<String, dynamic>())),

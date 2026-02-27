@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'google_rpc_status_response2.dart';
+import 'google_rpc_status_response_aiplatform_v1beta1.dart';
 
 /// All metadata of most recent monitoring pipelines.
 class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse {
@@ -8,7 +8,7 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPi
   final String runTime;
 
   /// The status of the most recent monitoring pipeline.
-  final GoogleRpcStatusResponse2 status;
+  final GoogleRpcStatusResponseAiplatformV1beta1 status;
 
   GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse({
     required this.runTime,
@@ -26,7 +26,7 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPi
       Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse(
       runTime: map['runTime'] as String,
-      status: GoogleRpcStatusResponse2.fromMap(
+      status: GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
     );
   }

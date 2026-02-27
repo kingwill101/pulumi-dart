@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'audio_mapping_response.dart';
 
 /// Audio stream resource.
@@ -49,7 +49,7 @@ class AudioStreamResponse {
     map['displayName'] = displayName;
     map['languageCode'] = languageCode;
     map['mapping'] =
-        Input.encodeList<AudioMappingResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AudioMappingResponse, Map<String, dynamic>>(
             mapping, (value) => value.toMap());
     map['sampleRateHertz'] = sampleRateHertz;
     return map;
@@ -63,7 +63,7 @@ class AudioStreamResponse {
       codec: map['codec'] as String,
       displayName: map['displayName'] as String,
       languageCode: map['languageCode'] as String,
-      mapping: Input.decodeList<AudioMappingResponse>(
+      mapping: pulumi.Input.decodeList<AudioMappingResponse>(
           map['mapping'],
           (value) => AudioMappingResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

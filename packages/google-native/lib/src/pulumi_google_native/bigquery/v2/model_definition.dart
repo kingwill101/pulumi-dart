@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bqml_training_run.dart';
 import 'model_definition_model_options.dart';
 
@@ -25,7 +25,7 @@ class ModelDefinition {
     final trainingRunsValue = trainingRuns;
     if (trainingRunsValue != null) {
       map['trainingRuns'] =
-          Input.encodeList<BqmlTrainingRun, Map<String, dynamic>>(
+          pulumi.Input.encodeList<BqmlTrainingRun, Map<String, dynamic>>(
               trainingRunsValue, (value) => value.toMap());
     }
     return map;
@@ -39,7 +39,7 @@ class ModelDefinition {
               (map['modelOptions'] as Map).cast<String, dynamic>()),
       trainingRuns: map['trainingRuns'] == null
           ? null
-          : Input.decodeList<BqmlTrainingRun>(
+          : pulumi.Input.decodeList<BqmlTrainingRun>(
               map['trainingRuns'],
               (value) => BqmlTrainingRun.fromMap(
                   (value as Map).cast<String, dynamic>())),

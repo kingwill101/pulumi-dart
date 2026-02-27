@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compensation_entry.dart';
 
 /// Job compensation details.
@@ -17,7 +17,7 @@ class CompensationInfo {
     final entriesValue = entries;
     if (entriesValue != null) {
       map['entries'] =
-          Input.encodeList<CompensationEntry, Map<String, dynamic>>(
+          pulumi.Input.encodeList<CompensationEntry, Map<String, dynamic>>(
               entriesValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class CompensationInfo {
     return CompensationInfo(
       entries: map['entries'] == null
           ? null
-          : Input.decodeList<CompensationEntry>(
+          : pulumi.Input.decodeList<CompensationEntry>(
               map['entries'],
               (value) => CompensationEntry.fromMap(
                   (value as Map).cast<String, dynamic>())),

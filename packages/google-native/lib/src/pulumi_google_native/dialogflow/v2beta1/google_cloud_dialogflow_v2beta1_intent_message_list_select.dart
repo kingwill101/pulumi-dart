@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_list_select_item.dart';
 
 /// The card for presenting a list of options to select from.
@@ -22,7 +22,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['items'] = Input.encodeList<
+    map['items'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageListSelectItem,
         Map<String, dynamic>>(items, (value) => value.toMap());
     final subtitleValue = subtitle;
@@ -39,7 +39,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
   factory GoogleCloudDialogflowV2beta1IntentMessageListSelect.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageListSelect(
-      items: Input.decodeList<
+      items: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageListSelectItem>(
           map['items'],
           (value) =>

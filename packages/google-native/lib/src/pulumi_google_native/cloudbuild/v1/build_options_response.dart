@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_option_response.dart';
-import 'volume_response4.dart';
+import 'volume_response_cloudbuild_v1.dart';
 
 /// Optional arguments to enable specific features of builds.
 class BuildOptionsResponse {
@@ -46,7 +46,7 @@ class BuildOptionsResponse {
   final String substitutionOption;
 
   /// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
-  final List<VolumeResponse4> volumes;
+  final List<VolumeResponseCloudbuildV1> volumes;
 
   /// This field deprecated; please use `pool.name` instead.
   final String workerPool;
@@ -84,8 +84,8 @@ class BuildOptionsResponse {
     map['secretEnv'] = secretEnv;
     map['sourceProvenanceHash'] = sourceProvenanceHash;
     map['substitutionOption'] = substitutionOption;
-    map['volumes'] = Input.encodeList<VolumeResponse4, Map<String, dynamic>>(
-        volumes, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<VolumeResponseCloudbuildV1,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
     map['workerPool'] = workerPool;
     return map;
   }
@@ -107,10 +107,10 @@ class BuildOptionsResponse {
       sourceProvenanceHash:
           (map['sourceProvenanceHash'] as List).cast<String>(),
       substitutionOption: map['substitutionOption'] as String,
-      volumes: Input.decodeList<VolumeResponse4>(
+      volumes: pulumi.Input.decodeList<VolumeResponseCloudbuildV1>(
           map['volumes'],
-          (value) =>
-              VolumeResponse4.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => VolumeResponseCloudbuildV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
       workerPool: map['workerPool'] as String,
     );
   }

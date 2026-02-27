@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDeploymentResourcePool.
 class GetDeploymentResourcePoolArgs {
-  final Input<String> deploymentResourcePoolId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> deploymentResourcePoolId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDeploymentResourcePoolArgs({
     required this.deploymentResourcePoolId,
@@ -28,9 +28,9 @@ class GetDeploymentResourcePoolArgs {
   factory GetDeploymentResourcePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentResourcePoolArgs(
       deploymentResourcePoolId:
-          Input.asInput<String>(map['deploymentResourcePoolId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['deploymentResourcePoolId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

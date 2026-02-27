@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNetworkAttachment.
 class GetNetworkAttachmentArgs {
-  final Input<String> networkAttachment;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> networkAttachment;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetNetworkAttachmentArgs({
     required this.networkAttachment,
@@ -27,9 +27,9 @@ class GetNetworkAttachmentArgs {
 
   factory GetNetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentArgs(
-      networkAttachment: Input.asInput<String>(map['networkAttachment']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      networkAttachment: pulumi.Input.asInput<String>(map['networkAttachment']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

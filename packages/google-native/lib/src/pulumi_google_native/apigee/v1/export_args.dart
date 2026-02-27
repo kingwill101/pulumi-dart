@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_date_range.dart';
 
 /// The set of arguments for Export.
 class ExportArgs {
   /// Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
-  final Input<String>? csvDelimiter;
+  final pulumi.Input<String>? csvDelimiter;
 
   /// Name of the preconfigured datastore.
-  final Input<String> datastoreName;
+  final pulumi.Input<String> datastoreName;
 
   /// Date range of the data to export.
-  final Input<GoogleCloudApigeeV1DateRange> dateRange;
+  final pulumi.Input<GoogleCloudApigeeV1DateRange> dateRange;
 
   /// Optional. Description of the export job.
-  final Input<String>? description;
-  final Input<String> environmentId;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String> environmentId;
 
   /// Display name of the export job.
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   /// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
-  final Input<String>? outputFormat;
+  final pulumi.Input<String>? outputFormat;
 
   ExportArgs({
     this.csvDelimiter,
@@ -43,9 +43,8 @@ class ExportArgs {
       map['csvDelimiter'] = csvDelimiterValue;
     }
     map['datastoreName'] = datastoreName;
-    map['dateRange'] =
-        Input.mapInputValue<GoogleCloudApigeeV1DateRange, Map<String, dynamic>>(
-            dateRange, (value) => value.toMap());
+    map['dateRange'] = pulumi.Input.mapInputValue<GoogleCloudApigeeV1DateRange,
+        Map<String, dynamic>>(dateRange, (value) => value.toMap());
     final descriptionValue = description;
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
@@ -65,14 +64,15 @@ class ExportArgs {
 
   factory ExportArgs.fromMap(Map<String, dynamic> map) {
     return ExportArgs(
-      csvDelimiter: Input.asOptionalInput<String>(map['csvDelimiter']),
-      datastoreName: Input.asInput<String>(map['datastoreName']),
-      dateRange: Input.asInput<GoogleCloudApigeeV1DateRange>(map['dateRange']),
-      description: Input.asOptionalInput<String>(map['description']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      outputFormat: Input.asOptionalInput<String>(map['outputFormat']),
+      csvDelimiter: pulumi.Input.asOptionalInput<String>(map['csvDelimiter']),
+      datastoreName: pulumi.Input.asInput<String>(map['datastoreName']),
+      dateRange:
+          pulumi.Input.asInput<GoogleCloudApigeeV1DateRange>(map['dateRange']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      outputFormat: pulumi.Input.asOptionalInput<String>(map['outputFormat']),
     );
   }
 }

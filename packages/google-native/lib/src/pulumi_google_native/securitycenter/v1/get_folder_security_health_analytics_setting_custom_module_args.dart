@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolderSecurityHealthAnalyticsSettingCustomModule.
 class GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs {
-  final Input<String> customModuleId;
-  final Input<String> folderId;
+  final pulumi.Input<String> customModuleId;
+  final pulumi.Input<String> folderId;
 
   GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs({
     required this.customModuleId,
@@ -22,8 +22,8 @@ class GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs {
   factory GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(
       Map<String, dynamic> map) {
     return GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customModuleId: Input.asInput<String>(map['customModuleId']),
-      folderId: Input.asInput<String>(map['folderId']),
+      customModuleId: pulumi.Input.asInput<String>(map['customModuleId']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
     );
   }
 }

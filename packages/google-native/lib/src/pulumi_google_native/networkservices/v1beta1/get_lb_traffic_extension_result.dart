@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extension_chain_response.dart';
 
 /// Result data returned by getLbTrafficExtension.
@@ -45,7 +45,7 @@ class GetLbTrafficExtensionResult {
     map['createTime'] = createTime;
     map['description'] = description;
     map['extensionChains'] =
-        Input.encodeList<ExtensionChainResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ExtensionChainResponse, Map<String, dynamic>>(
             extensionChains, (value) => value.toMap());
     map['forwardingRules'] = forwardingRules;
     map['labels'] = labels;
@@ -59,7 +59,7 @@ class GetLbTrafficExtensionResult {
     return GetLbTrafficExtensionResult(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      extensionChains: Input.decodeList<ExtensionChainResponse>(
+      extensionChains: pulumi.Input.decodeList<ExtensionChainResponse>(
           map['extensionChains'],
           (value) => ExtensionChainResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

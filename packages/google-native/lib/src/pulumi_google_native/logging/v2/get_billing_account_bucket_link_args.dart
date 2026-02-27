@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBillingAccountBucketLink.
 class GetBillingAccountBucketLinkArgs {
-  final Input<String> billingAccountId;
-  final Input<String> bucketId;
-  final Input<String> linkId;
-  final Input<String> location;
+  final pulumi.Input<String> billingAccountId;
+  final pulumi.Input<String> bucketId;
+  final pulumi.Input<String> linkId;
+  final pulumi.Input<String> location;
 
   GetBillingAccountBucketLinkArgs({
     required this.billingAccountId,
@@ -27,10 +27,10 @@ class GetBillingAccountBucketLinkArgs {
 
   factory GetBillingAccountBucketLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountBucketLinkArgs(
-      billingAccountId: Input.asInput<String>(map['billingAccountId']),
-      bucketId: Input.asInput<String>(map['bucketId']),
-      linkId: Input.asInput<String>(map['linkId']),
-      location: Input.asInput<String>(map['location']),
+      billingAccountId: pulumi.Input.asInput<String>(map['billingAccountId']),
+      bucketId: pulumi.Input.asInput<String>(map['bucketId']),
+      linkId: pulumi.Input.asInput<String>(map['linkId']),
+      location: pulumi.Input.asInput<String>(map['location']),
     );
   }
 }

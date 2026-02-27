@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apigateway_api_config_file_response.dart';
 import 'apigateway_api_config_grpc_service_definition_response.dart';
 import 'apigateway_api_config_open_api_document_response.dart';
@@ -59,15 +59,15 @@ class GetConfigResult {
     map['createTime'] = createTime;
     map['displayName'] = displayName;
     map['gatewayServiceAccount'] = gatewayServiceAccount;
-    map['grpcServices'] = Input.encodeList<
+    map['grpcServices'] = pulumi.Input.encodeList<
         ApigatewayApiConfigGrpcServiceDefinitionResponse,
         Map<String, dynamic>>(grpcServices, (value) => value.toMap());
     map['labels'] = labels;
-    map['managedServiceConfigs'] =
-        Input.encodeList<ApigatewayApiConfigFileResponse, Map<String, dynamic>>(
-            managedServiceConfigs, (value) => value.toMap());
+    map['managedServiceConfigs'] = pulumi.Input.encodeList<
+        ApigatewayApiConfigFileResponse,
+        Map<String, dynamic>>(managedServiceConfigs, (value) => value.toMap());
     map['name'] = name;
-    map['openapiDocuments'] = Input.encodeList<
+    map['openapiDocuments'] = pulumi.Input.encodeList<
         ApigatewayApiConfigOpenApiDocumentResponse,
         Map<String, dynamic>>(openapiDocuments, (value) => value.toMap());
     map['serviceConfigId'] = serviceConfigId;
@@ -81,20 +81,20 @@ class GetConfigResult {
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
       gatewayServiceAccount: map['gatewayServiceAccount'] as String,
-      grpcServices:
-          Input.decodeList<ApigatewayApiConfigGrpcServiceDefinitionResponse>(
-              map['grpcServices'],
-              (value) =>
-                  ApigatewayApiConfigGrpcServiceDefinitionResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      managedServiceConfigs: Input.decodeList<ApigatewayApiConfigFileResponse>(
-          map['managedServiceConfigs'],
-          (value) => ApigatewayApiConfigFileResponse.fromMap(
+      grpcServices: pulumi.Input.decodeList<
+              ApigatewayApiConfigGrpcServiceDefinitionResponse>(
+          map['grpcServices'],
+          (value) => ApigatewayApiConfigGrpcServiceDefinitionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
+      labels: (map['labels'] as Map).cast<String, String>(),
+      managedServiceConfigs:
+          pulumi.Input.decodeList<ApigatewayApiConfigFileResponse>(
+              map['managedServiceConfigs'],
+              (value) => ApigatewayApiConfigFileResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       openapiDocuments:
-          Input.decodeList<ApigatewayApiConfigOpenApiDocumentResponse>(
+          pulumi.Input.decodeList<ApigatewayApiConfigOpenApiDocumentResponse>(
               map['openapiDocuments'],
               (value) => ApigatewayApiConfigOpenApiDocumentResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

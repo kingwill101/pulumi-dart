@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'duration_response4.dart';
+import 'duration_response_toolresults_v1beta3.dart';
 
 /// Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
 class IndividualOutcomeResponse {
@@ -9,7 +9,7 @@ class IndividualOutcomeResponse {
   final String outcomeSummary;
 
   /// How long it took for this step to run.
-  final DurationResponse4 runDuration;
+  final DurationResponseToolresultsV1beta3 runDuration;
   final String stepId;
 
   IndividualOutcomeResponse({
@@ -32,7 +32,7 @@ class IndividualOutcomeResponse {
     return IndividualOutcomeResponse(
       multistepNumber: map['multistepNumber'] as int,
       outcomeSummary: map['outcomeSummary'] as String,
-      runDuration: DurationResponse4.fromMap(
+      runDuration: DurationResponseToolresultsV1beta3.fromMap(
           (map['runDuration'] as Map).cast<String, dynamic>()),
       stepId: map['stepId'] as String,
     );

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_regex.dart';
 
 /// A collection of regular expressions to determine what tables to match against.
@@ -16,7 +16,7 @@ class GooglePrivacyDlpV2BigQueryRegexes {
     final map = <String, dynamic>{};
     final patternsValue = patterns;
     if (patternsValue != null) {
-      map['patterns'] = Input.encodeList<GooglePrivacyDlpV2BigQueryRegex,
+      map['patterns'] = pulumi.Input.encodeList<GooglePrivacyDlpV2BigQueryRegex,
           Map<String, dynamic>>(patternsValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +26,7 @@ class GooglePrivacyDlpV2BigQueryRegexes {
     return GooglePrivacyDlpV2BigQueryRegexes(
       patterns: map['patterns'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2BigQueryRegex>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegex>(
               map['patterns'],
               (value) => GooglePrivacyDlpV2BigQueryRegex.fromMap(
                   (value as Map).cast<String, dynamic>())),

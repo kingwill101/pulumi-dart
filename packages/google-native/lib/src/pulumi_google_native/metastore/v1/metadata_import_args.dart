@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_dump.dart';
 
 /// The set of arguments for MetadataImport.
 class MetadataImportArgs {
   /// Immutable. A database dump from a pre-existing metastore's database.
-  final Input<DatabaseDump>? databaseDump;
+  final pulumi.Input<DatabaseDump>? databaseDump;
 
   /// The description of the metadata import.
-  final Input<String>? description;
-  final Input<String>? location;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String>? location;
 
   /// Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
-  final Input<String> metadataImportId;
+  final pulumi.Input<String> metadataImportId;
 
   /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-  final Input<String>? requestId;
-  final Input<String> serviceId;
+  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String> serviceId;
 
   MetadataImportArgs({
     this.databaseDump,
@@ -38,9 +38,8 @@ class MetadataImportArgs {
     final map = <String, dynamic>{};
     final databaseDumpValue = databaseDump;
     if (databaseDumpValue != null) {
-      map['databaseDump'] =
-          Input.mapOptionalInputValue<DatabaseDump, Map<String, dynamic>>(
-              databaseDumpValue, (value) => value.toMap());
+      map['databaseDump'] = pulumi.Input.mapOptionalInputValue<DatabaseDump,
+          Map<String, dynamic>>(databaseDumpValue, (value) => value.toMap());
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -69,14 +68,15 @@ class MetadataImportArgs {
 
   factory MetadataImportArgs.fromMap(Map<String, dynamic> map) {
     return MetadataImportArgs(
-      databaseDump: Input.asOptionalInput<DatabaseDump>(map['databaseDump']),
-      description: Input.asOptionalInput<String>(map['description']),
-      location: Input.asOptionalInput<String>(map['location']),
-      metadataImportId: Input.asInput<String>(map['metadataImportId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      serviceId: Input.asInput<String>(map['serviceId']),
+      databaseDump:
+          pulumi.Input.asOptionalInput<DatabaseDump>(map['databaseDump']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      metadataImportId: pulumi.Input.asInput<String>(map['metadataImportId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      serviceId: pulumi.Input.asInput<String>(map['serviceId']),
     );
   }
 }

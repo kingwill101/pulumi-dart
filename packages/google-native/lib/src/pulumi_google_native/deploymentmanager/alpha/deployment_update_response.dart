@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'credential_response.dart';
 import 'deployment_update_label_entry_response.dart';
 
@@ -28,7 +28,7 @@ class DeploymentUpdateResponse {
     final map = <String, dynamic>{};
     map['credential'] = credential.toMap();
     map['description'] = description;
-    map['labels'] = Input.encodeList<DeploymentUpdateLabelEntryResponse,
+    map['labels'] = pulumi.Input.encodeList<DeploymentUpdateLabelEntryResponse,
         Map<String, dynamic>>(labels, (value) => value.toMap());
     map['manifest'] = manifest;
     return map;
@@ -39,7 +39,7 @@ class DeploymentUpdateResponse {
       credential: CredentialResponse.fromMap(
           (map['credential'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
-      labels: Input.decodeList<DeploymentUpdateLabelEntryResponse>(
+      labels: pulumi.Input.decodeList<DeploymentUpdateLabelEntryResponse>(
           map['labels'],
           (value) => DeploymentUpdateLabelEntryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

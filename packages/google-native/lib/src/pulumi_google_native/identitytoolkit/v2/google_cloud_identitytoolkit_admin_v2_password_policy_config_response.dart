@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_password_policy_version_response.dart';
 
 /// The configuration for the password policy on the project.
@@ -30,7 +30,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse {
     map['forceUpgradeOnSignin'] = forceUpgradeOnSignin;
     map['lastUpdateTime'] = lastUpdateTime;
     map['passwordPolicyEnforcementState'] = passwordPolicyEnforcementState;
-    map['passwordPolicyVersions'] = Input.encodeList<
+    map['passwordPolicyVersions'] = pulumi.Input.encodeList<
         GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse,
         Map<String, dynamic>>(passwordPolicyVersions, (value) => value.toMap());
     return map;
@@ -43,7 +43,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse {
       lastUpdateTime: map['lastUpdateTime'] as String,
       passwordPolicyEnforcementState:
           map['passwordPolicyEnforcementState'] as String,
-      passwordPolicyVersions: Input.decodeList<
+      passwordPolicyVersions: pulumi.Input.decodeList<
               GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse>(
           map['passwordPolicyVersions'],
           (value) =>

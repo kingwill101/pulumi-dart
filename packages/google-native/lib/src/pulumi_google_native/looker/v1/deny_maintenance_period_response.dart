@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'date_response2.dart';
+import 'date_response_looker_v1.dart';
 import 'time_of_day_response.dart';
 
 /// Specifies the maintenance denial period.
 class DenyMaintenancePeriodResponse {
   /// End date of the deny maintenance period.
-  final DateResponse2 endDate;
+  final DateResponseLookerV1 endDate;
 
   /// Start date of the deny maintenance period.
-  final DateResponse2 startDate;
+  final DateResponseLookerV1 startDate;
 
   /// Time in UTC when the period starts and ends.
   final TimeOfDayResponse time;
@@ -30,9 +30,9 @@ class DenyMaintenancePeriodResponse {
 
   factory DenyMaintenancePeriodResponse.fromMap(Map<String, dynamic> map) {
     return DenyMaintenancePeriodResponse(
-      endDate: DateResponse2.fromMap(
+      endDate: DateResponseLookerV1.fromMap(
           (map['endDate'] as Map).cast<String, dynamic>()),
-      startDate: DateResponse2.fromMap(
+      startDate: DateResponseLookerV1.fromMap(
           (map['startDate'] as Map).cast<String, dynamic>()),
       time: TimeOfDayResponse.fromMap(
           (map['time'] as Map).cast<String, dynamic>()),

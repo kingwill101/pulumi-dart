@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getChange.
 class GetChangeArgs {
-  final Input<String> changeId;
-  final Input<String>? clientOperationId;
-  final Input<String> managedZone;
-  final Input<String>? project;
+  final pulumi.Input<String> changeId;
+  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String> managedZone;
+  final pulumi.Input<String>? project;
 
   GetChangeArgs({
     required this.changeId,
@@ -33,11 +33,11 @@ class GetChangeArgs {
 
   factory GetChangeArgs.fromMap(Map<String, dynamic> map) {
     return GetChangeArgs(
-      changeId: Input.asInput<String>(map['changeId']),
+      changeId: pulumi.Input.asInput<String>(map['changeId']),
       clientOperationId:
-          Input.asOptionalInput<String>(map['clientOperationId']),
-      managedZone: Input.asInput<String>(map['managedZone']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['clientOperationId']),
+      managedZone: pulumi.Input.asInput<String>(map['managedZone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

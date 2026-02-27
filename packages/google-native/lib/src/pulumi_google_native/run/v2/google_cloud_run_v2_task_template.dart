@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v2_container.dart';
 import 'google_cloud_run_v2_task_template_execution_environment.dart';
 import 'google_cloud_run_v2_volume.dart';
@@ -47,9 +47,8 @@ class GoogleCloudRunV2TaskTemplate {
     final map = <String, dynamic>{};
     final containersValue = containers;
     if (containersValue != null) {
-      map['containers'] =
-          Input.encodeList<GoogleCloudRunV2Container, Map<String, dynamic>>(
-              containersValue, (value) => value.toMap());
+      map['containers'] = pulumi.Input.encodeList<GoogleCloudRunV2Container,
+          Map<String, dynamic>>(containersValue, (value) => value.toMap());
     }
     final encryptionKeyValue = encryptionKey;
     if (encryptionKeyValue != null) {
@@ -74,7 +73,7 @@ class GoogleCloudRunV2TaskTemplate {
     final volumesValue = volumes;
     if (volumesValue != null) {
       map['volumes'] =
-          Input.encodeList<GoogleCloudRunV2Volume, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GoogleCloudRunV2Volume, Map<String, dynamic>>(
               volumesValue, (value) => value.toMap());
     }
     final vpcAccessValue = vpcAccess;
@@ -88,7 +87,7 @@ class GoogleCloudRunV2TaskTemplate {
     return GoogleCloudRunV2TaskTemplate(
       containers: map['containers'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV2Container>(
+          : pulumi.Input.decodeList<GoogleCloudRunV2Container>(
               map['containers'],
               (value) => GoogleCloudRunV2Container.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -105,7 +104,7 @@ class GoogleCloudRunV2TaskTemplate {
       timeout: map['timeout'] == null ? null : map['timeout'] as String,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV2Volume>(
+          : pulumi.Input.decodeList<GoogleCloudRunV2Volume>(
               map['volumes'],
               (value) => GoogleCloudRunV2Volume.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ConversationDataset.
 class ConversationDatasetArgs {
   /// Optional. The description of the dataset. Maximum of 10000 bytes.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The display name of the dataset. Maximum of 64 bytes.
-  final Input<String> displayName;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String> displayName;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   ConversationDatasetArgs({
     this.description,
@@ -39,10 +39,10 @@ class ConversationDatasetArgs {
 
   factory ConversationDatasetArgs.fromMap(Map<String, dynamic> map) {
     return ConversationDatasetArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

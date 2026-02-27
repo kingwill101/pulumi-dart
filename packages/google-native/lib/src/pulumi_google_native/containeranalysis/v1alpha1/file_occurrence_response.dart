@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'license_response2.dart';
+import 'license_response_containeranalysis_v1alpha1.dart';
 
 /// FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
 class FileOccurrenceResponse {
@@ -20,7 +20,7 @@ class FileOccurrenceResponse {
   final List<String> filesLicenseInfo;
 
   /// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-  final LicenseResponse2 licenseConcluded;
+  final LicenseResponseContaineranalysisV1alpha1 licenseConcluded;
 
   /// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
   final String notice;
@@ -54,7 +54,7 @@ class FileOccurrenceResponse {
       contributors: (map['contributors'] as List).cast<String>(),
       copyright: map['copyright'] as String,
       filesLicenseInfo: (map['filesLicenseInfo'] as List).cast<String>(),
-      licenseConcluded: LicenseResponse2.fromMap(
+      licenseConcluded: LicenseResponseContaineranalysisV1alpha1.fromMap(
           (map['licenseConcluded'] as Map).cast<String, dynamic>()),
       notice: map['notice'] as String,
     );

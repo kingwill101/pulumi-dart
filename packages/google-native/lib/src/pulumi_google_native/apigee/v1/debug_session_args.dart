@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DebugSession.
 class DebugSessionArgs {
-  final Input<String> apiId;
+  final pulumi.Input<String> apiId;
 
   /// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
-  final Input<int>? count;
-  final Input<String> environmentId;
+  final pulumi.Input<int>? count;
+  final pulumi.Input<String> environmentId;
 
   /// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// A unique ID for this DebugSession.
-  final Input<String>? name;
-  final Input<String> organizationId;
-  final Input<String> revisionId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> revisionId;
 
   /// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
-  final Input<String>? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
-  final Input<int>? tracesize;
+  final pulumi.Input<int>? tracesize;
 
   /// Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
-  final Input<int>? validity;
+  final pulumi.Input<int>? validity;
 
   DebugSessionArgs({
     required this.apiId,
@@ -75,16 +75,16 @@ class DebugSessionArgs {
 
   factory DebugSessionArgs.fromMap(Map<String, dynamic> map) {
     return DebugSessionArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      count: Input.asOptionalInput<int>(map['count']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      filter: Input.asOptionalInput<String>(map['filter']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      revisionId: Input.asInput<String>(map['revisionId']),
-      timeout: Input.asOptionalInput<String>(map['timeout']),
-      tracesize: Input.asOptionalInput<int>(map['tracesize']),
-      validity: Input.asOptionalInput<int>(map['validity']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      count: pulumi.Input.asOptionalInput<int>(map['count']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      revisionId: pulumi.Input.asInput<String>(map['revisionId']),
+      timeout: pulumi.Input.asOptionalInput<String>(map['timeout']),
+      tracesize: pulumi.Input.asOptionalInput<int>(map['tracesize']),
+      validity: pulumi.Input.asOptionalInput<int>(map['validity']),
     );
   }
 }

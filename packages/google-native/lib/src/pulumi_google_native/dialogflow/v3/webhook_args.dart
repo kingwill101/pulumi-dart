@@ -1,34 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_webhook_generic_web_service.dart';
 import 'google_cloud_dialogflow_cx_v3_webhook_service_directory_config.dart';
 
 /// The set of arguments for Webhook.
 class WebhookArgs {
-  final Input<String> agentId;
+  final pulumi.Input<String> agentId;
 
   /// Indicates whether the webhook is disabled.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// The human-readable name of the webhook, unique within the agent.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Configuration for a generic web service.
-  final Input<GoogleCloudDialogflowCxV3WebhookGenericWebService>?
+  final pulumi.Input<GoogleCloudDialogflowCxV3WebhookGenericWebService>?
       genericWebService;
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
-  final Input<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig>?
+  final pulumi.Input<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig>?
       serviceDirectory;
 
   /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-  final Input<String>? timeout;
+  final pulumi.Input<String>? timeout;
 
   WebhookArgs({
     required this.agentId,
@@ -52,7 +52,7 @@ class WebhookArgs {
     map['displayName'] = displayName;
     final genericWebServiceValue = genericWebService;
     if (genericWebServiceValue != null) {
-      map['genericWebService'] = Input.mapOptionalInputValue<
+      map['genericWebService'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudDialogflowCxV3WebhookGenericWebService,
               Map<String, dynamic>>(
           genericWebServiceValue, (value) => value.toMap());
@@ -71,7 +71,7 @@ class WebhookArgs {
     }
     final serviceDirectoryValue = serviceDirectory;
     if (serviceDirectoryValue != null) {
-      map['serviceDirectory'] = Input.mapOptionalInputValue<
+      map['serviceDirectory'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig,
               Map<String, dynamic>>(
           serviceDirectoryValue, (value) => value.toMap());
@@ -85,19 +85,19 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      agentId: Input.asInput<String>(map['agentId']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      displayName: Input.asInput<String>(map['displayName']),
-      genericWebService: Input.asOptionalInput<
+      agentId: pulumi.Input.asInput<String>(map['agentId']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      genericWebService: pulumi.Input.asOptionalInput<
               GoogleCloudDialogflowCxV3WebhookGenericWebService>(
           map['genericWebService']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceDirectory: Input.asOptionalInput<
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceDirectory: pulumi.Input.asOptionalInput<
               GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig>(
           map['serviceDirectory']),
-      timeout: Input.asOptionalInput<String>(map['timeout']),
+      timeout: pulumi.Input.asOptionalInput<String>(map['timeout']),
     );
   }
 }

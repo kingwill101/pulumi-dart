@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'release_channel_config_response.dart';
 
 /// Result data returned by getServerConfig.
@@ -34,9 +34,8 @@ class GetServerConfigResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['channels'] =
-        Input.encodeList<ReleaseChannelConfigResponse, Map<String, dynamic>>(
-            channels, (value) => value.toMap());
+    map['channels'] = pulumi.Input.encodeList<ReleaseChannelConfigResponse,
+        Map<String, dynamic>>(channels, (value) => value.toMap());
     map['defaultClusterVersion'] = defaultClusterVersion;
     map['defaultImageType'] = defaultImageType;
     map['validImageTypes'] = validImageTypes;
@@ -47,7 +46,7 @@ class GetServerConfigResult {
 
   factory GetServerConfigResult.fromMap(Map<String, dynamic> map) {
     return GetServerConfigResult(
-      channels: Input.decodeList<ReleaseChannelConfigResponse>(
+      channels: pulumi.Input.decodeList<ReleaseChannelConfigResponse>(
           map['channels'],
           (value) => ReleaseChannelConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

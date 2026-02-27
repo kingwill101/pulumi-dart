@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDeviceSession.
 class GetDeviceSessionArgs {
-  final Input<String> deviceSessionId;
-  final Input<String>? project;
+  final pulumi.Input<String> deviceSessionId;
+  final pulumi.Input<String>? project;
 
   GetDeviceSessionArgs({
     required this.deviceSessionId,
@@ -24,8 +24,8 @@ class GetDeviceSessionArgs {
 
   factory GetDeviceSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceSessionArgs(
-      deviceSessionId: Input.asInput<String>(map['deviceSessionId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      deviceSessionId: pulumi.Input.asInput<String>(map['deviceSessionId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

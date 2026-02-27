@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2alpha_audience_response.dart';
 import 'google_cloud_retail_v2alpha_color_info_response.dart';
 import 'google_cloud_retail_v2alpha_fulfillment_info_response.dart';
@@ -161,14 +161,15 @@ class GoogleCloudRetailV2alphaProductResponse {
     map['conditions'] = conditions;
     map['description'] = description;
     map['expireTime'] = expireTime;
-    map['fulfillmentInfo'] = Input.encodeList<
+    map['fulfillmentInfo'] = pulumi.Input.encodeList<
         GoogleCloudRetailV2alphaFulfillmentInfoResponse,
         Map<String, dynamic>>(fulfillmentInfo, (value) => value.toMap());
     map['gtin'] = gtin;
-    map['images'] = Input.encodeList<GoogleCloudRetailV2alphaImageResponse,
+    map['images'] = pulumi.Input.encodeList<
+        GoogleCloudRetailV2alphaImageResponse,
         Map<String, dynamic>>(images, (value) => value.toMap());
     map['languageCode'] = languageCode;
-    map['localInventories'] = Input.encodeList<
+    map['localInventories'] = pulumi.Input.encodeList<
         GoogleCloudRetailV2alphaLocalInventoryResponse,
         Map<String, dynamic>>(localInventories, (value) => value.toMap());
     map['materials'] = materials;
@@ -176,7 +177,7 @@ class GoogleCloudRetailV2alphaProductResponse {
     map['patterns'] = patterns;
     map['priceInfo'] = priceInfo.toMap();
     map['primaryProductId'] = primaryProductId;
-    map['promotions'] = Input.encodeList<
+    map['promotions'] = pulumi.Input.encodeList<
         GoogleCloudRetailV2alphaPromotionResponse,
         Map<String, dynamic>>(promotions, (value) => value.toMap());
     map['publishTime'] = publishTime;
@@ -188,7 +189,8 @@ class GoogleCloudRetailV2alphaProductResponse {
     map['ttl'] = ttl;
     map['type'] = type;
     map['uri'] = uri;
-    map['variants'] = Input.encodeList<GoogleCloudRetailV2alphaProductResponse,
+    map['variants'] = pulumi.Input.encodeList<
+        GoogleCloudRetailV2alphaProductResponse,
         Map<String, dynamic>>(variants, (value) => value.toMap());
     return map;
   }
@@ -210,33 +212,33 @@ class GoogleCloudRetailV2alphaProductResponse {
       conditions: (map['conditions'] as List).cast<String>(),
       description: map['description'] as String,
       expireTime: map['expireTime'] as String,
-      fulfillmentInfo:
-          Input.decodeList<GoogleCloudRetailV2alphaFulfillmentInfoResponse>(
-              map['fulfillmentInfo'],
-              (value) =>
-                  GoogleCloudRetailV2alphaFulfillmentInfoResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      fulfillmentInfo: pulumi.Input.decodeList<
+              GoogleCloudRetailV2alphaFulfillmentInfoResponse>(
+          map['fulfillmentInfo'],
+          (value) => GoogleCloudRetailV2alphaFulfillmentInfoResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       gtin: map['gtin'] as String,
-      images: Input.decodeList<GoogleCloudRetailV2alphaImageResponse>(
+      images: pulumi.Input.decodeList<GoogleCloudRetailV2alphaImageResponse>(
           map['images'],
           (value) => GoogleCloudRetailV2alphaImageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       languageCode: map['languageCode'] as String,
-      localInventories:
-          Input.decodeList<GoogleCloudRetailV2alphaLocalInventoryResponse>(
-              map['localInventories'],
-              (value) => GoogleCloudRetailV2alphaLocalInventoryResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      localInventories: pulumi.Input.decodeList<
+              GoogleCloudRetailV2alphaLocalInventoryResponse>(
+          map['localInventories'],
+          (value) => GoogleCloudRetailV2alphaLocalInventoryResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       materials: (map['materials'] as List).cast<String>(),
       name: map['name'] as String,
       patterns: (map['patterns'] as List).cast<String>(),
       priceInfo: GoogleCloudRetailV2alphaPriceInfoResponse.fromMap(
           (map['priceInfo'] as Map).cast<String, dynamic>()),
       primaryProductId: map['primaryProductId'] as String,
-      promotions: Input.decodeList<GoogleCloudRetailV2alphaPromotionResponse>(
-          map['promotions'],
-          (value) => GoogleCloudRetailV2alphaPromotionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      promotions:
+          pulumi.Input.decodeList<GoogleCloudRetailV2alphaPromotionResponse>(
+              map['promotions'],
+              (value) => GoogleCloudRetailV2alphaPromotionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       publishTime: map['publishTime'] as String,
       rating: GoogleCloudRetailV2alphaRatingResponse.fromMap(
           (map['rating'] as Map).cast<String, dynamic>()),
@@ -247,10 +249,11 @@ class GoogleCloudRetailV2alphaProductResponse {
       ttl: map['ttl'] as String,
       type: map['type'] as String,
       uri: map['uri'] as String,
-      variants: Input.decodeList<GoogleCloudRetailV2alphaProductResponse>(
-          map['variants'],
-          (value) => GoogleCloudRetailV2alphaProductResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      variants:
+          pulumi.Input.decodeList<GoogleCloudRetailV2alphaProductResponse>(
+              map['variants'],
+              (value) => GoogleCloudRetailV2alphaProductResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

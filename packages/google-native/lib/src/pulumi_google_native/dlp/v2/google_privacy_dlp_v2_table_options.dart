@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_field_id.dart';
 
 /// Instructions regarding the table content being inspected.
@@ -16,9 +16,9 @@ class GooglePrivacyDlpV2TableOptions {
     final map = <String, dynamic>{};
     final identifyingFieldsValue = identifyingFields;
     if (identifyingFieldsValue != null) {
-      map['identifyingFields'] =
-          Input.encodeList<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(
-              identifyingFieldsValue, (value) => value.toMap());
+      map['identifyingFields'] = pulumi.Input.encodeList<
+              GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(
+          identifyingFieldsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +27,7 @@ class GooglePrivacyDlpV2TableOptions {
     return GooglePrivacyDlpV2TableOptions(
       identifyingFields: map['identifyingFields'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2FieldId>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(
               map['identifyingFields'],
               (value) => GooglePrivacyDlpV2FieldId.fromMap(
                   (value as Map).cast<String, dynamic>())),

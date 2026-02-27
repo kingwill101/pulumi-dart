@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'binary_authorization_config.dart';
-import 'security_posture_config3.dart';
+import 'security_posture_config_gkehub_v1.dart';
 
 /// DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
 class DefaultClusterConfig {
@@ -9,7 +9,7 @@ class DefaultClusterConfig {
   final BinaryAuthorizationConfig? binaryAuthorizationConfig;
 
   /// Enable/Disable Security Posture features for the cluster.
-  final SecurityPostureConfig3? securityPostureConfig;
+  final SecurityPostureConfigGkehubV1? securityPostureConfig;
 
   DefaultClusterConfig({
     this.binaryAuthorizationConfig,
@@ -38,7 +38,7 @@ class DefaultClusterConfig {
                   .cast<String, dynamic>()),
       securityPostureConfig: map['securityPostureConfig'] == null
           ? null
-          : SecurityPostureConfig3.fromMap(
+          : SecurityPostureConfigGkehubV1.fromMap(
               (map['securityPostureConfig'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_nat_auto_network_tier.dart';
 import 'router_nat_endpoint_types_item.dart';
 import 'router_nat_log_config.dart';
@@ -116,7 +116,7 @@ class RouterNat {
     final endpointTypesValue = endpointTypes;
     if (endpointTypesValue != null) {
       map['endpointTypes'] =
-          Input.encodeList<RouterNatEndpointTypesItem, String>(
+          pulumi.Input.encodeList<RouterNatEndpointTypesItem, String>(
               endpointTypesValue, (value) => value.value);
     }
     final icmpIdleTimeoutSecValue = icmpIdleTimeoutSec;
@@ -149,8 +149,9 @@ class RouterNat {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<RouterNatRule, Map<String, dynamic>>(
-          rulesValue, (value) => value.toMap());
+      map['rules'] =
+          pulumi.Input.encodeList<RouterNatRule, Map<String, dynamic>>(
+              rulesValue, (value) => value.toMap());
     }
     final sourceSubnetworkIpRangesToNatValue = sourceSubnetworkIpRangesToNat;
     if (sourceSubnetworkIpRangesToNatValue != null) {
@@ -159,9 +160,8 @@ class RouterNat {
     }
     final subnetworksValue = subnetworks;
     if (subnetworksValue != null) {
-      map['subnetworks'] =
-          Input.encodeList<RouterNatSubnetworkToNat, Map<String, dynamic>>(
-              subnetworksValue, (value) => value.toMap());
+      map['subnetworks'] = pulumi.Input.encodeList<RouterNatSubnetworkToNat,
+          Map<String, dynamic>>(subnetworksValue, (value) => value.toMap());
     }
     final tcpEstablishedIdleTimeoutSecValue = tcpEstablishedIdleTimeoutSec;
     if (tcpEstablishedIdleTimeoutSecValue != null) {
@@ -204,7 +204,8 @@ class RouterNat {
               : map['enableEndpointIndependentMapping'] as bool,
       endpointTypes: map['endpointTypes'] == null
           ? null
-          : Input.decodeList<RouterNatEndpointTypesItem>(map['endpointTypes'],
+          : pulumi.Input.decodeList<RouterNatEndpointTypesItem>(
+              map['endpointTypes'],
               (value) => RouterNatEndpointTypesItem.fromValue(value as String)),
       icmpIdleTimeoutSec: map['icmpIdleTimeoutSec'] == null
           ? null
@@ -226,7 +227,7 @@ class RouterNat {
           map['natIps'] == null ? null : (map['natIps'] as List).cast<String>(),
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<RouterNatRule>(
+          : pulumi.Input.decodeList<RouterNatRule>(
               map['rules'],
               (value) => RouterNatRule.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -237,7 +238,7 @@ class RouterNat {
                   map['sourceSubnetworkIpRangesToNat'] as String),
       subnetworks: map['subnetworks'] == null
           ? null
-          : Input.decodeList<RouterNatSubnetworkToNat>(
+          : pulumi.Input.decodeList<RouterNatSubnetworkToNat>(
               map['subnetworks'],
               (value) => RouterNatSubnetworkToNat.fromMap(
                   (value as Map).cast<String, dynamic>())),

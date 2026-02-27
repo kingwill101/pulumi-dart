@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attribute_response.dart';
 
 /// Result data returned by getUserDataMapping.
@@ -39,7 +39,7 @@ class GetUserDataMappingResult {
     map['dataId'] = dataId;
     map['name'] = name;
     map['resourceAttributes'] =
-        Input.encodeList<AttributeResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AttributeResponse, Map<String, dynamic>>(
             resourceAttributes, (value) => value.toMap());
     map['userId'] = userId;
     return map;
@@ -51,7 +51,7 @@ class GetUserDataMappingResult {
       archived: map['archived'] as bool,
       dataId: map['dataId'] as String,
       name: map['name'] as String,
-      resourceAttributes: Input.decodeList<AttributeResponse>(
+      resourceAttributes: pulumi.Input.decodeList<AttributeResponse>(
           map['resourceAttributes'],
           (value) => AttributeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

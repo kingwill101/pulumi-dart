@@ -1,47 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backfill_all_strategy.dart';
-import 'destination_config2.dart';
-import 'source_config2.dart';
+import 'destination_config_datastream_v1.dart';
+import 'source_config_datastream_v1.dart';
 import 'stream_state.dart';
 
 /// The set of arguments for Stream.
 class StreamArgs {
   /// Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
-  final Input<BackfillAllStrategy>? backfillAll;
+  final pulumi.Input<BackfillAllStrategy>? backfillAll;
 
   /// Do not automatically backfill any objects.
-  final Input<Map<String, dynamic>>? backfillNone;
+  final pulumi.Input<Map<String, dynamic>>? backfillNone;
 
   /// Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-  final Input<String>? customerManagedEncryptionKey;
+  final pulumi.Input<String>? customerManagedEncryptionKey;
 
   /// Destination connection profile configuration.
-  final Input<DestinationConfig2> destinationConfig;
+  final pulumi.Input<DestinationConfigDatastreamV1> destinationConfig;
 
   /// Display name.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Optional. Create the stream without validating it.
-  final Input<bool>? force;
+  final pulumi.Input<bool>? force;
 
   /// Labels.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Source connection profile configuration.
-  final Input<SourceConfig2> sourceConfig;
+  final pulumi.Input<SourceConfigDatastreamV1> sourceConfig;
 
   /// The state of the stream.
-  final Input<StreamState>? state;
+  final pulumi.Input<StreamState>? state;
 
   /// Required. The stream identifier.
-  final Input<String> streamId;
+  final pulumi.Input<String> streamId;
 
   StreamArgs({
     this.backfillAll,
@@ -63,7 +63,8 @@ class StreamArgs {
     final map = <String, dynamic>{};
     final backfillAllValue = backfillAll;
     if (backfillAllValue != null) {
-      map['backfillAll'] = Input.mapOptionalInputValue<BackfillAllStrategy,
+      map['backfillAll'] = pulumi.Input.mapOptionalInputValue<
+          BackfillAllStrategy,
           Map<String, dynamic>>(backfillAllValue, (value) => value.toMap());
     }
     final backfillNoneValue = backfillNone;
@@ -74,9 +75,9 @@ class StreamArgs {
     if (customerManagedEncryptionKeyValue != null) {
       map['customerManagedEncryptionKey'] = customerManagedEncryptionKeyValue;
     }
-    map['destinationConfig'] =
-        Input.mapInputValue<DestinationConfig2, Map<String, dynamic>>(
-            destinationConfig, (value) => value.toMap());
+    map['destinationConfig'] = pulumi.Input.mapInputValue<
+        DestinationConfigDatastreamV1,
+        Map<String, dynamic>>(destinationConfig, (value) => value.toMap());
     map['displayName'] = displayName;
     final forceValue = force;
     if (forceValue != null) {
@@ -98,12 +99,11 @@ class StreamArgs {
     if (requestIdValue != null) {
       map['requestId'] = requestIdValue;
     }
-    map['sourceConfig'] =
-        Input.mapInputValue<SourceConfig2, Map<String, dynamic>>(
-            sourceConfig, (value) => value.toMap());
+    map['sourceConfig'] = pulumi.Input.mapInputValue<SourceConfigDatastreamV1,
+        Map<String, dynamic>>(sourceConfig, (value) => value.toMap());
     final stateValue = state;
     if (stateValue != null) {
-      map['state'] = Input.mapOptionalInputValue<StreamState, String>(
+      map['state'] = pulumi.Input.mapOptionalInputValue<StreamState, String>(
           stateValue, (value) => value.value);
     }
     map['streamId'] = streamId;
@@ -113,22 +113,23 @@ class StreamArgs {
   factory StreamArgs.fromMap(Map<String, dynamic> map) {
     return StreamArgs(
       backfillAll:
-          Input.asOptionalInput<BackfillAllStrategy>(map['backfillAll']),
-      backfillNone:
-          Input.asOptionalInput<Map<String, dynamic>>(map['backfillNone']),
-      customerManagedEncryptionKey:
-          Input.asOptionalInput<String>(map['customerManagedEncryptionKey']),
-      destinationConfig:
-          Input.asInput<DestinationConfig2>(map['destinationConfig']),
-      displayName: Input.asInput<String>(map['displayName']),
-      force: Input.asOptionalInput<bool>(map['force']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      sourceConfig: Input.asInput<SourceConfig2>(map['sourceConfig']),
-      state: Input.asOptionalInput<StreamState>(map['state']),
-      streamId: Input.asInput<String>(map['streamId']),
+          pulumi.Input.asOptionalInput<BackfillAllStrategy>(map['backfillAll']),
+      backfillNone: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+          map['backfillNone']),
+      customerManagedEncryptionKey: pulumi.Input.asOptionalInput<String>(
+          map['customerManagedEncryptionKey']),
+      destinationConfig: pulumi.Input.asInput<DestinationConfigDatastreamV1>(
+          map['destinationConfig']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      force: pulumi.Input.asOptionalInput<bool>(map['force']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      sourceConfig:
+          pulumi.Input.asInput<SourceConfigDatastreamV1>(map['sourceConfig']),
+      state: pulumi.Input.asOptionalInput<StreamState>(map['state']),
+      streamId: pulumi.Input.asInput<String>(map['streamId']),
     );
   }
 }

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Catalog.
 class CatalogArgs {
   /// Required. The ID to use for the catalog, which will become the final component of the catalog's resource name.
-  final Input<String> catalogId;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String> catalogId;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   CatalogArgs({
     required this.catalogId,
@@ -31,9 +31,9 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      catalogId: Input.asInput<String>(map['catalogId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      catalogId: pulumi.Input.asInput<String>(map['catalogId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'file_reference2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'file_reference_toolresults_v1beta3.dart';
 import 'tool_exit_code.dart';
 import 'tool_output_reference.dart';
 
@@ -14,7 +14,7 @@ class ToolExecution {
   final ToolExitCode? exitCode;
 
   /// References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
-  final List<FileReference2>? toolLogs;
+  final List<FileReferenceToolresultsV1beta3>? toolLogs;
 
   /// References to opaque files of any format output by the tool execution. The maximum allowed number of tool outputs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
   final List<ToolOutputReference>? toolOutputs;
@@ -38,13 +38,13 @@ class ToolExecution {
     }
     final toolLogsValue = toolLogs;
     if (toolLogsValue != null) {
-      map['toolLogs'] = Input.encodeList<FileReference2, Map<String, dynamic>>(
-          toolLogsValue, (value) => value.toMap());
+      map['toolLogs'] = pulumi.Input.encodeList<FileReferenceToolresultsV1beta3,
+          Map<String, dynamic>>(toolLogsValue, (value) => value.toMap());
     }
     final toolOutputsValue = toolOutputs;
     if (toolOutputsValue != null) {
       map['toolOutputs'] =
-          Input.encodeList<ToolOutputReference, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ToolOutputReference, Map<String, dynamic>>(
               toolOutputsValue, (value) => value.toMap());
     }
     return map;
@@ -61,13 +61,13 @@ class ToolExecution {
               (map['exitCode'] as Map).cast<String, dynamic>()),
       toolLogs: map['toolLogs'] == null
           ? null
-          : Input.decodeList<FileReference2>(
+          : pulumi.Input.decodeList<FileReferenceToolresultsV1beta3>(
               map['toolLogs'],
-              (value) => FileReference2.fromMap(
+              (value) => FileReferenceToolresultsV1beta3.fromMap(
                   (value as Map).cast<String, dynamic>())),
       toolOutputs: map['toolOutputs'] == null
           ? null
-          : Input.decodeList<ToolOutputReference>(
+          : pulumi.Input.decodeList<ToolOutputReference>(
               map['toolOutputs'],
               (value) => ToolOutputReference.fromMap(
                   (value as Map).cast<String, dynamic>())),

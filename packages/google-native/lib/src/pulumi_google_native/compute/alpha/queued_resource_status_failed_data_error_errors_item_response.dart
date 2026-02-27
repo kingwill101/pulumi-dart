@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'queued_resource_status_failed_data_error_errors_item_error_details_item_response.dart';
 
 class QueuedResourceStatusFailedDataErrorErrorsItemResponse {
@@ -28,7 +28,7 @@ class QueuedResourceStatusFailedDataErrorErrorsItemResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['code'] = code;
-    map['errorDetails'] = Input.encodeList<
+    map['errorDetails'] = pulumi.Input.encodeList<
         QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse,
         Map<String, dynamic>>(errorDetails, (value) => value.toMap());
     map['location'] = location;
@@ -40,7 +40,7 @@ class QueuedResourceStatusFailedDataErrorErrorsItemResponse {
       Map<String, dynamic> map) {
     return QueuedResourceStatusFailedDataErrorErrorsItemResponse(
       code: map['code'] as String,
-      errorDetails: Input.decodeList<
+      errorDetails: pulumi.Input.decodeList<
               QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse>(
           map['errorDetails'],
           (value) =>

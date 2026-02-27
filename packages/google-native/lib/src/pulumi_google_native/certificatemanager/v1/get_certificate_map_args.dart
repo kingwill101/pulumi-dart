@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCertificateMap.
 class GetCertificateMapArgs {
-  final Input<String> certificateMapId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> certificateMapId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetCertificateMapArgs({
     required this.certificateMapId,
@@ -27,9 +27,9 @@ class GetCertificateMapArgs {
 
   factory GetCertificateMapArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateMapArgs(
-      certificateMapId: Input.asInput<String>(map['certificateMapId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      certificateMapId: pulumi.Input.asInput<String>(map['certificateMapId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

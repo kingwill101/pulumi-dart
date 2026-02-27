@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_content_notebook.dart';
 import 'google_cloud_dataplex_v1_content_sql_script.dart';
 
 /// The set of arguments for Content.
 class ContentArgs {
   /// Content data in string format.
-  final Input<String> dataText;
+  final pulumi.Input<String> dataText;
 
   /// Optional. Description of the content.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. User defined labels for the content.
-  final Input<Map<String, String>>? labels;
-  final Input<String> lakeId;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String> lakeId;
+  final pulumi.Input<String>? location;
 
   /// Notebook related configurations.
-  final Input<GoogleCloudDataplexV1ContentNotebook>? notebook;
+  final pulumi.Input<GoogleCloudDataplexV1ContentNotebook>? notebook;
 
   /// The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
-  final Input<String> path;
-  final Input<String>? project;
+  final pulumi.Input<String> path;
+  final pulumi.Input<String>? project;
 
   /// Sql Script related configurations.
-  final Input<GoogleCloudDataplexV1ContentSqlScript>? sqlScript;
+  final pulumi.Input<GoogleCloudDataplexV1ContentSqlScript>? sqlScript;
 
   ContentArgs({
     required this.dataText,
@@ -57,7 +57,7 @@ class ContentArgs {
     }
     final notebookValue = notebook;
     if (notebookValue != null) {
-      map['notebook'] = Input.mapOptionalInputValue<
+      map['notebook'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudDataplexV1ContentNotebook,
           Map<String, dynamic>>(notebookValue, (value) => value.toMap());
     }
@@ -68,7 +68,7 @@ class ContentArgs {
     }
     final sqlScriptValue = sqlScript;
     if (sqlScriptValue != null) {
-      map['sqlScript'] = Input.mapOptionalInputValue<
+      map['sqlScript'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudDataplexV1ContentSqlScript,
           Map<String, dynamic>>(sqlScriptValue, (value) => value.toMap());
     }
@@ -77,17 +77,19 @@ class ContentArgs {
 
   factory ContentArgs.fromMap(Map<String, dynamic> map) {
     return ContentArgs(
-      dataText: Input.asInput<String>(map['dataText']),
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      lakeId: Input.asInput<String>(map['lakeId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      notebook: Input.asOptionalInput<GoogleCloudDataplexV1ContentNotebook>(
-          map['notebook']),
-      path: Input.asInput<String>(map['path']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sqlScript: Input.asOptionalInput<GoogleCloudDataplexV1ContentSqlScript>(
-          map['sqlScript']),
+      dataText: pulumi.Input.asInput<String>(map['dataText']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      lakeId: pulumi.Input.asInput<String>(map['lakeId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      notebook:
+          pulumi.Input.asOptionalInput<GoogleCloudDataplexV1ContentNotebook>(
+              map['notebook']),
+      path: pulumi.Input.asInput<String>(map['path']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sqlScript:
+          pulumi.Input.asOptionalInput<GoogleCloudDataplexV1ContentSqlScript>(
+              map['sqlScript']),
     );
   }
 }

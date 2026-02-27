@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_advanced_settings.dart';
 import 'google_cloud_dialogflow_cx_v3_event_handler.dart';
 import 'google_cloud_dialogflow_cx_v3_form.dart';
@@ -11,39 +11,42 @@ import 'google_cloud_dialogflow_cx_v3_transition_route.dart';
 /// The set of arguments for Page.
 class PageArgs {
   /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
-  final Input<GoogleCloudDialogflowCxV3AdvancedSettings>? advancedSettings;
-  final Input<String> agentId;
+  final pulumi.Input<GoogleCloudDialogflowCxV3AdvancedSettings>?
+      advancedSettings;
+  final pulumi.Input<String> agentId;
 
   /// The human-readable name of the page, unique within the flow.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The fulfillment to call when the session is entering the page.
-  final Input<GoogleCloudDialogflowCxV3Fulfillment>? entryFulfillment;
+  final pulumi.Input<GoogleCloudDialogflowCxV3Fulfillment>? entryFulfillment;
 
   /// Handlers associated with the page to handle events such as webhook errors, no match or no input.
-  final Input<List<GoogleCloudDialogflowCxV3EventHandler>>? eventHandlers;
-  final Input<String> flowId;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3EventHandler>>?
+      eventHandlers;
+  final pulumi.Input<String> flowId;
 
   /// The form associated with the page, used for collecting parameters relevant to the page.
-  final Input<GoogleCloudDialogflowCxV3Form>? form;
+  final pulumi.Input<GoogleCloudDialogflowCxV3Form>? form;
 
   /// Optional. Knowledge connector configuration.
-  final Input<GoogleCloudDialogflowCxV3KnowledgeConnectorSettings>?
+  final pulumi.Input<GoogleCloudDialogflowCxV3KnowledgeConnectorSettings>?
       knowledgeConnectorSettings;
 
   /// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
-  final Input<String>? languageCode;
-  final Input<String>? location;
+  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String>? location;
 
   /// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
-  final Input<List<String>>? transitionRouteGroups;
+  final pulumi.Input<List<String>>? transitionRouteGroups;
 
   /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
-  final Input<List<GoogleCloudDialogflowCxV3TransitionRoute>>? transitionRoutes;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3TransitionRoute>>?
+      transitionRoutes;
 
   PageArgs({
     this.advancedSettings,
@@ -66,7 +69,7 @@ class PageArgs {
     final map = <String, dynamic>{};
     final advancedSettingsValue = advancedSettings;
     if (advancedSettingsValue != null) {
-      map['advancedSettings'] = Input.mapOptionalInputValue<
+      map['advancedSettings'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudDialogflowCxV3AdvancedSettings, Map<String, dynamic>>(
           advancedSettingsValue, (value) => value.toMap());
     }
@@ -74,28 +77,30 @@ class PageArgs {
     map['displayName'] = displayName;
     final entryFulfillmentValue = entryFulfillment;
     if (entryFulfillmentValue != null) {
-      map['entryFulfillment'] = Input.mapOptionalInputValue<
+      map['entryFulfillment'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudDialogflowCxV3Fulfillment, Map<String, dynamic>>(
           entryFulfillmentValue, (value) => value.toMap());
     }
     final eventHandlersValue = eventHandlers;
     if (eventHandlersValue != null) {
-      map['eventHandlers'] = Input.mapOptionalInputValue<
+      map['eventHandlers'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudDialogflowCxV3EventHandler>,
               List<Map<String, dynamic>>>(
           eventHandlersValue,
-          (value) => Input.encodeList<GoogleCloudDialogflowCxV3EventHandler,
+          (value) => pulumi.Input.encodeList<
+              GoogleCloudDialogflowCxV3EventHandler,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['flowId'] = flowId;
     final formValue = form;
     if (formValue != null) {
-      map['form'] = Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3Form,
+      map['form'] = pulumi.Input.mapOptionalInputValue<
+          GoogleCloudDialogflowCxV3Form,
           Map<String, dynamic>>(formValue, (value) => value.toMap());
     }
     final knowledgeConnectorSettingsValue = knowledgeConnectorSettings;
     if (knowledgeConnectorSettingsValue != null) {
-      map['knowledgeConnectorSettings'] = Input.mapOptionalInputValue<
+      map['knowledgeConnectorSettings'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudDialogflowCxV3KnowledgeConnectorSettings,
               Map<String, dynamic>>(
           knowledgeConnectorSettingsValue, (value) => value.toMap());
@@ -122,11 +127,12 @@ class PageArgs {
     }
     final transitionRoutesValue = transitionRoutes;
     if (transitionRoutesValue != null) {
-      map['transitionRoutes'] = Input.mapOptionalInputValue<
+      map['transitionRoutes'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudDialogflowCxV3TransitionRoute>,
               List<Map<String, dynamic>>>(
           transitionRoutesValue,
-          (value) => Input.encodeList<GoogleCloudDialogflowCxV3TransitionRoute,
+          (value) => pulumi.Input.encodeList<
+              GoogleCloudDialogflowCxV3TransitionRoute,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
@@ -134,31 +140,30 @@ class PageArgs {
 
   factory PageArgs.fromMap(Map<String, dynamic> map) {
     return PageArgs(
-      advancedSettings:
-          Input.asOptionalInput<GoogleCloudDialogflowCxV3AdvancedSettings>(
-              map['advancedSettings']),
-      agentId: Input.asInput<String>(map['agentId']),
-      displayName: Input.asInput<String>(map['displayName']),
+      advancedSettings: pulumi.Input.asOptionalInput<
+          GoogleCloudDialogflowCxV3AdvancedSettings>(map['advancedSettings']),
+      agentId: pulumi.Input.asInput<String>(map['agentId']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
       entryFulfillment:
-          Input.asOptionalInput<GoogleCloudDialogflowCxV3Fulfillment>(
+          pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3Fulfillment>(
               map['entryFulfillment']),
-      eventHandlers:
-          Input.asOptionalInput<List<GoogleCloudDialogflowCxV3EventHandler>>(
-              map['eventHandlers']),
-      flowId: Input.asInput<String>(map['flowId']),
-      form: Input.asOptionalInput<GoogleCloudDialogflowCxV3Form>(map['form']),
-      knowledgeConnectorSettings: Input.asOptionalInput<
+      eventHandlers: pulumi.Input.asOptionalInput<
+          List<GoogleCloudDialogflowCxV3EventHandler>>(map['eventHandlers']),
+      flowId: pulumi.Input.asInput<String>(map['flowId']),
+      form: pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3Form>(
+          map['form']),
+      knowledgeConnectorSettings: pulumi.Input.asOptionalInput<
               GoogleCloudDialogflowCxV3KnowledgeConnectorSettings>(
           map['knowledgeConnectorSettings']),
-      languageCode: Input.asOptionalInput<String>(map['languageCode']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      transitionRouteGroups:
-          Input.asOptionalInput<List<String>>(map['transitionRouteGroups']),
-      transitionRoutes:
-          Input.asOptionalInput<List<GoogleCloudDialogflowCxV3TransitionRoute>>(
-              map['transitionRoutes']),
+      languageCode: pulumi.Input.asOptionalInput<String>(map['languageCode']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      transitionRouteGroups: pulumi.Input.asOptionalInput<List<String>>(
+          map['transitionRouteGroups']),
+      transitionRoutes: pulumi.Input.asOptionalInput<
+              List<GoogleCloudDialogflowCxV3TransitionRoute>>(
+          map['transitionRoutes']),
     );
   }
 }

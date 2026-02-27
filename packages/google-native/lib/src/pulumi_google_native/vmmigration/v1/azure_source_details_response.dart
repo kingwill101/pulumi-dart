@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'client_secret_credentials_response.dart';
-import 'status_response30.dart';
+import 'status_response_vmmigration_v1.dart';
 
 /// AzureSourceDetails message describes a specific source details for the Azure source type.
 class AzureSourceDetailsResponse {
@@ -12,7 +12,7 @@ class AzureSourceDetailsResponse {
   final ClientSecretCredentialsResponse clientSecretCreds;
 
   /// Provides details on the state of the Source in case of an error.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
   final Map<String, String> migrationResourcesUserTags;
@@ -53,7 +53,7 @@ class AzureSourceDetailsResponse {
       azureLocation: map['azureLocation'] as String,
       clientSecretCreds: ClientSecretCredentialsResponse.fromMap(
           (map['clientSecretCreds'] as Map).cast<String, dynamic>()),
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       migrationResourcesUserTags:
           (map['migrationResourcesUserTags'] as Map).cast<String, String>(),

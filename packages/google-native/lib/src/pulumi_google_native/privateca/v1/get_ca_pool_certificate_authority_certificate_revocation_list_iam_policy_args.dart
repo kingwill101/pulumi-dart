@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy.
 class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs {
-  final Input<String> caPoolId;
-  final Input<String> certificateAuthorityId;
-  final Input<String> certificateRevocationListId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> caPoolId;
+  final pulumi.Input<String> certificateAuthorityId;
+  final pulumi.Input<String> certificateRevocationListId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs({
     required this.caPoolId,
@@ -40,15 +40,15 @@ class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs {
   factory GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs.fromMap(
       Map<String, dynamic> map) {
     return GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs(
-      caPoolId: Input.asInput<String>(map['caPoolId']),
+      caPoolId: pulumi.Input.asInput<String>(map['caPoolId']),
       certificateAuthorityId:
-          Input.asInput<String>(map['certificateAuthorityId']),
+          pulumi.Input.asInput<String>(map['certificateAuthorityId']),
       certificateRevocationListId:
-          Input.asInput<String>(map['certificateRevocationListId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['certificateRevocationListId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

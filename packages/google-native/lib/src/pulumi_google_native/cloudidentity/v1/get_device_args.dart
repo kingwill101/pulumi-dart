@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDevice.
 class GetDeviceArgs {
-  final Input<String>? customer;
-  final Input<String> deviceId;
+  final pulumi.Input<String>? customer;
+  final pulumi.Input<String> deviceId;
 
   GetDeviceArgs({
     this.customer,
@@ -24,8 +24,8 @@ class GetDeviceArgs {
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
-      customer: Input.asOptionalInput<String>(map['customer']),
-      deviceId: Input.asInput<String>(map['deviceId']),
+      customer: pulumi.Input.asOptionalInput<String>(map['customer']),
+      deviceId: pulumi.Input.asInput<String>(map['deviceId']),
     );
   }
 }

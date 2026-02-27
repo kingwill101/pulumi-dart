@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2alpha_model_page_optimization_config_panel_response.dart';
 
 /// The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.
@@ -24,7 +24,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['pageOptimizationEventType'] = pageOptimizationEventType;
-    map['panels'] = Input.encodeList<
+    map['panels'] = pulumi.Input.encodeList<
         GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse,
         Map<String, dynamic>>(panels, (value) => value.toMap());
     map['restriction'] = restriction;
@@ -35,7 +35,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse {
       Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse(
       pageOptimizationEventType: map['pageOptimizationEventType'] as String,
-      panels: Input.decodeList<
+      panels: pulumi.Input.decodeList<
               GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse>(
           map['panels'],
           (value) =>

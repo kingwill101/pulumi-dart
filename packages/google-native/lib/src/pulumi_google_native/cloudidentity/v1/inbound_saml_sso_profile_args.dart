@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'saml_idp_config.dart';
 
 /// The set of arguments for InboundSamlSsoProfile.
 class InboundSamlSsoProfileArgs {
   /// Immutable. The customer. For example: `customers/C0123abc`.
-  final Input<String>? customer;
+  final pulumi.Input<String>? customer;
 
   /// Human-readable name of the SAML SSO profile.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// SAML identity provider configuration.
-  final Input<SamlIdpConfig>? idpConfig;
+  final pulumi.Input<SamlIdpConfig>? idpConfig;
 
   /// SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
-  final Input<Map<String, dynamic>>? spConfig;
+  final pulumi.Input<Map<String, dynamic>>? spConfig;
 
   InboundSamlSsoProfileArgs({
     this.customer,
@@ -36,9 +36,8 @@ class InboundSamlSsoProfileArgs {
     }
     final idpConfigValue = idpConfig;
     if (idpConfigValue != null) {
-      map['idpConfig'] =
-          Input.mapOptionalInputValue<SamlIdpConfig, Map<String, dynamic>>(
-              idpConfigValue, (value) => value.toMap());
+      map['idpConfig'] = pulumi.Input.mapOptionalInputValue<SamlIdpConfig,
+          Map<String, dynamic>>(idpConfigValue, (value) => value.toMap());
     }
     final spConfigValue = spConfig;
     if (spConfigValue != null) {
@@ -49,10 +48,11 @@ class InboundSamlSsoProfileArgs {
 
   factory InboundSamlSsoProfileArgs.fromMap(Map<String, dynamic> map) {
     return InboundSamlSsoProfileArgs(
-      customer: Input.asOptionalInput<String>(map['customer']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      idpConfig: Input.asOptionalInput<SamlIdpConfig>(map['idpConfig']),
-      spConfig: Input.asOptionalInput<Map<String, dynamic>>(map['spConfig']),
+      customer: pulumi.Input.asOptionalInput<String>(map['customer']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      idpConfig: pulumi.Input.asOptionalInput<SamlIdpConfig>(map['idpConfig']),
+      spConfig:
+          pulumi.Input.asOptionalInput<Map<String, dynamic>>(map['spConfig']),
     );
   }
 }

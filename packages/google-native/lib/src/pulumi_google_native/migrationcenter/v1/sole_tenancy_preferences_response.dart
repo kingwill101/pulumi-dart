@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sole_tenant_node_type_response.dart';
 
 /// Preferences concerning Sole Tenancy nodes and VMs.
@@ -29,9 +29,8 @@ class SoleTenancyPreferencesResponse {
     map['commitmentPlan'] = commitmentPlan;
     map['cpuOvercommitRatio'] = cpuOvercommitRatio;
     map['hostMaintenancePolicy'] = hostMaintenancePolicy;
-    map['nodeTypes'] =
-        Input.encodeList<SoleTenantNodeTypeResponse, Map<String, dynamic>>(
-            nodeTypes, (value) => value.toMap());
+    map['nodeTypes'] = pulumi.Input.encodeList<SoleTenantNodeTypeResponse,
+        Map<String, dynamic>>(nodeTypes, (value) => value.toMap());
     return map;
   }
 
@@ -40,7 +39,7 @@ class SoleTenancyPreferencesResponse {
       commitmentPlan: map['commitmentPlan'] as String,
       cpuOvercommitRatio: map['cpuOvercommitRatio'] as double,
       hostMaintenancePolicy: map['hostMaintenancePolicy'] as String,
-      nodeTypes: Input.decodeList<SoleTenantNodeTypeResponse>(
+      nodeTypes: pulumi.Input.decodeList<SoleTenantNodeTypeResponse>(
           map['nodeTypes'],
           (value) => SoleTenantNodeTypeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

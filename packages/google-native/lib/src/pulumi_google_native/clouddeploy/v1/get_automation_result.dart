@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automation_resource_selector_response.dart';
 import 'automation_rule_response.dart';
 
@@ -66,7 +66,7 @@ class GetAutomationResult {
     map['labels'] = labels;
     map['name'] = name;
     map['rules'] =
-        Input.encodeList<AutomationRuleResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AutomationRuleResponse, Map<String, dynamic>>(
             rules, (value) => value.toMap());
     map['selector'] = selector.toMap();
     map['serviceAccount'] = serviceAccount;
@@ -84,7 +84,7 @@ class GetAutomationResult {
       etag: map['etag'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      rules: Input.decodeList<AutomationRuleResponse>(
+      rules: pulumi.Input.decodeList<AutomationRuleResponse>(
           map['rules'],
           (value) => AutomationRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

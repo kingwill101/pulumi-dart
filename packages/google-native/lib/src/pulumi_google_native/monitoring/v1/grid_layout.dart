@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget.dart';
 
 /// A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
@@ -24,7 +24,7 @@ class GridLayout {
     }
     final widgetsValue = widgets;
     if (widgetsValue != null) {
-      map['widgets'] = Input.encodeList<Widget, Map<String, dynamic>>(
+      map['widgets'] = pulumi.Input.encodeList<Widget, Map<String, dynamic>>(
           widgetsValue, (value) => value.toMap());
     }
     return map;
@@ -35,7 +35,7 @@ class GridLayout {
       columns: map['columns'] == null ? null : map['columns'] as String,
       widgets: map['widgets'] == null
           ? null
-          : Input.decodeList<Widget>(
+          : pulumi.Input.decodeList<Widget>(
               map['widgets'],
               (value) =>
                   Widget.fromMap((value as Map).cast<String, dynamic>())),

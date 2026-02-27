@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServiceLevelObjective.
 class GetServiceLevelObjectiveArgs {
-  final Input<String> serviceId;
-  final Input<String> serviceLevelObjectiveId;
-  final Input<String> v3Id;
-  final Input<String> v3Id1;
-  final Input<String>? view;
+  final pulumi.Input<String> serviceId;
+  final pulumi.Input<String> serviceLevelObjectiveId;
+  final pulumi.Input<String> v3Id;
+  final pulumi.Input<String> v3Id1;
+  final pulumi.Input<String>? view;
 
   GetServiceLevelObjectiveArgs({
     required this.serviceId,
@@ -33,12 +33,12 @@ class GetServiceLevelObjectiveArgs {
 
   factory GetServiceLevelObjectiveArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceLevelObjectiveArgs(
-      serviceId: Input.asInput<String>(map['serviceId']),
+      serviceId: pulumi.Input.asInput<String>(map['serviceId']),
       serviceLevelObjectiveId:
-          Input.asInput<String>(map['serviceLevelObjectiveId']),
-      v3Id: Input.asInput<String>(map['v3Id']),
-      v3Id1: Input.asInput<String>(map['v3Id1']),
-      view: Input.asOptionalInput<String>(map['view']),
+          pulumi.Input.asInput<String>(map['serviceLevelObjectiveId']),
+      v3Id: pulumi.Input.asInput<String>(map['v3Id']),
+      v3Id1: pulumi.Input.asInput<String>(map['v3Id1']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

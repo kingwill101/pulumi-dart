@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_enum_type_options.dart';
 import 'google_cloud_contentwarehouse_v1_property_definition_retrieval_importance.dart';
 import 'google_cloud_contentwarehouse_v1_property_definition_schema_source.dart';
@@ -138,7 +138,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
     }
     final schemaSourcesValue = schemaSources;
     if (schemaSourcesValue != null) {
-      map['schemaSources'] = Input.encodeList<
+      map['schemaSources'] = pulumi.Input.encodeList<
           GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource,
           Map<String, dynamic>>(schemaSourcesValue, (value) => value.toMap());
     }
@@ -193,7 +193,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
               .fromValue(map['retrievalImportance'] as String),
       schemaSources: map['schemaSources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource>(
               map['schemaSources'],
               (value) =>

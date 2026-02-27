@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fingerprint_response.dart';
 import 'layer_response.dart';
 
@@ -30,8 +30,9 @@ class ImageOccurrenceResponse {
     map['baseResourceUrl'] = baseResourceUrl;
     map['distance'] = distance;
     map['fingerprint'] = fingerprint.toMap();
-    map['layerInfo'] = Input.encodeList<LayerResponse, Map<String, dynamic>>(
-        layerInfo, (value) => value.toMap());
+    map['layerInfo'] =
+        pulumi.Input.encodeList<LayerResponse, Map<String, dynamic>>(
+            layerInfo, (value) => value.toMap());
     return map;
   }
 
@@ -41,7 +42,7 @@ class ImageOccurrenceResponse {
       distance: map['distance'] as int,
       fingerprint: FingerprintResponse.fromMap(
           (map['fingerprint'] as Map).cast<String, dynamic>()),
-      layerInfo: Input.decodeList<LayerResponse>(
+      layerInfo: pulumi.Input.decodeList<LayerResponse>(
           map['layerInfo'],
           (value) =>
               LayerResponse.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoprovisioning_node_pool_defaults_response.dart';
 import 'resource_limit_response.dart';
 
@@ -38,7 +38,7 @@ class ClusterAutoscalingResponse {
     map['autoscalingProfile'] = autoscalingProfile;
     map['enableNodeAutoprovisioning'] = enableNodeAutoprovisioning;
     map['resourceLimits'] =
-        Input.encodeList<ResourceLimitResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ResourceLimitResponse, Map<String, dynamic>>(
             resourceLimits, (value) => value.toMap());
     return map;
   }
@@ -53,7 +53,7 @@ class ClusterAutoscalingResponse {
                   .cast<String, dynamic>()),
       autoscalingProfile: map['autoscalingProfile'] as String,
       enableNodeAutoprovisioning: map['enableNodeAutoprovisioning'] as bool,
-      resourceLimits: Input.decodeList<ResourceLimitResponse>(
+      resourceLimits: pulumi.Input.decodeList<ResourceLimitResponse>(
           map['resourceLimits'],
           (value) => ResourceLimitResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

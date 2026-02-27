@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'attestor_public_key_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'attestor_public_key_response_binaryauthorization_v1beta1.dart';
 
 /// An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
 class UserOwnedDrydockNoteResponse {
@@ -12,7 +12,7 @@ class UserOwnedDrydockNoteResponse {
   final String noteReference;
 
   /// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
-  final List<AttestorPublicKeyResponse2> publicKeys;
+  final List<AttestorPublicKeyResponseBinaryauthorizationV1beta1> publicKeys;
 
   UserOwnedDrydockNoteResponse({
     required this.delegationServiceAccountEmail,
@@ -24,9 +24,9 @@ class UserOwnedDrydockNoteResponse {
     final map = <String, dynamic>{};
     map['delegationServiceAccountEmail'] = delegationServiceAccountEmail;
     map['noteReference'] = noteReference;
-    map['publicKeys'] =
-        Input.encodeList<AttestorPublicKeyResponse2, Map<String, dynamic>>(
-            publicKeys, (value) => value.toMap());
+    map['publicKeys'] = pulumi.Input.encodeList<
+        AttestorPublicKeyResponseBinaryauthorizationV1beta1,
+        Map<String, dynamic>>(publicKeys, (value) => value.toMap());
     return map;
   }
 
@@ -35,10 +35,12 @@ class UserOwnedDrydockNoteResponse {
       delegationServiceAccountEmail:
           map['delegationServiceAccountEmail'] as String,
       noteReference: map['noteReference'] as String,
-      publicKeys: Input.decodeList<AttestorPublicKeyResponse2>(
+      publicKeys: pulumi.Input.decodeList<
+              AttestorPublicKeyResponseBinaryauthorizationV1beta1>(
           map['publicKeys'],
-          (value) => AttestorPublicKeyResponse2.fromMap(
-              (value as Map).cast<String, dynamic>())),
+          (value) =>
+              AttestorPublicKeyResponseBinaryauthorizationV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

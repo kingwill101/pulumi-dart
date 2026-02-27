@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'conditional_column_set_value.dart';
 import 'convert_row_id_to_column.dart';
 import 'entity_move.dart';
@@ -19,64 +19,64 @@ import 'source_sql_change.dart';
 /// The set of arguments for MappingRule.
 class MappingRuleArgs {
   /// Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.
-  final Input<ConditionalColumnSetValue>? conditionalColumnSetValue;
-  final Input<String> conversionWorkspaceId;
+  final pulumi.Input<ConditionalColumnSetValue>? conditionalColumnSetValue;
+  final pulumi.Input<String> conversionWorkspaceId;
 
   /// Optional. Rule to specify how multiple tables should be converted with an additional rowid column.
-  final Input<ConvertRowIdToColumn>? convertRowidColumn;
+  final pulumi.Input<ConvertRowIdToColumn>? convertRowidColumn;
 
   /// Optional. A human readable name
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. Rule to specify how multiple entities should be relocated into a different schema.
-  final Input<EntityMove>? entityMove;
+  final pulumi.Input<EntityMove>? entityMove;
 
   /// The rule filter
-  final Input<MappingRuleFilter> filter;
+  final pulumi.Input<MappingRuleFilter> filter;
 
   /// Optional. Rule to specify the list of columns to include or exclude from a table.
-  final Input<FilterTableColumns>? filterTableColumns;
-  final Input<String>? location;
+  final pulumi.Input<FilterTableColumns>? filterTableColumns;
+  final pulumi.Input<String>? location;
 
   /// Required. The ID of the rule to create.
-  final Input<String> mappingRuleId;
+  final pulumi.Input<String> mappingRuleId;
 
   /// Optional. Rule to specify how multiple columns should be converted to a different data type.
-  final Input<MultiColumnDatatypeChange>? multiColumnDataTypeChange;
+  final pulumi.Input<MultiColumnDatatypeChange>? multiColumnDataTypeChange;
 
   /// Optional. Rule to specify how multiple entities should be renamed.
-  final Input<MultiEntityRename>? multiEntityRename;
+  final pulumi.Input<MultiEntityRename>? multiEntityRename;
 
   /// Full name of the mapping rule resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{set}/mappingRule/{rule}.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// The order in which the rule is applied. Lower order rules are applied before higher value rules so they may end up being overridden.
-  final Input<String> ruleOrder;
+  final pulumi.Input<String> ruleOrder;
 
   /// The rule scope
-  final Input<MappingRuleRuleScope> ruleScope;
+  final pulumi.Input<MappingRuleRuleScope> ruleScope;
 
   /// Optional. Rule to specify the primary key for a table
-  final Input<SetTablePrimaryKey>? setTablePrimaryKey;
+  final pulumi.Input<SetTablePrimaryKey>? setTablePrimaryKey;
 
   /// Optional. Rule to specify how a single column is converted.
-  final Input<SingleColumnChange>? singleColumnChange;
+  final pulumi.Input<SingleColumnChange>? singleColumnChange;
 
   /// Optional. Rule to specify how a single entity should be renamed.
-  final Input<SingleEntityRename>? singleEntityRename;
+  final pulumi.Input<SingleEntityRename>? singleEntityRename;
 
   /// Optional. Rule to specify how a single package is converted.
-  final Input<SinglePackageChange>? singlePackageChange;
+  final pulumi.Input<SinglePackageChange>? singlePackageChange;
 
   /// Optional. Rule to change the sql code for an entity, for example, function, procedure.
-  final Input<SourceSqlChange>? sourceSqlChange;
+  final pulumi.Input<SourceSqlChange>? sourceSqlChange;
 
   /// Optional. The mapping rule state
-  final Input<MappingRuleState>? state;
+  final pulumi.Input<MappingRuleState>? state;
 
   MappingRuleArgs({
     this.conditionalColumnSetValue,
@@ -107,14 +107,14 @@ class MappingRuleArgs {
     final map = <String, dynamic>{};
     final conditionalColumnSetValueValue = conditionalColumnSetValue;
     if (conditionalColumnSetValueValue != null) {
-      map['conditionalColumnSetValue'] = Input.mapOptionalInputValue<
+      map['conditionalColumnSetValue'] = pulumi.Input.mapOptionalInputValue<
               ConditionalColumnSetValue, Map<String, dynamic>>(
           conditionalColumnSetValueValue, (value) => value.toMap());
     }
     map['conversionWorkspaceId'] = conversionWorkspaceId;
     final convertRowidColumnValue = convertRowidColumn;
     if (convertRowidColumnValue != null) {
-      map['convertRowidColumn'] = Input.mapOptionalInputValue<
+      map['convertRowidColumn'] = pulumi.Input.mapOptionalInputValue<
               ConvertRowIdToColumn, Map<String, dynamic>>(
           convertRowidColumnValue, (value) => value.toMap());
     }
@@ -125,17 +125,17 @@ class MappingRuleArgs {
     final entityMoveValue = entityMove;
     if (entityMoveValue != null) {
       map['entityMove'] =
-          Input.mapOptionalInputValue<EntityMove, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<EntityMove, Map<String, dynamic>>(
               entityMoveValue, (value) => value.toMap());
     }
     map['filter'] =
-        Input.mapInputValue<MappingRuleFilter, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<MappingRuleFilter, Map<String, dynamic>>(
             filter, (value) => value.toMap());
     final filterTableColumnsValue = filterTableColumns;
     if (filterTableColumnsValue != null) {
-      map['filterTableColumns'] =
-          Input.mapOptionalInputValue<FilterTableColumns, Map<String, dynamic>>(
-              filterTableColumnsValue, (value) => value.toMap());
+      map['filterTableColumns'] = pulumi.Input.mapOptionalInputValue<
+              FilterTableColumns, Map<String, dynamic>>(
+          filterTableColumnsValue, (value) => value.toMap());
     }
     final locationValue = location;
     if (locationValue != null) {
@@ -144,15 +144,15 @@ class MappingRuleArgs {
     map['mappingRuleId'] = mappingRuleId;
     final multiColumnDataTypeChangeValue = multiColumnDataTypeChange;
     if (multiColumnDataTypeChangeValue != null) {
-      map['multiColumnDataTypeChange'] = Input.mapOptionalInputValue<
+      map['multiColumnDataTypeChange'] = pulumi.Input.mapOptionalInputValue<
               MultiColumnDatatypeChange, Map<String, dynamic>>(
           multiColumnDataTypeChangeValue, (value) => value.toMap());
     }
     final multiEntityRenameValue = multiEntityRename;
     if (multiEntityRenameValue != null) {
-      map['multiEntityRename'] =
-          Input.mapOptionalInputValue<MultiEntityRename, Map<String, dynamic>>(
-              multiEntityRenameValue, (value) => value.toMap());
+      map['multiEntityRename'] = pulumi.Input.mapOptionalInputValue<
+              MultiEntityRename, Map<String, dynamic>>(
+          multiEntityRenameValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -167,42 +167,43 @@ class MappingRuleArgs {
       map['requestId'] = requestIdValue;
     }
     map['ruleOrder'] = ruleOrder;
-    map['ruleScope'] = Input.mapInputValue<MappingRuleRuleScope, String>(
+    map['ruleScope'] = pulumi.Input.mapInputValue<MappingRuleRuleScope, String>(
         ruleScope, (value) => value.value);
     final setTablePrimaryKeyValue = setTablePrimaryKey;
     if (setTablePrimaryKeyValue != null) {
-      map['setTablePrimaryKey'] =
-          Input.mapOptionalInputValue<SetTablePrimaryKey, Map<String, dynamic>>(
-              setTablePrimaryKeyValue, (value) => value.toMap());
+      map['setTablePrimaryKey'] = pulumi.Input.mapOptionalInputValue<
+              SetTablePrimaryKey, Map<String, dynamic>>(
+          setTablePrimaryKeyValue, (value) => value.toMap());
     }
     final singleColumnChangeValue = singleColumnChange;
     if (singleColumnChangeValue != null) {
-      map['singleColumnChange'] =
-          Input.mapOptionalInputValue<SingleColumnChange, Map<String, dynamic>>(
-              singleColumnChangeValue, (value) => value.toMap());
+      map['singleColumnChange'] = pulumi.Input.mapOptionalInputValue<
+              SingleColumnChange, Map<String, dynamic>>(
+          singleColumnChangeValue, (value) => value.toMap());
     }
     final singleEntityRenameValue = singleEntityRename;
     if (singleEntityRenameValue != null) {
-      map['singleEntityRename'] =
-          Input.mapOptionalInputValue<SingleEntityRename, Map<String, dynamic>>(
-              singleEntityRenameValue, (value) => value.toMap());
+      map['singleEntityRename'] = pulumi.Input.mapOptionalInputValue<
+              SingleEntityRename, Map<String, dynamic>>(
+          singleEntityRenameValue, (value) => value.toMap());
     }
     final singlePackageChangeValue = singlePackageChange;
     if (singlePackageChangeValue != null) {
-      map['singlePackageChange'] = Input.mapOptionalInputValue<
+      map['singlePackageChange'] = pulumi.Input.mapOptionalInputValue<
               SinglePackageChange, Map<String, dynamic>>(
           singlePackageChangeValue, (value) => value.toMap());
     }
     final sourceSqlChangeValue = sourceSqlChange;
     if (sourceSqlChangeValue != null) {
-      map['sourceSqlChange'] =
-          Input.mapOptionalInputValue<SourceSqlChange, Map<String, dynamic>>(
-              sourceSqlChangeValue, (value) => value.toMap());
+      map['sourceSqlChange'] = pulumi.Input.mapOptionalInputValue<
+          SourceSqlChange,
+          Map<String, dynamic>>(sourceSqlChangeValue, (value) => value.toMap());
     }
     final stateValue = state;
     if (stateValue != null) {
-      map['state'] = Input.mapOptionalInputValue<MappingRuleState, String>(
-          stateValue, (value) => value.value);
+      map['state'] =
+          pulumi.Input.mapOptionalInputValue<MappingRuleState, String>(
+              stateValue, (value) => value.value);
     }
     return map;
   }
@@ -210,40 +211,40 @@ class MappingRuleArgs {
   factory MappingRuleArgs.fromMap(Map<String, dynamic> map) {
     return MappingRuleArgs(
       conditionalColumnSetValue:
-          Input.asOptionalInput<ConditionalColumnSetValue>(
+          pulumi.Input.asOptionalInput<ConditionalColumnSetValue>(
               map['conditionalColumnSetValue']),
       conversionWorkspaceId:
-          Input.asInput<String>(map['conversionWorkspaceId']),
-      convertRowidColumn: Input.asOptionalInput<ConvertRowIdToColumn>(
+          pulumi.Input.asInput<String>(map['conversionWorkspaceId']),
+      convertRowidColumn: pulumi.Input.asOptionalInput<ConvertRowIdToColumn>(
           map['convertRowidColumn']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      entityMove: Input.asOptionalInput<EntityMove>(map['entityMove']),
-      filter: Input.asInput<MappingRuleFilter>(map['filter']),
-      filterTableColumns:
-          Input.asOptionalInput<FilterTableColumns>(map['filterTableColumns']),
-      location: Input.asOptionalInput<String>(map['location']),
-      mappingRuleId: Input.asInput<String>(map['mappingRuleId']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      entityMove: pulumi.Input.asOptionalInput<EntityMove>(map['entityMove']),
+      filter: pulumi.Input.asInput<MappingRuleFilter>(map['filter']),
+      filterTableColumns: pulumi.Input.asOptionalInput<FilterTableColumns>(
+          map['filterTableColumns']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      mappingRuleId: pulumi.Input.asInput<String>(map['mappingRuleId']),
       multiColumnDataTypeChange:
-          Input.asOptionalInput<MultiColumnDatatypeChange>(
+          pulumi.Input.asOptionalInput<MultiColumnDatatypeChange>(
               map['multiColumnDataTypeChange']),
-      multiEntityRename:
-          Input.asOptionalInput<MultiEntityRename>(map['multiEntityRename']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      ruleOrder: Input.asInput<String>(map['ruleOrder']),
-      ruleScope: Input.asInput<MappingRuleRuleScope>(map['ruleScope']),
-      setTablePrimaryKey:
-          Input.asOptionalInput<SetTablePrimaryKey>(map['setTablePrimaryKey']),
-      singleColumnChange:
-          Input.asOptionalInput<SingleColumnChange>(map['singleColumnChange']),
-      singleEntityRename:
-          Input.asOptionalInput<SingleEntityRename>(map['singleEntityRename']),
-      singlePackageChange: Input.asOptionalInput<SinglePackageChange>(
+      multiEntityRename: pulumi.Input.asOptionalInput<MultiEntityRename>(
+          map['multiEntityRename']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      ruleOrder: pulumi.Input.asInput<String>(map['ruleOrder']),
+      ruleScope: pulumi.Input.asInput<MappingRuleRuleScope>(map['ruleScope']),
+      setTablePrimaryKey: pulumi.Input.asOptionalInput<SetTablePrimaryKey>(
+          map['setTablePrimaryKey']),
+      singleColumnChange: pulumi.Input.asOptionalInput<SingleColumnChange>(
+          map['singleColumnChange']),
+      singleEntityRename: pulumi.Input.asOptionalInput<SingleEntityRename>(
+          map['singleEntityRename']),
+      singlePackageChange: pulumi.Input.asOptionalInput<SinglePackageChange>(
           map['singlePackageChange']),
       sourceSqlChange:
-          Input.asOptionalInput<SourceSqlChange>(map['sourceSqlChange']),
-      state: Input.asOptionalInput<MappingRuleState>(map['state']),
+          pulumi.Input.asOptionalInput<SourceSqlChange>(map['sourceSqlChange']),
+      state: pulumi.Input.asOptionalInput<MappingRuleState>(map['state']),
     );
   }
 }

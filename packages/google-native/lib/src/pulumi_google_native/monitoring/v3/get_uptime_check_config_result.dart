@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'content_matcher_response.dart';
 import 'http_check_response.dart';
 import 'internal_checker_response.dart';
-import 'monitored_resource_response2.dart';
+import 'monitored_resource_response_monitoring_v3.dart';
 import 'resource_group_response.dart';
 import 'synthetic_monitor_target_response.dart';
 import 'tcp_check_response.dart';
@@ -30,7 +30,7 @@ class GetUptimeCheckConfigResult {
   final bool isInternal;
 
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
-  final MonitoredResourceResponse2 monitoredResource;
+  final MonitoredResourceResponseMonitoringV3 monitoredResource;
 
   /// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
   final String name;
@@ -78,12 +78,12 @@ class GetUptimeCheckConfigResult {
     final map = <String, dynamic>{};
     map['checkerType'] = checkerType;
     map['contentMatchers'] =
-        Input.encodeList<ContentMatcherResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ContentMatcherResponse, Map<String, dynamic>>(
             contentMatchers, (value) => value.toMap());
     map['displayName'] = displayName;
     map['httpCheck'] = httpCheck.toMap();
     map['internalCheckers'] =
-        Input.encodeList<InternalCheckerResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<InternalCheckerResponse, Map<String, dynamic>>(
             internalCheckers, (value) => value.toMap());
     map['isInternal'] = isInternal;
     map['monitoredResource'] = monitoredResource.toMap();
@@ -101,19 +101,19 @@ class GetUptimeCheckConfigResult {
   factory GetUptimeCheckConfigResult.fromMap(Map<String, dynamic> map) {
     return GetUptimeCheckConfigResult(
       checkerType: map['checkerType'] as String,
-      contentMatchers: Input.decodeList<ContentMatcherResponse>(
+      contentMatchers: pulumi.Input.decodeList<ContentMatcherResponse>(
           map['contentMatchers'],
           (value) => ContentMatcherResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       displayName: map['displayName'] as String,
       httpCheck: HttpCheckResponse.fromMap(
           (map['httpCheck'] as Map).cast<String, dynamic>()),
-      internalCheckers: Input.decodeList<InternalCheckerResponse>(
+      internalCheckers: pulumi.Input.decodeList<InternalCheckerResponse>(
           map['internalCheckers'],
           (value) => InternalCheckerResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       isInternal: map['isInternal'] as bool,
-      monitoredResource: MonitoredResourceResponse2.fromMap(
+      monitoredResource: MonitoredResourceResponseMonitoringV3.fromMap(
           (map['monitoredResource'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       period: map['period'] as String,

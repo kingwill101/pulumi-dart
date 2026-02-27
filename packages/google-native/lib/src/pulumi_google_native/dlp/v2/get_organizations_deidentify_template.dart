@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_organizations_deidentify_template_args.dart';
 import 'get_organizations_deidentify_template_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_organizations_deidentify_template_result.dart';
 Future<GetOrganizationsDeidentifyTemplateResult>
     getOrganizationsDeidentifyTemplate(
   GetOrganizationsDeidentifyTemplateArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:dlp/v2:getOrganizationsDeidentifyTemplate',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationsDeidentifyTemplateResult.fromMap(result);
 }

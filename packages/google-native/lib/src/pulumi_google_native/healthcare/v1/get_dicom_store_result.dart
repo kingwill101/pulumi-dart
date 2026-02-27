@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_healthcare_v1_dicom_stream_config_response.dart';
-import 'notification_config_response3.dart';
+import 'notification_config_response_healthcare_v1.dart';
 
 /// Result data returned by getDicomStore.
 class GetDicomStoreResult {
@@ -13,7 +13,7 @@ class GetDicomStoreResult {
   final String name;
 
   /// Notification destination for new DICOM instances. Supplied by the client.
-  final NotificationConfigResponse3 notificationConfig;
+  final NotificationConfigResponseHealthcareV1 notificationConfig;
 
   /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
   final List<GoogleCloudHealthcareV1DicomStreamConfigResponse> streamConfigs;
@@ -30,7 +30,7 @@ class GetDicomStoreResult {
     map['labels'] = labels;
     map['name'] = name;
     map['notificationConfig'] = notificationConfig.toMap();
-    map['streamConfigs'] = Input.encodeList<
+    map['streamConfigs'] = pulumi.Input.encodeList<
         GoogleCloudHealthcareV1DicomStreamConfigResponse,
         Map<String, dynamic>>(streamConfigs, (value) => value.toMap());
     return map;
@@ -40,14 +40,13 @@ class GetDicomStoreResult {
     return GetDicomStoreResult(
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      notificationConfig: NotificationConfigResponse3.fromMap(
+      notificationConfig: NotificationConfigResponseHealthcareV1.fromMap(
           (map['notificationConfig'] as Map).cast<String, dynamic>()),
-      streamConfigs:
-          Input.decodeList<GoogleCloudHealthcareV1DicomStreamConfigResponse>(
-              map['streamConfigs'],
-              (value) =>
-                  GoogleCloudHealthcareV1DicomStreamConfigResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      streamConfigs: pulumi.Input.decodeList<
+              GoogleCloudHealthcareV1DicomStreamConfigResponse>(
+          map['streamConfigs'],
+          (value) => GoogleCloudHealthcareV1DicomStreamConfigResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_upgrade_gkeupgrade_feature_condition_response.dart';
 import 'cluster_upgrade_gkeupgrade_state_response.dart';
 
@@ -19,10 +19,10 @@ class ClusterUpgradeGKEUpgradeFeatureStateResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['conditions'] = Input.encodeList<
+    map['conditions'] = pulumi.Input.encodeList<
         ClusterUpgradeGKEUpgradeFeatureConditionResponse,
         Map<String, dynamic>>(conditions, (value) => value.toMap());
-    map['upgradeState'] = Input.encodeList<
+    map['upgradeState'] = pulumi.Input.encodeList<
         ClusterUpgradeGKEUpgradeStateResponse,
         Map<String, dynamic>>(upgradeState, (value) => value.toMap());
     return map;
@@ -31,16 +31,16 @@ class ClusterUpgradeGKEUpgradeFeatureStateResponse {
   factory ClusterUpgradeGKEUpgradeFeatureStateResponse.fromMap(
       Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeFeatureStateResponse(
-      conditions:
-          Input.decodeList<ClusterUpgradeGKEUpgradeFeatureConditionResponse>(
-              map['conditions'],
-              (value) =>
-                  ClusterUpgradeGKEUpgradeFeatureConditionResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      upgradeState: Input.decodeList<ClusterUpgradeGKEUpgradeStateResponse>(
-          map['upgradeState'],
-          (value) => ClusterUpgradeGKEUpgradeStateResponse.fromMap(
+      conditions: pulumi.Input.decodeList<
+              ClusterUpgradeGKEUpgradeFeatureConditionResponse>(
+          map['conditions'],
+          (value) => ClusterUpgradeGKEUpgradeFeatureConditionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
+      upgradeState:
+          pulumi.Input.decodeList<ClusterUpgradeGKEUpgradeStateResponse>(
+              map['upgradeState'],
+              (value) => ClusterUpgradeGKEUpgradeStateResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

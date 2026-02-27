@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_delivery_pipeline_args.dart';
 import 'get_delivery_pipeline_result.dart';
 
 /// Gets details of a single DeliveryPipeline.
 Future<GetDeliveryPipelineResult> getDeliveryPipeline(
   GetDeliveryPipelineArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:clouddeploy/v1:getDeliveryPipeline',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeliveryPipelineResult.fromMap(result);
 }

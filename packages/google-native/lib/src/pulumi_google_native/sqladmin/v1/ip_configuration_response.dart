@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'acl_entry_response.dart';
-import 'psc_config_response5.dart';
+import 'psc_config_response_sqladmin_v1.dart';
 
 /// IP Management configuration.
 class IpConfigurationResponse {
@@ -22,7 +22,7 @@ class IpConfigurationResponse {
   final String privateNetwork;
 
   /// PSC settings for this instance.
-  final PscConfigResponse5 pscConfig;
+  final PscConfigResponseSqladminV1 pscConfig;
 
   /// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
   final bool requireSsl;
@@ -45,7 +45,7 @@ class IpConfigurationResponse {
     final map = <String, dynamic>{};
     map['allocatedIpRange'] = allocatedIpRange;
     map['authorizedNetworks'] =
-        Input.encodeList<AclEntryResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AclEntryResponse, Map<String, dynamic>>(
             authorizedNetworks, (value) => value.toMap());
     map['enablePrivatePathForGoogleCloudServices'] =
         enablePrivatePathForGoogleCloudServices;
@@ -60,7 +60,7 @@ class IpConfigurationResponse {
   factory IpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IpConfigurationResponse(
       allocatedIpRange: map['allocatedIpRange'] as String,
-      authorizedNetworks: Input.decodeList<AclEntryResponse>(
+      authorizedNetworks: pulumi.Input.decodeList<AclEntryResponse>(
           map['authorizedNetworks'],
           (value) =>
               AclEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
@@ -68,7 +68,7 @@ class IpConfigurationResponse {
           map['enablePrivatePathForGoogleCloudServices'] as bool,
       ipv4Enabled: map['ipv4Enabled'] as bool,
       privateNetwork: map['privateNetwork'] as String,
-      pscConfig: PscConfigResponse5.fromMap(
+      pscConfig: PscConfigResponseSqladminV1.fromMap(
           (map['pscConfig'] as Map).cast<String, dynamic>()),
       requireSsl: map['requireSsl'] as bool,
       sslMode: map['sslMode'] as String,

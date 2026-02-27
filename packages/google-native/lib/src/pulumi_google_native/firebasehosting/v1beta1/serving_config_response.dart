@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'header_response5.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'header_response_firebasehosting_v1beta1.dart';
 import 'i18n_config_response.dart';
 import 'redirect_response.dart';
 import 'rewrite_response.dart';
@@ -15,7 +15,7 @@ class ServingConfigResponse {
   final bool cleanUrls;
 
   /// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
-  final List<HeaderResponse5> headers;
+  final List<HeaderResponseFirebasehostingV1beta1> headers;
 
   /// Optional. Defines i18n rewrite behavior.
   final I18nConfigResponse i18n;
@@ -43,13 +43,16 @@ class ServingConfigResponse {
     final map = <String, dynamic>{};
     map['appAssociation'] = appAssociation;
     map['cleanUrls'] = cleanUrls;
-    map['headers'] = Input.encodeList<HeaderResponse5, Map<String, dynamic>>(
-        headers, (value) => value.toMap());
+    map['headers'] = pulumi.Input.encodeList<
+        HeaderResponseFirebasehostingV1beta1,
+        Map<String, dynamic>>(headers, (value) => value.toMap());
     map['i18n'] = i18n.toMap();
-    map['redirects'] = Input.encodeList<RedirectResponse, Map<String, dynamic>>(
-        redirects, (value) => value.toMap());
-    map['rewrites'] = Input.encodeList<RewriteResponse, Map<String, dynamic>>(
-        rewrites, (value) => value.toMap());
+    map['redirects'] =
+        pulumi.Input.encodeList<RedirectResponse, Map<String, dynamic>>(
+            redirects, (value) => value.toMap());
+    map['rewrites'] =
+        pulumi.Input.encodeList<RewriteResponse, Map<String, dynamic>>(
+            rewrites, (value) => value.toMap());
     map['trailingSlashBehavior'] = trailingSlashBehavior;
     return map;
   }
@@ -58,17 +61,17 @@ class ServingConfigResponse {
     return ServingConfigResponse(
       appAssociation: map['appAssociation'] as String,
       cleanUrls: map['cleanUrls'] as bool,
-      headers: Input.decodeList<HeaderResponse5>(
+      headers: pulumi.Input.decodeList<HeaderResponseFirebasehostingV1beta1>(
           map['headers'],
-          (value) =>
-              HeaderResponse5.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => HeaderResponseFirebasehostingV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>())),
       i18n: I18nConfigResponse.fromMap(
           (map['i18n'] as Map).cast<String, dynamic>()),
-      redirects: Input.decodeList<RedirectResponse>(
+      redirects: pulumi.Input.decodeList<RedirectResponse>(
           map['redirects'],
           (value) =>
               RedirectResponse.fromMap((value as Map).cast<String, dynamic>())),
-      rewrites: Input.decodeList<RewriteResponse>(
+      rewrites: pulumi.Input.decodeList<RewriteResponse>(
           map['rewrites'],
           (value) =>
               RewriteResponse.fromMap((value as Map).cast<String, dynamic>())),

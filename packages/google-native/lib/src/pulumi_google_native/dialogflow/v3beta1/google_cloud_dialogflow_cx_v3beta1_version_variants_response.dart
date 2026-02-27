@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_version_variants_variant_response.dart';
 
 /// A list of flow version variants.
@@ -15,7 +15,7 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['variants'] = Input.encodeList<
+    map['variants'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse,
         Map<String, dynamic>>(variants, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsResponse {
   factory GoogleCloudDialogflowCxV3beta1VersionVariantsResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1VersionVariantsResponse(
-      variants: Input.decodeList<
+      variants: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse>(
           map['variants'],
           (value) =>

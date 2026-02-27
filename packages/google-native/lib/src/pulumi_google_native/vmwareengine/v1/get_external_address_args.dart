@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getExternalAddress.
 class GetExternalAddressArgs {
-  final Input<String> externalAddressId;
-  final Input<String> location;
-  final Input<String> privateCloudId;
-  final Input<String>? project;
+  final pulumi.Input<String> externalAddressId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> privateCloudId;
+  final pulumi.Input<String>? project;
 
   GetExternalAddressArgs({
     required this.externalAddressId,
@@ -30,10 +30,10 @@ class GetExternalAddressArgs {
 
   factory GetExternalAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalAddressArgs(
-      externalAddressId: Input.asInput<String>(map['externalAddressId']),
-      location: Input.asInput<String>(map['location']),
-      privateCloudId: Input.asInput<String>(map['privateCloudId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      externalAddressId: pulumi.Input.asInput<String>(map['externalAddressId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      privateCloudId: pulumi.Input.asInput<String>(map['privateCloudId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

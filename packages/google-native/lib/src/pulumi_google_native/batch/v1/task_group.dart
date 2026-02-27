@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment.dart';
 import 'task_group_scheduling_policy.dart';
 import 'task_spec.dart';
@@ -71,7 +71,7 @@ class TaskGroup {
     final taskEnvironmentsValue = taskEnvironments;
     if (taskEnvironmentsValue != null) {
       map['taskEnvironments'] =
-          Input.encodeList<Environment, Map<String, dynamic>>(
+          pulumi.Input.encodeList<Environment, Map<String, dynamic>>(
               taskEnvironmentsValue, (value) => value.toMap());
     }
     map['taskSpec'] = taskSpec.toMap();
@@ -97,7 +97,7 @@ class TaskGroup {
           : map['taskCountPerNode'] as String,
       taskEnvironments: map['taskEnvironments'] == null
           ? null
-          : Input.decodeList<Environment>(
+          : pulumi.Input.decodeList<Environment>(
               map['taskEnvironments'],
               (value) =>
                   Environment.fromMap((value as Map).cast<String, dynamic>())),

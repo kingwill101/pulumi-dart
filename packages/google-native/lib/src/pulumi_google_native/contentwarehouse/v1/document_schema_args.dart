@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_property_definition.dart';
 
 /// The set of arguments for DocumentSchema.
 class DocumentSchemaArgs {
   /// Schema description.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the schema given by the user. Must be unique per project.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Document Type, true refers the document is a folder, otherwise it is a typical document.
-  final Input<bool>? documentIsFolder;
-  final Input<String>? location;
+  final pulumi.Input<bool>? documentIsFolder;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Document details.
-  final Input<List<GoogleCloudContentwarehouseV1PropertyDefinition>>?
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1PropertyDefinition>>?
       propertyDefinitions;
 
   DocumentSchemaArgs({
@@ -58,11 +58,11 @@ class DocumentSchemaArgs {
     }
     final propertyDefinitionsValue = propertyDefinitions;
     if (propertyDefinitionsValue != null) {
-      map['propertyDefinitions'] = Input.mapOptionalInputValue<
+      map['propertyDefinitions'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudContentwarehouseV1PropertyDefinition>,
               List<Map<String, dynamic>>>(
           propertyDefinitionsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               GoogleCloudContentwarehouseV1PropertyDefinition,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -71,13 +71,14 @@ class DocumentSchemaArgs {
 
   factory DocumentSchemaArgs.fromMap(Map<String, dynamic> map) {
     return DocumentSchemaArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      documentIsFolder: Input.asOptionalInput<bool>(map['documentIsFolder']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      propertyDefinitions: Input.asOptionalInput<
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      documentIsFolder:
+          pulumi.Input.asOptionalInput<bool>(map['documentIsFolder']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      propertyDefinitions: pulumi.Input.asOptionalInput<
               List<GoogleCloudContentwarehouseV1PropertyDefinition>>(
           map['propertyDefinitions']),
     );

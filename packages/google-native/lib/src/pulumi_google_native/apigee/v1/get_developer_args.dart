@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDeveloper.
 class GetDeveloperArgs {
-  final Input<String>? action;
-  final Input<String> developerId;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? action;
+  final pulumi.Input<String> developerId;
+  final pulumi.Input<String> organizationId;
 
   GetDeveloperArgs({
     this.action,
@@ -27,9 +27,9 @@ class GetDeveloperArgs {
 
   factory GetDeveloperArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperArgs(
-      action: Input.asOptionalInput<String>(map['action']),
-      developerId: Input.asInput<String>(map['developerId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      action: pulumi.Input.asOptionalInput<String>(map['action']),
+      developerId: pulumi.Input.asInput<String>(map['developerId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

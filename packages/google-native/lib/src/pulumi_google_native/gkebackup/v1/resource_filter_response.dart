@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_kind_response.dart';
 
 /// ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
@@ -23,7 +23,7 @@ class ResourceFilterResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['groupKinds'] =
-        Input.encodeList<GroupKindResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GroupKindResponse, Map<String, dynamic>>(
             groupKinds, (value) => value.toMap());
     map['jsonPath'] = jsonPath;
     map['namespaces'] = namespaces;
@@ -32,7 +32,7 @@ class ResourceFilterResponse {
 
   factory ResourceFilterResponse.fromMap(Map<String, dynamic> map) {
     return ResourceFilterResponse(
-      groupKinds: Input.decodeList<GroupKindResponse>(
+      groupKinds: pulumi.Input.decodeList<GroupKindResponse>(
           map['groupKinds'],
           (value) => GroupKindResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

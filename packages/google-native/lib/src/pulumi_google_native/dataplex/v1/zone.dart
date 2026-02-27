@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_asset_status_response.dart';
 import 'google_cloud_dataplex_v1_zone_discovery_spec_response.dart';
 import 'google_cloud_dataplex_v1_zone_resource_spec_response.dart';
@@ -6,59 +6,61 @@ import 'zone_args.dart';
 
 /// Creates a zone resource within a lake.
 /// Auto-naming is currently not supported for this resource.
-class Zone extends CustomResource {
+class Zone extends pulumi.CustomResource {
   /// Aggregated status of the underlying assets of the zone.
-  late final Output<GoogleCloudDataplexV1AssetStatusResponse> assetStatus;
+  late final pulumi.Output<GoogleCloudDataplexV1AssetStatusResponse>
+      assetStatus;
 
   /// The time when the zone was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Description of the zone.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Optional. Specification of the discovery feature applied to data in this zone.
-  late final Output<GoogleCloudDataplexV1ZoneDiscoverySpecResponse>
+  late final pulumi.Output<GoogleCloudDataplexV1ZoneDiscoverySpecResponse>
       discoverySpec;
 
   /// Optional. User friendly display name.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Optional. User defined labels for the zone.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> lakeId;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> lakeId;
+  late final pulumi.Output<String> location;
 
   /// The relative resource name of the zone, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// Specification of the resources that are referenced by the assets within this zone.
-  late final Output<GoogleCloudDataplexV1ZoneResourceSpecResponse> resourceSpec;
+  late final pulumi.Output<GoogleCloudDataplexV1ZoneResourceSpecResponse>
+      resourceSpec;
 
   /// Current state of the zone.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Immutable. The type of the zone.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time when the zone was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
-  late final Output<String> zoneId;
+  late final pulumi.Output<String> zoneId;
 
   Zone(
     String name, {
     ZoneArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:dataplex/v1:Zone',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.assetStatus =
         registerOutput<GoogleCloudDataplexV1AssetStatusResponse>('assetStatus');

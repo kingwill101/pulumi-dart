@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'runtime_access_config.dart';
 import 'runtime_software_config.dart';
-import 'virtual_machine2.dart';
+import 'virtual_machine_notebooks_v1.dart';
 
 /// The set of arguments for Runtime.
 class RuntimeArgs {
   /// The config settings for accessing runtime.
-  final Input<RuntimeAccessConfig>? accessConfig;
+  final pulumi.Input<RuntimeAccessConfig>? accessConfig;
 
   /// Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// Idempotent request UUID.
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Required. User-defined unique ID of this Runtime.
-  final Input<String> runtimeId;
+  final pulumi.Input<String> runtimeId;
 
   /// The config settings for software inside the runtime.
-  final Input<RuntimeSoftwareConfig>? softwareConfig;
+  final pulumi.Input<RuntimeSoftwareConfig>? softwareConfig;
 
   /// Use a Compute Engine VM image to start the managed notebook instance.
-  final Input<VirtualMachine2>? virtualMachine;
+  final pulumi.Input<VirtualMachineNotebooksV1>? virtualMachine;
 
   RuntimeArgs({
     this.accessConfig,
@@ -42,7 +42,8 @@ class RuntimeArgs {
     final map = <String, dynamic>{};
     final accessConfigValue = accessConfig;
     if (accessConfigValue != null) {
-      map['accessConfig'] = Input.mapOptionalInputValue<RuntimeAccessConfig,
+      map['accessConfig'] = pulumi.Input.mapOptionalInputValue<
+          RuntimeAccessConfig,
           Map<String, dynamic>>(accessConfigValue, (value) => value.toMap());
     }
     final labelsValue = labels;
@@ -64,31 +65,32 @@ class RuntimeArgs {
     map['runtimeId'] = runtimeId;
     final softwareConfigValue = softwareConfig;
     if (softwareConfigValue != null) {
-      map['softwareConfig'] = Input.mapOptionalInputValue<RuntimeSoftwareConfig,
+      map['softwareConfig'] = pulumi.Input.mapOptionalInputValue<
+          RuntimeSoftwareConfig,
           Map<String, dynamic>>(softwareConfigValue, (value) => value.toMap());
     }
     final virtualMachineValue = virtualMachine;
     if (virtualMachineValue != null) {
-      map['virtualMachine'] =
-          Input.mapOptionalInputValue<VirtualMachine2, Map<String, dynamic>>(
-              virtualMachineValue, (value) => value.toMap());
+      map['virtualMachine'] = pulumi.Input.mapOptionalInputValue<
+          VirtualMachineNotebooksV1,
+          Map<String, dynamic>>(virtualMachineValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory RuntimeArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeArgs(
-      accessConfig:
-          Input.asOptionalInput<RuntimeAccessConfig>(map['accessConfig']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      runtimeId: Input.asInput<String>(map['runtimeId']),
-      softwareConfig:
-          Input.asOptionalInput<RuntimeSoftwareConfig>(map['softwareConfig']),
-      virtualMachine:
-          Input.asOptionalInput<VirtualMachine2>(map['virtualMachine']),
+      accessConfig: pulumi.Input.asOptionalInput<RuntimeAccessConfig>(
+          map['accessConfig']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      runtimeId: pulumi.Input.asInput<String>(map['runtimeId']),
+      softwareConfig: pulumi.Input.asOptionalInput<RuntimeSoftwareConfig>(
+          map['softwareConfig']),
+      virtualMachine: pulumi.Input.asOptionalInput<VirtualMachineNotebooksV1>(
+          map['virtualMachine']),
     );
   }
 }

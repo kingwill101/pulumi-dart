@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_library_settings.dart';
 import 'method_settings.dart';
 import 'publishing_organization.dart';
@@ -75,13 +75,13 @@ class Publishing {
     final librarySettingsValue = librarySettings;
     if (librarySettingsValue != null) {
       map['librarySettings'] =
-          Input.encodeList<ClientLibrarySettings, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ClientLibrarySettings, Map<String, dynamic>>(
               librarySettingsValue, (value) => value.toMap());
     }
     final methodSettingsValue = methodSettings;
     if (methodSettingsValue != null) {
       map['methodSettings'] =
-          Input.encodeList<MethodSettings, Map<String, dynamic>>(
+          pulumi.Input.encodeList<MethodSettings, Map<String, dynamic>>(
               methodSettingsValue, (value) => value.toMap());
     }
     final newIssueUriValue = newIssueUri;
@@ -116,13 +116,13 @@ class Publishing {
           map['githubLabel'] == null ? null : map['githubLabel'] as String,
       librarySettings: map['librarySettings'] == null
           ? null
-          : Input.decodeList<ClientLibrarySettings>(
+          : pulumi.Input.decodeList<ClientLibrarySettings>(
               map['librarySettings'],
               (value) => ClientLibrarySettings.fromMap(
                   (value as Map).cast<String, dynamic>())),
       methodSettings: map['methodSettings'] == null
           ? null
-          : Input.decodeList<MethodSettings>(
+          : pulumi.Input.decodeList<MethodSettings>(
               map['methodSettings'],
               (value) => MethodSettings.fromMap(
                   (value as Map).cast<String, dynamic>())),

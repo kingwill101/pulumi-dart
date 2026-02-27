@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_manager_resize_request_status_error_errors_item_error_details_item_response.dart';
 
 class InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse {
@@ -28,7 +28,7 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['code'] = code;
-    map['errorDetails'] = Input.encodeList<
+    map['errorDetails'] = pulumi.Input.encodeList<
         InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse,
         Map<String, dynamic>>(errorDetails, (value) => value.toMap());
     map['location'] = location;
@@ -40,7 +40,7 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse {
       Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse(
       code: map['code'] as String,
-      errorDetails: Input.decodeList<
+      errorDetails: pulumi.Input.decodeList<
               InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse>(
           map['errorDetails'],
           (value) =>

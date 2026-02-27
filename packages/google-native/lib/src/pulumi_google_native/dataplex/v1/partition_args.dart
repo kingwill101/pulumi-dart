@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Partition.
 class PartitionArgs {
-  final Input<String> entityId;
+  final pulumi.Input<String> entityId;
 
   /// Optional. The etag for this partition.
-  final Input<String>? etag;
-  final Input<String> lakeId;
+  final pulumi.Input<String>? etag;
+  final pulumi.Input<String> lakeId;
 
   /// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
-  final Input<List<String>> values;
-  final Input<String>? zone;
+  final pulumi.Input<List<String>> values;
+  final pulumi.Input<String>? zone;
 
   PartitionArgs({
     required this.entityId,
@@ -54,13 +54,13 @@ class PartitionArgs {
 
   factory PartitionArgs.fromMap(Map<String, dynamic> map) {
     return PartitionArgs(
-      entityId: Input.asInput<String>(map['entityId']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      lakeId: Input.asInput<String>(map['lakeId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      values: Input.asInput<List<String>>(map['values']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      entityId: pulumi.Input.asInput<String>(map['entityId']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      lakeId: pulumi.Input.asInput<String>(map['lakeId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      values: pulumi.Input.asInput<List<String>>(map['values']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

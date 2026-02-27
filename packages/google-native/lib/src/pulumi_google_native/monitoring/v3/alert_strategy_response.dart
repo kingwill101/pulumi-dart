@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notification_channel_strategy_response.dart';
 import 'notification_rate_limit_response.dart';
 
@@ -24,7 +24,7 @@ class AlertStrategyResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['autoClose'] = autoClose;
-    map['notificationChannelStrategy'] = Input.encodeList<
+    map['notificationChannelStrategy'] = pulumi.Input.encodeList<
             NotificationChannelStrategyResponse, Map<String, dynamic>>(
         notificationChannelStrategy, (value) => value.toMap());
     map['notificationRateLimit'] = notificationRateLimit.toMap();
@@ -35,7 +35,7 @@ class AlertStrategyResponse {
     return AlertStrategyResponse(
       autoClose: map['autoClose'] as String,
       notificationChannelStrategy:
-          Input.decodeList<NotificationChannelStrategyResponse>(
+          pulumi.Input.decodeList<NotificationChannelStrategyResponse>(
               map['notificationChannelStrategy'],
               (value) => NotificationChannelStrategyResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

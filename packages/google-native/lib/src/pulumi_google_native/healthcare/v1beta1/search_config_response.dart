@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'search_parameter_response.dart';
 
 /// Contains the configuration for FHIR search.
@@ -15,14 +15,14 @@ class SearchConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['searchParameters'] =
-        Input.encodeList<SearchParameterResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SearchParameterResponse, Map<String, dynamic>>(
             searchParameters, (value) => value.toMap());
     return map;
   }
 
   factory SearchConfigResponse.fromMap(Map<String, dynamic> map) {
     return SearchConfigResponse(
-      searchParameters: Input.decodeList<SearchParameterResponse>(
+      searchParameters: pulumi.Input.decodeList<SearchParameterResponse>(
           map['searchParameters'],
           (value) => SearchParameterResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

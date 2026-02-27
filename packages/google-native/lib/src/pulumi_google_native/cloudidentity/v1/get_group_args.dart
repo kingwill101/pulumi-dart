@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGroup.
 class GetGroupArgs {
-  final Input<String> groupId;
+  final pulumi.Input<String> groupId;
 
   GetGroupArgs({
     required this.groupId,
@@ -18,7 +18,7 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      groupId: Input.asInput<String>(map['groupId']),
+      groupId: pulumi.Input.asInput<String>(map['groupId']),
     );
   }
 }

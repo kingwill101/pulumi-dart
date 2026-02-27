@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCompositeType.
 class GetCompositeTypeArgs {
-  final Input<String> compositeType;
-  final Input<String>? project;
+  final pulumi.Input<String> compositeType;
+  final pulumi.Input<String>? project;
 
   GetCompositeTypeArgs({
     required this.compositeType,
@@ -24,8 +24,8 @@ class GetCompositeTypeArgs {
 
   factory GetCompositeTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetCompositeTypeArgs(
-      compositeType: Input.asInput<String>(map['compositeType']),
-      project: Input.asOptionalInput<String>(map['project']),
+      compositeType: pulumi.Input.asInput<String>(map['compositeType']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

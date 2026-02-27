@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'help_link_response.dart';
 
 /// Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit.
@@ -14,14 +14,15 @@ class HelpResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['links'] = Input.encodeList<HelpLinkResponse, Map<String, dynamic>>(
-        links, (value) => value.toMap());
+    map['links'] =
+        pulumi.Input.encodeList<HelpLinkResponse, Map<String, dynamic>>(
+            links, (value) => value.toMap());
     return map;
   }
 
   factory HelpResponse.fromMap(Map<String, dynamic> map) {
     return HelpResponse(
-      links: Input.decodeList<HelpLinkResponse>(
+      links: pulumi.Input.decodeList<HelpLinkResponse>(
           map['links'],
           (value) =>
               HelpLinkResponse.fromMap((value as Map).cast<String, dynamic>())),

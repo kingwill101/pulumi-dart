@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_policy_target_shape.dart';
 import 'distribution_policy_zone_configuration.dart';
 
@@ -24,7 +24,8 @@ class DistributionPolicy {
     }
     final zonesValue = zones;
     if (zonesValue != null) {
-      map['zones'] = Input.encodeList<DistributionPolicyZoneConfiguration,
+      map['zones'] = pulumi.Input.encodeList<
+          DistributionPolicyZoneConfiguration,
           Map<String, dynamic>>(zonesValue, (value) => value.toMap());
     }
     return map;
@@ -38,7 +39,7 @@ class DistributionPolicy {
               map['targetShape'] as String),
       zones: map['zones'] == null
           ? null
-          : Input.decodeList<DistributionPolicyZoneConfiguration>(
+          : pulumi.Input.decodeList<DistributionPolicyZoneConfiguration>(
               map['zones'],
               (value) => DistributionPolicyZoneConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

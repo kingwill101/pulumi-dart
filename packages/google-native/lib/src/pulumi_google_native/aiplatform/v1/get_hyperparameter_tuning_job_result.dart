@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_custom_job_spec_response.dart';
 import 'google_cloud_aiplatform_v1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1_study_spec_response.dart';
@@ -92,7 +92,8 @@ class GetHyperparameterTuningJobResult {
     map['state'] = state;
     map['studySpec'] = studySpec.toMap();
     map['trialJobSpec'] = trialJobSpec.toMap();
-    map['trials'] = Input.encodeList<GoogleCloudAiplatformV1TrialResponse,
+    map['trials'] = pulumi.Input.encodeList<
+        GoogleCloudAiplatformV1TrialResponse,
         Map<String, dynamic>>(trials, (value) => value.toMap());
     map['updateTime'] = updateTime;
     return map;
@@ -118,7 +119,7 @@ class GetHyperparameterTuningJobResult {
           (map['studySpec'] as Map).cast<String, dynamic>()),
       trialJobSpec: GoogleCloudAiplatformV1CustomJobSpecResponse.fromMap(
           (map['trialJobSpec'] as Map).cast<String, dynamic>()),
-      trials: Input.decodeList<GoogleCloudAiplatformV1TrialResponse>(
+      trials: pulumi.Input.decodeList<GoogleCloudAiplatformV1TrialResponse>(
           map['trials'],
           (value) => GoogleCloudAiplatformV1TrialResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

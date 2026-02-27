@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Representation of a column within a schema. Columns could be nested inside other columns.
 class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
@@ -32,7 +32,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
     map['column'] = column;
     map['description'] = description;
     map['mode'] = mode;
-    map['subcolumns'] = Input.encodeList<
+    map['subcolumns'] = pulumi.Input.encodeList<
         GoogleCloudDatacatalogV1beta1ColumnSchemaResponse,
         Map<String, dynamic>>(subcolumns, (value) => value.toMap());
     map['type'] = type;
@@ -45,12 +45,11 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
       column: map['column'] as String,
       description: map['description'] as String,
       mode: map['mode'] as String,
-      subcolumns:
-          Input.decodeList<GoogleCloudDatacatalogV1beta1ColumnSchemaResponse>(
-              map['subcolumns'],
-              (value) =>
-                  GoogleCloudDatacatalogV1beta1ColumnSchemaResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      subcolumns: pulumi.Input.decodeList<
+              GoogleCloudDatacatalogV1beta1ColumnSchemaResponse>(
+          map['subcolumns'],
+          (value) => GoogleCloudDatacatalogV1beta1ColumnSchemaResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

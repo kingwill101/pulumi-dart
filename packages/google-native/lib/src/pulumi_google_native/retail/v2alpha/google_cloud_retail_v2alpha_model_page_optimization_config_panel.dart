@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2alpha_model_page_optimization_config_candidate.dart';
 
 /// An individual panel with a list of ServingConfigs to consider for it.
@@ -24,7 +24,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['candidates'] = Input.encodeList<
+    map['candidates'] = pulumi.Input.encodeList<
         GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate,
         Map<String, dynamic>>(candidates, (value) => value.toMap());
     map['defaultCandidate'] = defaultCandidate.toMap();
@@ -38,7 +38,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
   factory GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel(
-      candidates: Input.decodeList<
+      candidates: pulumi.Input.decodeList<
               GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate>(
           map['candidates'],
           (value) =>

@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'label_descriptor_response2.dart';
-import 'metric_descriptor_metadata_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'label_descriptor_response_monitoring_v3.dart';
+import 'metric_descriptor_metadata_response_monitoring_v3.dart';
 
 /// Result data returned by getMetricDescriptor.
 class GetMetricDescriptorResult {
@@ -13,13 +13,13 @@ class GetMetricDescriptorResult {
   final String displayName;
 
   /// The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
-  final List<LabelDescriptorResponse2> labels;
+  final List<LabelDescriptorResponseMonitoringV3> labels;
 
   /// Optional. The launch stage of the metric definition.
   final String launchStage;
 
   /// Optional. Metadata which can be used to guide usage of the metric.
-  final MetricDescriptorMetadataResponse2 metadata;
+  final MetricDescriptorMetadataResponseMonitoringV3 metadata;
 
   /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
   final String metricKind;
@@ -57,9 +57,8 @@ class GetMetricDescriptorResult {
     final map = <String, dynamic>{};
     map['description'] = description;
     map['displayName'] = displayName;
-    map['labels'] =
-        Input.encodeList<LabelDescriptorResponse2, Map<String, dynamic>>(
-            labels, (value) => value.toMap());
+    map['labels'] = pulumi.Input.encodeList<LabelDescriptorResponseMonitoringV3,
+        Map<String, dynamic>>(labels, (value) => value.toMap());
     map['launchStage'] = launchStage;
     map['metadata'] = metadata.toMap();
     map['metricKind'] = metricKind;
@@ -75,12 +74,12 @@ class GetMetricDescriptorResult {
     return GetMetricDescriptorResult(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      labels: Input.decodeList<LabelDescriptorResponse2>(
+      labels: pulumi.Input.decodeList<LabelDescriptorResponseMonitoringV3>(
           map['labels'],
-          (value) => LabelDescriptorResponse2.fromMap(
+          (value) => LabelDescriptorResponseMonitoringV3.fromMap(
               (value as Map).cast<String, dynamic>())),
       launchStage: map['launchStage'] as String,
-      metadata: MetricDescriptorMetadataResponse2.fromMap(
+      metadata: MetricDescriptorMetadataResponseMonitoringV3.fromMap(
           (map['metadata'] as Map).cast<String, dynamic>()),
       metricKind: map['metricKind'] as String,
       monitoredResourceTypes:

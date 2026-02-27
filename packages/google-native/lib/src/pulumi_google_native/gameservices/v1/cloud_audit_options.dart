@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'authorization_logging_options4.dart';
+import 'authorization_logging_options_gameservices_v1.dart';
 import 'cloud_audit_options_log_name.dart';
 
 /// Write a Cloud Audit log
 class CloudAuditOptions {
   /// Information used by the Cloud Audit Logging pipeline.
-  final AuthorizationLoggingOptions4? authorizationLoggingOptions;
+  final AuthorizationLoggingOptionsGameservicesV1? authorizationLoggingOptions;
 
   /// The log_name to populate in the Cloud Audit Record.
   final CloudAuditOptionsLogName? logName;
@@ -34,7 +34,7 @@ class CloudAuditOptions {
     return CloudAuditOptions(
       authorizationLoggingOptions: map['authorizationLoggingOptions'] == null
           ? null
-          : AuthorizationLoggingOptions4.fromMap(
+          : AuthorizationLoggingOptionsGameservicesV1.fromMap(
               (map['authorizationLoggingOptions'] as Map)
                   .cast<String, dynamic>()),
       logName: map['logName'] == null

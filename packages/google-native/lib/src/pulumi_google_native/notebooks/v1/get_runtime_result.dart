@@ -4,7 +4,7 @@ import 'runtime_access_config_response.dart';
 import 'runtime_metrics_response.dart';
 import 'runtime_migration_eligibility_response.dart';
 import 'runtime_software_config_response.dart';
-import 'virtual_machine_response2.dart';
+import 'virtual_machine_response_notebooks_v1.dart';
 
 /// Result data returned by getRuntime.
 class GetRuntimeResult {
@@ -42,7 +42,7 @@ class GetRuntimeResult {
   final String updateTime;
 
   /// Use a Compute Engine VM image to start the managed notebook instance.
-  final VirtualMachineResponse2 virtualMachine;
+  final VirtualMachineResponseNotebooksV1 virtualMachine;
 
   GetRuntimeResult({
     required this.accessConfig,
@@ -93,7 +93,7 @@ class GetRuntimeResult {
           (map['softwareConfig'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
-      virtualMachine: VirtualMachineResponse2.fromMap(
+      virtualMachine: VirtualMachineResponseNotebooksV1.fromMap(
           (map['virtualMachine'] as Map).cast<String, dynamic>()),
     );
   }

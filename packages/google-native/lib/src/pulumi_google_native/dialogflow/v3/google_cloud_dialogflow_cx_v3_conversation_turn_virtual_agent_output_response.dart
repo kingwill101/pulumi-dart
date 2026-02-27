@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_intent_response.dart';
 import 'google_cloud_dialogflow_cx_v3_page_response.dart';
 import 'google_cloud_dialogflow_cx_v3_response_message_text_response.dart';
 import 'google_cloud_dialogflow_cx_v3_test_run_difference_response.dart';
-import 'google_rpc_status_response7.dart';
+import 'google_rpc_status_response_dialogflow_v3.dart';
 
 /// The output from the virtual agent.
 class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse {
@@ -22,7 +22,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse {
   final Map<String, String> sessionParameters;
 
   /// Response error from the agent in the test result. If set, other output is empty.
-  final GoogleRpcStatusResponse7 status;
+  final GoogleRpcStatusResponseDialogflowV3 status;
 
   /// The text responses from the agent for the turn.
   final List<GoogleCloudDialogflowCxV3ResponseMessageTextResponse>
@@ -45,12 +45,12 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse {
     final map = <String, dynamic>{};
     map['currentPage'] = currentPage.toMap();
     map['diagnosticInfo'] = diagnosticInfo;
-    map['differences'] = Input.encodeList<
+    map['differences'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3TestRunDifferenceResponse,
         Map<String, dynamic>>(differences, (value) => value.toMap());
     map['sessionParameters'] = sessionParameters;
     map['status'] = status.toMap();
-    map['textResponses'] = Input.encodeList<
+    map['textResponses'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3ResponseMessageTextResponse,
         Map<String, dynamic>>(textResponses, (value) => value.toMap());
     map['triggeredIntent'] = triggeredIntent.toMap();
@@ -63,17 +63,16 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse {
       currentPage: GoogleCloudDialogflowCxV3PageResponse.fromMap(
           (map['currentPage'] as Map).cast<String, dynamic>()),
       diagnosticInfo: (map['diagnosticInfo'] as Map).cast<String, String>(),
-      differences:
-          Input.decodeList<GoogleCloudDialogflowCxV3TestRunDifferenceResponse>(
-              map['differences'],
-              (value) =>
-                  GoogleCloudDialogflowCxV3TestRunDifferenceResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      differences: pulumi.Input.decodeList<
+              GoogleCloudDialogflowCxV3TestRunDifferenceResponse>(
+          map['differences'],
+          (value) => GoogleCloudDialogflowCxV3TestRunDifferenceResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       sessionParameters:
           (map['sessionParameters'] as Map).cast<String, String>(),
-      status: GoogleRpcStatusResponse7.fromMap(
+      status: GoogleRpcStatusResponseDialogflowV3.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
-      textResponses: Input.decodeList<
+      textResponses: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3ResponseMessageTextResponse>(
           map['textResponses'],
           (value) =>

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMetadataStore.
 class GetMetadataStoreArgs {
-  final Input<String> location;
-  final Input<String> metadataStoreId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> metadataStoreId;
+  final pulumi.Input<String>? project;
 
   GetMetadataStoreArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetMetadataStoreArgs {
 
   factory GetMetadataStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataStoreArgs(
-      location: Input.asInput<String>(map['location']),
-      metadataStoreId: Input.asInput<String>(map['metadataStoreId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      metadataStoreId: pulumi.Input.asInput<String>(map['metadataStoreId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

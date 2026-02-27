@@ -1,16 +1,16 @@
 library module_cloudfunctions_v1;
 
-export 'v1/audit_config12.dart';
-export 'v1/audit_config_response12.dart';
-export 'v1/audit_log_config12.dart';
-export 'v1/audit_log_config_log_type12.dart';
-export 'v1/audit_log_config_response12.dart';
-export 'v1/binding18.dart';
-export 'v1/binding_response18.dart';
+export 'v1/audit_config_cloudfunctions_v1.dart';
+export 'v1/audit_config_response_cloudfunctions_v1.dart';
+export 'v1/audit_log_config_cloudfunctions_v1.dart';
+export 'v1/audit_log_config_log_type_cloudfunctions_v1.dart';
+export 'v1/audit_log_config_response_cloudfunctions_v1.dart';
+export 'v1/binding_cloudfunctions_v1.dart';
+export 'v1/binding_response_cloudfunctions_v1.dart';
 export 'v1/event_trigger.dart';
 export 'v1/event_trigger_response.dart';
-export 'v1/expr20.dart';
-export 'v1/expr_response20.dart';
+export 'v1/expr_cloudfunctions_v1.dart';
+export 'v1/expr_response_cloudfunctions_v1.dart';
 export 'v1/failure_policy.dart';
 export 'v1/failure_policy_response.dart';
 export 'v1/function_args.dart';

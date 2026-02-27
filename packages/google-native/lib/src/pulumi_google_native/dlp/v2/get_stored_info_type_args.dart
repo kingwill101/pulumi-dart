@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getStoredInfoType.
 class GetStoredInfoTypeArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> storedInfoTypeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> storedInfoTypeId;
 
   GetStoredInfoTypeArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetStoredInfoTypeArgs {
 
   factory GetStoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetStoredInfoTypeArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      storedInfoTypeId: Input.asInput<String>(map['storedInfoTypeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      storedInfoTypeId: pulumi.Input.asInput<String>(map['storedInfoTypeId']),
     );
   }
 }

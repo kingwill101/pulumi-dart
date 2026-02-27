@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_association_response.dart';
 import 'firewall_policy_rule_response.dart';
 
@@ -71,7 +71,8 @@ class GetFirewallPolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['associations'] = Input.encodeList<FirewallPolicyAssociationResponse,
+    map['associations'] = pulumi.Input.encodeList<
+        FirewallPolicyAssociationResponse,
         Map<String, dynamic>>(associations, (value) => value.toMap());
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
@@ -82,9 +83,8 @@ class GetFirewallPolicyResult {
     map['parent'] = parent;
     map['region'] = region;
     map['ruleTupleCount'] = ruleTupleCount;
-    map['rules'] =
-        Input.encodeList<FirewallPolicyRuleResponse, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
+    map['rules'] = pulumi.Input.encodeList<FirewallPolicyRuleResponse,
+        Map<String, dynamic>>(rules, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['selfLinkWithId'] = selfLinkWithId;
     map['shortName'] = shortName;
@@ -94,7 +94,7 @@ class GetFirewallPolicyResult {
 
   factory GetFirewallPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyResult(
-      associations: Input.decodeList<FirewallPolicyAssociationResponse>(
+      associations: pulumi.Input.decodeList<FirewallPolicyAssociationResponse>(
           map['associations'],
           (value) => FirewallPolicyAssociationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -107,7 +107,7 @@ class GetFirewallPolicyResult {
       parent: map['parent'] as String,
       region: map['region'] as String,
       ruleTupleCount: map['ruleTupleCount'] as int,
-      rules: Input.decodeList<FirewallPolicyRuleResponse>(
+      rules: pulumi.Input.decodeList<FirewallPolicyRuleResponse>(
           map['rules'],
           (value) => FirewallPolicyRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

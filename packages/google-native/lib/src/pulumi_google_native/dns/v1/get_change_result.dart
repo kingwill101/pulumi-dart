@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_record_set_response.dart';
 
 /// Result data returned by getChange.
@@ -32,12 +32,10 @@ class GetChangeResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['additions'] =
-        Input.encodeList<ResourceRecordSetResponse, Map<String, dynamic>>(
-            additions, (value) => value.toMap());
-    map['deletions'] =
-        Input.encodeList<ResourceRecordSetResponse, Map<String, dynamic>>(
-            deletions, (value) => value.toMap());
+    map['additions'] = pulumi.Input.encodeList<ResourceRecordSetResponse,
+        Map<String, dynamic>>(additions, (value) => value.toMap());
+    map['deletions'] = pulumi.Input.encodeList<ResourceRecordSetResponse,
+        Map<String, dynamic>>(deletions, (value) => value.toMap());
     map['isServing'] = isServing;
     map['kind'] = kind;
     map['startTime'] = startTime;
@@ -47,11 +45,11 @@ class GetChangeResult {
 
   factory GetChangeResult.fromMap(Map<String, dynamic> map) {
     return GetChangeResult(
-      additions: Input.decodeList<ResourceRecordSetResponse>(
+      additions: pulumi.Input.decodeList<ResourceRecordSetResponse>(
           map['additions'],
           (value) => ResourceRecordSetResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      deletions: Input.decodeList<ResourceRecordSetResponse>(
+      deletions: pulumi.Input.decodeList<ResourceRecordSetResponse>(
           map['deletions'],
           (value) => ResourceRecordSetResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

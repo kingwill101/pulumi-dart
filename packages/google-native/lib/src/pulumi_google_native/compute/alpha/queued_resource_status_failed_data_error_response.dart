@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'queued_resource_status_failed_data_error_errors_item_response.dart';
 
 /// The error(s) that caused the QueuedResource to enter the FAILED state.
@@ -14,7 +14,7 @@ class QueuedResourceStatusFailedDataErrorResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['errors'] = Input.encodeList<
+    map['errors'] = pulumi.Input.encodeList<
         QueuedResourceStatusFailedDataErrorErrorsItemResponse,
         Map<String, dynamic>>(errors, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class QueuedResourceStatusFailedDataErrorResponse {
   factory QueuedResourceStatusFailedDataErrorResponse.fromMap(
       Map<String, dynamic> map) {
     return QueuedResourceStatusFailedDataErrorResponse(
-      errors: Input.decodeList<
+      errors: pulumi.Input.decodeList<
               QueuedResourceStatusFailedDataErrorErrorsItemResponse>(
           map['errors'],
           (value) =>

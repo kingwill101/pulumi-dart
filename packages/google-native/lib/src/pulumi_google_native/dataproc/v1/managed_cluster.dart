@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'cluster_config2.dart';
+import 'cluster_config_dataproc_v1.dart';
 
 /// Cluster that is managed by the workflow.
 class ManagedCluster {
@@ -8,7 +8,7 @@ class ManagedCluster {
   final String clusterName;
 
   /// The cluster configuration.
-  final ClusterConfig2 config;
+  final ClusterConfigDataprocV1 config;
 
   /// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
   final Map<String, String>? labels;
@@ -33,7 +33,7 @@ class ManagedCluster {
   factory ManagedCluster.fromMap(Map<String, dynamic> map) {
     return ManagedCluster(
       clusterName: map['clusterName'] as String,
-      config: ClusterConfig2.fromMap(
+      config: ClusterConfigDataprocV1.fromMap(
           (map['config'] as Map).cast<String, dynamic>()),
       labels: map['labels'] == null
           ? null

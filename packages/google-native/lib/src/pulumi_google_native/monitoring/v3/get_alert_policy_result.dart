@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_strategy_response.dart';
-import 'condition_response8.dart';
+import 'condition_response_monitoring_v3.dart';
 import 'documentation_response.dart';
 import 'mutation_record_response.dart';
-import 'status_response22.dart';
+import 'status_response_monitoring_v3.dart';
 
 /// Result data returned by getAlertPolicy.
 class GetAlertPolicyResult {
@@ -16,7 +16,7 @@ class GetAlertPolicyResult {
   final String combiner;
 
   /// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
-  final List<ConditionResponse8> conditions;
+  final List<ConditionResponseMonitoringV3> conditions;
 
   /// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
   final MutationRecordResponse creationRecord;
@@ -46,7 +46,7 @@ class GetAlertPolicyResult {
   final Map<String, String> userLabels;
 
   /// Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents.
-  final StatusResponse22 validity;
+  final StatusResponseMonitoringV3 validity;
 
   GetAlertPolicyResult({
     required this.alertStrategy,
@@ -68,9 +68,8 @@ class GetAlertPolicyResult {
     final map = <String, dynamic>{};
     map['alertStrategy'] = alertStrategy.toMap();
     map['combiner'] = combiner;
-    map['conditions'] =
-        Input.encodeList<ConditionResponse8, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
+    map['conditions'] = pulumi.Input.encodeList<ConditionResponseMonitoringV3,
+        Map<String, dynamic>>(conditions, (value) => value.toMap());
     map['creationRecord'] = creationRecord.toMap();
     map['displayName'] = displayName;
     map['documentation'] = documentation.toMap();
@@ -89,9 +88,9 @@ class GetAlertPolicyResult {
       alertStrategy: AlertStrategyResponse.fromMap(
           (map['alertStrategy'] as Map).cast<String, dynamic>()),
       combiner: map['combiner'] as String,
-      conditions: Input.decodeList<ConditionResponse8>(
+      conditions: pulumi.Input.decodeList<ConditionResponseMonitoringV3>(
           map['conditions'],
-          (value) => ConditionResponse8.fromMap(
+          (value) => ConditionResponseMonitoringV3.fromMap(
               (value as Map).cast<String, dynamic>())),
       creationRecord: MutationRecordResponse.fromMap(
           (map['creationRecord'] as Map).cast<String, dynamic>()),
@@ -106,7 +105,7 @@ class GetAlertPolicyResult {
           (map['notificationChannels'] as List).cast<String>(),
       severity: map['severity'] as String,
       userLabels: (map['userLabels'] as Map).cast<String, String>(),
-      validity: StatusResponse22.fromMap(
+      validity: StatusResponseMonitoringV3.fromMap(
           (map['validity'] as Map).cast<String, dynamic>()),
     );
   }

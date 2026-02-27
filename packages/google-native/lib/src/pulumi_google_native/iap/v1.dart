@@ -1,13 +1,13 @@
 library module_iap_v1;
 
-export 'v1/binding68.dart';
-export 'v1/binding_response68.dart';
+export 'v1/binding_iap_v1.dart';
+export 'v1/binding_response_iap_v1.dart';
 export 'v1/brand.dart';
 export 'v1/brand_args.dart';
 export 'v1/dest_group.dart';
 export 'v1/dest_group_args.dart';
-export 'v1/expr72.dart';
-export 'v1/expr_response72.dart';
+export 'v1/expr_iap_v1.dart';
+export 'v1/expr_response_iap_v1.dart';
 export 'v1/get_brand.dart';
 export 'v1/get_brand_args.dart';
 export 'v1/get_brand_result.dart';

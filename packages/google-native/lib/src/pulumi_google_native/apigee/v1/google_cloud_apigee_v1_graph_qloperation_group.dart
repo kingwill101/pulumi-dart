@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_graph_qloperation_config.dart';
 
 /// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
@@ -22,7 +22,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroup {
     if (operationConfigTypeValue != null) {
       map['operationConfigType'] = operationConfigTypeValue;
     }
-    map['operationConfigs'] = Input.encodeList<
+    map['operationConfigs'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1GraphQLOperationConfig,
         Map<String, dynamic>>(operationConfigs, (value) => value.toMap());
     return map;
@@ -35,7 +35,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroup {
           ? null
           : map['operationConfigType'] as String,
       operationConfigs:
-          Input.decodeList<GoogleCloudApigeeV1GraphQLOperationConfig>(
+          pulumi.Input.decodeList<GoogleCloudApigeeV1GraphQLOperationConfig>(
               map['operationConfigs'],
               (value) => GoogleCloudApigeeV1GraphQLOperationConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

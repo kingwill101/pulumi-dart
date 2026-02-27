@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'best_effort_provisioning.dart';
 import 'max_pods_constraint.dart';
-import 'node_config4.dart';
+import 'node_config_container_v1.dart';
 import 'node_management.dart';
 import 'node_network_config.dart';
 import 'node_pool_autoscaling.dart';
-import 'placement_policy2.dart';
+import 'placement_policy_container_v1.dart';
 import 'queued_provisioning.dart';
 import 'status_condition.dart';
 import 'upgrade_settings.dart';
@@ -15,62 +15,62 @@ import 'upgrade_settings.dart';
 /// The set of arguments for NodePool.
 class NodePoolArgs {
   /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-  final Input<NodePoolAutoscaling>? autoscaling;
+  final pulumi.Input<NodePoolAutoscaling>? autoscaling;
 
   /// Enable best effort provisioning for nodes
-  final Input<BestEffortProvisioning>? bestEffortProvisioning;
+  final pulumi.Input<BestEffortProvisioning>? bestEffortProvisioning;
 
   /// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
-  final Input<String> clusterId;
+  final pulumi.Input<String> clusterId;
 
   /// Which conditions caused the current node pool state.
-  final Input<List<StatusCondition>>? conditions;
+  final pulumi.Input<List<StatusCondition>>? conditions;
 
   /// The node configuration of the pool.
-  final Input<NodeConfig4>? config;
+  final pulumi.Input<NodeConfigContainerV1>? config;
 
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-  final Input<int>? initialNodeCount;
-  final Input<String>? location;
+  final pulumi.Input<int>? initialNodeCount;
+  final pulumi.Input<String>? location;
 
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
-  final Input<List<String>>? locations;
+  final pulumi.Input<List<String>>? locations;
 
   /// NodeManagement configuration for this NodePool.
-  final Input<NodeManagement>? management;
+  final pulumi.Input<NodeManagement>? management;
 
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-  final Input<MaxPodsConstraint>? maxPodsConstraint;
+  final pulumi.Input<MaxPodsConstraint>? maxPodsConstraint;
 
   /// The name of the node pool.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
-  final Input<NodeNetworkConfig>? networkConfig;
+  final pulumi.Input<NodeNetworkConfig>? networkConfig;
 
   /// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-  final Input<String>? parent;
+  final pulumi.Input<String>? parent;
 
   /// Specifies the node placement policy.
-  final Input<PlacementPolicy2>? placementPolicy;
+  final pulumi.Input<PlacementPolicyContainerV1>? placementPolicy;
 
   /// Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Specifies the configuration of queued provisioning.
-  final Input<QueuedProvisioning>? queuedProvisioning;
+  final pulumi.Input<QueuedProvisioning>? queuedProvisioning;
 
   /// Upgrade settings control disruption and speed of the upgrade.
-  final Input<UpgradeSettings>? upgradeSettings;
+  final pulumi.Input<UpgradeSettings>? upgradeSettings;
 
   /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
-  final Input<String>? version;
+  final pulumi.Input<String>? version;
 
   /// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   NodePoolArgs({
     this.autoscaling,
@@ -99,29 +99,30 @@ class NodePoolArgs {
     final map = <String, dynamic>{};
     final autoscalingValue = autoscaling;
     if (autoscalingValue != null) {
-      map['autoscaling'] = Input.mapOptionalInputValue<NodePoolAutoscaling,
+      map['autoscaling'] = pulumi.Input.mapOptionalInputValue<
+          NodePoolAutoscaling,
           Map<String, dynamic>>(autoscalingValue, (value) => value.toMap());
     }
     final bestEffortProvisioningValue = bestEffortProvisioning;
     if (bestEffortProvisioningValue != null) {
-      map['bestEffortProvisioning'] = Input.mapOptionalInputValue<
+      map['bestEffortProvisioning'] = pulumi.Input.mapOptionalInputValue<
               BestEffortProvisioning, Map<String, dynamic>>(
           bestEffortProvisioningValue, (value) => value.toMap());
     }
     map['clusterId'] = clusterId;
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.mapOptionalInputValue<List<StatusCondition>,
-              List<Map<String, dynamic>>>(
+      map['conditions'] = pulumi.Input.mapOptionalInputValue<
+              List<StatusCondition>, List<Map<String, dynamic>>>(
           conditionsValue,
-          (value) => Input.encodeList<StatusCondition, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<StatusCondition, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final configValue = config;
     if (configValue != null) {
-      map['config'] =
-          Input.mapOptionalInputValue<NodeConfig4, Map<String, dynamic>>(
-              configValue, (value) => value.toMap());
+      map['config'] = pulumi.Input.mapOptionalInputValue<NodeConfigContainerV1,
+          Map<String, dynamic>>(configValue, (value) => value.toMap());
     }
     final etagValue = etag;
     if (etagValue != null) {
@@ -141,15 +142,14 @@ class NodePoolArgs {
     }
     final managementValue = management;
     if (managementValue != null) {
-      map['management'] =
-          Input.mapOptionalInputValue<NodeManagement, Map<String, dynamic>>(
-              managementValue, (value) => value.toMap());
+      map['management'] = pulumi.Input.mapOptionalInputValue<NodeManagement,
+          Map<String, dynamic>>(managementValue, (value) => value.toMap());
     }
     final maxPodsConstraintValue = maxPodsConstraint;
     if (maxPodsConstraintValue != null) {
-      map['maxPodsConstraint'] =
-          Input.mapOptionalInputValue<MaxPodsConstraint, Map<String, dynamic>>(
-              maxPodsConstraintValue, (value) => value.toMap());
+      map['maxPodsConstraint'] = pulumi.Input.mapOptionalInputValue<
+              MaxPodsConstraint, Map<String, dynamic>>(
+          maxPodsConstraintValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -157,9 +157,9 @@ class NodePoolArgs {
     }
     final networkConfigValue = networkConfig;
     if (networkConfigValue != null) {
-      map['networkConfig'] =
-          Input.mapOptionalInputValue<NodeNetworkConfig, Map<String, dynamic>>(
-              networkConfigValue, (value) => value.toMap());
+      map['networkConfig'] = pulumi.Input.mapOptionalInputValue<
+          NodeNetworkConfig,
+          Map<String, dynamic>>(networkConfigValue, (value) => value.toMap());
     }
     final parentValue = parent;
     if (parentValue != null) {
@@ -167,9 +167,9 @@ class NodePoolArgs {
     }
     final placementPolicyValue = placementPolicy;
     if (placementPolicyValue != null) {
-      map['placementPolicy'] =
-          Input.mapOptionalInputValue<PlacementPolicy2, Map<String, dynamic>>(
-              placementPolicyValue, (value) => value.toMap());
+      map['placementPolicy'] = pulumi.Input.mapOptionalInputValue<
+          PlacementPolicyContainerV1,
+          Map<String, dynamic>>(placementPolicyValue, (value) => value.toMap());
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -177,15 +177,15 @@ class NodePoolArgs {
     }
     final queuedProvisioningValue = queuedProvisioning;
     if (queuedProvisioningValue != null) {
-      map['queuedProvisioning'] =
-          Input.mapOptionalInputValue<QueuedProvisioning, Map<String, dynamic>>(
-              queuedProvisioningValue, (value) => value.toMap());
+      map['queuedProvisioning'] = pulumi.Input.mapOptionalInputValue<
+              QueuedProvisioning, Map<String, dynamic>>(
+          queuedProvisioningValue, (value) => value.toMap());
     }
     final upgradeSettingsValue = upgradeSettings;
     if (upgradeSettingsValue != null) {
-      map['upgradeSettings'] =
-          Input.mapOptionalInputValue<UpgradeSettings, Map<String, dynamic>>(
-              upgradeSettingsValue, (value) => value.toMap());
+      map['upgradeSettings'] = pulumi.Input.mapOptionalInputValue<
+          UpgradeSettings,
+          Map<String, dynamic>>(upgradeSettingsValue, (value) => value.toMap());
     }
     final versionValue = version;
     if (versionValue != null) {
@@ -201,33 +201,37 @@ class NodePoolArgs {
   factory NodePoolArgs.fromMap(Map<String, dynamic> map) {
     return NodePoolArgs(
       autoscaling:
-          Input.asOptionalInput<NodePoolAutoscaling>(map['autoscaling']),
-      bestEffortProvisioning: Input.asOptionalInput<BestEffortProvisioning>(
-          map['bestEffortProvisioning']),
-      clusterId: Input.asInput<String>(map['clusterId']),
-      conditions:
-          Input.asOptionalInput<List<StatusCondition>>(map['conditions']),
-      config: Input.asOptionalInput<NodeConfig4>(map['config']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      initialNodeCount: Input.asOptionalInput<int>(map['initialNodeCount']),
-      location: Input.asOptionalInput<String>(map['location']),
-      locations: Input.asOptionalInput<List<String>>(map['locations']),
-      management: Input.asOptionalInput<NodeManagement>(map['management']),
-      maxPodsConstraint:
-          Input.asOptionalInput<MaxPodsConstraint>(map['maxPodsConstraint']),
-      name: Input.asOptionalInput<String>(map['name']),
+          pulumi.Input.asOptionalInput<NodePoolAutoscaling>(map['autoscaling']),
+      bestEffortProvisioning:
+          pulumi.Input.asOptionalInput<BestEffortProvisioning>(
+              map['bestEffortProvisioning']),
+      clusterId: pulumi.Input.asInput<String>(map['clusterId']),
+      conditions: pulumi.Input.asOptionalInput<List<StatusCondition>>(
+          map['conditions']),
+      config:
+          pulumi.Input.asOptionalInput<NodeConfigContainerV1>(map['config']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      initialNodeCount:
+          pulumi.Input.asOptionalInput<int>(map['initialNodeCount']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      locations: pulumi.Input.asOptionalInput<List<String>>(map['locations']),
+      management:
+          pulumi.Input.asOptionalInput<NodeManagement>(map['management']),
+      maxPodsConstraint: pulumi.Input.asOptionalInput<MaxPodsConstraint>(
+          map['maxPodsConstraint']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       networkConfig:
-          Input.asOptionalInput<NodeNetworkConfig>(map['networkConfig']),
-      parent: Input.asOptionalInput<String>(map['parent']),
-      placementPolicy:
-          Input.asOptionalInput<PlacementPolicy2>(map['placementPolicy']),
-      project: Input.asOptionalInput<String>(map['project']),
-      queuedProvisioning:
-          Input.asOptionalInput<QueuedProvisioning>(map['queuedProvisioning']),
+          pulumi.Input.asOptionalInput<NodeNetworkConfig>(map['networkConfig']),
+      parent: pulumi.Input.asOptionalInput<String>(map['parent']),
+      placementPolicy: pulumi.Input.asOptionalInput<PlacementPolicyContainerV1>(
+          map['placementPolicy']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      queuedProvisioning: pulumi.Input.asOptionalInput<QueuedProvisioning>(
+          map['queuedProvisioning']),
       upgradeSettings:
-          Input.asOptionalInput<UpgradeSettings>(map['upgradeSettings']),
-      version: Input.asOptionalInput<String>(map['version']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+          pulumi.Input.asOptionalInput<UpgradeSettings>(map['upgradeSettings']),
+      version: pulumi.Input.asOptionalInput<String>(map['version']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

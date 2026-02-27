@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Scope.
 class ScopeArgs {
   /// Optional. Labels for this Scope.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
-  final Input<Map<String, String>>? namespaceLabels;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, String>>? namespaceLabels;
+  final pulumi.Input<String>? project;
 
   /// Required. Client chosen ID for the Scope. `scope_id` must be a ????
-  final Input<String> scopeId;
+  final pulumi.Input<String> scopeId;
 
   ScopeArgs({
     this.labels,
@@ -55,13 +55,13 @@ class ScopeArgs {
 
   factory ScopeArgs.fromMap(Map<String, dynamic> map) {
     return ScopeArgs(
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namespaceLabels:
-          Input.asOptionalInput<Map<String, String>>(map['namespaceLabels']),
-      project: Input.asOptionalInput<String>(map['project']),
-      scopeId: Input.asInput<String>(map['scopeId']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namespaceLabels: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['namespaceLabels']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      scopeId: pulumi.Input.asInput<String>(map['scopeId']),
     );
   }
 }

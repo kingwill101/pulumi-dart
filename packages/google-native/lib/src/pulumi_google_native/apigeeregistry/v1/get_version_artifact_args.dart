@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getVersionArtifact.
 class GetVersionArtifactArgs {
-  final Input<String> apiId;
-  final Input<String> artifactId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> versionId;
+  final pulumi.Input<String> apiId;
+  final pulumi.Input<String> artifactId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> versionId;
 
   GetVersionArtifactArgs({
     required this.apiId,
@@ -33,11 +33,11 @@ class GetVersionArtifactArgs {
 
   factory GetVersionArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArtifactArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      artifactId: Input.asInput<String>(map['artifactId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      versionId: Input.asInput<String>(map['versionId']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      artifactId: pulumi.Input.asInput<String>(map['artifactId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      versionId: pulumi.Input.asInput<String>(map['versionId']),
     );
   }
 }

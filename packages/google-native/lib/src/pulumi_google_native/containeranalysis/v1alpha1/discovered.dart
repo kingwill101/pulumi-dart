@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'analysis_completed2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'analysis_completed_containeranalysis_v1alpha1.dart';
 import 'discovered_analysis_status.dart';
 import 'discovered_continuous_analysis.dart';
-import 'status2.dart';
+import 'status_containeranalysis_v1alpha1.dart';
 
 /// Provides information about the scan status of a discovered resource.
 class Discovered {
   /// The list of analysis that were completed for a resource.
-  final AnalysisCompleted2? analysisCompleted;
+  final AnalysisCompletedContaineranalysisV1alpha1? analysisCompleted;
 
   /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
-  final List<Status2>? analysisError;
+  final List<StatusContaineranalysisV1alpha1>? analysisError;
 
   /// The status of discovery for the resource.
   final DiscoveredAnalysisStatus? analysisStatus;
 
   /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
-  final Status2? analysisStatusError;
+  final StatusContaineranalysisV1alpha1? analysisStatusError;
 
   /// The time occurrences related to this discovery occurrence were archived.
   final String? archiveTime;
@@ -51,8 +51,9 @@ class Discovered {
     }
     final analysisErrorValue = analysisError;
     if (analysisErrorValue != null) {
-      map['analysisError'] = Input.encodeList<Status2, Map<String, dynamic>>(
-          analysisErrorValue, (value) => value.toMap());
+      map['analysisError'] = pulumi.Input.encodeList<
+          StatusContaineranalysisV1alpha1,
+          Map<String, dynamic>>(analysisErrorValue, (value) => value.toMap());
     }
     final analysisStatusValue = analysisStatus;
     if (analysisStatusValue != null) {
@@ -85,20 +86,20 @@ class Discovered {
     return Discovered(
       analysisCompleted: map['analysisCompleted'] == null
           ? null
-          : AnalysisCompleted2.fromMap(
+          : AnalysisCompletedContaineranalysisV1alpha1.fromMap(
               (map['analysisCompleted'] as Map).cast<String, dynamic>()),
       analysisError: map['analysisError'] == null
           ? null
-          : Input.decodeList<Status2>(
+          : pulumi.Input.decodeList<StatusContaineranalysisV1alpha1>(
               map['analysisError'],
-              (value) =>
-                  Status2.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => StatusContaineranalysisV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       analysisStatus: map['analysisStatus'] == null
           ? null
           : DiscoveredAnalysisStatus.fromValue(map['analysisStatus'] as String),
       analysisStatusError: map['analysisStatusError'] == null
           ? null
-          : Status2.fromMap(
+          : StatusContaineranalysisV1alpha1.fromMap(
               (map['analysisStatusError'] as Map).cast<String, dynamic>()),
       archiveTime:
           map['archiveTime'] == null ? null : map['archiveTime'] as String,

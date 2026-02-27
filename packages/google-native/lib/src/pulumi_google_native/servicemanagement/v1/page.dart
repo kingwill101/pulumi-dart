@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
 class Page {
@@ -31,7 +31,7 @@ class Page {
     }
     final subpagesValue = subpages;
     if (subpagesValue != null) {
-      map['subpages'] = Input.encodeList<Page, Map<String, dynamic>>(
+      map['subpages'] = pulumi.Input.encodeList<Page, Map<String, dynamic>>(
           subpagesValue, (value) => value.toMap());
     }
     return map;
@@ -43,7 +43,7 @@ class Page {
       name: map['name'] == null ? null : map['name'] as String,
       subpages: map['subpages'] == null
           ? null
-          : Input.decodeList<Page>(map['subpages'],
+          : pulumi.Input.decodeList<Page>(map['subpages'],
               (value) => Page.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

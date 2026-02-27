@@ -1,75 +1,77 @@
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'private_cluster_config_response5.dart';
-import 'status_response34.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'private_cluster_config_response_workstations_v1.dart';
+import 'status_response_workstations_v1.dart';
 import 'workstation_cluster_args.dart';
 
 /// Creates a new workstation cluster.
-class WorkstationCluster extends CustomResource {
+class WorkstationCluster extends pulumi.CustomResource {
   /// Optional. Client-specified annotations.
-  late final Output<Map<String, String>> annotations;
+  late final pulumi.Output<Map<String, String>> annotations;
 
   /// Status conditions describing the workstation cluster's current state.
-  late final Output<List<StatusResponse34>> conditions;
+  late final pulumi.Output<List<StatusResponseWorkstationsV1>> conditions;
 
   /// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
-  late final Output<String> controlPlaneIp;
+  late final pulumi.Output<String> controlPlaneIp;
 
   /// Time when this workstation cluster was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
-  late final Output<bool> degraded;
+  late final pulumi.Output<bool> degraded;
 
   /// Time when this workstation cluster was soft-deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// Optional. Human-readable name for this workstation cluster.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// Identifier. Full name of this workstation cluster.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// Optional. Configuration for private workstation cluster.
-  late final Output<PrivateClusterConfigResponse5> privateClusterConfig;
-  late final Output<String> project;
+  late final pulumi.Output<PrivateClusterConfigResponseWorkstationsV1>
+      privateClusterConfig;
+  late final pulumi.Output<String> project;
 
   /// Indicates whether this workstation cluster is currently being updated to match its intended state.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
-  late final Output<String> subnetwork;
+  late final pulumi.Output<String> subnetwork;
 
   /// A system-assigned unique identifier for this workstation cluster.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time when this workstation cluster was most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Required. ID to use for the workstation cluster.
-  late final Output<String> workstationClusterId;
+  late final pulumi.Output<String> workstationClusterId;
 
   WorkstationCluster(
     String name, {
     WorkstationClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:workstations/v1:WorkstationCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>>('annotations');
-    this.conditions = registerOutput<List<StatusResponse34>>('conditions');
+    this.conditions =
+        registerOutput<List<StatusResponseWorkstationsV1>>('conditions');
     this.controlPlaneIp = registerOutput<String>('controlPlaneIp');
     this.createTime = registerOutput<String>('createTime');
     this.degraded = registerOutput<bool>('degraded');
@@ -81,7 +83,8 @@ class WorkstationCluster extends CustomResource {
     this.name = registerOutput<String>('name');
     this.network = registerOutput<String>('network');
     this.privateClusterConfig =
-        registerOutput<PrivateClusterConfigResponse5>('privateClusterConfig');
+        registerOutput<PrivateClusterConfigResponseWorkstationsV1>(
+            'privateClusterConfig');
     this.project = registerOutput<String>('project');
     this.reconciling = registerOutput<bool>('reconciling');
     this.subnetwork = registerOutput<String>('subnetwork');

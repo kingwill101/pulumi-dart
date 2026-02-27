@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEnvgroupAttachment.
 class GetEnvgroupAttachmentArgs {
-  final Input<String> attachmentId;
-  final Input<String> envgroupId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> attachmentId;
+  final pulumi.Input<String> envgroupId;
+  final pulumi.Input<String> organizationId;
 
   GetEnvgroupAttachmentArgs({
     required this.attachmentId,
@@ -24,9 +24,9 @@ class GetEnvgroupAttachmentArgs {
 
   factory GetEnvgroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvgroupAttachmentArgs(
-      attachmentId: Input.asInput<String>(map['attachmentId']),
-      envgroupId: Input.asInput<String>(map['envgroupId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      attachmentId: pulumi.Input.asInput<String>(map['attachmentId']),
+      envgroupId: pulumi.Input.asInput<String>(map['envgroupId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

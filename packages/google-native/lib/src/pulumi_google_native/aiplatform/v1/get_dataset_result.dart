@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1_saved_query_response.dart';
 
@@ -74,7 +74,7 @@ class GetDatasetResult {
     map['metadataArtifact'] = metadataArtifact;
     map['metadataSchemaUri'] = metadataSchemaUri;
     map['name'] = name;
-    map['savedQueries'] = Input.encodeList<
+    map['savedQueries'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1SavedQueryResponse,
         Map<String, dynamic>>(savedQueries, (value) => value.toMap());
     map['updateTime'] = updateTime;
@@ -95,10 +95,11 @@ class GetDatasetResult {
       metadataArtifact: map['metadataArtifact'] as String,
       metadataSchemaUri: map['metadataSchemaUri'] as String,
       name: map['name'] as String,
-      savedQueries: Input.decodeList<GoogleCloudAiplatformV1SavedQueryResponse>(
-          map['savedQueries'],
-          (value) => GoogleCloudAiplatformV1SavedQueryResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      savedQueries:
+          pulumi.Input.decodeList<GoogleCloudAiplatformV1SavedQueryResponse>(
+              map['savedQueries'],
+              (value) => GoogleCloudAiplatformV1SavedQueryResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_discoveryengine_v1alpha_engine_search_engine_config_search_add_ons_item.dart';
 import 'google_cloud_discoveryengine_v1alpha_engine_search_engine_config_search_tier.dart';
 
@@ -24,7 +24,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig {
     final map = <String, dynamic>{};
     final searchAddOnsValue = searchAddOns;
     if (searchAddOnsValue != null) {
-      map['searchAddOns'] = Input.encodeList<
+      map['searchAddOns'] = pulumi.Input.encodeList<
           GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem,
           String>(searchAddOnsValue, (value) => value.value);
     }
@@ -40,7 +40,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig {
     return GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig(
       searchAddOns: map['searchAddOns'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem>(
               map['searchAddOns'],
               (value) =>

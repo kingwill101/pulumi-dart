@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_bgp_peer_config_response.dart';
 import 'bare_metal_load_balancer_address_pool_response.dart';
 import 'bare_metal_load_balancer_node_pool_config_response.dart';
@@ -28,25 +28,26 @@ class BareMetalBgpLbConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['addressPools'] = Input.encodeList<
+    map['addressPools'] = pulumi.Input.encodeList<
         BareMetalLoadBalancerAddressPoolResponse,
         Map<String, dynamic>>(addressPools, (value) => value.toMap());
     map['asn'] = asn;
-    map['bgpPeerConfigs'] =
-        Input.encodeList<BareMetalBgpPeerConfigResponse, Map<String, dynamic>>(
-            bgpPeerConfigs, (value) => value.toMap());
+    map['bgpPeerConfigs'] = pulumi.Input.encodeList<
+        BareMetalBgpPeerConfigResponse,
+        Map<String, dynamic>>(bgpPeerConfigs, (value) => value.toMap());
     map['loadBalancerNodePoolConfig'] = loadBalancerNodePoolConfig.toMap();
     return map;
   }
 
   factory BareMetalBgpLbConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalBgpLbConfigResponse(
-      addressPools: Input.decodeList<BareMetalLoadBalancerAddressPoolResponse>(
-          map['addressPools'],
-          (value) => BareMetalLoadBalancerAddressPoolResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      addressPools:
+          pulumi.Input.decodeList<BareMetalLoadBalancerAddressPoolResponse>(
+              map['addressPools'],
+              (value) => BareMetalLoadBalancerAddressPoolResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       asn: map['asn'] as String,
-      bgpPeerConfigs: Input.decodeList<BareMetalBgpPeerConfigResponse>(
+      bgpPeerConfigs: pulumi.Input.decodeList<BareMetalBgpPeerConfigResponse>(
           map['bgpPeerConfigs'],
           (value) => BareMetalBgpPeerConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

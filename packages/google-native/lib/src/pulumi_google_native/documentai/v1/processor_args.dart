@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Processor.
 class ProcessorArgs {
   /// The time the processor was created.
-  final Input<String>? createTime;
+  final pulumi.Input<String>? createTime;
 
   /// The default processor version.
-  final Input<String>? defaultProcessorVersion;
+  final pulumi.Input<String>? defaultProcessorVersion;
 
   /// The display name of the processor.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
-  final Input<String>? kmsKeyName;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   ProcessorArgs({
     this.createTime,
@@ -66,14 +66,14 @@ class ProcessorArgs {
 
   factory ProcessorArgs.fromMap(Map<String, dynamic> map) {
     return ProcessorArgs(
-      createTime: Input.asOptionalInput<String>(map['createTime']),
+      createTime: pulumi.Input.asOptionalInput<String>(map['createTime']),
       defaultProcessorVersion:
-          Input.asOptionalInput<String>(map['defaultProcessorVersion']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      kmsKeyName: Input.asOptionalInput<String>(map['kmsKeyName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      type: Input.asOptionalInput<String>(map['type']),
+          pulumi.Input.asOptionalInput<String>(map['defaultProcessorVersion']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      kmsKeyName: pulumi.Input.asOptionalInput<String>(map['kmsKeyName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

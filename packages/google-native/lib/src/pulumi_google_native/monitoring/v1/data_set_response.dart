@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'breakdown_response.dart';
 import 'dimension_response.dart';
 import 'measure_response.dart';
@@ -46,14 +46,15 @@ class DataSetResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['breakdowns'] =
-        Input.encodeList<BreakdownResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<BreakdownResponse, Map<String, dynamic>>(
             breakdowns, (value) => value.toMap());
     map['dimensions'] =
-        Input.encodeList<DimensionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DimensionResponse, Map<String, dynamic>>(
             dimensions, (value) => value.toMap());
     map['legendTemplate'] = legendTemplate;
-    map['measures'] = Input.encodeList<MeasureResponse, Map<String, dynamic>>(
-        measures, (value) => value.toMap());
+    map['measures'] =
+        pulumi.Input.encodeList<MeasureResponse, Map<String, dynamic>>(
+            measures, (value) => value.toMap());
     map['minAlignmentPeriod'] = minAlignmentPeriod;
     map['plotType'] = plotType;
     map['targetAxis'] = targetAxis;
@@ -63,16 +64,16 @@ class DataSetResponse {
 
   factory DataSetResponse.fromMap(Map<String, dynamic> map) {
     return DataSetResponse(
-      breakdowns: Input.decodeList<BreakdownResponse>(
+      breakdowns: pulumi.Input.decodeList<BreakdownResponse>(
           map['breakdowns'],
           (value) => BreakdownResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      dimensions: Input.decodeList<DimensionResponse>(
+      dimensions: pulumi.Input.decodeList<DimensionResponse>(
           map['dimensions'],
           (value) => DimensionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       legendTemplate: map['legendTemplate'] as String,
-      measures: Input.decodeList<MeasureResponse>(
+      measures: pulumi.Input.decodeList<MeasureResponse>(
           map['measures'],
           (value) =>
               MeasureResponse.fromMap((value as Map).cast<String, dynamic>())),

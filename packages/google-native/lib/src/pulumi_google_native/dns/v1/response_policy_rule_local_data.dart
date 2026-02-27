@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_record_set.dart';
 
 class ResponsePolicyRuleLocalData {
@@ -16,7 +16,7 @@ class ResponsePolicyRuleLocalData {
     final localDatasValue = localDatas;
     if (localDatasValue != null) {
       map['localDatas'] =
-          Input.encodeList<ResourceRecordSet, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ResourceRecordSet, Map<String, dynamic>>(
               localDatasValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +26,7 @@ class ResponsePolicyRuleLocalData {
     return ResponsePolicyRuleLocalData(
       localDatas: map['localDatas'] == null
           ? null
-          : Input.decodeList<ResourceRecordSet>(
+          : pulumi.Input.decodeList<ResourceRecordSet>(
               map['localDatas'],
               (value) => ResourceRecordSet.fromMap(
                   (value as Map).cast<String, dynamic>())),

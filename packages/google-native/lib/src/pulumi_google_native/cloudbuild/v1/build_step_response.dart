@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'time_span_response.dart';
-import 'volume_response4.dart';
+import 'volume_response_cloudbuild_v1.dart';
 
 /// A step in the build pipeline.
 class BuildStepResponse {
@@ -52,7 +52,7 @@ class BuildStepResponse {
   final TimeSpanResponse timing;
 
   /// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
-  final List<VolumeResponse4> volumes;
+  final List<VolumeResponseCloudbuildV1> volumes;
 
   /// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
   final List<String> waitFor;
@@ -94,8 +94,8 @@ class BuildStepResponse {
     map['status'] = status;
     map['timeout'] = timeout;
     map['timing'] = timing.toMap();
-    map['volumes'] = Input.encodeList<VolumeResponse4, Map<String, dynamic>>(
-        volumes, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<VolumeResponseCloudbuildV1,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
     map['waitFor'] = waitFor;
     return map;
   }
@@ -119,10 +119,10 @@ class BuildStepResponse {
       timeout: map['timeout'] as String,
       timing: TimeSpanResponse.fromMap(
           (map['timing'] as Map).cast<String, dynamic>()),
-      volumes: Input.decodeList<VolumeResponse4>(
+      volumes: pulumi.Input.decodeList<VolumeResponseCloudbuildV1>(
           map['volumes'],
-          (value) =>
-              VolumeResponse4.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => VolumeResponseCloudbuildV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
       waitFor: (map['waitFor'] as List).cast<String>(),
     );
   }

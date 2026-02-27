@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_lifecycle_rule_item.dart';
 
 /// The bucket's lifecycle configuration. See lifecycle management for more information.
@@ -16,9 +16,8 @@ class BucketLifecycle {
     final map = <String, dynamic>{};
     final ruleValue = rule;
     if (ruleValue != null) {
-      map['rule'] =
-          Input.encodeList<BucketLifecycleRuleItem, Map<String, dynamic>>(
-              ruleValue, (value) => value.toMap());
+      map['rule'] = pulumi.Input.encodeList<BucketLifecycleRuleItem,
+          Map<String, dynamic>>(ruleValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +26,7 @@ class BucketLifecycle {
     return BucketLifecycle(
       rule: map['rule'] == null
           ? null
-          : Input.decodeList<BucketLifecycleRuleItem>(
+          : pulumi.Input.decodeList<BucketLifecycleRuleItem>(
               map['rule'],
               (value) => BucketLifecycleRuleItem.fromMap(
                   (value as Map).cast<String, dynamic>())),

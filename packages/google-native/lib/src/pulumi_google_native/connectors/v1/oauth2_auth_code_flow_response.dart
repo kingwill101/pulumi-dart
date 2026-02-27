@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'secret_response2.dart';
+import 'secret_response_connectors_v1.dart';
 
 /// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
 class Oauth2AuthCodeFlowResponse {
@@ -14,7 +14,7 @@ class Oauth2AuthCodeFlowResponse {
   final String clientId;
 
   /// Client secret for user-provided OAuth app.
-  final SecretResponse2 clientSecret;
+  final SecretResponseConnectorsV1 clientSecret;
 
   /// Whether to enable PKCE when the user performs the auth code flow.
   final bool enablePkce;
@@ -57,7 +57,7 @@ class Oauth2AuthCodeFlowResponse {
       authCode: map['authCode'] as String,
       authUri: map['authUri'] as String,
       clientId: map['clientId'] as String,
-      clientSecret: SecretResponse2.fromMap(
+      clientSecret: SecretResponseConnectorsV1.fromMap(
           (map['clientSecret'] as Map).cast<String, dynamic>()),
       enablePkce: map['enablePkce'] as bool,
       pkceVerifier: map['pkceVerifier'] as String,

@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'app_engine_routing_response3.dart';
-import 'http_target_response3.dart';
+import 'app_engine_routing_response_cloudtasks_v2.dart';
+import 'http_target_response_cloudtasks_v2.dart';
 import 'rate_limits_response.dart';
-import 'retry_config_response3.dart';
+import 'retry_config_response_cloudtasks_v2.dart';
 import 'stackdriver_logging_config_response.dart';
 
 /// Result data returned by getQueue.
 class GetQueueResult {
   /// Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-  final AppEngineRoutingResponse3 appEngineRoutingOverride;
+  final AppEngineRoutingResponseCloudtasksV2 appEngineRoutingOverride;
 
   /// Modifies HTTP target for HTTP tasks.
-  final HttpTargetResponse3 httpTarget;
+  final HttpTargetResponseCloudtasksV2 httpTarget;
 
   /// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
   final String name;
@@ -24,7 +24,7 @@ class GetQueueResult {
   final RateLimitsResponse rateLimits;
 
   /// Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
-  final RetryConfigResponse3 retryConfig;
+  final RetryConfigResponseCloudtasksV2 retryConfig;
 
   /// Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
   final StackdriverLoggingConfigResponse stackdriverLoggingConfig;
@@ -58,15 +58,15 @@ class GetQueueResult {
 
   factory GetQueueResult.fromMap(Map<String, dynamic> map) {
     return GetQueueResult(
-      appEngineRoutingOverride: AppEngineRoutingResponse3.fromMap(
+      appEngineRoutingOverride: AppEngineRoutingResponseCloudtasksV2.fromMap(
           (map['appEngineRoutingOverride'] as Map).cast<String, dynamic>()),
-      httpTarget: HttpTargetResponse3.fromMap(
+      httpTarget: HttpTargetResponseCloudtasksV2.fromMap(
           (map['httpTarget'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       purgeTime: map['purgeTime'] as String,
       rateLimits: RateLimitsResponse.fromMap(
           (map['rateLimits'] as Map).cast<String, dynamic>()),
-      retryConfig: RetryConfigResponse3.fromMap(
+      retryConfig: RetryConfigResponseCloudtasksV2.fromMap(
           (map['retryConfig'] as Map).cast<String, dynamic>()),
       stackdriverLoggingConfig: StackdriverLoggingConfigResponse.fromMap(
           (map['stackdriverLoggingConfig'] as Map).cast<String, dynamic>()),

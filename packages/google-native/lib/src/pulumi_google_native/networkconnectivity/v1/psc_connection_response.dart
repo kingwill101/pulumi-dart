@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'google_rpc_error_info_response.dart';
-import 'google_rpc_status_response10.dart';
+import 'google_rpc_status_response_networkconnectivity_v1.dart';
 
 /// Information about a specific Private Service Connect connection.
 class PscConnectionResponse {
@@ -15,7 +15,7 @@ class PscConnectionResponse {
   final String consumerTargetProject;
 
   /// The most recent error during operating this connection.
-  final GoogleRpcStatusResponse10 error;
+  final GoogleRpcStatusResponseNetworkconnectivityV1 error;
 
   /// The error info for the latest error during operating this connection.
   final GoogleRpcErrorInfoResponse errorInfo;
@@ -63,7 +63,7 @@ class PscConnectionResponse {
       consumerAddress: map['consumerAddress'] as String,
       consumerForwardingRule: map['consumerForwardingRule'] as String,
       consumerTargetProject: map['consumerTargetProject'] as String,
-      error: GoogleRpcStatusResponse10.fromMap(
+      error: GoogleRpcStatusResponseNetworkconnectivityV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       errorInfo: GoogleRpcErrorInfoResponse.fromMap(
           (map['errorInfo'] as Map).cast<String, dynamic>()),

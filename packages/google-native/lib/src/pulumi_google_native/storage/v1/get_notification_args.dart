@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNotification.
 class GetNotificationArgs {
-  final Input<String> bucket;
-  final Input<String> notification;
-  final Input<String>? userProject;
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<String> notification;
+  final pulumi.Input<String>? userProject;
 
   GetNotificationArgs({
     required this.bucket,
@@ -27,9 +27,9 @@ class GetNotificationArgs {
 
   factory GetNotificationArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      notification: Input.asInput<String>(map['notification']),
-      userProject: Input.asOptionalInput<String>(map['userProject']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      notification: pulumi.Input.asInput<String>(map['notification']),
+      userProject: pulumi.Input.asOptionalInput<String>(map['userProject']),
     );
   }
 }

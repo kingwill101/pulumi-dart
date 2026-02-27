@@ -1,37 +1,37 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'specialist_pool_args.dart';
 
 /// Creates a SpecialistPool.
-class SpecialistPool extends CustomResource {
+class SpecialistPool extends pulumi.CustomResource {
   /// The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.
-  late final Output<String> displayName;
-  late final Output<String> location;
+  late final pulumi.Output<String> displayName;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the SpecialistPool.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The resource name of the pending data labeling jobs.
-  late final Output<List<String>> pendingDataLabelingJobs;
-  late final Output<String> project;
+  late final pulumi.Output<List<String>> pendingDataLabelingJobs;
+  late final pulumi.Output<String> project;
 
   /// The email addresses of the managers in the SpecialistPool.
-  late final Output<List<String>> specialistManagerEmails;
+  late final pulumi.Output<List<String>> specialistManagerEmails;
 
   /// The number of managers in this SpecialistPool.
-  late final Output<int> specialistManagersCount;
+  late final pulumi.Output<int> specialistManagersCount;
 
   /// The email addresses of workers in the SpecialistPool.
-  late final Output<List<String>> specialistWorkerEmails;
+  late final pulumi.Output<List<String>> specialistWorkerEmails;
 
   SpecialistPool(
     String name, {
     SpecialistPoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:aiplatform/v1:SpecialistPool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String>('displayName');
     this.location = registerOutput<String>('location');

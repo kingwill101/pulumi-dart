@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMessage.
 class GetMessageArgs {
-  final Input<String> datasetId;
-  final Input<String> hl7V2StoreId;
-  final Input<String> location;
-  final Input<String> messageId;
-  final Input<String>? project;
-  final Input<String>? view;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> hl7V2StoreId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> messageId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
 
   GetMessageArgs({
     required this.datasetId,
@@ -39,12 +39,12 @@ class GetMessageArgs {
 
   factory GetMessageArgs.fromMap(Map<String, dynamic> map) {
     return GetMessageArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      hl7V2StoreId: Input.asInput<String>(map['hl7V2StoreId']),
-      location: Input.asInput<String>(map['location']),
-      messageId: Input.asInput<String>(map['messageId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      hl7V2StoreId: pulumi.Input.asInput<String>(map['hl7V2StoreId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      messageId: pulumi.Input.asInput<String>(map['messageId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

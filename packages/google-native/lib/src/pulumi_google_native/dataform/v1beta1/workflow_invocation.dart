@@ -1,44 +1,44 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interval_response.dart';
 import 'invocation_config_response.dart';
 import 'workflow_invocation_args.dart';
 
 /// Creates a new WorkflowInvocation in a given Repository.
 /// Auto-naming is currently not supported for this resource.
-class WorkflowInvocation extends CustomResource {
+class WorkflowInvocation extends pulumi.CustomResource {
   /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
-  late final Output<String> compilationResult;
+  late final pulumi.Output<String> compilationResult;
 
   /// Immutable. If left unset, a default InvocationConfig will be used.
-  late final Output<InvocationConfigResponse> invocationConfig;
+  late final pulumi.Output<InvocationConfigResponse> invocationConfig;
 
   /// This workflow invocation's timing details.
-  late final Output<IntervalResponse> invocationTiming;
-  late final Output<String> location;
+  late final pulumi.Output<IntervalResponse> invocationTiming;
+  late final pulumi.Output<String> location;
 
   /// The workflow invocation's name.
-  late final Output<String> name;
-  late final Output<String> project;
-  late final Output<String> repositoryId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
+  late final pulumi.Output<String> repositoryId;
 
   /// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
-  late final Output<String> resolvedCompilationResult;
+  late final pulumi.Output<String> resolvedCompilationResult;
 
   /// This workflow invocation's current state.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
-  late final Output<String> workflowConfig;
+  late final pulumi.Output<String> workflowConfig;
 
   WorkflowInvocation(
     String name, {
     WorkflowInvocationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:dataform/v1beta1:WorkflowInvocation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.compilationResult = registerOutput<String>('compilationResult');
     this.invocationConfig =

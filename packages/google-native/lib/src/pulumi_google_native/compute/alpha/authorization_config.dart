@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rbac_policy.dart';
 
 /// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
@@ -16,8 +16,9 @@ class AuthorizationConfig {
     final map = <String, dynamic>{};
     final policiesValue = policies;
     if (policiesValue != null) {
-      map['policies'] = Input.encodeList<RbacPolicy, Map<String, dynamic>>(
-          policiesValue, (value) => value.toMap());
+      map['policies'] =
+          pulumi.Input.encodeList<RbacPolicy, Map<String, dynamic>>(
+              policiesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -26,7 +27,7 @@ class AuthorizationConfig {
     return AuthorizationConfig(
       policies: map['policies'] == null
           ? null
-          : Input.decodeList<RbacPolicy>(
+          : pulumi.Input.decodeList<RbacPolicy>(
               map['policies'],
               (value) =>
                   RbacPolicy.fromMap((value as Map).cast<String, dynamic>())),

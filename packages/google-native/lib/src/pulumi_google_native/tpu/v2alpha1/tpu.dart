@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_spec.dart';
 
 /// Details of the TPU resource(s) being requested.
@@ -16,7 +16,7 @@ class Tpu {
     final map = <String, dynamic>{};
     final nodeSpecValue = nodeSpec;
     if (nodeSpecValue != null) {
-      map['nodeSpec'] = Input.encodeList<NodeSpec, Map<String, dynamic>>(
+      map['nodeSpec'] = pulumi.Input.encodeList<NodeSpec, Map<String, dynamic>>(
           nodeSpecValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +26,7 @@ class Tpu {
     return Tpu(
       nodeSpec: map['nodeSpec'] == null
           ? null
-          : Input.decodeList<NodeSpec>(
+          : pulumi.Input.decodeList<NodeSpec>(
               map['nodeSpec'],
               (value) =>
                   NodeSpec.fromMap((value as Map).cast<String, dynamic>())),

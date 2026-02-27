@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_type_time_of_day.dart';
 import 'weekly_schedule_days_of_week_item.dart';
 
@@ -22,13 +22,13 @@ class WeeklySchedule {
     final daysOfWeekValue = daysOfWeek;
     if (daysOfWeekValue != null) {
       map['daysOfWeek'] =
-          Input.encodeList<WeeklyScheduleDaysOfWeekItem, String>(
+          pulumi.Input.encodeList<WeeklyScheduleDaysOfWeekItem, String>(
               daysOfWeekValue, (value) => value.value);
     }
     final startTimesValue = startTimes;
     if (startTimesValue != null) {
       map['startTimes'] =
-          Input.encodeList<GoogleTypeTimeOfDay, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GoogleTypeTimeOfDay, Map<String, dynamic>>(
               startTimesValue, (value) => value.toMap());
     }
     return map;
@@ -38,13 +38,13 @@ class WeeklySchedule {
     return WeeklySchedule(
       daysOfWeek: map['daysOfWeek'] == null
           ? null
-          : Input.decodeList<WeeklyScheduleDaysOfWeekItem>(
+          : pulumi.Input.decodeList<WeeklyScheduleDaysOfWeekItem>(
               map['daysOfWeek'],
               (value) =>
                   WeeklyScheduleDaysOfWeekItem.fromValue(value as String)),
       startTimes: map['startTimes'] == null
           ? null
-          : Input.decodeList<GoogleTypeTimeOfDay>(
+          : pulumi.Input.decodeList<GoogleTypeTimeOfDay>(
               map['startTimes'],
               (value) => GoogleTypeTimeOfDay.fromMap(
                   (value as Map).cast<String, dynamic>())),

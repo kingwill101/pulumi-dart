@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstance.
 class GetInstanceArgs {
-  final Input<String> clusterId;
-  final Input<String> instanceId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? view;
+  final pulumi.Input<String> clusterId;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
 
   GetInstanceArgs({
     required this.clusterId,
@@ -36,11 +36,11 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      clusterId: Input.asInput<String>(map['clusterId']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
+      clusterId: pulumi.Input.asInput<String>(map['clusterId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

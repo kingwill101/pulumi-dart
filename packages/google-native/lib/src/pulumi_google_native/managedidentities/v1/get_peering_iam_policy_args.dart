@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPeeringIamPolicy.
 class GetPeeringIamPolicyArgs {
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String> peeringId;
-  final Input<String>? project;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String> peeringId;
+  final pulumi.Input<String>? project;
 
   GetPeeringIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
@@ -30,10 +30,10 @@ class GetPeeringIamPolicyArgs {
 
   factory GetPeeringIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeringIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      peeringId: Input.asInput<String>(map['peeringId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      peeringId: pulumi.Input.asInput<String>(map['peeringId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

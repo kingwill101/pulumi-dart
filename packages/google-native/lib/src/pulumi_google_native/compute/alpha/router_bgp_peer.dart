@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_advertised_ip_range.dart';
 import 'router_bgp_peer_advertise_mode.dart';
 import 'router_bgp_peer_advertised_groups_item.dart';
@@ -113,14 +113,14 @@ class RouterBgpPeer {
     final advertisedGroupsValue = advertisedGroups;
     if (advertisedGroupsValue != null) {
       map['advertisedGroups'] =
-          Input.encodeList<RouterBgpPeerAdvertisedGroupsItem, String>(
+          pulumi.Input.encodeList<RouterBgpPeerAdvertisedGroupsItem, String>(
               advertisedGroupsValue, (value) => value.value);
     }
     final advertisedIpRangesValue = advertisedIpRanges;
     if (advertisedIpRangesValue != null) {
-      map['advertisedIpRanges'] =
-          Input.encodeList<RouterAdvertisedIpRange, Map<String, dynamic>>(
-              advertisedIpRangesValue, (value) => value.toMap());
+      map['advertisedIpRanges'] = pulumi.Input.encodeList<
+              RouterAdvertisedIpRange, Map<String, dynamic>>(
+          advertisedIpRangesValue, (value) => value.toMap());
     }
     final advertisedRoutePriorityValue = advertisedRoutePriority;
     if (advertisedRoutePriorityValue != null) {
@@ -132,7 +132,7 @@ class RouterBgpPeer {
     }
     final customLearnedIpRangesValue = customLearnedIpRanges;
     if (customLearnedIpRangesValue != null) {
-      map['customLearnedIpRanges'] = Input.encodeList<
+      map['customLearnedIpRanges'] = pulumi.Input.encodeList<
               RouterBgpPeerCustomLearnedIpRange, Map<String, dynamic>>(
           customLearnedIpRangesValue, (value) => value.toMap());
     }
@@ -215,13 +215,13 @@ class RouterBgpPeer {
               map['advertiseMode'] as String),
       advertisedGroups: map['advertisedGroups'] == null
           ? null
-          : Input.decodeList<RouterBgpPeerAdvertisedGroupsItem>(
+          : pulumi.Input.decodeList<RouterBgpPeerAdvertisedGroupsItem>(
               map['advertisedGroups'],
               (value) =>
                   RouterBgpPeerAdvertisedGroupsItem.fromValue(value as String)),
       advertisedIpRanges: map['advertisedIpRanges'] == null
           ? null
-          : Input.decodeList<RouterAdvertisedIpRange>(
+          : pulumi.Input.decodeList<RouterAdvertisedIpRange>(
               map['advertisedIpRanges'],
               (value) => RouterAdvertisedIpRange.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -234,7 +234,7 @@ class RouterBgpPeer {
               (map['bfd'] as Map).cast<String, dynamic>()),
       customLearnedIpRanges: map['customLearnedIpRanges'] == null
           ? null
-          : Input.decodeList<RouterBgpPeerCustomLearnedIpRange>(
+          : pulumi.Input.decodeList<RouterBgpPeerCustomLearnedIpRange>(
               map['customLearnedIpRanges'],
               (value) => RouterBgpPeerCustomLearnedIpRange.fromMap(
                   (value as Map).cast<String, dynamic>())),

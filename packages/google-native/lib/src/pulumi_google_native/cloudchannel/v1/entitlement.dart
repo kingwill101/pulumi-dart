@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entitlement_args.dart';
 import 'google_cloud_channel_v1_association_info_response.dart';
 import 'google_cloud_channel_v1_commitment_settings_response.dart';
@@ -10,61 +10,63 @@ import 'google_cloud_channel_v1_trial_settings_response.dart';
 /// Auto-naming is currently not supported for this resource.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class Entitlement extends CustomResource {
-  late final Output<String> accountId;
+class Entitlement extends pulumi.CustomResource {
+  late final pulumi.Output<String> accountId;
 
   /// Association information to other entitlements.
-  late final Output<GoogleCloudChannelV1AssociationInfoResponse>
+  late final pulumi.Output<GoogleCloudChannelV1AssociationInfoResponse>
       associationInfo;
 
   /// Optional. The billing account resource name that is used to pay for this entitlement.
-  late final Output<String> billingAccount;
+  late final pulumi.Output<String> billingAccount;
 
   /// Commitment settings for a commitment-based Offer. Required for commitment based offers.
-  late final Output<GoogleCloudChannelV1CommitmentSettingsResponse>
+  late final pulumi.Output<GoogleCloudChannelV1CommitmentSettingsResponse>
       commitmentSettings;
 
   /// The time at which the entitlement is created.
-  late final Output<String> createTime;
-  late final Output<String> customerId;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<String> customerId;
 
   /// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-  late final Output<String> offer;
+  late final pulumi.Output<String> offer;
 
   /// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
-  late final Output<List<GoogleCloudChannelV1ParameterResponse>> parameters;
+  late final pulumi.Output<List<GoogleCloudChannelV1ParameterResponse>>
+      parameters;
 
   /// Service provisioning details for the entitlement.
-  late final Output<GoogleCloudChannelV1ProvisionedServiceResponse>
+  late final pulumi.Output<GoogleCloudChannelV1ProvisionedServiceResponse>
       provisionedService;
 
   /// Current provisioning state of the entitlement.
-  late final Output<String> provisioningState;
+  late final pulumi.Output<String> provisioningState;
 
   /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
-  late final Output<String> purchaseOrderId;
+  late final pulumi.Output<String> purchaseOrderId;
 
   /// Enumerable of all current suspension reasons for an entitlement.
-  late final Output<List<String>> suspensionReasons;
+  late final pulumi.Output<List<String>> suspensionReasons;
 
   /// Settings for trial offers.
-  late final Output<GoogleCloudChannelV1TrialSettingsResponse> trialSettings;
+  late final pulumi.Output<GoogleCloudChannelV1TrialSettingsResponse>
+      trialSettings;
 
   /// The time at which the entitlement is updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Entitlement(
     String name, {
     EntitlementArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:cloudchannel/v1:Entitlement',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.associationInfo =

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'glossary_input_config.dart';
 import 'language_code_pair.dart';
 import 'language_codes_set.dart';
@@ -8,21 +8,21 @@ import 'language_codes_set.dart';
 /// The set of arguments for Glossary.
 class GlossaryArgs {
   /// Optional. The display name of the glossary.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
-  final Input<GlossaryInputConfig> inputConfig;
+  final pulumi.Input<GlossaryInputConfig> inputConfig;
 
   /// Used with equivalent term set glossaries.
-  final Input<LanguageCodesSet>? languageCodesSet;
+  final pulumi.Input<LanguageCodesSet>? languageCodesSet;
 
   /// Used with unidirectional glossaries.
-  final Input<LanguageCodePair>? languagePair;
-  final Input<String>? location;
+  final pulumi.Input<LanguageCodePair>? languagePair;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   GlossaryArgs({
     this.displayName,
@@ -41,19 +41,18 @@ class GlossaryArgs {
       map['displayName'] = displayNameValue;
     }
     map['inputConfig'] =
-        Input.mapInputValue<GlossaryInputConfig, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<GlossaryInputConfig, Map<String, dynamic>>(
             inputConfig, (value) => value.toMap());
     final languageCodesSetValue = languageCodesSet;
     if (languageCodesSetValue != null) {
-      map['languageCodesSet'] =
-          Input.mapOptionalInputValue<LanguageCodesSet, Map<String, dynamic>>(
-              languageCodesSetValue, (value) => value.toMap());
+      map['languageCodesSet'] = pulumi.Input.mapOptionalInputValue<
+              LanguageCodesSet, Map<String, dynamic>>(
+          languageCodesSetValue, (value) => value.toMap());
     }
     final languagePairValue = languagePair;
     if (languagePairValue != null) {
-      map['languagePair'] =
-          Input.mapOptionalInputValue<LanguageCodePair, Map<String, dynamic>>(
-              languagePairValue, (value) => value.toMap());
+      map['languagePair'] = pulumi.Input.mapOptionalInputValue<LanguageCodePair,
+          Map<String, dynamic>>(languagePairValue, (value) => value.toMap());
     }
     final locationValue = location;
     if (locationValue != null) {
@@ -72,15 +71,16 @@ class GlossaryArgs {
 
   factory GlossaryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      inputConfig: Input.asInput<GlossaryInputConfig>(map['inputConfig']),
-      languageCodesSet:
-          Input.asOptionalInput<LanguageCodesSet>(map['languageCodesSet']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      inputConfig:
+          pulumi.Input.asInput<GlossaryInputConfig>(map['inputConfig']),
+      languageCodesSet: pulumi.Input.asOptionalInput<LanguageCodesSet>(
+          map['languageCodesSet']),
       languagePair:
-          Input.asOptionalInput<LanguageCodePair>(map['languagePair']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<LanguageCodePair>(map['languagePair']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

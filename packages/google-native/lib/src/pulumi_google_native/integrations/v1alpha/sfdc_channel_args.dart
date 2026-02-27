@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SfdcChannel.
 class SfdcChannelArgs {
   /// The Channel topic defined by salesforce once an channel is opened
-  final Input<String>? channelTopic;
+  final pulumi.Input<String>? channelTopic;
 
   /// The description for this channel
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Client level unique name/alias to easily reference a channel.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Indicated if a channel has any active integrations referencing it. Set to false when the channel is created, and set to true if there is any integration published with the channel configured in it.
-  final Input<bool>? isActive;
+  final pulumi.Input<bool>? isActive;
 
   /// Last sfdc messsage replay id for channel
-  final Input<String>? lastReplayId;
-  final Input<String>? location;
+  final pulumi.Input<String>? lastReplayId;
+  final pulumi.Input<String>? location;
 
   /// Resource name of the SFDC channel projects/{project}/locations/{location}/sfdcInstances/{sfdc_instance}/sfdcChannels/{sfdc_channel}.
-  final Input<String>? name;
-  final Input<String> productId;
-  final Input<String>? project;
-  final Input<String> sfdcInstanceId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> productId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sfdcInstanceId;
 
   SfdcChannelArgs({
     this.channelTopic,
@@ -80,16 +80,16 @@ class SfdcChannelArgs {
 
   factory SfdcChannelArgs.fromMap(Map<String, dynamic> map) {
     return SfdcChannelArgs(
-      channelTopic: Input.asOptionalInput<String>(map['channelTopic']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      isActive: Input.asOptionalInput<bool>(map['isActive']),
-      lastReplayId: Input.asOptionalInput<String>(map['lastReplayId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      productId: Input.asInput<String>(map['productId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sfdcInstanceId: Input.asInput<String>(map['sfdcInstanceId']),
+      channelTopic: pulumi.Input.asOptionalInput<String>(map['channelTopic']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      isActive: pulumi.Input.asOptionalInput<bool>(map['isActive']),
+      lastReplayId: pulumi.Input.asOptionalInput<String>(map['lastReplayId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      productId: pulumi.Input.asInput<String>(map['productId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sfdcInstanceId: pulumi.Input.asInput<String>(map['sfdcInstanceId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgresql_table.dart';
 
 /// PostgreSQL schema.
@@ -21,7 +21,7 @@ class PostgresqlSchema {
     final postgresqlTablesValue = postgresqlTables;
     if (postgresqlTablesValue != null) {
       map['postgresqlTables'] =
-          Input.encodeList<PostgresqlTable, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PostgresqlTable, Map<String, dynamic>>(
               postgresqlTablesValue, (value) => value.toMap());
     }
     final schemaValue = schema;
@@ -35,7 +35,7 @@ class PostgresqlSchema {
     return PostgresqlSchema(
       postgresqlTables: map['postgresqlTables'] == null
           ? null
-          : Input.decodeList<PostgresqlTable>(
+          : pulumi.Input.decodeList<PostgresqlTable>(
               map['postgresqlTables'],
               (value) => PostgresqlTable.fromMap(
                   (value as Map).cast<String, dynamic>())),

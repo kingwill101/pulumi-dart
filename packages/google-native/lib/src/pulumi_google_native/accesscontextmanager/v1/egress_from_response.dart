@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'egress_source_response.dart';
 
 /// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
@@ -30,7 +30,7 @@ class EgressFromResponse {
     map['identityType'] = identityType;
     map['sourceRestriction'] = sourceRestriction;
     map['sources'] =
-        Input.encodeList<EgressSourceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<EgressSourceResponse, Map<String, dynamic>>(
             sources, (value) => value.toMap());
     return map;
   }
@@ -40,7 +40,7 @@ class EgressFromResponse {
       identities: (map['identities'] as List).cast<String>(),
       identityType: map['identityType'] as String,
       sourceRestriction: map['sourceRestriction'] as String,
-      sources: Input.decodeList<EgressSourceResponse>(
+      sources: pulumi.Input.decodeList<EgressSourceResponse>(
           map['sources'],
           (value) => EgressSourceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

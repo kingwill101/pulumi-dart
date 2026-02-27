@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'justification_response.dart';
 import 'related_url_response.dart';
 import 'remediation_response.dart';
@@ -49,10 +49,10 @@ class VexAssessmentResponse {
     map['justification'] = justification.toMap();
     map['noteName'] = noteName;
     map['relatedUris'] =
-        Input.encodeList<RelatedUrlResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RelatedUrlResponse, Map<String, dynamic>>(
             relatedUris, (value) => value.toMap());
     map['remediations'] =
-        Input.encodeList<RemediationResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RemediationResponse, Map<String, dynamic>>(
             remediations, (value) => value.toMap());
     map['state'] = state;
     map['vulnerabilityId'] = vulnerabilityId;
@@ -66,11 +66,11 @@ class VexAssessmentResponse {
       justification: JustificationResponse.fromMap(
           (map['justification'] as Map).cast<String, dynamic>()),
       noteName: map['noteName'] as String,
-      relatedUris: Input.decodeList<RelatedUrlResponse>(
+      relatedUris: pulumi.Input.decodeList<RelatedUrlResponse>(
           map['relatedUris'],
           (value) => RelatedUrlResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      remediations: Input.decodeList<RemediationResponse>(
+      remediations: pulumi.Input.decodeList<RemediationResponse>(
           map['remediations'],
           (value) => RemediationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

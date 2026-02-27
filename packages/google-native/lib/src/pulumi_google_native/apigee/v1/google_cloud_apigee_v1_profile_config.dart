@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_profile_config_category.dart';
 
 /// ProfileConfig defines a set of categories and policies which will be used to compute security score.
@@ -16,7 +16,7 @@ class GoogleCloudApigeeV1ProfileConfig {
     final map = <String, dynamic>{};
     final categoriesValue = categories;
     if (categoriesValue != null) {
-      map['categories'] = Input.encodeList<
+      map['categories'] = pulumi.Input.encodeList<
           GoogleCloudApigeeV1ProfileConfigCategory,
           Map<String, dynamic>>(categoriesValue, (value) => value.toMap());
     }
@@ -27,7 +27,7 @@ class GoogleCloudApigeeV1ProfileConfig {
     return GoogleCloudApigeeV1ProfileConfig(
       categories: map['categories'] == null
           ? null
-          : Input.decodeList<GoogleCloudApigeeV1ProfileConfigCategory>(
+          : pulumi.Input.decodeList<GoogleCloudApigeeV1ProfileConfigCategory>(
               map['categories'],
               (value) => GoogleCloudApigeeV1ProfileConfigCategory.fromMap(
                   (value as Map).cast<String, dynamic>())),

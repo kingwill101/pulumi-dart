@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'secret2.dart';
+import 'secret_connectors_v1.dart';
 
 /// Parameters to support Ssh public key Authentication.
 class SshPublicKey {
@@ -8,10 +8,10 @@ class SshPublicKey {
   final String? certType;
 
   /// SSH Client Cert. It should contain both public and private key.
-  final Secret2? sshClientCert;
+  final SecretConnectorsV1? sshClientCert;
 
   /// Password (passphrase) for ssh client certificate if it has one.
-  final Secret2? sshClientCertPass;
+  final SecretConnectorsV1? sshClientCertPass;
 
   /// The user account used to authenticate.
   final String? username;
@@ -49,11 +49,11 @@ class SshPublicKey {
       certType: map['certType'] == null ? null : map['certType'] as String,
       sshClientCert: map['sshClientCert'] == null
           ? null
-          : Secret2.fromMap(
+          : SecretConnectorsV1.fromMap(
               (map['sshClientCert'] as Map).cast<String, dynamic>()),
       sshClientCertPass: map['sshClientCertPass'] == null
           ? null
-          : Secret2.fromMap(
+          : SecretConnectorsV1.fromMap(
               (map['sshClientCertPass'] as Map).cast<String, dynamic>()),
       username: map['username'] == null ? null : map['username'] as String,
     );

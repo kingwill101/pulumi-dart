@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fhir_notification_config_response.dart';
-import 'notification_config_response3.dart';
+import 'notification_config_response_healthcare_v1.dart';
 import 'stream_config_response.dart';
 import 'validation_config_response.dart';
 
@@ -30,7 +30,7 @@ class GetFhirStoreResult {
   final String name;
 
   /// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
-  final NotificationConfigResponse3 notificationConfig;
+  final NotificationConfigResponseHealthcareV1 notificationConfig;
 
   /// Specifies where and whether to send notifications upon changes to a FHIR store.
   final List<FhirNotificationConfigResponse> notificationConfigs;
@@ -69,11 +69,11 @@ class GetFhirStoreResult {
     map['labels'] = labels;
     map['name'] = name;
     map['notificationConfig'] = notificationConfig.toMap();
-    map['notificationConfigs'] =
-        Input.encodeList<FhirNotificationConfigResponse, Map<String, dynamic>>(
-            notificationConfigs, (value) => value.toMap());
+    map['notificationConfigs'] = pulumi.Input.encodeList<
+        FhirNotificationConfigResponse,
+        Map<String, dynamic>>(notificationConfigs, (value) => value.toMap());
     map['streamConfigs'] =
-        Input.encodeList<StreamConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StreamConfigResponse, Map<String, dynamic>>(
             streamConfigs, (value) => value.toMap());
     map['validationConfig'] = validationConfig.toMap();
     map['version'] = version;
@@ -90,13 +90,14 @@ class GetFhirStoreResult {
       enableUpdateCreate: map['enableUpdateCreate'] as bool,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      notificationConfig: NotificationConfigResponse3.fromMap(
+      notificationConfig: NotificationConfigResponseHealthcareV1.fromMap(
           (map['notificationConfig'] as Map).cast<String, dynamic>()),
-      notificationConfigs: Input.decodeList<FhirNotificationConfigResponse>(
-          map['notificationConfigs'],
-          (value) => FhirNotificationConfigResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      streamConfigs: Input.decodeList<StreamConfigResponse>(
+      notificationConfigs:
+          pulumi.Input.decodeList<FhirNotificationConfigResponse>(
+              map['notificationConfigs'],
+              (value) => FhirNotificationConfigResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      streamConfigs: pulumi.Input.decodeList<StreamConfigResponse>(
           map['streamConfigs'],
           (value) => StreamConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

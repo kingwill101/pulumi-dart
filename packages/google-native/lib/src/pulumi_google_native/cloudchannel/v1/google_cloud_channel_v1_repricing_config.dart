@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_channel_v1_conditional_override.dart';
 import 'google_cloud_channel_v1_repricing_adjustment.dart';
 import 'google_cloud_channel_v1_repricing_config_entitlement_granularity.dart';
 import 'google_cloud_channel_v1_repricing_config_rebilling_basis.dart';
-import 'google_type_date3.dart';
+import 'google_type_date_cloudchannel_v1.dart';
 
 /// Configuration for repricing a Google bill over a period of time.
 class GoogleCloudChannelV1RepricingConfig {
@@ -19,7 +19,7 @@ class GoogleCloudChannelV1RepricingConfig {
   final List<GoogleCloudChannelV1ConditionalOverride>? conditionalOverrides;
 
   /// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
-  final GoogleTypeDate3 effectiveInvoiceMonth;
+  final GoogleTypeDateCloudchannelV1 effectiveInvoiceMonth;
 
   /// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
   final GoogleCloudChannelV1RepricingConfigEntitlementGranularity?
@@ -46,7 +46,7 @@ class GoogleCloudChannelV1RepricingConfig {
     }
     final conditionalOverridesValue = conditionalOverrides;
     if (conditionalOverridesValue != null) {
-      map['conditionalOverrides'] = Input.encodeList<
+      map['conditionalOverrides'] = pulumi.Input.encodeList<
               GoogleCloudChannelV1ConditionalOverride, Map<String, dynamic>>(
           conditionalOverridesValue, (value) => value.toMap());
     }
@@ -69,11 +69,11 @@ class GoogleCloudChannelV1RepricingConfig {
           : (map['channelPartnerGranularity'] as Map).cast<String, dynamic>(),
       conditionalOverrides: map['conditionalOverrides'] == null
           ? null
-          : Input.decodeList<GoogleCloudChannelV1ConditionalOverride>(
+          : pulumi.Input.decodeList<GoogleCloudChannelV1ConditionalOverride>(
               map['conditionalOverrides'],
               (value) => GoogleCloudChannelV1ConditionalOverride.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      effectiveInvoiceMonth: GoogleTypeDate3.fromMap(
+      effectiveInvoiceMonth: GoogleTypeDateCloudchannelV1.fromMap(
           (map['effectiveInvoiceMonth'] as Map).cast<String, dynamic>()),
       entitlementGranularity: map['entitlementGranularity'] == null
           ? null

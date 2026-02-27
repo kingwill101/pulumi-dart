@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_attachment_configuration_constraints_bgp_peer_asnrange_response.dart';
 
 class InterconnectAttachmentConfigurationConstraintsResponse {
@@ -20,7 +20,7 @@ class InterconnectAttachmentConfigurationConstraintsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['bgpMd5'] = bgpMd5;
-    map['bgpPeerAsnRanges'] = Input.encodeList<
+    map['bgpPeerAsnRanges'] = pulumi.Input.encodeList<
         InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse,
         Map<String, dynamic>>(bgpPeerAsnRanges, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class InterconnectAttachmentConfigurationConstraintsResponse {
       Map<String, dynamic> map) {
     return InterconnectAttachmentConfigurationConstraintsResponse(
       bgpMd5: map['bgpMd5'] as String,
-      bgpPeerAsnRanges: Input.decodeList<
+      bgpPeerAsnRanges: pulumi.Input.decodeList<
               InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse>(
           map['bgpPeerAsnRanges'],
           (value) =>

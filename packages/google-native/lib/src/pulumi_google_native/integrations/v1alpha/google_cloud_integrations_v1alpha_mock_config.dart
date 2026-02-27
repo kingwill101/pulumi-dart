@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_event_parameter.dart';
 import 'google_cloud_integrations_v1alpha_mock_config_mock_strategy.dart';
 
@@ -33,7 +33,7 @@ class GoogleCloudIntegrationsV1alphaMockConfig {
     }
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           GoogleCloudIntegrationsV1alphaEventParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -52,7 +52,8 @@ class GoogleCloudIntegrationsV1alphaMockConfig {
               map['mockStrategy'] as String),
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<GoogleCloudIntegrationsV1alphaEventParameter>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudIntegrationsV1alphaEventParameter>(
               map['parameters'],
               (value) => GoogleCloudIntegrationsV1alphaEventParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

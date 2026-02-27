@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getProduct.
 class GetProductArgs {
-  final Input<String> branchId;
-  final Input<String> catalogId;
-  final Input<String> location;
-  final Input<String> productId;
-  final Input<String>? project;
+  final pulumi.Input<String> branchId;
+  final pulumi.Input<String> catalogId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> productId;
+  final pulumi.Input<String>? project;
 
   GetProductArgs({
     required this.branchId,
@@ -33,11 +33,11 @@ class GetProductArgs {
 
   factory GetProductArgs.fromMap(Map<String, dynamic> map) {
     return GetProductArgs(
-      branchId: Input.asInput<String>(map['branchId']),
-      catalogId: Input.asInput<String>(map['catalogId']),
-      location: Input.asInput<String>(map['location']),
-      productId: Input.asInput<String>(map['productId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      branchId: pulumi.Input.asInput<String>(map['branchId']),
+      catalogId: pulumi.Input.asInput<String>(map['catalogId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      productId: pulumi.Input.asInput<String>(map['productId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

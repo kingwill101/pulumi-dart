@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_rule_matcher_config_destination_port.dart';
 import 'security_policy_rule_matcher_config_layer4_config.dart';
 
@@ -32,13 +32,13 @@ class SecurityPolicyRuleMatcherConfig {
     }
     final destPortsValue = destPorts;
     if (destPortsValue != null) {
-      map['destPorts'] = Input.encodeList<
+      map['destPorts'] = pulumi.Input.encodeList<
           SecurityPolicyRuleMatcherConfigDestinationPort,
           Map<String, dynamic>>(destPortsValue, (value) => value.toMap());
     }
     final layer4ConfigsValue = layer4Configs;
     if (layer4ConfigsValue != null) {
-      map['layer4Configs'] = Input.encodeList<
+      map['layer4Configs'] = pulumi.Input.encodeList<
           SecurityPolicyRuleMatcherConfigLayer4Config,
           Map<String, dynamic>>(layer4ConfigsValue, (value) => value.toMap());
     }
@@ -56,13 +56,15 @@ class SecurityPolicyRuleMatcherConfig {
           : (map['destIpRanges'] as List).cast<String>(),
       destPorts: map['destPorts'] == null
           ? null
-          : Input.decodeList<SecurityPolicyRuleMatcherConfigDestinationPort>(
+          : pulumi.Input.decodeList<
+                  SecurityPolicyRuleMatcherConfigDestinationPort>(
               map['destPorts'],
               (value) => SecurityPolicyRuleMatcherConfigDestinationPort.fromMap(
                   (value as Map).cast<String, dynamic>())),
       layer4Configs: map['layer4Configs'] == null
           ? null
-          : Input.decodeList<SecurityPolicyRuleMatcherConfigLayer4Config>(
+          : pulumi.Input.decodeList<
+                  SecurityPolicyRuleMatcherConfigLayer4Config>(
               map['layer4Configs'],
               (value) => SecurityPolicyRuleMatcherConfigLayer4Config.fromMap(
                   (value as Map).cast<String, dynamic>())),

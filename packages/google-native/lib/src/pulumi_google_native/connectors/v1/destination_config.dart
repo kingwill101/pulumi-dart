@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'destination.dart';
 
 /// Define the Connectors target endpoint.
@@ -20,8 +20,9 @@ class DestinationConfig {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] = Input.encodeList<Destination, Map<String, dynamic>>(
-          destinationsValue, (value) => value.toMap());
+      map['destinations'] =
+          pulumi.Input.encodeList<Destination, Map<String, dynamic>>(
+              destinationsValue, (value) => value.toMap());
     }
     final keyValue = key;
     if (keyValue != null) {
@@ -34,7 +35,7 @@ class DestinationConfig {
     return DestinationConfig(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<Destination>(
+          : pulumi.Input.decodeList<Destination>(
               map['destinations'],
               (value) =>
                   Destination.fromMap((value as Map).cast<String, dynamic>())),

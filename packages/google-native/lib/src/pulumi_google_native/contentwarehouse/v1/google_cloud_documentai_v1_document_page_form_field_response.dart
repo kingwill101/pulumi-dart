@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_page_detected_language_response.dart';
 import 'google_cloud_documentai_v1_document_page_layout_response.dart';
 import 'google_cloud_documentai_v1_document_provenance_response.dart';
@@ -50,11 +50,11 @@ class GoogleCloudDocumentaiV1DocumentPageFormFieldResponse {
     map['correctedValueText'] = correctedValueText;
     map['fieldName'] = fieldName.toMap();
     map['fieldValue'] = fieldValue.toMap();
-    map['nameDetectedLanguages'] = Input.encodeList<
+    map['nameDetectedLanguages'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
         Map<String, dynamic>>(nameDetectedLanguages, (value) => value.toMap());
     map['provenance'] = provenance.toMap();
-    map['valueDetectedLanguages'] = Input.encodeList<
+    map['valueDetectedLanguages'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
         Map<String, dynamic>>(valueDetectedLanguages, (value) => value.toMap());
     map['valueType'] = valueType;
@@ -70,14 +70,14 @@ class GoogleCloudDocumentaiV1DocumentPageFormFieldResponse {
           (map['fieldName'] as Map).cast<String, dynamic>()),
       fieldValue: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
           (map['fieldValue'] as Map).cast<String, dynamic>()),
-      nameDetectedLanguages: Input.decodeList<
+      nameDetectedLanguages: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(
           map['nameDetectedLanguages'],
           (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
               .fromMap((value as Map).cast<String, dynamic>())),
       provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(
           (map['provenance'] as Map).cast<String, dynamic>()),
-      valueDetectedLanguages: Input.decodeList<
+      valueDetectedLanguages: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(
           map['valueDetectedLanguages'],
           (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse

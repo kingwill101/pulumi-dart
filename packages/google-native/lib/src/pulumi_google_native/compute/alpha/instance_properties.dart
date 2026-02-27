@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config.dart';
 import 'advanced_machine_features.dart';
-import 'attached_disk2.dart';
+import 'attached_disk_compute_alpha.dart';
 import 'confidential_instance_config.dart';
 import 'display_device.dart';
 import 'instance_properties_key_revocation_action_type.dart';
 import 'instance_properties_post_key_revocation_action_type.dart';
 import 'instance_properties_private_ipv6_google_access.dart';
 import 'metadata.dart';
-import 'network_interface2.dart';
+import 'network_interface_compute_alpha.dart';
 import 'network_performance_config.dart';
 import 'reservation_affinity.dart';
 import 'scheduling.dart';
-import 'service_account3.dart';
+import 'service_account_compute_alpha.dart';
 import 'shielded_instance_config.dart';
 import 'shielded_vm_config.dart';
 import 'tags.dart';
@@ -33,7 +33,7 @@ class InstanceProperties {
   final String? description;
 
   /// An array of disks that are associated with the instances that are created from these properties.
-  final List<AttachedDisk2>? disks;
+  final List<AttachedDiskComputeAlpha>? disks;
 
   /// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
   final DisplayDevice? displayDevice;
@@ -57,7 +57,7 @@ class InstanceProperties {
   final String? minCpuPlatform;
 
   /// An array of network access configurations for this interface.
-  final List<NetworkInterface2>? networkInterfaces;
+  final List<NetworkInterfaceComputeAlpha>? networkInterfaces;
 
   /// Note that for MachineImage, this is not supported yet.
   final NetworkPerformanceConfig? networkPerformanceConfig;
@@ -88,7 +88,7 @@ class InstanceProperties {
   final List<String>? secureTags;
 
   /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-  final List<ServiceAccount3>? serviceAccounts;
+  final List<ServiceAccountComputeAlpha>? serviceAccounts;
 
   /// Mapping of user defined keys to ServiceIntegrationSpec.
   final Map<String, String>? serviceIntegrationSpecs;
@@ -153,8 +153,8 @@ class InstanceProperties {
     }
     final disksValue = disks;
     if (disksValue != null) {
-      map['disks'] = Input.encodeList<AttachedDisk2, Map<String, dynamic>>(
-          disksValue, (value) => value.toMap());
+      map['disks'] = pulumi.Input.encodeList<AttachedDiskComputeAlpha,
+          Map<String, dynamic>>(disksValue, (value) => value.toMap());
     }
     final displayDeviceValue = displayDevice;
     if (displayDeviceValue != null) {
@@ -163,7 +163,7 @@ class InstanceProperties {
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
       map['guestAccelerators'] =
-          Input.encodeList<AcceleratorConfig, Map<String, dynamic>>(
+          pulumi.Input.encodeList<AcceleratorConfig, Map<String, dynamic>>(
               guestAcceleratorsValue, (value) => value.toMap());
     }
     final keyRevocationActionTypeValue = keyRevocationActionType;
@@ -188,9 +188,9 @@ class InstanceProperties {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] =
-          Input.encodeList<NetworkInterface2, Map<String, dynamic>>(
-              networkInterfacesValue, (value) => value.toMap());
+      map['networkInterfaces'] = pulumi.Input.encodeList<
+              NetworkInterfaceComputeAlpha, Map<String, dynamic>>(
+          networkInterfacesValue, (value) => value.toMap());
     }
     final networkPerformanceConfigValue = networkPerformanceConfig;
     if (networkPerformanceConfigValue != null) {
@@ -231,9 +231,9 @@ class InstanceProperties {
     }
     final serviceAccountsValue = serviceAccounts;
     if (serviceAccountsValue != null) {
-      map['serviceAccounts'] =
-          Input.encodeList<ServiceAccount3, Map<String, dynamic>>(
-              serviceAccountsValue, (value) => value.toMap());
+      map['serviceAccounts'] = pulumi.Input.encodeList<
+          ServiceAccountComputeAlpha,
+          Map<String, dynamic>>(serviceAccountsValue, (value) => value.toMap());
     }
     final serviceIntegrationSpecsValue = serviceIntegrationSpecs;
     if (serviceIntegrationSpecsValue != null) {
@@ -271,9 +271,9 @@ class InstanceProperties {
           map['description'] == null ? null : map['description'] as String,
       disks: map['disks'] == null
           ? null
-          : Input.decodeList<AttachedDisk2>(
+          : pulumi.Input.decodeList<AttachedDiskComputeAlpha>(
               map['disks'],
-              (value) => AttachedDisk2.fromMap(
+              (value) => AttachedDiskComputeAlpha.fromMap(
                   (value as Map).cast<String, dynamic>())),
       displayDevice: map['displayDevice'] == null
           ? null
@@ -281,7 +281,7 @@ class InstanceProperties {
               (map['displayDevice'] as Map).cast<String, dynamic>()),
       guestAccelerators: map['guestAccelerators'] == null
           ? null
-          : Input.decodeList<AcceleratorConfig>(
+          : pulumi.Input.decodeList<AcceleratorConfig>(
               map['guestAccelerators'],
               (value) => AcceleratorConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -302,9 +302,9 @@ class InstanceProperties {
           : map['minCpuPlatform'] as String,
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<NetworkInterface2>(
+          : pulumi.Input.decodeList<NetworkInterfaceComputeAlpha>(
               map['networkInterfaces'],
-              (value) => NetworkInterface2.fromMap(
+              (value) => NetworkInterfaceComputeAlpha.fromMap(
                   (value as Map).cast<String, dynamic>())),
       networkPerformanceConfig: map['networkPerformanceConfig'] == null
           ? null
@@ -340,9 +340,9 @@ class InstanceProperties {
           : (map['secureTags'] as List).cast<String>(),
       serviceAccounts: map['serviceAccounts'] == null
           ? null
-          : Input.decodeList<ServiceAccount3>(
+          : pulumi.Input.decodeList<ServiceAccountComputeAlpha>(
               map['serviceAccounts'],
-              (value) => ServiceAccount3.fromMap(
+              (value) => ServiceAccountComputeAlpha.fromMap(
                   (value as Map).cast<String, dynamic>())),
       serviceIntegrationSpecs: map['serviceIntegrationSpecs'] == null
           ? null

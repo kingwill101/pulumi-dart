@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_trace_sampling_config.dart';
 
 /// The set of arguments for Override.
 class OverrideArgs {
   /// ID of the API proxy that will have its trace configuration overridden.
-  final Input<String>? apiProxy;
-  final Input<String> environmentId;
+  final pulumi.Input<String>? apiProxy;
+  final pulumi.Input<String> environmentId;
 
   /// ID of the trace configuration override specified as a system-generated UUID.
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   /// Trace configuration to override.
-  final Input<GoogleCloudApigeeV1TraceSamplingConfig>? samplingConfig;
+  final pulumi.Input<GoogleCloudApigeeV1TraceSamplingConfig>? samplingConfig;
 
   OverrideArgs({
     this.apiProxy,
@@ -38,7 +38,7 @@ class OverrideArgs {
     map['organizationId'] = organizationId;
     final samplingConfigValue = samplingConfig;
     if (samplingConfigValue != null) {
-      map['samplingConfig'] = Input.mapOptionalInputValue<
+      map['samplingConfig'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudApigeeV1TraceSamplingConfig,
           Map<String, dynamic>>(samplingConfigValue, (value) => value.toMap());
     }
@@ -47,12 +47,12 @@ class OverrideArgs {
 
   factory OverrideArgs.fromMap(Map<String, dynamic> map) {
     return OverrideArgs(
-      apiProxy: Input.asOptionalInput<String>(map['apiProxy']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      apiProxy: pulumi.Input.asOptionalInput<String>(map['apiProxy']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
       samplingConfig:
-          Input.asOptionalInput<GoogleCloudApigeeV1TraceSamplingConfig>(
+          pulumi.Input.asOptionalInput<GoogleCloudApigeeV1TraceSamplingConfig>(
               map['samplingConfig']),
     );
   }

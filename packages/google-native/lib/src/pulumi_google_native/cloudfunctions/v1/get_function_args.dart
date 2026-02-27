@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFunction.
 class GetFunctionArgs {
-  final Input<String> functionId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? versionId;
+  final pulumi.Input<String> functionId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? versionId;
 
   GetFunctionArgs({
     required this.functionId,
@@ -33,10 +33,10 @@ class GetFunctionArgs {
 
   factory GetFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionArgs(
-      functionId: Input.asInput<String>(map['functionId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      versionId: Input.asOptionalInput<String>(map['versionId']),
+      functionId: pulumi.Input.asInput<String>(map['functionId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      versionId: pulumi.Input.asOptionalInput<String>(map['versionId']),
     );
   }
 }

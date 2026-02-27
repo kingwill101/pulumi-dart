@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'standard_sql_field_response.dart';
 
 /// The representation of a SQL STRUCT type.
@@ -15,14 +15,14 @@ class StandardSqlStructTypeResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['fields'] =
-        Input.encodeList<StandardSqlFieldResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StandardSqlFieldResponse, Map<String, dynamic>>(
             fields, (value) => value.toMap());
     return map;
   }
 
   factory StandardSqlStructTypeResponse.fromMap(Map<String, dynamic> map) {
     return StandardSqlStructTypeResponse(
-      fields: Input.decodeList<StandardSqlFieldResponse>(
+      fields: pulumi.Input.decodeList<StandardSqlFieldResponse>(
           map['fields'],
           (value) => StandardSqlFieldResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

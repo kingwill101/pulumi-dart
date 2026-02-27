@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_table_card_cell.dart';
 
 /// Row of TableCard.
@@ -20,7 +20,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
     final map = <String, dynamic>{};
     final cellsValue = cells;
     if (cellsValue != null) {
-      map['cells'] = Input.encodeList<
+      map['cells'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowV2beta1IntentMessageTableCardCell,
           Map<String, dynamic>>(cellsValue, (value) => value.toMap());
     }
@@ -36,7 +36,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCardRow(
       cells: map['cells'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>(
               map['cells'],
               (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardCell

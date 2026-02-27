@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_filter_filter_match_criteria.dart';
 import 'metadata_filter_label_match.dart';
 
@@ -21,9 +21,8 @@ class MetadataFilter {
     final map = <String, dynamic>{};
     final filterLabelsValue = filterLabels;
     if (filterLabelsValue != null) {
-      map['filterLabels'] =
-          Input.encodeList<MetadataFilterLabelMatch, Map<String, dynamic>>(
-              filterLabelsValue, (value) => value.toMap());
+      map['filterLabels'] = pulumi.Input.encodeList<MetadataFilterLabelMatch,
+          Map<String, dynamic>>(filterLabelsValue, (value) => value.toMap());
     }
     final filterMatchCriteriaValue = filterMatchCriteria;
     if (filterMatchCriteriaValue != null) {
@@ -36,7 +35,7 @@ class MetadataFilter {
     return MetadataFilter(
       filterLabels: map['filterLabels'] == null
           ? null
-          : Input.decodeList<MetadataFilterLabelMatch>(
+          : pulumi.Input.decodeList<MetadataFilterLabelMatch>(
               map['filterLabels'],
               (value) => MetadataFilterLabelMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),

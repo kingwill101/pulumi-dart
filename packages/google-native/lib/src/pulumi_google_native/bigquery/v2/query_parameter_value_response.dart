@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueryParameterValueResponse {
   /// [Optional] The array values, if this is an array type.
@@ -20,9 +20,8 @@ class QueryParameterValueResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['arrayValues'] =
-        Input.encodeList<QueryParameterValueResponse, Map<String, dynamic>>(
-            arrayValues, (value) => value.toMap());
+    map['arrayValues'] = pulumi.Input.encodeList<QueryParameterValueResponse,
+        Map<String, dynamic>>(arrayValues, (value) => value.toMap());
     map['structValues'] = structValues;
     map['value'] = value;
     return map;
@@ -30,7 +29,7 @@ class QueryParameterValueResponse {
 
   factory QueryParameterValueResponse.fromMap(Map<String, dynamic> map) {
     return QueryParameterValueResponse(
-      arrayValues: Input.decodeList<QueryParameterValueResponse>(
+      arrayValues: pulumi.Input.decodeList<QueryParameterValueResponse>(
           map['arrayValues'],
           (value) => QueryParameterValueResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

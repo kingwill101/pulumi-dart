@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_channel_v1_repricing_config.dart';
 
 /// The set of arguments for CustomerRepricingConfig.
 class CustomerRepricingConfigArgs {
-  final Input<String> accountId;
-  final Input<String> customerId;
+  final pulumi.Input<String> accountId;
+  final pulumi.Input<String> customerId;
 
   /// The configuration for bill modifications made by a reseller before sending it to customers.
-  final Input<GoogleCloudChannelV1RepricingConfig> repricingConfig;
+  final pulumi.Input<GoogleCloudChannelV1RepricingConfig> repricingConfig;
 
   CustomerRepricingConfigArgs({
     required this.accountId,
@@ -21,7 +21,7 @@ class CustomerRepricingConfigArgs {
     final map = <String, dynamic>{};
     map['accountId'] = accountId;
     map['customerId'] = customerId;
-    map['repricingConfig'] = Input.mapInputValue<
+    map['repricingConfig'] = pulumi.Input.mapInputValue<
         GoogleCloudChannelV1RepricingConfig,
         Map<String, dynamic>>(repricingConfig, (value) => value.toMap());
     return map;
@@ -29,10 +29,11 @@ class CustomerRepricingConfigArgs {
 
   factory CustomerRepricingConfigArgs.fromMap(Map<String, dynamic> map) {
     return CustomerRepricingConfigArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      customerId: Input.asInput<String>(map['customerId']),
-      repricingConfig: Input.asInput<GoogleCloudChannelV1RepricingConfig>(
-          map['repricingConfig']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      customerId: pulumi.Input.asInput<String>(map['customerId']),
+      repricingConfig:
+          pulumi.Input.asInput<GoogleCloudChannelV1RepricingConfig>(
+              map['repricingConfig']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_conversation_turn_response.dart';
 import 'google_cloud_dialogflow_cx_v3_test_case_result_response.dart';
 import 'google_cloud_dialogflow_cx_v3_test_config_response.dart';
@@ -51,7 +51,7 @@ class GetTestCaseResult {
     map['name'] = name;
     map['notes'] = notes;
     map['tags'] = tags;
-    map['testCaseConversationTurns'] = Input.encodeList<
+    map['testCaseConversationTurns'] = pulumi.Input.encodeList<
             GoogleCloudDialogflowCxV3ConversationTurnResponse,
             Map<String, dynamic>>(
         testCaseConversationTurns, (value) => value.toMap());
@@ -68,12 +68,11 @@ class GetTestCaseResult {
       name: map['name'] as String,
       notes: map['notes'] as String,
       tags: (map['tags'] as List).cast<String>(),
-      testCaseConversationTurns:
-          Input.decodeList<GoogleCloudDialogflowCxV3ConversationTurnResponse>(
-              map['testCaseConversationTurns'],
-              (value) =>
-                  GoogleCloudDialogflowCxV3ConversationTurnResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      testCaseConversationTurns: pulumi.Input.decodeList<
+              GoogleCloudDialogflowCxV3ConversationTurnResponse>(
+          map['testCaseConversationTurns'],
+          (value) => GoogleCloudDialogflowCxV3ConversationTurnResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       testConfig: GoogleCloudDialogflowCxV3TestConfigResponse.fromMap(
           (map['testConfig'] as Map).cast<String, dynamic>()),
     );

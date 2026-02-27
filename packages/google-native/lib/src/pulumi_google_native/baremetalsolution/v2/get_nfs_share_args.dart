@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNfsShare.
 class GetNfsShareArgs {
-  final Input<String> location;
-  final Input<String> nfsShareId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> nfsShareId;
+  final pulumi.Input<String>? project;
 
   GetNfsShareArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetNfsShareArgs {
 
   factory GetNfsShareArgs.fromMap(Map<String, dynamic> map) {
     return GetNfsShareArgs(
-      location: Input.asInput<String>(map['location']),
-      nfsShareId: Input.asInput<String>(map['nfsShareId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      nfsShareId: pulumi.Input.asInput<String>(map['nfsShareId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

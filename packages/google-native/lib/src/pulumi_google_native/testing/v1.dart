@@ -30,7 +30,7 @@ export 'v1/device_session.dart';
 export 'v1/device_session_args.dart';
 export 'v1/environment_matrix.dart';
 export 'v1/environment_matrix_response.dart';
-export 'v1/environment_response4.dart';
+export 'v1/environment_response_testing_v1.dart';
 export 'v1/environment_variable.dart';
 export 'v1/environment_variable_response.dart';
 export 'v1/file_reference.dart';

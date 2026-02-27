@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'build_config_docker_registry.dart';
-import 'source2.dart';
+import 'source_cloudfunctions_v2.dart';
 
 /// Describes the Build step of the function that builds a container from the given source.
 class BuildConfig {
@@ -21,7 +21,7 @@ class BuildConfig {
   final String? runtime;
 
   /// The location of the function source code.
-  final Source2? source;
+  final SourceCloudfunctionsV2? source;
 
   /// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
   final String? sourceToken;
@@ -94,7 +94,8 @@ class BuildConfig {
       runtime: map['runtime'] == null ? null : map['runtime'] as String,
       source: map['source'] == null
           ? null
-          : Source2.fromMap((map['source'] as Map).cast<String, dynamic>()),
+          : SourceCloudfunctionsV2.fromMap(
+              (map['source'] as Map).cast<String, dynamic>()),
       sourceToken:
           map['sourceToken'] == null ? null : map['sourceToken'] as String,
       workerPool:

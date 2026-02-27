@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Collector.
 class CollectorArgs {
   /// How many days to collect data.
-  final Input<int>? collectionDays;
+  final pulumi.Input<int>? collectionDays;
 
   /// Required. Id of the requesting object.
-  final Input<String> collectorId;
+  final pulumi.Input<String> collectorId;
 
   /// User specified description of the Collector.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User specified name of the Collector.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Uri for EULA (End User License Agreement) from customer.
-  final Input<String>? eulaUri;
+  final pulumi.Input<String>? eulaUri;
 
   /// User specified expected asset count.
-  final Input<String>? expectedAssetCount;
+  final pulumi.Input<String>? expectedAssetCount;
 
   /// Labels as key value pairs.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// name of resource.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Optional. An optional request ID to identify requests.
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Service Account email used to ingest data to this Collector.
-  final Input<String>? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
 
   CollectorArgs({
     this.collectionDays,
@@ -103,19 +103,20 @@ class CollectorArgs {
 
   factory CollectorArgs.fromMap(Map<String, dynamic> map) {
     return CollectorArgs(
-      collectionDays: Input.asOptionalInput<int>(map['collectionDays']),
-      collectorId: Input.asInput<String>(map['collectorId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      eulaUri: Input.asOptionalInput<String>(map['eulaUri']),
+      collectionDays: pulumi.Input.asOptionalInput<int>(map['collectionDays']),
+      collectorId: pulumi.Input.asInput<String>(map['collectorId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      eulaUri: pulumi.Input.asOptionalInput<String>(map['eulaUri']),
       expectedAssetCount:
-          Input.asOptionalInput<String>(map['expectedAssetCount']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
-      serviceAccount: Input.asOptionalInput<String>(map['serviceAccount']),
+          pulumi.Input.asOptionalInput<String>(map['expectedAssetCount']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
+      serviceAccount:
+          pulumi.Input.asOptionalInput<String>(map['serviceAccount']),
     );
   }
 }

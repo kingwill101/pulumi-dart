@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_config.dart';
 import 'node_group_roles_item.dart';
 
@@ -39,7 +39,7 @@ class NodeGroup {
     if (nodeGroupConfigValue != null) {
       map['nodeGroupConfig'] = nodeGroupConfigValue.toMap();
     }
-    map['roles'] = Input.encodeList<NodeGroupRolesItem, String>(
+    map['roles'] = pulumi.Input.encodeList<NodeGroupRolesItem, String>(
         roles, (value) => value.value);
     return map;
   }
@@ -54,7 +54,7 @@ class NodeGroup {
           ? null
           : InstanceGroupConfig.fromMap(
               (map['nodeGroupConfig'] as Map).cast<String, dynamic>()),
-      roles: Input.decodeList<NodeGroupRolesItem>(map['roles'],
+      roles: pulumi.Input.decodeList<NodeGroupRolesItem>(map['roles'],
           (value) => NodeGroupRolesItem.fromValue(value as String)),
     );
   }

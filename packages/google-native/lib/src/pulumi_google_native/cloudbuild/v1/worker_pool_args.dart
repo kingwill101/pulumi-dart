@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_pool_v1_config.dart';
 
 /// The set of arguments for WorkerPool.
 class WorkerPoolArgs {
   /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-  final Input<String>? displayName;
-  final Input<String>? location;
+  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String>? location;
 
   /// Legacy Private Pool configuration.
-  final Input<PrivatePoolV1Config>? privatePoolV1Config;
-  final Input<String>? project;
+  final pulumi.Input<PrivatePoolV1Config>? privatePoolV1Config;
+  final pulumi.Input<String>? project;
 
   /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-  final Input<String> workerPoolId;
+  final pulumi.Input<String> workerPoolId;
 
   WorkerPoolArgs({
     this.annotations,
@@ -44,7 +44,7 @@ class WorkerPoolArgs {
     }
     final privatePoolV1ConfigValue = privatePoolV1Config;
     if (privatePoolV1ConfigValue != null) {
-      map['privatePoolV1Config'] = Input.mapOptionalInputValue<
+      map['privatePoolV1Config'] = pulumi.Input.mapOptionalInputValue<
               PrivatePoolV1Config, Map<String, dynamic>>(
           privatePoolV1ConfigValue, (value) => value.toMap());
     }
@@ -59,13 +59,13 @@ class WorkerPoolArgs {
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      privatePoolV1Config: Input.asOptionalInput<PrivatePoolV1Config>(
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      privatePoolV1Config: pulumi.Input.asOptionalInput<PrivatePoolV1Config>(
           map['privatePoolV1Config']),
-      project: Input.asOptionalInput<String>(map['project']),
-      workerPoolId: Input.asInput<String>(map['workerPoolId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      workerPoolId: pulumi.Input.asInput<String>(map['workerPoolId']),
     );
   }
 }

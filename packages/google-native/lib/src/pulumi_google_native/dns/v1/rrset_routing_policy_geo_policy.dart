@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rrset_routing_policy_geo_policy_geo_policy_item.dart';
 
 /// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
@@ -26,7 +26,8 @@ class RRSetRoutingPolicyGeoPolicy {
     }
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<RRSetRoutingPolicyGeoPolicyGeoPolicyItem,
+      map['items'] = pulumi.Input.encodeList<
+          RRSetRoutingPolicyGeoPolicyGeoPolicyItem,
           Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
     final kindValue = kind;
@@ -42,7 +43,7 @@ class RRSetRoutingPolicyGeoPolicy {
           map['enableFencing'] == null ? null : map['enableFencing'] as bool,
       items: map['items'] == null
           ? null
-          : Input.decodeList<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>(
+          : pulumi.Input.decodeList<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>(
               map['items'],
               (value) => RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromMap(
                   (value as Map).cast<String, dynamic>())),

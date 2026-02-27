@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'jwt_location_response.dart';
 
 /// Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
@@ -35,7 +35,7 @@ class AuthProviderResponse {
     map['issuer'] = issuer;
     map['jwksUri'] = jwksUri;
     map['jwtLocations'] =
-        Input.encodeList<JwtLocationResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<JwtLocationResponse, Map<String, dynamic>>(
             jwtLocations, (value) => value.toMap());
     return map;
   }
@@ -46,7 +46,7 @@ class AuthProviderResponse {
       authorizationUrl: map['authorizationUrl'] as String,
       issuer: map['issuer'] as String,
       jwksUri: map['jwksUri'] as String,
-      jwtLocations: Input.decodeList<JwtLocationResponse>(
+      jwtLocations: pulumi.Input.decodeList<JwtLocationResponse>(
           map['jwtLocations'],
           (value) => JwtLocationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

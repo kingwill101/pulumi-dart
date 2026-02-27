@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_logging_gws_sanitize_options_log_type_item.dart';
 import 'enterprise_crm_logging_gws_sanitize_options_privacy.dart';
 import 'enterprise_crm_logging_gws_sanitize_options_sanitize_type.dart';
@@ -30,7 +30,7 @@ class EnterpriseCrmLoggingGwsSanitizeOptions {
     }
     final logTypeValue = logType;
     if (logTypeValue != null) {
-      map['logType'] = Input.encodeList<
+      map['logType'] = pulumi.Input.encodeList<
           EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem,
           String>(logTypeValue, (value) => value.value);
     }
@@ -53,7 +53,8 @@ class EnterpriseCrmLoggingGwsSanitizeOptions {
           : map['isAlreadySanitized'] as bool,
       logType: map['logType'] == null
           ? null
-          : Input.decodeList<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>(
+          : pulumi.Input.decodeList<
+                  EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>(
               map['logType'],
               (value) =>
                   EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem.fromValue(

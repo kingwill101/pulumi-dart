@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTableIamPolicy.
 class GetTableIamPolicyArgs {
-  final Input<String> datasetId;
-  final Input<String>? project;
-  final Input<String> tableId;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> tableId;
 
   GetTableIamPolicyArgs({
     required this.datasetId,
@@ -27,9 +27,9 @@ class GetTableIamPolicyArgs {
 
   factory GetTableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTableIamPolicyArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tableId: Input.asInput<String>(map['tableId']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tableId: pulumi.Input.asInput<String>(map['tableId']),
     );
   }
 }

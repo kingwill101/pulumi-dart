@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contentwarehouse_v1_action.dart';
 import 'google_cloud_contentwarehouse_v1_rule_trigger_type.dart';
 
@@ -33,7 +33,8 @@ class GoogleCloudContentwarehouseV1Rule {
     final map = <String, dynamic>{};
     final actionsValue = actions;
     if (actionsValue != null) {
-      map['actions'] = Input.encodeList<GoogleCloudContentwarehouseV1Action,
+      map['actions'] = pulumi.Input.encodeList<
+          GoogleCloudContentwarehouseV1Action,
           Map<String, dynamic>>(actionsValue, (value) => value.toMap());
     }
     final conditionValue = condition;
@@ -59,7 +60,7 @@ class GoogleCloudContentwarehouseV1Rule {
     return GoogleCloudContentwarehouseV1Rule(
       actions: map['actions'] == null
           ? null
-          : Input.decodeList<GoogleCloudContentwarehouseV1Action>(
+          : pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Action>(
               map['actions'],
               (value) => GoogleCloudContentwarehouseV1Action.fromMap(
                   (value as Map).cast<String, dynamic>())),

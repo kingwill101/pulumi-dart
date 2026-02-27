@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'authorization_response.dart';
-import 'fleet_response3.dart';
-import 'resource_status_response4.dart';
+import 'fleet_response_gkeonprem_v1.dart';
+import 'resource_status_response_gkeonprem_v1.dart';
 import 'validation_check_response.dart';
 import 'vmware_aagconfig_response.dart';
 import 'vmware_auto_repair_config_response.dart';
@@ -62,7 +62,7 @@ class GetVmwareClusterResult {
   final String etag;
 
   /// Fleet configuration for the cluster.
-  final FleetResponse3 fleet;
+  final FleetResponseGkeonpremV1 fleet;
 
   /// Load balancer configuration.
   final VmwareLoadBalancerConfigResponse loadBalancer;
@@ -86,7 +86,7 @@ class GetVmwareClusterResult {
   final String state;
 
   /// ResourceStatus representing detailed cluster state.
-  final ResourceStatusResponse4 status;
+  final ResourceStatusResponseGkeonpremV1 status;
 
   /// Storage configuration.
   final VmwareStorageConfigResponse storage;
@@ -201,8 +201,8 @@ class GetVmwareClusterResult {
       enableControlPlaneV2: map['enableControlPlaneV2'] as bool,
       endpoint: map['endpoint'] as String,
       etag: map['etag'] as String,
-      fleet:
-          FleetResponse3.fromMap((map['fleet'] as Map).cast<String, dynamic>()),
+      fleet: FleetResponseGkeonpremV1.fromMap(
+          (map['fleet'] as Map).cast<String, dynamic>()),
       loadBalancer: VmwareLoadBalancerConfigResponse.fromMap(
           (map['loadBalancer'] as Map).cast<String, dynamic>()),
       localName: map['localName'] as String,
@@ -212,7 +212,7 @@ class GetVmwareClusterResult {
       onPremVersion: map['onPremVersion'] as String,
       reconciling: map['reconciling'] as bool,
       state: map['state'] as String,
-      status: ResourceStatusResponse4.fromMap(
+      status: ResourceStatusResponseGkeonpremV1.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
       storage: VmwareStorageConfigResponse.fromMap(
           (map['storage'] as Map).cast<String, dynamic>()),

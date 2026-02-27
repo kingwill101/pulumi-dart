@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolder.
 class GetFolderArgs {
-  final Input<String> folderId;
+  final pulumi.Input<String> folderId;
 
   GetFolderArgs({
     required this.folderId,
@@ -18,7 +18,7 @@ class GetFolderArgs {
 
   factory GetFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderArgs(
-      folderId: Input.asInput<String>(map['folderId']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
     );
   }
 }

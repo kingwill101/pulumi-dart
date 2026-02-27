@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EndpointAttachment.
 class EndpointAttachmentArgs {
   /// ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
-  final Input<String>? endpointAttachmentId;
+  final pulumi.Input<String>? endpointAttachmentId;
 
   /// Location of the endpoint attachment.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   /// Format: projects/*/regions/*/serviceAttachments/*
-  final Input<String>? serviceAttachment;
+  final pulumi.Input<String>? serviceAttachment;
 
   EndpointAttachmentArgs({
     this.endpointAttachmentId,
@@ -50,12 +50,12 @@ class EndpointAttachmentArgs {
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
       endpointAttachmentId:
-          Input.asOptionalInput<String>(map['endpointAttachmentId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+          pulumi.Input.asOptionalInput<String>(map['endpointAttachmentId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
       serviceAttachment:
-          Input.asOptionalInput<String>(map['serviceAttachment']),
+          pulumi.Input.asOptionalInput<String>(map['serviceAttachment']),
     );
   }
 }

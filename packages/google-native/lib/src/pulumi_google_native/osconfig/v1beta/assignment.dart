@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assignment_group_label.dart';
 import 'assignment_os_type.dart';
 
@@ -34,7 +34,7 @@ class Assignment {
     final groupLabelsValue = groupLabels;
     if (groupLabelsValue != null) {
       map['groupLabels'] =
-          Input.encodeList<AssignmentGroupLabel, Map<String, dynamic>>(
+          pulumi.Input.encodeList<AssignmentGroupLabel, Map<String, dynamic>>(
               groupLabelsValue, (value) => value.toMap());
     }
     final instanceNamePrefixesValue = instanceNamePrefixes;
@@ -47,8 +47,9 @@ class Assignment {
     }
     final osTypesValue = osTypes;
     if (osTypesValue != null) {
-      map['osTypes'] = Input.encodeList<AssignmentOsType, Map<String, dynamic>>(
-          osTypesValue, (value) => value.toMap());
+      map['osTypes'] =
+          pulumi.Input.encodeList<AssignmentOsType, Map<String, dynamic>>(
+              osTypesValue, (value) => value.toMap());
     }
     final zonesValue = zones;
     if (zonesValue != null) {
@@ -61,7 +62,7 @@ class Assignment {
     return Assignment(
       groupLabels: map['groupLabels'] == null
           ? null
-          : Input.decodeList<AssignmentGroupLabel>(
+          : pulumi.Input.decodeList<AssignmentGroupLabel>(
               map['groupLabels'],
               (value) => AssignmentGroupLabel.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -73,7 +74,7 @@ class Assignment {
           : (map['instances'] as List).cast<String>(),
       osTypes: map['osTypes'] == null
           ? null
-          : Input.decodeList<AssignmentOsType>(
+          : pulumi.Input.decodeList<AssignmentOsType>(
               map['osTypes'],
               (value) => AssignmentOsType.fromMap(
                   (value as Map).cast<String, dynamic>())),

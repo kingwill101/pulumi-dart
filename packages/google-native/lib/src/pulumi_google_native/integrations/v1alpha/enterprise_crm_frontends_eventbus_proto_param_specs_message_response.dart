@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_frontends_eventbus_proto_param_spec_entry_response.dart';
 
 class EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse {
@@ -13,7 +13,7 @@ class EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse {
   factory EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse.fromMap(
       Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse(
-      parameters: Input.decodeList<
+      parameters: pulumi.Input.decodeList<
               EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse>(
           map['parameters'],
           (value) =>

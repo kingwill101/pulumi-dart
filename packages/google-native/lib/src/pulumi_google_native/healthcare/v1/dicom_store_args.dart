@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_healthcare_v1_dicom_stream_config.dart';
-import 'notification_config3.dart';
+import 'notification_config_healthcare_v1.dart';
 
 /// The set of arguments for DicomStore.
 class DicomStoreArgs {
-  final Input<String> datasetId;
+  final pulumi.Input<String> datasetId;
 
   /// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
-  final Input<String>? dicomStoreId;
+  final pulumi.Input<String>? dicomStoreId;
 
   /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Notification destination for new DICOM instances. Supplied by the client.
-  final Input<NotificationConfig3>? notificationConfig;
-  final Input<String>? project;
+  final pulumi.Input<NotificationConfigHealthcareV1>? notificationConfig;
+  final pulumi.Input<String>? project;
 
   /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
-  final Input<List<GoogleCloudHealthcareV1DicomStreamConfig>>? streamConfigs;
+  final pulumi.Input<List<GoogleCloudHealthcareV1DicomStreamConfig>>?
+      streamConfigs;
 
   DicomStoreArgs({
     required this.datasetId,
@@ -57,8 +58,8 @@ class DicomStoreArgs {
     }
     final notificationConfigValue = notificationConfig;
     if (notificationConfigValue != null) {
-      map['notificationConfig'] = Input.mapOptionalInputValue<
-              NotificationConfig3, Map<String, dynamic>>(
+      map['notificationConfig'] = pulumi.Input.mapOptionalInputValue<
+              NotificationConfigHealthcareV1, Map<String, dynamic>>(
           notificationConfigValue, (value) => value.toMap());
     }
     final projectValue = project;
@@ -67,11 +68,12 @@ class DicomStoreArgs {
     }
     final streamConfigsValue = streamConfigs;
     if (streamConfigsValue != null) {
-      map['streamConfigs'] = Input.mapOptionalInputValue<
+      map['streamConfigs'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudHealthcareV1DicomStreamConfig>,
               List<Map<String, dynamic>>>(
           streamConfigsValue,
-          (value) => Input.encodeList<GoogleCloudHealthcareV1DicomStreamConfig,
+          (value) => pulumi.Input.encodeList<
+              GoogleCloudHealthcareV1DicomStreamConfig,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
@@ -79,17 +81,17 @@ class DicomStoreArgs {
 
   factory DicomStoreArgs.fromMap(Map<String, dynamic> map) {
     return DicomStoreArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      dicomStoreId: Input.asOptionalInput<String>(map['dicomStoreId']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      dicomStoreId: pulumi.Input.asOptionalInput<String>(map['dicomStoreId']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       notificationConfig:
-          Input.asOptionalInput<NotificationConfig3>(map['notificationConfig']),
-      project: Input.asOptionalInput<String>(map['project']),
-      streamConfigs:
-          Input.asOptionalInput<List<GoogleCloudHealthcareV1DicomStreamConfig>>(
-              map['streamConfigs']),
+          pulumi.Input.asOptionalInput<NotificationConfigHealthcareV1>(
+              map['notificationConfig']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      streamConfigs: pulumi.Input.asOptionalInput<
+          List<GoogleCloudHealthcareV1DicomStreamConfig>>(map['streamConfigs']),
     );
   }
 }

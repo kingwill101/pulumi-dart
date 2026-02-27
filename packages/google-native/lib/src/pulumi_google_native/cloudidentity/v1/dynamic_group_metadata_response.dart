@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dynamic_group_query_response.dart';
 import 'dynamic_group_status_response.dart';
 
@@ -19,16 +19,15 @@ class DynamicGroupMetadataResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['queries'] =
-        Input.encodeList<DynamicGroupQueryResponse, Map<String, dynamic>>(
-            queries, (value) => value.toMap());
+    map['queries'] = pulumi.Input.encodeList<DynamicGroupQueryResponse,
+        Map<String, dynamic>>(queries, (value) => value.toMap());
     map['status'] = status.toMap();
     return map;
   }
 
   factory DynamicGroupMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DynamicGroupMetadataResponse(
-      queries: Input.decodeList<DynamicGroupQueryResponse>(
+      queries: pulumi.Input.decodeList<DynamicGroupQueryResponse>(
           map['queries'],
           (value) => DynamicGroupQueryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

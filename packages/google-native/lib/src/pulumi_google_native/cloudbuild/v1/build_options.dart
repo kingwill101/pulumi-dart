@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'build_options_default_logs_bucket_behavior.dart';
 import 'build_options_log_streaming_option.dart';
 import 'build_options_logging.dart';
@@ -9,7 +9,7 @@ import 'build_options_requested_verify_option.dart';
 import 'build_options_source_provenance_hash_item.dart';
 import 'build_options_substitution_option.dart';
 import 'pool_option.dart';
-import 'volume4.dart';
+import 'volume_cloudbuild_v1.dart';
 
 /// Optional arguments to enable specific features of builds.
 class BuildOptions {
@@ -53,7 +53,7 @@ class BuildOptions {
   final BuildOptionsSubstitutionOption? substitutionOption;
 
   /// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
-  final List<Volume4>? volumes;
+  final List<VolumeCloudbuildV1>? volumes;
 
   /// This field deprecated; please use `pool.name` instead.
   final String? workerPool;
@@ -125,7 +125,7 @@ class BuildOptions {
     final sourceProvenanceHashValue = sourceProvenanceHash;
     if (sourceProvenanceHashValue != null) {
       map['sourceProvenanceHash'] =
-          Input.encodeList<BuildOptionsSourceProvenanceHashItem, String>(
+          pulumi.Input.encodeList<BuildOptionsSourceProvenanceHashItem, String>(
               sourceProvenanceHashValue, (value) => value.value);
     }
     final substitutionOptionValue = substitutionOption;
@@ -134,8 +134,9 @@ class BuildOptions {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] = Input.encodeList<Volume4, Map<String, dynamic>>(
-          volumesValue, (value) => value.toMap());
+      map['volumes'] =
+          pulumi.Input.encodeList<VolumeCloudbuildV1, Map<String, dynamic>>(
+              volumesValue, (value) => value.toMap());
     }
     final workerPoolValue = workerPool;
     if (workerPoolValue != null) {
@@ -181,7 +182,7 @@ class BuildOptions {
           : (map['secretEnv'] as List).cast<String>(),
       sourceProvenanceHash: map['sourceProvenanceHash'] == null
           ? null
-          : Input.decodeList<BuildOptionsSourceProvenanceHashItem>(
+          : pulumi.Input.decodeList<BuildOptionsSourceProvenanceHashItem>(
               map['sourceProvenanceHash'],
               (value) => BuildOptionsSourceProvenanceHashItem.fromValue(
                   value as String)),
@@ -191,10 +192,10 @@ class BuildOptions {
               map['substitutionOption'] as String),
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<Volume4>(
+          : pulumi.Input.decodeList<VolumeCloudbuildV1>(
               map['volumes'],
-              (value) =>
-                  Volume4.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => VolumeCloudbuildV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       workerPool:
           map['workerPool'] == null ? null : map['workerPool'] as String,
     );

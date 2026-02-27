@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_kmap_estimation_histogram_bucket_response.dart';
 
 /// Result of the reidentifiability analysis. Note that these results are an estimation, not exact values.
@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2KMapEstimationResultResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['kMapEstimationHistogram'] = Input.encodeList<
+    map['kMapEstimationHistogram'] = pulumi.Input.encodeList<
             GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse,
             Map<String, dynamic>>(
         kMapEstimationHistogram, (value) => value.toMap());
@@ -25,7 +25,7 @@ class GooglePrivacyDlpV2KMapEstimationResultResponse {
   factory GooglePrivacyDlpV2KMapEstimationResultResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KMapEstimationResultResponse(
-      kMapEstimationHistogram: Input.decodeList<
+      kMapEstimationHistogram: pulumi.Input.decodeList<
               GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse>(
           map['kMapEstimationHistogram'],
           (value) =>

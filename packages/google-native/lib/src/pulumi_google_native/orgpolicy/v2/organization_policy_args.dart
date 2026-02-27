@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_orgpolicy_v2_alternate_policy_spec.dart';
 import 'google_cloud_orgpolicy_v2_policy_spec.dart';
 
 /// The set of arguments for OrganizationPolicy.
 class OrganizationPolicyArgs {
   /// Deprecated.
-  final Input<GoogleCloudOrgpolicyV2AlternatePolicySpec>? alternate;
+  final pulumi.Input<GoogleCloudOrgpolicyV2AlternatePolicySpec>? alternate;
 
   /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
-  final Input<GoogleCloudOrgpolicyV2PolicySpec>? dryRunSpec;
+  final pulumi.Input<GoogleCloudOrgpolicyV2PolicySpec>? dryRunSpec;
 
   /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   /// Basic information about the Organization Policy.
-  final Input<GoogleCloudOrgpolicyV2PolicySpec>? spec;
+  final pulumi.Input<GoogleCloudOrgpolicyV2PolicySpec>? spec;
 
   OrganizationPolicyArgs({
     this.alternate,
@@ -31,13 +31,13 @@ class OrganizationPolicyArgs {
     final map = <String, dynamic>{};
     final alternateValue = alternate;
     if (alternateValue != null) {
-      map['alternate'] = Input.mapOptionalInputValue<
+      map['alternate'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudOrgpolicyV2AlternatePolicySpec,
           Map<String, dynamic>>(alternateValue, (value) => value.toMap());
     }
     final dryRunSpecValue = dryRunSpec;
     if (dryRunSpecValue != null) {
-      map['dryRunSpec'] = Input.mapOptionalInputValue<
+      map['dryRunSpec'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudOrgpolicyV2PolicySpec,
           Map<String, dynamic>>(dryRunSpecValue, (value) => value.toMap());
     }
@@ -48,7 +48,7 @@ class OrganizationPolicyArgs {
     map['organizationId'] = organizationId;
     final specValue = spec;
     if (specValue != null) {
-      map['spec'] = Input.mapOptionalInputValue<
+      map['spec'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudOrgpolicyV2PolicySpec,
           Map<String, dynamic>>(specValue, (value) => value.toMap());
     }
@@ -57,15 +57,15 @@ class OrganizationPolicyArgs {
 
   factory OrganizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationPolicyArgs(
-      alternate:
-          Input.asOptionalInput<GoogleCloudOrgpolicyV2AlternatePolicySpec>(
-              map['alternate']),
-      dryRunSpec: Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(
-          map['dryRunSpec']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      spec:
-          Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(map['spec']),
+      alternate: pulumi.Input.asOptionalInput<
+          GoogleCloudOrgpolicyV2AlternatePolicySpec>(map['alternate']),
+      dryRunSpec:
+          pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(
+              map['dryRunSpec']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      spec: pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(
+          map['spec']),
     );
   }
 }

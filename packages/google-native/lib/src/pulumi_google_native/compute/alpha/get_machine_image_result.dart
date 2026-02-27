@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_encryption_key_response.dart';
 import 'instance_properties_response.dart';
 import 'saved_disk_response.dart';
@@ -91,13 +91,13 @@ class GetMachineImageResult {
     map['name'] = name;
     map['satisfiesPzs'] = satisfiesPzs;
     map['savedDisks'] =
-        Input.encodeList<SavedDiskResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SavedDiskResponse, Map<String, dynamic>>(
             savedDisks, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['selfLinkWithId'] = selfLinkWithId;
-    map['sourceDiskEncryptionKeys'] =
-        Input.encodeList<SourceDiskEncryptionKeyResponse, Map<String, dynamic>>(
-            sourceDiskEncryptionKeys, (value) => value.toMap());
+    map['sourceDiskEncryptionKeys'] = pulumi.Input.encodeList<
+            SourceDiskEncryptionKeyResponse, Map<String, dynamic>>(
+        sourceDiskEncryptionKeys, (value) => value.toMap());
     map['sourceInstance'] = sourceInstance;
     map['sourceInstanceProperties'] = sourceInstanceProperties.toMap();
     map['status'] = status;
@@ -118,14 +118,14 @@ class GetMachineImageResult {
           (map['machineImageEncryptionKey'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       satisfiesPzs: map['satisfiesPzs'] as bool,
-      savedDisks: Input.decodeList<SavedDiskResponse>(
+      savedDisks: pulumi.Input.decodeList<SavedDiskResponse>(
           map['savedDisks'],
           (value) => SavedDiskResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
       sourceDiskEncryptionKeys:
-          Input.decodeList<SourceDiskEncryptionKeyResponse>(
+          pulumi.Input.decodeList<SourceDiskEncryptionKeyResponse>(
               map['sourceDiskEncryptionKeys'],
               (value) => SourceDiskEncryptionKeyResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

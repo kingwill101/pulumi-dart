@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_metadata_response.dart';
 
 /// Metadata describing a template.
@@ -24,9 +24,8 @@ class TemplateMetadataResponse {
     final map = <String, dynamic>{};
     map['description'] = description;
     map['name'] = name;
-    map['parameters'] =
-        Input.encodeList<ParameterMetadataResponse, Map<String, dynamic>>(
-            parameters, (value) => value.toMap());
+    map['parameters'] = pulumi.Input.encodeList<ParameterMetadataResponse,
+        Map<String, dynamic>>(parameters, (value) => value.toMap());
     return map;
   }
 
@@ -34,7 +33,7 @@ class TemplateMetadataResponse {
     return TemplateMetadataResponse(
       description: map['description'] as String,
       name: map['name'] as String,
-      parameters: Input.decodeList<ParameterMetadataResponse>(
+      parameters: pulumi.Input.decodeList<ParameterMetadataResponse>(
           map['parameters'],
           (value) => ParameterMetadataResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

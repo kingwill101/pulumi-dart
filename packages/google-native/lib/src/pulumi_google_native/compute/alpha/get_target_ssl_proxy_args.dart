@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTargetSslProxy.
 class GetTargetSslProxyArgs {
-  final Input<String>? project;
-  final Input<String> targetSslProxy;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> targetSslProxy;
 
   GetTargetSslProxyArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetTargetSslProxyArgs {
 
   factory GetTargetSslProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetSslProxyArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      targetSslProxy: Input.asInput<String>(map['targetSslProxy']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      targetSslProxy: pulumi.Input.asInput<String>(map['targetSslProxy']),
     );
   }
 }

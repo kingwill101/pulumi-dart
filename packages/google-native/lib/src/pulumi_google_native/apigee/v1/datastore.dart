@@ -1,41 +1,42 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'datastore_args.dart';
 import 'google_cloud_apigee_v1_datastore_config_response.dart';
 
 /// Create a Datastore for an org
 /// Auto-naming is currently not supported for this resource.
-class Datastore extends CustomResource {
+class Datastore extends pulumi.CustomResource {
   /// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Datastore Configurations.
-  late final Output<GoogleCloudApigeeV1DatastoreConfigResponse> datastoreConfig;
+  late final pulumi.Output<GoogleCloudApigeeV1DatastoreConfigResponse>
+      datastoreConfig;
 
   /// Display name in UI
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-  late final Output<String> lastUpdateTime;
+  late final pulumi.Output<String> lastUpdateTime;
 
   /// Organization that the datastore belongs to
-  late final Output<String> org;
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> org;
+  late final pulumi.Output<String> organizationId;
 
   /// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
-  late final Output<String> self;
+  late final pulumi.Output<String> self;
 
   /// Destination storage type. Supported types `gcs` or `bigquery`.
-  late final Output<String> targetType;
+  late final pulumi.Output<String> targetType;
 
   Datastore(
     String name, {
     DatastoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:apigee/v1:Datastore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.datastoreConfig =

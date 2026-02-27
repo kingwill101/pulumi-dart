@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_card_button_response.dart';
 
 /// The card response message.
@@ -27,7 +27,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['buttons'] = Input.encodeList<
+    map['buttons'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse,
         Map<String, dynamic>>(buttons, (value) => value.toMap());
     map['imageUri'] = imageUri;
@@ -39,7 +39,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardResponse {
   factory GoogleCloudDialogflowV2beta1IntentMessageCardResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageCardResponse(
-      buttons: Input.decodeList<
+      buttons: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse>(
           map['buttons'],
           (value) => GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse

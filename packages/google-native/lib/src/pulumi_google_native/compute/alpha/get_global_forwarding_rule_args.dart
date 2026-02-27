@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGlobalForwardingRule.
 class GetGlobalForwardingRuleArgs {
-  final Input<String> forwardingRule;
-  final Input<String>? project;
+  final pulumi.Input<String> forwardingRule;
+  final pulumi.Input<String>? project;
 
   GetGlobalForwardingRuleArgs({
     required this.forwardingRule,
@@ -24,8 +24,8 @@ class GetGlobalForwardingRuleArgs {
 
   factory GetGlobalForwardingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalForwardingRuleArgs(
-      forwardingRule: Input.asInput<String>(map['forwardingRule']),
-      project: Input.asOptionalInput<String>(map['project']),
+      forwardingRule: pulumi.Input.asInput<String>(map['forwardingRule']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

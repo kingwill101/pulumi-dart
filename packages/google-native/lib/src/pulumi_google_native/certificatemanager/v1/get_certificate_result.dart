@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'managed_certificate_response4.dart';
+import 'managed_certificate_response_certificatemanager_v1.dart';
 import 'self_managed_certificate_response.dart';
 
 /// Result data returned by getCertificate.
@@ -18,7 +18,7 @@ class GetCertificateResult {
   final Map<String, String> labels;
 
   /// If set, contains configuration and state of a managed certificate.
-  final ManagedCertificateResponse4 managed;
+  final ManagedCertificateResponseCertificatemanagerV1 managed;
 
   /// A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.
   final String name;
@@ -74,7 +74,7 @@ class GetCertificateResult {
       description: map['description'] as String,
       expireTime: map['expireTime'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      managed: ManagedCertificateResponse4.fromMap(
+      managed: ManagedCertificateResponseCertificatemanagerV1.fromMap(
           (map['managed'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       pemCertificate: map['pemCertificate'] as String,

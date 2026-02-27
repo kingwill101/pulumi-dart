@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_encryption_spec.dart';
 
 /// The set of arguments for Tensorboard.
 class TensorboardArgs {
   /// Description of this Tensorboard.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User provided name of this Tensorboard.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
-  final Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
 
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// Used to indicate if the TensorBoard instance is the default one. Each project & region can have at most one default TensorBoard instance. Creation of a default TensorBoard instance and updating an existing TensorBoard instance to be default will mark all other TensorBoard instances (if any) as non default.
-  final Input<bool>? isDefault;
+  final pulumi.Input<bool>? isDefault;
 
   /// The labels with user-defined metadata to organize your Tensorboards. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Tensorboard (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   TensorboardArgs({
     this.description,
@@ -45,7 +45,7 @@ class TensorboardArgs {
     map['displayName'] = displayName;
     final encryptionSpecValue = encryptionSpec;
     if (encryptionSpecValue != null) {
-      map['encryptionSpec'] = Input.mapOptionalInputValue<
+      map['encryptionSpec'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudAiplatformV1EncryptionSpec,
           Map<String, dynamic>>(encryptionSpecValue, (value) => value.toMap());
     }
@@ -74,16 +74,16 @@ class TensorboardArgs {
 
   factory TensorboardArgs.fromMap(Map<String, dynamic> map) {
     return TensorboardArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
       encryptionSpec:
-          Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(
+          pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(
               map['encryptionSpec']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      isDefault: Input.asOptionalInput<bool>(map['isDefault']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      isDefault: pulumi.Input.asOptionalInput<bool>(map['isDefault']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

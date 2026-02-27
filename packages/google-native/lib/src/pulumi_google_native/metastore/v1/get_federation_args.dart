@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFederation.
 class GetFederationArgs {
-  final Input<String> federationId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> federationId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetFederationArgs({
     required this.federationId,
@@ -27,9 +27,9 @@ class GetFederationArgs {
 
   factory GetFederationArgs.fromMap(Map<String, dynamic> map) {
     return GetFederationArgs(
-      federationId: Input.asInput<String>(map['federationId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      federationId: pulumi.Input.asInput<String>(map['federationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

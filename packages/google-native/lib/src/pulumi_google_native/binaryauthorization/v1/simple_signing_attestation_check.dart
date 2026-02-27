@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_authenticator.dart';
 
 /// Require a signed [DSSE](https://github.com/secure-systems-lab/dsse) attestation with type SimpleSigning.
@@ -19,7 +19,7 @@ class SimpleSigningAttestationCheck {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['attestationAuthenticators'] =
-        Input.encodeList<AttestationAuthenticator, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AttestationAuthenticator, Map<String, dynamic>>(
             attestationAuthenticators, (value) => value.toMap());
     final containerAnalysisAttestationProjectsValue =
         containerAnalysisAttestationProjects;
@@ -32,10 +32,11 @@ class SimpleSigningAttestationCheck {
 
   factory SimpleSigningAttestationCheck.fromMap(Map<String, dynamic> map) {
     return SimpleSigningAttestationCheck(
-      attestationAuthenticators: Input.decodeList<AttestationAuthenticator>(
-          map['attestationAuthenticators'],
-          (value) => AttestationAuthenticator.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      attestationAuthenticators:
+          pulumi.Input.decodeList<AttestationAuthenticator>(
+              map['attestationAuthenticators'],
+              (value) => AttestationAuthenticator.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       containerAnalysisAttestationProjects:
           map['containerAnalysisAttestationProjects'] == null
               ? null

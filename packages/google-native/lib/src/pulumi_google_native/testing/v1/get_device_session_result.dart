@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'android_device_response.dart';
 import 'session_state_event_response.dart';
 
@@ -59,9 +59,8 @@ class GetDeviceSessionResult {
     map['inactivityTimeout'] = inactivityTimeout;
     map['name'] = name;
     map['state'] = state;
-    map['stateHistories'] =
-        Input.encodeList<SessionStateEventResponse, Map<String, dynamic>>(
-            stateHistories, (value) => value.toMap());
+    map['stateHistories'] = pulumi.Input.encodeList<SessionStateEventResponse,
+        Map<String, dynamic>>(stateHistories, (value) => value.toMap());
     map['ttl'] = ttl;
     return map;
   }
@@ -77,7 +76,7 @@ class GetDeviceSessionResult {
       inactivityTimeout: map['inactivityTimeout'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      stateHistories: Input.decodeList<SessionStateEventResponse>(
+      stateHistories: pulumi.Input.decodeList<SessionStateEventResponse>(
           map['stateHistories'],
           (value) => SessionStateEventResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHistory.
 class GetHistoryArgs {
-  final Input<String> historyId;
-  final Input<String>? project;
+  final pulumi.Input<String> historyId;
+  final pulumi.Input<String>? project;
 
   GetHistoryArgs({
     required this.historyId,
@@ -24,8 +24,8 @@ class GetHistoryArgs {
 
   factory GetHistoryArgs.fromMap(Map<String, dynamic> map) {
     return GetHistoryArgs(
-      historyId: Input.asInput<String>(map['historyId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      historyId: pulumi.Input.asInput<String>(map['historyId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

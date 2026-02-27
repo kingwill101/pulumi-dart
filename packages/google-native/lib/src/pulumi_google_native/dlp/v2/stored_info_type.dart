@@ -1,32 +1,33 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_stored_info_type_version_response.dart';
 import 'stored_info_type_args.dart';
 
 /// Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
 /// Auto-naming is currently not supported for this resource.
-class StoredInfoType extends CustomResource {
+class StoredInfoType extends pulumi.CustomResource {
   /// Current version of the stored info type.
-  late final Output<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>
+  late final pulumi.Output<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>
       currentVersion;
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Resource name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Pending versions of the stored info type. Empty if no versions are pending.
-  late final Output<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>>
+  late final pulumi
+      .Output<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>>
       pendingVersions;
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   StoredInfoType(
     String name, {
     StoredInfoTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:dlp/v2:StoredInfoType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.currentVersion =
         registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>(

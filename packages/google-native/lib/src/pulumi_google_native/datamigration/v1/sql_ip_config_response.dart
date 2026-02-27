@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_acl_entry_response.dart';
 
 /// IP Management configuration.
@@ -32,7 +32,7 @@ class SqlIpConfigResponse {
     final map = <String, dynamic>{};
     map['allocatedIpRange'] = allocatedIpRange;
     map['authorizedNetworks'] =
-        Input.encodeList<SqlAclEntryResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SqlAclEntryResponse, Map<String, dynamic>>(
             authorizedNetworks, (value) => value.toMap());
     map['enableIpv4'] = enableIpv4;
     map['privateNetwork'] = privateNetwork;
@@ -43,7 +43,7 @@ class SqlIpConfigResponse {
   factory SqlIpConfigResponse.fromMap(Map<String, dynamic> map) {
     return SqlIpConfigResponse(
       allocatedIpRange: map['allocatedIpRange'] as String,
-      authorizedNetworks: Input.decodeList<SqlAclEntryResponse>(
+      authorizedNetworks: pulumi.Input.decodeList<SqlAclEntryResponse>(
           map['authorizedNetworks'],
           (value) => SqlAclEntryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

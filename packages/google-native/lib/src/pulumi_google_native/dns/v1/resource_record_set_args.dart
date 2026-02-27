@@ -1,33 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rrset_routing_policy.dart';
 
 /// The set of arguments for ResourceRecordSet.
 class ResourceRecordSetArgs {
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-  final Input<String>? clientOperationId;
-  final Input<String>? kind;
-  final Input<String> managedZone;
+  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String>? kind;
+  final pulumi.Input<String> managedZone;
 
   /// For example, www.example.com.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
-  final Input<RRSetRoutingPolicy>? routingPolicy;
+  final pulumi.Input<RRSetRoutingPolicy>? routingPolicy;
 
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
-  final Input<List<String>>? rrdatas;
+  final pulumi.Input<List<String>>? rrdatas;
 
   /// As defined in RFC 4034 (section 3.2).
-  final Input<List<String>>? signatureRrdatas;
+  final pulumi.Input<List<String>>? signatureRrdatas;
 
   /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
-  final Input<int>? ttl;
+  final pulumi.Input<int>? ttl;
 
   /// The identifier of a supported record type. See the list of Supported DNS record types.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   ResourceRecordSetArgs({
     this.clientOperationId,
@@ -63,9 +63,9 @@ class ResourceRecordSetArgs {
     }
     final routingPolicyValue = routingPolicy;
     if (routingPolicyValue != null) {
-      map['routingPolicy'] =
-          Input.mapOptionalInputValue<RRSetRoutingPolicy, Map<String, dynamic>>(
-              routingPolicyValue, (value) => value.toMap());
+      map['routingPolicy'] = pulumi.Input.mapOptionalInputValue<
+          RRSetRoutingPolicy,
+          Map<String, dynamic>>(routingPolicyValue, (value) => value.toMap());
     }
     final rrdatasValue = rrdatas;
     if (rrdatasValue != null) {
@@ -89,18 +89,18 @@ class ResourceRecordSetArgs {
   factory ResourceRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetArgs(
       clientOperationId:
-          Input.asOptionalInput<String>(map['clientOperationId']),
-      kind: Input.asOptionalInput<String>(map['kind']),
-      managedZone: Input.asInput<String>(map['managedZone']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      routingPolicy:
-          Input.asOptionalInput<RRSetRoutingPolicy>(map['routingPolicy']),
-      rrdatas: Input.asOptionalInput<List<String>>(map['rrdatas']),
+          pulumi.Input.asOptionalInput<String>(map['clientOperationId']),
+      kind: pulumi.Input.asOptionalInput<String>(map['kind']),
+      managedZone: pulumi.Input.asInput<String>(map['managedZone']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      routingPolicy: pulumi.Input.asOptionalInput<RRSetRoutingPolicy>(
+          map['routingPolicy']),
+      rrdatas: pulumi.Input.asOptionalInput<List<String>>(map['rrdatas']),
       signatureRrdatas:
-          Input.asOptionalInput<List<String>>(map['signatureRrdatas']),
-      ttl: Input.asOptionalInput<int>(map['ttl']),
-      type: Input.asOptionalInput<String>(map['type']),
+          pulumi.Input.asOptionalInput<List<String>>(map['signatureRrdatas']),
+      ttl: pulumi.Input.asOptionalInput<int>(map['ttl']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

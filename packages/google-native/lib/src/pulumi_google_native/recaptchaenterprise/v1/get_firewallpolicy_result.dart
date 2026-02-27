@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_recaptchaenterprise_v1_firewall_action_response.dart';
 
 /// Result data returned by getFirewallpolicy.
@@ -30,7 +30,7 @@ class GetFirewallpolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] = Input.encodeList<
+    map['actions'] = pulumi.Input.encodeList<
         GoogleCloudRecaptchaenterpriseV1FirewallActionResponse,
         Map<String, dynamic>>(actions, (value) => value.toMap());
     map['condition'] = condition;
@@ -42,7 +42,7 @@ class GetFirewallpolicyResult {
 
   factory GetFirewallpolicyResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallpolicyResult(
-      actions: Input.decodeList<
+      actions: pulumi.Input.decodeList<
               GoogleCloudRecaptchaenterpriseV1FirewallActionResponse>(
           map['actions'],
           (value) =>

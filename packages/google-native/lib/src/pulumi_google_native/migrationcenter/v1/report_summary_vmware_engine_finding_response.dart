@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_vmware_node_allocation_response.dart';
 
 /// A set of findings that applies to assets destined for VMWare Engine.
@@ -24,7 +24,7 @@ class ReportSummaryVmwareEngineFindingResponse {
     final map = <String, dynamic>{};
     map['allocatedAssetCount'] = allocatedAssetCount;
     map['allocatedRegions'] = allocatedRegions;
-    map['nodeAllocations'] = Input.encodeList<
+    map['nodeAllocations'] = pulumi.Input.encodeList<
         ReportSummaryVmwareNodeAllocationResponse,
         Map<String, dynamic>>(nodeAllocations, (value) => value.toMap());
     return map;
@@ -36,7 +36,7 @@ class ReportSummaryVmwareEngineFindingResponse {
       allocatedAssetCount: map['allocatedAssetCount'] as String,
       allocatedRegions: (map['allocatedRegions'] as List).cast<String>(),
       nodeAllocations:
-          Input.decodeList<ReportSummaryVmwareNodeAllocationResponse>(
+          pulumi.Input.decodeList<ReportSummaryVmwareNodeAllocationResponse>(
               map['nodeAllocations'],
               (value) => ReportSummaryVmwareNodeAllocationResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

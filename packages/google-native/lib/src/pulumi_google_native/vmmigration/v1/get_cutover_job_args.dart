@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCutoverJob.
 class GetCutoverJobArgs {
-  final Input<String> cutoverJobId;
-  final Input<String> location;
-  final Input<String> migratingVmId;
-  final Input<String>? project;
-  final Input<String> sourceId;
+  final pulumi.Input<String> cutoverJobId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> migratingVmId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sourceId;
 
   GetCutoverJobArgs({
     required this.cutoverJobId,
@@ -33,11 +33,11 @@ class GetCutoverJobArgs {
 
   factory GetCutoverJobArgs.fromMap(Map<String, dynamic> map) {
     return GetCutoverJobArgs(
-      cutoverJobId: Input.asInput<String>(map['cutoverJobId']),
-      location: Input.asInput<String>(map['location']),
-      migratingVmId: Input.asInput<String>(map['migratingVmId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sourceId: Input.asInput<String>(map['sourceId']),
+      cutoverJobId: pulumi.Input.asInput<String>(map['cutoverJobId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      migratingVmId: pulumi.Input.asInput<String>(map['migratingVmId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sourceId: pulumi.Input.asInput<String>(map['sourceId']),
     );
   }
 }

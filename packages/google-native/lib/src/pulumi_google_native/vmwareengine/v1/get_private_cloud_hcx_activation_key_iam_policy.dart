@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_private_cloud_hcx_activation_key_iam_policy_args.dart';
 import 'get_private_cloud_hcx_activation_key_iam_policy_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_private_cloud_hcx_activation_key_iam_policy_result.dart';
 Future<GetPrivateCloudHcxActivationKeyIamPolicyResult>
     getPrivateCloudHcxActivationKeyIamPolicy(
   GetPrivateCloudHcxActivationKeyIamPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:vmwareengine/v1:getPrivateCloudHcxActivationKeyIamPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateCloudHcxActivationKeyIamPolicyResult.fromMap(result);
 }

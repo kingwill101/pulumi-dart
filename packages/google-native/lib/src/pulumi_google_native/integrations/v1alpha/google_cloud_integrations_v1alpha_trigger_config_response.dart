@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_cloud_scheduler_config_response.dart';
 import 'google_cloud_integrations_v1alpha_coordinate_response.dart';
 import 'google_cloud_integrations_v1alpha_integration_alert_config_response.dart';
@@ -67,7 +67,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['alertConfig'] = Input.encodeList<
+    map['alertConfig'] = pulumi.Input.encodeList<
         GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse,
         Map<String, dynamic>>(alertConfig, (value) => value.toMap());
     map['cloudSchedulerConfig'] = cloudSchedulerConfig.toMap();
@@ -77,7 +77,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
     map['nextTasksExecutionPolicy'] = nextTasksExecutionPolicy;
     map['position'] = position.toMap();
     map['properties'] = properties;
-    map['startTasks'] = Input.encodeList<
+    map['startTasks'] = pulumi.Input.encodeList<
         GoogleCloudIntegrationsV1alphaNextTaskResponse,
         Map<String, dynamic>>(startTasks, (value) => value.toMap());
     map['trigger'] = trigger;
@@ -90,7 +90,7 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
   factory GoogleCloudIntegrationsV1alphaTriggerConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaTriggerConfigResponse(
-      alertConfig: Input.decodeList<
+      alertConfig: pulumi.Input.decodeList<
               GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse>(
           map['alertConfig'],
           (value) =>
@@ -106,11 +106,11 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
       position: GoogleCloudIntegrationsV1alphaCoordinateResponse.fromMap(
           (map['position'] as Map).cast<String, dynamic>()),
       properties: (map['properties'] as Map).cast<String, String>(),
-      startTasks:
-          Input.decodeList<GoogleCloudIntegrationsV1alphaNextTaskResponse>(
-              map['startTasks'],
-              (value) => GoogleCloudIntegrationsV1alphaNextTaskResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      startTasks: pulumi.Input.decodeList<
+              GoogleCloudIntegrationsV1alphaNextTaskResponse>(
+          map['startTasks'],
+          (value) => GoogleCloudIntegrationsV1alphaNextTaskResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       trigger: map['trigger'] as String,
       triggerId: map['triggerId'] as String,
       triggerNumber: map['triggerNumber'] as String,

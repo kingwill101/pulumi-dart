@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifact_objects_response.dart';
 import 'maven_artifact_response.dart';
 import 'npm_package_response.dart';
@@ -35,14 +35,14 @@ class ArtifactsResponse {
     final map = <String, dynamic>{};
     map['images'] = images;
     map['mavenArtifacts'] =
-        Input.encodeList<MavenArtifactResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MavenArtifactResponse, Map<String, dynamic>>(
             mavenArtifacts, (value) => value.toMap());
     map['npmPackages'] =
-        Input.encodeList<NpmPackageResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<NpmPackageResponse, Map<String, dynamic>>(
             npmPackages, (value) => value.toMap());
     map['objects'] = objects.toMap();
     map['pythonPackages'] =
-        Input.encodeList<PythonPackageResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PythonPackageResponse, Map<String, dynamic>>(
             pythonPackages, (value) => value.toMap());
     return map;
   }
@@ -50,17 +50,17 @@ class ArtifactsResponse {
   factory ArtifactsResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactsResponse(
       images: (map['images'] as List).cast<String>(),
-      mavenArtifacts: Input.decodeList<MavenArtifactResponse>(
+      mavenArtifacts: pulumi.Input.decodeList<MavenArtifactResponse>(
           map['mavenArtifacts'],
           (value) => MavenArtifactResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      npmPackages: Input.decodeList<NpmPackageResponse>(
+      npmPackages: pulumi.Input.decodeList<NpmPackageResponse>(
           map['npmPackages'],
           (value) => NpmPackageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       objects: ArtifactObjectsResponse.fromMap(
           (map['objects'] as Map).cast<String, dynamic>()),
-      pythonPackages: Input.decodeList<PythonPackageResponse>(
+      pythonPackages: pulumi.Input.decodeList<PythonPackageResponse>(
           map['pythonPackages'],
           (value) => PythonPackageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

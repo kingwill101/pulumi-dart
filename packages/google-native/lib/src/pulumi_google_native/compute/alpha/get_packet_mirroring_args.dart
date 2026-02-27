@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPacketMirroring.
 class GetPacketMirroringArgs {
-  final Input<String> packetMirroring;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> packetMirroring;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetPacketMirroringArgs({
     required this.packetMirroring,
@@ -27,9 +27,9 @@ class GetPacketMirroringArgs {
 
   factory GetPacketMirroringArgs.fromMap(Map<String, dynamic> map) {
     return GetPacketMirroringArgs(
-      packetMirroring: Input.asInput<String>(map['packetMirroring']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      packetMirroring: pulumi.Input.asInput<String>(map['packetMirroring']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

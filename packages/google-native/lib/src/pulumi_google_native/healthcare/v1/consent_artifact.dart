@@ -1,47 +1,47 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'consent_artifact_args.dart';
 import 'image_response.dart';
-import 'signature_response3.dart';
+import 'signature_response_healthcare_v1.dart';
 
 /// Creates a new Consent artifact in the parent consent store.
-class ConsentArtifact extends CustomResource {
+class ConsentArtifact extends pulumi.CustomResource {
   /// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
-  late final Output<List<ImageResponse>> consentContentScreenshots;
+  late final pulumi.Output<List<ImageResponse>> consentContentScreenshots;
 
   /// Optional. An string indicating the version of the consent information shown to the user.
-  late final Output<String> consentContentVersion;
-  late final Output<String> consentStoreId;
-  late final Output<String> datasetId;
+  late final pulumi.Output<String> consentContentVersion;
+  late final pulumi.Output<String> consentStoreId;
+  late final pulumi.Output<String> datasetId;
 
   /// Optional. A signature from a guardian.
-  late final Output<SignatureResponse3> guardianSignature;
-  late final Output<String> location;
+  late final pulumi.Output<SignatureResponseHealthcareV1> guardianSignature;
+  late final pulumi.Output<String> location;
 
   /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
-  late final Output<Map<String, String>> metadata;
+  late final pulumi.Output<Map<String, String>> metadata;
 
   /// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// User's UUID provided by the client.
-  late final Output<String> userId;
+  late final pulumi.Output<String> userId;
 
   /// Optional. User's signature.
-  late final Output<SignatureResponse3> userSignature;
+  late final pulumi.Output<SignatureResponseHealthcareV1> userSignature;
 
   /// Optional. A signature from a witness.
-  late final Output<SignatureResponse3> witnessSignature;
+  late final pulumi.Output<SignatureResponseHealthcareV1> witnessSignature;
 
   ConsentArtifact(
     String name, {
     ConsentArtifactArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:healthcare/v1:ConsentArtifact',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.consentContentScreenshots =
         registerOutput<List<ImageResponse>>('consentContentScreenshots');
@@ -50,14 +50,15 @@ class ConsentArtifact extends CustomResource {
     this.consentStoreId = registerOutput<String>('consentStoreId');
     this.datasetId = registerOutput<String>('datasetId');
     this.guardianSignature =
-        registerOutput<SignatureResponse3>('guardianSignature');
+        registerOutput<SignatureResponseHealthcareV1>('guardianSignature');
     this.location = registerOutput<String>('location');
     this.metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.userId = registerOutput<String>('userId');
-    this.userSignature = registerOutput<SignatureResponse3>('userSignature');
+    this.userSignature =
+        registerOutput<SignatureResponseHealthcareV1>('userSignature');
     this.witnessSignature =
-        registerOutput<SignatureResponse3>('witnessSignature');
+        registerOutput<SignatureResponseHealthcareV1>('witnessSignature');
   }
 }

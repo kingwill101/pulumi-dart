@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOsPolicyAssignment.
 class GetOsPolicyAssignmentArgs {
-  final Input<String> location;
-  final Input<String> osPolicyAssignmentId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> osPolicyAssignmentId;
+  final pulumi.Input<String>? project;
 
   GetOsPolicyAssignmentArgs({
     required this.location,
@@ -27,9 +27,10 @@ class GetOsPolicyAssignmentArgs {
 
   factory GetOsPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetOsPolicyAssignmentArgs(
-      location: Input.asInput<String>(map['location']),
-      osPolicyAssignmentId: Input.asInput<String>(map['osPolicyAssignmentId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      osPolicyAssignmentId:
+          pulumi.Input.asInput<String>(map['osPolicyAssignmentId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

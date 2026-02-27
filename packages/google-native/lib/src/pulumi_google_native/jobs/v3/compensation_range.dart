@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'money4.dart';
+import 'money_jobs_v3.dart';
 
 /// Compensation range.
 class CompensationRange {
   /// Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
-  final Money4? maxCompensation;
+  final MoneyJobsV3? maxCompensation;
 
   /// Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
-  final Money4? minCompensation;
+  final MoneyJobsV3? minCompensation;
 
   CompensationRange({
     this.maxCompensation,
@@ -32,11 +32,11 @@ class CompensationRange {
     return CompensationRange(
       maxCompensation: map['maxCompensation'] == null
           ? null
-          : Money4.fromMap(
+          : MoneyJobsV3.fromMap(
               (map['maxCompensation'] as Map).cast<String, dynamic>()),
       minCompensation: map['minCompensation'] == null
           ? null
-          : Money4.fromMap(
+          : MoneyJobsV3.fromMap(
               (map['minCompensation'] as Map).cast<String, dynamic>()),
     );
   }

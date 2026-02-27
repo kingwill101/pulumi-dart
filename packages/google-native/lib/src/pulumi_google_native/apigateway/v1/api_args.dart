@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Api.
 class ApiArgs {
   /// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
-  final Input<String> apiId;
+  final pulumi.Input<String> apiId;
 
   /// Optional. Display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
-  final Input<String>? managedService;
-  final Input<String>? project;
+  final pulumi.Input<String>? managedService;
+  final pulumi.Input<String>? project;
 
   ApiArgs({
     required this.apiId,
@@ -55,12 +55,13 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      managedService: Input.asOptionalInput<String>(map['managedService']),
-      project: Input.asOptionalInput<String>(map['project']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      managedService:
+          pulumi.Input.asOptionalInput<String>(map['managedService']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

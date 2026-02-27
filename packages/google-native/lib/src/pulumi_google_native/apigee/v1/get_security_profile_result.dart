@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_profile_config_response.dart';
 import 'google_cloud_apigee_v1_security_profile_environment_response.dart';
 import 'google_cloud_apigee_v1_security_profile_scoring_config_response.dart';
@@ -64,7 +64,7 @@ class GetSecurityProfileResult {
     final map = <String, dynamic>{};
     map['description'] = description;
     map['displayName'] = displayName;
-    map['environments'] = Input.encodeList<
+    map['environments'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1SecurityProfileEnvironmentResponse,
         Map<String, dynamic>>(environments, (value) => value.toMap());
     map['maxScore'] = maxScore;
@@ -75,7 +75,7 @@ class GetSecurityProfileResult {
     map['revisionId'] = revisionId;
     map['revisionPublishTime'] = revisionPublishTime;
     map['revisionUpdateTime'] = revisionUpdateTime;
-    map['scoringConfigs'] = Input.encodeList<
+    map['scoringConfigs'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1SecurityProfileScoringConfigResponse,
         Map<String, dynamic>>(scoringConfigs, (value) => value.toMap());
     return map;
@@ -85,7 +85,7 @@ class GetSecurityProfileResult {
     return GetSecurityProfileResult(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      environments: Input.decodeList<
+      environments: pulumi.Input.decodeList<
               GoogleCloudApigeeV1SecurityProfileEnvironmentResponse>(
           map['environments'],
           (value) =>
@@ -100,7 +100,7 @@ class GetSecurityProfileResult {
       revisionId: map['revisionId'] as String,
       revisionPublishTime: map['revisionPublishTime'] as String,
       revisionUpdateTime: map['revisionUpdateTime'] as String,
-      scoringConfigs: Input.decodeList<
+      scoringConfigs: pulumi.Input.decodeList<
               GoogleCloudApigeeV1SecurityProfileScoringConfigResponse>(
           map['scoringConfigs'],
           (value) =>

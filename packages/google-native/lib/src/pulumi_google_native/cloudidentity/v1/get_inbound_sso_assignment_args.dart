@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInboundSsoAssignment.
 class GetInboundSsoAssignmentArgs {
-  final Input<String> inboundSsoAssignmentId;
+  final pulumi.Input<String> inboundSsoAssignmentId;
 
   GetInboundSsoAssignmentArgs({
     required this.inboundSsoAssignmentId,
@@ -19,7 +19,7 @@ class GetInboundSsoAssignmentArgs {
   factory GetInboundSsoAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundSsoAssignmentArgs(
       inboundSsoAssignmentId:
-          Input.asInput<String>(map['inboundSsoAssignmentId']),
+          pulumi.Input.asInput<String>(map['inboundSsoAssignmentId']),
     );
   }
 }

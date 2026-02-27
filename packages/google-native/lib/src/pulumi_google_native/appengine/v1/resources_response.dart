@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_response.dart';
 
 /// Machine resources for a version.
@@ -34,8 +34,9 @@ class ResourcesResponse {
     map['diskGb'] = diskGb;
     map['kmsKeyReference'] = kmsKeyReference;
     map['memoryGb'] = memoryGb;
-    map['volumes'] = Input.encodeList<VolumeResponse, Map<String, dynamic>>(
-        volumes, (value) => value.toMap());
+    map['volumes'] =
+        pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(
+            volumes, (value) => value.toMap());
     return map;
   }
 
@@ -45,7 +46,7 @@ class ResourcesResponse {
       diskGb: map['diskGb'] as double,
       kmsKeyReference: map['kmsKeyReference'] as String,
       memoryGb: map['memoryGb'] as double,
-      volumes: Input.decodeList<VolumeResponse>(
+      volumes: pulumi.Input.decodeList<VolumeResponse>(
           map['volumes'],
           (value) =>
               VolumeResponse.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_suggestion_response.dart';
 
 /// The collection of suggestions.
@@ -15,7 +15,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['suggestions'] = Input.encodeList<
+    map['suggestions'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse,
         Map<String, dynamic>>(suggestions, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse {
   factory GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse(
-      suggestions: Input.decodeList<
+      suggestions: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse>(
           map['suggestions'],
           (value) => GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse

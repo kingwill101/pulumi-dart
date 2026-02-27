@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_sole_tenant_node_allocation_response.dart';
 
 /// A set of findings that applies to assets destined for Sole-Tenant nodes.
@@ -24,7 +24,7 @@ class ReportSummarySoleTenantFindingResponse {
     final map = <String, dynamic>{};
     map['allocatedAssetCount'] = allocatedAssetCount;
     map['allocatedRegions'] = allocatedRegions;
-    map['nodeAllocations'] = Input.encodeList<
+    map['nodeAllocations'] = pulumi.Input.encodeList<
         ReportSummarySoleTenantNodeAllocationResponse,
         Map<String, dynamic>>(nodeAllocations, (value) => value.toMap());
     return map;
@@ -35,11 +35,11 @@ class ReportSummarySoleTenantFindingResponse {
     return ReportSummarySoleTenantFindingResponse(
       allocatedAssetCount: map['allocatedAssetCount'] as String,
       allocatedRegions: (map['allocatedRegions'] as List).cast<String>(),
-      nodeAllocations:
-          Input.decodeList<ReportSummarySoleTenantNodeAllocationResponse>(
-              map['nodeAllocations'],
-              (value) => ReportSummarySoleTenantNodeAllocationResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      nodeAllocations: pulumi.Input.decodeList<
+              ReportSummarySoleTenantNodeAllocationResponse>(
+          map['nodeAllocations'],
+          (value) => ReportSummarySoleTenantNodeAllocationResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

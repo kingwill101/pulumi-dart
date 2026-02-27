@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vm_capabilities_response.dart';
 import 'vmware_disk_details_response.dart';
 
@@ -28,9 +28,8 @@ class VmwareSourceVmDetailsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['committedStorageBytes'] = committedStorageBytes;
-    map['disks'] =
-        Input.encodeList<VmwareDiskDetailsResponse, Map<String, dynamic>>(
-            disks, (value) => value.toMap());
+    map['disks'] = pulumi.Input.encodeList<VmwareDiskDetailsResponse,
+        Map<String, dynamic>>(disks, (value) => value.toMap());
     map['firmware'] = firmware;
     map['vmCapabilitiesInfo'] = vmCapabilitiesInfo.toMap();
     return map;
@@ -39,7 +38,7 @@ class VmwareSourceVmDetailsResponse {
   factory VmwareSourceVmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VmwareSourceVmDetailsResponse(
       committedStorageBytes: map['committedStorageBytes'] as String,
-      disks: Input.decodeList<VmwareDiskDetailsResponse>(
+      disks: pulumi.Input.decodeList<VmwareDiskDetailsResponse>(
           map['disks'],
           (value) => VmwareDiskDetailsResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

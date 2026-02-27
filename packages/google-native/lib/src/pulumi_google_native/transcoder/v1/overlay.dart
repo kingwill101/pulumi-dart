@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'animation.dart';
-import 'image3.dart';
+import 'image_transcoder_v1.dart';
 
 /// Overlay configuration.
 class Overlay {
@@ -10,7 +10,7 @@ class Overlay {
   final List<Animation>? animations;
 
   /// Image overlay.
-  final Image3? image;
+  final ImageTranscoderV1? image;
 
   Overlay({
     this.animations,
@@ -21,8 +21,9 @@ class Overlay {
     final map = <String, dynamic>{};
     final animationsValue = animations;
     if (animationsValue != null) {
-      map['animations'] = Input.encodeList<Animation, Map<String, dynamic>>(
-          animationsValue, (value) => value.toMap());
+      map['animations'] =
+          pulumi.Input.encodeList<Animation, Map<String, dynamic>>(
+              animationsValue, (value) => value.toMap());
     }
     final imageValue = image;
     if (imageValue != null) {
@@ -35,13 +36,14 @@ class Overlay {
     return Overlay(
       animations: map['animations'] == null
           ? null
-          : Input.decodeList<Animation>(
+          : pulumi.Input.decodeList<Animation>(
               map['animations'],
               (value) =>
                   Animation.fromMap((value as Map).cast<String, dynamic>())),
       image: map['image'] == null
           ? null
-          : Image3.fromMap((map['image'] as Map).cast<String, dynamic>()),
+          : ImageTranscoderV1.fromMap(
+              (map['image'] as Map).cast<String, dynamic>()),
     );
   }
 }

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTensorboard.
 class GetTensorboardArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> tensorboardId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> tensorboardId;
 
   GetTensorboardArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetTensorboardArgs {
 
   factory GetTensorboardArgs.fromMap(Map<String, dynamic> map) {
     return GetTensorboardArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tensorboardId: Input.asInput<String>(map['tensorboardId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tensorboardId: pulumi.Input.asInput<String>(map['tensorboardId']),
     );
   }
 }

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHmacKey.
 class GetHmacKeyArgs {
-  final Input<String> accessId;
-  final Input<String>? project;
-  final Input<String>? userProject;
+  final pulumi.Input<String> accessId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? userProject;
 
   GetHmacKeyArgs({
     required this.accessId,
@@ -30,9 +30,9 @@ class GetHmacKeyArgs {
 
   factory GetHmacKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetHmacKeyArgs(
-      accessId: Input.asInput<String>(map['accessId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      userProject: Input.asOptionalInput<String>(map['userProject']),
+      accessId: pulumi.Input.asInput<String>(map['accessId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      userProject: pulumi.Input.asOptionalInput<String>(map['userProject']),
     );
   }
 }

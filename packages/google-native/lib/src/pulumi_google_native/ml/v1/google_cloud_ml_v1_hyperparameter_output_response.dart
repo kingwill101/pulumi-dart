@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_built_in_algorithm_output_response.dart';
 import 'google_cloud_ml_v1_hyperparameter_output_hyperparameter_metric_response.dart';
 
@@ -53,7 +53,7 @@ class GoogleCloudMlV1HyperparameterOutputResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allMetrics'] = Input.encodeList<
+    map['allMetrics'] = pulumi.Input.encodeList<
         GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse,
         Map<String, dynamic>>(allMetrics, (value) => value.toMap());
     map['builtInAlgorithmOutput'] = builtInAlgorithmOutput.toMap();
@@ -71,7 +71,7 @@ class GoogleCloudMlV1HyperparameterOutputResponse {
   factory GoogleCloudMlV1HyperparameterOutputResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudMlV1HyperparameterOutputResponse(
-      allMetrics: Input.decodeList<
+      allMetrics: pulumi.Input.decodeList<
               GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse>(
           map['allMetrics'],
           (value) =>

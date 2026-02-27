@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getChannelPartnerLink.
 class GetChannelPartnerLinkArgs {
-  final Input<String> accountId;
-  final Input<String> channelPartnerLinkId;
-  final Input<String>? view;
+  final pulumi.Input<String> accountId;
+  final pulumi.Input<String> channelPartnerLinkId;
+  final pulumi.Input<String>? view;
 
   GetChannelPartnerLinkArgs({
     required this.accountId,
@@ -27,9 +27,10 @@ class GetChannelPartnerLinkArgs {
 
   factory GetChannelPartnerLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelPartnerLinkArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      channelPartnerLinkId: Input.asInput<String>(map['channelPartnerLinkId']),
-      view: Input.asOptionalInput<String>(map['view']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      channelPartnerLinkId:
+          pulumi.Input.asInput<String>(map['channelPartnerLinkId']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

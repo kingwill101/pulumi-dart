@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automation_rule_condition_response.dart';
 import 'repair_mode_response.dart';
 
@@ -30,7 +30,7 @@ class RepairRolloutRuleResponse {
     map['condition'] = condition.toMap();
     map['jobs'] = jobs;
     map['repairModes'] =
-        Input.encodeList<RepairModeResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RepairModeResponse, Map<String, dynamic>>(
             repairModes, (value) => value.toMap());
     map['sourcePhases'] = sourcePhases;
     return map;
@@ -41,7 +41,7 @@ class RepairRolloutRuleResponse {
       condition: AutomationRuleConditionResponse.fromMap(
           (map['condition'] as Map).cast<String, dynamic>()),
       jobs: (map['jobs'] as List).cast<String>(),
-      repairModes: Input.decodeList<RepairModeResponse>(
+      repairModes: pulumi.Input.decodeList<RepairModeResponse>(
           map['repairModes'],
           (value) => RepairModeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

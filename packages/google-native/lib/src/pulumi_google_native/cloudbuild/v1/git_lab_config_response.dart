@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'git_lab_enterprise_config_response.dart';
 import 'git_lab_repository_id_response.dart';
 import 'git_lab_secrets_response.dart';
@@ -40,9 +40,9 @@ class GitLabConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['connectedRepositories'] =
-        Input.encodeList<GitLabRepositoryIdResponse, Map<String, dynamic>>(
-            connectedRepositories, (value) => value.toMap());
+    map['connectedRepositories'] = pulumi.Input.encodeList<
+        GitLabRepositoryIdResponse,
+        Map<String, dynamic>>(connectedRepositories, (value) => value.toMap());
     map['createTime'] = createTime;
     map['enterpriseConfig'] = enterpriseConfig.toMap();
     map['name'] = name;
@@ -54,10 +54,11 @@ class GitLabConfigResponse {
 
   factory GitLabConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitLabConfigResponse(
-      connectedRepositories: Input.decodeList<GitLabRepositoryIdResponse>(
-          map['connectedRepositories'],
-          (value) => GitLabRepositoryIdResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      connectedRepositories:
+          pulumi.Input.decodeList<GitLabRepositoryIdResponse>(
+              map['connectedRepositories'],
+              (value) => GitLabRepositoryIdResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       enterpriseConfig: GitLabEnterpriseConfigResponse.fromMap(
           (map['enterpriseConfig'] as Map).cast<String, dynamic>()),

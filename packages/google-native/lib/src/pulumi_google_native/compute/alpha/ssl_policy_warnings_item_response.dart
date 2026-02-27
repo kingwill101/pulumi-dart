@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_policy_warnings_item_data_item_response.dart';
 
 class SslPolicyWarningsItemResponse {
@@ -22,7 +22,7 @@ class SslPolicyWarningsItemResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['code'] = code;
-    map['data'] = Input.encodeList<SslPolicyWarningsItemDataItemResponse,
+    map['data'] = pulumi.Input.encodeList<SslPolicyWarningsItemDataItemResponse,
         Map<String, dynamic>>(data, (value) => value.toMap());
     map['message'] = message;
     return map;
@@ -31,7 +31,7 @@ class SslPolicyWarningsItemResponse {
   factory SslPolicyWarningsItemResponse.fromMap(Map<String, dynamic> map) {
     return SslPolicyWarningsItemResponse(
       code: map['code'] as String,
-      data: Input.decodeList<SslPolicyWarningsItemDataItemResponse>(
+      data: pulumi.Input.decodeList<SslPolicyWarningsItemDataItemResponse>(
           map['data'],
           (value) => SslPolicyWarningsItemDataItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_response.dart';
 import 'local_disk_response.dart';
 import 'node_template_node_type_flexibility_response.dart';
@@ -74,14 +74,14 @@ class GetNodeTemplateResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accelerators'] =
-        Input.encodeList<AcceleratorConfigResponse, Map<String, dynamic>>(
-            accelerators, (value) => value.toMap());
+    map['accelerators'] = pulumi.Input.encodeList<AcceleratorConfigResponse,
+        Map<String, dynamic>>(accelerators, (value) => value.toMap());
     map['cpuOvercommitType'] = cpuOvercommitType;
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
-    map['disks'] = Input.encodeList<LocalDiskResponse, Map<String, dynamic>>(
-        disks, (value) => value.toMap());
+    map['disks'] =
+        pulumi.Input.encodeList<LocalDiskResponse, Map<String, dynamic>>(
+            disks, (value) => value.toMap());
     map['kind'] = kind;
     map['name'] = name;
     map['nodeAffinityLabels'] = nodeAffinityLabels;
@@ -98,14 +98,14 @@ class GetNodeTemplateResult {
 
   factory GetNodeTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetNodeTemplateResult(
-      accelerators: Input.decodeList<AcceleratorConfigResponse>(
+      accelerators: pulumi.Input.decodeList<AcceleratorConfigResponse>(
           map['accelerators'],
           (value) => AcceleratorConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       cpuOvercommitType: map['cpuOvercommitType'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
-      disks: Input.decodeList<LocalDiskResponse>(
+      disks: pulumi.Input.decodeList<LocalDiskResponse>(
           map['disks'],
           (value) => LocalDiskResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

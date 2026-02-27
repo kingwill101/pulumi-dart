@@ -1,6 +1,6 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_config_response.dart';
-import 'network_config_response5.dart';
+import 'network_config_response_baremetalsolution_v2.dart';
 import 'provisioning_config_args.dart';
 import 'volume_config_response.dart';
 
@@ -8,60 +8,61 @@ import 'volume_config_response.dart';
 /// Auto-naming is currently not supported for this resource.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class ProvisioningConfig extends CustomResource {
+class ProvisioningConfig extends pulumi.CustomResource {
   /// URI to Cloud Console UI view of this provisioning config.
-  late final Output<String> cloudConsoleUri;
+  late final pulumi.Output<String> cloudConsoleUri;
 
   /// Optional. The user-defined identifier of the provisioning config.
-  late final Output<String> customId;
+  late final pulumi.Output<String> customId;
 
   /// Optional. Email provided to send a confirmation with provisioning config to.
-  late final Output<String> email;
+  late final pulumi.Output<String> email;
 
   /// A service account to enable customers to access instance credentials upon handover.
-  late final Output<String> handoverServiceAccount;
+  late final pulumi.Output<String> handoverServiceAccount;
 
   /// Instances to be created.
-  late final Output<List<InstanceConfigResponse>> instances;
-  late final Output<String> location;
+  late final pulumi.Output<List<InstanceConfigResponse>> instances;
+  late final pulumi.Output<String> location;
 
   /// The system-generated name of the provisioning config. This follows the UUID format.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Networks to be created.
-  late final Output<List<NetworkConfigResponse5>> networks;
+  late final pulumi.Output<List<NetworkConfigResponseBaremetalsolutionV2>>
+      networks;
 
   /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
-  late final Output<String> pod;
-  late final Output<String> project;
+  late final pulumi.Output<String> pod;
+  late final pulumi.Output<String> project;
 
   /// State of ProvisioningConfig.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Optional status messages associated with the FAILED state.
-  late final Output<String> statusMessage;
+  late final pulumi.Output<String> statusMessage;
 
   /// A generated ticket id to track provisioning request.
-  late final Output<String> ticketId;
+  late final pulumi.Output<String> ticketId;
 
   /// Last update timestamp.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Volumes to be created.
-  late final Output<List<VolumeConfigResponse>> volumes;
+  late final pulumi.Output<List<VolumeConfigResponse>> volumes;
 
   /// If true, VPC SC is enabled for the cluster.
-  late final Output<bool> vpcScEnabled;
+  late final pulumi.Output<bool> vpcScEnabled;
 
   ProvisioningConfig(
     String name, {
     ProvisioningConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:baremetalsolution/v2:ProvisioningConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cloudConsoleUri = registerOutput<String>('cloudConsoleUri');
     this.customId = registerOutput<String>('customId');
@@ -71,7 +72,9 @@ class ProvisioningConfig extends CustomResource {
     this.instances = registerOutput<List<InstanceConfigResponse>>('instances');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networks = registerOutput<List<NetworkConfigResponse5>>('networks');
+    this.networks =
+        registerOutput<List<NetworkConfigResponseBaremetalsolutionV2>>(
+            'networks');
     this.pod = registerOutput<String>('pod');
     this.project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');

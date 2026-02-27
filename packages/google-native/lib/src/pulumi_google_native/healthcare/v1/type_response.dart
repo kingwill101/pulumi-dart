@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'field_response.dart';
 
 /// A type definition for some HL7v2 type (incl. Segments and Datatypes).
@@ -22,8 +22,9 @@ class TypeResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fields'] = Input.encodeList<FieldResponse, Map<String, dynamic>>(
-        fields, (value) => value.toMap());
+    map['fields'] =
+        pulumi.Input.encodeList<FieldResponse, Map<String, dynamic>>(
+            fields, (value) => value.toMap());
     map['name'] = name;
     map['primitive'] = primitive;
     return map;
@@ -31,7 +32,7 @@ class TypeResponse {
 
   factory TypeResponse.fromMap(Map<String, dynamic> map) {
     return TypeResponse(
-      fields: Input.decodeList<FieldResponse>(
+      fields: pulumi.Input.decodeList<FieldResponse>(
           map['fields'],
           (value) =>
               FieldResponse.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_trigger_response.dart';
 import 'https_trigger_response.dart';
 import 'secret_env_var_response.dart';
@@ -167,10 +167,10 @@ class GetFunctionResult {
     map['network'] = network;
     map['runtime'] = runtime;
     map['secretEnvironmentVariables'] =
-        Input.encodeList<SecretEnvVarResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SecretEnvVarResponse, Map<String, dynamic>>(
             secretEnvironmentVariables, (value) => value.toMap());
     map['secretVolumes'] =
-        Input.encodeList<SecretVolumeResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SecretVolumeResponse, Map<String, dynamic>>(
             secretVolumes, (value) => value.toMap());
     map['serviceAccountEmail'] = serviceAccountEmail;
     map['sourceArchiveUrl'] = sourceArchiveUrl;
@@ -212,11 +212,11 @@ class GetFunctionResult {
       name: map['name'] as String,
       network: map['network'] as String,
       runtime: map['runtime'] as String,
-      secretEnvironmentVariables: Input.decodeList<SecretEnvVarResponse>(
+      secretEnvironmentVariables: pulumi.Input.decodeList<SecretEnvVarResponse>(
           map['secretEnvironmentVariables'],
           (value) => SecretEnvVarResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      secretVolumes: Input.decodeList<SecretVolumeResponse>(
+      secretVolumes: pulumi.Input.decodeList<SecretVolumeResponse>(
           map['secretVolumes'],
           (value) => SecretVolumeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

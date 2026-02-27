@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'streaming_config.dart';
 
 /// The set of arguments for FolderNotificationConfig.
 class FolderNotificationConfigArgs {
   /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.
-  final Input<String> configId;
+  final pulumi.Input<String> configId;
 
   /// The description of the notification config (max of 1024 characters).
-  final Input<String>? description;
-  final Input<String> folderId;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String> folderId;
 
   /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
-  final Input<String>? pubsubTopic;
+  final pulumi.Input<String>? pubsubTopic;
 
   /// The config for triggering streaming-based notifications.
-  final Input<StreamingConfig>? streamingConfig;
+  final pulumi.Input<StreamingConfig>? streamingConfig;
 
   FolderNotificationConfigArgs({
     required this.configId,
@@ -48,22 +48,22 @@ class FolderNotificationConfigArgs {
     }
     final streamingConfigValue = streamingConfig;
     if (streamingConfigValue != null) {
-      map['streamingConfig'] =
-          Input.mapOptionalInputValue<StreamingConfig, Map<String, dynamic>>(
-              streamingConfigValue, (value) => value.toMap());
+      map['streamingConfig'] = pulumi.Input.mapOptionalInputValue<
+          StreamingConfig,
+          Map<String, dynamic>>(streamingConfigValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory FolderNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return FolderNotificationConfigArgs(
-      configId: Input.asInput<String>(map['configId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      folderId: Input.asInput<String>(map['folderId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      pubsubTopic: Input.asOptionalInput<String>(map['pubsubTopic']),
+      configId: pulumi.Input.asInput<String>(map['configId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      pubsubTopic: pulumi.Input.asOptionalInput<String>(map['pubsubTopic']),
       streamingConfig:
-          Input.asOptionalInput<StreamingConfig>(map['streamingConfig']),
+          pulumi.Input.asOptionalInput<StreamingConfig>(map['streamingConfig']),
     );
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'basic_auth.dart';
-import 'service_account6.dart';
+import 'service_account_deploymentmanager_alpha.dart';
 
 /// The credential used by Deployment Manager and TypeProvider. Only one of the options is permitted.
 class Credential {
@@ -9,7 +9,7 @@ class Credential {
   final BasicAuth? basicAuth;
 
   /// Service Account Credential, only used by Deployment.
-  final ServiceAccount6? serviceAccount;
+  final ServiceAccountDeploymentmanagerAlpha? serviceAccount;
 
   /// Specify to use the project default credential, only supported by Deployment.
   final bool? useProjectDefault;
@@ -45,7 +45,7 @@ class Credential {
               (map['basicAuth'] as Map).cast<String, dynamic>()),
       serviceAccount: map['serviceAccount'] == null
           ? null
-          : ServiceAccount6.fromMap(
+          : ServiceAccountDeploymentmanagerAlpha.fromMap(
               (map['serviceAccount'] as Map).cast<String, dynamic>()),
       useProjectDefault: map['useProjectDefault'] == null
           ? null

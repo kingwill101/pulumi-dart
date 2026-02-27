@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_page_detected_language_response.dart';
 import 'google_cloud_documentai_v1_document_page_layout_response.dart';
 
@@ -24,7 +24,7 @@ class GoogleCloudDocumentaiV1DocumentPageVisualElementResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['detectedLanguages'] = Input.encodeList<
+    map['detectedLanguages'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
         Map<String, dynamic>>(detectedLanguages, (value) => value.toMap());
     map['layout'] = layout.toMap();
@@ -35,7 +35,7 @@ class GoogleCloudDocumentaiV1DocumentPageVisualElementResponse {
   factory GoogleCloudDocumentaiV1DocumentPageVisualElementResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageVisualElementResponse(
-      detectedLanguages: Input.decodeList<
+      detectedLanguages: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(
           map['detectedLanguages'],
           (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse

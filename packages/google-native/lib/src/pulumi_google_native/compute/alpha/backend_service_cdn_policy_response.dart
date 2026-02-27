@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_cdn_policy_bypass_cache_on_request_header_response.dart';
 import 'backend_service_cdn_policy_negative_caching_policy_response.dart';
 import 'cache_key_policy_response.dart';
@@ -62,7 +62,7 @@ class BackendServiceCdnPolicyResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bypassCacheOnRequestHeaders'] = Input.encodeList<
+    map['bypassCacheOnRequestHeaders'] = pulumi.Input.encodeList<
             BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse,
             Map<String, dynamic>>(
         bypassCacheOnRequestHeaders, (value) => value.toMap());
@@ -72,7 +72,7 @@ class BackendServiceCdnPolicyResponse {
     map['defaultTtl'] = defaultTtl;
     map['maxTtl'] = maxTtl;
     map['negativeCaching'] = negativeCaching;
-    map['negativeCachingPolicy'] = Input.encodeList<
+    map['negativeCachingPolicy'] = pulumi.Input.encodeList<
         BackendServiceCdnPolicyNegativeCachingPolicyResponse,
         Map<String, dynamic>>(negativeCachingPolicy, (value) => value.toMap());
     map['requestCoalescing'] = requestCoalescing;
@@ -84,7 +84,7 @@ class BackendServiceCdnPolicyResponse {
 
   factory BackendServiceCdnPolicyResponse.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyResponse(
-      bypassCacheOnRequestHeaders: Input.decodeList<
+      bypassCacheOnRequestHeaders: pulumi.Input.decodeList<
               BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse>(
           map['bypassCacheOnRequestHeaders'],
           (value) =>
@@ -97,7 +97,7 @@ class BackendServiceCdnPolicyResponse {
       defaultTtl: map['defaultTtl'] as int,
       maxTtl: map['maxTtl'] as int,
       negativeCaching: map['negativeCaching'] as bool,
-      negativeCachingPolicy: Input.decodeList<
+      negativeCachingPolicy: pulumi.Input.decodeList<
               BackendServiceCdnPolicyNegativeCachingPolicyResponse>(
           map['negativeCachingPolicy'],
           (value) =>

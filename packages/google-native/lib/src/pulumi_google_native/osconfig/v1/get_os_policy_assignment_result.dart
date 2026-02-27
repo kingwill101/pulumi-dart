@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ospolicy_assignment_instance_filter_response.dart';
 import 'ospolicy_assignment_rollout_response.dart';
 import 'ospolicy_response.dart';
@@ -71,7 +71,7 @@ class GetOsPolicyAssignmentResult {
     map['instanceFilter'] = instanceFilter.toMap();
     map['name'] = name;
     map['osPolicies'] =
-        Input.encodeList<OSPolicyResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<OSPolicyResponse, Map<String, dynamic>>(
             osPolicies, (value) => value.toMap());
     map['reconciling'] = reconciling;
     map['revisionCreateTime'] = revisionCreateTime;
@@ -91,7 +91,7 @@ class GetOsPolicyAssignmentResult {
       instanceFilter: OSPolicyAssignmentInstanceFilterResponse.fromMap(
           (map['instanceFilter'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      osPolicies: Input.decodeList<OSPolicyResponse>(
+      osPolicies: pulumi.Input.decodeList<OSPolicyResponse>(
           map['osPolicies'],
           (value) =>
               OSPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),

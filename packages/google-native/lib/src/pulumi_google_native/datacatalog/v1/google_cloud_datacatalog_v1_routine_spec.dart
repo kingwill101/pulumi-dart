@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_big_query_routine_spec.dart';
 import 'google_cloud_datacatalog_v1_routine_spec_argument.dart';
 import 'google_cloud_datacatalog_v1_routine_spec_routine_type.dart';
@@ -54,7 +54,7 @@ class GoogleCloudDatacatalogV1RoutineSpec {
     }
     final routineArgumentsValue = routineArguments;
     if (routineArgumentsValue != null) {
-      map['routineArguments'] = Input.encodeList<
+      map['routineArguments'] = pulumi.Input.encodeList<
               GoogleCloudDatacatalogV1RoutineSpecArgument,
               Map<String, dynamic>>(
           routineArgumentsValue, (value) => value.toMap());
@@ -81,7 +81,8 @@ class GoogleCloudDatacatalogV1RoutineSpec {
           map['returnType'] == null ? null : map['returnType'] as String,
       routineArguments: map['routineArguments'] == null
           ? null
-          : Input.decodeList<GoogleCloudDatacatalogV1RoutineSpecArgument>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDatacatalogV1RoutineSpecArgument>(
               map['routineArguments'],
               (value) => GoogleCloudDatacatalogV1RoutineSpecArgument.fromMap(
                   (value as Map).cast<String, dynamic>())),

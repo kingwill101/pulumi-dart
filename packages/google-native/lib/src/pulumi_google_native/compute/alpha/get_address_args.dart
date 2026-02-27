@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAddress.
 class GetAddressArgs {
-  final Input<String> address;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> address;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetAddressArgs({
     required this.address,
@@ -27,9 +27,9 @@ class GetAddressArgs {
 
   factory GetAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressArgs(
-      address: Input.asInput<String>(map['address']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      address: pulumi.Input.asInput<String>(map['address']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

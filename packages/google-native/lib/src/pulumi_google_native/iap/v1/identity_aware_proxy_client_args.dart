@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IdentityAwareProxyClient.
 class IdentityAwareProxyClientArgs {
-  final Input<String> brandId;
+  final pulumi.Input<String> brandId;
 
   /// Human-friendly name given to the OAuth client.
-  final Input<String>? displayName;
-  final Input<String>? project;
+  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String>? project;
 
   IdentityAwareProxyClientArgs({
     required this.brandId,
@@ -32,9 +32,9 @@ class IdentityAwareProxyClientArgs {
 
   factory IdentityAwareProxyClientArgs.fromMap(Map<String, dynamic> map) {
     return IdentityAwareProxyClientArgs(
-      brandId: Input.asInput<String>(map['brandId']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      project: Input.asOptionalInput<String>(map['project']),
+      brandId: pulumi.Input.asInput<String>(map['brandId']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

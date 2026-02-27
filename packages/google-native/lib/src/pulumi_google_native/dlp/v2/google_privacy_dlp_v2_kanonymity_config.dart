@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_entity_id.dart';
 import 'google_privacy_dlp_v2_field_id.dart';
 
@@ -25,9 +25,8 @@ class GooglePrivacyDlpV2KAnonymityConfig {
     }
     final quasiIdsValue = quasiIds;
     if (quasiIdsValue != null) {
-      map['quasiIds'] =
-          Input.encodeList<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(
-              quasiIdsValue, (value) => value.toMap());
+      map['quasiIds'] = pulumi.Input.encodeList<GooglePrivacyDlpV2FieldId,
+          Map<String, dynamic>>(quasiIdsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -40,7 +39,7 @@ class GooglePrivacyDlpV2KAnonymityConfig {
               (map['entityId'] as Map).cast<String, dynamic>()),
       quasiIds: map['quasiIds'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2FieldId>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(
               map['quasiIds'],
               (value) => GooglePrivacyDlpV2FieldId.fromMap(
                   (value as Map).cast<String, dynamic>())),

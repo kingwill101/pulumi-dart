@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_region_network_endpoint_group_args.dart';
 import 'get_region_network_endpoint_group_result.dart';
 
 /// Returns the specified network endpoint group.
 Future<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup(
   GetRegionNetworkEndpointGroupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:compute/alpha:getRegionNetworkEndpointGroup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionNetworkEndpointGroupResult.fromMap(result);
 }

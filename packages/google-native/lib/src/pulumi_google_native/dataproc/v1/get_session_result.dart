@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'environment_config_response3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'environment_config_response_dataproc_v1.dart';
 import 'jupyter_config_response.dart';
-import 'runtime_config_response2.dart';
+import 'runtime_config_response_dataproc_v1.dart';
 import 'runtime_info_response.dart';
 import 'session_state_history_response.dart';
 
@@ -16,7 +16,7 @@ class GetSessionResult {
   final String creator;
 
   /// Optional. Environment configuration for the session execution.
-  final EnvironmentConfigResponse3 environmentConfig;
+  final EnvironmentConfigResponseDataprocV1 environmentConfig;
 
   /// Optional. Jupyter session config.
   final JupyterConfigResponse jupyterSession;
@@ -28,7 +28,7 @@ class GetSessionResult {
   final String name;
 
   /// Optional. Runtime configuration for the session execution.
-  final RuntimeConfigResponse2 runtimeConfig;
+  final RuntimeConfigResponseDataprocV1 runtimeConfig;
 
   /// Runtime information about session execution.
   final RuntimeInfoResponse runtimeInfo;
@@ -84,9 +84,8 @@ class GetSessionResult {
     map['runtimeInfo'] = runtimeInfo.toMap();
     map['sessionTemplate'] = sessionTemplate;
     map['state'] = state;
-    map['stateHistory'] =
-        Input.encodeList<SessionStateHistoryResponse, Map<String, dynamic>>(
-            stateHistory, (value) => value.toMap());
+    map['stateHistory'] = pulumi.Input.encodeList<SessionStateHistoryResponse,
+        Map<String, dynamic>>(stateHistory, (value) => value.toMap());
     map['stateMessage'] = stateMessage;
     map['stateTime'] = stateTime;
     map['user'] = user;
@@ -98,19 +97,19 @@ class GetSessionResult {
     return GetSessionResult(
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
-      environmentConfig: EnvironmentConfigResponse3.fromMap(
+      environmentConfig: EnvironmentConfigResponseDataprocV1.fromMap(
           (map['environmentConfig'] as Map).cast<String, dynamic>()),
       jupyterSession: JupyterConfigResponse.fromMap(
           (map['jupyterSession'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      runtimeConfig: RuntimeConfigResponse2.fromMap(
+      runtimeConfig: RuntimeConfigResponseDataprocV1.fromMap(
           (map['runtimeConfig'] as Map).cast<String, dynamic>()),
       runtimeInfo: RuntimeInfoResponse.fromMap(
           (map['runtimeInfo'] as Map).cast<String, dynamic>()),
       sessionTemplate: map['sessionTemplate'] as String,
       state: map['state'] as String,
-      stateHistory: Input.decodeList<SessionStateHistoryResponse>(
+      stateHistory: pulumi.Input.decodeList<SessionStateHistoryResponse>(
           map['stateHistory'],
           (value) => SessionStateHistoryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

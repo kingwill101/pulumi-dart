@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_iam_policy_bindings_item_response.dart';
 
 /// Result data returned by getObjectIamPolicy.
@@ -30,7 +30,8 @@ class GetObjectIamPolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bindings'] = Input.encodeList<ObjectIamPolicyBindingsItemResponse,
+    map['bindings'] = pulumi.Input.encodeList<
+        ObjectIamPolicyBindingsItemResponse,
         Map<String, dynamic>>(bindings, (value) => value.toMap());
     map['etag'] = etag;
     map['kind'] = kind;
@@ -41,7 +42,7 @@ class GetObjectIamPolicyResult {
 
   factory GetObjectIamPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetObjectIamPolicyResult(
-      bindings: Input.decodeList<ObjectIamPolicyBindingsItemResponse>(
+      bindings: pulumi.Input.decodeList<ObjectIamPolicyBindingsItemResponse>(
           map['bindings'],
           (value) => ObjectIamPolicyBindingsItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

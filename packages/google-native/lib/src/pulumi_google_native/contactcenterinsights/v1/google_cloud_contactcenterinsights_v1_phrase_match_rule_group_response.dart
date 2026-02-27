@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contactcenterinsights_v1_phrase_match_rule_response.dart';
 
 /// A message representing a rule in the phrase matcher.
@@ -19,7 +19,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['phraseMatchRules'] = Input.encodeList<
+    map['phraseMatchRules'] = pulumi.Input.encodeList<
         GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse,
         Map<String, dynamic>>(phraseMatchRules, (value) => value.toMap());
     map['type'] = type;
@@ -29,7 +29,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse {
   factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse(
-      phraseMatchRules: Input.decodeList<
+      phraseMatchRules: pulumi.Input.decodeList<
               GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse>(
           map['phraseMatchRules'],
           (value) =>

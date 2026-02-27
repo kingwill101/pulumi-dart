@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'one_time_schedule_response.dart';
 import 'patch_config_response.dart';
 import 'patch_deployment_args.dart';
@@ -7,56 +7,56 @@ import 'patch_rollout_response.dart';
 import 'recurring_schedule_response.dart';
 
 /// Create an OS Config patch deployment.
-class PatchDeployment extends CustomResource {
+class PatchDeployment extends pulumi.CustomResource {
   /// Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Optional. Duration of the patch. After the duration ends, the patch times out.
-  late final Output<String> duration;
+  late final pulumi.Output<String> duration;
 
   /// VM instances to patch.
-  late final Output<PatchInstanceFilterResponse> instanceFilter;
+  late final pulumi.Output<PatchInstanceFilterResponse> instanceFilter;
 
   /// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-  late final Output<String> lastExecuteTime;
+  late final pulumi.Output<String> lastExecuteTime;
 
   /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Schedule a one-time execution.
-  late final Output<OneTimeScheduleResponse> oneTimeSchedule;
+  late final pulumi.Output<OneTimeScheduleResponse> oneTimeSchedule;
 
   /// Optional. Patch configuration that is applied.
-  late final Output<PatchConfigResponse> patchConfig;
+  late final pulumi.Output<PatchConfigResponse> patchConfig;
 
   /// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-  late final Output<String> patchDeploymentId;
-  late final Output<String> project;
+  late final pulumi.Output<String> patchDeploymentId;
+  late final pulumi.Output<String> project;
 
   /// Schedule recurring executions.
-  late final Output<RecurringScheduleResponse> recurringSchedule;
+  late final pulumi.Output<RecurringScheduleResponse> recurringSchedule;
 
   /// Optional. Rollout strategy of the patch job.
-  late final Output<PatchRolloutResponse> rollout;
+  late final pulumi.Output<PatchRolloutResponse> rollout;
 
   /// Current state of the patch deployment.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   PatchDeployment(
     String name, {
     PatchDeploymentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:osconfig/v1:PatchDeployment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String>('description');

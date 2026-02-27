@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'accelerator_config9.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'accelerator_config_notebooks_v2.dart';
 import 'boot_disk.dart';
-import 'container_image2.dart';
+import 'container_image_notebooks_v2.dart';
 import 'data_disk.dart';
 import 'gpudriver_config.dart';
-import 'network_interface5.dart';
-import 'service_account8.dart';
-import 'shielded_instance_config9.dart';
-import 'vm_image2.dart';
+import 'network_interface_notebooks_v2.dart';
+import 'service_account_notebooks_v2.dart';
+import 'shielded_instance_config_notebooks_v2.dart';
+import 'vm_image_notebooks_v2.dart';
 
 /// The definition of how to configure a VM instance outside of Resources and Identity.
 class GceSetup {
   /// Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration.
-  final List<AcceleratorConfig9>? acceleratorConfigs;
+  final List<AcceleratorConfigNotebooksV2>? acceleratorConfigs;
 
   /// Optional. The boot disk for the VM.
   final BootDisk? bootDisk;
 
   /// Optional. Use a container image to start the notebook instance.
-  final ContainerImage2? containerImage;
+  final ContainerImageNotebooksV2? containerImage;
 
   /// Optional. Data disks attached to the VM instance. Currently supports only one data disk.
   final List<DataDisk>? dataDisks;
@@ -41,19 +41,19 @@ class GceSetup {
   final Map<String, String>? metadata;
 
   /// Optional. The network interfaces for the VM. Supports only one interface.
-  final List<NetworkInterface5>? networkInterfaces;
+  final List<NetworkInterfaceNotebooksV2>? networkInterfaces;
 
   /// Optional. The service account that serves as an identity for the VM instance. Currently supports only one service account.
-  final List<ServiceAccount8>? serviceAccounts;
+  final List<ServiceAccountNotebooksV2>? serviceAccounts;
 
   /// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
-  final ShieldedInstanceConfig9? shieldedInstanceConfig;
+  final ShieldedInstanceConfigNotebooksV2? shieldedInstanceConfig;
 
   /// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
   final List<String>? tags;
 
   /// Optional. Use a Compute Engine VM image to start the notebook instance.
-  final VmImage2? vmImage;
+  final VmImageNotebooksV2? vmImage;
 
   GceSetup({
     this.acceleratorConfigs,
@@ -76,9 +76,9 @@ class GceSetup {
     final map = <String, dynamic>{};
     final acceleratorConfigsValue = acceleratorConfigs;
     if (acceleratorConfigsValue != null) {
-      map['acceleratorConfigs'] =
-          Input.encodeList<AcceleratorConfig9, Map<String, dynamic>>(
-              acceleratorConfigsValue, (value) => value.toMap());
+      map['acceleratorConfigs'] = pulumi.Input.encodeList<
+              AcceleratorConfigNotebooksV2, Map<String, dynamic>>(
+          acceleratorConfigsValue, (value) => value.toMap());
     }
     final bootDiskValue = bootDisk;
     if (bootDiskValue != null) {
@@ -90,8 +90,9 @@ class GceSetup {
     }
     final dataDisksValue = dataDisks;
     if (dataDisksValue != null) {
-      map['dataDisks'] = Input.encodeList<DataDisk, Map<String, dynamic>>(
-          dataDisksValue, (value) => value.toMap());
+      map['dataDisks'] =
+          pulumi.Input.encodeList<DataDisk, Map<String, dynamic>>(
+              dataDisksValue, (value) => value.toMap());
     }
     final disablePublicIpValue = disablePublicIp;
     if (disablePublicIpValue != null) {
@@ -115,15 +116,15 @@ class GceSetup {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] =
-          Input.encodeList<NetworkInterface5, Map<String, dynamic>>(
-              networkInterfacesValue, (value) => value.toMap());
+      map['networkInterfaces'] = pulumi.Input.encodeList<
+              NetworkInterfaceNotebooksV2, Map<String, dynamic>>(
+          networkInterfacesValue, (value) => value.toMap());
     }
     final serviceAccountsValue = serviceAccounts;
     if (serviceAccountsValue != null) {
-      map['serviceAccounts'] =
-          Input.encodeList<ServiceAccount8, Map<String, dynamic>>(
-              serviceAccountsValue, (value) => value.toMap());
+      map['serviceAccounts'] = pulumi.Input.encodeList<
+          ServiceAccountNotebooksV2,
+          Map<String, dynamic>>(serviceAccountsValue, (value) => value.toMap());
     }
     final shieldedInstanceConfigValue = shieldedInstanceConfig;
     if (shieldedInstanceConfigValue != null) {
@@ -144,20 +145,20 @@ class GceSetup {
     return GceSetup(
       acceleratorConfigs: map['acceleratorConfigs'] == null
           ? null
-          : Input.decodeList<AcceleratorConfig9>(
+          : pulumi.Input.decodeList<AcceleratorConfigNotebooksV2>(
               map['acceleratorConfigs'],
-              (value) => AcceleratorConfig9.fromMap(
+              (value) => AcceleratorConfigNotebooksV2.fromMap(
                   (value as Map).cast<String, dynamic>())),
       bootDisk: map['bootDisk'] == null
           ? null
           : BootDisk.fromMap((map['bootDisk'] as Map).cast<String, dynamic>()),
       containerImage: map['containerImage'] == null
           ? null
-          : ContainerImage2.fromMap(
+          : ContainerImageNotebooksV2.fromMap(
               (map['containerImage'] as Map).cast<String, dynamic>()),
       dataDisks: map['dataDisks'] == null
           ? null
-          : Input.decodeList<DataDisk>(
+          : pulumi.Input.decodeList<DataDisk>(
               map['dataDisks'],
               (value) =>
                   DataDisk.fromMap((value as Map).cast<String, dynamic>())),
@@ -178,24 +179,25 @@ class GceSetup {
           : (map['metadata'] as Map).cast<String, String>(),
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<NetworkInterface5>(
+          : pulumi.Input.decodeList<NetworkInterfaceNotebooksV2>(
               map['networkInterfaces'],
-              (value) => NetworkInterface5.fromMap(
+              (value) => NetworkInterfaceNotebooksV2.fromMap(
                   (value as Map).cast<String, dynamic>())),
       serviceAccounts: map['serviceAccounts'] == null
           ? null
-          : Input.decodeList<ServiceAccount8>(
+          : pulumi.Input.decodeList<ServiceAccountNotebooksV2>(
               map['serviceAccounts'],
-              (value) => ServiceAccount8.fromMap(
+              (value) => ServiceAccountNotebooksV2.fromMap(
                   (value as Map).cast<String, dynamic>())),
       shieldedInstanceConfig: map['shieldedInstanceConfig'] == null
           ? null
-          : ShieldedInstanceConfig9.fromMap(
+          : ShieldedInstanceConfigNotebooksV2.fromMap(
               (map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
       tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
       vmImage: map['vmImage'] == null
           ? null
-          : VmImage2.fromMap((map['vmImage'] as Map).cast<String, dynamic>()),
+          : VmImageNotebooksV2.fromMap(
+              (map['vmImage'] as Map).cast<String, dynamic>()),
     );
   }
 }

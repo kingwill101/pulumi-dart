@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_masking_statistics_response.dart';
 import 'job_statistics2_response.dart';
 import 'job_statistics3_response.dart';
@@ -110,7 +110,7 @@ class JobStatisticsResponse {
     map['query'] = query.toMap();
     map['quotaDeferments'] = quotaDeferments;
     map['reservationId'] = reservationId;
-    map['reservationUsage'] = Input.encodeList<
+    map['reservationUsage'] = pulumi.Input.encodeList<
         JobStatisticsReservationUsageItemResponse,
         Map<String, dynamic>>(reservationUsage, (value) => value.toMap());
     map['rowLevelSecurityStatistics'] = rowLevelSecurityStatistics.toMap();
@@ -143,7 +143,7 @@ class JobStatisticsResponse {
       quotaDeferments: (map['quotaDeferments'] as List).cast<String>(),
       reservationId: map['reservationId'] as String,
       reservationUsage:
-          Input.decodeList<JobStatisticsReservationUsageItemResponse>(
+          pulumi.Input.decodeList<JobStatisticsReservationUsageItemResponse>(
               map['reservationUsage'],
               (value) => JobStatisticsReservationUsageItemResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

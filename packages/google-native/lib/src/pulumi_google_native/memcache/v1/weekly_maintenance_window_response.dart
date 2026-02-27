@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'time_of_day_response2.dart';
+import 'time_of_day_response_memcache_v1.dart';
 
 /// Time window specified for weekly operations.
 class WeeklyMaintenanceWindowResponse {
@@ -11,7 +11,7 @@ class WeeklyMaintenanceWindowResponse {
   final String duration;
 
   /// Start time of the window in UTC.
-  final TimeOfDayResponse2 startTime;
+  final TimeOfDayResponseMemcacheV1 startTime;
 
   WeeklyMaintenanceWindowResponse({
     required this.day,
@@ -31,7 +31,7 @@ class WeeklyMaintenanceWindowResponse {
     return WeeklyMaintenanceWindowResponse(
       day: map['day'] as String,
       duration: map['duration'] as String,
-      startTime: TimeOfDayResponse2.fromMap(
+      startTime: TimeOfDayResponseMemcacheV1.fromMap(
           (map['startTime'] as Map).cast<String, dynamic>()),
     );
   }

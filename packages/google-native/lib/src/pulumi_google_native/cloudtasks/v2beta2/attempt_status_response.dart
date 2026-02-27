@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response8.dart';
+import 'status_response_cloudtasks_v2beta2.dart';
 
 /// The status of a task attempt.
 class AttemptStatusResponse {
@@ -8,7 +8,7 @@ class AttemptStatusResponse {
   final String dispatchTime;
 
   /// The response from the target for this attempt. If the task has not been attempted or the task is currently running then the response status is unset.
-  final StatusResponse8 responseStatus;
+  final StatusResponseCloudtasksV2beta2 responseStatus;
 
   /// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
   final String responseTime;
@@ -35,7 +35,7 @@ class AttemptStatusResponse {
   factory AttemptStatusResponse.fromMap(Map<String, dynamic> map) {
     return AttemptStatusResponse(
       dispatchTime: map['dispatchTime'] as String,
-      responseStatus: StatusResponse8.fromMap(
+      responseStatus: StatusResponseCloudtasksV2beta2.fromMap(
           (map['responseStatus'] as Map).cast<String, dynamic>()),
       responseTime: map['responseTime'] as String,
       scheduleTime: map['scheduleTime'] as String,

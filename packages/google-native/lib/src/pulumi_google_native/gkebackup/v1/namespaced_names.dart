@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespaced_name.dart';
 
 /// A list of namespaced Kubernetes resources.
@@ -17,7 +17,7 @@ class NamespacedNames {
     final namespacedNamesValue = namespacedNames;
     if (namespacedNamesValue != null) {
       map['namespacedNames'] =
-          Input.encodeList<NamespacedName, Map<String, dynamic>>(
+          pulumi.Input.encodeList<NamespacedName, Map<String, dynamic>>(
               namespacedNamesValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class NamespacedNames {
     return NamespacedNames(
       namespacedNames: map['namespacedNames'] == null
           ? null
-          : Input.decodeList<NamespacedName>(
+          : pulumi.Input.decodeList<NamespacedName>(
               map['namespacedNames'],
               (value) => NamespacedName.fromMap(
                   (value as Map).cast<String, dynamic>())),

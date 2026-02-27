@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionDiskIamPolicy.
 class GetRegionDiskIamPolicyArgs {
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
-  final Input<String> region;
-  final Input<String> resource;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+  final pulumi.Input<String> resource;
 
   GetRegionDiskIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
@@ -33,11 +33,11 @@ class GetRegionDiskIamPolicyArgs {
 
   factory GetRegionDiskIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionDiskIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
-      resource: Input.asInput<String>(map['resource']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
+      resource: pulumi.Input.asInput<String>(map['resource']),
     );
   }
 }

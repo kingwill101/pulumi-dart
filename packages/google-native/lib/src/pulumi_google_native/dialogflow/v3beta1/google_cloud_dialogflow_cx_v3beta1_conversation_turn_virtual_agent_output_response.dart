@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_intent_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_page_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_response_message_text_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_test_run_difference_response.dart';
-import 'google_rpc_status_response8.dart';
+import 'google_rpc_status_response_dialogflow_v3beta1.dart';
 
 /// The output from the virtual agent.
 class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse {
@@ -23,7 +23,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse {
   final Map<String, String> sessionParameters;
 
   /// Response error from the agent in the test result. If set, other output is empty.
-  final GoogleRpcStatusResponse8 status;
+  final GoogleRpcStatusResponseDialogflowV3beta1 status;
 
   /// The text responses from the agent for the turn.
   final List<GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse>
@@ -46,12 +46,12 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse {
     final map = <String, dynamic>{};
     map['currentPage'] = currentPage.toMap();
     map['diagnosticInfo'] = diagnosticInfo;
-    map['differences'] = Input.encodeList<
+    map['differences'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse,
         Map<String, dynamic>>(differences, (value) => value.toMap());
     map['sessionParameters'] = sessionParameters;
     map['status'] = status.toMap();
-    map['textResponses'] = Input.encodeList<
+    map['textResponses'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse,
         Map<String, dynamic>>(textResponses, (value) => value.toMap());
     map['triggeredIntent'] = triggeredIntent.toMap();
@@ -64,7 +64,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse {
       currentPage: GoogleCloudDialogflowCxV3beta1PageResponse.fromMap(
           (map['currentPage'] as Map).cast<String, dynamic>()),
       diagnosticInfo: (map['diagnosticInfo'] as Map).cast<String, String>(),
-      differences: Input.decodeList<
+      differences: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse>(
           map['differences'],
           (value) =>
@@ -72,9 +72,9 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse {
                   (value as Map).cast<String, dynamic>())),
       sessionParameters:
           (map['sessionParameters'] as Map).cast<String, String>(),
-      status: GoogleRpcStatusResponse8.fromMap(
+      status: GoogleRpcStatusResponseDialogflowV3beta1.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
-      textResponses: Input.decodeList<
+      textResponses: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse>(
           map['textResponses'],
           (value) =>

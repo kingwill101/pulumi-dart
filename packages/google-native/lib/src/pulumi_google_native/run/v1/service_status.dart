@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'addressable.dart';
 import 'google_cloud_run_v1_condition.dart';
 import 'traffic_target.dart';
@@ -46,9 +46,8 @@ class ServiceStatus {
     }
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] =
-          Input.encodeList<GoogleCloudRunV1Condition, Map<String, dynamic>>(
-              conditionsValue, (value) => value.toMap());
+      map['conditions'] = pulumi.Input.encodeList<GoogleCloudRunV1Condition,
+          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final latestCreatedRevisionNameValue = latestCreatedRevisionName;
     if (latestCreatedRevisionNameValue != null) {
@@ -64,8 +63,9 @@ class ServiceStatus {
     }
     final trafficValue = traffic;
     if (trafficValue != null) {
-      map['traffic'] = Input.encodeList<TrafficTarget, Map<String, dynamic>>(
-          trafficValue, (value) => value.toMap());
+      map['traffic'] =
+          pulumi.Input.encodeList<TrafficTarget, Map<String, dynamic>>(
+              trafficValue, (value) => value.toMap());
     }
     final urlValue = url;
     if (urlValue != null) {
@@ -82,7 +82,7 @@ class ServiceStatus {
               (map['address'] as Map).cast<String, dynamic>()),
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV1Condition>(
+          : pulumi.Input.decodeList<GoogleCloudRunV1Condition>(
               map['conditions'],
               (value) => GoogleCloudRunV1Condition.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -97,7 +97,7 @@ class ServiceStatus {
           : map['observedGeneration'] as int,
       traffic: map['traffic'] == null
           ? null
-          : Input.decodeList<TrafficTarget>(
+          : pulumi.Input.decodeList<TrafficTarget>(
               map['traffic'],
               (value) => TrafficTarget.fromMap(
                   (value as Map).cast<String, dynamic>())),

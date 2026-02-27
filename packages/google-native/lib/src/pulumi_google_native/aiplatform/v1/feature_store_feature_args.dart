@@ -1,37 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_store_feature_value_type.dart';
 
 /// The set of arguments for FeatureStoreFeature.
 class FeatureStoreFeatureArgs {
   /// Description of the Feature.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. Only applicable for Vertex AI Feature Store (Legacy). If not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If set to true, all types of data monitoring are disabled despite the config on EntityType.
-  final Input<bool>? disableMonitoring;
-  final Input<String> entityTypeId;
+  final pulumi.Input<bool>? disableMonitoring;
+  final pulumi.Input<String> entityTypeId;
 
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// Required. The ID to use for the Feature, which will become the final component of the Feature's resource name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within an EntityType/FeatureGroup.
-  final Input<String> featureId;
-  final Input<String> featurestoreId;
+  final pulumi.Input<String> featureId;
+  final pulumi.Input<String> featurestoreId;
 
   /// Optional. The labels with user-defined metadata to organize your Features. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Feature (System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
-  final Input<FeatureStoreFeatureValueType>? valueType;
+  final pulumi.Input<FeatureStoreFeatureValueType>? valueType;
 
   /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
-  final Input<String>? versionColumnName;
+  final pulumi.Input<String>? versionColumnName;
 
   FeatureStoreFeatureArgs({
     this.description,
@@ -83,9 +83,9 @@ class FeatureStoreFeatureArgs {
     }
     final valueTypeValue = valueType;
     if (valueTypeValue != null) {
-      map['valueType'] =
-          Input.mapOptionalInputValue<FeatureStoreFeatureValueType, String>(
-              valueTypeValue, (value) => value.value);
+      map['valueType'] = pulumi.Input.mapOptionalInputValue<
+          FeatureStoreFeatureValueType,
+          String>(valueTypeValue, (value) => value.value);
     }
     final versionColumnNameValue = versionColumnName;
     if (versionColumnNameValue != null) {
@@ -96,20 +96,21 @@ class FeatureStoreFeatureArgs {
 
   factory FeatureStoreFeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureStoreFeatureArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      disableMonitoring: Input.asOptionalInput<bool>(map['disableMonitoring']),
-      entityTypeId: Input.asInput<String>(map['entityTypeId']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      featureId: Input.asInput<String>(map['featureId']),
-      featurestoreId: Input.asInput<String>(map['featurestoreId']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      valueType:
-          Input.asOptionalInput<FeatureStoreFeatureValueType>(map['valueType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disableMonitoring:
+          pulumi.Input.asOptionalInput<bool>(map['disableMonitoring']),
+      entityTypeId: pulumi.Input.asInput<String>(map['entityTypeId']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      featureId: pulumi.Input.asInput<String>(map['featureId']),
+      featurestoreId: pulumi.Input.asInput<String>(map['featurestoreId']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      valueType: pulumi.Input.asOptionalInput<FeatureStoreFeatureValueType>(
+          map['valueType']),
       versionColumnName:
-          Input.asOptionalInput<String>(map['versionColumnName']),
+          pulumi.Input.asOptionalInput<String>(map['versionColumnName']),
     );
   }
 }

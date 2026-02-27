@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_entity_type_entity.dart';
 import 'session_entity_type_entity_override_mode.dart';
 
 /// The set of arguments for SessionEntityType.
 class SessionEntityTypeArgs {
   /// The collection of entities associated with this session entity type.
-  final Input<List<GoogleCloudDialogflowV2EntityTypeEntity>> entities;
+  final pulumi.Input<List<GoogleCloudDialogflowV2EntityTypeEntity>> entities;
 
   /// Indicates whether the additional data should override or supplement the custom entity type definition.
-  final Input<SessionEntityTypeEntityOverrideMode> entityOverrideMode;
-  final Input<String> environmentId;
-  final Input<String>? location;
+  final pulumi.Input<SessionEntityTypeEntityOverrideMode> entityOverrideMode;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String>? location;
 
   /// The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
-  final Input<String> name;
-  final Input<String>? project;
-  final Input<String> sessionId;
-  final Input<String> userId;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sessionId;
+  final pulumi.Input<String> userId;
 
   SessionEntityTypeArgs({
     required this.entities,
@@ -33,14 +33,15 @@ class SessionEntityTypeArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['entities'] = Input.mapInputValue<
+    map['entities'] = pulumi.Input.mapInputValue<
             List<GoogleCloudDialogflowV2EntityTypeEntity>,
             List<Map<String, dynamic>>>(
         entities,
-        (value) => Input.encodeList<GoogleCloudDialogflowV2EntityTypeEntity,
+        (value) => pulumi.Input.encodeList<
+            GoogleCloudDialogflowV2EntityTypeEntity,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     map['entityOverrideMode'] =
-        Input.mapInputValue<SessionEntityTypeEntityOverrideMode, String>(
+        pulumi.Input.mapInputValue<SessionEntityTypeEntityOverrideMode, String>(
             entityOverrideMode, (value) => value.value);
     map['environmentId'] = environmentId;
     final locationValue = location;
@@ -59,16 +60,18 @@ class SessionEntityTypeArgs {
 
   factory SessionEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return SessionEntityTypeArgs(
-      entities: Input.asInput<List<GoogleCloudDialogflowV2EntityTypeEntity>>(
-          map['entities']),
-      entityOverrideMode: Input.asInput<SessionEntityTypeEntityOverrideMode>(
-          map['entityOverrideMode']),
-      environmentId: Input.asInput<String>(map['environmentId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sessionId: Input.asInput<String>(map['sessionId']),
-      userId: Input.asInput<String>(map['userId']),
+      entities:
+          pulumi.Input.asInput<List<GoogleCloudDialogflowV2EntityTypeEntity>>(
+              map['entities']),
+      entityOverrideMode:
+          pulumi.Input.asInput<SessionEntityTypeEntityOverrideMode>(
+              map['entityOverrideMode']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sessionId: pulumi.Input.asInput<String>(map['sessionId']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
     );
   }
 }

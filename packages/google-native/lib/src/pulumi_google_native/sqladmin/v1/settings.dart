@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'advanced_machine_features6.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'advanced_machine_features_sqladmin_v1.dart';
 import 'backup_configuration.dart';
-import 'data_cache_config2.dart';
+import 'data_cache_config_sqladmin_v1.dart';
 import 'database_flags.dart';
-import 'deny_maintenance_period2.dart';
+import 'deny_maintenance_period_sqladmin_v1.dart';
 import 'insights_config.dart';
 import 'ip_configuration.dart';
 import 'location_preference.dart';
-import 'maintenance_window9.dart';
+import 'maintenance_window_sqladmin_v1.dart';
 import 'password_validation_policy.dart';
 import 'settings_activation_policy.dart';
 import 'settings_availability_type.dart';
@@ -30,7 +30,7 @@ class Settings {
   final SqlActiveDirectoryConfig? activeDirectoryConfig;
 
   /// Specifies advance machine configuration for the instance relevant only for SQL Server.
-  final AdvancedMachineFeatures6? advancedMachineFeatures;
+  final AdvancedMachineFeaturesSqladminV1? advancedMachineFeatures;
 
   /// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
   final List<String>? authorizedGaeApplications;
@@ -51,7 +51,7 @@ class Settings {
   final bool? crashSafeReplicationEnabled;
 
   /// Configuration for data cache.
-  final DataCacheConfig2? dataCacheConfig;
+  final DataCacheConfigSqladminV1? dataCacheConfig;
 
   /// The size of data disk, in GB. The data disk size minimum is 10GB.
   final String? dataDiskSizeGb;
@@ -69,7 +69,7 @@ class Settings {
   final bool? deletionProtectionEnabled;
 
   /// Deny maintenance periods
-  final List<DenyMaintenancePeriod2>? denyMaintenancePeriods;
+  final List<DenyMaintenancePeriodSqladminV1>? denyMaintenancePeriods;
 
   /// Optional. The edition of the instance.
   final SettingsEdition? edition;
@@ -87,7 +87,7 @@ class Settings {
   final LocationPreference? locationPreference;
 
   /// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
-  final MaintenanceWindow9? maintenanceWindow;
+  final MaintenanceWindowSqladminV1? maintenanceWindow;
 
   /// The local user password validation policy of the instance.
   final PasswordValidationPolicy? passwordValidationPolicy;
@@ -207,7 +207,7 @@ class Settings {
     final databaseFlagsValue = databaseFlags;
     if (databaseFlagsValue != null) {
       map['databaseFlags'] =
-          Input.encodeList<DatabaseFlags, Map<String, dynamic>>(
+          pulumi.Input.encodeList<DatabaseFlags, Map<String, dynamic>>(
               databaseFlagsValue, (value) => value.toMap());
     }
     final databaseReplicationEnabledValue = databaseReplicationEnabled;
@@ -220,9 +220,9 @@ class Settings {
     }
     final denyMaintenancePeriodsValue = denyMaintenancePeriods;
     if (denyMaintenancePeriodsValue != null) {
-      map['denyMaintenancePeriods'] =
-          Input.encodeList<DenyMaintenancePeriod2, Map<String, dynamic>>(
-              denyMaintenancePeriodsValue, (value) => value.toMap());
+      map['denyMaintenancePeriods'] = pulumi.Input.encodeList<
+              DenyMaintenancePeriodSqladminV1, Map<String, dynamic>>(
+          denyMaintenancePeriodsValue, (value) => value.toMap());
     }
     final editionValue = edition;
     if (editionValue != null) {
@@ -303,7 +303,7 @@ class Settings {
               (map['activeDirectoryConfig'] as Map).cast<String, dynamic>()),
       advancedMachineFeatures: map['advancedMachineFeatures'] == null
           ? null
-          : AdvancedMachineFeatures6.fromMap(
+          : AdvancedMachineFeaturesSqladminV1.fromMap(
               (map['advancedMachineFeatures'] as Map).cast<String, dynamic>()),
       authorizedGaeApplications: map['authorizedGaeApplications'] == null
           ? null
@@ -326,7 +326,7 @@ class Settings {
           : map['crashSafeReplicationEnabled'] as bool,
       dataCacheConfig: map['dataCacheConfig'] == null
           ? null
-          : DataCacheConfig2.fromMap(
+          : DataCacheConfigSqladminV1.fromMap(
               (map['dataCacheConfig'] as Map).cast<String, dynamic>()),
       dataDiskSizeGb: map['dataDiskSizeGb'] == null
           ? null
@@ -336,7 +336,7 @@ class Settings {
           : SettingsDataDiskType.fromValue(map['dataDiskType'] as String),
       databaseFlags: map['databaseFlags'] == null
           ? null
-          : Input.decodeList<DatabaseFlags>(
+          : pulumi.Input.decodeList<DatabaseFlags>(
               map['databaseFlags'],
               (value) => DatabaseFlags.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -348,9 +348,9 @@ class Settings {
           : map['deletionProtectionEnabled'] as bool,
       denyMaintenancePeriods: map['denyMaintenancePeriods'] == null
           ? null
-          : Input.decodeList<DenyMaintenancePeriod2>(
+          : pulumi.Input.decodeList<DenyMaintenancePeriodSqladminV1>(
               map['denyMaintenancePeriods'],
-              (value) => DenyMaintenancePeriod2.fromMap(
+              (value) => DenyMaintenancePeriodSqladminV1.fromMap(
                   (value as Map).cast<String, dynamic>())),
       edition: map['edition'] == null
           ? null
@@ -370,7 +370,7 @@ class Settings {
               (map['locationPreference'] as Map).cast<String, dynamic>()),
       maintenanceWindow: map['maintenanceWindow'] == null
           ? null
-          : MaintenanceWindow9.fromMap(
+          : MaintenanceWindowSqladminV1.fromMap(
               (map['maintenanceWindow'] as Map).cast<String, dynamic>()),
       passwordValidationPolicy: map['passwordValidationPolicy'] == null
           ? null

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'check_response.dart';
 import 'image_allowlist_response.dart';
 import 'scope_response.dart';
@@ -28,8 +28,9 @@ class CheckSetResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['checks'] = Input.encodeList<CheckResponse, Map<String, dynamic>>(
-        checks, (value) => value.toMap());
+    map['checks'] =
+        pulumi.Input.encodeList<CheckResponse, Map<String, dynamic>>(
+            checks, (value) => value.toMap());
     map['displayName'] = displayName;
     map['imageAllowlist'] = imageAllowlist.toMap();
     map['scope'] = scope.toMap();
@@ -38,7 +39,7 @@ class CheckSetResponse {
 
   factory CheckSetResponse.fromMap(Map<String, dynamic> map) {
     return CheckSetResponse(
-      checks: Input.decodeList<CheckResponse>(
+      checks: pulumi.Input.decodeList<CheckResponse>(
           map['checks'],
           (value) =>
               CheckResponse.fromMap((value as Map).cast<String, dynamic>())),

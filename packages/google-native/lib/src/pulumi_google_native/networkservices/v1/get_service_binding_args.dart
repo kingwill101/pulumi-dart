@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServiceBinding.
 class GetServiceBindingArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> serviceBindingId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> serviceBindingId;
 
   GetServiceBindingArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetServiceBindingArgs {
 
   factory GetServiceBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceBindingArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceBindingId: Input.asInput<String>(map['serviceBindingId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceBindingId: pulumi.Input.asInput<String>(map['serviceBindingId']),
     );
   }
 }

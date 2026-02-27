@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_nat_subnetwork_to_nat_source_ip_ranges_to_nat_item.dart';
 
 /// Defines the IP ranges that want to use NAT for a subnetwork.
@@ -33,7 +33,7 @@ class RouterNatSubnetworkToNat {
     }
     final sourceIpRangesToNatValue = sourceIpRangesToNat;
     if (sourceIpRangesToNatValue != null) {
-      map['sourceIpRangesToNat'] = Input.encodeList<
+      map['sourceIpRangesToNat'] = pulumi.Input.encodeList<
           RouterNatSubnetworkToNatSourceIpRangesToNatItem,
           String>(sourceIpRangesToNatValue, (value) => value.value);
     }
@@ -48,7 +48,8 @@ class RouterNatSubnetworkToNat {
           : (map['secondaryIpRangeNames'] as List).cast<String>(),
       sourceIpRangesToNat: map['sourceIpRangesToNat'] == null
           ? null
-          : Input.decodeList<RouterNatSubnetworkToNatSourceIpRangesToNatItem>(
+          : pulumi.Input.decodeList<
+                  RouterNatSubnetworkToNatSourceIpRangesToNatItem>(
               map['sourceIpRangesToNat'],
               (value) =>
                   RouterNatSubnetworkToNatSourceIpRangesToNatItem.fromValue(

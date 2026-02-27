@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mysql_table.dart';
 
 /// MySQL database.
@@ -24,8 +24,9 @@ class MysqlDatabase {
     }
     final mysqlTablesValue = mysqlTables;
     if (mysqlTablesValue != null) {
-      map['mysqlTables'] = Input.encodeList<MysqlTable, Map<String, dynamic>>(
-          mysqlTablesValue, (value) => value.toMap());
+      map['mysqlTables'] =
+          pulumi.Input.encodeList<MysqlTable, Map<String, dynamic>>(
+              mysqlTablesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -35,7 +36,7 @@ class MysqlDatabase {
       database: map['database'] == null ? null : map['database'] as String,
       mysqlTables: map['mysqlTables'] == null
           ? null
-          : Input.decodeList<MysqlTable>(
+          : pulumi.Input.decodeList<MysqlTable>(
               map['mysqlTables'],
               (value) =>
                   MysqlTable.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'psc_config_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'psc_config_response_networkconnectivity_v1.dart';
 import 'psc_connection_response.dart';
 
 /// Result data returned by getServiceConnectionPolicy.
@@ -28,7 +28,7 @@ class GetServiceConnectionPolicyResult {
   final String network;
 
   /// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
-  final PscConfigResponse2 pscConfig;
+  final PscConfigResponseNetworkconnectivityV1 pscConfig;
 
   /// [Output only] Information about each Private Service Connect connection.
   final List<PscConnectionResponse> pscConnections;
@@ -64,7 +64,7 @@ class GetServiceConnectionPolicyResult {
     map['network'] = network;
     map['pscConfig'] = pscConfig.toMap();
     map['pscConnections'] =
-        Input.encodeList<PscConnectionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PscConnectionResponse, Map<String, dynamic>>(
             pscConnections, (value) => value.toMap());
     map['serviceClass'] = serviceClass;
     map['updateTime'] = updateTime;
@@ -80,9 +80,9 @@ class GetServiceConnectionPolicyResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       network: map['network'] as String,
-      pscConfig: PscConfigResponse2.fromMap(
+      pscConfig: PscConfigResponseNetworkconnectivityV1.fromMap(
           (map['pscConfig'] as Map).cast<String, dynamic>()),
-      pscConnections: Input.decodeList<PscConnectionResponse>(
+      pscConnections: pulumi.Input.decodeList<PscConnectionResponse>(
           map['pscConnections'],
           (value) => PscConnectionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

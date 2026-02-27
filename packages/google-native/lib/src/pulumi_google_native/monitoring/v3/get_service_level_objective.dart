@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_service_level_objective_args.dart';
 import 'get_service_level_objective_result.dart';
 
 /// Get a ServiceLevelObjective by name.
 Future<GetServiceLevelObjectiveResult> getServiceLevelObjective(
   GetServiceLevelObjectiveArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:monitoring/v3:getServiceLevelObjective',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceLevelObjectiveResult.fromMap(result);
 }

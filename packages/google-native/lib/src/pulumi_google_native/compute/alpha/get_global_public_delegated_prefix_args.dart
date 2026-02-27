@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGlobalPublicDelegatedPrefix.
 class GetGlobalPublicDelegatedPrefixArgs {
-  final Input<String>? project;
-  final Input<String> publicDelegatedPrefix;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> publicDelegatedPrefix;
 
   GetGlobalPublicDelegatedPrefixArgs({
     this.project,
@@ -24,9 +24,9 @@ class GetGlobalPublicDelegatedPrefixArgs {
 
   factory GetGlobalPublicDelegatedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalPublicDelegatedPrefixArgs(
-      project: Input.asOptionalInput<String>(map['project']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       publicDelegatedPrefix:
-          Input.asInput<String>(map['publicDelegatedPrefix']),
+          pulumi.Input.asInput<String>(map['publicDelegatedPrefix']),
     );
   }
 }

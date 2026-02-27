@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config3.dart';
+import 'logging_config_dataproc_v1.dart';
 
 /// A Dataproc job for running Apache Spark (https://spark.apache.org/) applications on YARN.
 class SparkJob {
@@ -17,7 +17,7 @@ class SparkJob {
   final List<String>? jarFileUris;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfig3? loggingConfig;
+  final LoggingConfigDataprocV1? loggingConfig;
 
   /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
   final String? mainClass;
@@ -90,7 +90,7 @@ class SparkJob {
           : (map['jarFileUris'] as List).cast<String>(),
       loggingConfig: map['loggingConfig'] == null
           ? null
-          : LoggingConfig3.fromMap(
+          : LoggingConfigDataprocV1.fromMap(
               (map['loggingConfig'] as Map).cast<String, dynamic>()),
       mainClass: map['mainClass'] == null ? null : map['mainClass'] as String,
       mainJarFileUri: map['mainJarFileUri'] == null

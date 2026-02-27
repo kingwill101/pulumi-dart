@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_settings_response.dart';
 import 'identity_aware_proxy_response.dart';
 import 'url_dispatch_rule_response.dart';
@@ -77,7 +77,7 @@ class GetAppResult {
     map['defaultCookieExpiration'] = defaultCookieExpiration;
     map['defaultHostname'] = defaultHostname;
     map['dispatchRules'] =
-        Input.encodeList<UrlDispatchRuleResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<UrlDispatchRuleResponse, Map<String, dynamic>>(
             dispatchRules, (value) => value.toMap());
     map['featureSettings'] = featureSettings.toMap();
     map['gcrDomain'] = gcrDomain;
@@ -98,7 +98,7 @@ class GetAppResult {
       defaultBucket: map['defaultBucket'] as String,
       defaultCookieExpiration: map['defaultCookieExpiration'] as String,
       defaultHostname: map['defaultHostname'] as String,
-      dispatchRules: Input.decodeList<UrlDispatchRuleResponse>(
+      dispatchRules: pulumi.Input.decodeList<UrlDispatchRuleResponse>(
           map['dispatchRules'],
           (value) => UrlDispatchRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

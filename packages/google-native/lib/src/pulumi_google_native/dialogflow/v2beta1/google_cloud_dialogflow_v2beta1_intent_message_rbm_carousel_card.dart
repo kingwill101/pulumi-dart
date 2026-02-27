@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_card_content.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_carousel_card_card_width.dart';
 
@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cardContents'] = Input.encodeList<
+    map['cardContents'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent,
         Map<String, dynamic>>(cardContents, (value) => value.toMap());
     map['cardWidth'] = cardWidth.value;
@@ -31,7 +31,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard(
-      cardContents: Input.decodeList<
+      cardContents: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>(
           map['cardContents'],
           (value) =>

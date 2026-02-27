@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNamespace.
 class GetNamespaceArgs {
-  final Input<String> location;
-  final Input<String> namespaceId;
-  final Input<String>? project;
-  final Input<String> scopeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> namespaceId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> scopeId;
 
   GetNamespaceArgs({
     required this.location,
@@ -30,10 +30,10 @@ class GetNamespaceArgs {
 
   factory GetNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceArgs(
-      location: Input.asInput<String>(map['location']),
-      namespaceId: Input.asInput<String>(map['namespaceId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      scopeId: Input.asInput<String>(map['scopeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      namespaceId: pulumi.Input.asInput<String>(map['namespaceId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      scopeId: pulumi.Input.asInput<String>(map['scopeId']),
     );
   }
 }

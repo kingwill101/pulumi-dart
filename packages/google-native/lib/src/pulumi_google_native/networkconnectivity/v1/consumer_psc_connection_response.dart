@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'google_rpc_error_info_response.dart';
-import 'google_rpc_status_response10.dart';
+import 'google_rpc_status_response_networkconnectivity_v1.dart';
 
 /// PSC connection details on consumer side.
 class ConsumerPscConnectionResponse {
   /// The most recent error during operating this connection.
-  final GoogleRpcStatusResponse10 error;
+  final GoogleRpcStatusResponseNetworkconnectivityV1 error;
 
   /// The error info for the latest error during operating this connection.
   final GoogleRpcErrorInfoResponse errorInfo;
@@ -70,7 +70,7 @@ class ConsumerPscConnectionResponse {
 
   factory ConsumerPscConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ConsumerPscConnectionResponse(
-      error: GoogleRpcStatusResponse10.fromMap(
+      error: GoogleRpcStatusResponseNetworkconnectivityV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       errorInfo: GoogleRpcErrorInfoResponse.fromMap(
           (map['errorInfo'] as Map).cast<String, dynamic>()),

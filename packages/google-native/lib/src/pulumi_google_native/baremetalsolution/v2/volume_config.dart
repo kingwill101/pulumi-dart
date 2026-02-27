@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lun_range.dart';
 import 'nfs_export.dart';
 import 'volume_config_performance_tier.dart';
@@ -68,8 +68,9 @@ class VolumeConfig {
     }
     final lunRangesValue = lunRanges;
     if (lunRangesValue != null) {
-      map['lunRanges'] = Input.encodeList<LunRange, Map<String, dynamic>>(
-          lunRangesValue, (value) => value.toMap());
+      map['lunRanges'] =
+          pulumi.Input.encodeList<LunRange, Map<String, dynamic>>(
+              lunRangesValue, (value) => value.toMap());
     }
     final machineIdsValue = machineIds;
     if (machineIdsValue != null) {
@@ -77,8 +78,9 @@ class VolumeConfig {
     }
     final nfsExportsValue = nfsExports;
     if (nfsExportsValue != null) {
-      map['nfsExports'] = Input.encodeList<NfsExport, Map<String, dynamic>>(
-          nfsExportsValue, (value) => value.toMap());
+      map['nfsExports'] =
+          pulumi.Input.encodeList<NfsExport, Map<String, dynamic>>(
+              nfsExportsValue, (value) => value.toMap());
     }
     final performanceTierValue = performanceTier;
     if (performanceTierValue != null) {
@@ -114,7 +116,7 @@ class VolumeConfig {
       id: map['id'] == null ? null : map['id'] as String,
       lunRanges: map['lunRanges'] == null
           ? null
-          : Input.decodeList<LunRange>(
+          : pulumi.Input.decodeList<LunRange>(
               map['lunRanges'],
               (value) =>
                   LunRange.fromMap((value as Map).cast<String, dynamic>())),
@@ -123,7 +125,7 @@ class VolumeConfig {
           : (map['machineIds'] as List).cast<String>(),
       nfsExports: map['nfsExports'] == null
           ? null
-          : Input.decodeList<NfsExport>(
+          : pulumi.Input.decodeList<NfsExport>(
               map['nfsExports'],
               (value) =>
                   NfsExport.fromMap((value as Map).cast<String, dynamic>())),

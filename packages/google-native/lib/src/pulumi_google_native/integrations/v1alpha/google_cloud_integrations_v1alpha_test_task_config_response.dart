@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_integrations_v1alpha_assertion_response.dart';
 import 'google_cloud_integrations_v1alpha_mock_config_response.dart';
 
@@ -27,7 +27,7 @@ class GoogleCloudIntegrationsV1alphaTestTaskConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['assertions'] = Input.encodeList<
+    map['assertions'] = pulumi.Input.encodeList<
         GoogleCloudIntegrationsV1alphaAssertionResponse,
         Map<String, dynamic>>(assertions, (value) => value.toMap());
     map['mockConfig'] = mockConfig.toMap();
@@ -39,12 +39,11 @@ class GoogleCloudIntegrationsV1alphaTestTaskConfigResponse {
   factory GoogleCloudIntegrationsV1alphaTestTaskConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaTestTaskConfigResponse(
-      assertions:
-          Input.decodeList<GoogleCloudIntegrationsV1alphaAssertionResponse>(
-              map['assertions'],
-              (value) =>
-                  GoogleCloudIntegrationsV1alphaAssertionResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      assertions: pulumi.Input.decodeList<
+              GoogleCloudIntegrationsV1alphaAssertionResponse>(
+          map['assertions'],
+          (value) => GoogleCloudIntegrationsV1alphaAssertionResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       mockConfig: GoogleCloudIntegrationsV1alphaMockConfigResponse.fromMap(
           (map['mockConfig'] as Map).cast<String, dynamic>()),
       task: map['task'] as String,

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_page_table_table_cell.dart';
 
 /// A row of table cells.
@@ -16,7 +16,7 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRow {
     final map = <String, dynamic>{};
     final cellsValue = cells;
     if (cellsValue != null) {
-      map['cells'] = Input.encodeList<
+      map['cells'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentPageTableTableCell,
           Map<String, dynamic>>(cellsValue, (value) => value.toMap());
     }
@@ -28,7 +28,8 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRow {
     return GoogleCloudDocumentaiV1DocumentPageTableTableRow(
       cells: map['cells'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableCell>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDocumentaiV1DocumentPageTableTableCell>(
               map['cells'],
               (value) =>
                   GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromMap(

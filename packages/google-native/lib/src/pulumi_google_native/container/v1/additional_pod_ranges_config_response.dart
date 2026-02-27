@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'range_info_response.dart';
 
 /// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
@@ -19,7 +19,7 @@ class AdditionalPodRangesConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['podRangeInfo'] =
-        Input.encodeList<RangeInfoResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RangeInfoResponse, Map<String, dynamic>>(
             podRangeInfo, (value) => value.toMap());
     map['podRangeNames'] = podRangeNames;
     return map;
@@ -27,7 +27,7 @@ class AdditionalPodRangesConfigResponse {
 
   factory AdditionalPodRangesConfigResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalPodRangesConfigResponse(
-      podRangeInfo: Input.decodeList<RangeInfoResponse>(
+      podRangeInfo: pulumi.Input.decodeList<RangeInfoResponse>(
           map['podRangeInfo'],
           (value) => RangeInfoResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

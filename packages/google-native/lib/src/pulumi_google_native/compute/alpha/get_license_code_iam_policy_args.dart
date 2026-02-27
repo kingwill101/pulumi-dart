@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLicenseCodeIamPolicy.
 class GetLicenseCodeIamPolicyArgs {
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
-  final Input<String> resource;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> resource;
 
   GetLicenseCodeIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
@@ -30,10 +30,10 @@ class GetLicenseCodeIamPolicyArgs {
 
   factory GetLicenseCodeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseCodeIamPolicyArgs(
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resource: Input.asInput<String>(map['resource']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resource: pulumi.Input.asInput<String>(map['resource']),
     );
   }
 }

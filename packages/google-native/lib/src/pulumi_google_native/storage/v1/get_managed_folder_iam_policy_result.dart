@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_folder_iam_policy_bindings_item_response.dart';
 
 /// Result data returned by getManagedFolderIamPolicy.
@@ -30,7 +30,7 @@ class GetManagedFolderIamPolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bindings'] = Input.encodeList<
+    map['bindings'] = pulumi.Input.encodeList<
         ManagedFolderIamPolicyBindingsItemResponse,
         Map<String, dynamic>>(bindings, (value) => value.toMap());
     map['etag'] = etag;
@@ -42,10 +42,11 @@ class GetManagedFolderIamPolicyResult {
 
   factory GetManagedFolderIamPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderIamPolicyResult(
-      bindings: Input.decodeList<ManagedFolderIamPolicyBindingsItemResponse>(
-          map['bindings'],
-          (value) => ManagedFolderIamPolicyBindingsItemResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      bindings:
+          pulumi.Input.decodeList<ManagedFolderIamPolicyBindingsItemResponse>(
+              map['bindings'],
+              (value) => ManagedFolderIamPolicyBindingsItemResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
       kind: map['kind'] as String,
       resourceId: map['resourceId'] as String,

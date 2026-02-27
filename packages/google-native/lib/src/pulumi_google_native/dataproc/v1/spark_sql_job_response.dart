@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config_response3.dart';
+import 'logging_config_response_dataproc_v1.dart';
 import 'query_list_response.dart';
 
 /// A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/) queries.
@@ -9,7 +9,7 @@ class SparkSqlJobResponse {
   final List<String> jarFileUris;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfigResponse3 loggingConfig;
+  final LoggingConfigResponseDataprocV1 loggingConfig;
 
   /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
   final Map<String, String> properties;
@@ -46,7 +46,7 @@ class SparkSqlJobResponse {
   factory SparkSqlJobResponse.fromMap(Map<String, dynamic> map) {
     return SparkSqlJobResponse(
       jarFileUris: (map['jarFileUris'] as List).cast<String>(),
-      loggingConfig: LoggingConfigResponse3.fromMap(
+      loggingConfig: LoggingConfigResponseDataprocV1.fromMap(
           (map['loggingConfig'] as Map).cast<String, dynamic>()),
       properties: (map['properties'] as Map).cast<String, String>(),
       queryFileUri: map['queryFileUri'] as String,

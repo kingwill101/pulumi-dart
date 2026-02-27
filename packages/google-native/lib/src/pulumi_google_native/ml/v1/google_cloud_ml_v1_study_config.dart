@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_automated_stopping_config.dart';
 import 'google_cloud_ml_v1_study_config_algorithm.dart';
 import 'google_cloud_ml_v1_study_config_metric_spec.dart';
@@ -39,10 +39,11 @@ class GoogleCloudMlV1StudyConfig {
     }
     final metricsValue = metrics;
     if (metricsValue != null) {
-      map['metrics'] = Input.encodeList<GoogleCloudMlV1StudyConfigMetricSpec,
+      map['metrics'] = pulumi.Input.encodeList<
+          GoogleCloudMlV1StudyConfigMetricSpec,
           Map<String, dynamic>>(metricsValue, (value) => value.toMap());
     }
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GoogleCloudMlV1StudyConfigParameterSpec,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     return map;
@@ -60,14 +61,15 @@ class GoogleCloudMlV1StudyConfig {
               (map['automatedStoppingConfig'] as Map).cast<String, dynamic>()),
       metrics: map['metrics'] == null
           ? null
-          : Input.decodeList<GoogleCloudMlV1StudyConfigMetricSpec>(
+          : pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigMetricSpec>(
               map['metrics'],
               (value) => GoogleCloudMlV1StudyConfigMetricSpec.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      parameters: Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpec>(
-          map['parameters'],
-          (value) => GoogleCloudMlV1StudyConfigParameterSpec.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      parameters:
+          pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpec>(
+              map['parameters'],
+              (value) => GoogleCloudMlV1StudyConfigParameterSpec.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gauge_view_response.dart';
 import 'spark_chart_view_response.dart';
 import 'threshold_response.dart';
@@ -37,7 +37,7 @@ class ScorecardResponse {
     map['gaugeView'] = gaugeView.toMap();
     map['sparkChartView'] = sparkChartView.toMap();
     map['thresholds'] =
-        Input.encodeList<ThresholdResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ThresholdResponse, Map<String, dynamic>>(
             thresholds, (value) => value.toMap());
     map['timeSeriesQuery'] = timeSeriesQuery.toMap();
     return map;
@@ -50,7 +50,7 @@ class ScorecardResponse {
           (map['gaugeView'] as Map).cast<String, dynamic>()),
       sparkChartView: SparkChartViewResponse.fromMap(
           (map['sparkChartView'] as Map).cast<String, dynamic>()),
-      thresholds: Input.decodeList<ThresholdResponse>(
+      thresholds: pulumi.Input.decodeList<ThresholdResponse>(
           map['thresholds'],
           (value) => ThresholdResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

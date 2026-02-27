@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRoutine.
 class GetRoutineArgs {
-  final Input<String> datasetId;
-  final Input<String>? project;
-  final Input<String>? readMask;
-  final Input<String> routineId;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? readMask;
+  final pulumi.Input<String> routineId;
 
   GetRoutineArgs({
     required this.datasetId,
@@ -33,10 +33,10 @@ class GetRoutineArgs {
 
   factory GetRoutineArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutineArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      readMask: Input.asOptionalInput<String>(map['readMask']),
-      routineId: Input.asInput<String>(map['routineId']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      readMask: pulumi.Input.asOptionalInput<String>(map['readMask']),
+      routineId: pulumi.Input.asInput<String>(map['routineId']),
     );
   }
 }

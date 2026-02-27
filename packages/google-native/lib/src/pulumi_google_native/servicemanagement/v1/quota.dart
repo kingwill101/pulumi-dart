@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_rule.dart';
 import 'quota_limit.dart';
 
@@ -21,13 +21,14 @@ class Quota {
     final map = <String, dynamic>{};
     final limitsValue = limits;
     if (limitsValue != null) {
-      map['limits'] = Input.encodeList<QuotaLimit, Map<String, dynamic>>(
+      map['limits'] = pulumi.Input.encodeList<QuotaLimit, Map<String, dynamic>>(
           limitsValue, (value) => value.toMap());
     }
     final metricRulesValue = metricRules;
     if (metricRulesValue != null) {
-      map['metricRules'] = Input.encodeList<MetricRule, Map<String, dynamic>>(
-          metricRulesValue, (value) => value.toMap());
+      map['metricRules'] =
+          pulumi.Input.encodeList<MetricRule, Map<String, dynamic>>(
+              metricRulesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -36,13 +37,13 @@ class Quota {
     return Quota(
       limits: map['limits'] == null
           ? null
-          : Input.decodeList<QuotaLimit>(
+          : pulumi.Input.decodeList<QuotaLimit>(
               map['limits'],
               (value) =>
                   QuotaLimit.fromMap((value as Map).cast<String, dynamic>())),
       metricRules: map['metricRules'] == null
           ? null
-          : Input.decodeList<MetricRule>(
+          : pulumi.Input.decodeList<MetricRule>(
               map['metricRules'],
               (value) =>
                   MetricRule.fromMap((value as Map).cast<String, dynamic>())),

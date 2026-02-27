@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_error_response_policy_response.dart';
 import 'http_filter_config_response.dart';
 import 'http_header_action_response.dart';
@@ -59,14 +59,13 @@ class HttpRouteRuleResponse {
     map['description'] = description;
     map['headerAction'] = headerAction.toMap();
     map['httpFilterConfigs'] =
-        Input.encodeList<HttpFilterConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<HttpFilterConfigResponse, Map<String, dynamic>>(
             httpFilterConfigs, (value) => value.toMap());
     map['httpFilterMetadata'] =
-        Input.encodeList<HttpFilterConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<HttpFilterConfigResponse, Map<String, dynamic>>(
             httpFilterMetadata, (value) => value.toMap());
-    map['matchRules'] =
-        Input.encodeList<HttpRouteRuleMatchResponse, Map<String, dynamic>>(
-            matchRules, (value) => value.toMap());
+    map['matchRules'] = pulumi.Input.encodeList<HttpRouteRuleMatchResponse,
+        Map<String, dynamic>>(matchRules, (value) => value.toMap());
     map['priority'] = priority;
     map['routeAction'] = routeAction.toMap();
     map['service'] = service;
@@ -81,15 +80,15 @@ class HttpRouteRuleResponse {
       description: map['description'] as String,
       headerAction: HttpHeaderActionResponse.fromMap(
           (map['headerAction'] as Map).cast<String, dynamic>()),
-      httpFilterConfigs: Input.decodeList<HttpFilterConfigResponse>(
+      httpFilterConfigs: pulumi.Input.decodeList<HttpFilterConfigResponse>(
           map['httpFilterConfigs'],
           (value) => HttpFilterConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      httpFilterMetadata: Input.decodeList<HttpFilterConfigResponse>(
+      httpFilterMetadata: pulumi.Input.decodeList<HttpFilterConfigResponse>(
           map['httpFilterMetadata'],
           (value) => HttpFilterConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      matchRules: Input.decodeList<HttpRouteRuleMatchResponse>(
+      matchRules: pulumi.Input.decodeList<HttpRouteRuleMatchResponse>(
           map['matchRules'],
           (value) => HttpRouteRuleMatchResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

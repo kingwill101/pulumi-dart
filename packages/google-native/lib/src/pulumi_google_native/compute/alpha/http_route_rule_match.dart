@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_header_match.dart';
 import 'http_query_parameter_match.dart';
 import 'metadata_filter.dart';
@@ -51,7 +51,7 @@ class HttpRouteRuleMatch {
     final headerMatchesValue = headerMatches;
     if (headerMatchesValue != null) {
       map['headerMatches'] =
-          Input.encodeList<HttpHeaderMatch, Map<String, dynamic>>(
+          pulumi.Input.encodeList<HttpHeaderMatch, Map<String, dynamic>>(
               headerMatchesValue, (value) => value.toMap());
     }
     final ignoreCaseValue = ignoreCase;
@@ -61,7 +61,7 @@ class HttpRouteRuleMatch {
     final metadataFiltersValue = metadataFilters;
     if (metadataFiltersValue != null) {
       map['metadataFilters'] =
-          Input.encodeList<MetadataFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<MetadataFilter, Map<String, dynamic>>(
               metadataFiltersValue, (value) => value.toMap());
     }
     final pathTemplateMatchValue = pathTemplateMatch;
@@ -74,9 +74,9 @@ class HttpRouteRuleMatch {
     }
     final queryParameterMatchesValue = queryParameterMatches;
     if (queryParameterMatchesValue != null) {
-      map['queryParameterMatches'] =
-          Input.encodeList<HttpQueryParameterMatch, Map<String, dynamic>>(
-              queryParameterMatchesValue, (value) => value.toMap());
+      map['queryParameterMatches'] = pulumi.Input.encodeList<
+              HttpQueryParameterMatch, Map<String, dynamic>>(
+          queryParameterMatchesValue, (value) => value.toMap());
     }
     final regexMatchValue = regexMatch;
     if (regexMatchValue != null) {
@@ -91,14 +91,14 @@ class HttpRouteRuleMatch {
           map['fullPathMatch'] == null ? null : map['fullPathMatch'] as String,
       headerMatches: map['headerMatches'] == null
           ? null
-          : Input.decodeList<HttpHeaderMatch>(
+          : pulumi.Input.decodeList<HttpHeaderMatch>(
               map['headerMatches'],
               (value) => HttpHeaderMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase'] as bool,
       metadataFilters: map['metadataFilters'] == null
           ? null
-          : Input.decodeList<MetadataFilter>(
+          : pulumi.Input.decodeList<MetadataFilter>(
               map['metadataFilters'],
               (value) => MetadataFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -109,7 +109,7 @@ class HttpRouteRuleMatch {
           map['prefixMatch'] == null ? null : map['prefixMatch'] as String,
       queryParameterMatches: map['queryParameterMatches'] == null
           ? null
-          : Input.decodeList<HttpQueryParameterMatch>(
+          : pulumi.Input.decodeList<HttpQueryParameterMatch>(
               map['queryParameterMatches'],
               (value) => HttpQueryParameterMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),

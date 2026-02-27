@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_image_response.dart';
 
 /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
@@ -69,7 +69,7 @@ class RuntimeSoftwareConfigResponse {
     map['idleShutdownTimeout'] = idleShutdownTimeout;
     map['installGpuDriver'] = installGpuDriver;
     map['kernels'] =
-        Input.encodeList<ContainerImageResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ContainerImageResponse, Map<String, dynamic>>(
             kernels, (value) => value.toMap());
     map['mixerDisabled'] = mixerDisabled;
     map['notebookUpgradeSchedule'] = notebookUpgradeSchedule;
@@ -88,7 +88,7 @@ class RuntimeSoftwareConfigResponse {
       idleShutdown: map['idleShutdown'] as bool,
       idleShutdownTimeout: map['idleShutdownTimeout'] as int,
       installGpuDriver: map['installGpuDriver'] as bool,
-      kernels: Input.decodeList<ContainerImageResponse>(
+      kernels: pulumi.Input.decodeList<ContainerImageResponse>(
           map['kernels'],
           (value) => ContainerImageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

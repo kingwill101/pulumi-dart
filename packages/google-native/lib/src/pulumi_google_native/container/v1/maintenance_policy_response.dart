@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'maintenance_window_response3.dart';
+import 'maintenance_window_response_container_v1.dart';
 
 /// MaintenancePolicy defines the maintenance policy to be used for the cluster.
 class MaintenancePolicyResponse {
@@ -8,7 +8,7 @@ class MaintenancePolicyResponse {
   final String resourceVersion;
 
   /// Specifies the maintenance window in which maintenance may be performed.
-  final MaintenanceWindowResponse3 window;
+  final MaintenanceWindowResponseContainerV1 window;
 
   MaintenancePolicyResponse({
     required this.resourceVersion,
@@ -25,7 +25,7 @@ class MaintenancePolicyResponse {
   factory MaintenancePolicyResponse.fromMap(Map<String, dynamic> map) {
     return MaintenancePolicyResponse(
       resourceVersion: map['resourceVersion'] as String,
-      window: MaintenanceWindowResponse3.fromMap(
+      window: MaintenanceWindowResponseContainerV1.fromMap(
           (map['window'] as Map).cast<String, dynamic>()),
     );
   }

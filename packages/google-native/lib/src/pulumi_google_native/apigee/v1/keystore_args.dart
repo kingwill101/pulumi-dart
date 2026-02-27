@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Keystore.
 class KeystoreArgs {
-  final Input<String> environmentId;
+  final pulumi.Input<String> environmentId;
 
   /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   KeystoreArgs({
     required this.environmentId,
@@ -29,9 +29,9 @@ class KeystoreArgs {
 
   factory KeystoreArgs.fromMap(Map<String, dynamic> map) {
     return KeystoreArgs(
-      environmentId: Input.asInput<String>(map['environmentId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

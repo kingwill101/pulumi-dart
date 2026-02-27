@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_data_store_connection.dart';
 import 'google_cloud_dialogflow_cx_v3_fulfillment.dart';
 
@@ -34,7 +34,7 @@ class GoogleCloudDialogflowCxV3KnowledgeConnectorSettings {
     final map = <String, dynamic>{};
     final dataStoreConnectionsValue = dataStoreConnections;
     if (dataStoreConnectionsValue != null) {
-      map['dataStoreConnections'] = Input.encodeList<
+      map['dataStoreConnections'] = pulumi.Input.encodeList<
               GoogleCloudDialogflowCxV3DataStoreConnection,
               Map<String, dynamic>>(
           dataStoreConnectionsValue, (value) => value.toMap());
@@ -63,7 +63,8 @@ class GoogleCloudDialogflowCxV3KnowledgeConnectorSettings {
     return GoogleCloudDialogflowCxV3KnowledgeConnectorSettings(
       dataStoreConnections: map['dataStoreConnections'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3DataStoreConnection>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDialogflowCxV3DataStoreConnection>(
               map['dataStoreConnections'],
               (value) => GoogleCloudDialogflowCxV3DataStoreConnection.fromMap(
                   (value as Map).cast<String, dynamic>())),

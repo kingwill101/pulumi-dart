@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_data_profile_result_profile_field_profile_info_double_field_info_response.dart';
 import 'google_cloud_dataplex_v1_data_profile_result_profile_field_profile_info_integer_field_info_response.dart';
 import 'google_cloud_dataplex_v1_data_profile_result_profile_field_profile_info_string_field_info_response.dart';
@@ -47,7 +47,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse {
     map['integerProfile'] = integerProfile.toMap();
     map['nullRatio'] = nullRatio;
     map['stringProfile'] = stringProfile.toMap();
-    map['topNValues'] = Input.encodeList<
+    map['topNValues'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse,
         Map<String, dynamic>>(topNValues, (value) => value.toMap());
     return map;
@@ -67,7 +67,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse {
       stringProfile:
           GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse
               .fromMap((map['stringProfile'] as Map).cast<String, dynamic>()),
-      topNValues: Input.decodeList<
+      topNValues: pulumi.Input.decodeList<
               GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse>(
           map['topNValues'],
           (value) =>

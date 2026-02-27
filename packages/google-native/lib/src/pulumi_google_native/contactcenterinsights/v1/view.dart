@@ -1,34 +1,34 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'view_args.dart';
 
 /// Creates a view.
-class View extends CustomResource {
+class View extends pulumi.CustomResource {
   /// The time at which this view was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The human-readable display name of the view.
-  late final Output<String> displayName;
-  late final Output<String> location;
+  late final pulumi.Output<String> displayName;
+  late final pulumi.Output<String> location;
 
   /// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// The most recent time at which the view was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// String with specific view properties, must be non-empty.
-  late final Output<String> value;
+  late final pulumi.Output<String> value;
 
   View(
     String name, {
     ViewArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:contactcenterinsights/v1:View',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');

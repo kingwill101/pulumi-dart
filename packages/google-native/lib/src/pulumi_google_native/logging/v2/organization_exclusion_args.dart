@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for OrganizationExclusion.
 class OrganizationExclusionArgs {
   /// Optional. A description of this exclusion.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)
-  final Input<String> filter;
+  final pulumi.Input<String> filter;
 
   /// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   OrganizationExclusionArgs({
     this.description,
@@ -46,11 +46,11 @@ class OrganizationExclusionArgs {
 
   factory OrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationExclusionArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      filter: Input.asInput<String>(map['filter']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      filter: pulumi.Input.asInput<String>(map['filter']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

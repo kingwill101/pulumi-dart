@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'time_series_value_type.dart';
 
 /// The set of arguments for TimeSeries.
 class TimeSeriesArgs {
   /// Description of this TensorboardTimeSeries.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User provided name of this TensorboardTimeSeries. This value should be unique among all TensorboardTimeSeries resources belonging to the same TensorboardRun resource (parent resource).
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final Input<String>? etag;
-  final Input<String> experimentId;
-  final Input<String>? location;
+  final pulumi.Input<String>? etag;
+  final pulumi.Input<String> experimentId;
+  final pulumi.Input<String>? location;
 
   /// Data of the current plugin, with the size limited to 65KB.
-  final Input<String>? pluginData;
+  final pulumi.Input<String>? pluginData;
 
   /// Immutable. Name of the plugin this time series pertain to. Such as Scalar, Tensor, Blob
-  final Input<String>? pluginName;
-  final Input<String>? project;
-  final Input<String> runId;
-  final Input<String> tensorboardId;
+  final pulumi.Input<String>? pluginName;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> runId;
+  final pulumi.Input<String> tensorboardId;
 
   /// Optional. The user specified unique ID to use for the TensorboardTimeSeries, which becomes the final component of the TensorboardTimeSeries's resource name. This value should match "a-z0-9{0, 127}"
-  final Input<String>? tensorboardTimeSeriesId;
+  final pulumi.Input<String>? tensorboardTimeSeriesId;
 
   /// Immutable. Type of TensorboardTimeSeries value.
-  final Input<TimeSeriesValueType> valueType;
+  final pulumi.Input<TimeSeriesValueType> valueType;
 
   TimeSeriesArgs({
     this.description,
@@ -80,26 +80,26 @@ class TimeSeriesArgs {
     if (tensorboardTimeSeriesIdValue != null) {
       map['tensorboardTimeSeriesId'] = tensorboardTimeSeriesIdValue;
     }
-    map['valueType'] = Input.mapInputValue<TimeSeriesValueType, String>(
+    map['valueType'] = pulumi.Input.mapInputValue<TimeSeriesValueType, String>(
         valueType, (value) => value.value);
     return map;
   }
 
   factory TimeSeriesArgs.fromMap(Map<String, dynamic> map) {
     return TimeSeriesArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      experimentId: Input.asInput<String>(map['experimentId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      pluginData: Input.asOptionalInput<String>(map['pluginData']),
-      pluginName: Input.asOptionalInput<String>(map['pluginName']),
-      project: Input.asOptionalInput<String>(map['project']),
-      runId: Input.asInput<String>(map['runId']),
-      tensorboardId: Input.asInput<String>(map['tensorboardId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      experimentId: pulumi.Input.asInput<String>(map['experimentId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      pluginData: pulumi.Input.asOptionalInput<String>(map['pluginData']),
+      pluginName: pulumi.Input.asOptionalInput<String>(map['pluginName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      runId: pulumi.Input.asInput<String>(map['runId']),
+      tensorboardId: pulumi.Input.asInput<String>(map['tensorboardId']),
       tensorboardTimeSeriesId:
-          Input.asOptionalInput<String>(map['tensorboardTimeSeriesId']),
-      valueType: Input.asInput<TimeSeriesValueType>(map['valueType']),
+          pulumi.Input.asOptionalInput<String>(map['tensorboardTimeSeriesId']),
+      valueType: pulumi.Input.asInput<TimeSeriesValueType>(map['valueType']),
     );
   }
 }

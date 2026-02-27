@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'header_response4.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'header_response_connectors_v1.dart';
 
 /// Endpoint message includes details of the Destination endpoint.
 class EndPointResponse {
@@ -9,7 +9,7 @@ class EndPointResponse {
   final String endpointUri;
 
   /// List of Header to be added to the Endpoint.
-  final List<HeaderResponse4> headers;
+  final List<HeaderResponseConnectorsV1> headers;
 
   EndPointResponse({
     required this.endpointUri,
@@ -19,18 +19,18 @@ class EndPointResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['endpointUri'] = endpointUri;
-    map['headers'] = Input.encodeList<HeaderResponse4, Map<String, dynamic>>(
-        headers, (value) => value.toMap());
+    map['headers'] = pulumi.Input.encodeList<HeaderResponseConnectorsV1,
+        Map<String, dynamic>>(headers, (value) => value.toMap());
     return map;
   }
 
   factory EndPointResponse.fromMap(Map<String, dynamic> map) {
     return EndPointResponse(
       endpointUri: map['endpointUri'] as String,
-      headers: Input.decodeList<HeaderResponse4>(
+      headers: pulumi.Input.decodeList<HeaderResponseConnectorsV1>(
           map['headers'],
-          (value) =>
-              HeaderResponse4.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => HeaderResponseConnectorsV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

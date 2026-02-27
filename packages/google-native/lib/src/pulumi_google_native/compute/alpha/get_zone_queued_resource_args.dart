@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getZoneQueuedResource.
 class GetZoneQueuedResourceArgs {
-  final Input<String>? project;
-  final Input<String> queuedResource;
-  final Input<String> zone;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> queuedResource;
+  final pulumi.Input<String> zone;
 
   GetZoneQueuedResourceArgs({
     this.project,
@@ -27,9 +27,9 @@ class GetZoneQueuedResourceArgs {
 
   factory GetZoneQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneQueuedResourceArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      queuedResource: Input.asInput<String>(map['queuedResource']),
-      zone: Input.asInput<String>(map['zone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      queuedResource: pulumi.Input.asInput<String>(map['queuedResource']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

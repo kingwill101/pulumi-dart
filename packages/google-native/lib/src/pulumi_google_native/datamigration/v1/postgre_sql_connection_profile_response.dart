@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'private_service_connect_connectivity_response.dart';
-import 'ssl_config_response5.dart';
+import 'ssl_config_response_datamigration_v1.dart';
 
 /// Specifies connection parameters required specifically for PostgreSQL databases.
 class PostgreSqlConnectionProfileResponse {
@@ -31,7 +31,7 @@ class PostgreSqlConnectionProfileResponse {
       privateServiceConnectConnectivity;
 
   /// SSL configuration for the destination to connect to the source database.
-  final SslConfigResponse5 ssl;
+  final SslConfigResponseDatamigrationV1 ssl;
 
   /// Static ip connectivity data (default, no additional details needed).
   final Map<String, dynamic> staticIpConnectivity;
@@ -84,7 +84,7 @@ class PostgreSqlConnectionProfileResponse {
           PrivateServiceConnectConnectivityResponse.fromMap(
               (map['privateServiceConnectConnectivity'] as Map)
                   .cast<String, dynamic>()),
-      ssl: SslConfigResponse5.fromMap(
+      ssl: SslConfigResponseDatamigrationV1.fromMap(
           (map['ssl'] as Map).cast<String, dynamic>()),
       staticIpConnectivity:
           (map['staticIpConnectivity'] as Map).cast<String, dynamic>(),

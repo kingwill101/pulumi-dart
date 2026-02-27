@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grafeas_v1_file_location_response.dart';
 import 'version_response.dart';
 
@@ -55,9 +55,8 @@ class PackageIssueResponse {
     map['affectedPackage'] = affectedPackage;
     map['affectedVersion'] = affectedVersion.toMap();
     map['effectiveSeverity'] = effectiveSeverity;
-    map['fileLocation'] =
-        Input.encodeList<GrafeasV1FileLocationResponse, Map<String, dynamic>>(
-            fileLocation, (value) => value.toMap());
+    map['fileLocation'] = pulumi.Input.encodeList<GrafeasV1FileLocationResponse,
+        Map<String, dynamic>>(fileLocation, (value) => value.toMap());
     map['fixAvailable'] = fixAvailable;
     map['fixedCpeUri'] = fixedCpeUri;
     map['fixedPackage'] = fixedPackage;
@@ -73,7 +72,7 @@ class PackageIssueResponse {
       affectedVersion: VersionResponse.fromMap(
           (map['affectedVersion'] as Map).cast<String, dynamic>()),
       effectiveSeverity: map['effectiveSeverity'] as String,
-      fileLocation: Input.decodeList<GrafeasV1FileLocationResponse>(
+      fileLocation: pulumi.Input.decodeList<GrafeasV1FileLocationResponse>(
           map['fileLocation'],
           (value) => GrafeasV1FileLocationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_discoveryengine_v1beta_reply_reference_response.dart';
 import 'google_cloud_discoveryengine_v1beta_search_response_summary_response.dart';
 
@@ -23,7 +23,7 @@ class GoogleCloudDiscoveryengineV1betaReplyResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['references'] = Input.encodeList<
+    map['references'] = pulumi.Input.encodeList<
         GoogleCloudDiscoveryengineV1betaReplyReferenceResponse,
         Map<String, dynamic>>(references, (value) => value.toMap());
     map['reply'] = reply;
@@ -34,7 +34,7 @@ class GoogleCloudDiscoveryengineV1betaReplyResponse {
   factory GoogleCloudDiscoveryengineV1betaReplyResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaReplyResponse(
-      references: Input.decodeList<
+      references: pulumi.Input.decodeList<
               GoogleCloudDiscoveryengineV1betaReplyReferenceResponse>(
           map['references'],
           (value) =>

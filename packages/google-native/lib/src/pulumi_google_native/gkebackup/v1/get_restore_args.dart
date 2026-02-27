@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRestore.
 class GetRestoreArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> restoreId;
-  final Input<String> restorePlanId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> restoreId;
+  final pulumi.Input<String> restorePlanId;
 
   GetRestoreArgs({
     required this.location,
@@ -30,10 +30,10 @@ class GetRestoreArgs {
 
   factory GetRestoreArgs.fromMap(Map<String, dynamic> map) {
     return GetRestoreArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      restoreId: Input.asInput<String>(map['restoreId']),
-      restorePlanId: Input.asInput<String>(map['restorePlanId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      restoreId: pulumi.Input.asInput<String>(map['restoreId']),
+      restorePlanId: pulumi.Input.asInput<String>(map['restorePlanId']),
     );
   }
 }

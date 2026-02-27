@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'individual_outcome_response.dart';
 
 /// Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
@@ -18,16 +18,16 @@ class PrimaryStepResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['individualOutcome'] =
-        Input.encodeList<IndividualOutcomeResponse, Map<String, dynamic>>(
-            individualOutcome, (value) => value.toMap());
+    map['individualOutcome'] = pulumi.Input.encodeList<
+        IndividualOutcomeResponse,
+        Map<String, dynamic>>(individualOutcome, (value) => value.toMap());
     map['rollUp'] = rollUp;
     return map;
   }
 
   factory PrimaryStepResponse.fromMap(Map<String, dynamic> map) {
     return PrimaryStepResponse(
-      individualOutcome: Input.decodeList<IndividualOutcomeResponse>(
+      individualOutcome: pulumi.Input.decodeList<IndividualOutcomeResponse>(
           map['individualOutcome'],
           (value) => IndividualOutcomeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

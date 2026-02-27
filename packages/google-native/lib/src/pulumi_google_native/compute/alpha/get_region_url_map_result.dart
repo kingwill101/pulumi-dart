@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_error_response_policy_response.dart';
 import 'host_rule_response.dart';
 import 'http_header_action_response.dart';
@@ -85,17 +85,19 @@ class GetRegionUrlMapResult {
     map['description'] = description;
     map['fingerprint'] = fingerprint;
     map['headerAction'] = headerAction.toMap();
-    map['hostRules'] = Input.encodeList<HostRuleResponse, Map<String, dynamic>>(
-        hostRules, (value) => value.toMap());
+    map['hostRules'] =
+        pulumi.Input.encodeList<HostRuleResponse, Map<String, dynamic>>(
+            hostRules, (value) => value.toMap());
     map['kind'] = kind;
     map['name'] = name;
     map['pathMatchers'] =
-        Input.encodeList<PathMatcherResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PathMatcherResponse, Map<String, dynamic>>(
             pathMatchers, (value) => value.toMap());
     map['region'] = region;
     map['selfLink'] = selfLink;
-    map['tests'] = Input.encodeList<UrlMapTestResponse, Map<String, dynamic>>(
-        tests, (value) => value.toMap());
+    map['tests'] =
+        pulumi.Input.encodeList<UrlMapTestResponse, Map<String, dynamic>>(
+            tests, (value) => value.toMap());
     return map;
   }
 
@@ -115,19 +117,19 @@ class GetRegionUrlMapResult {
       fingerprint: map['fingerprint'] as String,
       headerAction: HttpHeaderActionResponse.fromMap(
           (map['headerAction'] as Map).cast<String, dynamic>()),
-      hostRules: Input.decodeList<HostRuleResponse>(
+      hostRules: pulumi.Input.decodeList<HostRuleResponse>(
           map['hostRules'],
           (value) =>
               HostRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       name: map['name'] as String,
-      pathMatchers: Input.decodeList<PathMatcherResponse>(
+      pathMatchers: pulumi.Input.decodeList<PathMatcherResponse>(
           map['pathMatchers'],
           (value) => PathMatcherResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       selfLink: map['selfLink'] as String,
-      tests: Input.decodeList<UrlMapTestResponse>(
+      tests: pulumi.Input.decodeList<UrlMapTestResponse>(
           map['tests'],
           (value) => UrlMapTestResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

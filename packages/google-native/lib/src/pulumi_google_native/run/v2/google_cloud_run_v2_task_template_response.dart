@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v2_container_response.dart';
 import 'google_cloud_run_v2_volume_response.dart';
 import 'google_cloud_run_v2_vpc_access_response.dart';
@@ -44,16 +44,16 @@ class GoogleCloudRunV2TaskTemplateResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['containers'] = Input.encodeList<GoogleCloudRunV2ContainerResponse,
+    map['containers'] = pulumi.Input.encodeList<
+        GoogleCloudRunV2ContainerResponse,
         Map<String, dynamic>>(containers, (value) => value.toMap());
     map['encryptionKey'] = encryptionKey;
     map['executionEnvironment'] = executionEnvironment;
     map['maxRetries'] = maxRetries;
     map['serviceAccount'] = serviceAccount;
     map['timeout'] = timeout;
-    map['volumes'] =
-        Input.encodeList<GoogleCloudRunV2VolumeResponse, Map<String, dynamic>>(
-            volumes, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<GoogleCloudRunV2VolumeResponse,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
     map['vpcAccess'] = vpcAccess.toMap();
     return map;
   }
@@ -61,7 +61,7 @@ class GoogleCloudRunV2TaskTemplateResponse {
   factory GoogleCloudRunV2TaskTemplateResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudRunV2TaskTemplateResponse(
-      containers: Input.decodeList<GoogleCloudRunV2ContainerResponse>(
+      containers: pulumi.Input.decodeList<GoogleCloudRunV2ContainerResponse>(
           map['containers'],
           (value) => GoogleCloudRunV2ContainerResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -70,7 +70,7 @@ class GoogleCloudRunV2TaskTemplateResponse {
       maxRetries: map['maxRetries'] as int,
       serviceAccount: map['serviceAccount'] as String,
       timeout: map['timeout'] as String,
-      volumes: Input.decodeList<GoogleCloudRunV2VolumeResponse>(
+      volumes: pulumi.Input.decodeList<GoogleCloudRunV2VolumeResponse>(
           map['volumes'],
           (value) => GoogleCloudRunV2VolumeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

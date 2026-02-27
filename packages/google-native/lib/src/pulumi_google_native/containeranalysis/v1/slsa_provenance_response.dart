@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'material_response.dart';
 import 'slsa_metadata_response.dart';
 import 'slsa_recipe_response.dart';
@@ -26,8 +26,9 @@ class SlsaProvenanceResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['builder'] = builder;
-    map['materials'] = Input.encodeList<MaterialResponse, Map<String, dynamic>>(
-        materials, (value) => value.toMap());
+    map['materials'] =
+        pulumi.Input.encodeList<MaterialResponse, Map<String, dynamic>>(
+            materials, (value) => value.toMap());
     map['metadata'] = metadata.toMap();
     map['recipe'] = recipe.toMap();
     return map;
@@ -36,7 +37,7 @@ class SlsaProvenanceResponse {
   factory SlsaProvenanceResponse.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceResponse(
       builder: (map['builder'] as Map).cast<String, dynamic>(),
-      materials: Input.decodeList<MaterialResponse>(
+      materials: pulumi.Input.decodeList<MaterialResponse>(
           map['materials'],
           (value) =>
               MaterialResponse.fromMap((value as Map).cast<String, dynamic>())),

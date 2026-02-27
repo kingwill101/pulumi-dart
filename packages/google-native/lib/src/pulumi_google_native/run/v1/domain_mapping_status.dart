@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v1_condition.dart';
 import 'resource_record.dart';
 
@@ -33,9 +33,8 @@ class DomainMappingStatus {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] =
-          Input.encodeList<GoogleCloudRunV1Condition, Map<String, dynamic>>(
-              conditionsValue, (value) => value.toMap());
+      map['conditions'] = pulumi.Input.encodeList<GoogleCloudRunV1Condition,
+          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final mappedRouteNameValue = mappedRouteName;
     if (mappedRouteNameValue != null) {
@@ -48,7 +47,7 @@ class DomainMappingStatus {
     final resourceRecordsValue = resourceRecords;
     if (resourceRecordsValue != null) {
       map['resourceRecords'] =
-          Input.encodeList<ResourceRecord, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ResourceRecord, Map<String, dynamic>>(
               resourceRecordsValue, (value) => value.toMap());
     }
     final urlValue = url;
@@ -62,7 +61,7 @@ class DomainMappingStatus {
     return DomainMappingStatus(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV1Condition>(
+          : pulumi.Input.decodeList<GoogleCloudRunV1Condition>(
               map['conditions'],
               (value) => GoogleCloudRunV1Condition.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -74,7 +73,7 @@ class DomainMappingStatus {
           : map['observedGeneration'] as int,
       resourceRecords: map['resourceRecords'] == null
           ? null
-          : Input.decodeList<ResourceRecord>(
+          : pulumi.Input.decodeList<ResourceRecord>(
               map['resourceRecords'],
               (value) => ResourceRecord.fromMap(
                   (value as Map).cast<String, dynamic>())),

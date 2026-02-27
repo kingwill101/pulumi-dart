@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_advertised_prefix_public_delegated_prefix_response.dart';
 
 /// Result data returned by getPublicAdvertisedPrefix.
@@ -76,7 +76,7 @@ class GetPublicAdvertisedPrefixResult {
     map['kind'] = kind;
     map['name'] = name;
     map['pdpScope'] = pdpScope;
-    map['publicDelegatedPrefixs'] = Input.encodeList<
+    map['publicDelegatedPrefixs'] = pulumi.Input.encodeList<
         PublicAdvertisedPrefixPublicDelegatedPrefixResponse,
         Map<String, dynamic>>(publicDelegatedPrefixs, (value) => value.toMap());
     map['selfLink'] = selfLink;
@@ -97,12 +97,12 @@ class GetPublicAdvertisedPrefixResult {
       kind: map['kind'] as String,
       name: map['name'] as String,
       pdpScope: map['pdpScope'] as String,
-      publicDelegatedPrefixs:
-          Input.decodeList<PublicAdvertisedPrefixPublicDelegatedPrefixResponse>(
-              map['publicDelegatedPrefixs'],
-              (value) =>
-                  PublicAdvertisedPrefixPublicDelegatedPrefixResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      publicDelegatedPrefixs: pulumi.Input.decodeList<
+              PublicAdvertisedPrefixPublicDelegatedPrefixResponse>(
+          map['publicDelegatedPrefixs'],
+          (value) =>
+              PublicAdvertisedPrefixPublicDelegatedPrefixResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
       sharedSecret: map['sharedSecret'] as String,

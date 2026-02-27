@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegistryGroupIamPolicy.
 class GetRegistryGroupIamPolicyArgs {
-  final Input<String> groupId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> registryId;
+  final pulumi.Input<String> groupId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> registryId;
 
   GetRegistryGroupIamPolicyArgs({
     required this.groupId,
@@ -30,10 +30,10 @@ class GetRegistryGroupIamPolicyArgs {
 
   factory GetRegistryGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryGroupIamPolicyArgs(
-      groupId: Input.asInput<String>(map['groupId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      registryId: Input.asInput<String>(map['registryId']),
+      groupId: pulumi.Input.asInput<String>(map['groupId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      registryId: pulumi.Input.asInput<String>(map['registryId']),
     );
   }
 }

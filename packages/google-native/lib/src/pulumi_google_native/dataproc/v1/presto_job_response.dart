@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config_response3.dart';
+import 'logging_config_response_dataproc_v1.dart';
 import 'query_list_response.dart';
 
 /// A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
@@ -12,7 +12,7 @@ class PrestoJobResponse {
   final bool continueOnFailure;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfigResponse3 loggingConfig;
+  final LoggingConfigResponseDataprocV1 loggingConfig;
 
   /// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
   final String outputFormat;
@@ -52,7 +52,7 @@ class PrestoJobResponse {
     return PrestoJobResponse(
       clientTags: (map['clientTags'] as List).cast<String>(),
       continueOnFailure: map['continueOnFailure'] as bool,
-      loggingConfig: LoggingConfigResponse3.fromMap(
+      loggingConfig: LoggingConfigResponseDataprocV1.fromMap(
           (map['loggingConfig'] as Map).cast<String, dynamic>()),
       outputFormat: map['outputFormat'] as String,
       properties: (map['properties'] as Map).cast<String, String>(),

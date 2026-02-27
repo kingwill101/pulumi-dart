@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linked_interconnect_attachments_response.dart';
 import 'linked_router_appliance_instances_response.dart';
 import 'linked_vpc_network_response.dart';
@@ -87,7 +87,7 @@ class GetSpokeResult {
     map['linkedVpnTunnels'] = linkedVpnTunnels.toMap();
     map['name'] = name;
     map['reasons'] =
-        Input.encodeList<StateReasonResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StateReasonResponse, Map<String, dynamic>>(
             reasons, (value) => value.toMap());
     map['spokeType'] = spokeType;
     map['state'] = state;
@@ -116,7 +116,7 @@ class GetSpokeResult {
       linkedVpnTunnels: LinkedVpnTunnelsResponse.fromMap(
           (map['linkedVpnTunnels'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      reasons: Input.decodeList<StateReasonResponse>(
+      reasons: pulumi.Input.decodeList<StateReasonResponse>(
           map['reasons'],
           (value) => StateReasonResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

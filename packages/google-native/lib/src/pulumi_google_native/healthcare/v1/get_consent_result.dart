@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_healthcare_v1_consent_policy_response.dart';
 
 /// Result data returned by getConsent.
@@ -54,7 +54,7 @@ class GetConsentResult {
     map['expireTime'] = expireTime;
     map['metadata'] = metadata;
     map['name'] = name;
-    map['policies'] = Input.encodeList<
+    map['policies'] = pulumi.Input.encodeList<
         GoogleCloudHealthcareV1ConsentPolicyResponse,
         Map<String, dynamic>>(policies, (value) => value.toMap());
     map['revisionCreateTime'] = revisionCreateTime;
@@ -71,10 +71,11 @@ class GetConsentResult {
       expireTime: map['expireTime'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      policies: Input.decodeList<GoogleCloudHealthcareV1ConsentPolicyResponse>(
-          map['policies'],
-          (value) => GoogleCloudHealthcareV1ConsentPolicyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      policies:
+          pulumi.Input.decodeList<GoogleCloudHealthcareV1ConsentPolicyResponse>(
+              map['policies'],
+              (value) => GoogleCloudHealthcareV1ConsentPolicyResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       revisionCreateTime: map['revisionCreateTime'] as String,
       revisionId: map['revisionId'] as String,
       state: map['state'] as String,

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'consumer_psc_config_response.dart';
 import 'consumer_psc_connection_response.dart';
 import 'producer_psc_config_response.dart';
@@ -64,21 +64,21 @@ class GetServiceConnectionMapResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['consumerPscConfigs'] =
-        Input.encodeList<ConsumerPscConfigResponse, Map<String, dynamic>>(
-            consumerPscConfigs, (value) => value.toMap());
-    map['consumerPscConnections'] =
-        Input.encodeList<ConsumerPscConnectionResponse, Map<String, dynamic>>(
-            consumerPscConnections, (value) => value.toMap());
+    map['consumerPscConfigs'] = pulumi.Input.encodeList<
+        ConsumerPscConfigResponse,
+        Map<String, dynamic>>(consumerPscConfigs, (value) => value.toMap());
+    map['consumerPscConnections'] = pulumi.Input.encodeList<
+        ConsumerPscConnectionResponse,
+        Map<String, dynamic>>(consumerPscConnections, (value) => value.toMap());
     map['createTime'] = createTime;
     map['description'] = description;
     map['etag'] = etag;
     map['infrastructure'] = infrastructure;
     map['labels'] = labels;
     map['name'] = name;
-    map['producerPscConfigs'] =
-        Input.encodeList<ProducerPscConfigResponse, Map<String, dynamic>>(
-            producerPscConfigs, (value) => value.toMap());
+    map['producerPscConfigs'] = pulumi.Input.encodeList<
+        ProducerPscConfigResponse,
+        Map<String, dynamic>>(producerPscConfigs, (value) => value.toMap());
     map['serviceClass'] = serviceClass;
     map['serviceClassUri'] = serviceClassUri;
     map['token'] = token;
@@ -88,21 +88,22 @@ class GetServiceConnectionMapResult {
 
   factory GetServiceConnectionMapResult.fromMap(Map<String, dynamic> map) {
     return GetServiceConnectionMapResult(
-      consumerPscConfigs: Input.decodeList<ConsumerPscConfigResponse>(
+      consumerPscConfigs: pulumi.Input.decodeList<ConsumerPscConfigResponse>(
           map['consumerPscConfigs'],
           (value) => ConsumerPscConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      consumerPscConnections: Input.decodeList<ConsumerPscConnectionResponse>(
-          map['consumerPscConnections'],
-          (value) => ConsumerPscConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      consumerPscConnections:
+          pulumi.Input.decodeList<ConsumerPscConnectionResponse>(
+              map['consumerPscConnections'],
+              (value) => ConsumerPscConnectionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       etag: map['etag'] as String,
       infrastructure: map['infrastructure'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      producerPscConfigs: Input.decodeList<ProducerPscConfigResponse>(
+      producerPscConfigs: pulumi.Input.decodeList<ProducerPscConfigResponse>(
           map['producerPscConfigs'],
           (value) => ProducerPscConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

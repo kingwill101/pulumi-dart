@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBitbucketServerConfig.
 class GetBitbucketServerConfigArgs {
-  final Input<String> bitbucketServerConfigId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> bitbucketServerConfigId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetBitbucketServerConfigArgs({
     required this.bitbucketServerConfigId,
@@ -28,9 +28,9 @@ class GetBitbucketServerConfigArgs {
   factory GetBitbucketServerConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetBitbucketServerConfigArgs(
       bitbucketServerConfigId:
-          Input.asInput<String>(map['bitbucketServerConfigId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['bitbucketServerConfigId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'license_response2.dart';
+import 'license_response_containeranalysis_v1alpha1.dart';
 
 /// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
 class PackageInfoOccurrenceResponse {
@@ -14,7 +14,7 @@ class PackageInfoOccurrenceResponse {
   final String homePage;
 
   /// package or alternative values, if the governing license cannot be determined
-  final LicenseResponse2 licenseConcluded;
+  final LicenseResponseContaineranalysisV1alpha1 licenseConcluded;
 
   /// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
   final String packageType;
@@ -62,7 +62,7 @@ class PackageInfoOccurrenceResponse {
       comment: map['comment'] as String,
       filename: map['filename'] as String,
       homePage: map['homePage'] as String,
-      licenseConcluded: LicenseResponse2.fromMap(
+      licenseConcluded: LicenseResponseContaineranalysisV1alpha1.fromMap(
           (map['licenseConcluded'] as Map).cast<String, dynamic>()),
       packageType: map['packageType'] as String,
       sourceInfo: map['sourceInfo'] as String,

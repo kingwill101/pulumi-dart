@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'code_compilation_config_response.dart';
 import 'compilation_error_response.dart';
 
@@ -45,7 +45,7 @@ class GetCompilationResultResult {
     final map = <String, dynamic>{};
     map['codeCompilationConfig'] = codeCompilationConfig.toMap();
     map['compilationErrors'] =
-        Input.encodeList<CompilationErrorResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<CompilationErrorResponse, Map<String, dynamic>>(
             compilationErrors, (value) => value.toMap());
     map['dataformCoreVersion'] = dataformCoreVersion;
     map['gitCommitish'] = gitCommitish;
@@ -60,7 +60,7 @@ class GetCompilationResultResult {
     return GetCompilationResultResult(
       codeCompilationConfig: CodeCompilationConfigResponse.fromMap(
           (map['codeCompilationConfig'] as Map).cast<String, dynamic>()),
-      compilationErrors: Input.decodeList<CompilationErrorResponse>(
+      compilationErrors: pulumi.Input.decodeList<CompilationErrorResponse>(
           map['compilationErrors'],
           (value) => CompilationErrorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

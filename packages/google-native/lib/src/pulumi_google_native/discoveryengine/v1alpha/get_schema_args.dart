@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSchema.
 class GetSchemaArgs {
-  final Input<String> collectionId;
-  final Input<String> dataStoreId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> schemaId;
+  final pulumi.Input<String> collectionId;
+  final pulumi.Input<String> dataStoreId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> schemaId;
 
   GetSchemaArgs({
     required this.collectionId,
@@ -33,11 +33,11 @@ class GetSchemaArgs {
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaArgs(
-      collectionId: Input.asInput<String>(map['collectionId']),
-      dataStoreId: Input.asInput<String>(map['dataStoreId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      schemaId: Input.asInput<String>(map['schemaId']),
+      collectionId: pulumi.Input.asInput<String>(map['collectionId']),
+      dataStoreId: pulumi.Input.asInput<String>(map['dataStoreId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      schemaId: pulumi.Input.asInput<String>(map['schemaId']),
     );
   }
 }

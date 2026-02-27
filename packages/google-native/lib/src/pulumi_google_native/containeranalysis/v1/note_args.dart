@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_note.dart';
 import 'build_note.dart';
 import 'compliance_note.dart';
@@ -18,59 +18,59 @@ import 'vulnerability_note.dart';
 /// The set of arguments for Note.
 class NoteArgs {
   /// A note describing an attestation role.
-  final Input<AttestationNote>? attestation;
+  final pulumi.Input<AttestationNote>? attestation;
 
   /// A note describing build provenance for a verifiable build.
-  final Input<BuildNote>? build;
+  final pulumi.Input<BuildNote>? build;
 
   /// A note describing a compliance check.
-  final Input<ComplianceNote>? compliance;
+  final pulumi.Input<ComplianceNote>? compliance;
 
   /// A note describing something that can be deployed.
-  final Input<DeploymentNote>? deployment;
+  final pulumi.Input<DeploymentNote>? deployment;
 
   /// A note describing the initial analysis of a resource.
-  final Input<DiscoveryNote>? discovery;
+  final pulumi.Input<DiscoveryNote>? discovery;
 
   /// A note describing a dsse attestation note.
-  final Input<DSSEAttestationNote>? dsseAttestation;
+  final pulumi.Input<DSSEAttestationNote>? dsseAttestation;
 
   /// Time of expiration for this note. Empty if note does not expire.
-  final Input<String>? expirationTime;
+  final pulumi.Input<String>? expirationTime;
 
   /// A note describing a base image.
-  final Input<ImageNote>? image;
+  final pulumi.Input<ImageNote>? image;
 
   /// A detailed description of this note.
-  final Input<String>? longDescription;
+  final pulumi.Input<String>? longDescription;
 
   /// Required. The ID to use for this note.
-  final Input<String> noteId;
+  final pulumi.Input<String> noteId;
 
   /// A note describing a package hosted by various package managers.
-  final Input<PackageNote>? package;
-  final Input<String>? project;
+  final pulumi.Input<PackageNote>? package;
+  final pulumi.Input<String>? project;
 
   /// Other notes related to this note.
-  final Input<List<String>>? relatedNoteNames;
+  final pulumi.Input<List<String>>? relatedNoteNames;
 
   /// URLs associated with this note.
-  final Input<List<RelatedUrl>>? relatedUrl;
+  final pulumi.Input<List<RelatedUrl>>? relatedUrl;
 
   /// A note describing an SBOM reference.
-  final Input<SBOMReferenceNote>? sbomReference;
+  final pulumi.Input<SBOMReferenceNote>? sbomReference;
 
   /// A one sentence description of this note.
-  final Input<String>? shortDescription;
+  final pulumi.Input<String>? shortDescription;
 
   /// A note describing available package upgrades.
-  final Input<UpgradeNote>? upgrade;
+  final pulumi.Input<UpgradeNote>? upgrade;
 
   /// A note describing a package vulnerability.
-  final Input<VulnerabilityNote>? vulnerability;
+  final pulumi.Input<VulnerabilityNote>? vulnerability;
 
   /// A note describing a vulnerability assessment.
-  final Input<VulnerabilityAssessmentNote>? vulnerabilityAssessment;
+  final pulumi.Input<VulnerabilityAssessmentNote>? vulnerabilityAssessment;
 
   NoteArgs({
     this.attestation,
@@ -98,37 +98,34 @@ class NoteArgs {
     final map = <String, dynamic>{};
     final attestationValue = attestation;
     if (attestationValue != null) {
-      map['attestation'] =
-          Input.mapOptionalInputValue<AttestationNote, Map<String, dynamic>>(
-              attestationValue, (value) => value.toMap());
+      map['attestation'] = pulumi.Input.mapOptionalInputValue<AttestationNote,
+          Map<String, dynamic>>(attestationValue, (value) => value.toMap());
     }
     final buildValue = build;
     if (buildValue != null) {
       map['build'] =
-          Input.mapOptionalInputValue<BuildNote, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<BuildNote, Map<String, dynamic>>(
               buildValue, (value) => value.toMap());
     }
     final complianceValue = compliance;
     if (complianceValue != null) {
-      map['compliance'] =
-          Input.mapOptionalInputValue<ComplianceNote, Map<String, dynamic>>(
-              complianceValue, (value) => value.toMap());
+      map['compliance'] = pulumi.Input.mapOptionalInputValue<ComplianceNote,
+          Map<String, dynamic>>(complianceValue, (value) => value.toMap());
     }
     final deploymentValue = deployment;
     if (deploymentValue != null) {
-      map['deployment'] =
-          Input.mapOptionalInputValue<DeploymentNote, Map<String, dynamic>>(
-              deploymentValue, (value) => value.toMap());
+      map['deployment'] = pulumi.Input.mapOptionalInputValue<DeploymentNote,
+          Map<String, dynamic>>(deploymentValue, (value) => value.toMap());
     }
     final discoveryValue = discovery;
     if (discoveryValue != null) {
-      map['discovery'] =
-          Input.mapOptionalInputValue<DiscoveryNote, Map<String, dynamic>>(
-              discoveryValue, (value) => value.toMap());
+      map['discovery'] = pulumi.Input.mapOptionalInputValue<DiscoveryNote,
+          Map<String, dynamic>>(discoveryValue, (value) => value.toMap());
     }
     final dsseAttestationValue = dsseAttestation;
     if (dsseAttestationValue != null) {
-      map['dsseAttestation'] = Input.mapOptionalInputValue<DSSEAttestationNote,
+      map['dsseAttestation'] = pulumi.Input.mapOptionalInputValue<
+          DSSEAttestationNote,
           Map<String, dynamic>>(dsseAttestationValue, (value) => value.toMap());
     }
     final expirationTimeValue = expirationTime;
@@ -138,7 +135,7 @@ class NoteArgs {
     final imageValue = image;
     if (imageValue != null) {
       map['image'] =
-          Input.mapOptionalInputValue<ImageNote, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<ImageNote, Map<String, dynamic>>(
               imageValue, (value) => value.toMap());
     }
     final longDescriptionValue = longDescription;
@@ -149,7 +146,7 @@ class NoteArgs {
     final packageValue = package;
     if (packageValue != null) {
       map['package'] =
-          Input.mapOptionalInputValue<PackageNote, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<PackageNote, Map<String, dynamic>>(
               packageValue, (value) => value.toMap());
     }
     final projectValue = project;
@@ -162,17 +159,17 @@ class NoteArgs {
     }
     final relatedUrlValue = relatedUrl;
     if (relatedUrlValue != null) {
-      map['relatedUrl'] = Input.mapOptionalInputValue<List<RelatedUrl>,
+      map['relatedUrl'] = pulumi.Input.mapOptionalInputValue<List<RelatedUrl>,
               List<Map<String, dynamic>>>(
           relatedUrlValue,
-          (value) => Input.encodeList<RelatedUrl, Map<String, dynamic>>(
+          (value) => pulumi.Input.encodeList<RelatedUrl, Map<String, dynamic>>(
               value, (value) => value.toMap()));
     }
     final sbomReferenceValue = sbomReference;
     if (sbomReferenceValue != null) {
-      map['sbomReference'] =
-          Input.mapOptionalInputValue<SBOMReferenceNote, Map<String, dynamic>>(
-              sbomReferenceValue, (value) => value.toMap());
+      map['sbomReference'] = pulumi.Input.mapOptionalInputValue<
+          SBOMReferenceNote,
+          Map<String, dynamic>>(sbomReferenceValue, (value) => value.toMap());
     }
     final shortDescriptionValue = shortDescription;
     if (shortDescriptionValue != null) {
@@ -181,18 +178,18 @@ class NoteArgs {
     final upgradeValue = upgrade;
     if (upgradeValue != null) {
       map['upgrade'] =
-          Input.mapOptionalInputValue<UpgradeNote, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<UpgradeNote, Map<String, dynamic>>(
               upgradeValue, (value) => value.toMap());
     }
     final vulnerabilityValue = vulnerability;
     if (vulnerabilityValue != null) {
-      map['vulnerability'] =
-          Input.mapOptionalInputValue<VulnerabilityNote, Map<String, dynamic>>(
-              vulnerabilityValue, (value) => value.toMap());
+      map['vulnerability'] = pulumi.Input.mapOptionalInputValue<
+          VulnerabilityNote,
+          Map<String, dynamic>>(vulnerabilityValue, (value) => value.toMap());
     }
     final vulnerabilityAssessmentValue = vulnerabilityAssessment;
     if (vulnerabilityAssessmentValue != null) {
-      map['vulnerabilityAssessment'] = Input.mapOptionalInputValue<
+      map['vulnerabilityAssessment'] = pulumi.Input.mapOptionalInputValue<
               VulnerabilityAssessmentNote, Map<String, dynamic>>(
           vulnerabilityAssessmentValue, (value) => value.toMap());
     }
@@ -201,30 +198,37 @@ class NoteArgs {
 
   factory NoteArgs.fromMap(Map<String, dynamic> map) {
     return NoteArgs(
-      attestation: Input.asOptionalInput<AttestationNote>(map['attestation']),
-      build: Input.asOptionalInput<BuildNote>(map['build']),
-      compliance: Input.asOptionalInput<ComplianceNote>(map['compliance']),
-      deployment: Input.asOptionalInput<DeploymentNote>(map['deployment']),
-      discovery: Input.asOptionalInput<DiscoveryNote>(map['discovery']),
-      dsseAttestation:
-          Input.asOptionalInput<DSSEAttestationNote>(map['dsseAttestation']),
-      expirationTime: Input.asOptionalInput<String>(map['expirationTime']),
-      image: Input.asOptionalInput<ImageNote>(map['image']),
-      longDescription: Input.asOptionalInput<String>(map['longDescription']),
-      noteId: Input.asInput<String>(map['noteId']),
-      package: Input.asOptionalInput<PackageNote>(map['package']),
-      project: Input.asOptionalInput<String>(map['project']),
+      attestation:
+          pulumi.Input.asOptionalInput<AttestationNote>(map['attestation']),
+      build: pulumi.Input.asOptionalInput<BuildNote>(map['build']),
+      compliance:
+          pulumi.Input.asOptionalInput<ComplianceNote>(map['compliance']),
+      deployment:
+          pulumi.Input.asOptionalInput<DeploymentNote>(map['deployment']),
+      discovery: pulumi.Input.asOptionalInput<DiscoveryNote>(map['discovery']),
+      dsseAttestation: pulumi.Input.asOptionalInput<DSSEAttestationNote>(
+          map['dsseAttestation']),
+      expirationTime:
+          pulumi.Input.asOptionalInput<String>(map['expirationTime']),
+      image: pulumi.Input.asOptionalInput<ImageNote>(map['image']),
+      longDescription:
+          pulumi.Input.asOptionalInput<String>(map['longDescription']),
+      noteId: pulumi.Input.asInput<String>(map['noteId']),
+      package: pulumi.Input.asOptionalInput<PackageNote>(map['package']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       relatedNoteNames:
-          Input.asOptionalInput<List<String>>(map['relatedNoteNames']),
-      relatedUrl: Input.asOptionalInput<List<RelatedUrl>>(map['relatedUrl']),
+          pulumi.Input.asOptionalInput<List<String>>(map['relatedNoteNames']),
+      relatedUrl:
+          pulumi.Input.asOptionalInput<List<RelatedUrl>>(map['relatedUrl']),
       sbomReference:
-          Input.asOptionalInput<SBOMReferenceNote>(map['sbomReference']),
-      shortDescription: Input.asOptionalInput<String>(map['shortDescription']),
-      upgrade: Input.asOptionalInput<UpgradeNote>(map['upgrade']),
+          pulumi.Input.asOptionalInput<SBOMReferenceNote>(map['sbomReference']),
+      shortDescription:
+          pulumi.Input.asOptionalInput<String>(map['shortDescription']),
+      upgrade: pulumi.Input.asOptionalInput<UpgradeNote>(map['upgrade']),
       vulnerability:
-          Input.asOptionalInput<VulnerabilityNote>(map['vulnerability']),
+          pulumi.Input.asOptionalInput<VulnerabilityNote>(map['vulnerability']),
       vulnerabilityAssessment:
-          Input.asOptionalInput<VulnerabilityAssessmentNote>(
+          pulumi.Input.asOptionalInput<VulnerabilityAssessmentNote>(
               map['vulnerabilityAssessment']),
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repair_mode.dart';
 
 /// The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
@@ -31,8 +31,9 @@ class RepairRolloutRule {
     if (jobsValue != null) {
       map['jobs'] = jobsValue;
     }
-    map['repairModes'] = Input.encodeList<RepairMode, Map<String, dynamic>>(
-        repairModes, (value) => value.toMap());
+    map['repairModes'] =
+        pulumi.Input.encodeList<RepairMode, Map<String, dynamic>>(
+            repairModes, (value) => value.toMap());
     final sourcePhasesValue = sourcePhases;
     if (sourcePhasesValue != null) {
       map['sourcePhases'] = sourcePhasesValue;
@@ -44,7 +45,7 @@ class RepairRolloutRule {
     return RepairRolloutRule(
       id: map['id'] as String,
       jobs: map['jobs'] == null ? null : (map['jobs'] as List).cast<String>(),
-      repairModes: Input.decodeList<RepairMode>(
+      repairModes: pulumi.Input.decodeList<RepairMode>(
           map['repairModes'],
           (value) =>
               RepairMode.fromMap((value as Map).cast<String, dynamic>())),

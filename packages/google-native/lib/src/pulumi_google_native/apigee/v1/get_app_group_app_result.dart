@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute_response.dart';
 import 'google_cloud_apigee_v1_credential_response.dart';
 
@@ -62,11 +62,13 @@ class GetAppGroupAppResult {
     map['apiProducts'] = apiProducts;
     map['appGroup'] = appGroup;
     map['appId'] = appId;
-    map['attributes'] = Input.encodeList<GoogleCloudApigeeV1AttributeResponse,
+    map['attributes'] = pulumi.Input.encodeList<
+        GoogleCloudApigeeV1AttributeResponse,
         Map<String, dynamic>>(attributes, (value) => value.toMap());
     map['callbackUrl'] = callbackUrl;
     map['createdAt'] = createdAt;
-    map['credentials'] = Input.encodeList<GoogleCloudApigeeV1CredentialResponse,
+    map['credentials'] = pulumi.Input.encodeList<
+        GoogleCloudApigeeV1CredentialResponse,
         Map<String, dynamic>>(credentials, (value) => value.toMap());
     map['keyExpiresIn'] = keyExpiresIn;
     map['lastModifiedAt'] = lastModifiedAt;
@@ -81,16 +83,17 @@ class GetAppGroupAppResult {
       apiProducts: (map['apiProducts'] as List).cast<String>(),
       appGroup: map['appGroup'] as String,
       appId: map['appId'] as String,
-      attributes: Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
+      attributes: pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
           map['attributes'],
           (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       callbackUrl: map['callbackUrl'] as String,
       createdAt: map['createdAt'] as String,
-      credentials: Input.decodeList<GoogleCloudApigeeV1CredentialResponse>(
-          map['credentials'],
-          (value) => GoogleCloudApigeeV1CredentialResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      credentials:
+          pulumi.Input.decodeList<GoogleCloudApigeeV1CredentialResponse>(
+              map['credentials'],
+              (value) => GoogleCloudApigeeV1CredentialResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       keyExpiresIn: map['keyExpiresIn'] as String,
       lastModifiedAt: map['lastModifiedAt'] as String,
       name: map['name'] as String,

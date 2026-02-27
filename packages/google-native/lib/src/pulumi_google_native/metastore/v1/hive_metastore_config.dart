@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'hive_metastore_config_endpoint_protocol.dart';
-import 'kerberos_config3.dart';
+import 'kerberos_config_metastore_v1.dart';
 
 /// Specifies configuration information specific to running Hive metastore software as the metastore service.
 class HiveMetastoreConfig {
@@ -15,7 +15,7 @@ class HiveMetastoreConfig {
   final HiveMetastoreConfigEndpointProtocol? endpointProtocol;
 
   /// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
-  final KerberosConfig3? kerberosConfig;
+  final KerberosConfigMetastoreV1? kerberosConfig;
 
   /// Immutable. The Hive metastore schema version.
   final String? version;
@@ -67,7 +67,7 @@ class HiveMetastoreConfig {
               map['endpointProtocol'] as String),
       kerberosConfig: map['kerberosConfig'] == null
           ? null
-          : KerberosConfig3.fromMap(
+          : KerberosConfigMetastoreV1.fromMap(
               (map['kerberosConfig'] as Map).cast<String, dynamic>()),
       version: map['version'] == null ? null : map['version'] as String,
     );

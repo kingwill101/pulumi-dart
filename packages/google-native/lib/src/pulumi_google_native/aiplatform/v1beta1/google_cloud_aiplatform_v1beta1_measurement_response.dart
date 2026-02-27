@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_measurement_metric_response.dart';
 
 /// A message representing a Measurement of a Trial. A Measurement contains the Metrics got by executing a Trial using suggested hyperparameter values.
@@ -23,7 +23,7 @@ class GoogleCloudAiplatformV1beta1MeasurementResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['elapsedDuration'] = elapsedDuration;
-    map['metrics'] = Input.encodeList<
+    map['metrics'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1MeasurementMetricResponse,
         Map<String, dynamic>>(metrics, (value) => value.toMap());
     map['stepCount'] = stepCount;
@@ -34,7 +34,7 @@ class GoogleCloudAiplatformV1beta1MeasurementResponse {
       Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1MeasurementResponse(
       elapsedDuration: map['elapsedDuration'] as String,
-      metrics: Input.decodeList<
+      metrics: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1beta1MeasurementMetricResponse>(
           map['metrics'],
           (value) =>

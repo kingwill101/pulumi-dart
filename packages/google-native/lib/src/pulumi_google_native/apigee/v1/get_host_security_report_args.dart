@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHostSecurityReport.
 class GetHostSecurityReportArgs {
-  final Input<String> hostSecurityReportId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> hostSecurityReportId;
+  final pulumi.Input<String> organizationId;
 
   GetHostSecurityReportArgs({
     required this.hostSecurityReportId,
@@ -21,8 +21,9 @@ class GetHostSecurityReportArgs {
 
   factory GetHostSecurityReportArgs.fromMap(Map<String, dynamic> map) {
     return GetHostSecurityReportArgs(
-      hostSecurityReportId: Input.asInput<String>(map['hostSecurityReportId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      hostSecurityReportId:
+          pulumi.Input.asInput<String>(map['hostSecurityReportId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

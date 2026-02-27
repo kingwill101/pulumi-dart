@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_intent.dart';
 import 'google_cloud_dialogflow_cx_v3_page.dart';
 import 'google_cloud_dialogflow_cx_v3_response_message_text.dart';
-import 'google_rpc_status2.dart';
+import 'google_rpc_status_dialogflow_v3.dart';
 
 /// The output from the virtual agent.
 class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
@@ -18,7 +18,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   final Map<String, String>? sessionParameters;
 
   /// Response error from the agent in the test result. If set, other output is empty.
-  final GoogleRpcStatus2? status;
+  final GoogleRpcStatusDialogflowV3? status;
 
   /// The text responses from the agent for the turn.
   final List<GoogleCloudDialogflowCxV3ResponseMessageText>? textResponses;
@@ -52,7 +52,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
     }
     final textResponsesValue = textResponses;
     if (textResponsesValue != null) {
-      map['textResponses'] = Input.encodeList<
+      map['textResponses'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowCxV3ResponseMessageText,
           Map<String, dynamic>>(textResponsesValue, (value) => value.toMap());
     }
@@ -76,11 +76,12 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
           : (map['sessionParameters'] as Map).cast<String, String>(),
       status: map['status'] == null
           ? null
-          : GoogleRpcStatus2.fromMap(
+          : GoogleRpcStatusDialogflowV3.fromMap(
               (map['status'] as Map).cast<String, dynamic>()),
       textResponses: map['textResponses'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3ResponseMessageText>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDialogflowCxV3ResponseMessageText>(
               map['textResponses'],
               (value) => GoogleCloudDialogflowCxV3ResponseMessageText.fromMap(
                   (value as Map).cast<String, dynamic>())),

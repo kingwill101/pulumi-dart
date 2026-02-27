@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_defined_function_resource.dart';
 
 class ViewDefinition {
@@ -39,9 +39,9 @@ class ViewDefinition {
     }
     final userDefinedFunctionResourcesValue = userDefinedFunctionResources;
     if (userDefinedFunctionResourcesValue != null) {
-      map['userDefinedFunctionResources'] =
-          Input.encodeList<UserDefinedFunctionResource, Map<String, dynamic>>(
-              userDefinedFunctionResourcesValue, (value) => value.toMap());
+      map['userDefinedFunctionResources'] = pulumi.Input.encodeList<
+              UserDefinedFunctionResource, Map<String, dynamic>>(
+          userDefinedFunctionResourcesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -56,7 +56,7 @@ class ViewDefinition {
           map['useLegacySql'] == null ? null : map['useLegacySql'] as bool,
       userDefinedFunctionResources: map['userDefinedFunctionResources'] == null
           ? null
-          : Input.decodeList<UserDefinedFunctionResource>(
+          : pulumi.Input.decodeList<UserDefinedFunctionResource>(
               map['userDefinedFunctionResources'],
               (value) => UserDefinedFunctionResource.fromMap(
                   (value as Map).cast<String, dynamic>())),

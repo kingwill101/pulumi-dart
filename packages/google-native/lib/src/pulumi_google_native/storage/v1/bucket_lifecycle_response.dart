@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_lifecycle_rule_item_response.dart';
 
 /// The bucket's lifecycle configuration. See lifecycle management for more information.
@@ -14,15 +14,14 @@ class BucketLifecycleResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['rule'] =
-        Input.encodeList<BucketLifecycleRuleItemResponse, Map<String, dynamic>>(
-            rule, (value) => value.toMap());
+    map['rule'] = pulumi.Input.encodeList<BucketLifecycleRuleItemResponse,
+        Map<String, dynamic>>(rule, (value) => value.toMap());
     return map;
   }
 
   factory BucketLifecycleResponse.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleResponse(
-      rule: Input.decodeList<BucketLifecycleRuleItemResponse>(
+      rule: pulumi.Input.decodeList<BucketLifecycleRuleItemResponse>(
           map['rule'],
           (value) => BucketLifecycleRuleItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

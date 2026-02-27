@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Entity.
 class EntityArgs {
-  final Input<String> connectionId;
-  final Input<String> entityTypeId;
+  final pulumi.Input<String> connectionId;
+  final pulumi.Input<String> entityTypeId;
 
   /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
-  final Input<Map<String, String>>? fields;
-  final Input<String>? location;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, String>>? fields;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
 
   EntityArgs({
     required this.connectionId,
@@ -41,11 +41,11 @@ class EntityArgs {
 
   factory EntityArgs.fromMap(Map<String, dynamic> map) {
     return EntityArgs(
-      connectionId: Input.asInput<String>(map['connectionId']),
-      entityTypeId: Input.asInput<String>(map['entityTypeId']),
-      fields: Input.asOptionalInput<Map<String, String>>(map['fields']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      connectionId: pulumi.Input.asInput<String>(map['connectionId']),
+      entityTypeId: pulumi.Input.asInput<String>(map['entityTypeId']),
+      fields: pulumi.Input.asOptionalInput<Map<String, String>>(map['fields']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

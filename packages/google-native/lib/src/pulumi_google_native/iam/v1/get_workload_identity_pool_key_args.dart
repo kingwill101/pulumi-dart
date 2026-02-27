@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWorkloadIdentityPoolKey.
 class GetWorkloadIdentityPoolKeyArgs {
-  final Input<String> keyId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> providerId;
-  final Input<String> workloadIdentityPoolId;
+  final pulumi.Input<String> keyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> providerId;
+  final pulumi.Input<String> workloadIdentityPoolId;
 
   GetWorkloadIdentityPoolKeyArgs({
     required this.keyId,
@@ -33,12 +33,12 @@ class GetWorkloadIdentityPoolKeyArgs {
 
   factory GetWorkloadIdentityPoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolKeyArgs(
-      keyId: Input.asInput<String>(map['keyId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      providerId: Input.asInput<String>(map['providerId']),
+      keyId: pulumi.Input.asInput<String>(map['keyId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      providerId: pulumi.Input.asInput<String>(map['providerId']),
       workloadIdentityPoolId:
-          Input.asInput<String>(map['workloadIdentityPoolId']),
+          pulumi.Input.asInput<String>(map['workloadIdentityPoolId']),
     );
   }
 }

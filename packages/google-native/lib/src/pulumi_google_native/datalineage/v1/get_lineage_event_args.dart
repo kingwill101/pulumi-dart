@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLineageEvent.
 class GetLineageEventArgs {
-  final Input<String> lineageEventId;
-  final Input<String> location;
-  final Input<String> processId;
-  final Input<String>? project;
-  final Input<String> runId;
+  final pulumi.Input<String> lineageEventId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> processId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> runId;
 
   GetLineageEventArgs({
     required this.lineageEventId,
@@ -33,11 +33,11 @@ class GetLineageEventArgs {
 
   factory GetLineageEventArgs.fromMap(Map<String, dynamic> map) {
     return GetLineageEventArgs(
-      lineageEventId: Input.asInput<String>(map['lineageEventId']),
-      location: Input.asInput<String>(map['location']),
-      processId: Input.asInput<String>(map['processId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      runId: Input.asInput<String>(map['runId']),
+      lineageEventId: pulumi.Input.asInput<String>(map['lineageEventId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      processId: pulumi.Input.asInput<String>(map['processId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      runId: pulumi.Input.asInput<String>(map['runId']),
     );
   }
 }

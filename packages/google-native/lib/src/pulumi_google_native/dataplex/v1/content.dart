@@ -1,53 +1,55 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'content_args.dart';
 import 'google_cloud_dataplex_v1_content_notebook_response.dart';
 import 'google_cloud_dataplex_v1_content_sql_script_response.dart';
 
 /// Create a content.
 /// Auto-naming is currently not supported for this resource.
-class Content extends CustomResource {
+class Content extends pulumi.CustomResource {
   /// Content creation time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Content data in string format.
-  late final Output<String> dataText;
+  late final pulumi.Output<String> dataText;
 
   /// Optional. Description of the content.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Optional. User defined labels for the content.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> lakeId;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> lakeId;
+  late final pulumi.Output<String> location;
 
   /// The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Notebook related configurations.
-  late final Output<GoogleCloudDataplexV1ContentNotebookResponse> notebook;
+  late final pulumi.Output<GoogleCloudDataplexV1ContentNotebookResponse>
+      notebook;
 
   /// The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
-  late final Output<String> path;
-  late final Output<String> project;
+  late final pulumi.Output<String> path;
+  late final pulumi.Output<String> project;
 
   /// Sql Script related configurations.
-  late final Output<GoogleCloudDataplexV1ContentSqlScriptResponse> sqlScript;
+  late final pulumi.Output<GoogleCloudDataplexV1ContentSqlScriptResponse>
+      sqlScript;
 
   /// System generated globally unique ID for the content. This ID will be different if the content is deleted and re-created with the same name.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time when the content was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Content(
     String name, {
     ContentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:dataplex/v1:Content',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.dataText = registerOutput<String>('dataText');

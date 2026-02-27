@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_warnings_item_data_item_response.dart';
 
 class RouteWarningsItemResponse {
@@ -22,7 +22,7 @@ class RouteWarningsItemResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['code'] = code;
-    map['data'] = Input.encodeList<RouteWarningsItemDataItemResponse,
+    map['data'] = pulumi.Input.encodeList<RouteWarningsItemDataItemResponse,
         Map<String, dynamic>>(data, (value) => value.toMap());
     map['message'] = message;
     return map;
@@ -31,7 +31,7 @@ class RouteWarningsItemResponse {
   factory RouteWarningsItemResponse.fromMap(Map<String, dynamic> map) {
     return RouteWarningsItemResponse(
       code: map['code'] as String,
-      data: Input.decodeList<RouteWarningsItemDataItemResponse>(
+      data: pulumi.Input.decodeList<RouteWarningsItemDataItemResponse>(
           map['data'],
           (value) => RouteWarningsItemDataItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

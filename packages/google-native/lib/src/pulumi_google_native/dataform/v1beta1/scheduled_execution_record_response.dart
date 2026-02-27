@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response14.dart';
+import 'status_response_dataform_v1beta1.dart';
 
 /// A record of an attempt to create a workflow invocation for this workflow config.
 class ScheduledExecutionRecordResponse {
   /// The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
-  final StatusResponse14 errorStatus;
+  final StatusResponseDataformV1beta1 errorStatus;
 
   /// The timestamp of this execution attempt.
   final String executionTime;
@@ -29,7 +29,7 @@ class ScheduledExecutionRecordResponse {
 
   factory ScheduledExecutionRecordResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledExecutionRecordResponse(
-      errorStatus: StatusResponse14.fromMap(
+      errorStatus: StatusResponseDataformV1beta1.fromMap(
           (map['errorStatus'] as Map).cast<String, dynamic>()),
       executionTime: map['executionTime'] as String,
       workflowInvocation: map['workflowInvocation'] as String,

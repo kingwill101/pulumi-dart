@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPublicAdvertisedPrefix.
 class GetPublicAdvertisedPrefixArgs {
-  final Input<String>? project;
-  final Input<String> publicAdvertisedPrefix;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> publicAdvertisedPrefix;
 
   GetPublicAdvertisedPrefixArgs({
     this.project,
@@ -24,9 +24,9 @@ class GetPublicAdvertisedPrefixArgs {
 
   factory GetPublicAdvertisedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicAdvertisedPrefixArgs(
-      project: Input.asOptionalInput<String>(map['project']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       publicAdvertisedPrefix:
-          Input.asInput<String>(map['publicAdvertisedPrefix']),
+          pulumi.Input.asInput<String>(map['publicAdvertisedPrefix']),
     );
   }
 }

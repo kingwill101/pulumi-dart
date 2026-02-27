@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_fulfillment_conditional_cases_case_response.dart';
 
 /// A list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -15,7 +15,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cases'] = Input.encodeList<
+    map['cases'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponse,
         Map<String, dynamic>>(cases, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse {
   factory GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3FulfillmentConditionalCasesResponse(
-      cases: Input.decodeList<
+      cases: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponse>(
           map['cases'],
           (value) =>

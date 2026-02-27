@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'info_type_transformation.dart';
 
 class TextConfig {
@@ -24,7 +24,7 @@ class TextConfig {
     final additionalTransformationsValue = additionalTransformations;
     if (additionalTransformationsValue != null) {
       map['additionalTransformations'] =
-          Input.encodeList<InfoTypeTransformation, Map<String, dynamic>>(
+          pulumi.Input.encodeList<InfoTypeTransformation, Map<String, dynamic>>(
               additionalTransformationsValue, (value) => value.toMap());
     }
     final excludeInfoTypesValue = excludeInfoTypes;
@@ -34,7 +34,7 @@ class TextConfig {
     final transformationsValue = transformations;
     if (transformationsValue != null) {
       map['transformations'] =
-          Input.encodeList<InfoTypeTransformation, Map<String, dynamic>>(
+          pulumi.Input.encodeList<InfoTypeTransformation, Map<String, dynamic>>(
               transformationsValue, (value) => value.toMap());
     }
     return map;
@@ -44,7 +44,7 @@ class TextConfig {
     return TextConfig(
       additionalTransformations: map['additionalTransformations'] == null
           ? null
-          : Input.decodeList<InfoTypeTransformation>(
+          : pulumi.Input.decodeList<InfoTypeTransformation>(
               map['additionalTransformations'],
               (value) => InfoTypeTransformation.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -53,7 +53,7 @@ class TextConfig {
           : (map['excludeInfoTypes'] as List).cast<String>(),
       transformations: map['transformations'] == null
           ? null
-          : Input.decodeList<InfoTypeTransformation>(
+          : pulumi.Input.decodeList<InfoTypeTransformation>(
               map['transformations'],
               (value) => InfoTypeTransformation.fromMap(
                   (value as Map).cast<String, dynamic>())),

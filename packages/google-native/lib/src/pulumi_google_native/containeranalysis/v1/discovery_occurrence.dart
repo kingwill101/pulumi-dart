@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analysis_completed.dart';
 import 'discovery_occurrence_analysis_status.dart';
 import 'discovery_occurrence_continuous_analysis.dart';
@@ -51,8 +51,9 @@ class DiscoveryOccurrence {
     }
     final analysisErrorValue = analysisError;
     if (analysisErrorValue != null) {
-      map['analysisError'] = Input.encodeList<Status, Map<String, dynamic>>(
-          analysisErrorValue, (value) => value.toMap());
+      map['analysisError'] =
+          pulumi.Input.encodeList<Status, Map<String, dynamic>>(
+              analysisErrorValue, (value) => value.toMap());
     }
     final analysisStatusValue = analysisStatus;
     if (analysisStatusValue != null) {
@@ -89,7 +90,7 @@ class DiscoveryOccurrence {
               (map['analysisCompleted'] as Map).cast<String, dynamic>()),
       analysisError: map['analysisError'] == null
           ? null
-          : Input.decodeList<Status>(
+          : pulumi.Input.decodeList<Status>(
               map['analysisError'],
               (value) =>
                   Status.fromMap((value as Map).cast<String, dynamic>())),

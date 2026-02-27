@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEventSubscription.
 class GetEventSubscriptionArgs {
-  final Input<String> connectionId;
-  final Input<String> eventSubscriptionId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> connectionId;
+  final pulumi.Input<String> eventSubscriptionId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetEventSubscriptionArgs({
     required this.connectionId,
@@ -30,10 +30,11 @@ class GetEventSubscriptionArgs {
 
   factory GetEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetEventSubscriptionArgs(
-      connectionId: Input.asInput<String>(map['connectionId']),
-      eventSubscriptionId: Input.asInput<String>(map['eventSubscriptionId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      connectionId: pulumi.Input.asInput<String>(map['connectionId']),
+      eventSubscriptionId:
+          pulumi.Input.asInput<String>(map['eventSubscriptionId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

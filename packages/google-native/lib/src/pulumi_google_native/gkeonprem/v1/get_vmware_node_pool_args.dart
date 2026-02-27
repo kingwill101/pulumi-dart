@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getVmwareNodePool.
 class GetVmwareNodePoolArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? view;
-  final Input<String> vmwareClusterId;
-  final Input<String> vmwareNodePoolId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
+  final pulumi.Input<String> vmwareClusterId;
+  final pulumi.Input<String> vmwareNodePoolId;
 
   GetVmwareNodePoolArgs({
     required this.location,
@@ -36,11 +36,11 @@ class GetVmwareNodePoolArgs {
 
   factory GetVmwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareNodePoolArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
-      vmwareClusterId: Input.asInput<String>(map['vmwareClusterId']),
-      vmwareNodePoolId: Input.asInput<String>(map['vmwareNodePoolId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
+      vmwareClusterId: pulumi.Input.asInput<String>(map['vmwareClusterId']),
+      vmwareNodePoolId: pulumi.Input.asInput<String>(map['vmwareNodePoolId']),
     );
   }
 }

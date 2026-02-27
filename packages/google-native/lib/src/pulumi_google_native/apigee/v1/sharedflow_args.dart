@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Sharedflow.
 class SharedflowArgs {
   /// Required. Must be set to either `import` or `validate`.
-  final Input<String> action;
+  final pulumi.Input<String> action;
 
   /// The HTTP Content-Type header value specifying the content type of the body.
-  final Input<String>? contentType;
+  final pulumi.Input<String>? contentType;
 
   /// The HTTP request/response body as raw binary.
-  final Input<String>? data;
+  final pulumi.Input<String>? data;
 
   /// Application specific response metadata. Must be set in the first response for streaming APIs.
-  final Input<List<Map<String, String>>>? extensions;
+  final pulumi.Input<List<Map<String, String>>>? extensions;
 
   /// Required. The name to give the shared flow
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   SharedflowArgs({
     required this.action,
@@ -54,13 +54,13 @@ class SharedflowArgs {
 
   factory SharedflowArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowArgs(
-      action: Input.asInput<String>(map['action']),
-      contentType: Input.asOptionalInput<String>(map['contentType']),
-      data: Input.asOptionalInput<String>(map['data']),
-      extensions:
-          Input.asOptionalInput<List<Map<String, String>>>(map['extensions']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      action: pulumi.Input.asInput<String>(map['action']),
+      contentType: pulumi.Input.asOptionalInput<String>(map['contentType']),
+      data: pulumi.Input.asOptionalInput<String>(map['data']),
+      extensions: pulumi.Input.asOptionalInput<List<Map<String, String>>>(
+          map['extensions']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

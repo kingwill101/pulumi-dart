@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_entity_relation_response.dart';
 import 'google_cloud_documentai_v1_document_entity_response.dart';
 import 'google_cloud_documentai_v1_document_page_response.dart';
@@ -8,7 +8,7 @@ import 'google_cloud_documentai_v1_document_revision_response.dart';
 import 'google_cloud_documentai_v1_document_shard_info_response.dart';
 import 'google_cloud_documentai_v1_document_style_response.dart';
 import 'google_cloud_documentai_v1_document_text_change_response.dart';
-import 'google_rpc_status_response3.dart';
+import 'google_rpc_status_response_contentwarehouse_v1.dart';
 
 /// Document represents the canonical document resource in Document AI. It is an interchange format that provides insights into documents and allows for collaboration between users and Document AI to iterate and optimize for quality.
 class GoogleCloudDocumentaiV1DocumentResponse {
@@ -23,7 +23,7 @@ class GoogleCloudDocumentaiV1DocumentResponse {
       entityRelations;
 
   /// Any error that occurred while processing this document.
-  final GoogleRpcStatusResponse3 error;
+  final GoogleRpcStatusResponseContentwarehouseV1 error;
 
   /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
   final String mimeType;
@@ -67,25 +67,26 @@ class GoogleCloudDocumentaiV1DocumentResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['content'] = content;
-    map['entities'] = Input.encodeList<
+    map['entities'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentEntityResponse,
         Map<String, dynamic>>(entities, (value) => value.toMap());
-    map['entityRelations'] = Input.encodeList<
+    map['entityRelations'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentEntityRelationResponse,
         Map<String, dynamic>>(entityRelations, (value) => value.toMap());
     map['error'] = error.toMap();
     map['mimeType'] = mimeType;
-    map['pages'] = Input.encodeList<GoogleCloudDocumentaiV1DocumentPageResponse,
+    map['pages'] = pulumi.Input.encodeList<
+        GoogleCloudDocumentaiV1DocumentPageResponse,
         Map<String, dynamic>>(pages, (value) => value.toMap());
-    map['revisions'] = Input.encodeList<
+    map['revisions'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentRevisionResponse,
         Map<String, dynamic>>(revisions, (value) => value.toMap());
     map['shardInfo'] = shardInfo.toMap();
     map['text'] = text;
-    map['textChanges'] = Input.encodeList<
+    map['textChanges'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentTextChangeResponse,
         Map<String, dynamic>>(textChanges, (value) => value.toMap());
-    map['textStyles'] = Input.encodeList<
+    map['textStyles'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentStyleResponse,
         Map<String, dynamic>>(textStyles, (value) => value.toMap());
     map['uri'] = uri;
@@ -96,40 +97,40 @@ class GoogleCloudDocumentaiV1DocumentResponse {
       Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentResponse(
       content: map['content'] as String,
-      entities: Input.decodeList<GoogleCloudDocumentaiV1DocumentEntityResponse>(
+      entities: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentEntityResponse>(
           map['entities'],
           (value) => GoogleCloudDocumentaiV1DocumentEntityResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      entityRelations: Input.decodeList<
+      entityRelations: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentEntityRelationResponse>(
           map['entityRelations'],
           (value) =>
               GoogleCloudDocumentaiV1DocumentEntityRelationResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      error: GoogleRpcStatusResponse3.fromMap(
+      error: GoogleRpcStatusResponseContentwarehouseV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       mimeType: map['mimeType'] as String,
-      pages: Input.decodeList<GoogleCloudDocumentaiV1DocumentPageResponse>(
-          map['pages'],
-          (value) => GoogleCloudDocumentaiV1DocumentPageResponse.fromMap(
+      pages:
+          pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageResponse>(
+              map['pages'],
+              (value) => GoogleCloudDocumentaiV1DocumentPageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      revisions: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentRevisionResponse>(
+          map['revisions'],
+          (value) => GoogleCloudDocumentaiV1DocumentRevisionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      revisions:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentRevisionResponse>(
-              map['revisions'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentRevisionResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
       shardInfo: GoogleCloudDocumentaiV1DocumentShardInfoResponse.fromMap(
           (map['shardInfo'] as Map).cast<String, dynamic>()),
       text: map['text'] as String,
-      textChanges:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentTextChangeResponse>(
-              map['textChanges'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentTextChangeResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      textChanges: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentTextChangeResponse>(
+          map['textChanges'],
+          (value) => GoogleCloudDocumentaiV1DocumentTextChangeResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       textStyles:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentStyleResponse>(
+          pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentStyleResponse>(
               map['textStyles'],
               (value) => GoogleCloudDocumentaiV1DocumentStyleResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

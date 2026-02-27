@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_measurement_response.dart';
 import 'google_cloud_aiplatform_v1beta1_trial_parameter_response.dart';
 
@@ -60,11 +60,11 @@ class GoogleCloudAiplatformV1beta1TrialResponse {
     map['endTime'] = endTime;
     map['finalMeasurement'] = finalMeasurement.toMap();
     map['infeasibleReason'] = infeasibleReason;
-    map['measurements'] = Input.encodeList<
+    map['measurements'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1MeasurementResponse,
         Map<String, dynamic>>(measurements, (value) => value.toMap());
     map['name'] = name;
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1TrialParameterResponse,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['startTime'] = startTime;
@@ -82,19 +82,17 @@ class GoogleCloudAiplatformV1beta1TrialResponse {
       finalMeasurement: GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap(
           (map['finalMeasurement'] as Map).cast<String, dynamic>()),
       infeasibleReason: map['infeasibleReason'] as String,
-      measurements:
-          Input.decodeList<GoogleCloudAiplatformV1beta1MeasurementResponse>(
-              map['measurements'],
-              (value) =>
-                  GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      measurements: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1beta1MeasurementResponse>(
+          map['measurements'],
+          (value) => GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      parameters:
-          Input.decodeList<GoogleCloudAiplatformV1beta1TrialParameterResponse>(
-              map['parameters'],
-              (value) =>
-                  GoogleCloudAiplatformV1beta1TrialParameterResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1beta1TrialParameterResponse>(
+          map['parameters'],
+          (value) => GoogleCloudAiplatformV1beta1TrialParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       startTime: map['startTime'] as String,
       state: map['state'] as String,
       webAccessUris: (map['webAccessUris'] as Map).cast<String, String>(),

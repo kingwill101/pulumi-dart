@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWorkforcePoolKey.
 class GetWorkforcePoolKeyArgs {
-  final Input<String> keyId;
-  final Input<String> location;
-  final Input<String> providerId;
-  final Input<String> workforcePoolId;
+  final pulumi.Input<String> keyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> providerId;
+  final pulumi.Input<String> workforcePoolId;
 
   GetWorkforcePoolKeyArgs({
     required this.keyId,
@@ -27,10 +27,10 @@ class GetWorkforcePoolKeyArgs {
 
   factory GetWorkforcePoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkforcePoolKeyArgs(
-      keyId: Input.asInput<String>(map['keyId']),
-      location: Input.asInput<String>(map['location']),
-      providerId: Input.asInput<String>(map['providerId']),
-      workforcePoolId: Input.asInput<String>(map['workforcePoolId']),
+      keyId: pulumi.Input.asInput<String>(map['keyId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      providerId: pulumi.Input.asInput<String>(map['providerId']),
+      workforcePoolId: pulumi.Input.asInput<String>(map['workforcePoolId']),
     );
   }
 }

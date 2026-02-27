@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'code_compilation_config_response.dart';
 import 'scheduled_release_record_response.dart';
 
@@ -43,9 +43,9 @@ class GetReleaseConfigResult {
     map['cronSchedule'] = cronSchedule;
     map['gitCommitish'] = gitCommitish;
     map['name'] = name;
-    map['recentScheduledReleaseRecords'] =
-        Input.encodeList<ScheduledReleaseRecordResponse, Map<String, dynamic>>(
-            recentScheduledReleaseRecords, (value) => value.toMap());
+    map['recentScheduledReleaseRecords'] = pulumi.Input.encodeList<
+            ScheduledReleaseRecordResponse, Map<String, dynamic>>(
+        recentScheduledReleaseRecords, (value) => value.toMap());
     map['releaseCompilationResult'] = releaseCompilationResult;
     map['timeZone'] = timeZone;
     return map;
@@ -59,7 +59,7 @@ class GetReleaseConfigResult {
       gitCommitish: map['gitCommitish'] as String,
       name: map['name'] as String,
       recentScheduledReleaseRecords:
-          Input.decodeList<ScheduledReleaseRecordResponse>(
+          pulumi.Input.decodeList<ScheduledReleaseRecordResponse>(
               map['recentScheduledReleaseRecords'],
               (value) => ScheduledReleaseRecordResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

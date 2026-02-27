@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bigtable_column_family_response.dart';
 
 class BigtableOptionsResponse {
@@ -21,9 +21,9 @@ class BigtableOptionsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['columnFamilies'] =
-        Input.encodeList<BigtableColumnFamilyResponse, Map<String, dynamic>>(
-            columnFamilies, (value) => value.toMap());
+    map['columnFamilies'] = pulumi.Input.encodeList<
+        BigtableColumnFamilyResponse,
+        Map<String, dynamic>>(columnFamilies, (value) => value.toMap());
     map['ignoreUnspecifiedColumnFamilies'] = ignoreUnspecifiedColumnFamilies;
     map['readRowkeyAsString'] = readRowkeyAsString;
     return map;
@@ -31,7 +31,7 @@ class BigtableOptionsResponse {
 
   factory BigtableOptionsResponse.fromMap(Map<String, dynamic> map) {
     return BigtableOptionsResponse(
-      columnFamilies: Input.decodeList<BigtableColumnFamilyResponse>(
+      columnFamilies: pulumi.Input.decodeList<BigtableColumnFamilyResponse>(
           map['columnFamilies'],
           (value) => BigtableColumnFamilyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

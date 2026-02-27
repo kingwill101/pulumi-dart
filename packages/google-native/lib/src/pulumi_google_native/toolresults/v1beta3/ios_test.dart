@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'duration4.dart';
+import 'duration_toolresults_v1beta3.dart';
 import 'ios_app_info.dart';
-import 'ios_test_loop2.dart';
-import 'ios_xc_test2.dart';
+import 'ios_test_loop_toolresults_v1beta3.dart';
+import 'ios_xc_test_toolresults_v1beta3.dart';
 
 /// A iOS mobile test specification
 class IosTest {
@@ -14,13 +14,13 @@ class IosTest {
   final Map<String, dynamic>? iosRoboTest;
 
   /// An iOS test loop.
-  final IosTestLoop2? iosTestLoop;
+  final IosTestLoopToolresultsV1beta3? iosTestLoop;
 
   /// An iOS XCTest.
-  final IosXcTest2? iosXcTest;
+  final IosXcTestToolresultsV1beta3? iosXcTest;
 
   /// Max time a test is allowed to run before it is automatically cancelled.
-  final Duration4? testTimeout;
+  final DurationToolresultsV1beta3? testTimeout;
 
   IosTest({
     this.iosAppInfo,
@@ -66,15 +66,15 @@ class IosTest {
           : (map['iosRoboTest'] as Map).cast<String, dynamic>(),
       iosTestLoop: map['iosTestLoop'] == null
           ? null
-          : IosTestLoop2.fromMap(
+          : IosTestLoopToolresultsV1beta3.fromMap(
               (map['iosTestLoop'] as Map).cast<String, dynamic>()),
       iosXcTest: map['iosXcTest'] == null
           ? null
-          : IosXcTest2.fromMap(
+          : IosXcTestToolresultsV1beta3.fromMap(
               (map['iosXcTest'] as Map).cast<String, dynamic>()),
       testTimeout: map['testTimeout'] == null
           ? null
-          : Duration4.fromMap(
+          : DurationToolresultsV1beta3.fromMap(
               (map['testTimeout'] as Map).cast<String, dynamic>()),
     );
   }

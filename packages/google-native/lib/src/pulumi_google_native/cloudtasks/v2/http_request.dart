@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'http_request_http_method.dart';
-import 'oauth_token3.dart';
-import 'oidc_token3.dart';
+import 'oauth_token_cloudtasks_v2.dart';
+import 'oidc_token_cloudtasks_v2.dart';
 
 /// HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).
 class HttpRequest {
@@ -16,10 +16,10 @@ class HttpRequest {
   final HttpRequestHttpMethod? httpMethod;
 
   /// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
-  final OAuthToken3? oauthToken;
+  final OAuthTokenCloudtasksV2? oauthToken;
 
   /// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-  final OidcToken3? oidcToken;
+  final OidcTokenCloudtasksV2? oidcToken;
 
   /// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
   final String url;
@@ -70,11 +70,11 @@ class HttpRequest {
           : HttpRequestHttpMethod.fromValue(map['httpMethod'] as String),
       oauthToken: map['oauthToken'] == null
           ? null
-          : OAuthToken3.fromMap(
+          : OAuthTokenCloudtasksV2.fromMap(
               (map['oauthToken'] as Map).cast<String, dynamic>()),
       oidcToken: map['oidcToken'] == null
           ? null
-          : OidcToken3.fromMap(
+          : OidcTokenCloudtasksV2.fromMap(
               (map['oidcToken'] as Map).cast<String, dynamic>()),
       url: map['url'] as String,
     );

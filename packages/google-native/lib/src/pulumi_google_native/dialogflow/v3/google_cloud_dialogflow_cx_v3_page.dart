@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_advanced_settings.dart';
 import 'google_cloud_dialogflow_cx_v3_event_handler.dart';
 import 'google_cloud_dialogflow_cx_v3_form.dart';
@@ -63,7 +63,7 @@ class GoogleCloudDialogflowCxV3Page {
     }
     final eventHandlersValue = eventHandlers;
     if (eventHandlersValue != null) {
-      map['eventHandlers'] = Input.encodeList<
+      map['eventHandlers'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowCxV3EventHandler,
           Map<String, dynamic>>(eventHandlersValue, (value) => value.toMap());
     }
@@ -86,7 +86,7 @@ class GoogleCloudDialogflowCxV3Page {
     }
     final transitionRoutesValue = transitionRoutes;
     if (transitionRoutesValue != null) {
-      map['transitionRoutes'] = Input.encodeList<
+      map['transitionRoutes'] = pulumi.Input.encodeList<
               GoogleCloudDialogflowCxV3TransitionRoute, Map<String, dynamic>>(
           transitionRoutesValue, (value) => value.toMap());
     }
@@ -106,7 +106,7 @@ class GoogleCloudDialogflowCxV3Page {
               (map['entryFulfillment'] as Map).cast<String, dynamic>()),
       eventHandlers: map['eventHandlers'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3EventHandler>(
+          : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EventHandler>(
               map['eventHandlers'],
               (value) => GoogleCloudDialogflowCxV3EventHandler.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -125,7 +125,7 @@ class GoogleCloudDialogflowCxV3Page {
           : (map['transitionRouteGroups'] as List).cast<String>(),
       transitionRoutes: map['transitionRoutes'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3TransitionRoute>(
+          : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3TransitionRoute>(
               map['transitionRoutes'],
               (value) => GoogleCloudDialogflowCxV3TransitionRoute.fromMap(
                   (value as Map).cast<String, dynamic>())),

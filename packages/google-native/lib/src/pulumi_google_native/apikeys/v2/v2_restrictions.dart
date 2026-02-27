@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_android_key_restrictions.dart';
 import 'v2_api_target.dart';
 import 'v2_browser_key_restrictions.dart';
@@ -40,8 +40,9 @@ class V2Restrictions {
     }
     final apiTargetsValue = apiTargets;
     if (apiTargetsValue != null) {
-      map['apiTargets'] = Input.encodeList<V2ApiTarget, Map<String, dynamic>>(
-          apiTargetsValue, (value) => value.toMap());
+      map['apiTargets'] =
+          pulumi.Input.encodeList<V2ApiTarget, Map<String, dynamic>>(
+              apiTargetsValue, (value) => value.toMap());
     }
     final browserKeyRestrictionsValue = browserKeyRestrictions;
     if (browserKeyRestrictionsValue != null) {
@@ -66,7 +67,7 @@ class V2Restrictions {
               (map['androidKeyRestrictions'] as Map).cast<String, dynamic>()),
       apiTargets: map['apiTargets'] == null
           ? null
-          : Input.decodeList<V2ApiTarget>(
+          : pulumi.Input.decodeList<V2ApiTarget>(
               map['apiTargets'],
               (value) =>
                   V2ApiTarget.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for InstanceAttachment.
 class InstanceAttachmentArgs {
   /// ID of the attached environment.
-  final Input<String>? environment;
-  final Input<String> instanceId;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? environment;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> organizationId;
 
   InstanceAttachmentArgs({
     this.environment,
@@ -28,9 +28,9 @@ class InstanceAttachmentArgs {
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentArgs(
-      environment: Input.asOptionalInput<String>(map['environment']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      environment: pulumi.Input.asOptionalInput<String>(map['environment']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

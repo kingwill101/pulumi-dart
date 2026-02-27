@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAutomation.
 class GetAutomationArgs {
-  final Input<String> automationId;
-  final Input<String> deliveryPipelineId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> automationId;
+  final pulumi.Input<String> deliveryPipelineId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetAutomationArgs({
     required this.automationId,
@@ -30,10 +30,11 @@ class GetAutomationArgs {
 
   factory GetAutomationArgs.fromMap(Map<String, dynamic> map) {
     return GetAutomationArgs(
-      automationId: Input.asInput<String>(map['automationId']),
-      deliveryPipelineId: Input.asInput<String>(map['deliveryPipelineId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      automationId: pulumi.Input.asInput<String>(map['automationId']),
+      deliveryPipelineId:
+          pulumi.Input.asInput<String>(map['deliveryPipelineId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

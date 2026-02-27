@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPrivateCloudClusterIamPolicy.
 class GetPrivateCloudClusterIamPolicyArgs {
-  final Input<String> clusterId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String> privateCloudId;
-  final Input<String>? project;
+  final pulumi.Input<String> clusterId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String> privateCloudId;
+  final pulumi.Input<String>? project;
 
   GetPrivateCloudClusterIamPolicyArgs({
     required this.clusterId,
@@ -37,12 +37,12 @@ class GetPrivateCloudClusterIamPolicyArgs {
   factory GetPrivateCloudClusterIamPolicyArgs.fromMap(
       Map<String, dynamic> map) {
     return GetPrivateCloudClusterIamPolicyArgs(
-      clusterId: Input.asInput<String>(map['clusterId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      privateCloudId: Input.asInput<String>(map['privateCloudId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      clusterId: pulumi.Input.asInput<String>(map['clusterId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      privateCloudId: pulumi.Input.asInput<String>(map['privateCloudId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sbom_reference_intoto_predicate.dart';
 import 'subject.dart';
 
@@ -37,7 +37,7 @@ class SbomReferenceIntotoPayload {
     }
     final subjectValue = subject;
     if (subjectValue != null) {
-      map['subject'] = Input.encodeList<Subject, Map<String, dynamic>>(
+      map['subject'] = pulumi.Input.encodeList<Subject, Map<String, dynamic>>(
           subjectValue, (value) => value.toMap());
     }
     final typeValue = type;
@@ -57,7 +57,7 @@ class SbomReferenceIntotoPayload {
           map['predicateType'] == null ? null : map['predicateType'] as String,
       subject: map['subject'] == null
           ? null
-          : Input.decodeList<Subject>(
+          : pulumi.Input.decodeList<Subject>(
               map['subject'],
               (value) =>
                   Subject.fromMap((value as Map).cast<String, dynamic>())),

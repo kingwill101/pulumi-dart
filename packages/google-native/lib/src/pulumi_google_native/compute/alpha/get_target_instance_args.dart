@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTargetInstance.
 class GetTargetInstanceArgs {
-  final Input<String>? project;
-  final Input<String> targetInstance;
-  final Input<String> zone;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> targetInstance;
+  final pulumi.Input<String> zone;
 
   GetTargetInstanceArgs({
     this.project,
@@ -27,9 +27,9 @@ class GetTargetInstanceArgs {
 
   factory GetTargetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetInstanceArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      targetInstance: Input.asInput<String>(map['targetInstance']),
-      zone: Input.asInput<String>(map['zone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      targetInstance: pulumi.Input.asInput<String>(map['targetInstance']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

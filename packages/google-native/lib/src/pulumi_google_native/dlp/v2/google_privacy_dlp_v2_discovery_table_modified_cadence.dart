@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_discovery_table_modified_cadence_frequency.dart';
 import 'google_privacy_dlp_v2_discovery_table_modified_cadence_types_item.dart';
 
@@ -25,7 +25,7 @@ class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
     }
     final typesValue = types;
     if (typesValue != null) {
-      map['types'] = Input.encodeList<
+      map['types'] = pulumi.Input.encodeList<
           GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem,
           String>(typesValue, (value) => value.value);
     }
@@ -41,7 +41,7 @@ class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
               map['frequency'] as String),
       types: map['types'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem>(
               map['types'],
               (value) =>

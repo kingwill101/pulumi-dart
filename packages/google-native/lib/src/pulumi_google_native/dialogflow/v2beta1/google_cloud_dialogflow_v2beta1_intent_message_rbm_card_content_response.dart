@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_card_content_rbm_media_response.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_suggestion_response.dart';
 
@@ -31,7 +31,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse {
     final map = <String, dynamic>{};
     map['description'] = description;
     map['media'] = media.toMap();
-    map['suggestions'] = Input.encodeList<
+    map['suggestions'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse,
         Map<String, dynamic>>(suggestions, (value) => value.toMap());
     map['title'] = title;
@@ -45,7 +45,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse {
       media:
           GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse
               .fromMap((map['media'] as Map).cast<String, dynamic>()),
-      suggestions: Input.decodeList<
+      suggestions: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>(
           map['suggestions'],
           (value) =>

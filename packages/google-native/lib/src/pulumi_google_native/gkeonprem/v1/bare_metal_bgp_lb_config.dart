@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_bgp_peer_config.dart';
 import 'bare_metal_load_balancer_address_pool.dart';
 import 'bare_metal_load_balancer_node_pool_config.dart';
@@ -28,11 +28,12 @@ class BareMetalBgpLbConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['addressPools'] = Input.encodeList<BareMetalLoadBalancerAddressPool,
+    map['addressPools'] = pulumi.Input.encodeList<
+        BareMetalLoadBalancerAddressPool,
         Map<String, dynamic>>(addressPools, (value) => value.toMap());
     map['asn'] = asn;
     map['bgpPeerConfigs'] =
-        Input.encodeList<BareMetalBgpPeerConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<BareMetalBgpPeerConfig, Map<String, dynamic>>(
             bgpPeerConfigs, (value) => value.toMap());
     final loadBalancerNodePoolConfigValue = loadBalancerNodePoolConfig;
     if (loadBalancerNodePoolConfigValue != null) {
@@ -44,12 +45,12 @@ class BareMetalBgpLbConfig {
 
   factory BareMetalBgpLbConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalBgpLbConfig(
-      addressPools: Input.decodeList<BareMetalLoadBalancerAddressPool>(
+      addressPools: pulumi.Input.decodeList<BareMetalLoadBalancerAddressPool>(
           map['addressPools'],
           (value) => BareMetalLoadBalancerAddressPool.fromMap(
               (value as Map).cast<String, dynamic>())),
       asn: map['asn'] as String,
-      bgpPeerConfigs: Input.decodeList<BareMetalBgpPeerConfig>(
+      bgpPeerConfigs: pulumi.Input.decodeList<BareMetalBgpPeerConfig>(
           map['bgpPeerConfigs'],
           (value) => BareMetalBgpPeerConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

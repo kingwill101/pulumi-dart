@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sdk_bug_response.dart';
 
 /// The version of the SDK used to run the job.
@@ -26,7 +26,7 @@ class SdkVersionResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bugs'] = Input.encodeList<SdkBugResponse, Map<String, dynamic>>(
+    map['bugs'] = pulumi.Input.encodeList<SdkBugResponse, Map<String, dynamic>>(
         bugs, (value) => value.toMap());
     map['sdkSupportStatus'] = sdkSupportStatus;
     map['version'] = version;
@@ -36,7 +36,7 @@ class SdkVersionResponse {
 
   factory SdkVersionResponse.fromMap(Map<String, dynamic> map) {
     return SdkVersionResponse(
-      bugs: Input.decodeList<SdkBugResponse>(
+      bugs: pulumi.Input.decodeList<SdkBugResponse>(
           map['bugs'],
           (value) =>
               SdkBugResponse.fromMap((value as Map).cast<String, dynamic>())),

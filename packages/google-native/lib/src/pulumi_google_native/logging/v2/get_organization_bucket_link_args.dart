@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationBucketLink.
 class GetOrganizationBucketLinkArgs {
-  final Input<String> bucketId;
-  final Input<String> linkId;
-  final Input<String> location;
-  final Input<String> organizationId;
+  final pulumi.Input<String> bucketId;
+  final pulumi.Input<String> linkId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> organizationId;
 
   GetOrganizationBucketLinkArgs({
     required this.bucketId,
@@ -27,10 +27,10 @@ class GetOrganizationBucketLinkArgs {
 
   factory GetOrganizationBucketLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationBucketLinkArgs(
-      bucketId: Input.asInput<String>(map['bucketId']),
-      linkId: Input.asInput<String>(map['linkId']),
-      location: Input.asInput<String>(map['location']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      bucketId: pulumi.Input.asInput<String>(map['bucketId']),
+      linkId: pulumi.Input.asInput<String>(map['linkId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

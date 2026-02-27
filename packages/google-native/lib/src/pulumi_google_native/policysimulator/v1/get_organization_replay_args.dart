@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationReplay.
 class GetOrganizationReplayArgs {
-  final Input<String> location;
-  final Input<String> organizationId;
-  final Input<String> replayId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> replayId;
 
   GetOrganizationReplayArgs({
     required this.location,
@@ -24,9 +24,9 @@ class GetOrganizationReplayArgs {
 
   factory GetOrganizationReplayArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationReplayArgs(
-      location: Input.asInput<String>(map['location']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      replayId: Input.asInput<String>(map['replayId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      replayId: pulumi.Input.asInput<String>(map['replayId']),
     );
   }
 }

@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'compute_scheduling2.dart';
-import 'network_interface7.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'compute_scheduling_vmmigration_v1alpha1.dart';
+import 'network_interface_vmmigration_v1alpha1.dart';
 import 'target_vmdetails_disk_type.dart';
 import 'target_vmdetails_license_type.dart';
 
 /// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
 class TargetVMDetails {
   /// Compute instance scheduling information (if empty default is used).
-  final ComputeScheduling2? computeScheduling;
+  final ComputeSchedulingVmmigrationV1alpha1? computeScheduling;
 
   /// The disk type to use in the VM.
   final TargetVMDetailsDiskType? diskType;
@@ -42,7 +42,7 @@ class TargetVMDetails {
   final String? network;
 
   /// List of NICs connected to this VM.
-  final List<NetworkInterface7>? networkInterfaces;
+  final List<NetworkInterfaceVmmigrationV1alpha1>? networkInterfaces;
 
   /// A list of network tags to associate with the VM.
   final List<String>? networkTags;
@@ -131,9 +131,9 @@ class TargetVMDetails {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] =
-          Input.encodeList<NetworkInterface7, Map<String, dynamic>>(
-              networkInterfacesValue, (value) => value.toMap());
+      map['networkInterfaces'] = pulumi.Input.encodeList<
+              NetworkInterfaceVmmigrationV1alpha1, Map<String, dynamic>>(
+          networkInterfacesValue, (value) => value.toMap());
     }
     final networkTagsValue = networkTags;
     if (networkTagsValue != null) {
@@ -166,7 +166,7 @@ class TargetVMDetails {
     return TargetVMDetails(
       computeScheduling: map['computeScheduling'] == null
           ? null
-          : ComputeScheduling2.fromMap(
+          : ComputeSchedulingVmmigrationV1alpha1.fromMap(
               (map['computeScheduling'] as Map).cast<String, dynamic>()),
       diskType: map['diskType'] == null
           ? null
@@ -193,9 +193,9 @@ class TargetVMDetails {
       network: map['network'] == null ? null : map['network'] as String,
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<NetworkInterface7>(
+          : pulumi.Input.decodeList<NetworkInterfaceVmmigrationV1alpha1>(
               map['networkInterfaces'],
-              (value) => NetworkInterface7.fromMap(
+              (value) => NetworkInterfaceVmmigrationV1alpha1.fromMap(
                   (value as Map).cast<String, dynamic>())),
       networkTags: map['networkTags'] == null
           ? null

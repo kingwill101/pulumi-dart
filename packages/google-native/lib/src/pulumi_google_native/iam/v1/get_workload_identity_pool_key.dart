@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_workload_identity_pool_key_args.dart';
 import 'get_workload_identity_pool_key_result.dart';
 
 /// Gets an individual WorkloadIdentityPoolProviderKey.
 Future<GetWorkloadIdentityPoolKeyResult> getWorkloadIdentityPoolKey(
   GetWorkloadIdentityPoolKeyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:iam/v1:getWorkloadIdentityPoolKey',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadIdentityPoolKeyResult.fromMap(result);
 }

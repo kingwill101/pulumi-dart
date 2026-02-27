@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config_response3.dart';
+import 'logging_config_response_dataproc_v1.dart';
 
 /// A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
 class PySparkJobResponse {
@@ -17,7 +17,7 @@ class PySparkJobResponse {
   final List<String> jarFileUris;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfigResponse3 loggingConfig;
+  final LoggingConfigResponseDataprocV1 loggingConfig;
 
   /// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
   final String mainPythonFileUri;
@@ -58,7 +58,7 @@ class PySparkJobResponse {
       args: (map['args'] as List).cast<String>(),
       fileUris: (map['fileUris'] as List).cast<String>(),
       jarFileUris: (map['jarFileUris'] as List).cast<String>(),
-      loggingConfig: LoggingConfigResponse3.fromMap(
+      loggingConfig: LoggingConfigResponseDataprocV1.fromMap(
           (map['loggingConfig'] as Map).cast<String, dynamic>()),
       mainPythonFileUri: map['mainPythonFileUri'] as String,
       properties: (map['properties'] as Map).cast<String, String>(),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'version_source.dart';
 
 /// Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
@@ -24,8 +24,9 @@ class Hl7SchemaConfig {
     }
     final versionValue = version;
     if (versionValue != null) {
-      map['version'] = Input.encodeList<VersionSource, Map<String, dynamic>>(
-          versionValue, (value) => value.toMap());
+      map['version'] =
+          pulumi.Input.encodeList<VersionSource, Map<String, dynamic>>(
+              versionValue, (value) => value.toMap());
     }
     return map;
   }
@@ -37,7 +38,7 @@ class Hl7SchemaConfig {
           : (map['messageSchemaConfigs'] as Map).cast<String, String>(),
       version: map['version'] == null
           ? null
-          : Input.decodeList<VersionSource>(
+          : pulumi.Input.decodeList<VersionSource>(
               map['version'],
               (value) => VersionSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

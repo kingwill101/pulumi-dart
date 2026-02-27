@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'verification_rule.dart';
 
 /// A SLSA provenance attestation check, which ensures that images are built by a trusted builder using source code from its trusted repositories only.
@@ -16,8 +16,9 @@ class SlsaCheck {
     final map = <String, dynamic>{};
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<VerificationRule, Map<String, dynamic>>(
-          rulesValue, (value) => value.toMap());
+      map['rules'] =
+          pulumi.Input.encodeList<VerificationRule, Map<String, dynamic>>(
+              rulesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -26,7 +27,7 @@ class SlsaCheck {
     return SlsaCheck(
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<VerificationRule>(
+          : pulumi.Input.decodeList<VerificationRule>(
               map['rules'],
               (value) => VerificationRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

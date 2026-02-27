@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'clustering.dart';
 import 'connection_property.dart';
 import 'destination_table_properties.dart';
@@ -177,7 +177,7 @@ class JobConfigurationLoad {
     final connectionPropertiesValue = connectionProperties;
     if (connectionPropertiesValue != null) {
       map['connectionProperties'] =
-          Input.encodeList<ConnectionProperty, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ConnectionProperty, Map<String, dynamic>>(
               connectionPropertiesValue, (value) => value.toMap());
     }
     final createDispositionValue = createDisposition;
@@ -322,7 +322,7 @@ class JobConfigurationLoad {
               (map['clustering'] as Map).cast<String, dynamic>()),
       connectionProperties: map['connectionProperties'] == null
           ? null
-          : Input.decodeList<ConnectionProperty>(
+          : pulumi.Input.decodeList<ConnectionProperty>(
               map['connectionProperties'],
               (value) => ConnectionProperty.fromMap(
                   (value as Map).cast<String, dynamic>())),

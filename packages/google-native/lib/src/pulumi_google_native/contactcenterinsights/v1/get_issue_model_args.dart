@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIssueModel.
 class GetIssueModelArgs {
-  final Input<String> issueModelId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> issueModelId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetIssueModelArgs({
     required this.issueModelId,
@@ -27,9 +27,9 @@ class GetIssueModelArgs {
 
   factory GetIssueModelArgs.fromMap(Map<String, dynamic> map) {
     return GetIssueModelArgs(
-      issueModelId: Input.asInput<String>(map['issueModelId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      issueModelId: pulumi.Input.asInput<String>(map['issueModelId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

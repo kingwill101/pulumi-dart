@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'upgrade_distribution_response.dart';
 import 'version_response.dart';
 import 'windows_update_response.dart';
@@ -28,9 +28,8 @@ class UpgradeNoteResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['distributions'] =
-        Input.encodeList<UpgradeDistributionResponse, Map<String, dynamic>>(
-            distributions, (value) => value.toMap());
+    map['distributions'] = pulumi.Input.encodeList<UpgradeDistributionResponse,
+        Map<String, dynamic>>(distributions, (value) => value.toMap());
     map['package'] = package;
     map['version'] = version.toMap();
     map['windowsUpdate'] = windowsUpdate.toMap();
@@ -39,7 +38,7 @@ class UpgradeNoteResponse {
 
   factory UpgradeNoteResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeNoteResponse(
-      distributions: Input.decodeList<UpgradeDistributionResponse>(
+      distributions: pulumi.Input.decodeList<UpgradeDistributionResponse>(
           map['distributions'],
           (value) => UpgradeDistributionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

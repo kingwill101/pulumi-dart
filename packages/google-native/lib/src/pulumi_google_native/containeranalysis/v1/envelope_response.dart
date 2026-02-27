@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'envelope_signature_response.dart';
 
 /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
@@ -19,9 +19,8 @@ class EnvelopeResponse {
     final map = <String, dynamic>{};
     map['payload'] = payload;
     map['payloadType'] = payloadType;
-    map['signatures'] =
-        Input.encodeList<EnvelopeSignatureResponse, Map<String, dynamic>>(
-            signatures, (value) => value.toMap());
+    map['signatures'] = pulumi.Input.encodeList<EnvelopeSignatureResponse,
+        Map<String, dynamic>>(signatures, (value) => value.toMap());
     return map;
   }
 
@@ -29,7 +28,7 @@ class EnvelopeResponse {
     return EnvelopeResponse(
       payload: map['payload'] as String,
       payloadType: map['payloadType'] as String,
-      signatures: Input.decodeList<EnvelopeSignatureResponse>(
+      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponse>(
           map['signatures'],
           (value) => EnvelopeSignatureResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

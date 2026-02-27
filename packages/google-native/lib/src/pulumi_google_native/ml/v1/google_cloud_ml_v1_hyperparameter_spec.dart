@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_hyperparameter_spec_algorithm.dart';
 import 'google_cloud_ml_v1_hyperparameter_spec_goal.dart';
 import 'google_cloud_ml_v1_parameter_spec.dart';
@@ -73,9 +73,8 @@ class GoogleCloudMlV1HyperparameterSpec {
     if (maxTrialsValue != null) {
       map['maxTrials'] = maxTrialsValue;
     }
-    map['params'] =
-        Input.encodeList<GoogleCloudMlV1ParameterSpec, Map<String, dynamic>>(
-            params, (value) => value.toMap());
+    map['params'] = pulumi.Input.encodeList<GoogleCloudMlV1ParameterSpec,
+        Map<String, dynamic>>(params, (value) => value.toMap());
     final resumePreviousJobIdValue = resumePreviousJobId;
     if (resumePreviousJobIdValue != null) {
       map['resumePreviousJobId'] = resumePreviousJobIdValue;
@@ -103,7 +102,7 @@ class GoogleCloudMlV1HyperparameterSpec {
           ? null
           : map['maxParallelTrials'] as int,
       maxTrials: map['maxTrials'] == null ? null : map['maxTrials'] as int,
-      params: Input.decodeList<GoogleCloudMlV1ParameterSpec>(
+      params: pulumi.Input.decodeList<GoogleCloudMlV1ParameterSpec>(
           map['params'],
           (value) => GoogleCloudMlV1ParameterSpec.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_error_response_policy_custom_error_response_rule_response.dart';
 
 /// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
@@ -19,7 +19,7 @@ class CustomErrorResponsePolicyResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['errorResponseRules'] = Input.encodeList<
+    map['errorResponseRules'] = pulumi.Input.encodeList<
         CustomErrorResponsePolicyCustomErrorResponseRuleResponse,
         Map<String, dynamic>>(errorResponseRules, (value) => value.toMap());
     map['errorService'] = errorService;
@@ -28,7 +28,7 @@ class CustomErrorResponsePolicyResponse {
 
   factory CustomErrorResponsePolicyResponse.fromMap(Map<String, dynamic> map) {
     return CustomErrorResponsePolicyResponse(
-      errorResponseRules: Input.decodeList<
+      errorResponseRules: pulumi.Input.decodeList<
               CustomErrorResponsePolicyCustomErrorResponseRuleResponse>(
           map['errorResponseRules'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tile.dart';
 
 /// A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
@@ -24,7 +24,7 @@ class MosaicLayout {
     }
     final tilesValue = tiles;
     if (tilesValue != null) {
-      map['tiles'] = Input.encodeList<Tile, Map<String, dynamic>>(
+      map['tiles'] = pulumi.Input.encodeList<Tile, Map<String, dynamic>>(
           tilesValue, (value) => value.toMap());
     }
     return map;
@@ -35,7 +35,7 @@ class MosaicLayout {
       columns: map['columns'] == null ? null : map['columns'] as int,
       tiles: map['tiles'] == null
           ? null
-          : Input.decodeList<Tile>(map['tiles'],
+          : pulumi.Input.decodeList<Tile>(map['tiles'],
               (value) => Tile.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

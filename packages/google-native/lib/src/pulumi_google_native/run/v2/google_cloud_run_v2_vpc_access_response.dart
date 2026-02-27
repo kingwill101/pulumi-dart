@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v2_network_interface_response.dart';
 
 /// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
@@ -24,7 +24,7 @@ class GoogleCloudRunV2VpcAccessResponse {
     final map = <String, dynamic>{};
     map['connector'] = connector;
     map['egress'] = egress;
-    map['networkInterfaces'] = Input.encodeList<
+    map['networkInterfaces'] = pulumi.Input.encodeList<
         GoogleCloudRunV2NetworkInterfaceResponse,
         Map<String, dynamic>>(networkInterfaces, (value) => value.toMap());
     return map;
@@ -35,7 +35,7 @@ class GoogleCloudRunV2VpcAccessResponse {
       connector: map['connector'] as String,
       egress: map['egress'] as String,
       networkInterfaces:
-          Input.decodeList<GoogleCloudRunV2NetworkInterfaceResponse>(
+          pulumi.Input.decodeList<GoogleCloudRunV2NetworkInterfaceResponse>(
               map['networkInterfaces'],
               (value) => GoogleCloudRunV2NetworkInterfaceResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

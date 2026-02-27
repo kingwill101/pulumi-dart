@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_entity_normalized_value.dart';
 import 'google_cloud_documentai_v1_document_page_anchor.dart';
 import 'google_cloud_documentai_v1_document_provenance.dart';
@@ -83,7 +83,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
     }
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.encodeList<
+      map['properties'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentEntity,
           Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
@@ -122,7 +122,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
               (map['pageAnchor'] as Map).cast<String, dynamic>()),
       properties: map['properties'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentEntity>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentEntity>(
               map['properties'],
               (value) => GoogleCloudDocumentaiV1DocumentEntity.fromMap(
                   (value as Map).cast<String, dynamic>())),

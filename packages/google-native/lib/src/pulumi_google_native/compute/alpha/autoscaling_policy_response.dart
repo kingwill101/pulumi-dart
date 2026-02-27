@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscaling_policy_cpu_utilization_response.dart';
 import 'autoscaling_policy_custom_metric_utilization_response.dart';
 import 'autoscaling_policy_load_balancing_utilization_response.dart';
@@ -54,7 +54,7 @@ class AutoscalingPolicyResponse {
     final map = <String, dynamic>{};
     map['coolDownPeriodSec'] = coolDownPeriodSec;
     map['cpuUtilization'] = cpuUtilization.toMap();
-    map['customMetricUtilizations'] = Input.encodeList<
+    map['customMetricUtilizations'] = pulumi.Input.encodeList<
             AutoscalingPolicyCustomMetricUtilizationResponse,
             Map<String, dynamic>>(
         customMetricUtilizations, (value) => value.toMap());
@@ -73,12 +73,11 @@ class AutoscalingPolicyResponse {
       coolDownPeriodSec: map['coolDownPeriodSec'] as int,
       cpuUtilization: AutoscalingPolicyCpuUtilizationResponse.fromMap(
           (map['cpuUtilization'] as Map).cast<String, dynamic>()),
-      customMetricUtilizations:
-          Input.decodeList<AutoscalingPolicyCustomMetricUtilizationResponse>(
-              map['customMetricUtilizations'],
-              (value) =>
-                  AutoscalingPolicyCustomMetricUtilizationResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      customMetricUtilizations: pulumi.Input.decodeList<
+              AutoscalingPolicyCustomMetricUtilizationResponse>(
+          map['customMetricUtilizations'],
+          (value) => AutoscalingPolicyCustomMetricUtilizationResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       loadBalancingUtilization:
           AutoscalingPolicyLoadBalancingUtilizationResponse.fromMap(
               (map['loadBalancingUtilization'] as Map).cast<String, dynamic>()),

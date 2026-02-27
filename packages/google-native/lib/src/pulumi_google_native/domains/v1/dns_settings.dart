@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_dns.dart';
 import 'glue_record.dart';
 import 'google_domains_dns.dart';
@@ -30,8 +30,9 @@ class DnsSettings {
     }
     final glueRecordsValue = glueRecords;
     if (glueRecordsValue != null) {
-      map['glueRecords'] = Input.encodeList<GlueRecord, Map<String, dynamic>>(
-          glueRecordsValue, (value) => value.toMap());
+      map['glueRecords'] =
+          pulumi.Input.encodeList<GlueRecord, Map<String, dynamic>>(
+              glueRecordsValue, (value) => value.toMap());
     }
     final googleDomainsDnsValue = googleDomainsDns;
     if (googleDomainsDnsValue != null) {
@@ -48,7 +49,7 @@ class DnsSettings {
               (map['customDns'] as Map).cast<String, dynamic>()),
       glueRecords: map['glueRecords'] == null
           ? null
-          : Input.decodeList<GlueRecord>(
+          : pulumi.Input.decodeList<GlueRecord>(
               map['glueRecords'],
               (value) =>
                   GlueRecord.fromMap((value as Map).cast<String, dynamic>())),

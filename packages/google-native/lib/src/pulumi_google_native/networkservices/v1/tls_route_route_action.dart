@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tls_route_route_destination.dart';
 
 /// The specifications for routing traffic and applying associated policies.
@@ -15,14 +15,14 @@ class TlsRouteRouteAction {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['destinations'] =
-        Input.encodeList<TlsRouteRouteDestination, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TlsRouteRouteDestination, Map<String, dynamic>>(
             destinations, (value) => value.toMap());
     return map;
   }
 
   factory TlsRouteRouteAction.fromMap(Map<String, dynamic> map) {
     return TlsRouteRouteAction(
-      destinations: Input.decodeList<TlsRouteRouteDestination>(
+      destinations: pulumi.Input.decodeList<TlsRouteRouteDestination>(
           map['destinations'],
           (value) => TlsRouteRouteDestination.fromMap(
               (value as Map).cast<String, dynamic>())),

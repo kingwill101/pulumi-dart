@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_response.dart';
 import 'attached_disk_response.dart';
 import 'disk_response.dart';
@@ -41,11 +41,12 @@ class InstancePolicyResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['accelerators'] =
-        Input.encodeList<AcceleratorResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AcceleratorResponse, Map<String, dynamic>>(
             accelerators, (value) => value.toMap());
     map['bootDisk'] = bootDisk.toMap();
-    map['disks'] = Input.encodeList<AttachedDiskResponse, Map<String, dynamic>>(
-        disks, (value) => value.toMap());
+    map['disks'] =
+        pulumi.Input.encodeList<AttachedDiskResponse, Map<String, dynamic>>(
+            disks, (value) => value.toMap());
     map['machineType'] = machineType;
     map['minCpuPlatform'] = minCpuPlatform;
     map['provisioningModel'] = provisioningModel;
@@ -55,13 +56,13 @@ class InstancePolicyResponse {
 
   factory InstancePolicyResponse.fromMap(Map<String, dynamic> map) {
     return InstancePolicyResponse(
-      accelerators: Input.decodeList<AcceleratorResponse>(
+      accelerators: pulumi.Input.decodeList<AcceleratorResponse>(
           map['accelerators'],
           (value) => AcceleratorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       bootDisk: DiskResponse.fromMap(
           (map['bootDisk'] as Map).cast<String, dynamic>()),
-      disks: Input.decodeList<AttachedDiskResponse>(
+      disks: pulumi.Input.decodeList<AttachedDiskResponse>(
           map['disks'],
           (value) => AttachedDiskResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

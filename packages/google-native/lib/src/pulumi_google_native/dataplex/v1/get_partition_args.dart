@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPartition.
 class GetPartitionArgs {
-  final Input<String> entityId;
-  final Input<String> lakeId;
-  final Input<String> location;
-  final Input<String> partitionId;
-  final Input<String>? project;
-  final Input<String> zone;
+  final pulumi.Input<String> entityId;
+  final pulumi.Input<String> lakeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> partitionId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> zone;
 
   GetPartitionArgs({
     required this.entityId,
@@ -36,12 +36,12 @@ class GetPartitionArgs {
 
   factory GetPartitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPartitionArgs(
-      entityId: Input.asInput<String>(map['entityId']),
-      lakeId: Input.asInput<String>(map['lakeId']),
-      location: Input.asInput<String>(map['location']),
-      partitionId: Input.asInput<String>(map['partitionId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asInput<String>(map['zone']),
+      entityId: pulumi.Input.asInput<String>(map['entityId']),
+      lakeId: pulumi.Input.asInput<String>(map['lakeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      partitionId: pulumi.Input.asInput<String>(map['partitionId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

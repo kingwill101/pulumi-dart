@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'schema_config_response2.dart';
+import 'schema_config_response_healthcare_v1beta1.dart';
 
 /// The configuration for exporting to BigQuery.
 class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse {
@@ -11,7 +11,7 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse {
   final bool force;
 
   /// The configuration for the exported BigQuery schema.
-  final SchemaConfigResponse2 schemaConfig;
+  final SchemaConfigResponseHealthcareV1beta1 schemaConfig;
 
   /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
   final String writeDisposition;
@@ -37,7 +37,7 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse {
     return GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse(
       datasetUri: map['datasetUri'] as String,
       force: map['force'] as bool,
-      schemaConfig: SchemaConfigResponse2.fromMap(
+      schemaConfig: SchemaConfigResponseHealthcareV1beta1.fromMap(
           (map['schemaConfig'] as Map).cast<String, dynamic>()),
       writeDisposition: map['writeDisposition'] as String,
     );

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_custom_info_type_exclusion_type.dart';
 import 'google_privacy_dlp_v2_custom_info_type_likelihood.dart';
 import 'google_privacy_dlp_v2_detection_rule.dart';
@@ -55,7 +55,8 @@ class GooglePrivacyDlpV2CustomInfoType {
     final map = <String, dynamic>{};
     final detectionRulesValue = detectionRules;
     if (detectionRulesValue != null) {
-      map['detectionRules'] = Input.encodeList<GooglePrivacyDlpV2DetectionRule,
+      map['detectionRules'] = pulumi.Input.encodeList<
+          GooglePrivacyDlpV2DetectionRule,
           Map<String, dynamic>>(detectionRulesValue, (value) => value.toMap());
     }
     final dictionaryValue = dictionary;
@@ -97,7 +98,7 @@ class GooglePrivacyDlpV2CustomInfoType {
     return GooglePrivacyDlpV2CustomInfoType(
       detectionRules: map['detectionRules'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2DetectionRule>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2DetectionRule>(
               map['detectionRules'],
               (value) => GooglePrivacyDlpV2DetectionRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,43 +1,43 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'document_schema_args.dart';
 import 'google_cloud_contentwarehouse_v1_property_definition_response.dart';
 
 /// Creates a document schema.
-class DocumentSchema extends CustomResource {
+class DocumentSchema extends pulumi.CustomResource {
   /// The time when the document schema is created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Schema description.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Name of the schema given by the user. Must be unique per project.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Document Type, true refers the document is a folder, otherwise it is a typical document.
-  late final Output<bool> documentIsFolder;
-  late final Output<String> location;
+  late final pulumi.Output<bool> documentIsFolder;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// Document details.
-  late final Output<
-          List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>
+  late final pulumi
+      .Output<List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>
       propertyDefinitions;
 
   /// The time when the document schema is last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DocumentSchema(
     String name, {
     DocumentSchemaArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:contentwarehouse/v1:DocumentSchema',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String>('description');

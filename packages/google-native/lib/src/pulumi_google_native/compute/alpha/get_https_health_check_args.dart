@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHttpsHealthCheck.
 class GetHttpsHealthCheckArgs {
-  final Input<String> httpsHealthCheck;
-  final Input<String>? project;
+  final pulumi.Input<String> httpsHealthCheck;
+  final pulumi.Input<String>? project;
 
   GetHttpsHealthCheckArgs({
     required this.httpsHealthCheck,
@@ -24,8 +24,8 @@ class GetHttpsHealthCheckArgs {
 
   factory GetHttpsHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return GetHttpsHealthCheckArgs(
-      httpsHealthCheck: Input.asInput<String>(map['httpsHealthCheck']),
-      project: Input.asOptionalInput<String>(map['project']),
+      httpsHealthCheck: pulumi.Input.asInput<String>(map['httpsHealthCheck']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'external_ref_response.dart';
-import 'license_response2.dart';
+import 'license_response_containeranalysis_v1alpha1.dart';
 
 /// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
 class PackageInfoNoteResponse {
@@ -34,7 +34,7 @@ class PackageInfoNoteResponse {
   final String homePage;
 
   /// List the licenses that have been declared by the authors of the package
-  final LicenseResponse2 licenseDeclared;
+  final LicenseResponseContaineranalysisV1alpha1 licenseDeclared;
 
   /// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
   final String originator;
@@ -86,7 +86,7 @@ class PackageInfoNoteResponse {
     map['detailedDescription'] = detailedDescription;
     map['downloadLocation'] = downloadLocation;
     map['externalRefs'] =
-        Input.encodeList<ExternalRefResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ExternalRefResponse, Map<String, dynamic>>(
             externalRefs, (value) => value.toMap());
     map['filesLicenseInfo'] = filesLicenseInfo;
     map['homePage'] = homePage;
@@ -109,13 +109,13 @@ class PackageInfoNoteResponse {
       copyright: map['copyright'] as String,
       detailedDescription: map['detailedDescription'] as String,
       downloadLocation: map['downloadLocation'] as String,
-      externalRefs: Input.decodeList<ExternalRefResponse>(
+      externalRefs: pulumi.Input.decodeList<ExternalRefResponse>(
           map['externalRefs'],
           (value) => ExternalRefResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       filesLicenseInfo: (map['filesLicenseInfo'] as List).cast<String>(),
       homePage: map['homePage'] as String,
-      licenseDeclared: LicenseResponse2.fromMap(
+      licenseDeclared: LicenseResponseContaineranalysisV1alpha1.fromMap(
           (map['licenseDeclared'] as Map).cast<String, dynamic>()),
       originator: map['originator'] as String,
       packageType: map['packageType'] as String,

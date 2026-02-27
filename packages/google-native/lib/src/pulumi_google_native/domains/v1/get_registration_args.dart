@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegistration.
 class GetRegistrationArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> registrationId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> registrationId;
 
   GetRegistrationArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetRegistrationArgs {
 
   factory GetRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistrationArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      registrationId: Input.asInput<String>(map['registrationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      registrationId: pulumi.Input.asInput<String>(map['registrationId']),
     );
   }
 }

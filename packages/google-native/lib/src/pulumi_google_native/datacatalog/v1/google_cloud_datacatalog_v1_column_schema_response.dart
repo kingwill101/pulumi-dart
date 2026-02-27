@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_column_schema_looker_column_spec_response.dart';
 
 /// A column within a schema. Columns can be nested inside other columns.
@@ -59,7 +59,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse {
     map['lookerColumnSpec'] = lookerColumnSpec.toMap();
     map['mode'] = mode;
     map['ordinalPosition'] = ordinalPosition;
-    map['subcolumns'] = Input.encodeList<
+    map['subcolumns'] = pulumi.Input.encodeList<
         GoogleCloudDatacatalogV1ColumnSchemaResponse,
         Map<String, dynamic>>(subcolumns, (value) => value.toMap());
     map['type'] = type;
@@ -80,7 +80,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse {
       mode: map['mode'] as String,
       ordinalPosition: map['ordinalPosition'] as int,
       subcolumns:
-          Input.decodeList<GoogleCloudDatacatalogV1ColumnSchemaResponse>(
+          pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchemaResponse>(
               map['subcolumns'],
               (value) => GoogleCloudDatacatalogV1ColumnSchemaResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

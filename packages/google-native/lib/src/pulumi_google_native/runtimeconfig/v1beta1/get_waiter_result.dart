@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'end_condition_response.dart';
-import 'status_response25.dart';
+import 'status_response_runtimeconfig_v1beta1.dart';
 
 /// Result data returned by getWaiter.
 class GetWaiterResult {
@@ -12,7 +12,7 @@ class GetWaiterResult {
   final bool done;
 
   /// If the waiter ended due to a failure or timeout, this value will be set.
-  final StatusResponse25 error;
+  final StatusResponseRuntimeconfigV1beta1 error;
 
   /// [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
   final EndConditionResponse failure;
@@ -52,7 +52,7 @@ class GetWaiterResult {
     return GetWaiterResult(
       createTime: map['createTime'] as String,
       done: map['done'] as bool,
-      error: StatusResponse25.fromMap(
+      error: StatusResponseRuntimeconfigV1beta1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       failure: EndConditionResponse.fromMap(
           (map['failure'] as Map).cast<String, dynamic>()),

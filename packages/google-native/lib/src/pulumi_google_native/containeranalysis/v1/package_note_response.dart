@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'digest_response.dart';
 import 'distribution_response.dart';
 import 'license_response.dart';
@@ -60,10 +60,11 @@ class PackageNoteResponse {
     map['architecture'] = architecture;
     map['cpeUri'] = cpeUri;
     map['description'] = description;
-    map['digest'] = Input.encodeList<DigestResponse, Map<String, dynamic>>(
-        digest, (value) => value.toMap());
+    map['digest'] =
+        pulumi.Input.encodeList<DigestResponse, Map<String, dynamic>>(
+            digest, (value) => value.toMap());
     map['distribution'] =
-        Input.encodeList<DistributionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DistributionResponse, Map<String, dynamic>>(
             distribution, (value) => value.toMap());
     map['license'] = license.toMap();
     map['maintainer'] = maintainer;
@@ -79,11 +80,11 @@ class PackageNoteResponse {
       architecture: map['architecture'] as String,
       cpeUri: map['cpeUri'] as String,
       description: map['description'] as String,
-      digest: Input.decodeList<DigestResponse>(
+      digest: pulumi.Input.decodeList<DigestResponse>(
           map['digest'],
           (value) =>
               DigestResponse.fromMap((value as Map).cast<String, dynamic>())),
-      distribution: Input.decodeList<DistributionResponse>(
+      distribution: pulumi.Input.decodeList<DistributionResponse>(
           map['distribution'],
           (value) => DistributionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

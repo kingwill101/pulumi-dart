@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fingerprint.dart';
 import 'layer.dart';
 
@@ -22,7 +22,7 @@ class ImageOccurrence {
     map['fingerprint'] = fingerprint.toMap();
     final layerInfoValue = layerInfo;
     if (layerInfoValue != null) {
-      map['layerInfo'] = Input.encodeList<Layer, Map<String, dynamic>>(
+      map['layerInfo'] = pulumi.Input.encodeList<Layer, Map<String, dynamic>>(
           layerInfoValue, (value) => value.toMap());
     }
     return map;
@@ -34,7 +34,7 @@ class ImageOccurrence {
           (map['fingerprint'] as Map).cast<String, dynamic>()),
       layerInfo: map['layerInfo'] == null
           ? null
-          : Input.decodeList<Layer>(map['layerInfo'],
+          : pulumi.Input.decodeList<Layer>(map['layerInfo'],
               (value) => Layer.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

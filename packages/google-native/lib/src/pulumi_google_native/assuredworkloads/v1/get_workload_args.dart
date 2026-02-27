@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWorkload.
 class GetWorkloadArgs {
-  final Input<String> location;
-  final Input<String> organizationId;
-  final Input<String> workloadId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> workloadId;
 
   GetWorkloadArgs({
     required this.location,
@@ -24,9 +24,9 @@ class GetWorkloadArgs {
 
   factory GetWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadArgs(
-      location: Input.asInput<String>(map['location']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      workloadId: Input.asInput<String>(map['workloadId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      workloadId: pulumi.Input.asInput<String>(map['workloadId']),
     );
   }
 }

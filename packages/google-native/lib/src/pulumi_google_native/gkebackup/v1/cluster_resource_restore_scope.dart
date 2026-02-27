@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_kind.dart';
 
 /// Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - Node - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume
@@ -33,7 +33,7 @@ class ClusterResourceRestoreScope {
     final excludedGroupKindsValue = excludedGroupKinds;
     if (excludedGroupKindsValue != null) {
       map['excludedGroupKinds'] =
-          Input.encodeList<GroupKind, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GroupKind, Map<String, dynamic>>(
               excludedGroupKindsValue, (value) => value.toMap());
     }
     final noGroupKindsValue = noGroupKinds;
@@ -43,7 +43,7 @@ class ClusterResourceRestoreScope {
     final selectedGroupKindsValue = selectedGroupKinds;
     if (selectedGroupKindsValue != null) {
       map['selectedGroupKinds'] =
-          Input.encodeList<GroupKind, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GroupKind, Map<String, dynamic>>(
               selectedGroupKindsValue, (value) => value.toMap());
     }
     return map;
@@ -55,7 +55,7 @@ class ClusterResourceRestoreScope {
           map['allGroupKinds'] == null ? null : map['allGroupKinds'] as bool,
       excludedGroupKinds: map['excludedGroupKinds'] == null
           ? null
-          : Input.decodeList<GroupKind>(
+          : pulumi.Input.decodeList<GroupKind>(
               map['excludedGroupKinds'],
               (value) =>
                   GroupKind.fromMap((value as Map).cast<String, dynamic>())),
@@ -63,7 +63,7 @@ class ClusterResourceRestoreScope {
           map['noGroupKinds'] == null ? null : map['noGroupKinds'] as bool,
       selectedGroupKinds: map['selectedGroupKinds'] == null
           ? null
-          : Input.decodeList<GroupKind>(
+          : pulumi.Input.decodeList<GroupKind>(
               map['selectedGroupKinds'],
               (value) =>
                   GroupKind.fromMap((value as Map).cast<String, dynamic>())),

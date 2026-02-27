@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRbacrolebinding.
 class GetRbacrolebindingArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> rbacrolebindingId;
-  final Input<String> scopeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> rbacrolebindingId;
+  final pulumi.Input<String> scopeId;
 
   GetRbacrolebindingArgs({
     required this.location,
@@ -30,10 +30,10 @@ class GetRbacrolebindingArgs {
 
   factory GetRbacrolebindingArgs.fromMap(Map<String, dynamic> map) {
     return GetRbacrolebindingArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      rbacrolebindingId: Input.asInput<String>(map['rbacrolebindingId']),
-      scopeId: Input.asInput<String>(map['scopeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      rbacrolebindingId: pulumi.Input.asInput<String>(map['rbacrolebindingId']),
+      scopeId: pulumi.Input.asInput<String>(map['scopeId']),
     );
   }
 }

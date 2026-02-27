@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSfdcChannel.
 class GetSfdcChannelArgs {
-  final Input<String> location;
-  final Input<String> productId;
-  final Input<String>? project;
-  final Input<String> sfdcChannelId;
-  final Input<String> sfdcInstanceId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> productId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sfdcChannelId;
+  final pulumi.Input<String> sfdcInstanceId;
 
   GetSfdcChannelArgs({
     required this.location,
@@ -33,11 +33,11 @@ class GetSfdcChannelArgs {
 
   factory GetSfdcChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetSfdcChannelArgs(
-      location: Input.asInput<String>(map['location']),
-      productId: Input.asInput<String>(map['productId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sfdcChannelId: Input.asInput<String>(map['sfdcChannelId']),
-      sfdcInstanceId: Input.asInput<String>(map['sfdcInstanceId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      productId: pulumi.Input.asInput<String>(map['productId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sfdcChannelId: pulumi.Input.asInput<String>(map['sfdcChannelId']),
+      sfdcInstanceId: pulumi.Input.asInput<String>(map['sfdcInstanceId']),
     );
   }
 }

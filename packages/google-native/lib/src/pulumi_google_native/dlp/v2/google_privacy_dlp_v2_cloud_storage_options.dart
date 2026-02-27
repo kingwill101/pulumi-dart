@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_cloud_storage_options_file_types_item.dart';
 import 'google_privacy_dlp_v2_cloud_storage_options_sample_method.dart';
 import 'google_privacy_dlp_v2_file_set.dart';
@@ -48,7 +48,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
     }
     final fileTypesValue = fileTypes;
     if (fileTypesValue != null) {
-      map['fileTypes'] = Input.encodeList<
+      map['fileTypes'] = pulumi.Input.encodeList<
           GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem,
           String>(fileTypesValue, (value) => value.value);
     }
@@ -78,7 +78,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
               (map['fileSet'] as Map).cast<String, dynamic>()),
       fileTypes: map['fileTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem>(
               map['fileTypes'],
               (value) =>

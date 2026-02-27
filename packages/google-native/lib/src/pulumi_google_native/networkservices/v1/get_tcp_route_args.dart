@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTcpRoute.
 class GetTcpRouteArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> tcpRouteId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> tcpRouteId;
 
   GetTcpRouteArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetTcpRouteArgs {
 
   factory GetTcpRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetTcpRouteArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tcpRouteId: Input.asInput<String>(map['tcpRouteId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tcpRouteId: pulumi.Input.asInput<String>(map['tcpRouteId']),
     );
   }
 }

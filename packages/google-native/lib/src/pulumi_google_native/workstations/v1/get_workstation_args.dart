@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWorkstation.
 class GetWorkstationArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> workstationClusterId;
-  final Input<String> workstationConfigId;
-  final Input<String> workstationId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> workstationClusterId;
+  final pulumi.Input<String> workstationConfigId;
+  final pulumi.Input<String> workstationId;
 
   GetWorkstationArgs({
     required this.location,
@@ -33,11 +33,13 @@ class GetWorkstationArgs {
 
   factory GetWorkstationArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      workstationClusterId: Input.asInput<String>(map['workstationClusterId']),
-      workstationConfigId: Input.asInput<String>(map['workstationConfigId']),
-      workstationId: Input.asInput<String>(map['workstationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      workstationClusterId:
+          pulumi.Input.asInput<String>(map['workstationClusterId']),
+      workstationConfigId:
+          pulumi.Input.asInput<String>(map['workstationConfigId']),
+      workstationId: pulumi.Input.asInput<String>(map['workstationId']),
     );
   }
 }

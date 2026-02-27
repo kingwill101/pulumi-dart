@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getManagedFolder.
 class GetManagedFolderArgs {
-  final Input<String> bucket;
-  final Input<String>? ifMetagenerationMatch;
-  final Input<String>? ifMetagenerationNotMatch;
-  final Input<String> managedFolder;
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<String>? ifMetagenerationMatch;
+  final pulumi.Input<String>? ifMetagenerationNotMatch;
+  final pulumi.Input<String> managedFolder;
 
   GetManagedFolderArgs({
     required this.bucket,
@@ -33,12 +33,12 @@ class GetManagedFolderArgs {
 
   factory GetManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderArgs(
-      bucket: Input.asInput<String>(map['bucket']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
       ifMetagenerationMatch:
-          Input.asOptionalInput<String>(map['ifMetagenerationMatch']),
+          pulumi.Input.asOptionalInput<String>(map['ifMetagenerationMatch']),
       ifMetagenerationNotMatch:
-          Input.asOptionalInput<String>(map['ifMetagenerationNotMatch']),
-      managedFolder: Input.asInput<String>(map['managedFolder']),
+          pulumi.Input.asOptionalInput<String>(map['ifMetagenerationNotMatch']),
+      managedFolder: pulumi.Input.asInput<String>(map['managedFolder']),
     );
   }
 }

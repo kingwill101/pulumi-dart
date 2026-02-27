@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getUptimeCheckConfig.
 class GetUptimeCheckConfigArgs {
-  final Input<String>? project;
-  final Input<String> uptimeCheckConfigId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> uptimeCheckConfigId;
 
   GetUptimeCheckConfigArgs({
     this.project,
@@ -24,8 +24,9 @@ class GetUptimeCheckConfigArgs {
 
   factory GetUptimeCheckConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetUptimeCheckConfigArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      uptimeCheckConfigId: Input.asInput<String>(map['uptimeCheckConfigId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      uptimeCheckConfigId:
+          pulumi.Input.asInput<String>(map['uptimeCheckConfigId']),
     );
   }
 }

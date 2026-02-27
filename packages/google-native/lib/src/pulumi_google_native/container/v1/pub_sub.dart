@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'filter2.dart';
+import 'filter_container_v1.dart';
 
 /// Pub/Sub specific notification config.
 class PubSub {
@@ -8,7 +8,7 @@ class PubSub {
   final bool? enabled;
 
   /// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
-  final Filter2? filter;
+  final FilterContainerV1? filter;
 
   /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
   final String? topic;
@@ -41,7 +41,8 @@ class PubSub {
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       filter: map['filter'] == null
           ? null
-          : Filter2.fromMap((map['filter'] as Map).cast<String, dynamic>()),
+          : FilterContainerV1.fromMap(
+              (map['filter'] as Map).cast<String, dynamic>()),
       topic: map['topic'] == null ? null : map['topic'] as String,
     );
   }

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAnalysis.
 class GetAnalysisArgs {
-  final Input<String> analysisId;
-  final Input<String> conversationId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> analysisId;
+  final pulumi.Input<String> conversationId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetAnalysisArgs({
     required this.analysisId,
@@ -30,10 +30,10 @@ class GetAnalysisArgs {
 
   factory GetAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return GetAnalysisArgs(
-      analysisId: Input.asInput<String>(map['analysisId']),
-      conversationId: Input.asInput<String>(map['conversationId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      analysisId: pulumi.Input.asInput<String>(map['analysisId']),
+      conversationId: pulumi.Input.asInput<String>(map['conversationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

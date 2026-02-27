@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAttestorIamPolicy.
 class GetAttestorIamPolicyArgs {
-  final Input<String> attestorId;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> attestorId;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetAttestorIamPolicyArgs({
     required this.attestorId,
@@ -30,10 +30,10 @@ class GetAttestorIamPolicyArgs {
 
   factory GetAttestorIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestorIamPolicyArgs(
-      attestorId: Input.asInput<String>(map['attestorId']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      attestorId: pulumi.Input.asInput<String>(map['attestorId']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

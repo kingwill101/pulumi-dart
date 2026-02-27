@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_resource.dart';
 import 'environment.dart';
 import 'lifecycle_policy.dart';
 import 'runnable.dart';
-import 'volume3.dart';
+import 'volume_batch_v1.dart';
 
 /// Spec of a task
 class TaskSpec {
@@ -31,7 +31,7 @@ class TaskSpec {
   final List<Runnable>? runnables;
 
   /// Volumes to mount before running Tasks using this TaskSpec.
-  final List<Volume3>? volumes;
+  final List<VolumeBatchV1>? volumes;
 
   TaskSpec({
     this.computeResource,
@@ -61,7 +61,7 @@ class TaskSpec {
     final lifecyclePoliciesValue = lifecyclePolicies;
     if (lifecyclePoliciesValue != null) {
       map['lifecyclePolicies'] =
-          Input.encodeList<LifecyclePolicy, Map<String, dynamic>>(
+          pulumi.Input.encodeList<LifecyclePolicy, Map<String, dynamic>>(
               lifecyclePoliciesValue, (value) => value.toMap());
     }
     final maxRetryCountValue = maxRetryCount;
@@ -74,13 +74,15 @@ class TaskSpec {
     }
     final runnablesValue = runnables;
     if (runnablesValue != null) {
-      map['runnables'] = Input.encodeList<Runnable, Map<String, dynamic>>(
-          runnablesValue, (value) => value.toMap());
+      map['runnables'] =
+          pulumi.Input.encodeList<Runnable, Map<String, dynamic>>(
+              runnablesValue, (value) => value.toMap());
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] = Input.encodeList<Volume3, Map<String, dynamic>>(
-          volumesValue, (value) => value.toMap());
+      map['volumes'] =
+          pulumi.Input.encodeList<VolumeBatchV1, Map<String, dynamic>>(
+              volumesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -100,7 +102,7 @@ class TaskSpec {
           : (map['environments'] as Map).cast<String, String>(),
       lifecyclePolicies: map['lifecyclePolicies'] == null
           ? null
-          : Input.decodeList<LifecyclePolicy>(
+          : pulumi.Input.decodeList<LifecyclePolicy>(
               map['lifecyclePolicies'],
               (value) => LifecyclePolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -111,16 +113,16 @@ class TaskSpec {
           : map['maxRunDuration'] as String,
       runnables: map['runnables'] == null
           ? null
-          : Input.decodeList<Runnable>(
+          : pulumi.Input.decodeList<Runnable>(
               map['runnables'],
               (value) =>
                   Runnable.fromMap((value as Map).cast<String, dynamic>())),
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<Volume3>(
+          : pulumi.Input.decodeList<VolumeBatchV1>(
               map['volumes'],
-              (value) =>
-                  Volume3.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => VolumeBatchV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

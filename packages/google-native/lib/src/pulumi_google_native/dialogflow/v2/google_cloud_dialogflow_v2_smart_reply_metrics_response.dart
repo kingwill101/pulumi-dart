@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_smart_reply_metrics_top_nmetrics_response.dart';
 
 /// The evaluation metrics for smart reply model.
@@ -25,7 +25,7 @@ class GoogleCloudDialogflowV2SmartReplyMetricsResponse {
     final map = <String, dynamic>{};
     map['allowlistCoverage'] = allowlistCoverage;
     map['conversationCount'] = conversationCount;
-    map['topNMetrics'] = Input.encodeList<
+    map['topNMetrics'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse,
         Map<String, dynamic>>(topNMetrics, (value) => value.toMap());
     return map;
@@ -36,7 +36,7 @@ class GoogleCloudDialogflowV2SmartReplyMetricsResponse {
     return GoogleCloudDialogflowV2SmartReplyMetricsResponse(
       allowlistCoverage: map['allowlistCoverage'] as double,
       conversationCount: map['conversationCount'] as String,
-      topNMetrics: Input.decodeList<
+      topNMetrics: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse>(
           map['topNMetrics'],
           (value) => GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse

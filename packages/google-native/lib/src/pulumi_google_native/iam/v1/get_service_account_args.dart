@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServiceAccount.
 class GetServiceAccountArgs {
-  final Input<String>? project;
-  final Input<String> serviceAccountId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> serviceAccountId;
 
   GetServiceAccountArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetServiceAccountArgs {
 
   factory GetServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceAccountArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceAccountId: Input.asInput<String>(map['serviceAccountId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceAccountId: pulumi.Input.asInput<String>(map['serviceAccountId']),
     );
   }
 }

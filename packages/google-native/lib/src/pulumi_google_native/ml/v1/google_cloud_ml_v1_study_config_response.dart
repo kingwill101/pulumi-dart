@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_automated_stopping_config_response.dart';
 import 'google_cloud_ml_v1_study_config_metric_spec_response.dart';
 import 'google_cloud_ml_v1_study_config_parameter_spec_response.dart';
@@ -30,10 +30,10 @@ class GoogleCloudMlV1StudyConfigResponse {
     final map = <String, dynamic>{};
     map['algorithm'] = algorithm;
     map['automatedStoppingConfig'] = automatedStoppingConfig.toMap();
-    map['metrics'] = Input.encodeList<
+    map['metrics'] = pulumi.Input.encodeList<
         GoogleCloudMlV1StudyConfigMetricSpecResponse,
         Map<String, dynamic>>(metrics, (value) => value.toMap());
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GoogleCloudMlV1StudyConfigParameterSpecResponse,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     return map;
@@ -45,16 +45,16 @@ class GoogleCloudMlV1StudyConfigResponse {
       automatedStoppingConfig:
           GoogleCloudMlV1AutomatedStoppingConfigResponse.fromMap(
               (map['automatedStoppingConfig'] as Map).cast<String, dynamic>()),
-      metrics: Input.decodeList<GoogleCloudMlV1StudyConfigMetricSpecResponse>(
-          map['metrics'],
-          (value) => GoogleCloudMlV1StudyConfigMetricSpecResponse.fromMap(
+      metrics:
+          pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigMetricSpecResponse>(
+              map['metrics'],
+              (value) => GoogleCloudMlV1StudyConfigMetricSpecResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<
+              GoogleCloudMlV1StudyConfigParameterSpecResponse>(
+          map['parameters'],
+          (value) => GoogleCloudMlV1StudyConfigParameterSpecResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      parameters:
-          Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpecResponse>(
-              map['parameters'],
-              (value) =>
-                  GoogleCloudMlV1StudyConfigParameterSpecResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
     );
   }
 }

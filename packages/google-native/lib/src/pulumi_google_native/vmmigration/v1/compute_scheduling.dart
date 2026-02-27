@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_scheduling_on_host_maintenance.dart';
 import 'compute_scheduling_restart_type.dart';
-import 'scheduling_node_affinity4.dart';
+import 'scheduling_node_affinity_vmmigration_v1.dart';
 
 /// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
 class ComputeScheduling {
@@ -11,7 +11,7 @@ class ComputeScheduling {
   final int? minNodeCpus;
 
   /// A set of node affinity and anti-affinity configurations for sole tenant nodes.
-  final List<SchedulingNodeAffinity4>? nodeAffinities;
+  final List<SchedulingNodeAffinityVmmigrationV1>? nodeAffinities;
 
   /// How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
   final ComputeSchedulingOnHostMaintenance? onHostMaintenance;
@@ -34,9 +34,9 @@ class ComputeScheduling {
     }
     final nodeAffinitiesValue = nodeAffinities;
     if (nodeAffinitiesValue != null) {
-      map['nodeAffinities'] =
-          Input.encodeList<SchedulingNodeAffinity4, Map<String, dynamic>>(
-              nodeAffinitiesValue, (value) => value.toMap());
+      map['nodeAffinities'] = pulumi.Input.encodeList<
+          SchedulingNodeAffinityVmmigrationV1,
+          Map<String, dynamic>>(nodeAffinitiesValue, (value) => value.toMap());
     }
     final onHostMaintenanceValue = onHostMaintenance;
     if (onHostMaintenanceValue != null) {
@@ -55,9 +55,9 @@ class ComputeScheduling {
           map['minNodeCpus'] == null ? null : map['minNodeCpus'] as int,
       nodeAffinities: map['nodeAffinities'] == null
           ? null
-          : Input.decodeList<SchedulingNodeAffinity4>(
+          : pulumi.Input.decodeList<SchedulingNodeAffinityVmmigrationV1>(
               map['nodeAffinities'],
-              (value) => SchedulingNodeAffinity4.fromMap(
+              (value) => SchedulingNodeAffinityVmmigrationV1.fromMap(
                   (value as Map).cast<String, dynamic>())),
       onHostMaintenance: map['onHostMaintenance'] == null
           ? null

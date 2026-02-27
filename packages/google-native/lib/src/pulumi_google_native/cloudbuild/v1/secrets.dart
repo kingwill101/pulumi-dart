@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inline_secret.dart';
 import 'secret_manager_secret.dart';
 
@@ -21,13 +21,14 @@ class Secrets {
     final map = <String, dynamic>{};
     final inlineValue = inline;
     if (inlineValue != null) {
-      map['inline'] = Input.encodeList<InlineSecret, Map<String, dynamic>>(
-          inlineValue, (value) => value.toMap());
+      map['inline'] =
+          pulumi.Input.encodeList<InlineSecret, Map<String, dynamic>>(
+              inlineValue, (value) => value.toMap());
     }
     final secretManagerValue = secretManager;
     if (secretManagerValue != null) {
       map['secretManager'] =
-          Input.encodeList<SecretManagerSecret, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SecretManagerSecret, Map<String, dynamic>>(
               secretManagerValue, (value) => value.toMap());
     }
     return map;
@@ -37,13 +38,13 @@ class Secrets {
     return Secrets(
       inline: map['inline'] == null
           ? null
-          : Input.decodeList<InlineSecret>(
+          : pulumi.Input.decodeList<InlineSecret>(
               map['inline'],
               (value) =>
                   InlineSecret.fromMap((value as Map).cast<String, dynamic>())),
       secretManager: map['secretManager'] == null
           ? null
-          : Input.decodeList<SecretManagerSecret>(
+          : pulumi.Input.decodeList<SecretManagerSecret>(
               map['secretManager'],
               (value) => SecretManagerSecret.fromMap(
                   (value as Map).cast<String, dynamic>())),

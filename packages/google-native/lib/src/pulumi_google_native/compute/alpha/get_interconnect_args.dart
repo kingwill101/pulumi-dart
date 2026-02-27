@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInterconnect.
 class GetInterconnectArgs {
-  final Input<String> interconnect;
-  final Input<String>? project;
+  final pulumi.Input<String> interconnect;
+  final pulumi.Input<String>? project;
 
   GetInterconnectArgs({
     required this.interconnect,
@@ -24,8 +24,8 @@ class GetInterconnectArgs {
 
   factory GetInterconnectArgs.fromMap(Map<String, dynamic> map) {
     return GetInterconnectArgs(
-      interconnect: Input.asInput<String>(map['interconnect']),
-      project: Input.asOptionalInput<String>(map['project']),
+      interconnect: pulumi.Input.asInput<String>(map['interconnect']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

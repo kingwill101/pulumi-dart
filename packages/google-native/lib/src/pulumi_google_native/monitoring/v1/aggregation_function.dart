@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter.dart';
 
 /// Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
@@ -20,8 +20,9 @@ class AggregationFunction {
     final map = <String, dynamic>{};
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<Parameter, Map<String, dynamic>>(
-          parametersValue, (value) => value.toMap());
+      map['parameters'] =
+          pulumi.Input.encodeList<Parameter, Map<String, dynamic>>(
+              parametersValue, (value) => value.toMap());
     }
     map['type'] = type;
     return map;
@@ -31,7 +32,7 @@ class AggregationFunction {
     return AggregationFunction(
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<Parameter>(
+          : pulumi.Input.decodeList<Parameter>(
               map['parameters'],
               (value) =>
                   Parameter.fromMap((value as Map).cast<String, dynamic>())),

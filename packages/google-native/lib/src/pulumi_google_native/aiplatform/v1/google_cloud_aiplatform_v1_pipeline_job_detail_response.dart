@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_context_response.dart';
 import 'google_cloud_aiplatform_v1_pipeline_task_detail_response.dart';
 
@@ -25,7 +25,7 @@ class GoogleCloudAiplatformV1PipelineJobDetailResponse {
     final map = <String, dynamic>{};
     map['pipelineContext'] = pipelineContext.toMap();
     map['pipelineRunContext'] = pipelineRunContext.toMap();
-    map['taskDetails'] = Input.encodeList<
+    map['taskDetails'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1PipelineTaskDetailResponse,
         Map<String, dynamic>>(taskDetails, (value) => value.toMap());
     return map;
@@ -38,12 +38,11 @@ class GoogleCloudAiplatformV1PipelineJobDetailResponse {
           (map['pipelineContext'] as Map).cast<String, dynamic>()),
       pipelineRunContext: GoogleCloudAiplatformV1ContextResponse.fromMap(
           (map['pipelineRunContext'] as Map).cast<String, dynamic>()),
-      taskDetails:
-          Input.decodeList<GoogleCloudAiplatformV1PipelineTaskDetailResponse>(
-              map['taskDetails'],
-              (value) =>
-                  GoogleCloudAiplatformV1PipelineTaskDetailResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      taskDetails: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1PipelineTaskDetailResponse>(
+          map['taskDetails'],
+          (value) => GoogleCloudAiplatformV1PipelineTaskDetailResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

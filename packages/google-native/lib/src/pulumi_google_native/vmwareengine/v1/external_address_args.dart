@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ExternalAddress.
 class ExternalAddressArgs {
   /// User-provided description for this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Required. The user-provided identifier of the `ExternalAddress` to be created. This identifier must be unique among `ExternalAddress` resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-  final Input<String> externalAddressId;
+  final pulumi.Input<String> externalAddressId;
 
   /// The internal IP address of a workload VM.
-  final Input<String>? internalIp;
-  final Input<String>? location;
-  final Input<String> privateCloudId;
-  final Input<String>? project;
+  final pulumi.Input<String>? internalIp;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String> privateCloudId;
+  final pulumi.Input<String>? project;
 
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   ExternalAddressArgs({
     this.description,
@@ -58,13 +58,13 @@ class ExternalAddressArgs {
 
   factory ExternalAddressArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAddressArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      externalAddressId: Input.asInput<String>(map['externalAddressId']),
-      internalIp: Input.asOptionalInput<String>(map['internalIp']),
-      location: Input.asOptionalInput<String>(map['location']),
-      privateCloudId: Input.asInput<String>(map['privateCloudId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      externalAddressId: pulumi.Input.asInput<String>(map['externalAddressId']),
+      internalIp: pulumi.Input.asOptionalInput<String>(map['internalIp']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      privateCloudId: pulumi.Input.asInput<String>(map['privateCloudId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
     );
   }
 }

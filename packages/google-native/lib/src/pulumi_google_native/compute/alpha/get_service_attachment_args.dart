@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServiceAttachment.
 class GetServiceAttachmentArgs {
-  final Input<String>? project;
-  final Input<String> region;
-  final Input<String> serviceAttachment;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+  final pulumi.Input<String> serviceAttachment;
 
   GetServiceAttachmentArgs({
     this.project,
@@ -27,9 +27,9 @@ class GetServiceAttachmentArgs {
 
   factory GetServiceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceAttachmentArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
-      serviceAttachment: Input.asInput<String>(map['serviceAttachment']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
+      serviceAttachment: pulumi.Input.asInput<String>(map['serviceAttachment']),
     );
   }
 }

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMappingRule.
 class GetMappingRuleArgs {
-  final Input<String> conversionWorkspaceId;
-  final Input<String> location;
-  final Input<String> mappingRuleId;
-  final Input<String>? project;
+  final pulumi.Input<String> conversionWorkspaceId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> mappingRuleId;
+  final pulumi.Input<String>? project;
 
   GetMappingRuleArgs({
     required this.conversionWorkspaceId,
@@ -31,10 +31,10 @@ class GetMappingRuleArgs {
   factory GetMappingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetMappingRuleArgs(
       conversionWorkspaceId:
-          Input.asInput<String>(map['conversionWorkspaceId']),
-      location: Input.asInput<String>(map['location']),
-      mappingRuleId: Input.asInput<String>(map['mappingRuleId']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['conversionWorkspaceId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      mappingRuleId: pulumi.Input.asInput<String>(map['mappingRuleId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_access_entry_target_types_item.dart';
 import 'dataset_reference.dart';
 
@@ -23,7 +23,7 @@ class DatasetAccessEntry {
     final targetTypesValue = targetTypes;
     if (targetTypesValue != null) {
       map['targetTypes'] =
-          Input.encodeList<DatasetAccessEntryTargetTypesItem, String>(
+          pulumi.Input.encodeList<DatasetAccessEntryTargetTypesItem, String>(
               targetTypesValue, (value) => value.value);
     }
     return map;
@@ -37,7 +37,7 @@ class DatasetAccessEntry {
               (map['dataset'] as Map).cast<String, dynamic>()),
       targetTypes: map['targetTypes'] == null
           ? null
-          : Input.decodeList<DatasetAccessEntryTargetTypesItem>(
+          : pulumi.Input.decodeList<DatasetAccessEntryTargetTypesItem>(
               map['targetTypes'],
               (value) =>
                   DatasetAccessEntryTargetTypesItem.fromValue(value as String)),

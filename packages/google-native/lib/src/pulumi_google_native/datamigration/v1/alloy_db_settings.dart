@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'alloy_db_settings_database_version.dart';
-import 'encryption_config7.dart';
+import 'encryption_config_datamigration_v1.dart';
 import 'primary_instance_settings.dart';
-import 'user_password5.dart';
+import 'user_password_datamigration_v1.dart';
 
 /// Settings for creating an AlloyDB cluster.
 class AlloyDbSettings {
@@ -11,10 +11,10 @@ class AlloyDbSettings {
   final AlloyDbSettingsDatabaseVersion? databaseVersion;
 
   /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
-  final EncryptionConfig7? encryptionConfig;
+  final EncryptionConfigDatamigrationV1? encryptionConfig;
 
   /// Input only. Initial user to setup during cluster creation. Required.
-  final UserPassword5 initialUser;
+  final UserPasswordDatamigrationV1 initialUser;
 
   /// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
   final Map<String, String>? labels;
@@ -63,9 +63,9 @@ class AlloyDbSettings {
               map['databaseVersion'] as String),
       encryptionConfig: map['encryptionConfig'] == null
           ? null
-          : EncryptionConfig7.fromMap(
+          : EncryptionConfigDatamigrationV1.fromMap(
               (map['encryptionConfig'] as Map).cast<String, dynamic>()),
-      initialUser: UserPassword5.fromMap(
+      initialUser: UserPasswordDatamigrationV1.fromMap(
           (map['initialUser'] as Map).cast<String, dynamic>()),
       labels: map['labels'] == null
           ? null

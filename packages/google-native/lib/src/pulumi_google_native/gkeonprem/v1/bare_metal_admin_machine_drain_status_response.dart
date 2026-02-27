@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_admin_drained_machine_response.dart';
 import 'bare_metal_admin_draining_machine_response.dart';
 
@@ -19,10 +19,10 @@ class BareMetalAdminMachineDrainStatusResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['drainedMachines'] = Input.encodeList<
+    map['drainedMachines'] = pulumi.Input.encodeList<
         BareMetalAdminDrainedMachineResponse,
         Map<String, dynamic>>(drainedMachines, (value) => value.toMap());
-    map['drainingMachines'] = Input.encodeList<
+    map['drainingMachines'] = pulumi.Input.encodeList<
         BareMetalAdminDrainingMachineResponse,
         Map<String, dynamic>>(drainingMachines, (value) => value.toMap());
     return map;
@@ -31,14 +31,16 @@ class BareMetalAdminMachineDrainStatusResponse {
   factory BareMetalAdminMachineDrainStatusResponse.fromMap(
       Map<String, dynamic> map) {
     return BareMetalAdminMachineDrainStatusResponse(
-      drainedMachines: Input.decodeList<BareMetalAdminDrainedMachineResponse>(
-          map['drainedMachines'],
-          (value) => BareMetalAdminDrainedMachineResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      drainingMachines: Input.decodeList<BareMetalAdminDrainingMachineResponse>(
-          map['drainingMachines'],
-          (value) => BareMetalAdminDrainingMachineResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      drainedMachines:
+          pulumi.Input.decodeList<BareMetalAdminDrainedMachineResponse>(
+              map['drainedMachines'],
+              (value) => BareMetalAdminDrainedMachineResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      drainingMachines:
+          pulumi.Input.decodeList<BareMetalAdminDrainingMachineResponse>(
+              map['drainingMachines'],
+              (value) => BareMetalAdminDrainingMachineResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

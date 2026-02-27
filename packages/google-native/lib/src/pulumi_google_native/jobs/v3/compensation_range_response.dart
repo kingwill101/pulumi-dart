@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'money_response2.dart';
+import 'money_response_jobs_v3.dart';
 
 /// Compensation range.
 class CompensationRangeResponse {
   /// Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
-  final MoneyResponse2 maxCompensation;
+  final MoneyResponseJobsV3 maxCompensation;
 
   /// Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
-  final MoneyResponse2 minCompensation;
+  final MoneyResponseJobsV3 minCompensation;
 
   CompensationRangeResponse({
     required this.maxCompensation,
@@ -24,9 +24,9 @@ class CompensationRangeResponse {
 
   factory CompensationRangeResponse.fromMap(Map<String, dynamic> map) {
     return CompensationRangeResponse(
-      maxCompensation: MoneyResponse2.fromMap(
+      maxCompensation: MoneyResponseJobsV3.fromMap(
           (map['maxCompensation'] as Map).cast<String, dynamic>()),
-      minCompensation: MoneyResponse2.fromMap(
+      minCompensation: MoneyResponseJobsV3.fromMap(
           (map['minCompensation'] as Map).cast<String, dynamic>()),
     );
   }

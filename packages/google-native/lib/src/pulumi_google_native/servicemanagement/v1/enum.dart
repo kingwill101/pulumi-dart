@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enum_syntax.dart';
 import 'enum_value.dart';
 import 'option.dart';
-import 'source_context3.dart';
+import 'source_context_servicemanagement_v1.dart';
 
 /// Enum type definition.
 class Enum {
@@ -21,7 +21,7 @@ class Enum {
   final List<Option>? options;
 
   /// The source context.
-  final SourceContext3? sourceContext;
+  final SourceContextServicemanagementV1? sourceContext;
 
   /// The source syntax.
   final EnumSyntax? syntax;
@@ -43,8 +43,9 @@ class Enum {
     }
     final enumvalueValue = enumvalue;
     if (enumvalueValue != null) {
-      map['enumvalue'] = Input.encodeList<EnumValue, Map<String, dynamic>>(
-          enumvalueValue, (value) => value.toMap());
+      map['enumvalue'] =
+          pulumi.Input.encodeList<EnumValue, Map<String, dynamic>>(
+              enumvalueValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -52,7 +53,7 @@ class Enum {
     }
     final optionsValue = options;
     if (optionsValue != null) {
-      map['options'] = Input.encodeList<Option, Map<String, dynamic>>(
+      map['options'] = pulumi.Input.encodeList<Option, Map<String, dynamic>>(
           optionsValue, (value) => value.toMap());
     }
     final sourceContextValue = sourceContext;
@@ -71,20 +72,20 @@ class Enum {
       edition: map['edition'] == null ? null : map['edition'] as String,
       enumvalue: map['enumvalue'] == null
           ? null
-          : Input.decodeList<EnumValue>(
+          : pulumi.Input.decodeList<EnumValue>(
               map['enumvalue'],
               (value) =>
                   EnumValue.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
       options: map['options'] == null
           ? null
-          : Input.decodeList<Option>(
+          : pulumi.Input.decodeList<Option>(
               map['options'],
               (value) =>
                   Option.fromMap((value as Map).cast<String, dynamic>())),
       sourceContext: map['sourceContext'] == null
           ? null
-          : SourceContext3.fromMap(
+          : SourceContextServicemanagementV1.fromMap(
               (map['sourceContext'] as Map).cast<String, dynamic>()),
       syntax: map['syntax'] == null
           ? null

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_chars_to_ignore.dart';
 
 /// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3.
@@ -28,7 +28,7 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
     final map = <String, dynamic>{};
     final charactersToIgnoreValue = charactersToIgnore;
     if (charactersToIgnoreValue != null) {
-      map['charactersToIgnore'] = Input.encodeList<
+      map['charactersToIgnore'] = pulumi.Input.encodeList<
               GooglePrivacyDlpV2CharsToIgnore, Map<String, dynamic>>(
           charactersToIgnoreValue, (value) => value.toMap());
     }
@@ -52,7 +52,7 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
     return GooglePrivacyDlpV2CharacterMaskConfig(
       charactersToIgnore: map['charactersToIgnore'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2CharsToIgnore>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2CharsToIgnore>(
               map['charactersToIgnore'],
               (value) => GooglePrivacyDlpV2CharsToIgnore.fromMap(
                   (value as Map).cast<String, dynamic>())),

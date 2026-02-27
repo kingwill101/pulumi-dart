@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgresql_column_response.dart';
 
 /// PostgreSQL table.
@@ -19,7 +19,7 @@ class PostgresqlTableResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['postgresqlColumns'] =
-        Input.encodeList<PostgresqlColumnResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PostgresqlColumnResponse, Map<String, dynamic>>(
             postgresqlColumns, (value) => value.toMap());
     map['table'] = table;
     return map;
@@ -27,7 +27,7 @@ class PostgresqlTableResponse {
 
   factory PostgresqlTableResponse.fromMap(Map<String, dynamic> map) {
     return PostgresqlTableResponse(
-      postgresqlColumns: Input.decodeList<PostgresqlColumnResponse>(
+      postgresqlColumns: pulumi.Input.decodeList<PostgresqlColumnResponse>(
           map['postgresqlColumns'],
           (value) => PostgresqlColumnResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

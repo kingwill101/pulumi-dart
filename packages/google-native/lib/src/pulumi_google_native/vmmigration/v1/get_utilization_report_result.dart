@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'status_response30.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'status_response_vmmigration_v1.dart';
 import 'vm_utilization_info_response.dart';
 
 /// Result data returned by getUtilizationReport.
@@ -13,7 +13,7 @@ class GetUtilizationReportResult {
   final String displayName;
 
   /// Provides details on the state of the report in case of an error.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// The point in time when the time frame ends. Notice that the time frame is counted backwards. For instance if the "frame_end_time" value is 2021/01/20 and the time frame is WEEK then the report covers the week between 2021/01/20 and 2021/01/14.
   final String frameEndTime;
@@ -60,9 +60,8 @@ class GetUtilizationReportResult {
     map['stateTime'] = stateTime;
     map['timeFrame'] = timeFrame;
     map['vmCount'] = vmCount;
-    map['vms'] =
-        Input.encodeList<VmUtilizationInfoResponse, Map<String, dynamic>>(
-            vms, (value) => value.toMap());
+    map['vms'] = pulumi.Input.encodeList<VmUtilizationInfoResponse,
+        Map<String, dynamic>>(vms, (value) => value.toMap());
     return map;
   }
 
@@ -70,7 +69,7 @@ class GetUtilizationReportResult {
     return GetUtilizationReportResult(
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       frameEndTime: map['frameEndTime'] as String,
       name: map['name'] as String,
@@ -78,7 +77,7 @@ class GetUtilizationReportResult {
       stateTime: map['stateTime'] as String,
       timeFrame: map['timeFrame'] as String,
       vmCount: map['vmCount'] as int,
-      vms: Input.decodeList<VmUtilizationInfoResponse>(
+      vms: pulumi.Input.decodeList<VmUtilizationInfoResponse>(
           map['vms'],
           (value) => VmUtilizationInfoResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

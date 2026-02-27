@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInboundSamlConfig.
 class GetInboundSamlConfigArgs {
-  final Input<String> inboundSamlConfigId;
-  final Input<String>? project;
-  final Input<String> tenantId;
+  final pulumi.Input<String> inboundSamlConfigId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> tenantId;
 
   GetInboundSamlConfigArgs({
     required this.inboundSamlConfigId,
@@ -27,9 +27,10 @@ class GetInboundSamlConfigArgs {
 
   factory GetInboundSamlConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlConfigArgs(
-      inboundSamlConfigId: Input.asInput<String>(map['inboundSamlConfigId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tenantId: Input.asInput<String>(map['tenantId']),
+      inboundSamlConfigId:
+          pulumi.Input.asInput<String>(map['inboundSamlConfigId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tenantId: pulumi.Input.asInput<String>(map['tenantId']),
     );
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'node_management_response.dart';
-import 'shielded_instance_config_response4.dart';
+import 'shielded_instance_config_response_container_v1.dart';
 import 'upgrade_settings_response.dart';
 
 /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
@@ -34,7 +34,7 @@ class AutoprovisioningNodePoolDefaultsResponse {
   final String serviceAccount;
 
   /// Shielded Instance options.
-  final ShieldedInstanceConfigResponse4 shieldedInstanceConfig;
+  final ShieldedInstanceConfigResponseContainerV1 shieldedInstanceConfig;
 
   /// Specifies the upgrade settings for NAP created node pools
   final UpgradeSettingsResponse upgradeSettings;
@@ -84,7 +84,7 @@ class AutoprovisioningNodePoolDefaultsResponse {
       minCpuPlatform: map['minCpuPlatform'] as String,
       oauthScopes: (map['oauthScopes'] as List).cast<String>(),
       serviceAccount: map['serviceAccount'] as String,
-      shieldedInstanceConfig: ShieldedInstanceConfigResponse4.fromMap(
+      shieldedInstanceConfig: ShieldedInstanceConfigResponseContainerV1.fromMap(
           (map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
       upgradeSettings: UpgradeSettingsResponse.fromMap(
           (map['upgradeSettings'] as Map).cast<String, dynamic>()),

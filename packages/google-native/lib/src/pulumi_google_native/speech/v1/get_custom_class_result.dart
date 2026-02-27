@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'class_item_response.dart';
 
 /// Result data returned by getCustomClass.
@@ -68,8 +68,9 @@ class GetCustomClassResult {
     map['displayName'] = displayName;
     map['etag'] = etag;
     map['expireTime'] = expireTime;
-    map['items'] = Input.encodeList<ClassItemResponse, Map<String, dynamic>>(
-        items, (value) => value.toMap());
+    map['items'] =
+        pulumi.Input.encodeList<ClassItemResponse, Map<String, dynamic>>(
+            items, (value) => value.toMap());
     map['kmsKeyName'] = kmsKeyName;
     map['kmsKeyVersionName'] = kmsKeyVersionName;
     map['name'] = name;
@@ -87,7 +88,7 @@ class GetCustomClassResult {
       displayName: map['displayName'] as String,
       etag: map['etag'] as String,
       expireTime: map['expireTime'] as String,
-      items: Input.decodeList<ClassItemResponse>(
+      items: pulumi.Input.decodeList<ClassItemResponse>(
           map['items'],
           (value) => ClassItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

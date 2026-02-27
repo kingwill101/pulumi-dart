@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lun_range_response.dart';
 import 'nfs_export_response.dart';
 
@@ -56,12 +56,13 @@ class VolumeConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['gcpService'] = gcpService;
-    map['lunRanges'] = Input.encodeList<LunRangeResponse, Map<String, dynamic>>(
-        lunRanges, (value) => value.toMap());
+    map['lunRanges'] =
+        pulumi.Input.encodeList<LunRangeResponse, Map<String, dynamic>>(
+            lunRanges, (value) => value.toMap());
     map['machineIds'] = machineIds;
     map['name'] = name;
     map['nfsExports'] =
-        Input.encodeList<NfsExportResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<NfsExportResponse, Map<String, dynamic>>(
             nfsExports, (value) => value.toMap());
     map['performanceTier'] = performanceTier;
     map['protocol'] = protocol;
@@ -75,13 +76,13 @@ class VolumeConfigResponse {
   factory VolumeConfigResponse.fromMap(Map<String, dynamic> map) {
     return VolumeConfigResponse(
       gcpService: map['gcpService'] as String,
-      lunRanges: Input.decodeList<LunRangeResponse>(
+      lunRanges: pulumi.Input.decodeList<LunRangeResponse>(
           map['lunRanges'],
           (value) =>
               LunRangeResponse.fromMap((value as Map).cast<String, dynamic>())),
       machineIds: (map['machineIds'] as List).cast<String>(),
       name: map['name'] as String,
-      nfsExports: Input.decodeList<NfsExportResponse>(
+      nfsExports: pulumi.Input.decodeList<NfsExportResponse>(
           map['nfsExports'],
           (value) => NfsExportResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

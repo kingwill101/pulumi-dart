@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgresql_column.dart';
 
 /// PostgreSQL table.
@@ -21,7 +21,7 @@ class PostgresqlTable {
     final postgresqlColumnsValue = postgresqlColumns;
     if (postgresqlColumnsValue != null) {
       map['postgresqlColumns'] =
-          Input.encodeList<PostgresqlColumn, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PostgresqlColumn, Map<String, dynamic>>(
               postgresqlColumnsValue, (value) => value.toMap());
     }
     final tableValue = table;
@@ -35,7 +35,7 @@ class PostgresqlTable {
     return PostgresqlTable(
       postgresqlColumns: map['postgresqlColumns'] == null
           ? null
-          : Input.decodeList<PostgresqlColumn>(
+          : pulumi.Input.decodeList<PostgresqlColumn>(
               map['postgresqlColumns'],
               (value) => PostgresqlColumn.fromMap(
                   (value as Map).cast<String, dynamic>())),

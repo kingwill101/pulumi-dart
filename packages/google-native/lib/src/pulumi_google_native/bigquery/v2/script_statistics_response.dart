@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'script_stack_frame_response.dart';
 
 class ScriptStatisticsResponse {
@@ -19,7 +19,7 @@ class ScriptStatisticsResponse {
     final map = <String, dynamic>{};
     map['evaluationKind'] = evaluationKind;
     map['stackFrames'] =
-        Input.encodeList<ScriptStackFrameResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ScriptStackFrameResponse, Map<String, dynamic>>(
             stackFrames, (value) => value.toMap());
     return map;
   }
@@ -27,7 +27,7 @@ class ScriptStatisticsResponse {
   factory ScriptStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return ScriptStatisticsResponse(
       evaluationKind: map['evaluationKind'] as String,
-      stackFrames: Input.decodeList<ScriptStackFrameResponse>(
+      stackFrames: pulumi.Input.decodeList<ScriptStackFrameResponse>(
           map['stackFrames'],
           (value) => ScriptStackFrameResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

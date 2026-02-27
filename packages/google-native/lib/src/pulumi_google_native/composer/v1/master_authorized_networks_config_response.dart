@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cidr_block_response.dart';
 
 /// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
@@ -19,7 +19,7 @@ class MasterAuthorizedNetworksConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['cidrBlocks'] =
-        Input.encodeList<CidrBlockResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<CidrBlockResponse, Map<String, dynamic>>(
             cidrBlocks, (value) => value.toMap());
     map['enabled'] = enabled;
     return map;
@@ -28,7 +28,7 @@ class MasterAuthorizedNetworksConfigResponse {
   factory MasterAuthorizedNetworksConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return MasterAuthorizedNetworksConfigResponse(
-      cidrBlocks: Input.decodeList<CidrBlockResponse>(
+      cidrBlocks: pulumi.Input.decodeList<CidrBlockResponse>(
           map['cidrBlocks'],
           (value) => CidrBlockResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

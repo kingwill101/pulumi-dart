@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEntityType.
 class GetEntityTypeArgs {
-  final Input<String> entityTypeId;
-  final Input<String> featurestoreId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> entityTypeId;
+  final pulumi.Input<String> featurestoreId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetEntityTypeArgs({
     required this.entityTypeId,
@@ -30,10 +30,10 @@ class GetEntityTypeArgs {
 
   factory GetEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityTypeArgs(
-      entityTypeId: Input.asInput<String>(map['entityTypeId']),
-      featurestoreId: Input.asInput<String>(map['featurestoreId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      entityTypeId: pulumi.Input.asInput<String>(map['entityTypeId']),
+      featurestoreId: pulumi.Input.asInput<String>(map['featurestoreId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

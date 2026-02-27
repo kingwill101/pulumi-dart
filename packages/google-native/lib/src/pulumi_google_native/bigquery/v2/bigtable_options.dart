@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bigtable_column_family.dart';
 
 class BigtableOptions {
@@ -24,7 +24,7 @@ class BigtableOptions {
     final columnFamiliesValue = columnFamilies;
     if (columnFamiliesValue != null) {
       map['columnFamilies'] =
-          Input.encodeList<BigtableColumnFamily, Map<String, dynamic>>(
+          pulumi.Input.encodeList<BigtableColumnFamily, Map<String, dynamic>>(
               columnFamiliesValue, (value) => value.toMap());
     }
     final ignoreUnspecifiedColumnFamiliesValue =
@@ -44,7 +44,7 @@ class BigtableOptions {
     return BigtableOptions(
       columnFamilies: map['columnFamilies'] == null
           ? null
-          : Input.decodeList<BigtableColumnFamily>(
+          : pulumi.Input.decodeList<BigtableColumnFamily>(
               map['columnFamilies'],
               (value) => BigtableColumnFamily.fromMap(
                   (value as Map).cast<String, dynamic>())),

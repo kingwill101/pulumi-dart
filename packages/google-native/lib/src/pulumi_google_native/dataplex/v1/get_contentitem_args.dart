@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getContentitem.
 class GetContentitemArgs {
-  final Input<String> contentitemId;
-  final Input<String> lakeId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? view;
+  final pulumi.Input<String> contentitemId;
+  final pulumi.Input<String> lakeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
 
   GetContentitemArgs({
     required this.contentitemId,
@@ -36,11 +36,11 @@ class GetContentitemArgs {
 
   factory GetContentitemArgs.fromMap(Map<String, dynamic> map) {
     return GetContentitemArgs(
-      contentitemId: Input.asInput<String>(map['contentitemId']),
-      lakeId: Input.asInput<String>(map['lakeId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
+      contentitemId: pulumi.Input.asInput<String>(map['contentitemId']),
+      lakeId: pulumi.Input.asInput<String>(map['lakeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

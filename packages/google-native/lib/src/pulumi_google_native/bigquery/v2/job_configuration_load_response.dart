@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'clustering_response.dart';
 import 'connection_property_response.dart';
 import 'destination_table_properties_response.dart';
@@ -162,9 +162,9 @@ class JobConfigurationLoadResponse {
     map['allowQuotedNewlines'] = allowQuotedNewlines;
     map['autodetect'] = autodetect;
     map['clustering'] = clustering.toMap();
-    map['connectionProperties'] =
-        Input.encodeList<ConnectionPropertyResponse, Map<String, dynamic>>(
-            connectionProperties, (value) => value.toMap());
+    map['connectionProperties'] = pulumi.Input.encodeList<
+        ConnectionPropertyResponse,
+        Map<String, dynamic>>(connectionProperties, (value) => value.toMap());
     map['createDisposition'] = createDisposition;
     map['createSession'] = createSession;
     map['decimalTargetTypes'] = decimalTargetTypes;
@@ -206,7 +206,7 @@ class JobConfigurationLoadResponse {
       autodetect: map['autodetect'] as bool,
       clustering: ClusteringResponse.fromMap(
           (map['clustering'] as Map).cast<String, dynamic>()),
-      connectionProperties: Input.decodeList<ConnectionPropertyResponse>(
+      connectionProperties: pulumi.Input.decodeList<ConnectionPropertyResponse>(
           map['connectionProperties'],
           (value) => ConnectionPropertyResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

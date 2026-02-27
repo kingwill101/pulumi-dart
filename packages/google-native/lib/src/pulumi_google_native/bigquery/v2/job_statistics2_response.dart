@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bi_engine_statistics_response.dart';
 import 'big_query_model_training_response.dart';
 import 'dataset_reference_response.dart';
@@ -173,25 +173,23 @@ class JobStatistics2Response {
     map['modelTrainingExpectedTotalIteration'] =
         modelTrainingExpectedTotalIteration;
     map['numDmlAffectedRows'] = numDmlAffectedRows;
-    map['queryPlan'] =
-        Input.encodeList<ExplainQueryStageResponse, Map<String, dynamic>>(
-            queryPlan, (value) => value.toMap());
+    map['queryPlan'] = pulumi.Input.encodeList<ExplainQueryStageResponse,
+        Map<String, dynamic>>(queryPlan, (value) => value.toMap());
     map['referencedRoutines'] =
-        Input.encodeList<RoutineReferenceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RoutineReferenceResponse, Map<String, dynamic>>(
             referencedRoutines, (value) => value.toMap());
     map['referencedTables'] =
-        Input.encodeList<TableReferenceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TableReferenceResponse, Map<String, dynamic>>(
             referencedTables, (value) => value.toMap());
-    map['reservationUsage'] = Input.encodeList<
+    map['reservationUsage'] = pulumi.Input.encodeList<
         JobStatistics2ReservationUsageItemResponse,
         Map<String, dynamic>>(reservationUsage, (value) => value.toMap());
     map['schema'] = schema.toMap();
     map['searchStatistics'] = searchStatistics.toMap();
     map['sparkStatistics'] = sparkStatistics.toMap();
     map['statementType'] = statementType;
-    map['timeline'] =
-        Input.encodeList<QueryTimelineSampleResponse, Map<String, dynamic>>(
-            timeline, (value) => value.toMap());
+    map['timeline'] = pulumi.Input.encodeList<QueryTimelineSampleResponse,
+        Map<String, dynamic>>(timeline, (value) => value.toMap());
     map['totalBytesBilled'] = totalBytesBilled;
     map['totalBytesProcessed'] = totalBytesProcessed;
     map['totalBytesProcessedAccuracy'] = totalBytesProcessedAccuracy;
@@ -199,7 +197,7 @@ class JobStatistics2Response {
     map['totalSlotMs'] = totalSlotMs;
     map['transferredBytes'] = transferredBytes;
     map['undeclaredQueryParameters'] =
-        Input.encodeList<QueryParameterResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<QueryParameterResponse, Map<String, dynamic>>(
             undeclaredQueryParameters, (value) => value.toMap());
     return map;
   }
@@ -235,20 +233,20 @@ class JobStatistics2Response {
       modelTrainingExpectedTotalIteration:
           map['modelTrainingExpectedTotalIteration'] as String,
       numDmlAffectedRows: map['numDmlAffectedRows'] as String,
-      queryPlan: Input.decodeList<ExplainQueryStageResponse>(
+      queryPlan: pulumi.Input.decodeList<ExplainQueryStageResponse>(
           map['queryPlan'],
           (value) => ExplainQueryStageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      referencedRoutines: Input.decodeList<RoutineReferenceResponse>(
+      referencedRoutines: pulumi.Input.decodeList<RoutineReferenceResponse>(
           map['referencedRoutines'],
           (value) => RoutineReferenceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      referencedTables: Input.decodeList<TableReferenceResponse>(
+      referencedTables: pulumi.Input.decodeList<TableReferenceResponse>(
           map['referencedTables'],
           (value) => TableReferenceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       reservationUsage:
-          Input.decodeList<JobStatistics2ReservationUsageItemResponse>(
+          pulumi.Input.decodeList<JobStatistics2ReservationUsageItemResponse>(
               map['reservationUsage'],
               (value) => JobStatistics2ReservationUsageItemResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -259,7 +257,7 @@ class JobStatistics2Response {
       sparkStatistics: SparkStatisticsResponse.fromMap(
           (map['sparkStatistics'] as Map).cast<String, dynamic>()),
       statementType: map['statementType'] as String,
-      timeline: Input.decodeList<QueryTimelineSampleResponse>(
+      timeline: pulumi.Input.decodeList<QueryTimelineSampleResponse>(
           map['timeline'],
           (value) => QueryTimelineSampleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -269,10 +267,11 @@ class JobStatistics2Response {
       totalPartitionsProcessed: map['totalPartitionsProcessed'] as String,
       totalSlotMs: map['totalSlotMs'] as String,
       transferredBytes: map['transferredBytes'] as String,
-      undeclaredQueryParameters: Input.decodeList<QueryParameterResponse>(
-          map['undeclaredQueryParameters'],
-          (value) => QueryParameterResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      undeclaredQueryParameters:
+          pulumi.Input.decodeList<QueryParameterResponse>(
+              map['undeclaredQueryParameters'],
+              (value) => QueryParameterResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enum_value_response.dart';
 import 'option_response.dart';
-import 'source_context_response3.dart';
+import 'source_context_response_servicemanagement_v1.dart';
 
 /// Enum type definition.
 class EnumResponse {
@@ -20,7 +20,7 @@ class EnumResponse {
   final List<OptionResponse> options;
 
   /// The source context.
-  final SourceContextResponse3 sourceContext;
+  final SourceContextResponseServicemanagementV1 sourceContext;
 
   /// The source syntax.
   final String syntax;
@@ -38,11 +38,12 @@ class EnumResponse {
     final map = <String, dynamic>{};
     map['edition'] = edition;
     map['enumvalue'] =
-        Input.encodeList<EnumValueResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<EnumValueResponse, Map<String, dynamic>>(
             enumvalue, (value) => value.toMap());
     map['name'] = name;
-    map['options'] = Input.encodeList<OptionResponse, Map<String, dynamic>>(
-        options, (value) => value.toMap());
+    map['options'] =
+        pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(
+            options, (value) => value.toMap());
     map['sourceContext'] = sourceContext.toMap();
     map['syntax'] = syntax;
     return map;
@@ -51,16 +52,16 @@ class EnumResponse {
   factory EnumResponse.fromMap(Map<String, dynamic> map) {
     return EnumResponse(
       edition: map['edition'] as String,
-      enumvalue: Input.decodeList<EnumValueResponse>(
+      enumvalue: pulumi.Input.decodeList<EnumValueResponse>(
           map['enumvalue'],
           (value) => EnumValueResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      options: Input.decodeList<OptionResponse>(
+      options: pulumi.Input.decodeList<OptionResponse>(
           map['options'],
           (value) =>
               OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceContext: SourceContextResponse3.fromMap(
+      sourceContext: SourceContextResponseServicemanagementV1.fromMap(
           (map['sourceContext'] as Map).cast<String, dynamic>()),
       syntax: map['syntax'] as String,
     );

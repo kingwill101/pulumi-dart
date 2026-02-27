@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceDatabaseIamPolicy.
 class GetInstanceDatabaseIamPolicyArgs {
-  final Input<String> databaseId;
-  final Input<String> instanceId;
-  final Input<String>? project;
+  final pulumi.Input<String> databaseId;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String>? project;
 
   GetInstanceDatabaseIamPolicyArgs({
     required this.databaseId,
@@ -27,9 +27,9 @@ class GetInstanceDatabaseIamPolicyArgs {
 
   factory GetInstanceDatabaseIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceDatabaseIamPolicyArgs(
-      databaseId: Input.asInput<String>(map['databaseId']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      databaseId: pulumi.Input.asInput<String>(map['databaseId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_parameter_rule.dart';
 
 /// ### System parameter configuration A system parameter is a special kind of parameter defined by the API system, not by an individual API. It is typically mapped to an HTTP header and/or a URL query parameter. This configuration specifies which methods change the names of the system parameters.
@@ -17,7 +17,7 @@ class SystemParameters {
     final rulesValue = rules;
     if (rulesValue != null) {
       map['rules'] =
-          Input.encodeList<SystemParameterRule, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SystemParameterRule, Map<String, dynamic>>(
               rulesValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class SystemParameters {
     return SystemParameters(
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<SystemParameterRule>(
+          : pulumi.Input.decodeList<SystemParameterRule>(
               map['rules'],
               (value) => SystemParameterRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

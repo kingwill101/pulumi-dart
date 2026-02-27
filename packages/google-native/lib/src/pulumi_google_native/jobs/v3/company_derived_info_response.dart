@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'location_response4.dart';
+import 'location_response_jobs_v3.dart';
 
 /// Derived details about the company.
 class CompanyDerivedInfoResponse {
   /// A structured headquarters location of the company, resolved from Company.hq_location if provided.
-  final LocationResponse4 headquartersLocation;
+  final LocationResponseJobsV3 headquartersLocation;
 
   CompanyDerivedInfoResponse({
     required this.headquartersLocation,
@@ -19,7 +19,7 @@ class CompanyDerivedInfoResponse {
 
   factory CompanyDerivedInfoResponse.fromMap(Map<String, dynamic> map) {
     return CompanyDerivedInfoResponse(
-      headquartersLocation: LocationResponse4.fromMap(
+      headquartersLocation: LocationResponseJobsV3.fromMap(
           (map['headquartersLocation'] as Map).cast<String, dynamic>()),
     );
   }

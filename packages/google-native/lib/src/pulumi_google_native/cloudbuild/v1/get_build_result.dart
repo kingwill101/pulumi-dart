@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifacts_response.dart';
 import 'build_approval_response.dart';
 import 'build_options_response.dart';
@@ -147,22 +147,25 @@ class GetBuildResult {
     map['project'] = project;
     map['queueTtl'] = queueTtl;
     map['results'] = results.toMap();
-    map['secrets'] = Input.encodeList<SecretResponse, Map<String, dynamic>>(
-        secrets, (value) => value.toMap());
+    map['secrets'] =
+        pulumi.Input.encodeList<SecretResponse, Map<String, dynamic>>(
+            secrets, (value) => value.toMap());
     map['serviceAccount'] = serviceAccount;
     map['source'] = source.toMap();
     map['sourceProvenance'] = sourceProvenance.toMap();
     map['startTime'] = startTime;
     map['status'] = status;
     map['statusDetail'] = statusDetail;
-    map['steps'] = Input.encodeList<BuildStepResponse, Map<String, dynamic>>(
-        steps, (value) => value.toMap());
+    map['steps'] =
+        pulumi.Input.encodeList<BuildStepResponse, Map<String, dynamic>>(
+            steps, (value) => value.toMap());
     map['substitutions'] = substitutions;
     map['tags'] = tags;
     map['timeout'] = timeout;
     map['timing'] = timing;
-    map['warnings'] = Input.encodeList<WarningResponse, Map<String, dynamic>>(
-        warnings, (value) => value.toMap());
+    map['warnings'] =
+        pulumi.Input.encodeList<WarningResponse, Map<String, dynamic>>(
+            warnings, (value) => value.toMap());
     return map;
   }
 
@@ -189,7 +192,7 @@ class GetBuildResult {
       queueTtl: map['queueTtl'] as String,
       results: ResultsResponse.fromMap(
           (map['results'] as Map).cast<String, dynamic>()),
-      secrets: Input.decodeList<SecretResponse>(
+      secrets: pulumi.Input.decodeList<SecretResponse>(
           map['secrets'],
           (value) =>
               SecretResponse.fromMap((value as Map).cast<String, dynamic>())),
@@ -201,7 +204,7 @@ class GetBuildResult {
       startTime: map['startTime'] as String,
       status: map['status'] as String,
       statusDetail: map['statusDetail'] as String,
-      steps: Input.decodeList<BuildStepResponse>(
+      steps: pulumi.Input.decodeList<BuildStepResponse>(
           map['steps'],
           (value) => BuildStepResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -209,7 +212,7 @@ class GetBuildResult {
       tags: (map['tags'] as List).cast<String>(),
       timeout: map['timeout'] as String,
       timing: (map['timing'] as Map).cast<String, String>(),
-      warnings: Input.decodeList<WarningResponse>(
+      warnings: pulumi.Input.decodeList<WarningResponse>(
           map['warnings'],
           (value) =>
               WarningResponse.fromMap((value as Map).cast<String, dynamic>())),

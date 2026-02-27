@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'accelerator_config6.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'accelerator_config_dataproc_v1.dart';
 import 'disk_config.dart';
 import 'instance_flexibility_policy.dart';
 import 'instance_group_config_preemptibility.dart';
@@ -10,7 +10,7 @@ import 'startup_config.dart';
 /// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
 class InstanceGroupConfig {
   /// Optional. The Compute Engine accelerator configuration for these instances.
-  final List<AcceleratorConfig6>? accelerators;
+  final List<AcceleratorConfigDataprocV1>? accelerators;
 
   /// Optional. Disk option config settings.
   final DiskConfig? diskConfig;
@@ -56,9 +56,8 @@ class InstanceGroupConfig {
     final map = <String, dynamic>{};
     final acceleratorsValue = accelerators;
     if (acceleratorsValue != null) {
-      map['accelerators'] =
-          Input.encodeList<AcceleratorConfig6, Map<String, dynamic>>(
-              acceleratorsValue, (value) => value.toMap());
+      map['accelerators'] = pulumi.Input.encodeList<AcceleratorConfigDataprocV1,
+          Map<String, dynamic>>(acceleratorsValue, (value) => value.toMap());
     }
     final diskConfigValue = diskConfig;
     if (diskConfigValue != null) {
@@ -103,9 +102,9 @@ class InstanceGroupConfig {
     return InstanceGroupConfig(
       accelerators: map['accelerators'] == null
           ? null
-          : Input.decodeList<AcceleratorConfig6>(
+          : pulumi.Input.decodeList<AcceleratorConfigDataprocV1>(
               map['accelerators'],
-              (value) => AcceleratorConfig6.fromMap(
+              (value) => AcceleratorConfigDataprocV1.fromMap(
                   (value as Map).cast<String, dynamic>())),
       diskConfig: map['diskConfig'] == null
           ? null

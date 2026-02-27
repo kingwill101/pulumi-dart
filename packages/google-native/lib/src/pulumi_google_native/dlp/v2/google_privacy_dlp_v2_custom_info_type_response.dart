@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_detection_rule_response.dart';
 import 'google_privacy_dlp_v2_dictionary_response.dart';
 import 'google_privacy_dlp_v2_info_type_response.dart';
@@ -51,7 +51,7 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['detectionRules'] = Input.encodeList<
+    map['detectionRules'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2DetectionRuleResponse,
         Map<String, dynamic>>(detectionRules, (value) => value.toMap());
     map['dictionary'] = dictionary.toMap();
@@ -68,10 +68,11 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse {
   factory GooglePrivacyDlpV2CustomInfoTypeResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CustomInfoTypeResponse(
-      detectionRules: Input.decodeList<GooglePrivacyDlpV2DetectionRuleResponse>(
-          map['detectionRules'],
-          (value) => GooglePrivacyDlpV2DetectionRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      detectionRules:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2DetectionRuleResponse>(
+              map['detectionRules'],
+              (value) => GooglePrivacyDlpV2DetectionRuleResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       dictionary: GooglePrivacyDlpV2DictionaryResponse.fromMap(
           (map['dictionary'] as Map).cast<String, dynamic>()),
       exclusionType: map['exclusionType'] as String,

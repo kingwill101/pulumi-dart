@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'best_effort_provisioning_response.dart';
 import 'max_pods_constraint_response.dart';
-import 'node_config_response4.dart';
+import 'node_config_response_container_v1.dart';
 import 'node_management_response.dart';
 import 'node_network_config_response.dart';
 import 'node_pool_autoscaling_response.dart';
-import 'placement_policy_response2.dart';
+import 'placement_policy_response_container_v1.dart';
 import 'queued_provisioning_response.dart';
 import 'status_condition_response.dart';
 import 'update_info_response.dart';
@@ -25,7 +25,7 @@ class GetNodePoolResult {
   final List<StatusConditionResponse> conditions;
 
   /// The node configuration of the pool.
-  final NodeConfigResponse4 config;
+  final NodeConfigResponseContainerV1 config;
 
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
   final String etag;
@@ -52,7 +52,7 @@ class GetNodePoolResult {
   final NodeNetworkConfigResponse networkConfig;
 
   /// Specifies the node placement policy.
-  final PlacementPolicyResponse2 placementPolicy;
+  final PlacementPolicyResponseContainerV1 placementPolicy;
 
   /// [Output only] The pod CIDR block size per node in this node pool.
   final int podIpv4CidrSize;
@@ -107,7 +107,7 @@ class GetNodePoolResult {
     map['autoscaling'] = autoscaling.toMap();
     map['bestEffortProvisioning'] = bestEffortProvisioning.toMap();
     map['conditions'] =
-        Input.encodeList<StatusConditionResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StatusConditionResponse, Map<String, dynamic>>(
             conditions, (value) => value.toMap());
     map['config'] = config.toMap();
     map['etag'] = etag;
@@ -136,11 +136,11 @@ class GetNodePoolResult {
           (map['autoscaling'] as Map).cast<String, dynamic>()),
       bestEffortProvisioning: BestEffortProvisioningResponse.fromMap(
           (map['bestEffortProvisioning'] as Map).cast<String, dynamic>()),
-      conditions: Input.decodeList<StatusConditionResponse>(
+      conditions: pulumi.Input.decodeList<StatusConditionResponse>(
           map['conditions'],
           (value) => StatusConditionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      config: NodeConfigResponse4.fromMap(
+      config: NodeConfigResponseContainerV1.fromMap(
           (map['config'] as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
       initialNodeCount: map['initialNodeCount'] as int,
@@ -153,7 +153,7 @@ class GetNodePoolResult {
       name: map['name'] as String,
       networkConfig: NodeNetworkConfigResponse.fromMap(
           (map['networkConfig'] as Map).cast<String, dynamic>()),
-      placementPolicy: PlacementPolicyResponse2.fromMap(
+      placementPolicy: PlacementPolicyResponseContainerV1.fromMap(
           (map['placementPolicy'] as Map).cast<String, dynamic>()),
       podIpv4CidrSize: map['podIpv4CidrSize'] as int,
       queuedProvisioning: QueuedProvisioningResponse.fromMap(

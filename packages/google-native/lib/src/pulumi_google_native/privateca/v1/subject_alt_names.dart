@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'x509_extension.dart';
 
 /// SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
@@ -32,8 +32,9 @@ class SubjectAltNames {
     final map = <String, dynamic>{};
     final customSansValue = customSans;
     if (customSansValue != null) {
-      map['customSans'] = Input.encodeList<X509Extension, Map<String, dynamic>>(
-          customSansValue, (value) => value.toMap());
+      map['customSans'] =
+          pulumi.Input.encodeList<X509Extension, Map<String, dynamic>>(
+              customSansValue, (value) => value.toMap());
     }
     final dnsNamesValue = dnsNames;
     if (dnsNamesValue != null) {
@@ -58,7 +59,7 @@ class SubjectAltNames {
     return SubjectAltNames(
       customSans: map['customSans'] == null
           ? null
-          : Input.decodeList<X509Extension>(
+          : pulumi.Input.decodeList<X509Extension>(
               map['customSans'],
               (value) => X509Extension.fromMap(
                   (value as Map).cast<String, dynamic>())),

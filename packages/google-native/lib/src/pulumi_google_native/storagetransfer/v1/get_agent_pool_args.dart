@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAgentPool.
 class GetAgentPoolArgs {
-  final Input<String> agentPoolId;
-  final Input<String>? project;
+  final pulumi.Input<String> agentPoolId;
+  final pulumi.Input<String>? project;
 
   GetAgentPoolArgs({
     required this.agentPoolId,
@@ -24,8 +24,8 @@ class GetAgentPoolArgs {
 
   factory GetAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentPoolArgs(
-      agentPoolId: Input.asInput<String>(map['agentPoolId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      agentPoolId: pulumi.Input.asInput<String>(map['agentPoolId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

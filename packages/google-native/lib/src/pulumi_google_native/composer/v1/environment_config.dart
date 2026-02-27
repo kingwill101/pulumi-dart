@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'database_config.dart';
-import 'encryption_config5.dart';
+import 'encryption_config_composer_v1.dart';
 import 'environment_config_environment_size.dart';
 import 'environment_config_resilience_mode.dart';
 import 'maintenance_window.dart';
@@ -20,7 +20,7 @@ class EnvironmentConfig {
   final DatabaseConfig? databaseConfig;
 
   /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-  final EncryptionConfig5? encryptionConfig;
+  final EncryptionConfigComposerV1? encryptionConfig;
 
   /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
   final EnvironmentConfigEnvironmentSize? environmentSize;
@@ -146,7 +146,7 @@ class EnvironmentConfig {
               (map['databaseConfig'] as Map).cast<String, dynamic>()),
       encryptionConfig: map['encryptionConfig'] == null
           ? null
-          : EncryptionConfig5.fromMap(
+          : EncryptionConfigComposerV1.fromMap(
               (map['encryptionConfig'] as Map).cast<String, dynamic>()),
       environmentSize: map['environmentSize'] == null
           ? null

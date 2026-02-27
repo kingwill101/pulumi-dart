@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cmek_settings_response.dart';
 import 'index_config_response.dart';
 
@@ -60,7 +60,7 @@ class GetBucketResult {
     map['createTime'] = createTime;
     map['description'] = description;
     map['indexConfigs'] =
-        Input.encodeList<IndexConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<IndexConfigResponse, Map<String, dynamic>>(
             indexConfigs, (value) => value.toMap());
     map['lifecycleState'] = lifecycleState;
     map['locked'] = locked;
@@ -78,7 +78,7 @@ class GetBucketResult {
           (map['cmekSettings'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      indexConfigs: Input.decodeList<IndexConfigResponse>(
+      indexConfigs: pulumi.Input.decodeList<IndexConfigResponse>(
           map['indexConfigs'],
           (value) => IndexConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

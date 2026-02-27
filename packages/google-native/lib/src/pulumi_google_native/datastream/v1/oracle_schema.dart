@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'oracle_table.dart';
 
 /// Oracle schema.
@@ -20,8 +20,9 @@ class OracleSchema {
     final map = <String, dynamic>{};
     final oracleTablesValue = oracleTables;
     if (oracleTablesValue != null) {
-      map['oracleTables'] = Input.encodeList<OracleTable, Map<String, dynamic>>(
-          oracleTablesValue, (value) => value.toMap());
+      map['oracleTables'] =
+          pulumi.Input.encodeList<OracleTable, Map<String, dynamic>>(
+              oracleTablesValue, (value) => value.toMap());
     }
     final schemaValue = schema;
     if (schemaValue != null) {
@@ -34,7 +35,7 @@ class OracleSchema {
     return OracleSchema(
       oracleTables: map['oracleTables'] == null
           ? null
-          : Input.decodeList<OracleTable>(
+          : pulumi.Input.decodeList<OracleTable>(
               map['oracleTables'],
               (value) =>
                   OracleTable.fromMap((value as Map).cast<String, dynamic>())),

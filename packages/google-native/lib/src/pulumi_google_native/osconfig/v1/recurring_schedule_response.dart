@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'monthly_schedule_response.dart';
-import 'time_of_day_response4.dart';
+import 'time_of_day_response_osconfig_v1.dart';
 import 'time_zone_response.dart';
-import 'weekly_schedule_response4.dart';
+import 'weekly_schedule_response_osconfig_v1.dart';
 
 /// Sets the time for recurring patch deployments.
 class RecurringScheduleResponse {
@@ -26,13 +26,13 @@ class RecurringScheduleResponse {
   final String startTime;
 
   /// Time of the day to run a recurring deployment.
-  final TimeOfDayResponse4 timeOfDay;
+  final TimeOfDayResponseOsconfigV1 timeOfDay;
 
   /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
   final TimeZoneResponse timeZone;
 
   /// Schedule with weekly executions.
-  final WeeklyScheduleResponse4 weekly;
+  final WeeklyScheduleResponseOsconfigV1 weekly;
 
   RecurringScheduleResponse({
     required this.endTime,
@@ -69,11 +69,11 @@ class RecurringScheduleResponse {
           (map['monthly'] as Map).cast<String, dynamic>()),
       nextExecuteTime: map['nextExecuteTime'] as String,
       startTime: map['startTime'] as String,
-      timeOfDay: TimeOfDayResponse4.fromMap(
+      timeOfDay: TimeOfDayResponseOsconfigV1.fromMap(
           (map['timeOfDay'] as Map).cast<String, dynamic>()),
       timeZone: TimeZoneResponse.fromMap(
           (map['timeZone'] as Map).cast<String, dynamic>()),
-      weekly: WeeklyScheduleResponse4.fromMap(
+      weekly: WeeklyScheduleResponseOsconfigV1.fromMap(
           (map['weekly'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getVmwareCluster.
 class GetVmwareClusterArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? view;
-  final Input<String> vmwareClusterId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
+  final pulumi.Input<String> vmwareClusterId;
 
   GetVmwareClusterArgs({
     required this.location,
@@ -33,10 +33,10 @@ class GetVmwareClusterArgs {
 
   factory GetVmwareClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareClusterArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
-      vmwareClusterId: Input.asInput<String>(map['vmwareClusterId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
+      vmwareClusterId: pulumi.Input.asInput<String>(map['vmwareClusterId']),
     );
   }
 }

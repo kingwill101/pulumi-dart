@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_container_port_response.dart';
 import 'google_cloud_ml_v1_env_var_response.dart';
 
@@ -33,11 +33,10 @@ class GoogleCloudMlV1ContainerSpecResponse {
     final map = <String, dynamic>{};
     map['args'] = args;
     map['command'] = command;
-    map['env'] =
-        Input.encodeList<GoogleCloudMlV1EnvVarResponse, Map<String, dynamic>>(
-            env, (value) => value.toMap());
+    map['env'] = pulumi.Input.encodeList<GoogleCloudMlV1EnvVarResponse,
+        Map<String, dynamic>>(env, (value) => value.toMap());
     map['image'] = image;
-    map['ports'] = Input.encodeList<GoogleCloudMlV1ContainerPortResponse,
+    map['ports'] = pulumi.Input.encodeList<GoogleCloudMlV1ContainerPortResponse,
         Map<String, dynamic>>(ports, (value) => value.toMap());
     return map;
   }
@@ -47,12 +46,12 @@ class GoogleCloudMlV1ContainerSpecResponse {
     return GoogleCloudMlV1ContainerSpecResponse(
       args: (map['args'] as List).cast<String>(),
       command: (map['command'] as List).cast<String>(),
-      env: Input.decodeList<GoogleCloudMlV1EnvVarResponse>(
+      env: pulumi.Input.decodeList<GoogleCloudMlV1EnvVarResponse>(
           map['env'],
           (value) => GoogleCloudMlV1EnvVarResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       image: map['image'] as String,
-      ports: Input.decodeList<GoogleCloudMlV1ContainerPortResponse>(
+      ports: pulumi.Input.decodeList<GoogleCloudMlV1ContainerPortResponse>(
           map['ports'],
           (value) => GoogleCloudMlV1ContainerPortResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

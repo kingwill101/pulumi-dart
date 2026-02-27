@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grafeas_v1_slsa_provenance_zero_two_slsa_invocation_response.dart';
 import 'grafeas_v1_slsa_provenance_zero_two_slsa_material_response.dart';
 import 'grafeas_v1_slsa_provenance_zero_two_slsa_metadata_response.dart';
@@ -29,7 +29,7 @@ class SlsaProvenanceZeroTwoResponse {
     map['buildType'] = buildType;
     map['builder'] = builder;
     map['invocation'] = invocation.toMap();
-    map['materials'] = Input.encodeList<
+    map['materials'] = pulumi.Input.encodeList<
         GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse,
         Map<String, dynamic>>(materials, (value) => value.toMap());
     map['metadata'] = metadata.toMap();
@@ -43,12 +43,11 @@ class SlsaProvenanceZeroTwoResponse {
       builder: (map['builder'] as Map).cast<String, dynamic>(),
       invocation: GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(
           (map['invocation'] as Map).cast<String, dynamic>()),
-      materials:
-          Input.decodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse>(
-              map['materials'],
-              (value) =>
-                  GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      materials: pulumi.Input.decodeList<
+              GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse>(
+          map['materials'],
+          (value) => GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       metadata: GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(
           (map['metadata'] as Map).cast<String, dynamic>()),
     );

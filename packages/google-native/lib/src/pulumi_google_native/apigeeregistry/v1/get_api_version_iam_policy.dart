@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_api_version_iam_policy_args.dart';
 import 'get_api_version_iam_policy_result.dart';
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 Future<GetApiVersionIamPolicyResult> getApiVersionIamPolicy(
   GetApiVersionIamPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:apigeeregistry/v1:getApiVersionIamPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiVersionIamPolicyResult.fromMap(result);
 }

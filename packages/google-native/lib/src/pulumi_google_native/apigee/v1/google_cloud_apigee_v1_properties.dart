@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_property.dart';
 
 /// Message for compatibility with legacy Edge specification for Java Properties object in JSON.
@@ -16,9 +16,8 @@ class GoogleCloudApigeeV1Properties {
     final map = <String, dynamic>{};
     final propertyValue = property;
     if (propertyValue != null) {
-      map['property'] =
-          Input.encodeList<GoogleCloudApigeeV1Property, Map<String, dynamic>>(
-              propertyValue, (value) => value.toMap());
+      map['property'] = pulumi.Input.encodeList<GoogleCloudApigeeV1Property,
+          Map<String, dynamic>>(propertyValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +26,7 @@ class GoogleCloudApigeeV1Properties {
     return GoogleCloudApigeeV1Properties(
       property: map['property'] == null
           ? null
-          : Input.decodeList<GoogleCloudApigeeV1Property>(
+          : pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(
               map['property'],
               (value) => GoogleCloudApigeeV1Property.fromMap(
                   (value as Map).cast<String, dynamic>())),

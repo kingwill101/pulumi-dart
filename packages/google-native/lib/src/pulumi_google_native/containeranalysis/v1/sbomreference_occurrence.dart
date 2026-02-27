@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'envelope_signature.dart';
 import 'sbom_reference_intoto_payload.dart';
 
@@ -34,7 +34,7 @@ class SBOMReferenceOccurrence {
     final signaturesValue = signatures;
     if (signaturesValue != null) {
       map['signatures'] =
-          Input.encodeList<EnvelopeSignature, Map<String, dynamic>>(
+          pulumi.Input.encodeList<EnvelopeSignature, Map<String, dynamic>>(
               signaturesValue, (value) => value.toMap());
     }
     return map;
@@ -50,7 +50,7 @@ class SBOMReferenceOccurrence {
           map['payloadType'] == null ? null : map['payloadType'] as String,
       signatures: map['signatures'] == null
           ? null
-          : Input.decodeList<EnvelopeSignature>(
+          : pulumi.Input.decodeList<EnvelopeSignature>(
               map['signatures'],
               (value) => EnvelopeSignature.fromMap(
                   (value as Map).cast<String, dynamic>())),

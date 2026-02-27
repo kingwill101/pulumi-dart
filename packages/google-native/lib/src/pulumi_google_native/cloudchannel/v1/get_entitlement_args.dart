@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEntitlement.
 class GetEntitlementArgs {
-  final Input<String> accountId;
-  final Input<String> customerId;
-  final Input<String> entitlementId;
+  final pulumi.Input<String> accountId;
+  final pulumi.Input<String> customerId;
+  final pulumi.Input<String> entitlementId;
 
   GetEntitlementArgs({
     required this.accountId,
@@ -24,9 +24,9 @@ class GetEntitlementArgs {
 
   factory GetEntitlementArgs.fromMap(Map<String, dynamic> map) {
     return GetEntitlementArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      customerId: Input.asInput<String>(map['customerId']),
-      entitlementId: Input.asInput<String>(map['entitlementId']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      customerId: pulumi.Input.asInput<String>(map['customerId']),
+      entitlementId: pulumi.Input.asInput<String>(map['entitlementId']),
     );
   }
 }

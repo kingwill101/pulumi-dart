@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_selection_response.dart';
 import 'instance_selection_result_response.dart';
 
@@ -19,23 +19,23 @@ class InstanceFlexibilityPolicyResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['instanceSelectionList'] =
-        Input.encodeList<InstanceSelectionResponse, Map<String, dynamic>>(
-            instanceSelectionList, (value) => value.toMap());
-    map['instanceSelectionResults'] =
-        Input.encodeList<InstanceSelectionResultResponse, Map<String, dynamic>>(
-            instanceSelectionResults, (value) => value.toMap());
+    map['instanceSelectionList'] = pulumi.Input.encodeList<
+        InstanceSelectionResponse,
+        Map<String, dynamic>>(instanceSelectionList, (value) => value.toMap());
+    map['instanceSelectionResults'] = pulumi.Input.encodeList<
+            InstanceSelectionResultResponse, Map<String, dynamic>>(
+        instanceSelectionResults, (value) => value.toMap());
     return map;
   }
 
   factory InstanceFlexibilityPolicyResponse.fromMap(Map<String, dynamic> map) {
     return InstanceFlexibilityPolicyResponse(
-      instanceSelectionList: Input.decodeList<InstanceSelectionResponse>(
+      instanceSelectionList: pulumi.Input.decodeList<InstanceSelectionResponse>(
           map['instanceSelectionList'],
           (value) => InstanceSelectionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       instanceSelectionResults:
-          Input.decodeList<InstanceSelectionResultResponse>(
+          pulumi.Input.decodeList<InstanceSelectionResultResponse>(
               map['instanceSelectionResults'],
               (value) => InstanceSelectionResultResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

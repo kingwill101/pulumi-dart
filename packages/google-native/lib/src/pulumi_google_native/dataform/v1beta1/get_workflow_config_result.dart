@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'invocation_config_response.dart';
 import 'scheduled_execution_record_response.dart';
 
@@ -38,7 +38,7 @@ class GetWorkflowConfigResult {
     map['cronSchedule'] = cronSchedule;
     map['invocationConfig'] = invocationConfig.toMap();
     map['name'] = name;
-    map['recentScheduledExecutionRecords'] = Input.encodeList<
+    map['recentScheduledExecutionRecords'] = pulumi.Input.encodeList<
             ScheduledExecutionRecordResponse, Map<String, dynamic>>(
         recentScheduledExecutionRecords, (value) => value.toMap());
     map['releaseConfig'] = releaseConfig;
@@ -53,7 +53,7 @@ class GetWorkflowConfigResult {
           (map['invocationConfig'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       recentScheduledExecutionRecords:
-          Input.decodeList<ScheduledExecutionRecordResponse>(
+          pulumi.Input.decodeList<ScheduledExecutionRecordResponse>(
               map['recentScheduledExecutionRecords'],
               (value) => ScheduledExecutionRecordResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

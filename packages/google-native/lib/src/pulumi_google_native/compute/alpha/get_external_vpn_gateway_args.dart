@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getExternalVpnGateway.
 class GetExternalVpnGatewayArgs {
-  final Input<String> externalVpnGateway;
-  final Input<String>? project;
+  final pulumi.Input<String> externalVpnGateway;
+  final pulumi.Input<String>? project;
 
   GetExternalVpnGatewayArgs({
     required this.externalVpnGateway,
@@ -24,8 +24,9 @@ class GetExternalVpnGatewayArgs {
 
   factory GetExternalVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalVpnGatewayArgs(
-      externalVpnGateway: Input.asInput<String>(map['externalVpnGateway']),
-      project: Input.asOptionalInput<String>(map['project']),
+      externalVpnGateway:
+          pulumi.Input.asInput<String>(map['externalVpnGateway']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_recommendationengine_v1beta1_image.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_exact_price.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_price_range.dart';
@@ -70,7 +70,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
     }
     final imagesValue = images;
     if (imagesValue != null) {
-      map['images'] = Input.encodeList<
+      map['images'] = pulumi.Input.encodeList<
           GoogleCloudRecommendationengineV1beta1Image,
           Map<String, dynamic>>(imagesValue, (value) => value.toMap());
     }
@@ -105,7 +105,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
               .fromMap((map['exactPrice'] as Map).cast<String, dynamic>()),
       images: map['images'] == null
           ? null
-          : Input.decodeList<GoogleCloudRecommendationengineV1beta1Image>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudRecommendationengineV1beta1Image>(
               map['images'],
               (value) => GoogleCloudRecommendationengineV1beta1Image.fromMap(
                   (value as Map).cast<String, dynamic>())),

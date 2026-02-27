@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getImportJob.
 class GetImportJobArgs {
-  final Input<String> importJobId;
-  final Input<String> keyRingId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> importJobId;
+  final pulumi.Input<String> keyRingId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetImportJobArgs({
     required this.importJobId,
@@ -30,10 +30,10 @@ class GetImportJobArgs {
 
   factory GetImportJobArgs.fromMap(Map<String, dynamic> map) {
     return GetImportJobArgs(
-      importJobId: Input.asInput<String>(map['importJobId']),
-      keyRingId: Input.asInput<String>(map['keyRingId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      importJobId: pulumi.Input.asInput<String>(map['importJobId']),
+      keyRingId: pulumi.Input.asInput<String>(map['keyRingId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

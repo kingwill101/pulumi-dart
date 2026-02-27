@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'node_taint_response3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'node_taint_response_gkeonprem_v1.dart';
 import 'vmware_vsphere_config_response.dart';
 
 /// Parameters that describe the configuration of all nodes within a given node pool.
@@ -31,7 +31,7 @@ class VmwareNodeConfigResponse {
   final String replicas;
 
   /// The initial taints assigned to nodes of this node pool.
-  final List<NodeTaintResponse3> taints;
+  final List<NodeTaintResponseGkeonpremV1> taints;
 
   /// Specifies the vSphere config for node pool.
   final VmwareVsphereConfigResponse vsphereConfig;
@@ -59,8 +59,8 @@ class VmwareNodeConfigResponse {
     map['labels'] = labels;
     map['memoryMb'] = memoryMb;
     map['replicas'] = replicas;
-    map['taints'] = Input.encodeList<NodeTaintResponse3, Map<String, dynamic>>(
-        taints, (value) => value.toMap());
+    map['taints'] = pulumi.Input.encodeList<NodeTaintResponseGkeonpremV1,
+        Map<String, dynamic>>(taints, (value) => value.toMap());
     map['vsphereConfig'] = vsphereConfig.toMap();
     return map;
   }
@@ -75,9 +75,9 @@ class VmwareNodeConfigResponse {
       labels: (map['labels'] as Map).cast<String, String>(),
       memoryMb: map['memoryMb'] as String,
       replicas: map['replicas'] as String,
-      taints: Input.decodeList<NodeTaintResponse3>(
+      taints: pulumi.Input.decodeList<NodeTaintResponseGkeonpremV1>(
           map['taints'],
-          (value) => NodeTaintResponse3.fromMap(
+          (value) => NodeTaintResponseGkeonpremV1.fromMap(
               (value as Map).cast<String, dynamic>())),
       vsphereConfig: VmwareVsphereConfigResponse.fromMap(
           (map['vsphereConfig'] as Map).cast<String, dynamic>()),

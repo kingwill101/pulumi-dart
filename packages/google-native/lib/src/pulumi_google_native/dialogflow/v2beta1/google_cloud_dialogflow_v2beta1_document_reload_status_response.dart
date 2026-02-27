@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'google_rpc_status_response6.dart';
+import 'google_rpc_status_response_dialogflow_v2beta1.dart';
 
 /// The status of a reload attempt.
 class GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse {
   /// The status of a reload attempt or the initial load.
-  final GoogleRpcStatusResponse6 status;
+  final GoogleRpcStatusResponseDialogflowV2beta1 status;
 
   /// The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
   final String time;
@@ -25,7 +25,7 @@ class GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse {
   factory GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse(
-      status: GoogleRpcStatusResponse6.fromMap(
+      status: GoogleRpcStatusResponseDialogflowV2beta1.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
       time: map['time'] as String,
     );

@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'generic_signed_attestation_content_type.dart';
-import 'signature2.dart';
+import 'signature_containeranalysis_v1beta1.dart';
 
 /// An attestation wrapper that uses the Grafeas `Signature` message. This attestation must define the `serialized_payload` that the `signatures` verify and any metadata necessary to interpret that plaintext. The signatures should always be over the `serialized_payload` bytestring.
 class GenericSignedAttestation {
@@ -13,7 +13,7 @@ class GenericSignedAttestation {
   final String? serializedPayload;
 
   /// One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
-  final List<Signature2>? signatures;
+  final List<SignatureContaineranalysisV1beta1>? signatures;
 
   GenericSignedAttestation({
     this.contentType,
@@ -33,8 +33,9 @@ class GenericSignedAttestation {
     }
     final signaturesValue = signatures;
     if (signaturesValue != null) {
-      map['signatures'] = Input.encodeList<Signature2, Map<String, dynamic>>(
-          signaturesValue, (value) => value.toMap());
+      map['signatures'] = pulumi.Input.encodeList<
+          SignatureContaineranalysisV1beta1,
+          Map<String, dynamic>>(signaturesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -50,10 +51,10 @@ class GenericSignedAttestation {
           : map['serializedPayload'] as String,
       signatures: map['signatures'] == null
           ? null
-          : Input.decodeList<Signature2>(
+          : pulumi.Input.decodeList<SignatureContaineranalysisV1beta1>(
               map['signatures'],
-              (value) =>
-                  Signature2.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => SignatureContaineranalysisV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

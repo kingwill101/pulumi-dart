@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'duration4.dart';
-import 'file_reference2.dart';
+import 'duration_toolresults_v1beta3.dart';
+import 'file_reference_toolresults_v1beta3.dart';
 
 /// A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.
 class TestSuiteOverview {
   /// Elapsed time of test suite.
-  final Duration4? elapsedTime;
+  final DurationToolresultsV1beta3? elapsedTime;
 
   /// Number of test cases in error, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
   final int? errorCount;
@@ -27,7 +27,7 @@ class TestSuiteOverview {
   final int? totalCount;
 
   /// If this test suite was parsed from XML, this is the URI where the original XML file is stored. Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not supported. - In create/response: optional - In update request: never
-  final FileReference2? xmlSource;
+  final FileReferenceToolresultsV1beta3? xmlSource;
 
   TestSuiteOverview({
     this.elapsedTime,
@@ -81,7 +81,7 @@ class TestSuiteOverview {
     return TestSuiteOverview(
       elapsedTime: map['elapsedTime'] == null
           ? null
-          : Duration4.fromMap(
+          : DurationToolresultsV1beta3.fromMap(
               (map['elapsedTime'] as Map).cast<String, dynamic>()),
       errorCount: map['errorCount'] == null ? null : map['errorCount'] as int,
       failureCount:
@@ -93,7 +93,7 @@ class TestSuiteOverview {
       totalCount: map['totalCount'] == null ? null : map['totalCount'] as int,
       xmlSource: map['xmlSource'] == null
           ? null
-          : FileReference2.fromMap(
+          : FileReferenceToolresultsV1beta3.fromMap(
               (map['xmlSource'] as Map).cast<String, dynamic>()),
     );
   }

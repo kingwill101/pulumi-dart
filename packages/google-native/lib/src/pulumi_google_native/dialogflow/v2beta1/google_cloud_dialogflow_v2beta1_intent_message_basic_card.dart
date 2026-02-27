@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_basic_card_button.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_image.dart';
 
@@ -33,7 +33,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
     final map = <String, dynamic>{};
     final buttonsValue = buttons;
     if (buttonsValue != null) {
-      map['buttons'] = Input.encodeList<
+      map['buttons'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton,
           Map<String, dynamic>>(buttonsValue, (value) => value.toMap());
     }
@@ -61,7 +61,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
     return GoogleCloudDialogflowV2beta1IntentMessageBasicCard(
       buttons: map['buttons'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(
               map['buttons'],
               (value) =>

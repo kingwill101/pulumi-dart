@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_condition.dart';
 
 /// A collection of conditions.
@@ -16,9 +16,8 @@ class GooglePrivacyDlpV2Conditions {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] =
-          Input.encodeList<GooglePrivacyDlpV2Condition, Map<String, dynamic>>(
-              conditionsValue, (value) => value.toMap());
+      map['conditions'] = pulumi.Input.encodeList<GooglePrivacyDlpV2Condition,
+          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +26,7 @@ class GooglePrivacyDlpV2Conditions {
     return GooglePrivacyDlpV2Conditions(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2Condition>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2Condition>(
               map['conditions'],
               (value) => GooglePrivacyDlpV2Condition.fromMap(
                   (value as Map).cast<String, dynamic>())),

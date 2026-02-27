@@ -1,8 +1,8 @@
 library module_assuredworkloads_v1beta1;
 
-export 'v1beta1/get_workload2.dart';
-export 'v1beta1/get_workload_args2.dart';
-export 'v1beta1/get_workload_result2.dart';
+export 'v1beta1/get_workload_assuredworkloads_v1beta1.dart';
+export 'v1beta1/get_workload_assuredworkloads_v1beta1_args.dart';
+export 'v1beta1/get_workload_assuredworkloads_v1beta1_result.dart';
 export 'v1beta1/google_cloud_assuredworkloads_v1beta1_workload_cjissettings.dart';
 export 'v1beta1/google_cloud_assuredworkloads_v1beta1_workload_cjissettings_response.dart';
 export 'v1beta1/google_cloud_assuredworkloads_v1beta1_workload_compliance_status_response.dart';
@@ -22,7 +22,7 @@ export 'v1beta1/google_cloud_assuredworkloads_v1beta1_workload_resource_settings
 export 'v1beta1/google_cloud_assuredworkloads_v1beta1_workload_resource_settings_resource_type.dart';
 export 'v1beta1/google_cloud_assuredworkloads_v1beta1_workload_resource_settings_response.dart';
 export 'v1beta1/google_cloud_assuredworkloads_v1beta1_workload_saa_enrollment_response_response.dart';
-export 'v1beta1/workload2.dart';
-export 'v1beta1/workload_args2.dart';
-export 'v1beta1/workload_compliance_regime2.dart';
-export 'v1beta1/workload_partner2.dart';
+export 'v1beta1/workload_assuredworkloads_v1beta1.dart';
+export 'v1beta1/workload_assuredworkloads_v1beta1_args.dart';
+export 'v1beta1/workload_compliance_regime_assuredworkloads_v1beta1.dart';
+export 'v1beta1/workload_partner_assuredworkloads_v1beta1.dart';

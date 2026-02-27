@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_value_response.dart';
 
 /// A tuple of values for the quasi-identifier columns.
@@ -19,9 +19,9 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['estimatedProbability'] = estimatedProbability;
-    map['quasiIdsValues'] =
-        Input.encodeList<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(
-            quasiIdsValues, (value) => value.toMap());
+    map['quasiIdsValues'] = pulumi.Input.encodeList<
+        GooglePrivacyDlpV2ValueResponse,
+        Map<String, dynamic>>(quasiIdsValues, (value) => value.toMap());
     return map;
   }
 
@@ -29,7 +29,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse {
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse(
       estimatedProbability: map['estimatedProbability'] as double,
-      quasiIdsValues: Input.decodeList<GooglePrivacyDlpV2ValueResponse>(
+      quasiIdsValues: pulumi.Input.decodeList<GooglePrivacyDlpV2ValueResponse>(
           map['quasiIdsValues'],
           (value) => GooglePrivacyDlpV2ValueResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

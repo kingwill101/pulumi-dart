@@ -1,46 +1,46 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_zone_args.dart';
 
 /// Creates a new ManagedZone in a given project and location.
 /// Auto-naming is currently not supported for this resource.
-class ManagedZone extends CustomResource {
+class ManagedZone extends pulumi.CustomResource {
   /// Created time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Description of the resource.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// DNS Name of the resource
-  late final Output<String> dns;
+  late final pulumi.Output<String> dns;
 
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  late final Output<Map<String, String>> labels;
+  late final pulumi.Output<Map<String, String>> labels;
 
   /// Required. Identifier to assign to the ManagedZone. Must be unique within scope of the parent resource.
-  late final Output<String> managedZoneId;
+  late final pulumi.Output<String> managedZoneId;
 
   /// Resource name of the Managed Zone. Format: projects/{project}/locations/global/managedZones/{managed_zone}
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// The name of the Target Project
-  late final Output<String> targetProject;
+  late final pulumi.Output<String> targetProject;
 
   /// The name of the Target Project VPC Network
-  late final Output<String> targetVpc;
+  late final pulumi.Output<String> targetVpc;
 
   /// Updated time.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ManagedZone(
     String name, {
     ManagedZoneArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:connectors/v1:ManagedZone',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String>('description');

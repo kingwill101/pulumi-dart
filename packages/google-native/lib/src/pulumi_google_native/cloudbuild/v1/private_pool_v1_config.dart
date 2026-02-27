@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'network_config6.dart';
+import 'network_config_cloudbuild_v1.dart';
 import 'worker_config.dart';
 
 /// Configuration for a V1 `PrivatePool`.
 class PrivatePoolV1Config {
   /// Network configuration for the pool.
-  final NetworkConfig6? networkConfig;
+  final NetworkConfigCloudbuildV1? networkConfig;
 
   /// Machine configuration for the workers in the pool.
   final WorkerConfig? workerConfig;
@@ -33,7 +33,7 @@ class PrivatePoolV1Config {
     return PrivatePoolV1Config(
       networkConfig: map['networkConfig'] == null
           ? null
-          : NetworkConfig6.fromMap(
+          : NetworkConfigCloudbuildV1.fromMap(
               (map['networkConfig'] as Map).cast<String, dynamic>()),
       workerConfig: map['workerConfig'] == null
           ? null

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_attachment_connected_endpoint_response.dart';
 import 'service_attachment_consumer_project_limit_response.dart';
 import 'service_attachment_tunneling_config_response.dart';
@@ -93,11 +93,11 @@ class GetServiceAttachmentResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['connectedEndpoints'] = Input.encodeList<
+    map['connectedEndpoints'] = pulumi.Input.encodeList<
         ServiceAttachmentConnectedEndpointResponse,
         Map<String, dynamic>>(connectedEndpoints, (value) => value.toMap());
     map['connectionPreference'] = connectionPreference;
-    map['consumerAcceptLists'] = Input.encodeList<
+    map['consumerAcceptLists'] = pulumi.Input.encodeList<
         ServiceAttachmentConsumerProjectLimitResponse,
         Map<String, dynamic>>(consumerAcceptLists, (value) => value.toMap());
     map['consumerRejectLists'] = consumerRejectLists;
@@ -123,16 +123,16 @@ class GetServiceAttachmentResult {
   factory GetServiceAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetServiceAttachmentResult(
       connectedEndpoints:
-          Input.decodeList<ServiceAttachmentConnectedEndpointResponse>(
+          pulumi.Input.decodeList<ServiceAttachmentConnectedEndpointResponse>(
               map['connectedEndpoints'],
               (value) => ServiceAttachmentConnectedEndpointResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
       connectionPreference: map['connectionPreference'] as String,
-      consumerAcceptLists:
-          Input.decodeList<ServiceAttachmentConsumerProjectLimitResponse>(
-              map['consumerAcceptLists'],
-              (value) => ServiceAttachmentConsumerProjectLimitResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      consumerAcceptLists: pulumi.Input.decodeList<
+              ServiceAttachmentConsumerProjectLimitResponse>(
+          map['consumerAcceptLists'],
+          (value) => ServiceAttachmentConsumerProjectLimitResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       consumerRejectLists: (map['consumerRejectLists'] as List).cast<String>(),
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,

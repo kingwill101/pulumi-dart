@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cycle_step_response.dart';
 import 'migration_warning_response.dart';
-import 'status_response30.dart';
+import 'status_response_vmmigration_v1.dart';
 
 /// ReplicationCycle contains information about the current replication cycle status.
 class ReplicationCycleResponse {
@@ -14,7 +14,7 @@ class ReplicationCycleResponse {
   final String endTime;
 
   /// Provides details on the state of the cycle in case of an error.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// The identifier of the ReplicationCycle.
   final String name;
@@ -59,11 +59,12 @@ class ReplicationCycleResponse {
     map['progressPercent'] = progressPercent;
     map['startTime'] = startTime;
     map['state'] = state;
-    map['steps'] = Input.encodeList<CycleStepResponse, Map<String, dynamic>>(
-        steps, (value) => value.toMap());
+    map['steps'] =
+        pulumi.Input.encodeList<CycleStepResponse, Map<String, dynamic>>(
+            steps, (value) => value.toMap());
     map['totalPauseDuration'] = totalPauseDuration;
     map['warnings'] =
-        Input.encodeList<MigrationWarningResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MigrationWarningResponse, Map<String, dynamic>>(
             warnings, (value) => value.toMap());
     return map;
   }
@@ -72,18 +73,18 @@ class ReplicationCycleResponse {
     return ReplicationCycleResponse(
       cycleNumber: map['cycleNumber'] as int,
       endTime: map['endTime'] as String,
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       progressPercent: map['progressPercent'] as int,
       startTime: map['startTime'] as String,
       state: map['state'] as String,
-      steps: Input.decodeList<CycleStepResponse>(
+      steps: pulumi.Input.decodeList<CycleStepResponse>(
           map['steps'],
           (value) => CycleStepResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       totalPauseDuration: map['totalPauseDuration'] as String,
-      warnings: Input.decodeList<MigrationWarningResponse>(
+      warnings: pulumi.Input.decodeList<MigrationWarningResponse>(
           map['warnings'],
           (value) => MigrationWarningResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

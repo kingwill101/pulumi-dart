@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2beta_condition_query_term.dart';
 import 'google_cloud_retail_v2beta_condition_time_range.dart';
 
@@ -25,7 +25,7 @@ class GoogleCloudRetailV2betaCondition {
     final map = <String, dynamic>{};
     final activeTimeRangeValue = activeTimeRange;
     if (activeTimeRangeValue != null) {
-      map['activeTimeRange'] = Input.encodeList<
+      map['activeTimeRange'] = pulumi.Input.encodeList<
           GoogleCloudRetailV2betaConditionTimeRange,
           Map<String, dynamic>>(activeTimeRangeValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class GoogleCloudRetailV2betaCondition {
     }
     final queryTermsValue = queryTerms;
     if (queryTermsValue != null) {
-      map['queryTerms'] = Input.encodeList<
+      map['queryTerms'] = pulumi.Input.encodeList<
           GoogleCloudRetailV2betaConditionQueryTerm,
           Map<String, dynamic>>(queryTermsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class GoogleCloudRetailV2betaCondition {
     return GoogleCloudRetailV2betaCondition(
       activeTimeRange: map['activeTimeRange'] == null
           ? null
-          : Input.decodeList<GoogleCloudRetailV2betaConditionTimeRange>(
+          : pulumi.Input.decodeList<GoogleCloudRetailV2betaConditionTimeRange>(
               map['activeTimeRange'],
               (value) => GoogleCloudRetailV2betaConditionTimeRange.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -55,7 +55,7 @@ class GoogleCloudRetailV2betaCondition {
           : (map['pageCategories'] as List).cast<String>(),
       queryTerms: map['queryTerms'] == null
           ? null
-          : Input.decodeList<GoogleCloudRetailV2betaConditionQueryTerm>(
+          : pulumi.Input.decodeList<GoogleCloudRetailV2betaConditionQueryTerm>(
               map['queryTerms'],
               (value) => GoogleCloudRetailV2betaConditionQueryTerm.fromMap(
                   (value as Map).cast<String, dynamic>())),

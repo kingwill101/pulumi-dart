@@ -1,40 +1,40 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'folder_bucket_view_args.dart';
 
 /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
 /// Auto-naming is currently not supported for this resource.
-class FolderBucketView extends CustomResource {
-  late final Output<String> bucketId;
+class FolderBucketView extends pulumi.CustomResource {
+  late final pulumi.Output<String> bucketId;
 
   /// The creation timestamp of the view.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Describes this view.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-  late final Output<String> filter;
-  late final Output<String> folderId;
-  late final Output<String> location;
+  late final pulumi.Output<String> filter;
+  late final pulumi.Output<String> folderId;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The last update timestamp of the view.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
-  late final Output<String> viewId;
+  late final pulumi.Output<String> viewId;
 
   FolderBucketView(
     String name, {
     FolderBucketViewArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:logging/v2:FolderBucketView',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucketId = registerOutput<String>('bucketId');
     this.createTime = registerOutput<String>('createTime');

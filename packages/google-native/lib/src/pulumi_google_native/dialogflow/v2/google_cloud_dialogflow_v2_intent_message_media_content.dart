@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_intent_message_media_content_media_type.dart';
 import 'google_cloud_dialogflow_v2_intent_message_media_content_response_media_object.dart';
 
@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['mediaObjects'] = Input.encodeList<
+    map['mediaObjects'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject,
         Map<String, dynamic>>(mediaObjects, (value) => value.toMap());
     final mediaTypeValue = mediaType;
@@ -34,7 +34,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
   factory GoogleCloudDialogflowV2IntentMessageMediaContent.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageMediaContent(
-      mediaObjects: Input.decodeList<
+      mediaObjects: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>(
           map['mediaObjects'],
           (value) =>

@@ -69,5 +69,5 @@ export 'v1/task_group_response.dart';
 export 'v1/task_group_scheduling_policy.dart';
 export 'v1/task_spec.dart';
 export 'v1/task_spec_response.dart';
-export 'v1/volume3.dart';
-export 'v1/volume_response3.dart';
+export 'v1/volume_batch_v1.dart';
+export 'v1/volume_response_batch_v1.dart';

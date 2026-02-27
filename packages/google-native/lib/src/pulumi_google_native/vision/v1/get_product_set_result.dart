@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response29.dart';
+import 'status_response_vision_v1.dart';
 
 /// Result data returned by getProductSet.
 class GetProductSetResult {
@@ -8,7 +8,7 @@ class GetProductSetResult {
   final String displayName;
 
   /// If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
-  final StatusResponse29 indexError;
+  final StatusResponseVisionV1 indexError;
 
   /// The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
   final String indexTime;
@@ -35,7 +35,7 @@ class GetProductSetResult {
   factory GetProductSetResult.fromMap(Map<String, dynamic> map) {
     return GetProductSetResult(
       displayName: map['displayName'] as String,
-      indexError: StatusResponse29.fromMap(
+      indexError: StatusResponseVisionV1.fromMap(
           (map['indexError'] as Map).cast<String, dynamic>()),
       indexTime: map['indexTime'] as String,
       name: map['name'] as String,

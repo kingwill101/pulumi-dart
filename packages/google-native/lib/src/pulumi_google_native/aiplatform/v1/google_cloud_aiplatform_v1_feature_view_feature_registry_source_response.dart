@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_feature_view_feature_registry_source_feature_group_response.dart';
 
 /// A Feature Registry source for features that need to be synced to Online Store.
@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['featureGroups'] = Input.encodeList<
+    map['featureGroups'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse,
         Map<String, dynamic>>(featureGroups, (value) => value.toMap());
     return map;
@@ -25,7 +25,7 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse {
   factory GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse(
-      featureGroups: Input.decodeList<
+      featureGroups: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse>(
           map['featureGroups'],
           (value) =>

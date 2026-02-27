@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v1_condition_response.dart';
-import 'resource_record_response4.dart';
+import 'resource_record_response_run_v1.dart';
 
 /// The current state of the Domain Mapping.
 class DomainMappingStatusResponse {
@@ -16,7 +16,7 @@ class DomainMappingStatusResponse {
   final int observedGeneration;
 
   /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-  final List<ResourceRecordResponse4> resourceRecords;
+  final List<ResourceRecordResponseRunV1> resourceRecords;
 
   /// Optional. Not supported by Cloud Run.
   final String url;
@@ -31,28 +31,29 @@ class DomainMappingStatusResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['conditions'] = Input.encodeList<GoogleCloudRunV1ConditionResponse,
+    map['conditions'] = pulumi.Input.encodeList<
+        GoogleCloudRunV1ConditionResponse,
         Map<String, dynamic>>(conditions, (value) => value.toMap());
     map['mappedRouteName'] = mappedRouteName;
     map['observedGeneration'] = observedGeneration;
-    map['resourceRecords'] =
-        Input.encodeList<ResourceRecordResponse4, Map<String, dynamic>>(
-            resourceRecords, (value) => value.toMap());
+    map['resourceRecords'] = pulumi.Input.encodeList<
+        ResourceRecordResponseRunV1,
+        Map<String, dynamic>>(resourceRecords, (value) => value.toMap());
     map['url'] = url;
     return map;
   }
 
   factory DomainMappingStatusResponse.fromMap(Map<String, dynamic> map) {
     return DomainMappingStatusResponse(
-      conditions: Input.decodeList<GoogleCloudRunV1ConditionResponse>(
+      conditions: pulumi.Input.decodeList<GoogleCloudRunV1ConditionResponse>(
           map['conditions'],
           (value) => GoogleCloudRunV1ConditionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       mappedRouteName: map['mappedRouteName'] as String,
       observedGeneration: map['observedGeneration'] as int,
-      resourceRecords: Input.decodeList<ResourceRecordResponse4>(
+      resourceRecords: pulumi.Input.decodeList<ResourceRecordResponseRunV1>(
           map['resourceRecords'],
-          (value) => ResourceRecordResponse4.fromMap(
+          (value) => ResourceRecordResponseRunV1.fromMap(
               (value as Map).cast<String, dynamic>())),
       url: map['url'] as String,
     );

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_channel_v1_association_info_response.dart';
 import 'google_cloud_channel_v1_commitment_settings_response.dart';
 import 'google_cloud_channel_v1_parameter_response.dart';
@@ -72,7 +72,8 @@ class GetEntitlementResult {
     map['createTime'] = createTime;
     map['name'] = name;
     map['offer'] = offer;
-    map['parameters'] = Input.encodeList<GoogleCloudChannelV1ParameterResponse,
+    map['parameters'] = pulumi.Input.encodeList<
+        GoogleCloudChannelV1ParameterResponse,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['provisionedService'] = provisionedService.toMap();
     map['provisioningState'] = provisioningState;
@@ -94,10 +95,11 @@ class GetEntitlementResult {
       createTime: map['createTime'] as String,
       name: map['name'] as String,
       offer: map['offer'] as String,
-      parameters: Input.decodeList<GoogleCloudChannelV1ParameterResponse>(
-          map['parameters'],
-          (value) => GoogleCloudChannelV1ParameterResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      parameters:
+          pulumi.Input.decodeList<GoogleCloudChannelV1ParameterResponse>(
+              map['parameters'],
+              (value) => GoogleCloudChannelV1ParameterResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       provisionedService:
           GoogleCloudChannelV1ProvisionedServiceResponse.fromMap(
               (map['provisionedService'] as Map).cast<String, dynamic>()),

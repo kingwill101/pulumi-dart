@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_histogram_chart_data_bucket_response.dart';
 
 /// A Histogram Chart shows a distribution of values into buckets, showing a count of values which fall into a bucket.
@@ -14,7 +14,7 @@ class ReportSummaryHistogramChartDataResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['buckets'] = Input.encodeList<
+    map['buckets'] = pulumi.Input.encodeList<
         ReportSummaryHistogramChartDataBucketResponse,
         Map<String, dynamic>>(buckets, (value) => value.toMap());
     return map;
@@ -23,7 +23,8 @@ class ReportSummaryHistogramChartDataResponse {
   factory ReportSummaryHistogramChartDataResponse.fromMap(
       Map<String, dynamic> map) {
     return ReportSummaryHistogramChartDataResponse(
-      buckets: Input.decodeList<ReportSummaryHistogramChartDataBucketResponse>(
+      buckets: pulumi.Input.decodeList<
+              ReportSummaryHistogramChartDataBucketResponse>(
           map['buckets'],
           (value) => ReportSummaryHistogramChartDataBucketResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

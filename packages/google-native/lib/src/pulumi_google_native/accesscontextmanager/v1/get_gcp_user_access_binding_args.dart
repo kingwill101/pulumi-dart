@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGcpUserAccessBinding.
 class GetGcpUserAccessBindingArgs {
-  final Input<String> gcpUserAccessBindingId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> gcpUserAccessBindingId;
+  final pulumi.Input<String> organizationId;
 
   GetGcpUserAccessBindingArgs({
     required this.gcpUserAccessBindingId,
@@ -22,8 +22,8 @@ class GetGcpUserAccessBindingArgs {
   factory GetGcpUserAccessBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetGcpUserAccessBindingArgs(
       gcpUserAccessBindingId:
-          Input.asInput<String>(map['gcpUserAccessBindingId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+          pulumi.Input.asInput<String>(map['gcpUserAccessBindingId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

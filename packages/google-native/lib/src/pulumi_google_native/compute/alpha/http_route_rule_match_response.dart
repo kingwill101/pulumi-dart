@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_header_match_response.dart';
 import 'http_query_parameter_match_response.dart';
 import 'metadata_filter_response.dart';
@@ -46,17 +46,17 @@ class HttpRouteRuleMatchResponse {
     final map = <String, dynamic>{};
     map['fullPathMatch'] = fullPathMatch;
     map['headerMatches'] =
-        Input.encodeList<HttpHeaderMatchResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<HttpHeaderMatchResponse, Map<String, dynamic>>(
             headerMatches, (value) => value.toMap());
     map['ignoreCase'] = ignoreCase;
     map['metadataFilters'] =
-        Input.encodeList<MetadataFilterResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MetadataFilterResponse, Map<String, dynamic>>(
             metadataFilters, (value) => value.toMap());
     map['pathTemplateMatch'] = pathTemplateMatch;
     map['prefixMatch'] = prefixMatch;
-    map['queryParameterMatches'] =
-        Input.encodeList<HttpQueryParameterMatchResponse, Map<String, dynamic>>(
-            queryParameterMatches, (value) => value.toMap());
+    map['queryParameterMatches'] = pulumi.Input.encodeList<
+        HttpQueryParameterMatchResponse,
+        Map<String, dynamic>>(queryParameterMatches, (value) => value.toMap());
     map['regexMatch'] = regexMatch;
     return map;
   }
@@ -64,21 +64,22 @@ class HttpRouteRuleMatchResponse {
   factory HttpRouteRuleMatchResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleMatchResponse(
       fullPathMatch: map['fullPathMatch'] as String,
-      headerMatches: Input.decodeList<HttpHeaderMatchResponse>(
+      headerMatches: pulumi.Input.decodeList<HttpHeaderMatchResponse>(
           map['headerMatches'],
           (value) => HttpHeaderMatchResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       ignoreCase: map['ignoreCase'] as bool,
-      metadataFilters: Input.decodeList<MetadataFilterResponse>(
+      metadataFilters: pulumi.Input.decodeList<MetadataFilterResponse>(
           map['metadataFilters'],
           (value) => MetadataFilterResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       pathTemplateMatch: map['pathTemplateMatch'] as String,
       prefixMatch: map['prefixMatch'] as String,
-      queryParameterMatches: Input.decodeList<HttpQueryParameterMatchResponse>(
-          map['queryParameterMatches'],
-          (value) => HttpQueryParameterMatchResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      queryParameterMatches:
+          pulumi.Input.decodeList<HttpQueryParameterMatchResponse>(
+              map['queryParameterMatches'],
+              (value) => HttpQueryParameterMatchResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       regexMatch: map['regexMatch'] as String,
     );
   }

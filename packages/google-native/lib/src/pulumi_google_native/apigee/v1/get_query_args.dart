@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getQuery.
 class GetQueryArgs {
-  final Input<String> environmentId;
-  final Input<String> organizationId;
-  final Input<String> queryId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> queryId;
 
   GetQueryArgs({
     required this.environmentId,
@@ -24,9 +24,9 @@ class GetQueryArgs {
 
   factory GetQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetQueryArgs(
-      environmentId: Input.asInput<String>(map['environmentId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      queryId: Input.asInput<String>(map['queryId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      queryId: pulumi.Input.asInput<String>(map['queryId']),
     );
   }
 }

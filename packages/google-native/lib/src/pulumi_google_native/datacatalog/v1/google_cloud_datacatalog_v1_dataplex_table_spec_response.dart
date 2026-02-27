@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_dataplex_external_table_response.dart';
 import 'google_cloud_datacatalog_v1_dataplex_spec_response.dart';
 
@@ -25,7 +25,7 @@ class GoogleCloudDatacatalogV1DataplexTableSpecResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['dataplexSpec'] = dataplexSpec.toMap();
-    map['externalTables'] = Input.encodeList<
+    map['externalTables'] = pulumi.Input.encodeList<
         GoogleCloudDatacatalogV1DataplexExternalTableResponse,
         Map<String, dynamic>>(externalTables, (value) => value.toMap());
     map['userManaged'] = userManaged;
@@ -37,7 +37,7 @@ class GoogleCloudDatacatalogV1DataplexTableSpecResponse {
     return GoogleCloudDatacatalogV1DataplexTableSpecResponse(
       dataplexSpec: GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(
           (map['dataplexSpec'] as Map).cast<String, dynamic>()),
-      externalTables: Input.decodeList<
+      externalTables: pulumi.Input.decodeList<
               GoogleCloudDatacatalogV1DataplexExternalTableResponse>(
           map['externalTables'],
           (value) =>

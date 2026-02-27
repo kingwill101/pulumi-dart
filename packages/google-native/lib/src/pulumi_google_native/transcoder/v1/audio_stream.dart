@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'audio_mapping.dart';
 
 /// Audio stream resource.
@@ -65,8 +65,9 @@ class AudioStream {
     }
     final mappingValue = mapping;
     if (mappingValue != null) {
-      map['mapping'] = Input.encodeList<AudioMapping, Map<String, dynamic>>(
-          mappingValue, (value) => value.toMap());
+      map['mapping'] =
+          pulumi.Input.encodeList<AudioMapping, Map<String, dynamic>>(
+              mappingValue, (value) => value.toMap());
     }
     final sampleRateHertzValue = sampleRateHertz;
     if (sampleRateHertzValue != null) {
@@ -90,7 +91,7 @@ class AudioStream {
           map['languageCode'] == null ? null : map['languageCode'] as String,
       mapping: map['mapping'] == null
           ? null
-          : Input.decodeList<AudioMapping>(
+          : pulumi.Input.decodeList<AudioMapping>(
               map['mapping'],
               (value) =>
                   AudioMapping.fromMap((value as Map).cast<String, dynamic>())),

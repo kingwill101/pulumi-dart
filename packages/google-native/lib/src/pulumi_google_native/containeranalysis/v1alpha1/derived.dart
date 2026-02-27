@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'fingerprint2.dart';
-import 'layer2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'fingerprint_containeranalysis_v1alpha1.dart';
+import 'layer_containeranalysis_v1alpha1.dart';
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 class Derived {
   /// The fingerprint of the derived image.
-  final Fingerprint2? fingerprint;
+  final FingerprintContaineranalysisV1alpha1? fingerprint;
 
   /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  final List<Layer2>? layerInfo;
+  final List<LayerContaineranalysisV1alpha1>? layerInfo;
 
   Derived({
     this.fingerprint,
@@ -25,8 +25,8 @@ class Derived {
     }
     final layerInfoValue = layerInfo;
     if (layerInfoValue != null) {
-      map['layerInfo'] = Input.encodeList<Layer2, Map<String, dynamic>>(
-          layerInfoValue, (value) => value.toMap());
+      map['layerInfo'] = pulumi.Input.encodeList<LayerContaineranalysisV1alpha1,
+          Map<String, dynamic>>(layerInfoValue, (value) => value.toMap());
     }
     return map;
   }
@@ -35,14 +35,14 @@ class Derived {
     return Derived(
       fingerprint: map['fingerprint'] == null
           ? null
-          : Fingerprint2.fromMap(
+          : FingerprintContaineranalysisV1alpha1.fromMap(
               (map['fingerprint'] as Map).cast<String, dynamic>()),
       layerInfo: map['layerInfo'] == null
           ? null
-          : Input.decodeList<Layer2>(
+          : pulumi.Input.decodeList<LayerContaineranalysisV1alpha1>(
               map['layerInfo'],
-              (value) =>
-                  Layer2.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => LayerContaineranalysisV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_defined_function_resource_response.dart';
 
 class ViewDefinitionResponse {
@@ -28,7 +28,7 @@ class ViewDefinitionResponse {
     map['query'] = query;
     map['useExplicitColumnNames'] = useExplicitColumnNames;
     map['useLegacySql'] = useLegacySql;
-    map['userDefinedFunctionResources'] = Input.encodeList<
+    map['userDefinedFunctionResources'] = pulumi.Input.encodeList<
             UserDefinedFunctionResourceResponse, Map<String, dynamic>>(
         userDefinedFunctionResources, (value) => value.toMap());
     return map;
@@ -40,7 +40,7 @@ class ViewDefinitionResponse {
       useExplicitColumnNames: map['useExplicitColumnNames'] as bool,
       useLegacySql: map['useLegacySql'] as bool,
       userDefinedFunctionResources:
-          Input.decodeList<UserDefinedFunctionResourceResponse>(
+          pulumi.Input.decodeList<UserDefinedFunctionResourceResponse>(
               map['userDefinedFunctionResources'],
               (value) => UserDefinedFunctionResourceResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

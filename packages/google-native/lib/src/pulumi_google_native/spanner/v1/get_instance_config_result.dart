@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replica_info_response.dart';
 
 /// Result data returned by getInstanceConfig.
@@ -67,11 +67,11 @@ class GetInstanceConfigResult {
     map['leaderOptions'] = leaderOptions;
     map['name'] = name;
     map['optionalReplicas'] =
-        Input.encodeList<ReplicaInfoResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ReplicaInfoResponse, Map<String, dynamic>>(
             optionalReplicas, (value) => value.toMap());
     map['reconciling'] = reconciling;
     map['replicas'] =
-        Input.encodeList<ReplicaInfoResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ReplicaInfoResponse, Map<String, dynamic>>(
             replicas, (value) => value.toMap());
     map['state'] = state;
     return map;
@@ -87,12 +87,12 @@ class GetInstanceConfigResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       leaderOptions: (map['leaderOptions'] as List).cast<String>(),
       name: map['name'] as String,
-      optionalReplicas: Input.decodeList<ReplicaInfoResponse>(
+      optionalReplicas: pulumi.Input.decodeList<ReplicaInfoResponse>(
           map['optionalReplicas'],
           (value) => ReplicaInfoResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       reconciling: map['reconciling'] as bool,
-      replicas: Input.decodeList<ReplicaInfoResponse>(
+      replicas: pulumi.Input.decodeList<ReplicaInfoResponse>(
           map['replicas'],
           (value) => ReplicaInfoResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

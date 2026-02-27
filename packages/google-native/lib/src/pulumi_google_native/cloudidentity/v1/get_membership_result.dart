@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entity_key_response.dart';
 import 'membership_role_response.dart';
 
@@ -44,7 +44,7 @@ class GetMembershipResult {
     map['name'] = name;
     map['preferredMemberKey'] = preferredMemberKey.toMap();
     map['roles'] =
-        Input.encodeList<MembershipRoleResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MembershipRoleResponse, Map<String, dynamic>>(
             roles, (value) => value.toMap());
     map['type'] = type;
     map['updateTime'] = updateTime;
@@ -58,7 +58,7 @@ class GetMembershipResult {
       name: map['name'] as String,
       preferredMemberKey: EntityKeyResponse.fromMap(
           (map['preferredMemberKey'] as Map).cast<String, dynamic>()),
-      roles: Input.decodeList<MembershipRoleResponse>(
+      roles: pulumi.Input.decodeList<MembershipRoleResponse>(
           map['roles'],
           (value) => MembershipRoleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

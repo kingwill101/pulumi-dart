@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_organization_notification_config_args.dart';
 import 'get_organization_notification_config_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_organization_notification_config_result.dart';
 Future<GetOrganizationNotificationConfigResult>
     getOrganizationNotificationConfig(
   GetOrganizationNotificationConfigArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:securitycenter/v1:getOrganizationNotificationConfig',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationNotificationConfigResult.fromMap(result);
 }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'task_spec_response2.dart';
+import 'task_spec_response_run_v1.dart';
 
 /// TaskTemplateSpec describes the data a task should have when created from a template.
 class TaskTemplateSpecResponse {
   /// Optional. Specification of the desired behavior of the task.
-  final TaskSpecResponse2 spec;
+  final TaskSpecResponseRunV1 spec;
 
   TaskTemplateSpecResponse({
     required this.spec,
@@ -19,7 +19,7 @@ class TaskTemplateSpecResponse {
 
   factory TaskTemplateSpecResponse.fromMap(Map<String, dynamic> map) {
     return TaskTemplateSpecResponse(
-      spec: TaskSpecResponse2.fromMap(
+      spec: TaskSpecResponseRunV1.fromMap(
           (map['spec'] as Map).cast<String, dynamic>()),
     );
   }

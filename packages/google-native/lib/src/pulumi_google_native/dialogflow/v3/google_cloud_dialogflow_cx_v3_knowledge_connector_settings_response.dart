@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_data_store_connection_response.dart';
 import 'google_cloud_dialogflow_cx_v3_fulfillment_response.dart';
 
@@ -32,7 +32,7 @@ class GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dataStoreConnections'] = Input.encodeList<
+    map['dataStoreConnections'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3DataStoreConnectionResponse,
         Map<String, dynamic>>(dataStoreConnections, (value) => value.toMap());
     map['enabled'] = enabled;
@@ -45,7 +45,7 @@ class GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse {
   factory GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse(
-      dataStoreConnections: Input.decodeList<
+      dataStoreConnections: pulumi.Input.decodeList<
               GoogleCloudDialogflowCxV3DataStoreConnectionResponse>(
           map['dataStoreConnections'],
           (value) =>

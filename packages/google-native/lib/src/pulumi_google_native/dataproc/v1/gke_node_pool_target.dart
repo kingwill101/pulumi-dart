@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gke_node_pool_config.dart';
 import 'gke_node_pool_target_roles_item.dart';
 
@@ -28,7 +28,7 @@ class GkeNodePoolTarget {
     if (nodePoolConfigValue != null) {
       map['nodePoolConfig'] = nodePoolConfigValue.toMap();
     }
-    map['roles'] = Input.encodeList<GkeNodePoolTargetRolesItem, String>(
+    map['roles'] = pulumi.Input.encodeList<GkeNodePoolTargetRolesItem, String>(
         roles, (value) => value.value);
     return map;
   }
@@ -40,7 +40,7 @@ class GkeNodePoolTarget {
           ? null
           : GkeNodePoolConfig.fromMap(
               (map['nodePoolConfig'] as Map).cast<String, dynamic>()),
-      roles: Input.decodeList<GkeNodePoolTargetRolesItem>(map['roles'],
+      roles: pulumi.Input.decodeList<GkeNodePoolTargetRolesItem>(map['roles'],
           (value) => GkeNodePoolTargetRolesItem.fromValue(value as String)),
     );
   }

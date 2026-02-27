@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute_response.dart';
 import 'google_cloud_apigee_v1_graph_qloperation_group_response.dart';
 import 'google_cloud_apigee_v1_grpc_operation_group_response.dart';
@@ -87,7 +87,8 @@ class GetApiProductResult {
     final map = <String, dynamic>{};
     map['apiResources'] = apiResources;
     map['approvalType'] = approvalType;
-    map['attributes'] = Input.encodeList<GoogleCloudApigeeV1AttributeResponse,
+    map['attributes'] = pulumi.Input.encodeList<
+        GoogleCloudApigeeV1AttributeResponse,
         Map<String, dynamic>>(attributes, (value) => value.toMap());
     map['createdAt'] = createdAt;
     map['description'] = description;
@@ -111,7 +112,7 @@ class GetApiProductResult {
     return GetApiProductResult(
       apiResources: (map['apiResources'] as List).cast<String>(),
       approvalType: map['approvalType'] as String,
-      attributes: Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
+      attributes: pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
           map['attributes'],
           (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

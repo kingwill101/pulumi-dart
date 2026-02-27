@@ -1,33 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Workstation.
 class WorkstationArgs {
   /// Optional. Client-specified annotations.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Optional. Human-readable name for this workstation.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. Environment variables passed to the workstation container's entrypoint.
-  final Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>>? env;
 
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Identifier. Full name of this workstation.
-  final Input<String>? name;
-  final Input<String>? project;
-  final Input<String> workstationClusterId;
-  final Input<String> workstationConfigId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> workstationClusterId;
+  final pulumi.Input<String> workstationConfigId;
 
   /// Required. ID to use for the workstation.
-  final Input<String> workstationId;
+  final pulumi.Input<String> workstationId;
 
   WorkstationArgs({
     this.annotations,
@@ -86,17 +86,19 @@ class WorkstationArgs {
   factory WorkstationArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      env: Input.asOptionalInput<Map<String, String>>(map['env']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      workstationClusterId: Input.asInput<String>(map['workstationClusterId']),
-      workstationConfigId: Input.asInput<String>(map['workstationConfigId']),
-      workstationId: Input.asInput<String>(map['workstationId']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      env: pulumi.Input.asOptionalInput<Map<String, String>>(map['env']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      workstationClusterId:
+          pulumi.Input.asInput<String>(map['workstationClusterId']),
+      workstationConfigId:
+          pulumi.Input.asInput<String>(map['workstationConfigId']),
+      workstationId: pulumi.Input.asInput<String>(map['workstationId']),
     );
   }
 }

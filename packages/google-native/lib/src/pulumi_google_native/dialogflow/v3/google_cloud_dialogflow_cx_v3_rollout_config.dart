@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_rollout_config_rollout_step.dart';
 
 /// The configuration for auto rollout.
@@ -32,7 +32,7 @@ class GoogleCloudDialogflowCxV3RolloutConfig {
     }
     final rolloutStepsValue = rolloutSteps;
     if (rolloutStepsValue != null) {
-      map['rolloutSteps'] = Input.encodeList<
+      map['rolloutSteps'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowCxV3RolloutConfigRolloutStep,
           Map<String, dynamic>>(rolloutStepsValue, (value) => value.toMap());
     }
@@ -50,7 +50,8 @@ class GoogleCloudDialogflowCxV3RolloutConfig {
           : map['rolloutCondition'] as String,
       rolloutSteps: map['rolloutSteps'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>(
               map['rolloutSteps'],
               (value) =>
                   GoogleCloudDialogflowCxV3RolloutConfigRolloutStep.fromMap(

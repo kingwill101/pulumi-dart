@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute.dart';
 import 'google_cloud_apigee_v1_graph_qloperation.dart';
 import 'google_cloud_apigee_v1_quota.dart';
@@ -31,11 +31,11 @@ class GoogleCloudApigeeV1GraphQLOperationConfig {
     map['apiSource'] = apiSource;
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] =
-          Input.encodeList<GoogleCloudApigeeV1Attribute, Map<String, dynamic>>(
-              attributesValue, (value) => value.toMap());
+      map['attributes'] = pulumi.Input.encodeList<GoogleCloudApigeeV1Attribute,
+          Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
-    map['operations'] = Input.encodeList<GoogleCloudApigeeV1GraphQLOperation,
+    map['operations'] = pulumi.Input.encodeList<
+        GoogleCloudApigeeV1GraphQLOperation,
         Map<String, dynamic>>(operations, (value) => value.toMap());
     final quotaValue = quota;
     if (quotaValue != null) {
@@ -50,11 +50,11 @@ class GoogleCloudApigeeV1GraphQLOperationConfig {
       apiSource: map['apiSource'] as String,
       attributes: map['attributes'] == null
           ? null
-          : Input.decodeList<GoogleCloudApigeeV1Attribute>(
+          : pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(
               map['attributes'],
               (value) => GoogleCloudApigeeV1Attribute.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      operations: Input.decodeList<GoogleCloudApigeeV1GraphQLOperation>(
+      operations: pulumi.Input.decodeList<GoogleCloudApigeeV1GraphQLOperation>(
           map['operations'],
           (value) => GoogleCloudApigeeV1GraphQLOperation.fromMap(
               (value as Map).cast<String, dynamic>())),

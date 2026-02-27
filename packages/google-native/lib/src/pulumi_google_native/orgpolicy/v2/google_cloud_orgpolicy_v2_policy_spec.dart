@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_orgpolicy_v2_policy_spec_policy_rule.dart';
 
 /// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
@@ -40,7 +40,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<
+      map['rules'] = pulumi.Input.encodeList<
           GoogleCloudOrgpolicyV2PolicySpecPolicyRule,
           Map<String, dynamic>>(rulesValue, (value) => value.toMap());
     }
@@ -56,7 +56,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
       reset: map['reset'] == null ? null : map['reset'] as bool,
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>(
+          : pulumi.Input.decodeList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>(
               map['rules'],
               (value) => GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBackupRun.
 class GetBackupRunArgs {
-  final Input<String> id;
-  final Input<String> instance;
-  final Input<String>? project;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> instance;
+  final pulumi.Input<String>? project;
 
   GetBackupRunArgs({
     required this.id,
@@ -27,9 +27,9 @@ class GetBackupRunArgs {
 
   factory GetBackupRunArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupRunArgs(
-      id: Input.asInput<String>(map['id']),
-      instance: Input.asInput<String>(map['instance']),
-      project: Input.asOptionalInput<String>(map['project']),
+      id: pulumi.Input.asInput<String>(map['id']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKeyRingImportJobIamPolicy.
 class GetKeyRingImportJobIamPolicyArgs {
-  final Input<String> importJobId;
-  final Input<String> keyRingId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> importJobId;
+  final pulumi.Input<String> keyRingId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetKeyRingImportJobIamPolicyArgs({
     required this.importJobId,
@@ -36,12 +36,12 @@ class GetKeyRingImportJobIamPolicyArgs {
 
   factory GetKeyRingImportJobIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyRingImportJobIamPolicyArgs(
-      importJobId: Input.asInput<String>(map['importJobId']),
-      keyRingId: Input.asInput<String>(map['keyRingId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      importJobId: pulumi.Input.asInput<String>(map['importJobId']),
+      keyRingId: pulumi.Input.asInput<String>(map['keyRingId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

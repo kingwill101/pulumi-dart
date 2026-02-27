@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKubeconfig.
 class GetKubeconfigArgs {
-  final Input<dynamic> self;
+  final pulumi.Input<dynamic> self;
 
   GetKubeconfigArgs({
     required this.self,
@@ -18,7 +18,7 @@ class GetKubeconfigArgs {
 
   factory GetKubeconfigArgs.fromMap(Map<String, dynamic> map) {
     return GetKubeconfigArgs(
-      self: Input.asInput<dynamic>(map['__self__']),
+      self: pulumi.Input.asInput<dynamic>(map['__self__']),
     );
   }
 }

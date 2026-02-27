@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_kubelet_config.dart';
 import 'bare_metal_node_config.dart';
 import 'bare_metal_node_pool_config_operating_system.dart';
-import 'node_taint3.dart';
+import 'node_taint_gkeonprem_v1.dart';
 
 /// BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool.
 class BareMetalNodePoolConfig {
@@ -21,7 +21,7 @@ class BareMetalNodePoolConfig {
   final BareMetalNodePoolConfigOperatingSystem? operatingSystem;
 
   /// The initial taints assigned to nodes of this node pool.
-  final List<NodeTaint3>? taints;
+  final List<NodeTaintGkeonpremV1>? taints;
 
   BareMetalNodePoolConfig({
     this.kubeletConfig,
@@ -42,7 +42,7 @@ class BareMetalNodePoolConfig {
       map['labels'] = labelsValue;
     }
     map['nodeConfigs'] =
-        Input.encodeList<BareMetalNodeConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<BareMetalNodeConfig, Map<String, dynamic>>(
             nodeConfigs, (value) => value.toMap());
     final operatingSystemValue = operatingSystem;
     if (operatingSystemValue != null) {
@@ -50,8 +50,9 @@ class BareMetalNodePoolConfig {
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] = Input.encodeList<NodeTaint3, Map<String, dynamic>>(
-          taintsValue, (value) => value.toMap());
+      map['taints'] =
+          pulumi.Input.encodeList<NodeTaintGkeonpremV1, Map<String, dynamic>>(
+              taintsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -65,7 +66,7 @@ class BareMetalNodePoolConfig {
       labels: map['labels'] == null
           ? null
           : (map['labels'] as Map).cast<String, String>(),
-      nodeConfigs: Input.decodeList<BareMetalNodeConfig>(
+      nodeConfigs: pulumi.Input.decodeList<BareMetalNodeConfig>(
           map['nodeConfigs'],
           (value) => BareMetalNodeConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -75,10 +76,10 @@ class BareMetalNodePoolConfig {
               map['operatingSystem'] as String),
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<NodeTaint3>(
+          : pulumi.Input.decodeList<NodeTaintGkeonpremV1>(
               map['taints'],
-              (value) =>
-                  NodeTaint3.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => NodeTaintGkeonpremV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_policy_or_template_response.dart';
 import 'location_policy_response.dart';
 import 'network_policy_response.dart';
@@ -38,7 +38,7 @@ class AllocationPolicyResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['instances'] = Input.encodeList<InstancePolicyOrTemplateResponse,
+    map['instances'] = pulumi.Input.encodeList<InstancePolicyOrTemplateResponse,
         Map<String, dynamic>>(instances, (value) => value.toMap());
     map['labels'] = labels;
     map['location'] = location.toMap();
@@ -50,7 +50,7 @@ class AllocationPolicyResponse {
 
   factory AllocationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return AllocationPolicyResponse(
-      instances: Input.decodeList<InstancePolicyOrTemplateResponse>(
+      instances: pulumi.Input.decodeList<InstancePolicyOrTemplateResponse>(
           map['instances'],
           (value) => InstancePolicyOrTemplateResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

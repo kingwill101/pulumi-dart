@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'encryption_key_response.dart';
-import 'secret_response2.dart';
+import 'secret_response_connectors_v1.dart';
 
 /// ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.
 class ConfigVariableResponse {
@@ -18,7 +18,7 @@ class ConfigVariableResponse {
   final String key;
 
   /// Value is a secret.
-  final SecretResponse2 secretValue;
+  final SecretResponseConnectorsV1 secretValue;
 
   /// Value is a string.
   final String stringValue;
@@ -50,7 +50,7 @@ class ConfigVariableResponse {
           (map['encryptionKeyValue'] as Map).cast<String, dynamic>()),
       intValue: map['intValue'] as String,
       key: map['key'] as String,
-      secretValue: SecretResponse2.fromMap(
+      secretValue: SecretResponseConnectorsV1.fromMap(
           (map['secretValue'] as Map).cast<String, dynamic>()),
       stringValue: map['stringValue'] as String,
     );

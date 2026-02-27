@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_response.dart';
 import 'apk_response.dart';
 import 'device_file_response.dart';
@@ -51,18 +51,19 @@ class TestSetupResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['account'] = account.toMap();
-    map['additionalApks'] = Input.encodeList<ApkResponse, Map<String, dynamic>>(
-        additionalApks, (value) => value.toMap());
+    map['additionalApks'] =
+        pulumi.Input.encodeList<ApkResponse, Map<String, dynamic>>(
+            additionalApks, (value) => value.toMap());
     map['directoriesToPull'] = directoriesToPull;
     map['dontAutograntPermissions'] = dontAutograntPermissions;
-    map['environmentVariables'] =
-        Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(
-            environmentVariables, (value) => value.toMap());
+    map['environmentVariables'] = pulumi.Input.encodeList<
+        EnvironmentVariableResponse,
+        Map<String, dynamic>>(environmentVariables, (value) => value.toMap());
     map['filesToPush'] =
-        Input.encodeList<DeviceFileResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DeviceFileResponse, Map<String, dynamic>>(
             filesToPush, (value) => value.toMap());
     map['initialSetupApks'] =
-        Input.encodeList<ApkResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ApkResponse, Map<String, dynamic>>(
             initialSetupApks, (value) => value.toMap());
     map['networkProfile'] = networkProfile;
     map['systrace'] = systrace.toMap();
@@ -73,21 +74,22 @@ class TestSetupResponse {
     return TestSetupResponse(
       account: AccountResponse.fromMap(
           (map['account'] as Map).cast<String, dynamic>()),
-      additionalApks: Input.decodeList<ApkResponse>(
+      additionalApks: pulumi.Input.decodeList<ApkResponse>(
           map['additionalApks'],
           (value) =>
               ApkResponse.fromMap((value as Map).cast<String, dynamic>())),
       directoriesToPull: (map['directoriesToPull'] as List).cast<String>(),
       dontAutograntPermissions: map['dontAutograntPermissions'] as bool,
-      environmentVariables: Input.decodeList<EnvironmentVariableResponse>(
-          map['environmentVariables'],
-          (value) => EnvironmentVariableResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      filesToPush: Input.decodeList<DeviceFileResponse>(
+      environmentVariables:
+          pulumi.Input.decodeList<EnvironmentVariableResponse>(
+              map['environmentVariables'],
+              (value) => EnvironmentVariableResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      filesToPush: pulumi.Input.decodeList<DeviceFileResponse>(
           map['filesToPush'],
           (value) => DeviceFileResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      initialSetupApks: Input.decodeList<ApkResponse>(
+      initialSetupApks: pulumi.Input.decodeList<ApkResponse>(
           map['initialSetupApks'],
           (value) =>
               ApkResponse.fromMap((value as Map).cast<String, dynamic>())),

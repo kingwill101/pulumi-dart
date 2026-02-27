@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_lineage_v1_event_link_response.dart';
 
 /// Result data returned by getLineageEvent.
@@ -27,7 +27,7 @@ class GetLineageEventResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['endTime'] = endTime;
-    map['links'] = Input.encodeList<
+    map['links'] = pulumi.Input.encodeList<
         GoogleCloudDatacatalogLineageV1EventLinkResponse,
         Map<String, dynamic>>(links, (value) => value.toMap());
     map['name'] = name;
@@ -38,7 +38,8 @@ class GetLineageEventResult {
   factory GetLineageEventResult.fromMap(Map<String, dynamic> map) {
     return GetLineageEventResult(
       endTime: map['endTime'] as String,
-      links: Input.decodeList<GoogleCloudDatacatalogLineageV1EventLinkResponse>(
+      links: pulumi.Input.decodeList<
+              GoogleCloudDatacatalogLineageV1EventLinkResponse>(
           map['links'],
           (value) => GoogleCloudDatacatalogLineageV1EventLinkResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

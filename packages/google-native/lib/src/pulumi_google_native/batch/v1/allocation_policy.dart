@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_policy_or_template.dart';
 import 'location_policy.dart';
 import 'network_policy.dart';
@@ -40,9 +40,8 @@ class AllocationPolicy {
     final map = <String, dynamic>{};
     final instancesValue = instances;
     if (instancesValue != null) {
-      map['instances'] =
-          Input.encodeList<InstancePolicyOrTemplate, Map<String, dynamic>>(
-              instancesValue, (value) => value.toMap());
+      map['instances'] = pulumi.Input.encodeList<InstancePolicyOrTemplate,
+          Map<String, dynamic>>(instancesValue, (value) => value.toMap());
     }
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -71,7 +70,7 @@ class AllocationPolicy {
     return AllocationPolicy(
       instances: map['instances'] == null
           ? null
-          : Input.decodeList<InstancePolicyOrTemplate>(
+          : pulumi.Input.decodeList<InstancePolicyOrTemplate>(
               map['instances'],
               (value) => InstancePolicyOrTemplate.fromMap(
                   (value as Map).cast<String, dynamic>())),

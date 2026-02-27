@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'admin_user_response.dart';
-import 'instance_config_response2.dart';
+import 'instance_config_response_contactcenteraiplatform_v1alpha1.dart';
 import 'samlparams_response.dart';
 import 'uris_response.dart';
 
@@ -23,7 +23,7 @@ class GetContactCenterResult {
   final String displayName;
 
   /// The configuration of this instance, it is currently immutable once created.
-  final InstanceConfigResponse2 instanceConfig;
+  final InstanceConfigResponseContactcenteraiplatformV1alpha1 instanceConfig;
 
   /// Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
   final String kmsKey;
@@ -93,8 +93,9 @@ class GetContactCenterResult {
       createTime: map['createTime'] as String,
       customerDomainPrefix: map['customerDomainPrefix'] as String,
       displayName: map['displayName'] as String,
-      instanceConfig: InstanceConfigResponse2.fromMap(
-          (map['instanceConfig'] as Map).cast<String, dynamic>()),
+      instanceConfig:
+          InstanceConfigResponseContactcenteraiplatformV1alpha1.fromMap(
+              (map['instanceConfig'] as Map).cast<String, dynamic>()),
       kmsKey: map['kmsKey'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,

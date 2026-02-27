@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target.dart';
 
 /// Includes various configuration options for a workflow invocation. If both `included_targets` and `included_tags` are unset, all actions will be included.
@@ -46,8 +46,9 @@ class InvocationConfig {
     }
     final includedTargetsValue = includedTargets;
     if (includedTargetsValue != null) {
-      map['includedTargets'] = Input.encodeList<Target, Map<String, dynamic>>(
-          includedTargetsValue, (value) => value.toMap());
+      map['includedTargets'] =
+          pulumi.Input.encodeList<Target, Map<String, dynamic>>(
+              includedTargetsValue, (value) => value.toMap());
     }
     final serviceAccountValue = serviceAccount;
     if (serviceAccountValue != null) {
@@ -76,7 +77,7 @@ class InvocationConfig {
           : (map['includedTags'] as List).cast<String>(),
       includedTargets: map['includedTargets'] == null
           ? null
-          : Input.decodeList<Target>(
+          : pulumi.Input.decodeList<Target>(
               map['includedTargets'],
               (value) =>
                   Target.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getConfig.
 class GetConfigArgs {
-  final Input<String> apiId;
-  final Input<String> configId;
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String>? view;
+  final pulumi.Input<String> apiId;
+  final pulumi.Input<String> configId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
 
   GetConfigArgs({
     required this.apiId,
@@ -36,11 +36,11 @@ class GetConfigArgs {
 
   factory GetConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      configId: Input.asInput<String>(map['configId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      view: Input.asOptionalInput<String>(map['view']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      configId: pulumi.Input.asInput<String>(map['configId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

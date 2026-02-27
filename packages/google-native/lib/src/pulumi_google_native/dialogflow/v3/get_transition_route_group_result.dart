@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_transition_route_response.dart';
 
 /// Result data returned by getTransitionRouteGroup.
@@ -24,7 +24,7 @@ class GetTransitionRouteGroupResult {
     final map = <String, dynamic>{};
     map['displayName'] = displayName;
     map['name'] = name;
-    map['transitionRoutes'] = Input.encodeList<
+    map['transitionRoutes'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowCxV3TransitionRouteResponse,
         Map<String, dynamic>>(transitionRoutes, (value) => value.toMap());
     return map;
@@ -34,12 +34,11 @@ class GetTransitionRouteGroupResult {
     return GetTransitionRouteGroupResult(
       displayName: map['displayName'] as String,
       name: map['name'] as String,
-      transitionRoutes:
-          Input.decodeList<GoogleCloudDialogflowCxV3TransitionRouteResponse>(
-              map['transitionRoutes'],
-              (value) =>
-                  GoogleCloudDialogflowCxV3TransitionRouteResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      transitionRoutes: pulumi.Input.decodeList<
+              GoogleCloudDialogflowCxV3TransitionRouteResponse>(
+          map['transitionRoutes'],
+          (value) => GoogleCloudDialogflowCxV3TransitionRouteResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

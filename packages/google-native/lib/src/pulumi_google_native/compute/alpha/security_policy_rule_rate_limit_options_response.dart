@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_rule_rate_limit_options_enforce_on_key_config_response.dart';
 import 'security_policy_rule_rate_limit_options_rpc_status_response.dart';
 import 'security_policy_rule_rate_limit_options_threshold_response.dart';
@@ -58,7 +58,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse {
     map['banThreshold'] = banThreshold.toMap();
     map['conformAction'] = conformAction;
     map['enforceOnKey'] = enforceOnKey;
-    map['enforceOnKeyConfigs'] = Input.encodeList<
+    map['enforceOnKeyConfigs'] = pulumi.Input.encodeList<
         SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse,
         Map<String, dynamic>>(enforceOnKeyConfigs, (value) => value.toMap());
     map['enforceOnKeyName'] = enforceOnKeyName;
@@ -77,7 +77,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse {
           (map['banThreshold'] as Map).cast<String, dynamic>()),
       conformAction: map['conformAction'] as String,
       enforceOnKey: map['enforceOnKey'] as String,
-      enforceOnKeyConfigs: Input.decodeList<
+      enforceOnKeyConfigs: pulumi.Input.decodeList<
               SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse>(
           map['enforceOnKeyConfigs'],
           (value) =>

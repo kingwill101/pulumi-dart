@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_measurement_metric.dart';
 
 /// A message representing a measurement.
@@ -20,7 +20,7 @@ class GoogleCloudMlV1Measurement {
     final map = <String, dynamic>{};
     final metricsValue = metrics;
     if (metricsValue != null) {
-      map['metrics'] = Input.encodeList<GoogleCloudMlV1MeasurementMetric,
+      map['metrics'] = pulumi.Input.encodeList<GoogleCloudMlV1MeasurementMetric,
           Map<String, dynamic>>(metricsValue, (value) => value.toMap());
     }
     final stepCountValue = stepCount;
@@ -34,7 +34,7 @@ class GoogleCloudMlV1Measurement {
     return GoogleCloudMlV1Measurement(
       metrics: map['metrics'] == null
           ? null
-          : Input.decodeList<GoogleCloudMlV1MeasurementMetric>(
+          : pulumi.Input.decodeList<GoogleCloudMlV1MeasurementMetric>(
               map['metrics'],
               (value) => GoogleCloudMlV1MeasurementMetric.fromMap(
                   (value as Map).cast<String, dynamic>())),

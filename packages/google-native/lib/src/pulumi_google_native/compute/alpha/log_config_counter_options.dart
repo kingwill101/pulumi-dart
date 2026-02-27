@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_config_counter_options_custom_field.dart';
 
 /// This is deprecated and has no effect. Do not use.
@@ -24,7 +24,8 @@ class LogConfigCounterOptions {
     final map = <String, dynamic>{};
     final customFieldsValue = customFields;
     if (customFieldsValue != null) {
-      map['customFields'] = Input.encodeList<LogConfigCounterOptionsCustomField,
+      map['customFields'] = pulumi.Input.encodeList<
+          LogConfigCounterOptionsCustomField,
           Map<String, dynamic>>(customFieldsValue, (value) => value.toMap());
     }
     final fieldValue = field;
@@ -42,7 +43,7 @@ class LogConfigCounterOptions {
     return LogConfigCounterOptions(
       customFields: map['customFields'] == null
           ? null
-          : Input.decodeList<LogConfigCounterOptionsCustomField>(
+          : pulumi.Input.decodeList<LogConfigCounterOptionsCustomField>(
               map['customFields'],
               (value) => LogConfigCounterOptionsCustomField.fromMap(
                   (value as Map).cast<String, dynamic>())),

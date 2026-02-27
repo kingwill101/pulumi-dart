@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'best_effort_provisioning.dart';
 import 'max_pods_constraint.dart';
-import 'node_config4.dart';
+import 'node_config_container_v1.dart';
 import 'node_management.dart';
 import 'node_network_config.dart';
 import 'node_pool_autoscaling.dart';
-import 'placement_policy2.dart';
+import 'placement_policy_container_v1.dart';
 import 'queued_provisioning.dart';
 import 'status_condition.dart';
 import 'upgrade_settings.dart';
@@ -24,7 +24,7 @@ class NodePool {
   final List<StatusCondition>? conditions;
 
   /// The node configuration of the pool.
-  final NodeConfig4? config;
+  final NodeConfigContainerV1? config;
 
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
   final String? etag;
@@ -48,7 +48,7 @@ class NodePool {
   final NodeNetworkConfig? networkConfig;
 
   /// Specifies the node placement policy.
-  final PlacementPolicy2? placementPolicy;
+  final PlacementPolicyContainerV1? placementPolicy;
 
   /// Specifies the configuration of queued provisioning.
   final QueuedProvisioning? queuedProvisioning;
@@ -90,7 +90,7 @@ class NodePool {
     final conditionsValue = conditions;
     if (conditionsValue != null) {
       map['conditions'] =
-          Input.encodeList<StatusCondition, Map<String, dynamic>>(
+          pulumi.Input.encodeList<StatusCondition, Map<String, dynamic>>(
               conditionsValue, (value) => value.toMap());
     }
     final configValue = config;
@@ -156,13 +156,14 @@ class NodePool {
               (map['bestEffortProvisioning'] as Map).cast<String, dynamic>()),
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<StatusCondition>(
+          : pulumi.Input.decodeList<StatusCondition>(
               map['conditions'],
               (value) => StatusCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),
       config: map['config'] == null
           ? null
-          : NodeConfig4.fromMap((map['config'] as Map).cast<String, dynamic>()),
+          : NodeConfigContainerV1.fromMap(
+              (map['config'] as Map).cast<String, dynamic>()),
       etag: map['etag'] == null ? null : map['etag'] as String,
       initialNodeCount: map['initialNodeCount'] == null
           ? null
@@ -185,7 +186,7 @@ class NodePool {
               (map['networkConfig'] as Map).cast<String, dynamic>()),
       placementPolicy: map['placementPolicy'] == null
           ? null
-          : PlacementPolicy2.fromMap(
+          : PlacementPolicyContainerV1.fromMap(
               (map['placementPolicy'] as Map).cast<String, dynamic>()),
       queuedProvisioning: map['queuedProvisioning'] == null
           ? null

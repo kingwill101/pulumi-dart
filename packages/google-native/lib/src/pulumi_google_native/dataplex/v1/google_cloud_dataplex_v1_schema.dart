@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_schema_partition_field.dart';
 import 'google_cloud_dataplex_v1_schema_partition_style.dart';
 import 'google_cloud_dataplex_v1_schema_schema_field.dart';
@@ -30,12 +30,13 @@ class GoogleCloudDataplexV1Schema {
     final map = <String, dynamic>{};
     final fieldsValue = fields;
     if (fieldsValue != null) {
-      map['fields'] = Input.encodeList<GoogleCloudDataplexV1SchemaSchemaField,
+      map['fields'] = pulumi.Input.encodeList<
+          GoogleCloudDataplexV1SchemaSchemaField,
           Map<String, dynamic>>(fieldsValue, (value) => value.toMap());
     }
     final partitionFieldsValue = partitionFields;
     if (partitionFieldsValue != null) {
-      map['partitionFields'] = Input.encodeList<
+      map['partitionFields'] = pulumi.Input.encodeList<
           GoogleCloudDataplexV1SchemaPartitionField,
           Map<String, dynamic>>(partitionFieldsValue, (value) => value.toMap());
     }
@@ -51,13 +52,13 @@ class GoogleCloudDataplexV1Schema {
     return GoogleCloudDataplexV1Schema(
       fields: map['fields'] == null
           ? null
-          : Input.decodeList<GoogleCloudDataplexV1SchemaSchemaField>(
+          : pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaSchemaField>(
               map['fields'],
               (value) => GoogleCloudDataplexV1SchemaSchemaField.fromMap(
                   (value as Map).cast<String, dynamic>())),
       partitionFields: map['partitionFields'] == null
           ? null
-          : Input.decodeList<GoogleCloudDataplexV1SchemaPartitionField>(
+          : pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaPartitionField>(
               map['partitionFields'],
               (value) => GoogleCloudDataplexV1SchemaPartitionField.fromMap(
                   (value as Map).cast<String, dynamic>())),

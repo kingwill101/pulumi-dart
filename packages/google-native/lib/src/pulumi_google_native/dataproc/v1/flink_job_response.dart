@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'logging_config_response3.dart';
+import 'logging_config_response_dataproc_v1.dart';
 
 /// A Dataproc job for running Apache Flink applications on YARN.
 class FlinkJobResponse {
@@ -11,7 +11,7 @@ class FlinkJobResponse {
   final List<String> jarFileUris;
 
   /// Optional. The runtime log config for job execution.
-  final LoggingConfigResponse3 loggingConfig;
+  final LoggingConfigResponseDataprocV1 loggingConfig;
 
   /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
   final String mainClass;
@@ -51,7 +51,7 @@ class FlinkJobResponse {
     return FlinkJobResponse(
       args: (map['args'] as List).cast<String>(),
       jarFileUris: (map['jarFileUris'] as List).cast<String>(),
-      loggingConfig: LoggingConfigResponse3.fromMap(
+      loggingConfig: LoggingConfigResponseDataprocV1.fromMap(
           (map['loggingConfig'] as Map).cast<String, dynamic>()),
       mainClass: map['mainClass'] as String,
       mainJarFileUri: map['mainJarFileUri'] as String,

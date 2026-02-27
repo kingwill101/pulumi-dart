@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDataAttributeBinding.
 class GetDataAttributeBindingArgs {
-  final Input<String> dataAttributeBindingId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> dataAttributeBindingId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDataAttributeBindingArgs({
     required this.dataAttributeBindingId,
@@ -28,9 +28,9 @@ class GetDataAttributeBindingArgs {
   factory GetDataAttributeBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetDataAttributeBindingArgs(
       dataAttributeBindingId:
-          Input.asInput<String>(map['dataAttributeBindingId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['dataAttributeBindingId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

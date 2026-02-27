@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EnvironmentEntry.
 class EnvironmentEntryArgs {
-  final Input<String> environmentId;
-  final Input<String> keyvaluemapId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> keyvaluemapId;
 
   /// Resource URI that can be used to identify the scope of the key value map entries.
-  final Input<String>? name;
-  final Input<String> organizationId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
 
   /// Data or payload that is being retrieved and associated with the unique key.
-  final Input<String> value;
+  final pulumi.Input<String> value;
 
   EnvironmentEntryArgs({
     required this.environmentId,
@@ -37,11 +37,11 @@ class EnvironmentEntryArgs {
 
   factory EnvironmentEntryArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentEntryArgs(
-      environmentId: Input.asInput<String>(map['environmentId']),
-      keyvaluemapId: Input.asInput<String>(map['keyvaluemapId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      value: Input.asInput<String>(map['value']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      keyvaluemapId: pulumi.Input.asInput<String>(map['keyvaluemapId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      value: pulumi.Input.asInput<String>(map['value']),
     );
   }
 }

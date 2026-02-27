@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_entity_type_entity_response.dart';
 
 /// Result data returned by getSessionEntityType.
@@ -22,7 +22,7 @@ class GetSessionEntityTypeResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['entities'] = Input.encodeList<
+    map['entities'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2EntityTypeEntityResponse,
         Map<String, dynamic>>(entities, (value) => value.toMap());
     map['entityOverrideMode'] = entityOverrideMode;
@@ -32,12 +32,11 @@ class GetSessionEntityTypeResult {
 
   factory GetSessionEntityTypeResult.fromMap(Map<String, dynamic> map) {
     return GetSessionEntityTypeResult(
-      entities:
-          Input.decodeList<GoogleCloudDialogflowV2EntityTypeEntityResponse>(
-              map['entities'],
-              (value) =>
-                  GoogleCloudDialogflowV2EntityTypeEntityResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      entities: pulumi.Input.decodeList<
+              GoogleCloudDialogflowV2EntityTypeEntityResponse>(
+          map['entities'],
+          (value) => GoogleCloudDialogflowV2EntityTypeEntityResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       entityOverrideMode: map['entityOverrideMode'] as String,
       name: map['name'] as String,
     );

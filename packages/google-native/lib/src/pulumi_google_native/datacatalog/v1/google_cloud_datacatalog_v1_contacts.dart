@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_contacts_person.dart';
 
 /// Contact people for the entry.
@@ -16,7 +16,8 @@ class GoogleCloudDatacatalogV1Contacts {
     final map = <String, dynamic>{};
     final peopleValue = people;
     if (peopleValue != null) {
-      map['people'] = Input.encodeList<GoogleCloudDatacatalogV1ContactsPerson,
+      map['people'] = pulumi.Input.encodeList<
+          GoogleCloudDatacatalogV1ContactsPerson,
           Map<String, dynamic>>(peopleValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +27,7 @@ class GoogleCloudDatacatalogV1Contacts {
     return GoogleCloudDatacatalogV1Contacts(
       people: map['people'] == null
           ? null
-          : Input.decodeList<GoogleCloudDatacatalogV1ContactsPerson>(
+          : pulumi.Input.decodeList<GoogleCloudDatacatalogV1ContactsPerson>(
               map['people'],
               (value) => GoogleCloudDatacatalogV1ContactsPerson.fromMap(
                   (value as Map).cast<String, dynamic>())),

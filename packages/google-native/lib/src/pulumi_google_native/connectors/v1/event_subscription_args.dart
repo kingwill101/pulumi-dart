@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_subscription_destination.dart';
 import 'jms.dart';
 
 /// The set of arguments for EventSubscription.
 class EventSubscriptionArgs {
-  final Input<String> connectionId;
+  final pulumi.Input<String> connectionId;
 
   /// Optional. The destination to hit when we receive an event
-  final Input<EventSubscriptionDestination>? destinations;
+  final pulumi.Input<EventSubscriptionDestination>? destinations;
 
   /// Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource.
-  final Input<String> eventSubscriptionId;
+  final pulumi.Input<String> eventSubscriptionId;
 
   /// Optional. Event type id of the event of current EventSubscription.
-  final Input<String>? eventTypeId;
+  final pulumi.Input<String>? eventTypeId;
 
   /// Optional. JMS is the source for the event listener.
-  final Input<JMS>? jms;
-  final Input<String>? location;
+  final pulumi.Input<JMS>? jms;
+  final pulumi.Input<String>? location;
 
   /// Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// Optional. name of the Subscriber for the current EventSubscription.
-  final Input<String>? subscriber;
+  final pulumi.Input<String>? subscriber;
 
   /// Optional. Link for Subscriber of the current EventSubscription.
-  final Input<String>? subscriberLink;
+  final pulumi.Input<String>? subscriberLink;
 
   EventSubscriptionArgs({
     required this.connectionId,
@@ -49,7 +49,7 @@ class EventSubscriptionArgs {
     map['connectionId'] = connectionId;
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] = Input.mapOptionalInputValue<
+      map['destinations'] = pulumi.Input.mapOptionalInputValue<
           EventSubscriptionDestination,
           Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
@@ -60,8 +60,9 @@ class EventSubscriptionArgs {
     }
     final jmsValue = jms;
     if (jmsValue != null) {
-      map['jms'] = Input.mapOptionalInputValue<JMS, Map<String, dynamic>>(
-          jmsValue, (value) => value.toMap());
+      map['jms'] =
+          pulumi.Input.mapOptionalInputValue<JMS, Map<String, dynamic>>(
+              jmsValue, (value) => value.toMap());
     }
     final locationValue = location;
     if (locationValue != null) {
@@ -88,17 +89,19 @@ class EventSubscriptionArgs {
 
   factory EventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionArgs(
-      connectionId: Input.asInput<String>(map['connectionId']),
-      destinations: Input.asOptionalInput<EventSubscriptionDestination>(
+      connectionId: pulumi.Input.asInput<String>(map['connectionId']),
+      destinations: pulumi.Input.asOptionalInput<EventSubscriptionDestination>(
           map['destinations']),
-      eventSubscriptionId: Input.asInput<String>(map['eventSubscriptionId']),
-      eventTypeId: Input.asOptionalInput<String>(map['eventTypeId']),
-      jms: Input.asOptionalInput<JMS>(map['jms']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      subscriber: Input.asOptionalInput<String>(map['subscriber']),
-      subscriberLink: Input.asOptionalInput<String>(map['subscriberLink']),
+      eventSubscriptionId:
+          pulumi.Input.asInput<String>(map['eventSubscriptionId']),
+      eventTypeId: pulumi.Input.asOptionalInput<String>(map['eventTypeId']),
+      jms: pulumi.Input.asOptionalInput<JMS>(map['jms']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      subscriber: pulumi.Input.asOptionalInput<String>(map['subscriber']),
+      subscriberLink:
+          pulumi.Input.asOptionalInput<String>(map['subscriberLink']),
     );
   }
 }

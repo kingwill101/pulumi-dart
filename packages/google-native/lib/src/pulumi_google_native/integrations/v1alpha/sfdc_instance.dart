@@ -1,48 +1,48 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sfdc_instance_args.dart';
 
 /// Creates an sfdc instance record. Store the sfdc instance in Spanner. Returns the sfdc instance.
 /// Auto-naming is currently not supported for this resource.
-class SfdcInstance extends CustomResource {
+class SfdcInstance extends pulumi.CustomResource {
   /// A list of AuthConfigs that can be tried to open the channel to SFDC
-  late final Output<List<String>> authConfigId;
+  late final pulumi.Output<List<String>> authConfigId;
 
   /// Time when the instance is created
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Time when the instance was deleted. Empty if not deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// A description of the sfdc instance.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// User selected unique name/alias to easily reference an instance.
-  late final Output<String> displayName;
-  late final Output<String> location;
+  late final pulumi.Output<String> displayName;
+  late final pulumi.Output<String> location;
 
   /// Resource name of the SFDC instance projects/{project}/locations/{location}/sfdcInstances/{sfdcInstance}.
-  late final Output<String> name;
-  late final Output<String> productId;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> productId;
+  late final pulumi.Output<String> project;
 
   /// URL used for API calls after authentication (the login authority is configured within the referenced AuthConfig).
-  late final Output<String> serviceAuthority;
+  late final pulumi.Output<String> serviceAuthority;
 
   /// The SFDC Org Id. This is defined in salesforce.
-  late final Output<String> sfdcOrgId;
+  late final pulumi.Output<String> sfdcOrgId;
 
   /// Time when the instance was last updated
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   SfdcInstance(
     String name, {
     SfdcInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:integrations/v1alpha:SfdcInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authConfigId = registerOutput<List<String>>('authConfigId');
     this.createTime = registerOutput<String>('createTime');

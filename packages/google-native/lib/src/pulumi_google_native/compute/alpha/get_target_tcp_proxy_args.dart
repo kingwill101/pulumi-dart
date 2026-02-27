@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTargetTcpProxy.
 class GetTargetTcpProxyArgs {
-  final Input<String>? project;
-  final Input<String> targetTcpProxy;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> targetTcpProxy;
 
   GetTargetTcpProxyArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetTargetTcpProxyArgs {
 
   factory GetTargetTcpProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetTcpProxyArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      targetTcpProxy: Input.asInput<String>(map['targetTcpProxy']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      targetTcpProxy: pulumi.Input.asInput<String>(map['targetTcpProxy']),
     );
   }
 }

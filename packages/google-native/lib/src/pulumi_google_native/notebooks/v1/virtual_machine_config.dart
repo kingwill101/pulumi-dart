@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_image.dart';
-import 'encryption_config14.dart';
-import 'local_disk4.dart';
+import 'encryption_config_notebooks_v1.dart';
+import 'local_disk_notebooks_v1.dart';
 import 'runtime_accelerator_config.dart';
 import 'runtime_shielded_instance_config.dart';
 import 'virtual_machine_config_nic_type.dart';
@@ -20,10 +20,10 @@ class VirtualMachineConfig {
   final List<ContainerImage>? containerImages;
 
   /// Data disk option configuration settings.
-  final LocalDisk4 dataDisk;
+  final LocalDiskNotebooksV1 dataDisk;
 
   /// Optional. Encryption settings for virtual machine data disk.
-  final EncryptionConfig14? encryptionConfig;
+  final EncryptionConfigNotebooksV1? encryptionConfig;
 
   /// Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
   final bool? internalIpOnly;
@@ -86,7 +86,7 @@ class VirtualMachineConfig {
     final containerImagesValue = containerImages;
     if (containerImagesValue != null) {
       map['containerImages'] =
-          Input.encodeList<ContainerImage, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ContainerImage, Map<String, dynamic>>(
               containerImagesValue, (value) => value.toMap());
     }
     map['dataDisk'] = dataDisk.toMap();
@@ -145,15 +145,15 @@ class VirtualMachineConfig {
           : (map['bootImage'] as Map).cast<String, dynamic>(),
       containerImages: map['containerImages'] == null
           ? null
-          : Input.decodeList<ContainerImage>(
+          : pulumi.Input.decodeList<ContainerImage>(
               map['containerImages'],
               (value) => ContainerImage.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      dataDisk:
-          LocalDisk4.fromMap((map['dataDisk'] as Map).cast<String, dynamic>()),
+      dataDisk: LocalDiskNotebooksV1.fromMap(
+          (map['dataDisk'] as Map).cast<String, dynamic>()),
       encryptionConfig: map['encryptionConfig'] == null
           ? null
-          : EncryptionConfig14.fromMap(
+          : EncryptionConfigNotebooksV1.fromMap(
               (map['encryptionConfig'] as Map).cast<String, dynamic>()),
       internalIpOnly:
           map['internalIpOnly'] == null ? null : map['internalIpOnly'] as bool,

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionAutoscaler.
 class GetRegionAutoscalerArgs {
-  final Input<String> autoscaler;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> autoscaler;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetRegionAutoscalerArgs({
     required this.autoscaler,
@@ -27,9 +27,9 @@ class GetRegionAutoscalerArgs {
 
   factory GetRegionAutoscalerArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionAutoscalerArgs(
-      autoscaler: Input.asInput<String>(map['autoscaler']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      autoscaler: pulumi.Input.asInput<String>(map['autoscaler']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

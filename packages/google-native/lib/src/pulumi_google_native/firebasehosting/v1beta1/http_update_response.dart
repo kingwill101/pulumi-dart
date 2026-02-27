@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response17.dart';
+import 'status_response_firebasehosting_v1beta1.dart';
 
 /// A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain.
 class HttpUpdateResponse {
   /// An error encountered during the last contents check. If null, the check completed successfully.
-  final StatusResponse17 checkError;
+  final StatusResponseFirebasehostingV1beta1 checkError;
 
   /// A text string to serve at the path.
   final String desired;
@@ -39,7 +39,7 @@ class HttpUpdateResponse {
 
   factory HttpUpdateResponse.fromMap(Map<String, dynamic> map) {
     return HttpUpdateResponse(
-      checkError: StatusResponse17.fromMap(
+      checkError: StatusResponseFirebasehostingV1beta1.fromMap(
           (map['checkError'] as Map).cast<String, dynamic>()),
       desired: map['desired'] as String,
       discovered: map['discovered'] as String,

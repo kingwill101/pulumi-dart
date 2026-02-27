@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authentication_policy_principal_binding.dart';
 import 'origin_authentication_method.dart';
 import 'peer_authentication_method.dart';
@@ -31,15 +31,13 @@ class AuthenticationPolicy {
     final map = <String, dynamic>{};
     final originsValue = origins;
     if (originsValue != null) {
-      map['origins'] =
-          Input.encodeList<OriginAuthenticationMethod, Map<String, dynamic>>(
-              originsValue, (value) => value.toMap());
+      map['origins'] = pulumi.Input.encodeList<OriginAuthenticationMethod,
+          Map<String, dynamic>>(originsValue, (value) => value.toMap());
     }
     final peersValue = peers;
     if (peersValue != null) {
-      map['peers'] =
-          Input.encodeList<PeerAuthenticationMethod, Map<String, dynamic>>(
-              peersValue, (value) => value.toMap());
+      map['peers'] = pulumi.Input.encodeList<PeerAuthenticationMethod,
+          Map<String, dynamic>>(peersValue, (value) => value.toMap());
     }
     final principalBindingValue = principalBinding;
     if (principalBindingValue != null) {
@@ -56,13 +54,13 @@ class AuthenticationPolicy {
     return AuthenticationPolicy(
       origins: map['origins'] == null
           ? null
-          : Input.decodeList<OriginAuthenticationMethod>(
+          : pulumi.Input.decodeList<OriginAuthenticationMethod>(
               map['origins'],
               (value) => OriginAuthenticationMethod.fromMap(
                   (value as Map).cast<String, dynamic>())),
       peers: map['peers'] == null
           ? null
-          : Input.decodeList<PeerAuthenticationMethod>(
+          : pulumi.Input.decodeList<PeerAuthenticationMethod>(
               map['peers'],
               (value) => PeerAuthenticationMethod.fromMap(
                   (value as Map).cast<String, dynamic>())),

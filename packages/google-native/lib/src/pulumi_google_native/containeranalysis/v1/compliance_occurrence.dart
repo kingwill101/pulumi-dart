@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'non_compliant_file.dart';
 
 /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
@@ -22,7 +22,7 @@ class ComplianceOccurrence {
     final nonCompliantFilesValue = nonCompliantFiles;
     if (nonCompliantFilesValue != null) {
       map['nonCompliantFiles'] =
-          Input.encodeList<NonCompliantFile, Map<String, dynamic>>(
+          pulumi.Input.encodeList<NonCompliantFile, Map<String, dynamic>>(
               nonCompliantFilesValue, (value) => value.toMap());
     }
     return map;
@@ -35,7 +35,7 @@ class ComplianceOccurrence {
           : map['nonComplianceReason'] as String,
       nonCompliantFiles: map['nonCompliantFiles'] == null
           ? null
-          : Input.decodeList<NonCompliantFile>(
+          : pulumi.Input.decodeList<NonCompliantFile>(
               map['nonCompliantFiles'],
               (value) => NonCompliantFile.fromMap(
                   (value as Map).cast<String, dynamic>())),

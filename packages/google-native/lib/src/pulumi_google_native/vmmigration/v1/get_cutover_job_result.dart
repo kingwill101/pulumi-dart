@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_engine_disks_target_details_response.dart';
 import 'compute_engine_target_details_response.dart';
 import 'cutover_step_response.dart';
-import 'status_response30.dart';
+import 'status_response_vmmigration_v1.dart';
 
 /// Result data returned by getCutoverJob.
 class GetCutoverJobResult {
@@ -21,7 +21,7 @@ class GetCutoverJobResult {
   final String endTime;
 
   /// Provides details for the errors that led to the Cutover Job's state.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// The name of the cutover job.
   final String name;
@@ -68,8 +68,9 @@ class GetCutoverJobResult {
     map['state'] = state;
     map['stateMessage'] = stateMessage;
     map['stateTime'] = stateTime;
-    map['steps'] = Input.encodeList<CutoverStepResponse, Map<String, dynamic>>(
-        steps, (value) => value.toMap());
+    map['steps'] =
+        pulumi.Input.encodeList<CutoverStepResponse, Map<String, dynamic>>(
+            steps, (value) => value.toMap());
     return map;
   }
 
@@ -83,14 +84,14 @@ class GetCutoverJobResult {
           (map['computeEngineTargetDetails'] as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       endTime: map['endTime'] as String,
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       progressPercent: map['progressPercent'] as int,
       state: map['state'] as String,
       stateMessage: map['stateMessage'] as String,
       stateTime: map['stateTime'] as String,
-      steps: Input.decodeList<CutoverStepResponse>(
+      steps: pulumi.Input.decodeList<CutoverStepResponse>(
           map['steps'],
           (value) => CutoverStepResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

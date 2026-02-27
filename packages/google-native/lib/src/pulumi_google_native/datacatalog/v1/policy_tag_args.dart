@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PolicyTag.
 class PolicyTagArgs {
   /// Description of this policy tag. If not set, defaults to empty. The description must contain only Unicode characters, tabs, newlines, carriage returns and page breaks, and be at most 2000 bytes long when encoded in UTF-8.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User-defined name of this policy tag. The name can't start or end with spaces and must be unique within the parent taxonomy, contain only Unicode letters, numbers, underscores, dashes and spaces, and be at most 200 bytes long when encoded in UTF-8.
-  final Input<String> displayName;
-  final Input<String>? location;
+  final pulumi.Input<String> displayName;
+  final pulumi.Input<String>? location;
 
   /// Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
-  final Input<String>? parentPolicyTag;
-  final Input<String>? project;
-  final Input<String> taxonomyId;
+  final pulumi.Input<String>? parentPolicyTag;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> taxonomyId;
 
   PolicyTagArgs({
     this.description,
@@ -50,12 +50,13 @@ class PolicyTagArgs {
 
   factory PolicyTagArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTagArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      parentPolicyTag: Input.asOptionalInput<String>(map['parentPolicyTag']),
-      project: Input.asOptionalInput<String>(map['project']),
-      taxonomyId: Input.asInput<String>(map['taxonomyId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      parentPolicyTag:
+          pulumi.Input.asOptionalInput<String>(map['parentPolicyTag']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      taxonomyId: pulumi.Input.asInput<String>(map['taxonomyId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_run_v2_version_to_path.dart';
 
 /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
@@ -28,9 +28,8 @@ class GoogleCloudRunV2SecretVolumeSource {
     }
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] =
-          Input.encodeList<GoogleCloudRunV2VersionToPath, Map<String, dynamic>>(
-              itemsValue, (value) => value.toMap());
+      map['items'] = pulumi.Input.encodeList<GoogleCloudRunV2VersionToPath,
+          Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
     map['secret'] = secret;
     return map;
@@ -42,7 +41,7 @@ class GoogleCloudRunV2SecretVolumeSource {
           map['defaultMode'] == null ? null : map['defaultMode'] as int,
       items: map['items'] == null
           ? null
-          : Input.decodeList<GoogleCloudRunV2VersionToPath>(
+          : pulumi.Input.decodeList<GoogleCloudRunV2VersionToPath>(
               map['items'],
               (value) => GoogleCloudRunV2VersionToPath.fromMap(
                   (value as Map).cast<String, dynamic>())),

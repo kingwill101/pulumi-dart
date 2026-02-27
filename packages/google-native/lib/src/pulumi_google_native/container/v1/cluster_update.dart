@@ -21,7 +21,7 @@ import 'ilbsubsetting_config.dart';
 import 'intra_node_visibility_config.dart';
 import 'k8s_beta_apiconfig.dart';
 import 'logging_config.dart';
-import 'master_authorized_networks_config3.dart';
+import 'master_authorized_networks_config_container_v1.dart';
 import 'mesh_certificates.dart';
 import 'monitoring_config.dart';
 import 'network_tags.dart';
@@ -29,7 +29,7 @@ import 'node_pool_autoscaling.dart';
 import 'node_pool_logging_config.dart';
 import 'notification_config.dart';
 import 'parent_product_config.dart';
-import 'private_cluster_config3.dart';
+import 'private_cluster_config_container_v1.dart';
 import 'release_channel.dart';
 import 'resource_manager_tags.dart';
 import 'resource_usage_export_config.dart';
@@ -115,7 +115,8 @@ class ClusterUpdate {
   final String? desiredLoggingService;
 
   /// The desired configuration options for master authorized networks feature.
-  final MasterAuthorizedNetworksConfig3? desiredMasterAuthorizedNetworksConfig;
+  final MasterAuthorizedNetworksConfigContainerV1?
+      desiredMasterAuthorizedNetworksConfig;
 
   /// The Kubernetes version to change the master to. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
   final String? desiredMasterVersion;
@@ -157,7 +158,7 @@ class ClusterUpdate {
   final ParentProductConfig? desiredParentProductConfig;
 
   /// The desired private cluster configuration.
-  final PrivateClusterConfig3? desiredPrivateClusterConfig;
+  final PrivateClusterConfigContainerV1? desiredPrivateClusterConfig;
 
   /// The desired state of IPv6 connectivity to Google Services.
   final ClusterUpdateDesiredPrivateIpv6GoogleAccess?
@@ -599,7 +600,7 @@ class ClusterUpdate {
       desiredMasterAuthorizedNetworksConfig:
           map['desiredMasterAuthorizedNetworksConfig'] == null
               ? null
-              : MasterAuthorizedNetworksConfig3.fromMap(
+              : MasterAuthorizedNetworksConfigContainerV1.fromMap(
                   (map['desiredMasterAuthorizedNetworksConfig'] as Map)
                       .cast<String, dynamic>()),
       desiredMasterVersion: map['desiredMasterVersion'] == null
@@ -661,7 +662,7 @@ class ClusterUpdate {
                   .cast<String, dynamic>()),
       desiredPrivateClusterConfig: map['desiredPrivateClusterConfig'] == null
           ? null
-          : PrivateClusterConfig3.fromMap(
+          : PrivateClusterConfigContainerV1.fromMap(
               (map['desiredPrivateClusterConfig'] as Map)
                   .cast<String, dynamic>()),
       desiredPrivateIpv6GoogleAccess:

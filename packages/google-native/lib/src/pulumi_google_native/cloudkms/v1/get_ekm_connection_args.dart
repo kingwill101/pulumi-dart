@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEkmConnection.
 class GetEkmConnectionArgs {
-  final Input<String> ekmConnectionId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> ekmConnectionId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetEkmConnectionArgs({
     required this.ekmConnectionId,
@@ -27,9 +27,9 @@ class GetEkmConnectionArgs {
 
   factory GetEkmConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetEkmConnectionArgs(
-      ekmConnectionId: Input.asInput<String>(map['ekmConnectionId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      ekmConnectionId: pulumi.Input.asInput<String>(map['ekmConnectionId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_authentication_response.dart';
 import 'ping_config_response.dart';
 import 'response_status_code_response.dart';
@@ -64,9 +64,9 @@ class HttpCheckResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['acceptedResponseStatusCodes'] =
-        Input.encodeList<ResponseStatusCodeResponse, Map<String, dynamic>>(
-            acceptedResponseStatusCodes, (value) => value.toMap());
+    map['acceptedResponseStatusCodes'] = pulumi.Input.encodeList<
+            ResponseStatusCodeResponse, Map<String, dynamic>>(
+        acceptedResponseStatusCodes, (value) => value.toMap());
     map['authInfo'] = authInfo.toMap();
     map['body'] = body;
     map['contentType'] = contentType;
@@ -84,10 +84,11 @@ class HttpCheckResponse {
 
   factory HttpCheckResponse.fromMap(Map<String, dynamic> map) {
     return HttpCheckResponse(
-      acceptedResponseStatusCodes: Input.decodeList<ResponseStatusCodeResponse>(
-          map['acceptedResponseStatusCodes'],
-          (value) => ResponseStatusCodeResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      acceptedResponseStatusCodes:
+          pulumi.Input.decodeList<ResponseStatusCodeResponse>(
+              map['acceptedResponseStatusCodes'],
+              (value) => ResponseStatusCodeResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       authInfo: BasicAuthenticationResponse.fromMap(
           (map['authInfo'] as Map).cast<String, dynamic>()),
       body: map['body'] as String,

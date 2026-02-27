@@ -1,6 +1,6 @@
 library module_apigateway_v1;
 
-export 'v1/api2.dart';
+export 'v1/api_apigateway_v1.dart';
 export 'v1/api_args.dart';
 export 'v1/api_config_iam_binding.dart';
 export 'v1/api_config_iam_binding_args.dart';
@@ -29,9 +29,9 @@ export 'v1/apigateway_binding.dart';
 export 'v1/apigateway_binding_response.dart';
 export 'v1/apigateway_expr.dart';
 export 'v1/apigateway_expr_response.dart';
-export 'v1/config2.dart';
+export 'v1/config_apigateway_v1.dart';
 export 'v1/config_args.dart';
-export 'v1/gateway2.dart';
+export 'v1/gateway_apigateway_v1.dart';
 export 'v1/gateway_args.dart';
 export 'v1/gateway_iam_binding.dart';
 export 'v1/gateway_iam_binding_args.dart';

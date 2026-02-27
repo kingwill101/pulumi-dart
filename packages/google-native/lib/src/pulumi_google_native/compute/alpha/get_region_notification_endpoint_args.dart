@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionNotificationEndpoint.
 class GetRegionNotificationEndpointArgs {
-  final Input<String> notificationEndpoint;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> notificationEndpoint;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetRegionNotificationEndpointArgs({
     required this.notificationEndpoint,
@@ -27,9 +27,10 @@ class GetRegionNotificationEndpointArgs {
 
   factory GetRegionNotificationEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNotificationEndpointArgs(
-      notificationEndpoint: Input.asInput<String>(map['notificationEndpoint']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      notificationEndpoint:
+          pulumi.Input.asInput<String>(map['notificationEndpoint']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

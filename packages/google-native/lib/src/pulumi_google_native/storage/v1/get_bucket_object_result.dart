@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_object_customer_encryption_response.dart';
 import 'bucket_object_owner_response.dart';
 import 'bucket_object_retention_response.dart';
@@ -149,9 +149,8 @@ class GetBucketObjectResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['acl'] =
-        Input.encodeList<ObjectAccessControlResponse, Map<String, dynamic>>(
-            acl, (value) => value.toMap());
+    map['acl'] = pulumi.Input.encodeList<ObjectAccessControlResponse,
+        Map<String, dynamic>>(acl, (value) => value.toMap());
     map['bucket'] = bucket;
     map['cacheControl'] = cacheControl;
     map['componentCount'] = componentCount;
@@ -190,7 +189,7 @@ class GetBucketObjectResult {
 
   factory GetBucketObjectResult.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectResult(
-      acl: Input.decodeList<ObjectAccessControlResponse>(
+      acl: pulumi.Input.decodeList<ObjectAccessControlResponse>(
           map['acl'],
           (value) => ObjectAccessControlResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

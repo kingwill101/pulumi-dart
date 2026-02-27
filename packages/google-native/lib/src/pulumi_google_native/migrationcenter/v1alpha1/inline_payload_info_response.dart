@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'payload_file_response.dart';
 
 /// A resource that represents the inline import job payload.
@@ -20,7 +20,7 @@ class InlinePayloadInfoResponse {
     final map = <String, dynamic>{};
     map['format'] = format;
     map['payload'] =
-        Input.encodeList<PayloadFileResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PayloadFileResponse, Map<String, dynamic>>(
             payload, (value) => value.toMap());
     return map;
   }
@@ -28,7 +28,7 @@ class InlinePayloadInfoResponse {
   factory InlinePayloadInfoResponse.fromMap(Map<String, dynamic> map) {
     return InlinePayloadInfoResponse(
       format: map['format'] as String,
-      payload: Input.decodeList<PayloadFileResponse>(
+      payload: pulumi.Input.decodeList<PayloadFileResponse>(
           map['payload'],
           (value) => PayloadFileResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_nat_log_config_response.dart';
 import 'router_nat_rule_response.dart';
 import 'router_nat_subnetwork_to_nat_response.dart';
@@ -103,10 +103,11 @@ class RouterNatResponse {
     map['natIpAllocateOption'] = natIpAllocateOption;
     map['natIps'] = natIps;
     map['rules'] =
-        Input.encodeList<RouterNatRuleResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RouterNatRuleResponse, Map<String, dynamic>>(
             rules, (value) => value.toMap());
     map['sourceSubnetworkIpRangesToNat'] = sourceSubnetworkIpRangesToNat;
-    map['subnetworks'] = Input.encodeList<RouterNatSubnetworkToNatResponse,
+    map['subnetworks'] = pulumi.Input.encodeList<
+        RouterNatSubnetworkToNatResponse,
         Map<String, dynamic>>(subnetworks, (value) => value.toMap());
     map['tcpEstablishedIdleTimeoutSec'] = tcpEstablishedIdleTimeoutSec;
     map['tcpTimeWaitTimeoutSec'] = tcpTimeWaitTimeoutSec;
@@ -132,13 +133,13 @@ class RouterNatResponse {
       name: map['name'] as String,
       natIpAllocateOption: map['natIpAllocateOption'] as String,
       natIps: (map['natIps'] as List).cast<String>(),
-      rules: Input.decodeList<RouterNatRuleResponse>(
+      rules: pulumi.Input.decodeList<RouterNatRuleResponse>(
           map['rules'],
           (value) => RouterNatRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       sourceSubnetworkIpRangesToNat:
           map['sourceSubnetworkIpRangesToNat'] as String,
-      subnetworks: Input.decodeList<RouterNatSubnetworkToNatResponse>(
+      subnetworks: pulumi.Input.decodeList<RouterNatSubnetworkToNatResponse>(
           map['subnetworks'],
           (value) => RouterNatSubnetworkToNatResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

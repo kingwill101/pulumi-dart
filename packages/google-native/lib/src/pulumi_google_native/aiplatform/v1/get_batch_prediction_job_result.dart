@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_batch_dedicated_resources_response.dart';
 import 'google_cloud_aiplatform_v1_batch_prediction_job_input_config_response.dart';
 import 'google_cloud_aiplatform_v1_batch_prediction_job_instance_config_response.dart';
@@ -156,7 +156,7 @@ class GetBatchPredictionJobResult {
     map['outputConfig'] = outputConfig.toMap();
     map['outputInfo'] = outputInfo.toMap();
     map['partialFailures'] =
-        Input.encodeList<GoogleRpcStatusResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GoogleRpcStatusResponse, Map<String, dynamic>>(
             partialFailures, (value) => value.toMap());
     map['resourcesConsumed'] = resourcesConsumed.toMap();
     map['serviceAccount'] = serviceAccount;
@@ -206,7 +206,7 @@ class GetBatchPredictionJobResult {
       outputInfo:
           GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse.fromMap(
               (map['outputInfo'] as Map).cast<String, dynamic>()),
-      partialFailures: Input.decodeList<GoogleRpcStatusResponse>(
+      partialFailures: pulumi.Input.decodeList<GoogleRpcStatusResponse>(
           map['partialFailures'],
           (value) => GoogleRpcStatusResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

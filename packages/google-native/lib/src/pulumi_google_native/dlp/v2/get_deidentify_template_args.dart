@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDeidentifyTemplate.
 class GetDeidentifyTemplateArgs {
-  final Input<String> deidentifyTemplateId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> deidentifyTemplateId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDeidentifyTemplateArgs({
     required this.deidentifyTemplateId,
@@ -27,9 +27,10 @@ class GetDeidentifyTemplateArgs {
 
   factory GetDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetDeidentifyTemplateArgs(
-      deidentifyTemplateId: Input.asInput<String>(map['deidentifyTemplateId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      deidentifyTemplateId:
+          pulumi.Input.asInput<String>(map['deidentifyTemplateId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

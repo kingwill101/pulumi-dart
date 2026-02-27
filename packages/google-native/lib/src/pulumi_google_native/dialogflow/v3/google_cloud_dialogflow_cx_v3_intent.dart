@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3_intent_parameter.dart';
 import 'google_cloud_dialogflow_cx_v3_intent_training_phrase.dart';
 
@@ -62,7 +62,7 @@ class GoogleCloudDialogflowCxV3Intent {
     }
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowCxV3IntentParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -72,7 +72,7 @@ class GoogleCloudDialogflowCxV3Intent {
     }
     final trainingPhrasesValue = trainingPhrases;
     if (trainingPhrasesValue != null) {
-      map['trainingPhrases'] = Input.encodeList<
+      map['trainingPhrases'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowCxV3IntentTrainingPhrase,
           Map<String, dynamic>>(trainingPhrasesValue, (value) => value.toMap());
     }
@@ -91,14 +91,15 @@ class GoogleCloudDialogflowCxV3Intent {
       name: map['name'] == null ? null : map['name'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3IntentParameter>(
+          : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentParameter>(
               map['parameters'],
               (value) => GoogleCloudDialogflowCxV3IntentParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       priority: map['priority'] == null ? null : map['priority'] as int,
       trainingPhrases: map['trainingPhrases'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3IntentTrainingPhrase>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDialogflowCxV3IntentTrainingPhrase>(
               map['trainingPhrases'],
               (value) => GoogleCloudDialogflowCxV3IntentTrainingPhrase.fromMap(
                   (value as Map).cast<String, dynamic>())),

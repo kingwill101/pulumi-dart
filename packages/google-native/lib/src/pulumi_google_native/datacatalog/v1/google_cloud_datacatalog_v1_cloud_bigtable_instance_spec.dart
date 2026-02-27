@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_cloud_bigtable_instance_spec_cloud_bigtable_cluster_spec.dart';
 
 /// Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
@@ -18,7 +18,7 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
     final map = <String, dynamic>{};
     final cloudBigtableClusterSpecsValue = cloudBigtableClusterSpecs;
     if (cloudBigtableClusterSpecsValue != null) {
-      map['cloudBigtableClusterSpecs'] = Input.encodeList<
+      map['cloudBigtableClusterSpecs'] = pulumi.Input.encodeList<
           GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec,
           Map<String,
               dynamic>>(cloudBigtableClusterSpecsValue, (value) => value.toMap());
@@ -31,7 +31,7 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
     return GoogleCloudDatacatalogV1CloudBigtableInstanceSpec(
       cloudBigtableClusterSpecs: map['cloudBigtableClusterSpecs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>(
               map['cloudBigtableClusterSpecs'],
               (value) =>

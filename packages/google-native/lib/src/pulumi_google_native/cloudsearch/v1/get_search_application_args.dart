@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSearchApplication.
 class GetSearchApplicationArgs {
-  final Input<bool>? debugOptionsEnableDebugging;
-  final Input<String> searchapplicationId;
+  final pulumi.Input<bool>? debugOptionsEnableDebugging;
+  final pulumi.Input<String> searchapplicationId;
 
   GetSearchApplicationArgs({
     this.debugOptionsEnableDebugging,
@@ -24,9 +24,10 @@ class GetSearchApplicationArgs {
 
   factory GetSearchApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetSearchApplicationArgs(
-      debugOptionsEnableDebugging:
-          Input.asOptionalInput<bool>(map['debugOptionsEnableDebugging']),
-      searchapplicationId: Input.asInput<String>(map['searchapplicationId']),
+      debugOptionsEnableDebugging: pulumi.Input.asOptionalInput<bool>(
+          map['debugOptionsEnableDebugging']),
+      searchapplicationId:
+          pulumi.Input.asInput<String>(map['searchapplicationId']),
     );
   }
 }

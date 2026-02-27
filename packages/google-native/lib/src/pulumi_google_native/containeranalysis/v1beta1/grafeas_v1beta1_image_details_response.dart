@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'derived_response2.dart';
+import 'derived_response_containeranalysis_v1beta1.dart';
 
 /// Details of an image occurrence.
 class GrafeasV1beta1ImageDetailsResponse {
   /// Immutable. The child image derived from the base image.
-  final DerivedResponse2 derivedImage;
+  final DerivedResponseContaineranalysisV1beta1 derivedImage;
 
   GrafeasV1beta1ImageDetailsResponse({
     required this.derivedImage,
@@ -19,7 +19,7 @@ class GrafeasV1beta1ImageDetailsResponse {
 
   factory GrafeasV1beta1ImageDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1ImageDetailsResponse(
-      derivedImage: DerivedResponse2.fromMap(
+      derivedImage: DerivedResponseContaineranalysisV1beta1.fromMap(
           (map['derivedImage'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'class_item.dart';
 
 /// The set of arguments for CustomClass.
 class CustomClassArgs {
   /// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
-  final Input<String> customClassId;
+  final pulumi.Input<String> customClassId;
 
   /// A collection of class items.
-  final Input<List<ClassItem>>? items;
-  final Input<String>? location;
+  final pulumi.Input<List<ClassItem>>? items;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the custom class.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   CustomClassArgs({
     required this.customClassId,
@@ -29,10 +29,10 @@ class CustomClassArgs {
     map['customClassId'] = customClassId;
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.mapOptionalInputValue<List<ClassItem>,
+      map['items'] = pulumi.Input.mapOptionalInputValue<List<ClassItem>,
               List<Map<String, dynamic>>>(
           itemsValue,
-          (value) => Input.encodeList<ClassItem, Map<String, dynamic>>(
+          (value) => pulumi.Input.encodeList<ClassItem, Map<String, dynamic>>(
               value, (value) => value.toMap()));
     }
     final locationValue = location;
@@ -52,11 +52,11 @@ class CustomClassArgs {
 
   factory CustomClassArgs.fromMap(Map<String, dynamic> map) {
     return CustomClassArgs(
-      customClassId: Input.asInput<String>(map['customClassId']),
-      items: Input.asOptionalInput<List<ClassItem>>(map['items']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      customClassId: pulumi.Input.asInput<String>(map['customClassId']),
+      items: pulumi.Input.asOptionalInput<List<ClassItem>>(map['items']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

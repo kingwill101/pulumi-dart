@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_card_content_response.dart';
 
 /// Carousel Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions. If you want to show a single card with more control over the layout, please use RbmStandaloneCard instead.
@@ -19,7 +19,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cardContents'] = Input.encodeList<
+    map['cardContents'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse,
         Map<String, dynamic>>(cardContents, (value) => value.toMap());
     map['cardWidth'] = cardWidth;
@@ -29,7 +29,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse {
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse(
-      cardContents: Input.decodeList<
+      cardContents: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse>(
           map['cardContents'],
           (value) =>

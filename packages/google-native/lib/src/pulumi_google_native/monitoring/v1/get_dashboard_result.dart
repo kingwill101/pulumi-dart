@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'column_layout_response.dart';
 import 'dashboard_filter_response.dart';
 import 'grid_layout_response.dart';
@@ -52,7 +52,7 @@ class GetDashboardResult {
     final map = <String, dynamic>{};
     map['columnLayout'] = columnLayout.toMap();
     map['dashboardFilters'] =
-        Input.encodeList<DashboardFilterResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DashboardFilterResponse, Map<String, dynamic>>(
             dashboardFilters, (value) => value.toMap());
     map['displayName'] = displayName;
     map['etag'] = etag;
@@ -68,7 +68,7 @@ class GetDashboardResult {
     return GetDashboardResult(
       columnLayout: ColumnLayoutResponse.fromMap(
           (map['columnLayout'] as Map).cast<String, dynamic>()),
-      dashboardFilters: Input.decodeList<DashboardFilterResponse>(
+      dashboardFilters: pulumi.Input.decodeList<DashboardFilterResponse>(
           map['dashboardFilters'],
           (value) => DashboardFilterResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

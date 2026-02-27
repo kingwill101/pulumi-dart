@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDocument.
 class GetDocumentArgs {
-  final Input<String> documentId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> documentId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetDocumentArgs({
     required this.documentId,
@@ -27,9 +27,9 @@ class GetDocumentArgs {
 
   factory GetDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentArgs(
-      documentId: Input.asInput<String>(map['documentId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      documentId: pulumi.Input.asInput<String>(map['documentId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

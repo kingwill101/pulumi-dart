@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'accelerator_config11.dart';
-import 'attached_disk6.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'accelerator_config_tpu_v2alpha1.dart';
+import 'attached_disk_tpu_v2alpha1.dart';
 import 'boot_disk_config.dart';
-import 'network_config20.dart';
-import 'node_health4.dart';
-import 'scheduling_config4.dart';
-import 'service_account10.dart';
-import 'shielded_instance_config11.dart';
+import 'network_config_tpu_v2alpha1.dart';
+import 'node_health_tpu_v2alpha1.dart';
+import 'scheduling_config_tpu_v2alpha1.dart';
+import 'service_account_tpu_v2alpha1.dart';
+import 'shielded_instance_config_tpu_v2alpha1.dart';
 
 /// A TPU instance.
 class Node {
   /// The AccleratorConfig for the TPU Node.
-  final AcceleratorConfig11? acceleratorConfig;
+  final AcceleratorConfigTpuV2alpha1? acceleratorConfig;
 
   /// The type of hardware accelerators associated with this node.
   final String? acceleratorType;
@@ -28,13 +28,13 @@ class Node {
   final String? cidrBlock;
 
   /// The additional data disks for the Node.
-  final List<AttachedDisk6>? dataDisks;
+  final List<AttachedDiskTpuV2alpha1>? dataDisks;
 
   /// The user-supplied description of the TPU. Maximum of 512 characters.
   final String? description;
 
   /// The health status of the TPU node.
-  final NodeHealth4? health;
+  final NodeHealthTpuV2alpha1? health;
 
   /// Resource labels to represent user-provided metadata.
   final Map<String, String>? labels;
@@ -43,19 +43,19 @@ class Node {
   final Map<String, String>? metadata;
 
   /// Network configurations for the TPU node.
-  final NetworkConfig20? networkConfig;
+  final NetworkConfigTpuV2alpha1? networkConfig;
 
   /// The runtime version running in the Node.
   final String runtimeVersion;
 
   /// The scheduling options for this node.
-  final SchedulingConfig4? schedulingConfig;
+  final SchedulingConfigTpuV2alpha1? schedulingConfig;
 
   /// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
-  final ServiceAccount10? serviceAccount;
+  final ServiceAccountTpuV2alpha1? serviceAccount;
 
   /// Shielded Instance options.
-  final ShieldedInstanceConfig11? shieldedInstanceConfig;
+  final ShieldedInstanceConfigTpuV2alpha1? shieldedInstanceConfig;
 
   /// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
   final List<String>? tags;
@@ -103,8 +103,8 @@ class Node {
     }
     final dataDisksValue = dataDisks;
     if (dataDisksValue != null) {
-      map['dataDisks'] = Input.encodeList<AttachedDisk6, Map<String, dynamic>>(
-          dataDisksValue, (value) => value.toMap());
+      map['dataDisks'] = pulumi.Input.encodeList<AttachedDiskTpuV2alpha1,
+          Map<String, dynamic>>(dataDisksValue, (value) => value.toMap());
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -150,7 +150,7 @@ class Node {
     return Node(
       acceleratorConfig: map['acceleratorConfig'] == null
           ? null
-          : AcceleratorConfig11.fromMap(
+          : AcceleratorConfigTpuV2alpha1.fromMap(
               (map['acceleratorConfig'] as Map).cast<String, dynamic>()),
       acceleratorType: map['acceleratorType'] == null
           ? null
@@ -165,15 +165,15 @@ class Node {
       cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
       dataDisks: map['dataDisks'] == null
           ? null
-          : Input.decodeList<AttachedDisk6>(
+          : pulumi.Input.decodeList<AttachedDiskTpuV2alpha1>(
               map['dataDisks'],
-              (value) => AttachedDisk6.fromMap(
+              (value) => AttachedDiskTpuV2alpha1.fromMap(
                   (value as Map).cast<String, dynamic>())),
       description:
           map['description'] == null ? null : map['description'] as String,
       health: map['health'] == null
           ? null
-          : NodeHealth4.fromValue(map['health'] as String),
+          : NodeHealthTpuV2alpha1.fromValue(map['health'] as String),
       labels: map['labels'] == null
           ? null
           : (map['labels'] as Map).cast<String, String>(),
@@ -182,20 +182,20 @@ class Node {
           : (map['metadata'] as Map).cast<String, String>(),
       networkConfig: map['networkConfig'] == null
           ? null
-          : NetworkConfig20.fromMap(
+          : NetworkConfigTpuV2alpha1.fromMap(
               (map['networkConfig'] as Map).cast<String, dynamic>()),
       runtimeVersion: map['runtimeVersion'] as String,
       schedulingConfig: map['schedulingConfig'] == null
           ? null
-          : SchedulingConfig4.fromMap(
+          : SchedulingConfigTpuV2alpha1.fromMap(
               (map['schedulingConfig'] as Map).cast<String, dynamic>()),
       serviceAccount: map['serviceAccount'] == null
           ? null
-          : ServiceAccount10.fromMap(
+          : ServiceAccountTpuV2alpha1.fromMap(
               (map['serviceAccount'] as Map).cast<String, dynamic>()),
       shieldedInstanceConfig: map['shieldedInstanceConfig'] == null
           ? null
-          : ShieldedInstanceConfig11.fromMap(
+          : ShieldedInstanceConfigTpuV2alpha1.fromMap(
               (map['shieldedInstanceConfig'] as Map).cast<String, dynamic>()),
       tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
     );

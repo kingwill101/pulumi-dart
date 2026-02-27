@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_image_transformation.dart';
 
 /// A type of transformation that is applied over images.
@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2ImageTransformations {
     final map = <String, dynamic>{};
     final transformsValue = transforms;
     if (transformsValue != null) {
-      map['transforms'] = Input.encodeList<
+      map['transforms'] = pulumi.Input.encodeList<
           GooglePrivacyDlpV2ImageTransformation,
           Map<String, dynamic>>(transformsValue, (value) => value.toMap());
     }
@@ -27,7 +27,7 @@ class GooglePrivacyDlpV2ImageTransformations {
     return GooglePrivacyDlpV2ImageTransformations(
       transforms: map['transforms'] == null
           ? null
-          : Input.decodeList<GooglePrivacyDlpV2ImageTransformation>(
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2ImageTransformation>(
               map['transforms'],
               (value) => GooglePrivacyDlpV2ImageTransformation.fromMap(
                   (value as Map).cast<String, dynamic>())),

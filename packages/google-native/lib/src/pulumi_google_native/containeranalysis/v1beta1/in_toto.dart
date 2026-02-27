@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifact_rule.dart';
 import 'signing_key.dart';
 
@@ -40,19 +40,20 @@ class InToto {
     final expectedMaterialsValue = expectedMaterials;
     if (expectedMaterialsValue != null) {
       map['expectedMaterials'] =
-          Input.encodeList<ArtifactRule, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ArtifactRule, Map<String, dynamic>>(
               expectedMaterialsValue, (value) => value.toMap());
     }
     final expectedProductsValue = expectedProducts;
     if (expectedProductsValue != null) {
       map['expectedProducts'] =
-          Input.encodeList<ArtifactRule, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ArtifactRule, Map<String, dynamic>>(
               expectedProductsValue, (value) => value.toMap());
     }
     final signingKeysValue = signingKeys;
     if (signingKeysValue != null) {
-      map['signingKeys'] = Input.encodeList<SigningKey, Map<String, dynamic>>(
-          signingKeysValue, (value) => value.toMap());
+      map['signingKeys'] =
+          pulumi.Input.encodeList<SigningKey, Map<String, dynamic>>(
+              signingKeysValue, (value) => value.toMap());
     }
     final stepNameValue = stepName;
     if (stepNameValue != null) {
@@ -72,19 +73,19 @@ class InToto {
           : (map['expectedCommand'] as List).cast<String>(),
       expectedMaterials: map['expectedMaterials'] == null
           ? null
-          : Input.decodeList<ArtifactRule>(
+          : pulumi.Input.decodeList<ArtifactRule>(
               map['expectedMaterials'],
               (value) =>
                   ArtifactRule.fromMap((value as Map).cast<String, dynamic>())),
       expectedProducts: map['expectedProducts'] == null
           ? null
-          : Input.decodeList<ArtifactRule>(
+          : pulumi.Input.decodeList<ArtifactRule>(
               map['expectedProducts'],
               (value) =>
                   ArtifactRule.fromMap((value as Map).cast<String, dynamic>())),
       signingKeys: map['signingKeys'] == null
           ? null
-          : Input.decodeList<SigningKey>(
+          : pulumi.Input.decodeList<SigningKey>(
               map['signingKeys'],
               (value) =>
                   SigningKey.fromMap((value as Map).cast<String, dynamic>())),

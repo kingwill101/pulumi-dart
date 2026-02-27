@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute_response.dart';
 import 'google_cloud_apigee_v1_graph_qloperation_response.dart';
 import 'google_cloud_apigee_v1_quota_response.dart';
@@ -29,9 +29,10 @@ class GoogleCloudApigeeV1GraphQLOperationConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['apiSource'] = apiSource;
-    map['attributes'] = Input.encodeList<GoogleCloudApigeeV1AttributeResponse,
+    map['attributes'] = pulumi.Input.encodeList<
+        GoogleCloudApigeeV1AttributeResponse,
         Map<String, dynamic>>(attributes, (value) => value.toMap());
-    map['operations'] = Input.encodeList<
+    map['operations'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1GraphQLOperationResponse,
         Map<String, dynamic>>(operations, (value) => value.toMap());
     map['quota'] = quota.toMap();
@@ -42,14 +43,15 @@ class GoogleCloudApigeeV1GraphQLOperationConfigResponse {
       Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GraphQLOperationConfigResponse(
       apiSource: map['apiSource'] as String,
-      attributes: Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
+      attributes: pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
           map['attributes'],
           (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      operations: Input.decodeList<GoogleCloudApigeeV1GraphQLOperationResponse>(
-          map['operations'],
-          (value) => GoogleCloudApigeeV1GraphQLOperationResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      operations:
+          pulumi.Input.decodeList<GoogleCloudApigeeV1GraphQLOperationResponse>(
+              map['operations'],
+              (value) => GoogleCloudApigeeV1GraphQLOperationResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       quota: GoogleCloudApigeeV1QuotaResponse.fromMap(
           (map['quota'] as Map).cast<String, dynamic>()),
     );

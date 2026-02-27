@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response11.dart';
+import 'status_response_containeranalysis_v1alpha1.dart';
 
 /// This resource represents a long-running operation that is the result of a network API call.
 class OperationResponse {
@@ -8,7 +8,7 @@ class OperationResponse {
   final bool done;
 
   /// The error result of the operation in case of failure or cancellation.
-  final StatusResponse11 error;
+  final StatusResponseContaineranalysisV1alpha1 error;
 
   /// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
   final Map<String, String> metadata;
@@ -40,7 +40,7 @@ class OperationResponse {
   factory OperationResponse.fromMap(Map<String, dynamic> map) {
     return OperationResponse(
       done: map['done'] as bool,
-      error: StatusResponse11.fromMap(
+      error: StatusResponseContaineranalysisV1alpha1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,

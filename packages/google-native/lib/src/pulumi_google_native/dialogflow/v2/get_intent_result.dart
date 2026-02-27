@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_context_response.dart';
 import 'google_cloud_dialogflow_v2_intent_followup_intent_info_response.dart';
 import 'google_cloud_dialogflow_v2_intent_message_response.dart';
@@ -101,28 +101,28 @@ class GetIntentResult {
     map['displayName'] = displayName;
     map['endInteraction'] = endInteraction;
     map['events'] = events;
-    map['followupIntentInfo'] = Input.encodeList<
+    map['followupIntentInfo'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse,
         Map<String, dynamic>>(followupIntentInfo, (value) => value.toMap());
     map['inputContextNames'] = inputContextNames;
     map['isFallback'] = isFallback;
     map['liveAgentHandoff'] = liveAgentHandoff;
-    map['messages'] = Input.encodeList<
+    map['messages'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2IntentMessageResponse,
         Map<String, dynamic>>(messages, (value) => value.toMap());
     map['mlDisabled'] = mlDisabled;
     map['name'] = name;
-    map['outputContexts'] = Input.encodeList<
+    map['outputContexts'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2ContextResponse,
         Map<String, dynamic>>(outputContexts, (value) => value.toMap());
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2IntentParameterResponse,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['parentFollowupIntentName'] = parentFollowupIntentName;
     map['priority'] = priority;
     map['resetContexts'] = resetContexts;
     map['rootFollowupIntentName'] = rootFollowupIntentName;
-    map['trainingPhrases'] = Input.encodeList<
+    map['trainingPhrases'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2IntentTrainingPhraseResponse,
         Map<String, dynamic>>(trainingPhrases, (value) => value.toMap());
     map['webhookState'] = webhookState;
@@ -137,7 +137,7 @@ class GetIntentResult {
       displayName: map['displayName'] as String,
       endInteraction: map['endInteraction'] as bool,
       events: (map['events'] as List).cast<String>(),
-      followupIntentInfo: Input.decodeList<
+      followupIntentInfo: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse>(
           map['followupIntentInfo'],
           (value) =>
@@ -146,31 +146,33 @@ class GetIntentResult {
       inputContextNames: (map['inputContextNames'] as List).cast<String>(),
       isFallback: map['isFallback'] as bool,
       liveAgentHandoff: map['liveAgentHandoff'] as bool,
-      messages: Input.decodeList<GoogleCloudDialogflowV2IntentMessageResponse>(
-          map['messages'],
-          (value) => GoogleCloudDialogflowV2IntentMessageResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      messages:
+          pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageResponse>(
+              map['messages'],
+              (value) => GoogleCloudDialogflowV2IntentMessageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       mlDisabled: map['mlDisabled'] as bool,
       name: map['name'] as String,
-      outputContexts: Input.decodeList<GoogleCloudDialogflowV2ContextResponse>(
-          map['outputContexts'],
-          (value) => GoogleCloudDialogflowV2ContextResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      parameters:
-          Input.decodeList<GoogleCloudDialogflowV2IntentParameterResponse>(
-              map['parameters'],
-              (value) => GoogleCloudDialogflowV2IntentParameterResponse.fromMap(
+      outputContexts:
+          pulumi.Input.decodeList<GoogleCloudDialogflowV2ContextResponse>(
+              map['outputContexts'],
+              (value) => GoogleCloudDialogflowV2ContextResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<
+              GoogleCloudDialogflowV2IntentParameterResponse>(
+          map['parameters'],
+          (value) => GoogleCloudDialogflowV2IntentParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       parentFollowupIntentName: map['parentFollowupIntentName'] as String,
       priority: map['priority'] as int,
       resetContexts: map['resetContexts'] as bool,
       rootFollowupIntentName: map['rootFollowupIntentName'] as String,
-      trainingPhrases:
-          Input.decodeList<GoogleCloudDialogflowV2IntentTrainingPhraseResponse>(
-              map['trainingPhrases'],
-              (value) =>
-                  GoogleCloudDialogflowV2IntentTrainingPhraseResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      trainingPhrases: pulumi.Input.decodeList<
+              GoogleCloudDialogflowV2IntentTrainingPhraseResponse>(
+          map['trainingPhrases'],
+          (value) =>
+              GoogleCloudDialogflowV2IntentTrainingPhraseResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       webhookState: map['webhookState'] as String,
     );
   }

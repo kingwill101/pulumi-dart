@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ManagedZone.
 class ManagedZoneArgs {
   /// Optional. Description of the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// DNS Name of the resource
-  final Input<String> dns;
+  final pulumi.Input<String> dns;
 
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Required. Identifier to assign to the ManagedZone. Must be unique within scope of the parent resource.
-  final Input<String> managedZoneId;
-  final Input<String>? project;
+  final pulumi.Input<String> managedZoneId;
+  final pulumi.Input<String>? project;
 
   /// The name of the Target Project
-  final Input<String> targetProject;
+  final pulumi.Input<String> targetProject;
 
   /// The name of the Target Project VPC Network
-  final Input<String> targetVpc;
+  final pulumi.Input<String> targetVpc;
 
   ManagedZoneArgs({
     this.description,
@@ -56,13 +56,13 @@ class ManagedZoneArgs {
 
   factory ManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return ManagedZoneArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      dns: Input.asInput<String>(map['dns']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      managedZoneId: Input.asInput<String>(map['managedZoneId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      targetProject: Input.asInput<String>(map['targetProject']),
-      targetVpc: Input.asInput<String>(map['targetVpc']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      dns: pulumi.Input.asInput<String>(map['dns']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      managedZoneId: pulumi.Input.asInput<String>(map['managedZoneId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      targetProject: pulumi.Input.asInput<String>(map['targetProject']),
+      targetVpc: pulumi.Input.asInput<String>(map['targetVpc']),
     );
   }
 }

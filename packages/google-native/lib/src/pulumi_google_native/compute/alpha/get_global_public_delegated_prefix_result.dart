@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_delegated_prefix_public_delegated_sub_prefix_response.dart';
 
 /// Result data returned by getGlobalPublicDelegatedPrefix.
@@ -86,7 +86,7 @@ class GetGlobalPublicDelegatedPrefixResult {
     map['mode'] = mode;
     map['name'] = name;
     map['parentPrefix'] = parentPrefix;
-    map['publicDelegatedSubPrefixs'] = Input.encodeList<
+    map['publicDelegatedSubPrefixs'] = pulumi.Input.encodeList<
             PublicDelegatedPrefixPublicDelegatedSubPrefixResponse,
             Map<String, dynamic>>(
         publicDelegatedSubPrefixs, (value) => value.toMap());
@@ -111,7 +111,7 @@ class GetGlobalPublicDelegatedPrefixResult {
       mode: map['mode'] as String,
       name: map['name'] as String,
       parentPrefix: map['parentPrefix'] as String,
-      publicDelegatedSubPrefixs: Input.decodeList<
+      publicDelegatedSubPrefixs: pulumi.Input.decodeList<
               PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>(
           map['publicDelegatedSubPrefixs'],
           (value) =>

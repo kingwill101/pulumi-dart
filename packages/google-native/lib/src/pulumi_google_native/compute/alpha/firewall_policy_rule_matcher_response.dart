@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_rule_matcher_layer4_config_response.dart';
 import 'firewall_policy_rule_secure_tag_response.dart';
 
@@ -64,14 +64,15 @@ class FirewallPolicyRuleMatcherResponse {
     map['destIpRanges'] = destIpRanges;
     map['destRegionCodes'] = destRegionCodes;
     map['destThreatIntelligences'] = destThreatIntelligences;
-    map['layer4Configs'] = Input.encodeList<
+    map['layer4Configs'] = pulumi.Input.encodeList<
         FirewallPolicyRuleMatcherLayer4ConfigResponse,
         Map<String, dynamic>>(layer4Configs, (value) => value.toMap());
     map['srcAddressGroups'] = srcAddressGroups;
     map['srcFqdns'] = srcFqdns;
     map['srcIpRanges'] = srcIpRanges;
     map['srcRegionCodes'] = srcRegionCodes;
-    map['srcSecureTags'] = Input.encodeList<FirewallPolicyRuleSecureTagResponse,
+    map['srcSecureTags'] = pulumi.Input.encodeList<
+        FirewallPolicyRuleSecureTagResponse,
         Map<String, dynamic>>(srcSecureTags, (value) => value.toMap());
     map['srcThreatIntelligences'] = srcThreatIntelligences;
     return map;
@@ -85,19 +86,20 @@ class FirewallPolicyRuleMatcherResponse {
       destRegionCodes: (map['destRegionCodes'] as List).cast<String>(),
       destThreatIntelligences:
           (map['destThreatIntelligences'] as List).cast<String>(),
-      layer4Configs:
-          Input.decodeList<FirewallPolicyRuleMatcherLayer4ConfigResponse>(
-              map['layer4Configs'],
-              (value) => FirewallPolicyRuleMatcherLayer4ConfigResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      layer4Configs: pulumi.Input.decodeList<
+              FirewallPolicyRuleMatcherLayer4ConfigResponse>(
+          map['layer4Configs'],
+          (value) => FirewallPolicyRuleMatcherLayer4ConfigResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       srcAddressGroups: (map['srcAddressGroups'] as List).cast<String>(),
       srcFqdns: (map['srcFqdns'] as List).cast<String>(),
       srcIpRanges: (map['srcIpRanges'] as List).cast<String>(),
       srcRegionCodes: (map['srcRegionCodes'] as List).cast<String>(),
-      srcSecureTags: Input.decodeList<FirewallPolicyRuleSecureTagResponse>(
-          map['srcSecureTags'],
-          (value) => FirewallPolicyRuleSecureTagResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      srcSecureTags:
+          pulumi.Input.decodeList<FirewallPolicyRuleSecureTagResponse>(
+              map['srcSecureTags'],
+              (value) => FirewallPolicyRuleSecureTagResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       srcThreatIntelligences:
           (map['srcThreatIntelligences'] as List).cast<String>(),
     );

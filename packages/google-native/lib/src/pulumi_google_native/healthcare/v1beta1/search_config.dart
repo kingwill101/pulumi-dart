@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'search_parameter.dart';
 
 /// Contains the configuration for FHIR search.
@@ -17,7 +17,7 @@ class SearchConfig {
     final searchParametersValue = searchParameters;
     if (searchParametersValue != null) {
       map['searchParameters'] =
-          Input.encodeList<SearchParameter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SearchParameter, Map<String, dynamic>>(
               searchParametersValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class SearchConfig {
     return SearchConfig(
       searchParameters: map['searchParameters'] == null
           ? null
-          : Input.decodeList<SearchParameter>(
+          : pulumi.Input.decodeList<SearchParameter>(
               map['searchParameters'],
               (value) => SearchParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

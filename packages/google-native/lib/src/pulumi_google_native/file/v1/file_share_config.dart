@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nfs_export_options.dart';
 
 /// File share configuration for the instance.
@@ -37,7 +37,7 @@ class FileShareConfig {
     final nfsExportOptionsValue = nfsExportOptions;
     if (nfsExportOptionsValue != null) {
       map['nfsExportOptions'] =
-          Input.encodeList<NfsExportOptions, Map<String, dynamic>>(
+          pulumi.Input.encodeList<NfsExportOptions, Map<String, dynamic>>(
               nfsExportOptionsValue, (value) => value.toMap());
     }
     final sourceBackupValue = sourceBackup;
@@ -54,7 +54,7 @@ class FileShareConfig {
       name: map['name'] == null ? null : map['name'] as String,
       nfsExportOptions: map['nfsExportOptions'] == null
           ? null
-          : Input.decodeList<NfsExportOptions>(
+          : pulumi.Input.decodeList<NfsExportOptions>(
               map['nfsExportOptions'],
               (value) => NfsExportOptions.fromMap(
                   (value as Map).cast<String, dynamic>())),

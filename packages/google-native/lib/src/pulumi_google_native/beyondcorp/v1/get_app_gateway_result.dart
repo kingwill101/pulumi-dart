@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocated_connection_response.dart';
 
 /// Result data returned by getAppGateway.
@@ -54,9 +54,9 @@ class GetAppGatewayResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allocatedConnections'] =
-        Input.encodeList<AllocatedConnectionResponse, Map<String, dynamic>>(
-            allocatedConnections, (value) => value.toMap());
+    map['allocatedConnections'] = pulumi.Input.encodeList<
+        AllocatedConnectionResponse,
+        Map<String, dynamic>>(allocatedConnections, (value) => value.toMap());
     map['createTime'] = createTime;
     map['displayName'] = displayName;
     map['hostType'] = hostType;
@@ -72,10 +72,11 @@ class GetAppGatewayResult {
 
   factory GetAppGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetAppGatewayResult(
-      allocatedConnections: Input.decodeList<AllocatedConnectionResponse>(
-          map['allocatedConnections'],
-          (value) => AllocatedConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allocatedConnections:
+          pulumi.Input.decodeList<AllocatedConnectionResponse>(
+              map['allocatedConnections'],
+              (value) => AllocatedConnectionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
       hostType: map['hostType'] as String,

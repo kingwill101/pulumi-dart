@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Workspace.
 class WorkspaceArgs {
-  final Input<String>? location;
-  final Input<String>? project;
-  final Input<String> repositoryId;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> repositoryId;
 
   /// Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
-  final Input<String> workspaceId;
+  final pulumi.Input<String> workspaceId;
 
   WorkspaceArgs({
     this.location,
@@ -35,10 +35,10 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      repositoryId: Input.asInput<String>(map['repositoryId']),
-      workspaceId: Input.asInput<String>(map['workspaceId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      repositoryId: pulumi.Input.asInput<String>(map['repositoryId']),
+      workspaceId: pulumi.Input.asInput<String>(map['workspaceId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'revision_template_response.dart';
 import 'traffic_target_response.dart';
 
@@ -21,7 +21,7 @@ class ServiceSpecResponse {
     final map = <String, dynamic>{};
     map['template'] = template.toMap();
     map['traffic'] =
-        Input.encodeList<TrafficTargetResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TrafficTargetResponse, Map<String, dynamic>>(
             traffic, (value) => value.toMap());
     return map;
   }
@@ -30,7 +30,7 @@ class ServiceSpecResponse {
     return ServiceSpecResponse(
       template: RevisionTemplateResponse.fromMap(
           (map['template'] as Map).cast<String, dynamic>()),
-      traffic: Input.decodeList<TrafficTargetResponse>(
+      traffic: pulumi.Input.decodeList<TrafficTargetResponse>(
           map['traffic'],
           (value) => TrafficTargetResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSshPublicKey.
 class GetSshPublicKeyArgs {
-  final Input<String> sshPublicKeyId;
-  final Input<String> userId;
+  final pulumi.Input<String> sshPublicKeyId;
+  final pulumi.Input<String> userId;
 
   GetSshPublicKeyArgs({
     required this.sshPublicKeyId,
@@ -21,8 +21,8 @@ class GetSshPublicKeyArgs {
 
   factory GetSshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshPublicKeyArgs(
-      sshPublicKeyId: Input.asInput<String>(map['sshPublicKeyId']),
-      userId: Input.asInput<String>(map['userId']),
+      sshPublicKeyId: pulumi.Input.asInput<String>(map['sshPublicKeyId']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'usage_rule_response.dart';
 
 /// Configuration controlling usage of a service.
@@ -24,8 +24,9 @@ class UsageResponse {
     final map = <String, dynamic>{};
     map['producerNotificationChannel'] = producerNotificationChannel;
     map['requirements'] = requirements;
-    map['rules'] = Input.encodeList<UsageRuleResponse, Map<String, dynamic>>(
-        rules, (value) => value.toMap());
+    map['rules'] =
+        pulumi.Input.encodeList<UsageRuleResponse, Map<String, dynamic>>(
+            rules, (value) => value.toMap());
     return map;
   }
 
@@ -33,7 +34,7 @@ class UsageResponse {
     return UsageResponse(
       producerNotificationChannel: map['producerNotificationChannel'] as String,
       requirements: (map['requirements'] as List).cast<String>(),
-      rules: Input.decodeList<UsageRuleResponse>(
+      rules: pulumi.Input.decodeList<UsageRuleResponse>(
           map['rules'],
           (value) => UsageRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getProxyConfig.
 class GetProxyConfigArgs {
-  final Input<String> organizationId;
-  final Input<String> partnerTenantId;
-  final Input<String> proxyConfigId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> partnerTenantId;
+  final pulumi.Input<String> proxyConfigId;
 
   GetProxyConfigArgs({
     required this.organizationId,
@@ -24,9 +24,9 @@ class GetProxyConfigArgs {
 
   factory GetProxyConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetProxyConfigArgs(
-      organizationId: Input.asInput<String>(map['organizationId']),
-      partnerTenantId: Input.asInput<String>(map['partnerTenantId']),
-      proxyConfigId: Input.asInput<String>(map['proxyConfigId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      partnerTenantId: pulumi.Input.asInput<String>(map['partnerTenantId']),
+      proxyConfigId: pulumi.Input.asInput<String>(map['proxyConfigId']),
     );
   }
 }

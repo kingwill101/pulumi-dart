@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datalabeling_v1beta1_annotation_spec_response.dart';
 
 /// Result data returned by getAnnotationSpecSet.
@@ -31,7 +31,7 @@ class GetAnnotationSpecSetResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['annotationSpecs'] = Input.encodeList<
+    map['annotationSpecs'] = pulumi.Input.encodeList<
         GoogleCloudDatalabelingV1beta1AnnotationSpecResponse,
         Map<String, dynamic>>(annotationSpecs, (value) => value.toMap());
     map['blockingResources'] = blockingResources;
@@ -43,7 +43,7 @@ class GetAnnotationSpecSetResult {
 
   factory GetAnnotationSpecSetResult.fromMap(Map<String, dynamic> map) {
     return GetAnnotationSpecSetResult(
-      annotationSpecs: Input.decodeList<
+      annotationSpecs: pulumi.Input.decodeList<
               GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>(
           map['annotationSpecs'],
           (value) =>

@@ -1,56 +1,57 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'membership_rbac_role_binding_args.dart';
-import 'rbacrole_binding_lifecycle_state_response2.dart';
-import 'role_response2.dart';
+import 'rbacrole_binding_lifecycle_state_response_gkehub_v1alpha.dart';
+import 'role_response_gkehub_v1alpha.dart';
 
 /// Creates a Membership RBACRoleBinding.
 /// Auto-naming is currently not supported for this resource.
-class MembershipRbacRoleBinding extends CustomResource {
+class MembershipRbacRoleBinding extends pulumi.CustomResource {
   /// When the rbacrolebinding was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// When the rbacrolebinding was deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// group is the group, as seen by the kubernetes cluster.
-  late final Output<String> group;
+  late final pulumi.Output<String> group;
 
   /// Optional. Labels for this RBACRolebinding.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
-  late final Output<String> membershipId;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
+  late final pulumi.Output<String> membershipId;
 
   /// The resource name for the rbacrolebinding `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-  late final Output<String> rbacrolebindingId;
+  late final pulumi.Output<String> rbacrolebindingId;
 
   /// Role to bind to the principal
-  late final Output<RoleResponse2> role;
+  late final pulumi.Output<RoleResponseGkehubV1alpha> role;
 
   /// State of the rbacrolebinding resource.
-  late final Output<RBACRoleBindingLifecycleStateResponse2> state;
+  late final pulumi.Output<RBACRoleBindingLifecycleStateResponseGkehubV1alpha>
+      state;
 
   /// Google-generated UUID for this resource. This is unique across all rbacrolebinding resources. If a rbacrolebinding resource is deleted and another resource with the same name is created, it gets a different uid.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// When the rbacrolebinding was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
-  late final Output<String> user;
+  late final pulumi.Output<String> user;
 
   MembershipRbacRoleBinding(
     String name, {
     MembershipRbacRoleBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:gkehub/v1alpha:MembershipRbacRoleBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');
@@ -61,9 +62,10 @@ class MembershipRbacRoleBinding extends CustomResource {
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.rbacrolebindingId = registerOutput<String>('rbacrolebindingId');
-    this.role = registerOutput<RoleResponse2>('role');
+    this.role = registerOutput<RoleResponseGkehubV1alpha>('role');
     this.state =
-        registerOutput<RBACRoleBindingLifecycleStateResponse2>('state');
+        registerOutput<RBACRoleBindingLifecycleStateResponseGkehubV1alpha>(
+            'state');
     this.uid = registerOutput<String>('uid');
     this.updateTime = registerOutput<String>('updateTime');
     this.user = registerOutput<String>('user');

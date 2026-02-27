@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'container_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'container_response_run_v1.dart';
 import 'local_object_reference_response.dart';
-import 'volume_response5.dart';
+import 'volume_response_run_v1.dart';
 
 /// RevisionSpec holds the desired state of the Revision (from the client).
 class RevisionSpecResponse {
@@ -11,7 +11,7 @@ class RevisionSpecResponse {
   final int containerConcurrency;
 
   /// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
-  final List<ContainerResponse2> containers;
+  final List<ContainerResponseRunV1> containers;
 
   /// Not supported by Cloud Run.
   final bool enableServiceLinks;
@@ -24,7 +24,7 @@ class RevisionSpecResponse {
 
   /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
   final int timeoutSeconds;
-  final List<VolumeResponse5> volumes;
+  final List<VolumeResponseRunV1> volumes;
 
   RevisionSpecResponse({
     required this.containerConcurrency,
@@ -40,37 +40,38 @@ class RevisionSpecResponse {
     final map = <String, dynamic>{};
     map['containerConcurrency'] = containerConcurrency;
     map['containers'] =
-        Input.encodeList<ContainerResponse2, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ContainerResponseRunV1, Map<String, dynamic>>(
             containers, (value) => value.toMap());
     map['enableServiceLinks'] = enableServiceLinks;
-    map['imagePullSecrets'] =
-        Input.encodeList<LocalObjectReferenceResponse, Map<String, dynamic>>(
-            imagePullSecrets, (value) => value.toMap());
+    map['imagePullSecrets'] = pulumi.Input.encodeList<
+        LocalObjectReferenceResponse,
+        Map<String, dynamic>>(imagePullSecrets, (value) => value.toMap());
     map['serviceAccountName'] = serviceAccountName;
     map['timeoutSeconds'] = timeoutSeconds;
-    map['volumes'] = Input.encodeList<VolumeResponse5, Map<String, dynamic>>(
-        volumes, (value) => value.toMap());
+    map['volumes'] =
+        pulumi.Input.encodeList<VolumeResponseRunV1, Map<String, dynamic>>(
+            volumes, (value) => value.toMap());
     return map;
   }
 
   factory RevisionSpecResponse.fromMap(Map<String, dynamic> map) {
     return RevisionSpecResponse(
       containerConcurrency: map['containerConcurrency'] as int,
-      containers: Input.decodeList<ContainerResponse2>(
+      containers: pulumi.Input.decodeList<ContainerResponseRunV1>(
           map['containers'],
-          (value) => ContainerResponse2.fromMap(
+          (value) => ContainerResponseRunV1.fromMap(
               (value as Map).cast<String, dynamic>())),
       enableServiceLinks: map['enableServiceLinks'] as bool,
-      imagePullSecrets: Input.decodeList<LocalObjectReferenceResponse>(
+      imagePullSecrets: pulumi.Input.decodeList<LocalObjectReferenceResponse>(
           map['imagePullSecrets'],
           (value) => LocalObjectReferenceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       serviceAccountName: map['serviceAccountName'] as String,
       timeoutSeconds: map['timeoutSeconds'] as int,
-      volumes: Input.decodeList<VolumeResponse5>(
+      volumes: pulumi.Input.decodeList<VolumeResponseRunV1>(
           map['volumes'],
-          (value) =>
-              VolumeResponse5.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => VolumeResponseRunV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

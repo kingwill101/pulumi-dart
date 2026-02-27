@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionJobIamPolicy.
 class GetRegionJobIamPolicyArgs {
-  final Input<String> jobId;
-  final Input<String>? project;
-  final Input<String> regionId;
+  final pulumi.Input<String> jobId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> regionId;
 
   GetRegionJobIamPolicyArgs({
     required this.jobId,
@@ -27,9 +27,9 @@ class GetRegionJobIamPolicyArgs {
 
   factory GetRegionJobIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionJobIamPolicyArgs(
-      jobId: Input.asInput<String>(map['jobId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      regionId: Input.asInput<String>(map['regionId']),
+      jobId: pulumi.Input.asInput<String>(map['jobId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      regionId: pulumi.Input.asInput<String>(map['regionId']),
     );
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'runtime_metadata_response.dart';
-import 'status_response13.dart';
+import 'status_response_dataflow_v1b3.dart';
 import 'template_metadata_response.dart';
 
 /// Result data returned by getTemplate.
@@ -13,7 +13,7 @@ class GetTemplateResult {
   final RuntimeMetadataResponse runtimeMetadata;
 
   /// The status of the get template request. Any problems with the request will be indicated in the error_details.
-  final StatusResponse13 status;
+  final StatusResponseDataflowV1b3 status;
 
   /// Template Type.
   final String templateType;
@@ -40,7 +40,7 @@ class GetTemplateResult {
           (map['metadata'] as Map).cast<String, dynamic>()),
       runtimeMetadata: RuntimeMetadataResponse.fromMap(
           (map['runtimeMetadata'] as Map).cast<String, dynamic>()),
-      status: StatusResponse13.fromMap(
+      status: StatusResponseDataflowV1b3.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
       templateType: map['templateType'] as String,
     );

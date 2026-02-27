@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'built_image_response.dart';
 import 'time_span_response.dart';
 import 'uploaded_maven_artifact_response.dart';
@@ -54,18 +54,18 @@ class ResultsResponse {
     map['artifactTiming'] = artifactTiming.toMap();
     map['buildStepImages'] = buildStepImages;
     map['buildStepOutputs'] = buildStepOutputs;
-    map['images'] = Input.encodeList<BuiltImageResponse, Map<String, dynamic>>(
-        images, (value) => value.toMap());
-    map['mavenArtifacts'] =
-        Input.encodeList<UploadedMavenArtifactResponse, Map<String, dynamic>>(
-            mavenArtifacts, (value) => value.toMap());
-    map['npmPackages'] =
-        Input.encodeList<UploadedNpmPackageResponse, Map<String, dynamic>>(
-            npmPackages, (value) => value.toMap());
+    map['images'] =
+        pulumi.Input.encodeList<BuiltImageResponse, Map<String, dynamic>>(
+            images, (value) => value.toMap());
+    map['mavenArtifacts'] = pulumi.Input.encodeList<
+        UploadedMavenArtifactResponse,
+        Map<String, dynamic>>(mavenArtifacts, (value) => value.toMap());
+    map['npmPackages'] = pulumi.Input.encodeList<UploadedNpmPackageResponse,
+        Map<String, dynamic>>(npmPackages, (value) => value.toMap());
     map['numArtifacts'] = numArtifacts;
-    map['pythonPackages'] =
-        Input.encodeList<UploadedPythonPackageResponse, Map<String, dynamic>>(
-            pythonPackages, (value) => value.toMap());
+    map['pythonPackages'] = pulumi.Input.encodeList<
+        UploadedPythonPackageResponse,
+        Map<String, dynamic>>(pythonPackages, (value) => value.toMap());
     return map;
   }
 
@@ -76,20 +76,20 @@ class ResultsResponse {
           (map['artifactTiming'] as Map).cast<String, dynamic>()),
       buildStepImages: (map['buildStepImages'] as List).cast<String>(),
       buildStepOutputs: (map['buildStepOutputs'] as List).cast<String>(),
-      images: Input.decodeList<BuiltImageResponse>(
+      images: pulumi.Input.decodeList<BuiltImageResponse>(
           map['images'],
           (value) => BuiltImageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      mavenArtifacts: Input.decodeList<UploadedMavenArtifactResponse>(
+      mavenArtifacts: pulumi.Input.decodeList<UploadedMavenArtifactResponse>(
           map['mavenArtifacts'],
           (value) => UploadedMavenArtifactResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      npmPackages: Input.decodeList<UploadedNpmPackageResponse>(
+      npmPackages: pulumi.Input.decodeList<UploadedNpmPackageResponse>(
           map['npmPackages'],
           (value) => UploadedNpmPackageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       numArtifacts: map['numArtifacts'] as String,
-      pythonPackages: Input.decodeList<UploadedPythonPackageResponse>(
+      pythonPackages: pulumi.Input.decodeList<UploadedPythonPackageResponse>(
           map['pythonPackages'],
           (value) => UploadedPythonPackageResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_gcp_user_access_binding_args.dart';
 import 'get_gcp_user_access_binding_result.dart';
 
 /// Gets the GcpUserAccessBinding with the given name.
 Future<GetGcpUserAccessBindingResult> getGcpUserAccessBinding(
   GetGcpUserAccessBindingArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:accesscontextmanager/v1:getGcpUserAccessBinding',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGcpUserAccessBindingResult.fromMap(result);
 }

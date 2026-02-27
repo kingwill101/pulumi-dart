@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationAddressGroup.
 class GetOrganizationAddressGroupArgs {
-  final Input<String> addressGroupId;
-  final Input<String> location;
-  final Input<String> organizationId;
+  final pulumi.Input<String> addressGroupId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> organizationId;
 
   GetOrganizationAddressGroupArgs({
     required this.addressGroupId,
@@ -24,9 +24,9 @@ class GetOrganizationAddressGroupArgs {
 
   factory GetOrganizationAddressGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationAddressGroupArgs(
-      addressGroupId: Input.asInput<String>(map['addressGroupId']),
-      location: Input.asInput<String>(map['location']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      addressGroupId: pulumi.Input.asInput<String>(map['addressGroupId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

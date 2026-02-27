@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_schema_partition_field_response.dart';
 import 'google_cloud_dataplex_v1_schema_schema_field_response.dart';
 
@@ -27,10 +27,10 @@ class GoogleCloudDataplexV1SchemaResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fields'] = Input.encodeList<
+    map['fields'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1SchemaSchemaFieldResponse,
         Map<String, dynamic>>(fields, (value) => value.toMap());
-    map['partitionFields'] = Input.encodeList<
+    map['partitionFields'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1SchemaPartitionFieldResponse,
         Map<String, dynamic>>(partitionFields, (value) => value.toMap());
     map['partitionStyle'] = partitionStyle;
@@ -41,16 +41,16 @@ class GoogleCloudDataplexV1SchemaResponse {
   factory GoogleCloudDataplexV1SchemaResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDataplexV1SchemaResponse(
-      fields: Input.decodeList<GoogleCloudDataplexV1SchemaSchemaFieldResponse>(
+      fields: pulumi.Input.decodeList<
+              GoogleCloudDataplexV1SchemaSchemaFieldResponse>(
           map['fields'],
           (value) => GoogleCloudDataplexV1SchemaSchemaFieldResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      partitionFields:
-          Input.decodeList<GoogleCloudDataplexV1SchemaPartitionFieldResponse>(
-              map['partitionFields'],
-              (value) =>
-                  GoogleCloudDataplexV1SchemaPartitionFieldResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      partitionFields: pulumi.Input.decodeList<
+              GoogleCloudDataplexV1SchemaPartitionFieldResponse>(
+          map['partitionFields'],
+          (value) => GoogleCloudDataplexV1SchemaPartitionFieldResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       partitionStyle: map['partitionStyle'] as String,
       userManaged: map['userManaged'] as bool,
     );

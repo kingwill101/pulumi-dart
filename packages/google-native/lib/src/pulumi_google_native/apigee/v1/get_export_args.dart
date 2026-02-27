@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getExport.
 class GetExportArgs {
-  final Input<String> environmentId;
-  final Input<String> exportId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> exportId;
+  final pulumi.Input<String> organizationId;
 
   GetExportArgs({
     required this.environmentId,
@@ -24,9 +24,9 @@ class GetExportArgs {
 
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
-      environmentId: Input.asInput<String>(map['environmentId']),
-      exportId: Input.asInput<String>(map['exportId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      exportId: pulumi.Input.asInput<String>(map['exportId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

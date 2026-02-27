@@ -12,9 +12,9 @@ import 'bare_metal_admin_proxy_config_response.dart';
 import 'bare_metal_admin_security_config_response.dart';
 import 'bare_metal_admin_storage_config_response.dart';
 import 'bare_metal_admin_workload_node_config_response.dart';
-import 'binary_authorization_response3.dart';
-import 'fleet_response3.dart';
-import 'resource_status_response4.dart';
+import 'binary_authorization_response_gkeonprem_v1.dart';
+import 'fleet_response_gkeonprem_v1.dart';
+import 'resource_status_response_gkeonprem_v1.dart';
 import 'validation_check_response.dart';
 
 /// Result data returned by getBareMetalAdminCluster.
@@ -26,7 +26,7 @@ class GetBareMetalAdminClusterResult {
   final String bareMetalVersion;
 
   /// Binary Authorization related configurations.
-  final BinaryAuthorizationResponse3 binaryAuthorization;
+  final BinaryAuthorizationResponseGkeonpremV1 binaryAuthorization;
 
   /// Cluster operations configuration.
   final BareMetalAdminClusterOperationsConfigResponse clusterOperations;
@@ -50,7 +50,7 @@ class GetBareMetalAdminClusterResult {
   final String etag;
 
   /// Fleet configuration for the cluster.
-  final FleetResponse3 fleet;
+  final FleetResponseGkeonpremV1 fleet;
 
   /// Load balancer configuration.
   final BareMetalAdminLoadBalancerConfigResponse loadBalancer;
@@ -92,7 +92,7 @@ class GetBareMetalAdminClusterResult {
   final String state;
 
   /// ResourceStatus representing detailed cluster status.
-  final ResourceStatusResponse4 status;
+  final ResourceStatusResponseGkeonpremV1 status;
 
   /// Storage configuration.
   final BareMetalAdminStorageConfigResponse storage;
@@ -176,7 +176,7 @@ class GetBareMetalAdminClusterResult {
     return GetBareMetalAdminClusterResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
       bareMetalVersion: map['bareMetalVersion'] as String,
-      binaryAuthorization: BinaryAuthorizationResponse3.fromMap(
+      binaryAuthorization: BinaryAuthorizationResponseGkeonpremV1.fromMap(
           (map['binaryAuthorization'] as Map).cast<String, dynamic>()),
       clusterOperations: BareMetalAdminClusterOperationsConfigResponse.fromMap(
           (map['clusterOperations'] as Map).cast<String, dynamic>()),
@@ -187,8 +187,8 @@ class GetBareMetalAdminClusterResult {
       description: map['description'] as String,
       endpoint: map['endpoint'] as String,
       etag: map['etag'] as String,
-      fleet:
-          FleetResponse3.fromMap((map['fleet'] as Map).cast<String, dynamic>()),
+      fleet: FleetResponseGkeonpremV1.fromMap(
+          (map['fleet'] as Map).cast<String, dynamic>()),
       loadBalancer: BareMetalAdminLoadBalancerConfigResponse.fromMap(
           (map['loadBalancer'] as Map).cast<String, dynamic>()),
       localName: map['localName'] as String,
@@ -211,7 +211,7 @@ class GetBareMetalAdminClusterResult {
       securityConfig: BareMetalAdminSecurityConfigResponse.fromMap(
           (map['securityConfig'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      status: ResourceStatusResponse4.fromMap(
+      status: ResourceStatusResponseGkeonpremV1.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
       storage: BareMetalAdminStorageConfigResponse.fromMap(
           (map['storage'] as Map).cast<String, dynamic>()),

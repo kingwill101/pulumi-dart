@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPhraseMatcher.
 class GetPhraseMatcherArgs {
-  final Input<String> location;
-  final Input<String> phraseMatcherId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> phraseMatcherId;
+  final pulumi.Input<String>? project;
 
   GetPhraseMatcherArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetPhraseMatcherArgs {
 
   factory GetPhraseMatcherArgs.fromMap(Map<String, dynamic> map) {
     return GetPhraseMatcherArgs(
-      location: Input.asInput<String>(map['location']),
-      phraseMatcherId: Input.asInput<String>(map['phraseMatcherId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      phraseMatcherId: pulumi.Input.asInput<String>(map['phraseMatcherId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

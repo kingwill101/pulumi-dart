@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_model_monitoring_stats_anomalies_feature_historic_stats_anomalies.dart';
 import 'google_cloud_aiplatform_v1beta1_model_monitoring_stats_anomalies_objective.dart';
 
@@ -40,7 +40,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies {
     }
     final featureStatsValue = featureStats;
     if (featureStatsValue != null) {
-      map['featureStats'] = Input.encodeList<
+      map['featureStats'] = pulumi.Input.encodeList<
           GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies,
           Map<String, dynamic>>(featureStatsValue, (value) => value.toMap());
     }
@@ -61,7 +61,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies {
           : map['deployedModelId'] as String,
       featureStats: map['featureStats'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>(
               map['featureStats'],
               (value) =>

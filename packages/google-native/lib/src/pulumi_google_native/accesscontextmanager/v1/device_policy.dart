@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_policy_allowed_device_management_levels_item.dart';
 import 'device_policy_allowed_encryption_statuses_item.dart';
 import 'os_constraint.dart';
@@ -40,20 +40,20 @@ class DevicePolicy {
     final map = <String, dynamic>{};
     final allowedDeviceManagementLevelsValue = allowedDeviceManagementLevels;
     if (allowedDeviceManagementLevelsValue != null) {
-      map['allowedDeviceManagementLevels'] = Input.encodeList<
+      map['allowedDeviceManagementLevels'] = pulumi.Input.encodeList<
           DevicePolicyAllowedDeviceManagementLevelsItem,
           String>(allowedDeviceManagementLevelsValue, (value) => value.value);
     }
     final allowedEncryptionStatusesValue = allowedEncryptionStatuses;
     if (allowedEncryptionStatusesValue != null) {
-      map['allowedEncryptionStatuses'] =
-          Input.encodeList<DevicePolicyAllowedEncryptionStatusesItem, String>(
-              allowedEncryptionStatusesValue, (value) => value.value);
+      map['allowedEncryptionStatuses'] = pulumi.Input.encodeList<
+          DevicePolicyAllowedEncryptionStatusesItem,
+          String>(allowedEncryptionStatusesValue, (value) => value.value);
     }
     final osConstraintsValue = osConstraints;
     if (osConstraintsValue != null) {
       map['osConstraints'] =
-          Input.encodeList<OsConstraint, Map<String, dynamic>>(
+          pulumi.Input.encodeList<OsConstraint, Map<String, dynamic>>(
               osConstraintsValue, (value) => value.toMap());
     }
     final requireAdminApprovalValue = requireAdminApproval;
@@ -76,20 +76,21 @@ class DevicePolicy {
       allowedDeviceManagementLevels:
           map['allowedDeviceManagementLevels'] == null
               ? null
-              : Input.decodeList<DevicePolicyAllowedDeviceManagementLevelsItem>(
+              : pulumi.Input.decodeList<
+                      DevicePolicyAllowedDeviceManagementLevelsItem>(
                   map['allowedDeviceManagementLevels'],
                   (value) =>
                       DevicePolicyAllowedDeviceManagementLevelsItem.fromValue(
                           value as String)),
       allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null
           ? null
-          : Input.decodeList<DevicePolicyAllowedEncryptionStatusesItem>(
+          : pulumi.Input.decodeList<DevicePolicyAllowedEncryptionStatusesItem>(
               map['allowedEncryptionStatuses'],
               (value) => DevicePolicyAllowedEncryptionStatusesItem.fromValue(
                   value as String)),
       osConstraints: map['osConstraints'] == null
           ? null
-          : Input.decodeList<OsConstraint>(
+          : pulumi.Input.decodeList<OsConstraint>(
               map['osConstraints'],
               (value) =>
                   OsConstraint.fromMap((value as Map).cast<String, dynamic>())),

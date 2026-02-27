@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_info_type_limit_response.dart';
 
 /// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2FindingLimitsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['maxFindingsPerInfoType'] = Input.encodeList<
+    map['maxFindingsPerInfoType'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2InfoTypeLimitResponse,
         Map<String, dynamic>>(maxFindingsPerInfoType, (value) => value.toMap());
     map['maxFindingsPerItem'] = maxFindingsPerItem;
@@ -34,7 +34,7 @@ class GooglePrivacyDlpV2FindingLimitsResponse {
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FindingLimitsResponse(
       maxFindingsPerInfoType:
-          Input.decodeList<GooglePrivacyDlpV2InfoTypeLimitResponse>(
+          pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLimitResponse>(
               map['maxFindingsPerInfoType'],
               (value) => GooglePrivacyDlpV2InfoTypeLimitResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

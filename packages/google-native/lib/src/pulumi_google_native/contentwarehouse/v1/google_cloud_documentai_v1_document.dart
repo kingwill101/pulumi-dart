@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_entity.dart';
 import 'google_cloud_documentai_v1_document_entity_relation.dart';
 import 'google_cloud_documentai_v1_document_page.dart';
@@ -71,12 +71,13 @@ class GoogleCloudDocumentaiV1Document {
     }
     final entitiesValue = entities;
     if (entitiesValue != null) {
-      map['entities'] = Input.encodeList<GoogleCloudDocumentaiV1DocumentEntity,
+      map['entities'] = pulumi.Input.encodeList<
+          GoogleCloudDocumentaiV1DocumentEntity,
           Map<String, dynamic>>(entitiesValue, (value) => value.toMap());
     }
     final entityRelationsValue = entityRelations;
     if (entityRelationsValue != null) {
-      map['entityRelations'] = Input.encodeList<
+      map['entityRelations'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentEntityRelation,
           Map<String, dynamic>>(entityRelationsValue, (value) => value.toMap());
     }
@@ -90,12 +91,13 @@ class GoogleCloudDocumentaiV1Document {
     }
     final pagesValue = pages;
     if (pagesValue != null) {
-      map['pages'] = Input.encodeList<GoogleCloudDocumentaiV1DocumentPage,
+      map['pages'] = pulumi.Input.encodeList<
+          GoogleCloudDocumentaiV1DocumentPage,
           Map<String, dynamic>>(pagesValue, (value) => value.toMap());
     }
     final revisionsValue = revisions;
     if (revisionsValue != null) {
-      map['revisions'] = Input.encodeList<
+      map['revisions'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentRevision,
           Map<String, dynamic>>(revisionsValue, (value) => value.toMap());
     }
@@ -109,13 +111,14 @@ class GoogleCloudDocumentaiV1Document {
     }
     final textChangesValue = textChanges;
     if (textChangesValue != null) {
-      map['textChanges'] = Input.encodeList<
+      map['textChanges'] = pulumi.Input.encodeList<
           GoogleCloudDocumentaiV1DocumentTextChange,
           Map<String, dynamic>>(textChangesValue, (value) => value.toMap());
     }
     final textStylesValue = textStyles;
     if (textStylesValue != null) {
-      map['textStyles'] = Input.encodeList<GoogleCloudDocumentaiV1DocumentStyle,
+      map['textStyles'] = pulumi.Input.encodeList<
+          GoogleCloudDocumentaiV1DocumentStyle,
           Map<String, dynamic>>(textStylesValue, (value) => value.toMap());
     }
     final uriValue = uri;
@@ -130,13 +133,14 @@ class GoogleCloudDocumentaiV1Document {
       content: map['content'] == null ? null : map['content'] as String,
       entities: map['entities'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentEntity>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentEntity>(
               map['entities'],
               (value) => GoogleCloudDocumentaiV1DocumentEntity.fromMap(
                   (value as Map).cast<String, dynamic>())),
       entityRelations: map['entityRelations'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentEntityRelation>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDocumentaiV1DocumentEntityRelation>(
               map['entityRelations'],
               (value) => GoogleCloudDocumentaiV1DocumentEntityRelation.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -147,13 +151,13 @@ class GoogleCloudDocumentaiV1Document {
       mimeType: map['mimeType'] == null ? null : map['mimeType'] as String,
       pages: map['pages'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentPage>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPage>(
               map['pages'],
               (value) => GoogleCloudDocumentaiV1DocumentPage.fromMap(
                   (value as Map).cast<String, dynamic>())),
       revisions: map['revisions'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentRevision>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentRevision>(
               map['revisions'],
               (value) => GoogleCloudDocumentaiV1DocumentRevision.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -164,13 +168,13 @@ class GoogleCloudDocumentaiV1Document {
       text: map['text'] == null ? null : map['text'] as String,
       textChanges: map['textChanges'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentTextChange>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentTextChange>(
               map['textChanges'],
               (value) => GoogleCloudDocumentaiV1DocumentTextChange.fromMap(
                   (value as Map).cast<String, dynamic>())),
       textStyles: map['textStyles'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1DocumentStyle>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentStyle>(
               map['textStyles'],
               (value) => GoogleCloudDocumentaiV1DocumentStyle.fromMap(
                   (value as Map).cast<String, dynamic>())),

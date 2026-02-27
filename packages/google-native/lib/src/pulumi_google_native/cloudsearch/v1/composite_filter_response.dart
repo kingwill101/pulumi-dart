@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'filter_response.dart';
 
 class CompositeFilterResponse {
@@ -18,15 +18,16 @@ class CompositeFilterResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['logicOperator'] = logicOperator;
-    map['subFilters'] = Input.encodeList<FilterResponse, Map<String, dynamic>>(
-        subFilters, (value) => value.toMap());
+    map['subFilters'] =
+        pulumi.Input.encodeList<FilterResponse, Map<String, dynamic>>(
+            subFilters, (value) => value.toMap());
     return map;
   }
 
   factory CompositeFilterResponse.fromMap(Map<String, dynamic> map) {
     return CompositeFilterResponse(
       logicOperator: map['logicOperator'] as String,
-      subFilters: Input.decodeList<FilterResponse>(
+      subFilters: pulumi.Input.decodeList<FilterResponse>(
           map['subFilters'],
           (value) =>
               FilterResponse.fromMap((value as Map).cast<String, dynamic>())),

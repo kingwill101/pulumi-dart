@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServerTlsPolicy.
 class GetServerTlsPolicyArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> serverTlsPolicyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> serverTlsPolicyId;
 
   GetServerTlsPolicyArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetServerTlsPolicyArgs {
 
   factory GetServerTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServerTlsPolicyArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serverTlsPolicyId: Input.asInput<String>(map['serverTlsPolicyId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serverTlsPolicyId: pulumi.Input.asInput<String>(map['serverTlsPolicyId']),
     );
   }
 }

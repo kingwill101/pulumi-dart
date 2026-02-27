@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_study_config_parameter_spec_categorical_value_spec_response.dart';
 import 'google_cloud_ml_v1_study_config_parameter_spec_discrete_value_spec_response.dart';
 import 'google_cloud_ml_v1_study_config_parameter_spec_double_value_spec_response.dart';
@@ -63,7 +63,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['categoricalValueSpec'] = categoricalValueSpec.toMap();
-    map['childParameterSpecs'] = Input.encodeList<
+    map['childParameterSpecs'] = pulumi.Input.encodeList<
         GoogleCloudMlV1StudyConfigParameterSpecResponse,
         Map<String, dynamic>>(childParameterSpecs, (value) => value.toMap());
     map['discreteValueSpec'] = discreteValueSpec.toMap();
@@ -85,12 +85,11 @@ class GoogleCloudMlV1StudyConfigParameterSpecResponse {
           GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse
               .fromMap(
                   (map['categoricalValueSpec'] as Map).cast<String, dynamic>()),
-      childParameterSpecs:
-          Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpecResponse>(
-              map['childParameterSpecs'],
-              (value) =>
-                  GoogleCloudMlV1StudyConfigParameterSpecResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      childParameterSpecs: pulumi.Input.decodeList<
+              GoogleCloudMlV1StudyConfigParameterSpecResponse>(
+          map['childParameterSpecs'],
+          (value) => GoogleCloudMlV1StudyConfigParameterSpecResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       discreteValueSpec:
           GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpecResponse
               .fromMap(

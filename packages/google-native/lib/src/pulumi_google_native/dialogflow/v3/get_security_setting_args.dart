@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSecuritySetting.
 class GetSecuritySettingArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> securitySettingId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> securitySettingId;
 
   GetSecuritySettingArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetSecuritySettingArgs {
 
   factory GetSecuritySettingArgs.fromMap(Map<String, dynamic> map) {
     return GetSecuritySettingArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      securitySettingId: Input.asInput<String>(map['securitySettingId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      securitySettingId: pulumi.Input.asInput<String>(map['securitySettingId']),
     );
   }
 }

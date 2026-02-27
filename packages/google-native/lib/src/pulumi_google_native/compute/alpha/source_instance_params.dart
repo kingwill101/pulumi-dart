@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_instantiation_config.dart';
 
 /// A specification of the parameters to use when creating the instance template from a source instance.
@@ -16,9 +16,8 @@ class SourceInstanceParams {
     final map = <String, dynamic>{};
     final diskConfigsValue = diskConfigs;
     if (diskConfigsValue != null) {
-      map['diskConfigs'] =
-          Input.encodeList<DiskInstantiationConfig, Map<String, dynamic>>(
-              diskConfigsValue, (value) => value.toMap());
+      map['diskConfigs'] = pulumi.Input.encodeList<DiskInstantiationConfig,
+          Map<String, dynamic>>(diskConfigsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +26,7 @@ class SourceInstanceParams {
     return SourceInstanceParams(
       diskConfigs: map['diskConfigs'] == null
           ? null
-          : Input.decodeList<DiskInstantiationConfig>(
+          : pulumi.Input.decodeList<DiskInstantiationConfig>(
               map['diskConfigs'],
               (value) => DiskInstantiationConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

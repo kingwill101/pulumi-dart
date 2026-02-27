@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_frontends_eventbus_proto_parameter_entry.dart';
 
 /// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
@@ -16,7 +16,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventParameters {
     final map = <String, dynamic>{};
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           EnterpriseCrmFrontendsEventbusProtoParameterEntry,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -28,7 +28,8 @@ class EnterpriseCrmFrontendsEventbusProtoEventParameters {
     return EnterpriseCrmFrontendsEventbusProtoEventParameters(
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<EnterpriseCrmFrontendsEventbusProtoParameterEntry>(
+          : pulumi.Input.decodeList<
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry>(
               map['parameters'],
               (value) =>
                   EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromMap(

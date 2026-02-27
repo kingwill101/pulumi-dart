@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionCommitment.
 class GetRegionCommitmentArgs {
-  final Input<String> commitment;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> commitment;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetRegionCommitmentArgs({
     required this.commitment,
@@ -27,9 +27,9 @@ class GetRegionCommitmentArgs {
 
   factory GetRegionCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionCommitmentArgs(
-      commitment: Input.asInput<String>(map['commitment']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      commitment: pulumi.Input.asInput<String>(map['commitment']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

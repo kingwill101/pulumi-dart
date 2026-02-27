@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_peering_response.dart';
 import 'network_routing_config_response.dart';
 
@@ -97,7 +97,7 @@ class GetNetworkResult {
     map['networkFirewallPolicyEnforcementOrder'] =
         networkFirewallPolicyEnforcementOrder;
     map['peerings'] =
-        Input.encodeList<NetworkPeeringResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<NetworkPeeringResponse, Map<String, dynamic>>(
             peerings, (value) => value.toMap());
     map['region'] = region;
     map['routingConfig'] = routingConfig.toMap();
@@ -122,7 +122,7 @@ class GetNetworkResult {
       name: map['name'] as String,
       networkFirewallPolicyEnforcementOrder:
           map['networkFirewallPolicyEnforcementOrder'] as String,
-      peerings: Input.decodeList<NetworkPeeringResponse>(
+      peerings: pulumi.Input.decodeList<NetworkPeeringResponse>(
           map['peerings'],
           (value) => NetworkPeeringResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

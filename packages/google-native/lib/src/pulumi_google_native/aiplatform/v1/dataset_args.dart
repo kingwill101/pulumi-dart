@@ -1,36 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_encryption_spec.dart';
 import 'google_cloud_aiplatform_v1_saved_query.dart';
 
 /// The set of arguments for Dataset.
 class DatasetArgs {
   /// The description of the Dataset.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The user-defined name of the Dataset. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
-  final Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
 
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// The labels with user-defined metadata to organize your Datasets. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Dataset (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable. Following system labels exist for each Dataset: * "aiplatform.googleapis.com/dataset_metadata_schema": output only, its value is the metadata_schema's title.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Additional information about the Dataset.
-  final Input<dynamic> metadata;
+  final pulumi.Input<dynamic> metadata;
 
   /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-  final Input<String> metadataSchemaUri;
-  final Input<String>? project;
+  final pulumi.Input<String> metadataSchemaUri;
+  final pulumi.Input<String>? project;
 
   /// All SavedQueries belong to the Dataset will be returned in List/Get Dataset response. The annotation_specs field will not be populated except for UI cases which will only use annotation_spec_count. In CreateDataset request, a SavedQuery is created together if this field is set, up to one SavedQuery can be set in CreateDatasetRequest. The SavedQuery should not contain any AnnotationSpec.
-  final Input<List<GoogleCloudAiplatformV1SavedQuery>>? savedQueries;
+  final pulumi.Input<List<GoogleCloudAiplatformV1SavedQuery>>? savedQueries;
 
   DatasetArgs({
     this.description,
@@ -54,7 +54,7 @@ class DatasetArgs {
     map['displayName'] = displayName;
     final encryptionSpecValue = encryptionSpec;
     if (encryptionSpecValue != null) {
-      map['encryptionSpec'] = Input.mapOptionalInputValue<
+      map['encryptionSpec'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudAiplatformV1EncryptionSpec,
           Map<String, dynamic>>(encryptionSpecValue, (value) => value.toMap());
     }
@@ -78,11 +78,11 @@ class DatasetArgs {
     }
     final savedQueriesValue = savedQueries;
     if (savedQueriesValue != null) {
-      map['savedQueries'] = Input.mapOptionalInputValue<
+      map['savedQueries'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudAiplatformV1SavedQuery>,
               List<Map<String, dynamic>>>(
           savedQueriesValue,
-          (value) => Input.encodeList<GoogleCloudAiplatformV1SavedQuery,
+          (value) => pulumi.Input.encodeList<GoogleCloudAiplatformV1SavedQuery,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
@@ -90,19 +90,19 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
       encryptionSpec:
-          Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(
+          pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(
               map['encryptionSpec']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      metadata: Input.asInput<dynamic>(map['metadata']),
-      metadataSchemaUri: Input.asInput<String>(map['metadataSchemaUri']),
-      project: Input.asOptionalInput<String>(map['project']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      metadata: pulumi.Input.asInput<dynamic>(map['metadata']),
+      metadataSchemaUri: pulumi.Input.asInput<String>(map['metadataSchemaUri']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       savedQueries:
-          Input.asOptionalInput<List<GoogleCloudAiplatformV1SavedQuery>>(
+          pulumi.Input.asOptionalInput<List<GoogleCloudAiplatformV1SavedQuery>>(
               map['savedQueries']),
     );
   }

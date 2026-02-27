@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_study_spec_algorithm.dart';
 import 'google_cloud_aiplatform_v1beta1_study_spec_convex_automated_stopping_spec.dart';
 import 'google_cloud_aiplatform_v1beta1_study_spec_convex_stop_config.dart';
@@ -96,14 +96,14 @@ class GoogleCloudAiplatformV1beta1StudySpec {
       map['medianAutomatedStoppingSpec'] =
           medianAutomatedStoppingSpecValue.toMap();
     }
-    map['metrics'] = Input.encodeList<
+    map['metrics'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1StudySpecMetricSpec,
         Map<String, dynamic>>(metrics, (value) => value.toMap());
     final observationNoiseValue = observationNoise;
     if (observationNoiseValue != null) {
       map['observationNoise'] = observationNoiseValue.value;
     }
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1beta1StudySpecParameterSpec,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     final studyStoppingConfigValue = studyStoppingConfig;
@@ -147,22 +147,20 @@ class GoogleCloudAiplatformV1beta1StudySpec {
           : GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec
               .fromMap((map['medianAutomatedStoppingSpec'] as Map)
                   .cast<String, dynamic>()),
-      metrics:
-          Input.decodeList<GoogleCloudAiplatformV1beta1StudySpecMetricSpec>(
-              map['metrics'],
-              (value) =>
-                  GoogleCloudAiplatformV1beta1StudySpecMetricSpec.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      metrics: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1beta1StudySpecMetricSpec>(
+          map['metrics'],
+          (value) => GoogleCloudAiplatformV1beta1StudySpecMetricSpec.fromMap(
+              (value as Map).cast<String, dynamic>())),
       observationNoise: map['observationNoise'] == null
           ? null
           : GoogleCloudAiplatformV1beta1StudySpecObservationNoise.fromValue(
               map['observationNoise'] as String),
-      parameters:
-          Input.decodeList<GoogleCloudAiplatformV1beta1StudySpecParameterSpec>(
-              map['parameters'],
-              (value) =>
-                  GoogleCloudAiplatformV1beta1StudySpecParameterSpec.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1beta1StudySpecParameterSpec>(
+          map['parameters'],
+          (value) => GoogleCloudAiplatformV1beta1StudySpecParameterSpec.fromMap(
+              (value as Map).cast<String, dynamic>())),
       studyStoppingConfig: map['studyStoppingConfig'] == null
           ? null
           : GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig.fromMap(

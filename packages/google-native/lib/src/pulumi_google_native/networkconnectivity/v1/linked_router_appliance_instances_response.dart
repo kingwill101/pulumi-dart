@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_appliance_instance_response.dart';
 
 /// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
@@ -22,9 +22,8 @@ class LinkedRouterApplianceInstancesResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['instances'] =
-        Input.encodeList<RouterApplianceInstanceResponse, Map<String, dynamic>>(
-            instances, (value) => value.toMap());
+    map['instances'] = pulumi.Input.encodeList<RouterApplianceInstanceResponse,
+        Map<String, dynamic>>(instances, (value) => value.toMap());
     map['siteToSiteDataTransfer'] = siteToSiteDataTransfer;
     map['vpcNetwork'] = vpcNetwork;
     return map;
@@ -33,7 +32,7 @@ class LinkedRouterApplianceInstancesResponse {
   factory LinkedRouterApplianceInstancesResponse.fromMap(
       Map<String, dynamic> map) {
     return LinkedRouterApplianceInstancesResponse(
-      instances: Input.decodeList<RouterApplianceInstanceResponse>(
+      instances: pulumi.Input.decodeList<RouterApplianceInstanceResponse>(
           map['instances'],
           (value) => RouterApplianceInstanceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

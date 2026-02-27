@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_route_cors_policy.dart';
 import 'http_route_destination.dart';
 import 'http_route_fault_injection_policy.dart';
@@ -69,7 +69,7 @@ class HttpRouteRouteAction {
     final destinationsValue = destinations;
     if (destinationsValue != null) {
       map['destinations'] =
-          Input.encodeList<HttpRouteDestination, Map<String, dynamic>>(
+          pulumi.Input.encodeList<HttpRouteDestination, Map<String, dynamic>>(
               destinationsValue, (value) => value.toMap());
     }
     final faultInjectionPolicyValue = faultInjectionPolicy;
@@ -119,7 +119,7 @@ class HttpRouteRouteAction {
               (map['corsPolicy'] as Map).cast<String, dynamic>()),
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<HttpRouteDestination>(
+          : pulumi.Input.decodeList<HttpRouteDestination>(
               map['destinations'],
               (value) => HttpRouteDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),

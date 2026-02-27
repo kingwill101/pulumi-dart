@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_discoveryengine_v1alpha_field_config_response.dart';
 
 /// Result data returned by getSchema.
@@ -26,7 +26,7 @@ class GetSchemaResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fieldConfigs'] = Input.encodeList<
+    map['fieldConfigs'] = pulumi.Input.encodeList<
         GoogleCloudDiscoveryengineV1alphaFieldConfigResponse,
         Map<String, dynamic>>(fieldConfigs, (value) => value.toMap());
     map['jsonSchema'] = jsonSchema;
@@ -37,7 +37,7 @@ class GetSchemaResult {
 
   factory GetSchemaResult.fromMap(Map<String, dynamic> map) {
     return GetSchemaResult(
-      fieldConfigs: Input.decodeList<
+      fieldConfigs: pulumi.Input.decodeList<
               GoogleCloudDiscoveryengineV1alphaFieldConfigResponse>(
           map['fieldConfigs'],
           (value) =>

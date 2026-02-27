@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAppConnector.
 class GetAppConnectorArgs {
-  final Input<String> appConnectorId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> appConnectorId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetAppConnectorArgs({
     required this.appConnectorId,
@@ -27,9 +27,9 @@ class GetAppConnectorArgs {
 
   factory GetAppConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAppConnectorArgs(
-      appConnectorId: Input.asInput<String>(map['appConnectorId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      appConnectorId: pulumi.Input.asInput<String>(map['appConnectorId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

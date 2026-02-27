@@ -2,7 +2,7 @@
 
 import 'bare_metal_node_pool_config_response.dart';
 import 'bare_metal_node_pool_upgrade_policy_response.dart';
-import 'resource_status_response4.dart';
+import 'resource_status_response_gkeonprem_v1.dart';
 
 /// Result data returned by getBareMetalNodePool.
 class GetBareMetalNodePoolResult {
@@ -34,7 +34,7 @@ class GetBareMetalNodePoolResult {
   final String state;
 
   /// ResourceStatus representing the detailed node pool status.
-  final ResourceStatusResponse4 status;
+  final ResourceStatusResponseGkeonpremV1 status;
 
   /// The unique identifier of the bare metal node pool.
   final String uid;
@@ -91,7 +91,7 @@ class GetBareMetalNodePoolResult {
           (map['nodePoolConfig'] as Map).cast<String, dynamic>()),
       reconciling: map['reconciling'] as bool,
       state: map['state'] as String,
-      status: ResourceStatusResponse4.fromMap(
+      status: ResourceStatusResponseGkeonpremV1.fromMap(
           (map['status'] as Map).cast<String, dynamic>()),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,

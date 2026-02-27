@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'knowledge_base.dart';
 
 class WindowsDetail {
@@ -30,8 +30,9 @@ class WindowsDetail {
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
     }
-    map['fixingKbs'] = Input.encodeList<KnowledgeBase, Map<String, dynamic>>(
-        fixingKbs, (value) => value.toMap());
+    map['fixingKbs'] =
+        pulumi.Input.encodeList<KnowledgeBase, Map<String, dynamic>>(
+            fixingKbs, (value) => value.toMap());
     map['name'] = name;
     return map;
   }
@@ -41,7 +42,7 @@ class WindowsDetail {
       cpeUri: map['cpeUri'] as String,
       description:
           map['description'] == null ? null : map['description'] as String,
-      fixingKbs: Input.decodeList<KnowledgeBase>(
+      fixingKbs: pulumi.Input.decodeList<KnowledgeBase>(
           map['fixingKbs'],
           (value) =>
               KnowledgeBase.fromMap((value as Map).cast<String, dynamic>())),

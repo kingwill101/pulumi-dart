@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDatasetFhirStoreIamPolicy.
 class GetDatasetFhirStoreIamPolicyArgs {
-  final Input<String> datasetId;
-  final Input<String> fhirStoreId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> fhirStoreId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetDatasetFhirStoreIamPolicyArgs({
     required this.datasetId,
@@ -36,12 +36,12 @@ class GetDatasetFhirStoreIamPolicyArgs {
 
   factory GetDatasetFhirStoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetFhirStoreIamPolicyArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      fhirStoreId: Input.asInput<String>(map['fhirStoreId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      fhirStoreId: pulumi.Input.asInput<String>(map['fhirStoreId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

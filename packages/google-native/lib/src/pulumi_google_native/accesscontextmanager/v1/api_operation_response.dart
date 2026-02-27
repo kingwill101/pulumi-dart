@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'method_selector_response.dart';
 
 /// Identification for an API Operation.
@@ -19,7 +19,7 @@ class ApiOperationResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['methodSelectors'] =
-        Input.encodeList<MethodSelectorResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MethodSelectorResponse, Map<String, dynamic>>(
             methodSelectors, (value) => value.toMap());
     map['serviceName'] = serviceName;
     return map;
@@ -27,7 +27,7 @@ class ApiOperationResponse {
 
   factory ApiOperationResponse.fromMap(Map<String, dynamic> map) {
     return ApiOperationResponse(
-      methodSelectors: Input.decodeList<MethodSelectorResponse>(
+      methodSelectors: pulumi.Input.decodeList<MethodSelectorResponse>(
           map['methodSelectors'],
           (value) => MethodSelectorResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

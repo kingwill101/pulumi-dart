@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SpecialistPool.
 class SpecialistPoolArgs {
   /// The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.
-  final Input<String> displayName;
-  final Input<String>? location;
+  final pulumi.Input<String> displayName;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the SpecialistPool.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// The email addresses of the managers in the SpecialistPool.
-  final Input<List<String>>? specialistManagerEmails;
+  final pulumi.Input<List<String>>? specialistManagerEmails;
 
   /// The email addresses of workers in the SpecialistPool.
-  final Input<List<String>>? specialistWorkerEmails;
+  final pulumi.Input<List<String>>? specialistWorkerEmails;
 
   SpecialistPoolArgs({
     required this.displayName,
@@ -55,14 +55,14 @@ class SpecialistPoolArgs {
 
   factory SpecialistPoolArgs.fromMap(Map<String, dynamic> map) {
     return SpecialistPoolArgs(
-      displayName: Input.asInput<String>(map['displayName']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      specialistManagerEmails:
-          Input.asOptionalInput<List<String>>(map['specialistManagerEmails']),
-      specialistWorkerEmails:
-          Input.asOptionalInput<List<String>>(map['specialistWorkerEmails']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      specialistManagerEmails: pulumi.Input.asOptionalInput<List<String>>(
+          map['specialistManagerEmails']),
+      specialistWorkerEmails: pulumi.Input.asOptionalInput<List<String>>(
+          map['specialistWorkerEmails']),
     );
   }
 }

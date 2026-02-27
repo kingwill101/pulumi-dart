@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_browse_carousel_card_browse_carousel_card_item_response.dart';
 
 /// Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['imageDisplayOptions'] = imageDisplayOptions;
-    map['items'] = Input.encodeList<
+    map['items'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse,
         Map<String, dynamic>>(items, (value) => value.toMap());
     return map;
@@ -31,7 +31,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse {
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse(
       imageDisplayOptions: map['imageDisplayOptions'] as String,
-      items: Input.decodeList<
+      items: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse>(
           map['items'],
           (value) =>

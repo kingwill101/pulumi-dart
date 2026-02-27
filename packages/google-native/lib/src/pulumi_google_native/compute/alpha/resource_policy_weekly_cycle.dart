@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_policy_weekly_cycle_day_of_week.dart';
 
 /// Time window specified for weekly operations.
@@ -16,7 +16,8 @@ class ResourcePolicyWeeklyCycle {
     final map = <String, dynamic>{};
     final dayOfWeeksValue = dayOfWeeks;
     if (dayOfWeeksValue != null) {
-      map['dayOfWeeks'] = Input.encodeList<ResourcePolicyWeeklyCycleDayOfWeek,
+      map['dayOfWeeks'] = pulumi.Input.encodeList<
+          ResourcePolicyWeeklyCycleDayOfWeek,
           Map<String, dynamic>>(dayOfWeeksValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +27,7 @@ class ResourcePolicyWeeklyCycle {
     return ResourcePolicyWeeklyCycle(
       dayOfWeeks: map['dayOfWeeks'] == null
           ? null
-          : Input.decodeList<ResourcePolicyWeeklyCycleDayOfWeek>(
+          : pulumi.Input.decodeList<ResourcePolicyWeeklyCycleDayOfWeek>(
               map['dayOfWeeks'],
               (value) => ResourcePolicyWeeklyCycleDayOfWeek.fromMap(
                   (value as Map).cast<String, dynamic>())),

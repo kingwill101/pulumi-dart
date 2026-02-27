@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_provider.dart';
 import 'authentication_rule.dart';
 
@@ -21,13 +21,15 @@ class Authentication {
     final map = <String, dynamic>{};
     final providersValue = providers;
     if (providersValue != null) {
-      map['providers'] = Input.encodeList<AuthProvider, Map<String, dynamic>>(
-          providersValue, (value) => value.toMap());
+      map['providers'] =
+          pulumi.Input.encodeList<AuthProvider, Map<String, dynamic>>(
+              providersValue, (value) => value.toMap());
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<AuthenticationRule, Map<String, dynamic>>(
-          rulesValue, (value) => value.toMap());
+      map['rules'] =
+          pulumi.Input.encodeList<AuthenticationRule, Map<String, dynamic>>(
+              rulesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -36,13 +38,13 @@ class Authentication {
     return Authentication(
       providers: map['providers'] == null
           ? null
-          : Input.decodeList<AuthProvider>(
+          : pulumi.Input.decodeList<AuthProvider>(
               map['providers'],
               (value) =>
                   AuthProvider.fromMap((value as Map).cast<String, dynamic>())),
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<AuthenticationRule>(
+          : pulumi.Input.decodeList<AuthenticationRule>(
               map['rules'],
               (value) => AuthenticationRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

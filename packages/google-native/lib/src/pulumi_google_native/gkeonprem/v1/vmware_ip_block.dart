@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_host_ip.dart';
 
 /// Represents a collection of IP addresses to assign to nodes.
@@ -28,7 +28,7 @@ class VmwareIpBlock {
     }
     final ipsValue = ips;
     if (ipsValue != null) {
-      map['ips'] = Input.encodeList<VmwareHostIp, Map<String, dynamic>>(
+      map['ips'] = pulumi.Input.encodeList<VmwareHostIp, Map<String, dynamic>>(
           ipsValue, (value) => value.toMap());
     }
     final netmaskValue = netmask;
@@ -43,7 +43,7 @@ class VmwareIpBlock {
       gateway: map['gateway'] == null ? null : map['gateway'] as String,
       ips: map['ips'] == null
           ? null
-          : Input.decodeList<VmwareHostIp>(
+          : pulumi.Input.decodeList<VmwareHostIp>(
               map['ips'],
               (value) =>
                   VmwareHostIp.fromMap((value as Map).cast<String, dynamic>())),

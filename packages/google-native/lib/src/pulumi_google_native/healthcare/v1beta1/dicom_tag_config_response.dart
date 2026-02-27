@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'action_response.dart';
-import 'options_response4.dart';
+import 'options_response_healthcare_v1beta1.dart';
 
 /// Specifies the parameters needed for the de-identification of DICOM stores.
 class DicomTagConfigResponse {
@@ -10,7 +10,7 @@ class DicomTagConfigResponse {
   final List<ActionResponse> actions;
 
   /// Specifies additional options to apply, overriding the base `profile`.
-  final OptionsResponse4 options;
+  final OptionsResponseHealthcareV1beta1 options;
 
   /// Base profile type for handling DICOM tags.
   final String profileType;
@@ -23,8 +23,9 @@ class DicomTagConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] = Input.encodeList<ActionResponse, Map<String, dynamic>>(
-        actions, (value) => value.toMap());
+    map['actions'] =
+        pulumi.Input.encodeList<ActionResponse, Map<String, dynamic>>(
+            actions, (value) => value.toMap());
     map['options'] = options.toMap();
     map['profileType'] = profileType;
     return map;
@@ -32,11 +33,11 @@ class DicomTagConfigResponse {
 
   factory DicomTagConfigResponse.fromMap(Map<String, dynamic> map) {
     return DicomTagConfigResponse(
-      actions: Input.decodeList<ActionResponse>(
+      actions: pulumi.Input.decodeList<ActionResponse>(
           map['actions'],
           (value) =>
               ActionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      options: OptionsResponse4.fromMap(
+      options: OptionsResponseHealthcareV1beta1.fromMap(
           (map['options'] as Map).cast<String, dynamic>()),
       profileType: map['profileType'] as String,
     );

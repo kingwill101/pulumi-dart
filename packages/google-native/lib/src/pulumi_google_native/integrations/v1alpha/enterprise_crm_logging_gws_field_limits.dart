@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_logging_gws_field_limits_log_action.dart';
 import 'enterprise_crm_logging_gws_field_limits_log_type_item.dart';
 import 'enterprise_crm_logging_gws_field_limits_shortener_type.dart';
@@ -35,7 +35,7 @@ class EnterpriseCrmLoggingGwsFieldLimits {
     }
     final logTypeValue = logType;
     if (logTypeValue != null) {
-      map['logType'] = Input.encodeList<
+      map['logType'] = pulumi.Input.encodeList<
           EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem,
           String>(logTypeValue, (value) => value.value);
     }
@@ -62,7 +62,8 @@ class EnterpriseCrmLoggingGwsFieldLimits {
               map['logAction'] as String),
       logType: map['logType'] == null
           ? null
-          : Input.decodeList<EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem>(
+          : pulumi.Input.decodeList<
+                  EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem>(
               map['logType'],
               (value) =>
                   EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem.fromValue(

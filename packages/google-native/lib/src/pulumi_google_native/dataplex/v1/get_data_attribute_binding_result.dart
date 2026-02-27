@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_data_attribute_binding_path_response.dart';
 
 /// Result data returned by getDataAttributeBinding.
@@ -61,7 +61,7 @@ class GetDataAttributeBindingResult {
     map['etag'] = etag;
     map['labels'] = labels;
     map['name'] = name;
-    map['paths'] = Input.encodeList<
+    map['paths'] = pulumi.Input.encodeList<
         GoogleCloudDataplexV1DataAttributeBindingPathResponse,
         Map<String, dynamic>>(paths, (value) => value.toMap());
     map['resource'] = resource;
@@ -79,7 +79,7 @@ class GetDataAttributeBindingResult {
       etag: map['etag'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      paths: Input.decodeList<
+      paths: pulumi.Input.decodeList<
               GoogleCloudDataplexV1DataAttributeBindingPathResponse>(
           map['paths'],
           (value) =>

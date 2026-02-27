@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_encryption_key_response.dart';
 import 'deprecation_status_response.dart';
 import 'guest_os_feature_response.dart';
@@ -168,7 +168,7 @@ class GetImageResult {
     map['enableConfidentialCompute'] = enableConfidentialCompute;
     map['family'] = family;
     map['guestOsFeatures'] =
-        Input.encodeList<GuestOsFeatureResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GuestOsFeatureResponse, Map<String, dynamic>>(
             guestOsFeatures, (value) => value.toMap());
     map['imageEncryptionKey'] = imageEncryptionKey.toMap();
     map['kind'] = kind;
@@ -211,7 +211,7 @@ class GetImageResult {
       diskSizeGb: map['diskSizeGb'] as String,
       enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
       family: map['family'] as String,
-      guestOsFeatures: Input.decodeList<GuestOsFeatureResponse>(
+      guestOsFeatures: pulumi.Input.decodeList<GuestOsFeatureResponse>(
           map['guestOsFeatures'],
           (value) => GuestOsFeatureResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

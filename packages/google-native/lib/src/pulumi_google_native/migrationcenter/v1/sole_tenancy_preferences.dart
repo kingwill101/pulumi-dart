@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sole_tenancy_preferences_commitment_plan.dart';
 import 'sole_tenancy_preferences_host_maintenance_policy.dart';
 import 'sole_tenant_node_type.dart';
@@ -43,7 +43,7 @@ class SoleTenancyPreferences {
     final nodeTypesValue = nodeTypes;
     if (nodeTypesValue != null) {
       map['nodeTypes'] =
-          Input.encodeList<SoleTenantNodeType, Map<String, dynamic>>(
+          pulumi.Input.encodeList<SoleTenantNodeType, Map<String, dynamic>>(
               nodeTypesValue, (value) => value.toMap());
     }
     return map;
@@ -64,7 +64,7 @@ class SoleTenancyPreferences {
               map['hostMaintenancePolicy'] as String),
       nodeTypes: map['nodeTypes'] == null
           ? null
-          : Input.decodeList<SoleTenantNodeType>(
+          : pulumi.Input.decodeList<SoleTenantNodeType>(
               map['nodeTypes'],
               (value) => SoleTenantNodeType.fromMap(
                   (value as Map).cast<String, dynamic>())),

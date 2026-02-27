@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_gcs_file_spec_response.dart';
 
 /// Describes a Cloud Storage fileset entry.
@@ -19,7 +19,7 @@ class GoogleCloudDatacatalogV1GcsFilesetSpecResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['filePatterns'] = filePatterns;
-    map['sampleGcsFileSpecs'] = Input.encodeList<
+    map['sampleGcsFileSpecs'] = pulumi.Input.encodeList<
         GoogleCloudDatacatalogV1GcsFileSpecResponse,
         Map<String, dynamic>>(sampleGcsFileSpecs, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GoogleCloudDatacatalogV1GcsFilesetSpecResponse {
     return GoogleCloudDatacatalogV1GcsFilesetSpecResponse(
       filePatterns: (map['filePatterns'] as List).cast<String>(),
       sampleGcsFileSpecs:
-          Input.decodeList<GoogleCloudDatacatalogV1GcsFileSpecResponse>(
+          pulumi.Input.decodeList<GoogleCloudDatacatalogV1GcsFileSpecResponse>(
               map['sampleGcsFileSpecs'],
               (value) => GoogleCloudDatacatalogV1GcsFileSpecResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

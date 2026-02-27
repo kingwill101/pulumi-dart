@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionClusterIamPolicy.
 class GetRegionClusterIamPolicyArgs {
-  final Input<String> clusterId;
-  final Input<String>? project;
-  final Input<String> regionId;
+  final pulumi.Input<String> clusterId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> regionId;
 
   GetRegionClusterIamPolicyArgs({
     required this.clusterId,
@@ -27,9 +27,9 @@ class GetRegionClusterIamPolicyArgs {
 
   factory GetRegionClusterIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionClusterIamPolicyArgs(
-      clusterId: Input.asInput<String>(map['clusterId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      regionId: Input.asInput<String>(map['regionId']),
+      clusterId: pulumi.Input.asInput<String>(map['clusterId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      regionId: pulumi.Input.asInput<String>(map['regionId']),
     );
   }
 }

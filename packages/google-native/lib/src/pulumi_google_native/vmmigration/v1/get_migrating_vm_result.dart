@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aws_source_vm_details_response.dart';
 import 'azure_source_vm_details_response.dart';
 import 'clone_job_response.dart';
@@ -11,7 +11,7 @@ import 'cutover_job_response.dart';
 import 'replication_cycle_response.dart';
 import 'replication_sync_response.dart';
 import 'schedule_policy_response.dart';
-import 'status_response30.dart';
+import 'status_response_vmmigration_v1.dart';
 import 'vmware_source_vm_details_response.dart';
 
 /// Result data returned by getMigratingVm.
@@ -45,7 +45,7 @@ class GetMigratingVmResult {
   final String displayName;
 
   /// Provides details on the state of the Migrating VM in case of an error in replication.
-  final StatusResponse30 error;
+  final StatusResponseVmmigrationV1 error;
 
   /// The group this migrating vm is included in, if any. The group is represented by the full path of the appropriate Group resource.
   final String group;
@@ -132,10 +132,10 @@ class GetMigratingVmResult {
     map['name'] = name;
     map['policy'] = policy.toMap();
     map['recentCloneJobs'] =
-        Input.encodeList<CloneJobResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<CloneJobResponse, Map<String, dynamic>>(
             recentCloneJobs, (value) => value.toMap());
     map['recentCutoverJobs'] =
-        Input.encodeList<CutoverJobResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<CutoverJobResponse, Map<String, dynamic>>(
             recentCutoverJobs, (value) => value.toMap());
     map['sourceVmId'] = sourceVmId;
     map['state'] = state;
@@ -164,7 +164,7 @@ class GetMigratingVmResult {
           (map['cutoverForecast'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      error: StatusResponse30.fromMap(
+      error: StatusResponseVmmigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       group: map['group'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
@@ -175,11 +175,11 @@ class GetMigratingVmResult {
       name: map['name'] as String,
       policy: SchedulePolicyResponse.fromMap(
           (map['policy'] as Map).cast<String, dynamic>()),
-      recentCloneJobs: Input.decodeList<CloneJobResponse>(
+      recentCloneJobs: pulumi.Input.decodeList<CloneJobResponse>(
           map['recentCloneJobs'],
           (value) =>
               CloneJobResponse.fromMap((value as Map).cast<String, dynamic>())),
-      recentCutoverJobs: Input.decodeList<CutoverJobResponse>(
+      recentCutoverJobs: pulumi.Input.decodeList<CutoverJobResponse>(
           map['recentCutoverJobs'],
           (value) => CutoverJobResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'character_mask_config2.dart';
-import 'crypto_hash_config2.dart';
-import 'date_shift_config2.dart';
+import 'character_mask_config_healthcare_v1beta1.dart';
+import 'crypto_hash_config_healthcare_v1beta1.dart';
+import 'date_shift_config_healthcare_v1beta1.dart';
 
 /// Specifies additional options to apply to the base ProfileType.
 class GoogleCloudHealthcareV1beta1DeidentifyOptions {
   /// Character mask config for CharacterMaskField.
-  final CharacterMaskConfig2? characterMaskConfig;
+  final CharacterMaskConfigHealthcareV1beta1? characterMaskConfig;
 
   /// Configure contextual de-id.
   final Map<String, dynamic>? contextualDeid;
 
   /// Crypto hash config for CharacterMaskField.
-  final CryptoHashConfig2? cryptoHashConfig;
+  final CryptoHashConfigHealthcareV1beta1? cryptoHashConfig;
 
   /// Date shifting config for CharacterMaskField.
-  final DateShiftConfig2? dateShiftConfig;
+  final DateShiftConfigHealthcareV1beta1? dateShiftConfig;
 
   /// Configure keeping extensions by default.
   final Map<String, dynamic>? keepExtensions;
@@ -59,18 +59,18 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptions {
     return GoogleCloudHealthcareV1beta1DeidentifyOptions(
       characterMaskConfig: map['characterMaskConfig'] == null
           ? null
-          : CharacterMaskConfig2.fromMap(
+          : CharacterMaskConfigHealthcareV1beta1.fromMap(
               (map['characterMaskConfig'] as Map).cast<String, dynamic>()),
       contextualDeid: map['contextualDeid'] == null
           ? null
           : (map['contextualDeid'] as Map).cast<String, dynamic>(),
       cryptoHashConfig: map['cryptoHashConfig'] == null
           ? null
-          : CryptoHashConfig2.fromMap(
+          : CryptoHashConfigHealthcareV1beta1.fromMap(
               (map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
       dateShiftConfig: map['dateShiftConfig'] == null
           ? null
-          : DateShiftConfig2.fromMap(
+          : DateShiftConfigHealthcareV1beta1.fromMap(
               (map['dateShiftConfig'] as Map).cast<String, dynamic>()),
       keepExtensions: map['keepExtensions'] == null
           ? null

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tcp_route_route_destination.dart';
 
 /// The specifications for routing traffic and applying associated policies.
@@ -20,9 +20,8 @@ class TcpRouteRouteAction {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] =
-          Input.encodeList<TcpRouteRouteDestination, Map<String, dynamic>>(
-              destinationsValue, (value) => value.toMap());
+      map['destinations'] = pulumi.Input.encodeList<TcpRouteRouteDestination,
+          Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
     final originalDestinationValue = originalDestination;
     if (originalDestinationValue != null) {
@@ -35,7 +34,7 @@ class TcpRouteRouteAction {
     return TcpRouteRouteAction(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<TcpRouteRouteDestination>(
+          : pulumi.Input.decodeList<TcpRouteRouteDestination>(
               map['destinations'],
               (value) => TcpRouteRouteDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),

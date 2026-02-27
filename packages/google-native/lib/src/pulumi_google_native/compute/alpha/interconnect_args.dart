@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_interconnect_type.dart';
 import 'interconnect_link_type.dart';
 import 'interconnect_macsec.dart';
@@ -9,50 +9,51 @@ import 'interconnect_requested_features_item.dart';
 /// The set of arguments for Interconnect.
 class InterconnectArgs {
   /// Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-  final Input<bool>? adminEnabled;
+  final pulumi.Input<bool>? adminEnabled;
 
   /// Customer name, to put in the Letter of Authorization as the party authorized to request a crossconnect.
-  final Input<String>? customerName;
+  final pulumi.Input<String>? customerName;
 
   /// An optional description of this resource. Provide this property when you create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
-  final Input<InterconnectInterconnectType>? interconnectType;
+  final pulumi.Input<InterconnectInterconnectType>? interconnectType;
 
   /// Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
-  final Input<InterconnectLinkType>? linkType;
+  final pulumi.Input<InterconnectLinkType>? linkType;
 
   /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
-  final Input<InterconnectMacsec>? macsec;
+  final pulumi.Input<InterconnectMacsec>? macsec;
 
   /// Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
-  final Input<bool>? macsecEnabled;
+  final pulumi.Input<bool>? macsecEnabled;
 
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
-  final Input<String>? nocContactEmail;
-  final Input<String>? project;
+  final pulumi.Input<String>? nocContactEmail;
+  final pulumi.Input<String>? project;
 
   /// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
-  final Input<String>? remoteLocation;
+  final pulumi.Input<String>? remoteLocation;
 
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   /// Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.
-  final Input<List<InterconnectRequestedFeaturesItem>>? requestedFeatures;
+  final pulumi.Input<List<InterconnectRequestedFeaturesItem>>?
+      requestedFeatures;
 
   /// Target number of physical links in the link bundle, as requested by the customer.
-  final Input<int>? requestedLinkCount;
+  final pulumi.Input<int>? requestedLinkCount;
 
   InterconnectArgs({
     this.adminEnabled,
@@ -89,9 +90,9 @@ class InterconnectArgs {
     }
     final interconnectTypeValue = interconnectType;
     if (interconnectTypeValue != null) {
-      map['interconnectType'] =
-          Input.mapOptionalInputValue<InterconnectInterconnectType, String>(
-              interconnectTypeValue, (value) => value.value);
+      map['interconnectType'] = pulumi.Input.mapOptionalInputValue<
+          InterconnectInterconnectType,
+          String>(interconnectTypeValue, (value) => value.value);
     }
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -100,7 +101,7 @@ class InterconnectArgs {
     final linkTypeValue = linkType;
     if (linkTypeValue != null) {
       map['linkType'] =
-          Input.mapOptionalInputValue<InterconnectLinkType, String>(
+          pulumi.Input.mapOptionalInputValue<InterconnectLinkType, String>(
               linkTypeValue, (value) => value.value);
     }
     final locationValue = location;
@@ -109,9 +110,8 @@ class InterconnectArgs {
     }
     final macsecValue = macsec;
     if (macsecValue != null) {
-      map['macsec'] =
-          Input.mapOptionalInputValue<InterconnectMacsec, Map<String, dynamic>>(
-              macsecValue, (value) => value.toMap());
+      map['macsec'] = pulumi.Input.mapOptionalInputValue<InterconnectMacsec,
+          Map<String, dynamic>>(macsecValue, (value) => value.toMap());
     }
     final macsecEnabledValue = macsecEnabled;
     if (macsecEnabledValue != null) {
@@ -139,12 +139,11 @@ class InterconnectArgs {
     }
     final requestedFeaturesValue = requestedFeatures;
     if (requestedFeaturesValue != null) {
-      map['requestedFeatures'] = Input.mapOptionalInputValue<
+      map['requestedFeatures'] = pulumi.Input.mapOptionalInputValue<
               List<InterconnectRequestedFeaturesItem>, List<String>>(
           requestedFeaturesValue,
-          (value) =>
-              Input.encodeList<InterconnectRequestedFeaturesItem, String>(
-                  value, (value) => value.value));
+          (value) => pulumi.Input.encodeList<InterconnectRequestedFeaturesItem,
+              String>(value, (value) => value.value));
     }
     final requestedLinkCountValue = requestedLinkCount;
     if (requestedLinkCountValue != null) {
@@ -155,25 +154,30 @@ class InterconnectArgs {
 
   factory InterconnectArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectArgs(
-      adminEnabled: Input.asOptionalInput<bool>(map['adminEnabled']),
-      customerName: Input.asOptionalInput<String>(map['customerName']),
-      description: Input.asOptionalInput<String>(map['description']),
-      interconnectType: Input.asOptionalInput<InterconnectInterconnectType>(
-          map['interconnectType']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      linkType: Input.asOptionalInput<InterconnectLinkType>(map['linkType']),
-      location: Input.asOptionalInput<String>(map['location']),
-      macsec: Input.asOptionalInput<InterconnectMacsec>(map['macsec']),
-      macsecEnabled: Input.asOptionalInput<bool>(map['macsecEnabled']),
-      name: Input.asOptionalInput<String>(map['name']),
-      nocContactEmail: Input.asOptionalInput<String>(map['nocContactEmail']),
-      project: Input.asOptionalInput<String>(map['project']),
-      remoteLocation: Input.asOptionalInput<String>(map['remoteLocation']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
+      adminEnabled: pulumi.Input.asOptionalInput<bool>(map['adminEnabled']),
+      customerName: pulumi.Input.asOptionalInput<String>(map['customerName']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      interconnectType:
+          pulumi.Input.asOptionalInput<InterconnectInterconnectType>(
+              map['interconnectType']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      linkType:
+          pulumi.Input.asOptionalInput<InterconnectLinkType>(map['linkType']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      macsec: pulumi.Input.asOptionalInput<InterconnectMacsec>(map['macsec']),
+      macsecEnabled: pulumi.Input.asOptionalInput<bool>(map['macsecEnabled']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      nocContactEmail:
+          pulumi.Input.asOptionalInput<String>(map['nocContactEmail']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      remoteLocation:
+          pulumi.Input.asOptionalInput<String>(map['remoteLocation']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
       requestedFeatures:
-          Input.asOptionalInput<List<InterconnectRequestedFeaturesItem>>(
+          pulumi.Input.asOptionalInput<List<InterconnectRequestedFeaturesItem>>(
               map['requestedFeatures']),
-      requestedLinkCount: Input.asOptionalInput<int>(map['requestedLinkCount']),
+      requestedLinkCount:
+          pulumi.Input.asOptionalInput<int>(map['requestedLinkCount']),
     );
   }
 }

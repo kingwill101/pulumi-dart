@@ -1,46 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_recommendationengine_v1beta1_catalog_item_category_hierarchy.dart';
 import 'google_cloud_recommendationengine_v1beta1_feature_map.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item.dart';
 
 /// The set of arguments for CatalogItem.
 class CatalogItemArgs {
-  final Input<String> catalogId;
+  final pulumi.Input<String> catalogId;
 
   /// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
-  final Input<
+  final pulumi.Input<
           List<
               GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>>
       categoryHierarchies;
 
   /// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
-  final Input<String> id;
+  final pulumi.Input<String> id;
 
   /// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
-  final Input<GoogleCloudRecommendationengineV1beta1FeatureMap>? itemAttributes;
+  final pulumi.Input<GoogleCloudRecommendationengineV1beta1FeatureMap>?
+      itemAttributes;
 
   /// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
-  final Input<String>? itemGroupId;
+  final pulumi.Input<String>? itemGroupId;
 
   /// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
-  final Input<String>? languageCode;
-  final Input<String>? location;
+  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String>? location;
 
   /// Optional. Metadata specific to retail products.
-  final Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItem>?
+  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItem>?
       productMetadata;
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
-  final Input<List<String>>? tags;
+  final pulumi.Input<List<String>>? tags;
 
   /// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
-  final Input<String> title;
+  final pulumi.Input<String> title;
 
   CatalogItemArgs({
     required this.catalogId,
@@ -60,12 +61,12 @@ class CatalogItemArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['catalogId'] = catalogId;
-    map['categoryHierarchies'] = Input.mapInputValue<
+    map['categoryHierarchies'] = pulumi.Input.mapInputValue<
             List<
                 GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>,
             List<Map<String, dynamic>>>(
         categoryHierarchies,
-        (value) => Input.encodeList<
+        (value) => pulumi.Input.encodeList<
             GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     final descriptionValue = description;
@@ -75,7 +76,7 @@ class CatalogItemArgs {
     map['id'] = id;
     final itemAttributesValue = itemAttributes;
     if (itemAttributesValue != null) {
-      map['itemAttributes'] = Input.mapOptionalInputValue<
+      map['itemAttributes'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudRecommendationengineV1beta1FeatureMap,
           Map<String, dynamic>>(itemAttributesValue, (value) => value.toMap());
     }
@@ -93,7 +94,7 @@ class CatalogItemArgs {
     }
     final productMetadataValue = productMetadata;
     if (productMetadataValue != null) {
-      map['productMetadata'] = Input.mapOptionalInputValue<
+      map['productMetadata'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudRecommendationengineV1beta1ProductCatalogItem,
           Map<String, dynamic>>(productMetadataValue, (value) => value.toMap());
     }
@@ -111,25 +112,25 @@ class CatalogItemArgs {
 
   factory CatalogItemArgs.fromMap(Map<String, dynamic> map) {
     return CatalogItemArgs(
-      catalogId: Input.asInput<String>(map['catalogId']),
-      categoryHierarchies: Input.asInput<
+      catalogId: pulumi.Input.asInput<String>(map['catalogId']),
+      categoryHierarchies: pulumi.Input.asInput<
               List<
                   GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>>(
           map['categoryHierarchies']),
-      description: Input.asOptionalInput<String>(map['description']),
-      id: Input.asInput<String>(map['id']),
-      itemAttributes: Input.asOptionalInput<
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      id: pulumi.Input.asInput<String>(map['id']),
+      itemAttributes: pulumi.Input.asOptionalInput<
               GoogleCloudRecommendationengineV1beta1FeatureMap>(
           map['itemAttributes']),
-      itemGroupId: Input.asOptionalInput<String>(map['itemGroupId']),
-      languageCode: Input.asOptionalInput<String>(map['languageCode']),
-      location: Input.asOptionalInput<String>(map['location']),
-      productMetadata: Input.asOptionalInput<
+      itemGroupId: pulumi.Input.asOptionalInput<String>(map['itemGroupId']),
+      languageCode: pulumi.Input.asOptionalInput<String>(map['languageCode']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      productMetadata: pulumi.Input.asOptionalInput<
               GoogleCloudRecommendationengineV1beta1ProductCatalogItem>(
           map['productMetadata']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tags: Input.asOptionalInput<List<String>>(map['tags']),
-      title: Input.asInput<String>(map['title']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tags: pulumi.Input.asOptionalInput<List<String>>(map['tags']),
+      title: pulumi.Input.asInput<String>(map['title']),
     );
   }
 }

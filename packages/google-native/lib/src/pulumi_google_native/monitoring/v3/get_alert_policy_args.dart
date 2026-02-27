@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAlertPolicy.
 class GetAlertPolicyArgs {
-  final Input<String> alertPolicyId;
-  final Input<String>? project;
+  final pulumi.Input<String> alertPolicyId;
+  final pulumi.Input<String>? project;
 
   GetAlertPolicyArgs({
     required this.alertPolicyId,
@@ -24,8 +24,8 @@ class GetAlertPolicyArgs {
 
   factory GetAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertPolicyArgs(
-      alertPolicyId: Input.asInput<String>(map['alertPolicyId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      alertPolicyId: pulumi.Input.asInput<String>(map['alertPolicyId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

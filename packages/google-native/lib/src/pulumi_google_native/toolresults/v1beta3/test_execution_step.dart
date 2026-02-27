@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'test_issue.dart';
 import 'test_suite_overview.dart';
 import 'test_timing.dart';
@@ -31,13 +31,14 @@ class TestExecutionStep {
     final map = <String, dynamic>{};
     final testIssuesValue = testIssues;
     if (testIssuesValue != null) {
-      map['testIssues'] = Input.encodeList<TestIssue, Map<String, dynamic>>(
-          testIssuesValue, (value) => value.toMap());
+      map['testIssues'] =
+          pulumi.Input.encodeList<TestIssue, Map<String, dynamic>>(
+              testIssuesValue, (value) => value.toMap());
     }
     final testSuiteOverviewsValue = testSuiteOverviews;
     if (testSuiteOverviewsValue != null) {
       map['testSuiteOverviews'] =
-          Input.encodeList<TestSuiteOverview, Map<String, dynamic>>(
+          pulumi.Input.encodeList<TestSuiteOverview, Map<String, dynamic>>(
               testSuiteOverviewsValue, (value) => value.toMap());
     }
     final testTimingValue = testTiming;
@@ -55,13 +56,13 @@ class TestExecutionStep {
     return TestExecutionStep(
       testIssues: map['testIssues'] == null
           ? null
-          : Input.decodeList<TestIssue>(
+          : pulumi.Input.decodeList<TestIssue>(
               map['testIssues'],
               (value) =>
                   TestIssue.fromMap((value as Map).cast<String, dynamic>())),
       testSuiteOverviews: map['testSuiteOverviews'] == null
           ? null
-          : Input.decodeList<TestSuiteOverview>(
+          : pulumi.Input.decodeList<TestSuiteOverview>(
               map['testSuiteOverviews'],
               (value) => TestSuiteOverview.fromMap(
                   (value as Map).cast<String, dynamic>())),

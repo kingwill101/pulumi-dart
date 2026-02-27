@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationExclusion.
 class GetOrganizationExclusionArgs {
-  final Input<String> exclusionId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> exclusionId;
+  final pulumi.Input<String> organizationId;
 
   GetOrganizationExclusionArgs({
     required this.exclusionId,
@@ -21,8 +21,8 @@ class GetOrganizationExclusionArgs {
 
   factory GetOrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationExclusionArgs(
-      exclusionId: Input.asInput<String>(map['exclusionId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      exclusionId: pulumi.Input.asInput<String>(map['exclusionId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

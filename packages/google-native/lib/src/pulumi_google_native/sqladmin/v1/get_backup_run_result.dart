@@ -2,7 +2,7 @@
 
 import 'disk_encryption_configuration_response.dart';
 import 'disk_encryption_status_response.dart';
-import 'operation_error_response4.dart';
+import 'operation_error_response_sqladmin_v1.dart';
 
 /// Result data returned by getBackupRun.
 class GetBackupRunResult {
@@ -25,7 +25,7 @@ class GetBackupRunResult {
   final String enqueuedTime;
 
   /// Information about why the backup operation failed. This is only present if the run has the FAILED status.
-  final OperationErrorResponse4 error;
+  final OperationErrorResponseSqladminV1 error;
 
   /// Name of the database instance.
   final String instance;
@@ -104,7 +104,7 @@ class GetBackupRunResult {
           (map['diskEncryptionStatus'] as Map).cast<String, dynamic>()),
       endTime: map['endTime'] as String,
       enqueuedTime: map['enqueuedTime'] as String,
-      error: OperationErrorResponse4.fromMap(
+      error: OperationErrorResponseSqladminV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       instance: map['instance'] as String,
       kind: map['kind'] as String,

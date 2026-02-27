@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget.dart';
 
 /// Defines the layout properties and content for a column.
@@ -24,7 +24,7 @@ class Column {
     }
     final widgetsValue = widgets;
     if (widgetsValue != null) {
-      map['widgets'] = Input.encodeList<Widget, Map<String, dynamic>>(
+      map['widgets'] = pulumi.Input.encodeList<Widget, Map<String, dynamic>>(
           widgetsValue, (value) => value.toMap());
     }
     return map;
@@ -35,7 +35,7 @@ class Column {
       weight: map['weight'] == null ? null : map['weight'] as String,
       widgets: map['widgets'] == null
           ? null
-          : Input.decodeList<Widget>(
+          : pulumi.Input.decodeList<Widget>(
               map['widgets'],
               (value) =>
                   Widget.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2beta_interval_response.dart';
 
 /// Specifies how a facet is computed.
@@ -48,7 +48,8 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse {
     final map = <String, dynamic>{};
     map['caseInsensitive'] = caseInsensitive;
     map['contains'] = contains;
-    map['intervals'] = Input.encodeList<GoogleCloudRetailV2betaIntervalResponse,
+    map['intervals'] = pulumi.Input.encodeList<
+        GoogleCloudRetailV2betaIntervalResponse,
         Map<String, dynamic>>(intervals, (value) => value.toMap());
     map['key'] = key;
     map['orderBy'] = orderBy;
@@ -64,10 +65,11 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse {
     return GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(
       caseInsensitive: map['caseInsensitive'] as bool,
       contains: (map['contains'] as List).cast<String>(),
-      intervals: Input.decodeList<GoogleCloudRetailV2betaIntervalResponse>(
-          map['intervals'],
-          (value) => GoogleCloudRetailV2betaIntervalResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      intervals:
+          pulumi.Input.decodeList<GoogleCloudRetailV2betaIntervalResponse>(
+              map['intervals'],
+              (value) => GoogleCloudRetailV2betaIntervalResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       key: map['key'] as String,
       orderBy: map['orderBy'] as String,
       prefixes: (map['prefixes'] as List).cast<String>(),

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTag.
 class GetTagArgs {
-  final Input<String> location;
-  final Input<String> packageId;
-  final Input<String>? project;
-  final Input<String> repositoryId;
-  final Input<String> tagId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> packageId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> repositoryId;
+  final pulumi.Input<String> tagId;
 
   GetTagArgs({
     required this.location,
@@ -33,11 +33,11 @@ class GetTagArgs {
 
   factory GetTagArgs.fromMap(Map<String, dynamic> map) {
     return GetTagArgs(
-      location: Input.asInput<String>(map['location']),
-      packageId: Input.asInput<String>(map['packageId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      repositoryId: Input.asInput<String>(map['repositoryId']),
-      tagId: Input.asInput<String>(map['tagId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      packageId: pulumi.Input.asInput<String>(map['packageId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      repositoryId: pulumi.Input.asInput<String>(map['repositoryId']),
+      tagId: pulumi.Input.asInput<String>(map['tagId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datalabeling_v1beta1_csv_instruction.dart';
 import 'google_cloud_datalabeling_v1beta1_pdf_instruction.dart';
 import 'instruction_data_type.dart';
@@ -8,20 +8,22 @@ import 'instruction_data_type.dart';
 /// The set of arguments for Instruction.
 class InstructionArgs {
   /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
-  final Input<GoogleCloudDatalabelingV1beta1CsvInstruction>? csvInstruction;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1CsvInstruction>?
+      csvInstruction;
 
   /// The data type of this instruction.
-  final Input<InstructionDataType> dataType;
+  final pulumi.Input<InstructionDataType> dataType;
 
   /// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The display name of the instruction. Maximum of 64 characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
-  final Input<GoogleCloudDatalabelingV1beta1PdfInstruction>? pdfInstruction;
-  final Input<String>? project;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1PdfInstruction>?
+      pdfInstruction;
+  final pulumi.Input<String>? project;
 
   InstructionArgs({
     this.csvInstruction,
@@ -36,11 +38,11 @@ class InstructionArgs {
     final map = <String, dynamic>{};
     final csvInstructionValue = csvInstruction;
     if (csvInstructionValue != null) {
-      map['csvInstruction'] = Input.mapOptionalInputValue<
+      map['csvInstruction'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudDatalabelingV1beta1CsvInstruction,
           Map<String, dynamic>>(csvInstructionValue, (value) => value.toMap());
     }
-    map['dataType'] = Input.mapInputValue<InstructionDataType, String>(
+    map['dataType'] = pulumi.Input.mapInputValue<InstructionDataType, String>(
         dataType, (value) => value.value);
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -49,7 +51,7 @@ class InstructionArgs {
     map['displayName'] = displayName;
     final pdfInstructionValue = pdfInstruction;
     if (pdfInstructionValue != null) {
-      map['pdfInstruction'] = Input.mapOptionalInputValue<
+      map['pdfInstruction'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudDatalabelingV1beta1PdfInstruction,
           Map<String, dynamic>>(pdfInstructionValue, (value) => value.toMap());
     }
@@ -62,16 +64,14 @@ class InstructionArgs {
 
   factory InstructionArgs.fromMap(Map<String, dynamic> map) {
     return InstructionArgs(
-      csvInstruction:
-          Input.asOptionalInput<GoogleCloudDatalabelingV1beta1CsvInstruction>(
-              map['csvInstruction']),
-      dataType: Input.asInput<InstructionDataType>(map['dataType']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      pdfInstruction:
-          Input.asOptionalInput<GoogleCloudDatalabelingV1beta1PdfInstruction>(
-              map['pdfInstruction']),
-      project: Input.asOptionalInput<String>(map['project']),
+      csvInstruction: pulumi.Input.asOptionalInput<
+          GoogleCloudDatalabelingV1beta1CsvInstruction>(map['csvInstruction']),
+      dataType: pulumi.Input.asInput<InstructionDataType>(map['dataType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      pdfInstruction: pulumi.Input.asOptionalInput<
+          GoogleCloudDatalabelingV1beta1PdfInstruction>(map['pdfInstruction']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

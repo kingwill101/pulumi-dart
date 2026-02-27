@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_rule.dart';
 
 /// Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
@@ -24,7 +24,7 @@ class Http {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<HttpRule, Map<String, dynamic>>(
+      map['rules'] = pulumi.Input.encodeList<HttpRule, Map<String, dynamic>>(
           rulesValue, (value) => value.toMap());
     }
     return map;
@@ -37,7 +37,7 @@ class Http {
           : map['fullyDecodeReservedExpansion'] as bool,
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<HttpRule>(
+          : pulumi.Input.decodeList<HttpRule>(
               map['rules'],
               (value) =>
                   HttpRule.fromMap((value as Map).cast<String, dynamic>())),

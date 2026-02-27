@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_route_route_action_response.dart';
 import 'http_route_route_match_response.dart';
 
@@ -20,9 +20,8 @@ class HttpRouteRouteRuleResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['action'] = action.toMap();
-    map['matches'] =
-        Input.encodeList<HttpRouteRouteMatchResponse, Map<String, dynamic>>(
-            matches, (value) => value.toMap());
+    map['matches'] = pulumi.Input.encodeList<HttpRouteRouteMatchResponse,
+        Map<String, dynamic>>(matches, (value) => value.toMap());
     return map;
   }
 
@@ -30,7 +29,7 @@ class HttpRouteRouteRuleResponse {
     return HttpRouteRouteRuleResponse(
       action: HttpRouteRouteActionResponse.fromMap(
           (map['action'] as Map).cast<String, dynamic>()),
-      matches: Input.decodeList<HttpRouteRouteMatchResponse>(
+      matches: pulumi.Input.decodeList<HttpRouteRouteMatchResponse>(
           map['matches'],
           (value) => HttpRouteRouteMatchResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

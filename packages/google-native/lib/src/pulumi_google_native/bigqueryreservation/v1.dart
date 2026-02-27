@@ -13,7 +13,7 @@ export 'v1/get_capacity_commitment_result.dart';
 export 'v1/get_reservation.dart';
 export 'v1/get_reservation_args.dart';
 export 'v1/get_reservation_result.dart';
-export 'v1/reservation4.dart';
 export 'v1/reservation_args.dart';
+export 'v1/reservation_bigqueryreservation_v1.dart';
 export 'v1/reservation_edition.dart';
 export 'v1/status_response.dart';

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'installation_response2.dart';
+import 'installation_response_containeranalysis_v1beta1.dart';
 
 /// Details of a package occurrence.
 class GrafeasV1beta1PackageDetailsResponse {
   /// Where the package was installed.
-  final InstallationResponse2 installation;
+  final InstallationResponseContaineranalysisV1beta1 installation;
 
   GrafeasV1beta1PackageDetailsResponse({
     required this.installation,
@@ -20,7 +20,7 @@ class GrafeasV1beta1PackageDetailsResponse {
   factory GrafeasV1beta1PackageDetailsResponse.fromMap(
       Map<String, dynamic> map) {
     return GrafeasV1beta1PackageDetailsResponse(
-      installation: InstallationResponse2.fromMap(
+      installation: InstallationResponseContaineranalysisV1beta1.fromMap(
           (map['installation'] as Map).cast<String, dynamic>()),
     );
   }

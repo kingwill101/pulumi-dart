@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute_response.dart';
 import 'google_cloud_apigee_v1_quota_response.dart';
 
@@ -32,7 +32,8 @@ class GoogleCloudApigeeV1GrpcOperationConfigResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['apiSource'] = apiSource;
-    map['attributes'] = Input.encodeList<GoogleCloudApigeeV1AttributeResponse,
+    map['attributes'] = pulumi.Input.encodeList<
+        GoogleCloudApigeeV1AttributeResponse,
         Map<String, dynamic>>(attributes, (value) => value.toMap());
     map['methods'] = methods;
     map['quota'] = quota.toMap();
@@ -44,7 +45,7 @@ class GoogleCloudApigeeV1GrpcOperationConfigResponse {
       Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GrpcOperationConfigResponse(
       apiSource: map['apiSource'] as String,
-      attributes: Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
+      attributes: pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
           map['attributes'],
           (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

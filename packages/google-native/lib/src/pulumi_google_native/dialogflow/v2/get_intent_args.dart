@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIntent.
 class GetIntentArgs {
-  final Input<String> intentId;
-  final Input<String>? intentView;
-  final Input<String>? languageCode;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> intentId;
+  final pulumi.Input<String>? intentView;
+  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetIntentArgs({
     required this.intentId,
@@ -39,11 +39,11 @@ class GetIntentArgs {
 
   factory GetIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntentArgs(
-      intentId: Input.asInput<String>(map['intentId']),
-      intentView: Input.asOptionalInput<String>(map['intentView']),
-      languageCode: Input.asOptionalInput<String>(map['languageCode']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      intentId: pulumi.Input.asInput<String>(map['intentId']),
+      intentView: pulumi.Input.asOptionalInput<String>(map['intentView']),
+      languageCode: pulumi.Input.asOptionalInput<String>(map['languageCode']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

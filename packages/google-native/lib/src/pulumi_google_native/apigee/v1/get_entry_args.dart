@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEntry.
 class GetEntryArgs {
-  final Input<String> apiId;
-  final Input<String> entryId;
-  final Input<String> keyvaluemapId;
-  final Input<String> organizationId;
+  final pulumi.Input<String> apiId;
+  final pulumi.Input<String> entryId;
+  final pulumi.Input<String> keyvaluemapId;
+  final pulumi.Input<String> organizationId;
 
   GetEntryArgs({
     required this.apiId,
@@ -27,10 +27,10 @@ class GetEntryArgs {
 
   factory GetEntryArgs.fromMap(Map<String, dynamic> map) {
     return GetEntryArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      entryId: Input.asInput<String>(map['entryId']),
-      keyvaluemapId: Input.asInput<String>(map['keyvaluemapId']),
-      organizationId: Input.asInput<String>(map['organizationId']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      entryId: pulumi.Input.asInput<String>(map['entryId']),
+      keyvaluemapId: pulumi.Input.asInput<String>(map['keyvaluemapId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

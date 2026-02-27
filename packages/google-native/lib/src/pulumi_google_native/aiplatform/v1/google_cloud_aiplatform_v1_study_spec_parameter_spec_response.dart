@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_study_spec_parameter_spec_categorical_value_spec_response.dart';
 import 'google_cloud_aiplatform_v1_study_spec_parameter_spec_conditional_parameter_spec_response.dart';
 import 'google_cloud_aiplatform_v1_study_spec_parameter_spec_discrete_value_spec_response.dart';
@@ -49,7 +49,7 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['categoricalValueSpec'] = categoricalValueSpec.toMap();
-    map['conditionalParameterSpecs'] = Input.encodeList<
+    map['conditionalParameterSpecs'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecResponse,
         Map<String,
             dynamic>>(conditionalParameterSpecs, (value) => value.toMap());
@@ -68,7 +68,7 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecResponse {
           GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpecResponse
               .fromMap(
                   (map['categoricalValueSpec'] as Map).cast<String, dynamic>()),
-      conditionalParameterSpecs: Input.decodeList<
+      conditionalParameterSpecs: pulumi.Input.decodeList<
               GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecResponse>(
           map['conditionalParameterSpecs'],
           (value) =>

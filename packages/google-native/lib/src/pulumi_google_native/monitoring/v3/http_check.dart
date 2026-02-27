@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'basic_authentication.dart';
 import 'http_check_content_type.dart';
 import 'http_check_request_method.dart';
@@ -69,7 +69,7 @@ class HttpCheck {
     final acceptedResponseStatusCodesValue = acceptedResponseStatusCodes;
     if (acceptedResponseStatusCodesValue != null) {
       map['acceptedResponseStatusCodes'] =
-          Input.encodeList<ResponseStatusCode, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ResponseStatusCode, Map<String, dynamic>>(
               acceptedResponseStatusCodesValue, (value) => value.toMap());
     }
     final authInfoValue = authInfo;
@@ -127,7 +127,7 @@ class HttpCheck {
     return HttpCheck(
       acceptedResponseStatusCodes: map['acceptedResponseStatusCodes'] == null
           ? null
-          : Input.decodeList<ResponseStatusCode>(
+          : pulumi.Input.decodeList<ResponseStatusCode>(
               map['acceptedResponseStatusCodes'],
               (value) => ResponseStatusCode.fromMap(
                   (value as Map).cast<String, dynamic>())),

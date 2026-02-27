@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_route_cors_policy_response.dart';
 import 'http_route_destination_response.dart';
 import 'http_route_fault_injection_policy_response.dart';
@@ -63,9 +63,8 @@ class HttpRouteRouteActionResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['corsPolicy'] = corsPolicy.toMap();
-    map['destinations'] =
-        Input.encodeList<HttpRouteDestinationResponse, Map<String, dynamic>>(
-            destinations, (value) => value.toMap());
+    map['destinations'] = pulumi.Input.encodeList<HttpRouteDestinationResponse,
+        Map<String, dynamic>>(destinations, (value) => value.toMap());
     map['faultInjectionPolicy'] = faultInjectionPolicy.toMap();
     map['redirect'] = redirect.toMap();
     map['requestHeaderModifier'] = requestHeaderModifier.toMap();
@@ -82,7 +81,7 @@ class HttpRouteRouteActionResponse {
     return HttpRouteRouteActionResponse(
       corsPolicy: HttpRouteCorsPolicyResponse.fromMap(
           (map['corsPolicy'] as Map).cast<String, dynamic>()),
-      destinations: Input.decodeList<HttpRouteDestinationResponse>(
+      destinations: pulumi.Input.decodeList<HttpRouteDestinationResponse>(
           map['destinations'],
           (value) => HttpRouteDestinationResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

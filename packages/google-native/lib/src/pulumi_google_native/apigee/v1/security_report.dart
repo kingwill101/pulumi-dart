@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_security_report_metadata_response.dart';
 import 'google_cloud_apigee_v1_security_report_result_metadata_response.dart';
 import 'security_report_args.dart';
@@ -7,59 +7,59 @@ import 'security_report_args.dart';
 /// Auto-naming is currently not supported for this resource.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class SecurityReport extends CustomResource {
+class SecurityReport extends pulumi.CustomResource {
   /// Creation time of the query.
-  late final Output<String> created;
+  late final pulumi.Output<String> created;
 
   /// Display Name specified by the user.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Hostname is available only when query is executed at host level.
-  late final Output<String> envgroupHostname;
-  late final Output<String> environmentId;
+  late final pulumi.Output<String> envgroupHostname;
+  late final pulumi.Output<String> environmentId;
 
   /// Error is set when query fails.
-  late final Output<String> error;
+  late final pulumi.Output<String> error;
 
   /// ExecutionTime is available only after the query is completed.
-  late final Output<String> executionTime;
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> executionTime;
+  late final pulumi.Output<String> organizationId;
 
   /// Contains information like metrics, dimenstions etc of the Security Report.
-  late final Output<GoogleCloudApigeeV1SecurityReportMetadataResponse>
+  late final pulumi.Output<GoogleCloudApigeeV1SecurityReportMetadataResponse>
       queryParams;
 
   /// Report Definition ID.
-  late final Output<String> reportDefinitionId;
+  late final pulumi.Output<String> reportDefinitionId;
 
   /// Result is available only after the query is completed.
-  late final Output<GoogleCloudApigeeV1SecurityReportResultMetadataResponse>
-      result;
+  late final pulumi
+      .Output<GoogleCloudApigeeV1SecurityReportResultMetadataResponse> result;
 
   /// ResultFileSize is available only after the query is completed.
-  late final Output<String> resultFileSize;
+  late final pulumi.Output<String> resultFileSize;
 
   /// ResultRows is available only after the query is completed.
-  late final Output<String> resultRows;
+  late final pulumi.Output<String> resultRows;
 
   /// Self link of the query. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
-  late final Output<String> self;
+  late final pulumi.Output<String> self;
 
   /// Query state could be "enqueued", "running", "completed", "expired" and "failed".
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Last updated timestamp for the query.
-  late final Output<String> updated;
+  late final pulumi.Output<String> updated;
 
   SecurityReport(
     String name, {
     SecurityReportArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:apigee/v1:SecurityReport',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.created = registerOutput<String>('created');
     this.displayName = registerOutput<String>('displayName');

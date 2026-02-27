@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_cloud_scheduler_config_response.dart';
 import 'enterprise_crm_eventbus_proto_coordinate_response.dart';
 import 'enterprise_crm_eventbus_proto_next_task_response.dart';
@@ -75,7 +75,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['alertConfig'] = Input.encodeList<
+    map['alertConfig'] = pulumi.Input.encodeList<
         EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse,
         Map<String, dynamic>>(alertConfig, (value) => value.toMap());
     map['cloudSchedulerConfig'] = cloudSchedulerConfig.toMap();
@@ -87,7 +87,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse {
     map['pauseWorkflowExecutions'] = pauseWorkflowExecutions;
     map['position'] = position.toMap();
     map['properties'] = properties;
-    map['startTasks'] = Input.encodeList<
+    map['startTasks'] = pulumi.Input.encodeList<
         EnterpriseCrmEventbusProtoNextTaskResponse,
         Map<String, dynamic>>(startTasks, (value) => value.toMap());
     map['triggerCriteria'] = triggerCriteria.toMap();
@@ -101,7 +101,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse {
   factory EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse.fromMap(
       Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse(
-      alertConfig: Input.decodeList<
+      alertConfig: pulumi.Input.decodeList<
               EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse>(
           map['alertConfig'],
           (value) =>
@@ -119,10 +119,11 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse {
       position: EnterpriseCrmEventbusProtoCoordinateResponse.fromMap(
           (map['position'] as Map).cast<String, dynamic>()),
       properties: (map['properties'] as Map).cast<String, String>(),
-      startTasks: Input.decodeList<EnterpriseCrmEventbusProtoNextTaskResponse>(
-          map['startTasks'],
-          (value) => EnterpriseCrmEventbusProtoNextTaskResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      startTasks:
+          pulumi.Input.decodeList<EnterpriseCrmEventbusProtoNextTaskResponse>(
+              map['startTasks'],
+              (value) => EnterpriseCrmEventbusProtoNextTaskResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       triggerCriteria:
           EnterpriseCrmEventbusProtoTriggerCriteriaResponse.fromMap(
               (map['triggerCriteria'] as Map).cast<String, dynamic>()),

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'disk_response3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'disk_response_genomics_v1alpha2.dart';
 
 /// The system resources for the pipeline run.
 class PipelineResourcesResponse {
@@ -15,7 +15,7 @@ class PipelineResourcesResponse {
   final int bootDiskSizeGb;
 
   /// Disks to attach.
-  final List<DiskResponse3> disks;
+  final List<DiskResponseGenomicsV1alpha2> disks;
 
   /// The minimum number of cores to use. Defaults to 1.
   final int minimumCpuCores;
@@ -49,8 +49,8 @@ class PipelineResourcesResponse {
     map['acceleratorCount'] = acceleratorCount;
     map['acceleratorType'] = acceleratorType;
     map['bootDiskSizeGb'] = bootDiskSizeGb;
-    map['disks'] = Input.encodeList<DiskResponse3, Map<String, dynamic>>(
-        disks, (value) => value.toMap());
+    map['disks'] = pulumi.Input.encodeList<DiskResponseGenomicsV1alpha2,
+        Map<String, dynamic>>(disks, (value) => value.toMap());
     map['minimumCpuCores'] = minimumCpuCores;
     map['minimumRamGb'] = minimumRamGb;
     map['noAddress'] = noAddress;
@@ -64,10 +64,10 @@ class PipelineResourcesResponse {
       acceleratorCount: map['acceleratorCount'] as String,
       acceleratorType: map['acceleratorType'] as String,
       bootDiskSizeGb: map['bootDiskSizeGb'] as int,
-      disks: Input.decodeList<DiskResponse3>(
+      disks: pulumi.Input.decodeList<DiskResponseGenomicsV1alpha2>(
           map['disks'],
-          (value) =>
-              DiskResponse3.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => DiskResponseGenomicsV1alpha2.fromMap(
+              (value as Map).cast<String, dynamic>())),
       minimumCpuCores: map['minimumCpuCores'] as int,
       minimumRamGb: map['minimumRamGb'] as double,
       noAddress: map['noAddress'] as bool,

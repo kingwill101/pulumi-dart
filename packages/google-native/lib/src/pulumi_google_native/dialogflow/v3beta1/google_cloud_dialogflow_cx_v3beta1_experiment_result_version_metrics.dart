@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_experiment_result_metric.dart';
 
 /// Version variant and associated metrics.
@@ -24,7 +24,7 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
     final map = <String, dynamic>{};
     final metricsValue = metrics;
     if (metricsValue != null) {
-      map['metrics'] = Input.encodeList<
+      map['metrics'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowCxV3beta1ExperimentResultMetric,
           Map<String, dynamic>>(metricsValue, (value) => value.toMap());
     }
@@ -44,7 +44,7 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics(
       metrics: map['metrics'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>(
               map['metrics'],
               (value) =>

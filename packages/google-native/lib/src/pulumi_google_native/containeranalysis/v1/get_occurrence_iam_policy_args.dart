@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOccurrenceIamPolicy.
 class GetOccurrenceIamPolicyArgs {
-  final Input<String> occurrenceId;
-  final Input<String>? project;
+  final pulumi.Input<String> occurrenceId;
+  final pulumi.Input<String>? project;
 
   GetOccurrenceIamPolicyArgs({
     required this.occurrenceId,
@@ -24,8 +24,8 @@ class GetOccurrenceIamPolicyArgs {
 
   factory GetOccurrenceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceIamPolicyArgs(
-      occurrenceId: Input.asInput<String>(map['occurrenceId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      occurrenceId: pulumi.Input.asInput<String>(map['occurrenceId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

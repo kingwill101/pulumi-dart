@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_conversation_turn.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_test_case_result_test_result.dart';
 
@@ -33,7 +33,7 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResult {
     final map = <String, dynamic>{};
     final conversationTurnsValue = conversationTurns;
     if (conversationTurnsValue != null) {
-      map['conversationTurns'] = Input.encodeList<
+      map['conversationTurns'] = pulumi.Input.encodeList<
               GoogleCloudDialogflowCxV3beta1ConversationTurn,
               Map<String, dynamic>>(
           conversationTurnsValue, (value) => value.toMap());
@@ -62,7 +62,8 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResult {
     return GoogleCloudDialogflowCxV3beta1TestCaseResult(
       conversationTurns: map['conversationTurns'] == null
           ? null
-          : Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurn>(
+          : pulumi.Input.decodeList<
+                  GoogleCloudDialogflowCxV3beta1ConversationTurn>(
               map['conversationTurns'],
               (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn.fromMap(
                   (value as Map).cast<String, dynamic>())),

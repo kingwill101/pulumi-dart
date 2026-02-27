@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rrset_routing_policy_wrr_policy_wrr_policy_item.dart';
 
 /// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
@@ -17,7 +17,8 @@ class RRSetRoutingPolicyWrrPolicy {
     final map = <String, dynamic>{};
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem,
+      map['items'] = pulumi.Input.encodeList<
+          RRSetRoutingPolicyWrrPolicyWrrPolicyItem,
           Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
     final kindValue = kind;
@@ -31,7 +32,7 @@ class RRSetRoutingPolicyWrrPolicy {
     return RRSetRoutingPolicyWrrPolicy(
       items: map['items'] == null
           ? null
-          : Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>(
+          : pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>(
               map['items'],
               (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap(
                   (value as Map).cast<String, dynamic>())),

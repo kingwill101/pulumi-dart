@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFeed.
 class GetFeedArgs {
-  final Input<String> feedId;
-  final Input<String> v1Id;
-  final Input<String> v1Id1;
+  final pulumi.Input<String> feedId;
+  final pulumi.Input<String> v1Id;
+  final pulumi.Input<String> v1Id1;
 
   GetFeedArgs({
     required this.feedId,
@@ -24,9 +24,9 @@ class GetFeedArgs {
 
   factory GetFeedArgs.fromMap(Map<String, dynamic> map) {
     return GetFeedArgs(
-      feedId: Input.asInput<String>(map['feedId']),
-      v1Id: Input.asInput<String>(map['v1Id']),
-      v1Id1: Input.asInput<String>(map['v1Id1']),
+      feedId: pulumi.Input.asInput<String>(map['feedId']),
+      v1Id: pulumi.Input.asInput<String>(map['v1Id']),
+      v1Id1: pulumi.Input.asInput<String>(map['v1Id1']),
     );
   }
 }

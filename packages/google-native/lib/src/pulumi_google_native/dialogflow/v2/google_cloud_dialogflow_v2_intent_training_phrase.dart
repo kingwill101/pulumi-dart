@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_intent_training_phrase_part.dart';
 import 'google_cloud_dialogflow_v2_intent_training_phrase_type.dart';
 
@@ -23,7 +23,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['parts'] = Input.encodeList<
+    map['parts'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2IntentTrainingPhrasePart,
         Map<String, dynamic>>(parts, (value) => value.toMap());
     final timesAddedCountValue = timesAddedCount;
@@ -37,7 +37,8 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
   factory GoogleCloudDialogflowV2IntentTrainingPhrase.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentTrainingPhrase(
-      parts: Input.decodeList<GoogleCloudDialogflowV2IntentTrainingPhrasePart>(
+      parts: pulumi.Input.decodeList<
+              GoogleCloudDialogflowV2IntentTrainingPhrasePart>(
           map['parts'],
           (value) => GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromMap(
               (value as Map).cast<String, dynamic>())),

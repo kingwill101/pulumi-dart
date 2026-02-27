@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2alpha_model_page_optimization_config_panel.dart';
 import 'google_cloud_retail_v2alpha_model_page_optimization_config_restriction.dart';
 
@@ -25,7 +25,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['pageOptimizationEventType'] = pageOptimizationEventType;
-    map['panels'] = Input.encodeList<
+    map['panels'] = pulumi.Input.encodeList<
         GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel,
         Map<String, dynamic>>(panels, (value) => value.toMap());
     final restrictionValue = restriction;
@@ -39,7 +39,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfig {
       Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfig(
       pageOptimizationEventType: map['pageOptimizationEventType'] as String,
-      panels: Input.decodeList<
+      panels: pulumi.Input.decodeList<
               GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel>(
           map['panels'],
           (value) =>

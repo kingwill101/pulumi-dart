@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response19.dart';
+import 'status_response_gkehub_v1.dart';
 
 /// State for App Dev Exp Feature.
 class AppDevExperienceFeatureStateResponse {
   /// Status of subcomponent that detects configured Service Mesh resources.
-  final StatusResponse19 networkingInstallSucceeded;
+  final StatusResponseGkehubV1 networkingInstallSucceeded;
 
   AppDevExperienceFeatureStateResponse({
     required this.networkingInstallSucceeded,
@@ -20,7 +20,7 @@ class AppDevExperienceFeatureStateResponse {
   factory AppDevExperienceFeatureStateResponse.fromMap(
       Map<String, dynamic> map) {
     return AppDevExperienceFeatureStateResponse(
-      networkingInstallSucceeded: StatusResponse19.fromMap(
+      networkingInstallSucceeded: StatusResponseGkehubV1.fromMap(
           (map['networkingInstallSucceeded'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_partner_link_args.dart';
 import 'google_cloud_channel_v1_cloud_identity_info_response.dart';
 
@@ -6,43 +6,43 @@ import 'google_cloud_channel_v1_cloud_identity_info_response.dart';
 /// Auto-naming is currently not supported for this resource.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class ChannelPartnerLink extends CustomResource {
-  late final Output<String> accountId;
+class ChannelPartnerLink extends pulumi.CustomResource {
+  late final pulumi.Output<String> accountId;
 
   /// Cloud Identity info of the channel partner (IR).
-  late final Output<GoogleCloudChannelV1CloudIdentityInfoResponse>
+  late final pulumi.Output<GoogleCloudChannelV1CloudIdentityInfoResponse>
       channelPartnerCloudIdentityInfo;
 
   /// Timestamp of when the channel partner link is created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// URI of the web page where partner accepts the link invitation.
-  late final Output<String> inviteLinkUri;
+  late final pulumi.Output<String> inviteLinkUri;
 
   /// State of the channel partner link.
-  late final Output<String> linkState;
+  late final pulumi.Output<String> linkState;
 
   /// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
-  late final Output<String> publicId;
+  late final pulumi.Output<String> publicId;
 
   /// Cloud Identity ID of the linked reseller.
-  late final Output<String> resellerCloudIdentityId;
+  late final pulumi.Output<String> resellerCloudIdentityId;
 
   /// Timestamp of when the channel partner link is updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ChannelPartnerLink(
     String name, {
     ChannelPartnerLinkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:cloudchannel/v1:ChannelPartnerLink',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.channelPartnerCloudIdentityInfo =

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_android_application_response.dart';
 
 /// The Android apps that are allowed to use the key.
@@ -14,18 +14,19 @@ class V2AndroidKeyRestrictionsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allowedApplications'] =
-        Input.encodeList<V2AndroidApplicationResponse, Map<String, dynamic>>(
-            allowedApplications, (value) => value.toMap());
+    map['allowedApplications'] = pulumi.Input.encodeList<
+        V2AndroidApplicationResponse,
+        Map<String, dynamic>>(allowedApplications, (value) => value.toMap());
     return map;
   }
 
   factory V2AndroidKeyRestrictionsResponse.fromMap(Map<String, dynamic> map) {
     return V2AndroidKeyRestrictionsResponse(
-      allowedApplications: Input.decodeList<V2AndroidApplicationResponse>(
-          map['allowedApplications'],
-          (value) => V2AndroidApplicationResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allowedApplications:
+          pulumi.Input.decodeList<V2AndroidApplicationResponse>(
+              map['allowedApplications'],
+              (value) => V2AndroidApplicationResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

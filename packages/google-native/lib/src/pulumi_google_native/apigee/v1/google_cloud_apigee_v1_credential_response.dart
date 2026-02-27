@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_api_product_ref_response.dart';
 import 'google_cloud_apigee_v1_attribute_response.dart';
 
@@ -42,10 +42,11 @@ class GoogleCloudApigeeV1CredentialResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['apiProducts'] = Input.encodeList<
+    map['apiProducts'] = pulumi.Input.encodeList<
         GoogleCloudApigeeV1ApiProductRefResponse,
         Map<String, dynamic>>(apiProducts, (value) => value.toMap());
-    map['attributes'] = Input.encodeList<GoogleCloudApigeeV1AttributeResponse,
+    map['attributes'] = pulumi.Input.encodeList<
+        GoogleCloudApigeeV1AttributeResponse,
         Map<String, dynamic>>(attributes, (value) => value.toMap());
     map['consumerKey'] = consumerKey;
     map['consumerSecret'] = consumerSecret;
@@ -59,11 +60,12 @@ class GoogleCloudApigeeV1CredentialResponse {
   factory GoogleCloudApigeeV1CredentialResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CredentialResponse(
-      apiProducts: Input.decodeList<GoogleCloudApigeeV1ApiProductRefResponse>(
-          map['apiProducts'],
-          (value) => GoogleCloudApigeeV1ApiProductRefResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      attributes: Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
+      apiProducts:
+          pulumi.Input.decodeList<GoogleCloudApigeeV1ApiProductRefResponse>(
+              map['apiProducts'],
+              (value) => GoogleCloudApigeeV1ApiProductRefResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      attributes: pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
           map['attributes'],
           (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

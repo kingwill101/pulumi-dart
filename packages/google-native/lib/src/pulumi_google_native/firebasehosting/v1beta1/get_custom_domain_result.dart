@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'certificate_response2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'certificate_response_firebasehosting_v1beta1.dart';
 import 'dns_updates_response.dart';
-import 'status_response17.dart';
+import 'status_response_firebasehosting_v1beta1.dart';
 
 /// Result data returned by getCustomDomain.
 class GetCustomDomainResult {
@@ -11,7 +11,7 @@ class GetCustomDomainResult {
   final Map<String, String> annotations;
 
   /// The SSL certificate Hosting has for this custom domain's domain name. For new custom domains, this often represents Hosting's intent to create a certificate, rather than an actual cert. Check the `state` field for more.
-  final CertificateResponse2 cert;
+  final CertificateResponseFirebasehostingV1beta1 cert;
 
   /// A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option.
   final String certPreference;
@@ -32,7 +32,7 @@ class GetCustomDomainResult {
   final String hostState;
 
   /// A set of errors Hosting systems encountered when trying to establish Hosting's ability to serve secure content for your domain name. Resolve these issues to ensure your `CustomDomain` behaves properly.
-  final List<StatusResponse17> issues;
+  final List<StatusResponseFirebasehostingV1beta1> issues;
 
   /// Labels used for extra metadata and/or filtering.
   final Map<String, String> labels;
@@ -84,8 +84,9 @@ class GetCustomDomainResult {
     map['etag'] = etag;
     map['expireTime'] = expireTime;
     map['hostState'] = hostState;
-    map['issues'] = Input.encodeList<StatusResponse17, Map<String, dynamic>>(
-        issues, (value) => value.toMap());
+    map['issues'] = pulumi.Input.encodeList<
+        StatusResponseFirebasehostingV1beta1,
+        Map<String, dynamic>>(issues, (value) => value.toMap());
     map['labels'] = labels;
     map['name'] = name;
     map['ownershipState'] = ownershipState;
@@ -99,7 +100,7 @@ class GetCustomDomainResult {
   factory GetCustomDomainResult.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      cert: CertificateResponse2.fromMap(
+      cert: CertificateResponseFirebasehostingV1beta1.fromMap(
           (map['cert'] as Map).cast<String, dynamic>()),
       certPreference: map['certPreference'] as String,
       createTime: map['createTime'] as String,
@@ -107,10 +108,10 @@ class GetCustomDomainResult {
       etag: map['etag'] as String,
       expireTime: map['expireTime'] as String,
       hostState: map['hostState'] as String,
-      issues: Input.decodeList<StatusResponse17>(
+      issues: pulumi.Input.decodeList<StatusResponseFirebasehostingV1beta1>(
           map['issues'],
-          (value) =>
-              StatusResponse17.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => StatusResponseFirebasehostingV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       ownershipState: map['ownershipState'] as String,

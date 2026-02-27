@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getModelDeploymentMonitoringJob.
 class GetModelDeploymentMonitoringJobArgs {
-  final Input<String> location;
-  final Input<String> modelDeploymentMonitoringJobId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> modelDeploymentMonitoringJobId;
+  final pulumi.Input<String>? project;
 
   GetModelDeploymentMonitoringJobArgs({
     required this.location,
@@ -28,10 +28,10 @@ class GetModelDeploymentMonitoringJobArgs {
   factory GetModelDeploymentMonitoringJobArgs.fromMap(
       Map<String, dynamic> map) {
     return GetModelDeploymentMonitoringJobArgs(
-      location: Input.asInput<String>(map['location']),
+      location: pulumi.Input.asInput<String>(map['location']),
       modelDeploymentMonitoringJobId:
-          Input.asInput<String>(map['modelDeploymentMonitoringJobId']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['modelDeploymentMonitoringJobId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

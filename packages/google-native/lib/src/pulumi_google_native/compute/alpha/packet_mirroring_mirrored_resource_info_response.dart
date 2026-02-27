@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'packet_mirroring_mirrored_resource_info_instance_info_response.dart';
 import 'packet_mirroring_mirrored_resource_info_subnet_info_response.dart';
 
@@ -22,10 +22,10 @@ class PacketMirroringMirroredResourceInfoResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['instances'] = Input.encodeList<
+    map['instances'] = pulumi.Input.encodeList<
         PacketMirroringMirroredResourceInfoInstanceInfoResponse,
         Map<String, dynamic>>(instances, (value) => value.toMap());
-    map['subnetworks'] = Input.encodeList<
+    map['subnetworks'] = pulumi.Input.encodeList<
         PacketMirroringMirroredResourceInfoSubnetInfoResponse,
         Map<String, dynamic>>(subnetworks, (value) => value.toMap());
     map['tags'] = tags;
@@ -35,13 +35,13 @@ class PacketMirroringMirroredResourceInfoResponse {
   factory PacketMirroringMirroredResourceInfoResponse.fromMap(
       Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoResponse(
-      instances: Input.decodeList<
+      instances: pulumi.Input.decodeList<
               PacketMirroringMirroredResourceInfoInstanceInfoResponse>(
           map['instances'],
           (value) =>
               PacketMirroringMirroredResourceInfoInstanceInfoResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      subnetworks: Input.decodeList<
+      subnetworks: pulumi.Input.decodeList<
               PacketMirroringMirroredResourceInfoSubnetInfoResponse>(
           map['subnetworks'],
           (value) =>

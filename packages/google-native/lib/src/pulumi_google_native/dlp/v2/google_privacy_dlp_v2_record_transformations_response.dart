@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_field_transformation_response.dart';
 import 'google_privacy_dlp_v2_record_suppression_response.dart';
 
@@ -20,10 +20,10 @@ class GooglePrivacyDlpV2RecordTransformationsResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fieldTransformations'] = Input.encodeList<
+    map['fieldTransformations'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2FieldTransformationResponse,
         Map<String, dynamic>>(fieldTransformations, (value) => value.toMap());
-    map['recordSuppressions'] = Input.encodeList<
+    map['recordSuppressions'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2RecordSuppressionResponse,
         Map<String, dynamic>>(recordSuppressions, (value) => value.toMap());
     return map;
@@ -32,13 +32,13 @@ class GooglePrivacyDlpV2RecordTransformationsResponse {
   factory GooglePrivacyDlpV2RecordTransformationsResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RecordTransformationsResponse(
-      fieldTransformations:
-          Input.decodeList<GooglePrivacyDlpV2FieldTransformationResponse>(
-              map['fieldTransformations'],
-              (value) => GooglePrivacyDlpV2FieldTransformationResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      fieldTransformations: pulumi.Input.decodeList<
+              GooglePrivacyDlpV2FieldTransformationResponse>(
+          map['fieldTransformations'],
+          (value) => GooglePrivacyDlpV2FieldTransformationResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       recordSuppressions:
-          Input.decodeList<GooglePrivacyDlpV2RecordSuppressionResponse>(
+          pulumi.Input.decodeList<GooglePrivacyDlpV2RecordSuppressionResponse>(
               map['recordSuppressions'],
               (value) => GooglePrivacyDlpV2RecordSuppressionResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

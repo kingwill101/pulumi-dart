@@ -1,44 +1,44 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_policy_args.dart';
-import 'rule_response6.dart';
+import 'rule_response_networksecurity_v1.dart';
 
 /// Creates a new AuthorizationPolicy in a given project and location.
-class AuthorizationPolicy extends CustomResource {
+class AuthorizationPolicy extends pulumi.CustomResource {
   /// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
-  late final Output<String> action;
+  late final pulumi.Output<String> action;
 
   /// Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
-  late final Output<String> authorizationPolicyId;
+  late final pulumi.Output<String> authorizationPolicyId;
 
   /// The timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Free-text description of the resource.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Optional. Set of label tags associated with the AuthorizationPolicy resource.
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
-  late final Output<List<RuleResponse6>> rules;
+  late final pulumi.Output<List<RuleResponseNetworksecurityV1>> rules;
 
   /// The timestamp when the resource was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AuthorizationPolicy(
     String name, {
     AuthorizationPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:networksecurity/v1:AuthorizationPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.action = registerOutput<String>('action');
     this.authorizationPolicyId =
@@ -49,7 +49,7 @@ class AuthorizationPolicy extends CustomResource {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.rules = registerOutput<List<RuleResponse6>>('rules');
+    this.rules = registerOutput<List<RuleResponseNetworksecurityV1>>('rules');
     this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'image_config_response2.dart';
+import 'image_config_response_healthcare_v1beta1.dart';
 
 /// Specifies a selection of tags and an `Action` to apply to each one.
 class ActionResponse {
   /// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
-  final ImageConfigResponse2 cleanImageTag;
+  final ImageConfigResponseHealthcareV1beta1 cleanImageTag;
 
   /// Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
   final Map<String, dynamic> cleanTextTag;
@@ -59,7 +59,7 @@ class ActionResponse {
 
   factory ActionResponse.fromMap(Map<String, dynamic> map) {
     return ActionResponse(
-      cleanImageTag: ImageConfigResponse2.fromMap(
+      cleanImageTag: ImageConfigResponseHealthcareV1beta1.fromMap(
           (map['cleanImageTag'] as Map).cast<String, dynamic>()),
       cleanTextTag: (map['cleanTextTag'] as Map).cast<String, dynamic>(),
       deleteTag: (map['deleteTag'] as Map).cast<String, dynamic>(),

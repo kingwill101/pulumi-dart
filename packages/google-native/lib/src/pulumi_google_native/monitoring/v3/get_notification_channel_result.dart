@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mutation_record_response.dart';
 
 /// Result data returned by getNotificationChannel.
@@ -56,7 +56,7 @@ class GetNotificationChannelResult {
     map['enabled'] = enabled;
     map['labels'] = labels;
     map['mutationRecords'] =
-        Input.encodeList<MutationRecordResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MutationRecordResponse, Map<String, dynamic>>(
             mutationRecords, (value) => value.toMap());
     map['name'] = name;
     map['type'] = type;
@@ -73,7 +73,7 @@ class GetNotificationChannelResult {
       displayName: map['displayName'] as String,
       enabled: map['enabled'] as bool,
       labels: (map['labels'] as Map).cast<String, String>(),
-      mutationRecords: Input.decodeList<MutationRecordResponse>(
+      mutationRecords: pulumi.Input.decodeList<MutationRecordResponse>(
           map['mutationRecords'],
           (value) => MutationRecordResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_contactcenterinsights_v1_conversation_participant_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_transcript_transcript_segment_dialogflow_segment_metadata_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_transcript_transcript_segment_word_info_response.dart';
@@ -61,7 +61,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
     map['segmentParticipant'] = segmentParticipant.toMap();
     map['sentiment'] = sentiment.toMap();
     map['text'] = text;
-    map['words'] = Input.encodeList<
+    map['words'] = pulumi.Input.encodeList<
         GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse,
         Map<String, dynamic>>(words, (value) => value.toMap());
     return map;
@@ -86,7 +86,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
           GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap(
               (map['sentiment'] as Map).cast<String, dynamic>()),
       text: map['text'] as String,
-      words: Input.decodeList<
+      words: pulumi.Input.decodeList<
               GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse>(
           map['words'],
           (value) =>

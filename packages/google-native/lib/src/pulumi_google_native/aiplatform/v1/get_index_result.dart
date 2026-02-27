@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_deployed_index_ref_response.dart';
 import 'google_cloud_aiplatform_v1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1_index_stats_response.dart';
@@ -65,7 +65,7 @@ class GetIndexResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['createTime'] = createTime;
-    map['deployedIndexes'] = Input.encodeList<
+    map['deployedIndexes'] = pulumi.Input.encodeList<
         GoogleCloudAiplatformV1DeployedIndexRefResponse,
         Map<String, dynamic>>(deployedIndexes, (value) => value.toMap());
     map['description'] = description;
@@ -85,12 +85,11 @@ class GetIndexResult {
   factory GetIndexResult.fromMap(Map<String, dynamic> map) {
     return GetIndexResult(
       createTime: map['createTime'] as String,
-      deployedIndexes:
-          Input.decodeList<GoogleCloudAiplatformV1DeployedIndexRefResponse>(
-              map['deployedIndexes'],
-              (value) =>
-                  GoogleCloudAiplatformV1DeployedIndexRefResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      deployedIndexes: pulumi.Input.decodeList<
+              GoogleCloudAiplatformV1DeployedIndexRefResponse>(
+          map['deployedIndexes'],
+          (value) => GoogleCloudAiplatformV1DeployedIndexRefResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       encryptionSpec: GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(

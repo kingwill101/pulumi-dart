@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'label_descriptor_response3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'label_descriptor_response_servicemanagement_v1.dart';
 
 /// A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history description: The history of borrowing and returning library items. display_name: Activity labels: - key: /customer_id description: Identifier of a library customer
 class LogDescriptorResponse {
@@ -12,7 +12,7 @@ class LogDescriptorResponse {
   final String displayName;
 
   /// The set of labels that are available to describe a specific log entry. Runtime requests that contain labels not specified here are considered invalid.
-  final List<LabelDescriptorResponse3> labels;
+  final List<LabelDescriptorResponseServicemanagementV1> labels;
 
   /// The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.].
   final String name;
@@ -28,9 +28,9 @@ class LogDescriptorResponse {
     final map = <String, dynamic>{};
     map['description'] = description;
     map['displayName'] = displayName;
-    map['labels'] =
-        Input.encodeList<LabelDescriptorResponse3, Map<String, dynamic>>(
-            labels, (value) => value.toMap());
+    map['labels'] = pulumi.Input.encodeList<
+        LabelDescriptorResponseServicemanagementV1,
+        Map<String, dynamic>>(labels, (value) => value.toMap());
     map['name'] = name;
     return map;
   }
@@ -39,10 +39,11 @@ class LogDescriptorResponse {
     return LogDescriptorResponse(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      labels: Input.decodeList<LabelDescriptorResponse3>(
-          map['labels'],
-          (value) => LabelDescriptorResponse3.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      labels:
+          pulumi.Input.decodeList<LabelDescriptorResponseServicemanagementV1>(
+              map['labels'],
+              (value) => LabelDescriptorResponseServicemanagementV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
     );
   }

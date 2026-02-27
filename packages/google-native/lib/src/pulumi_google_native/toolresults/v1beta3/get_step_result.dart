@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'duration_response4.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'duration_response_toolresults_v1beta3.dart';
 import 'multi_step_response.dart';
 import 'outcome_response.dart';
 import 'step_dimension_value_entry_response.dart';
@@ -22,7 +22,7 @@ class GetStepResult {
   final String description;
 
   /// How much the device resource is used to perform the test. This is the device usage used for billing purpose, which is different from the run_duration, for example, infrastructure failure won't be charged for device usage. PRECONDITION_FAILED will be returned if one attempts to set a device_usage on a step which already has this field set. - In response: present if previously set. - In create request: optional - In update request: optional
-  final DurationResponse4 deviceUsageDuration;
+  final DurationResponseToolresultsV1beta3 deviceUsageDuration;
 
   /// If the execution containing this step has any dimension_definition set, then this field allows the child to specify the values of the dimensions. The keys must exactly match the dimension_definition of the execution. For example, if the execution has `dimension_definition = ['attempt', 'device']` then a step must define values for those dimensions, eg. `dimension_value = ['attempt': '1', 'device': 'Nexus 6']` If a step does not participate in one dimension of the matrix, the value for that dimension should be empty string. For example, if one of the tests is executed by a runner which does not support retries, the step could have `dimension_value = ['attempt': '', 'device': 'Nexus 6']` If the step does not participate in any dimensions of the matrix, it may leave dimension_value unset. A PRECONDITION_FAILED will be returned if any of the keys do not exist in the dimension_definition of the execution. A PRECONDITION_FAILED will be returned if another step in this execution already has the same name and dimension_value, but differs on other data fields, for example, step field is different. A PRECONDITION_FAILED will be returned if dimension_value is set, and there is a dimension_definition in the execution which is not specified as one of the keys. - In response: present if set by create - In create request: optional - In update request: never set
   final List<StepDimensionValueEntryResponse> dimensionValue;
@@ -43,7 +43,7 @@ class GetStepResult {
   final OutcomeResponse outcome;
 
   /// How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
-  final DurationResponse4 runDuration;
+  final DurationResponseToolresultsV1beta3 runDuration;
 
   /// The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
   final String state;
@@ -81,12 +81,12 @@ class GetStepResult {
     map['creationTime'] = creationTime.toMap();
     map['description'] = description;
     map['deviceUsageDuration'] = deviceUsageDuration.toMap();
-    map['dimensionValue'] =
-        Input.encodeList<StepDimensionValueEntryResponse, Map<String, dynamic>>(
-            dimensionValue, (value) => value.toMap());
+    map['dimensionValue'] = pulumi.Input.encodeList<
+        StepDimensionValueEntryResponse,
+        Map<String, dynamic>>(dimensionValue, (value) => value.toMap());
     map['hasImages'] = hasImages;
     map['labels'] =
-        Input.encodeList<StepLabelsEntryResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<StepLabelsEntryResponse, Map<String, dynamic>>(
             labels, (value) => value.toMap());
     map['multiStep'] = multiStep.toMap();
     map['name'] = name;
@@ -106,14 +106,14 @@ class GetStepResult {
       creationTime: TimestampResponse.fromMap(
           (map['creationTime'] as Map).cast<String, dynamic>()),
       description: map['description'] as String,
-      deviceUsageDuration: DurationResponse4.fromMap(
+      deviceUsageDuration: DurationResponseToolresultsV1beta3.fromMap(
           (map['deviceUsageDuration'] as Map).cast<String, dynamic>()),
-      dimensionValue: Input.decodeList<StepDimensionValueEntryResponse>(
+      dimensionValue: pulumi.Input.decodeList<StepDimensionValueEntryResponse>(
           map['dimensionValue'],
           (value) => StepDimensionValueEntryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       hasImages: map['hasImages'] as bool,
-      labels: Input.decodeList<StepLabelsEntryResponse>(
+      labels: pulumi.Input.decodeList<StepLabelsEntryResponse>(
           map['labels'],
           (value) => StepLabelsEntryResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -122,7 +122,7 @@ class GetStepResult {
       name: map['name'] as String,
       outcome: OutcomeResponse.fromMap(
           (map['outcome'] as Map).cast<String, dynamic>()),
-      runDuration: DurationResponse4.fromMap(
+      runDuration: DurationResponseToolresultsV1beta3.fromMap(
           (map['runDuration'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       stepId: map['stepId'] as String,

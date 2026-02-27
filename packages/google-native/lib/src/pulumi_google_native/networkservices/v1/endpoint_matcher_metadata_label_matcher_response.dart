@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_matcher_metadata_label_matcher_metadata_labels_response.dart';
 
 /// The matcher that is based on node metadata presented by xDS clients.
@@ -20,7 +20,7 @@ class EndpointMatcherMetadataLabelMatcherResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['metadataLabelMatchCriteria'] = metadataLabelMatchCriteria;
-    map['metadataLabels'] = Input.encodeList<
+    map['metadataLabels'] = pulumi.Input.encodeList<
         EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse,
         Map<String, dynamic>>(metadataLabels, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class EndpointMatcherMetadataLabelMatcherResponse {
       Map<String, dynamic> map) {
     return EndpointMatcherMetadataLabelMatcherResponse(
       metadataLabelMatchCriteria: map['metadataLabelMatchCriteria'] as String,
-      metadataLabels: Input.decodeList<
+      metadataLabels: pulumi.Input.decodeList<
               EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse>(
           map['metadataLabels'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'owner_reference_response.dart';
 
 /// google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
@@ -82,7 +82,7 @@ class ObjectMetaResponse {
     map['name'] = name;
     map['namespace'] = namespace;
     map['ownerReferences'] =
-        Input.encodeList<OwnerReferenceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<OwnerReferenceResponse, Map<String, dynamic>>(
             ownerReferences, (value) => value.toMap());
     map['resourceVersion'] = resourceVersion;
     map['selfLink'] = selfLink;
@@ -103,7 +103,7 @@ class ObjectMetaResponse {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       namespace: map['namespace'] as String,
-      ownerReferences: Input.decodeList<OwnerReferenceResponse>(
+      ownerReferences: pulumi.Input.decodeList<OwnerReferenceResponse>(
           map['ownerReferences'],
           (value) => OwnerReferenceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

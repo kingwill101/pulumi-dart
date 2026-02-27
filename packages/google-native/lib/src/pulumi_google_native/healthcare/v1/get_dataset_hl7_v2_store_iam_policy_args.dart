@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDatasetHl7V2StoreIamPolicy.
 class GetDatasetHl7V2StoreIamPolicyArgs {
-  final Input<String> datasetId;
-  final Input<String> hl7V2StoreId;
-  final Input<String> location;
-  final Input<int>? optionsRequestedPolicyVersion;
-  final Input<String>? project;
+  final pulumi.Input<String> datasetId;
+  final pulumi.Input<String> hl7V2StoreId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
 
   GetDatasetHl7V2StoreIamPolicyArgs({
     required this.datasetId,
@@ -36,12 +36,12 @@ class GetDatasetHl7V2StoreIamPolicyArgs {
 
   factory GetDatasetHl7V2StoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetHl7V2StoreIamPolicyArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      hl7V2StoreId: Input.asInput<String>(map['hl7V2StoreId']),
-      location: Input.asInput<String>(map['location']),
-      optionsRequestedPolicyVersion:
-          Input.asOptionalInput<int>(map['optionsRequestedPolicyVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      hl7V2StoreId: pulumi.Input.asInput<String>(map['hl7V2StoreId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      optionsRequestedPolicyVersion: pulumi.Input.asOptionalInput<int>(
+          map['optionsRequestedPolicyVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hl7_schema_config_response.dart';
 import 'hl7_types_config_response.dart';
 
@@ -33,11 +33,11 @@ class SchemaPackageResponse {
     final map = <String, dynamic>{};
     map['ignoreMinOccurs'] = ignoreMinOccurs;
     map['schemas'] =
-        Input.encodeList<Hl7SchemaConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<Hl7SchemaConfigResponse, Map<String, dynamic>>(
             schemas, (value) => value.toMap());
     map['schematizedParsingType'] = schematizedParsingType;
     map['types'] =
-        Input.encodeList<Hl7TypesConfigResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<Hl7TypesConfigResponse, Map<String, dynamic>>(
             types, (value) => value.toMap());
     map['unexpectedSegmentHandling'] = unexpectedSegmentHandling;
     return map;
@@ -46,12 +46,12 @@ class SchemaPackageResponse {
   factory SchemaPackageResponse.fromMap(Map<String, dynamic> map) {
     return SchemaPackageResponse(
       ignoreMinOccurs: map['ignoreMinOccurs'] as bool,
-      schemas: Input.decodeList<Hl7SchemaConfigResponse>(
+      schemas: pulumi.Input.decodeList<Hl7SchemaConfigResponse>(
           map['schemas'],
           (value) => Hl7SchemaConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       schematizedParsingType: map['schematizedParsingType'] as String,
-      types: Input.decodeList<Hl7TypesConfigResponse>(
+      types: pulumi.Input.decodeList<Hl7TypesConfigResponse>(
           map['types'],
           (value) => Hl7TypesConfigResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

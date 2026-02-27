@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBucketObject.
 class GetBucketObjectArgs {
-  final Input<String> bucket;
-  final Input<String>? generation;
-  final Input<String>? ifGenerationMatch;
-  final Input<String>? ifGenerationNotMatch;
-  final Input<String>? ifMetagenerationMatch;
-  final Input<String>? ifMetagenerationNotMatch;
-  final Input<String> object;
-  final Input<String>? projection;
-  final Input<bool>? softDeleted;
-  final Input<String>? userProject;
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<String>? generation;
+  final pulumi.Input<String>? ifGenerationMatch;
+  final pulumi.Input<String>? ifGenerationNotMatch;
+  final pulumi.Input<String>? ifMetagenerationMatch;
+  final pulumi.Input<String>? ifMetagenerationNotMatch;
+  final pulumi.Input<String> object;
+  final pulumi.Input<String>? projection;
+  final pulumi.Input<bool>? softDeleted;
+  final pulumi.Input<String>? userProject;
 
   GetBucketObjectArgs({
     required this.bucket,
@@ -69,20 +69,20 @@ class GetBucketObjectArgs {
 
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      generation: Input.asOptionalInput<String>(map['generation']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      generation: pulumi.Input.asOptionalInput<String>(map['generation']),
       ifGenerationMatch:
-          Input.asOptionalInput<String>(map['ifGenerationMatch']),
+          pulumi.Input.asOptionalInput<String>(map['ifGenerationMatch']),
       ifGenerationNotMatch:
-          Input.asOptionalInput<String>(map['ifGenerationNotMatch']),
+          pulumi.Input.asOptionalInput<String>(map['ifGenerationNotMatch']),
       ifMetagenerationMatch:
-          Input.asOptionalInput<String>(map['ifMetagenerationMatch']),
+          pulumi.Input.asOptionalInput<String>(map['ifMetagenerationMatch']),
       ifMetagenerationNotMatch:
-          Input.asOptionalInput<String>(map['ifMetagenerationNotMatch']),
-      object: Input.asInput<String>(map['object']),
-      projection: Input.asOptionalInput<String>(map['projection']),
-      softDeleted: Input.asOptionalInput<bool>(map['softDeleted']),
-      userProject: Input.asOptionalInput<String>(map['userProject']),
+          pulumi.Input.asOptionalInput<String>(map['ifMetagenerationNotMatch']),
+      object: pulumi.Input.asInput<String>(map['object']),
+      projection: pulumi.Input.asOptionalInput<String>(map['projection']),
+      softDeleted: pulumi.Input.asOptionalInput<bool>(map['softDeleted']),
+      userProject: pulumi.Input.asOptionalInput<String>(map['userProject']),
     );
   }
 }

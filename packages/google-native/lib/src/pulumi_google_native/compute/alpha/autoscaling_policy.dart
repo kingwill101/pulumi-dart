@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscaling_policy_cpu_utilization.dart';
 import 'autoscaling_policy_custom_metric_utilization.dart';
 import 'autoscaling_policy_load_balancing_utilization.dart';
@@ -62,7 +62,7 @@ class AutoscalingPolicy {
     }
     final customMetricUtilizationsValue = customMetricUtilizations;
     if (customMetricUtilizationsValue != null) {
-      map['customMetricUtilizations'] = Input.encodeList<
+      map['customMetricUtilizations'] = pulumi.Input.encodeList<
               AutoscalingPolicyCustomMetricUtilization, Map<String, dynamic>>(
           customMetricUtilizationsValue, (value) => value.toMap());
     }
@@ -108,7 +108,7 @@ class AutoscalingPolicy {
               (map['cpuUtilization'] as Map).cast<String, dynamic>()),
       customMetricUtilizations: map['customMetricUtilizations'] == null
           ? null
-          : Input.decodeList<AutoscalingPolicyCustomMetricUtilization>(
+          : pulumi.Input.decodeList<AutoscalingPolicyCustomMetricUtilization>(
               map['customMetricUtilizations'],
               (value) => AutoscalingPolicyCustomMetricUtilization.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_rule_response.dart';
 import 'quota_limit_response.dart';
 
@@ -19,21 +19,22 @@ class QuotaResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['limits'] = Input.encodeList<QuotaLimitResponse, Map<String, dynamic>>(
-        limits, (value) => value.toMap());
+    map['limits'] =
+        pulumi.Input.encodeList<QuotaLimitResponse, Map<String, dynamic>>(
+            limits, (value) => value.toMap());
     map['metricRules'] =
-        Input.encodeList<MetricRuleResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<MetricRuleResponse, Map<String, dynamic>>(
             metricRules, (value) => value.toMap());
     return map;
   }
 
   factory QuotaResponse.fromMap(Map<String, dynamic> map) {
     return QuotaResponse(
-      limits: Input.decodeList<QuotaLimitResponse>(
+      limits: pulumi.Input.decodeList<QuotaLimitResponse>(
           map['limits'],
           (value) => QuotaLimitResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
-      metricRules: Input.decodeList<MetricRuleResponse>(
+      metricRules: pulumi.Input.decodeList<MetricRuleResponse>(
           map['metricRules'],
           (value) => MetricRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

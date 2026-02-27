@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_policysimulator_v1_replay_config.dart';
 
 /// The set of arguments for FolderReplay.
 class FolderReplayArgs {
   /// The configuration used for the `Replay`.
-  final Input<GoogleCloudPolicysimulatorV1ReplayConfig> config;
-  final Input<String> folderId;
-  final Input<String>? location;
+  final pulumi.Input<GoogleCloudPolicysimulatorV1ReplayConfig> config;
+  final pulumi.Input<String> folderId;
+  final pulumi.Input<String>? location;
 
   FolderReplayArgs({
     required this.config,
@@ -18,7 +18,7 @@ class FolderReplayArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['config'] = Input.mapInputValue<
+    map['config'] = pulumi.Input.mapInputValue<
         GoogleCloudPolicysimulatorV1ReplayConfig,
         Map<String, dynamic>>(config, (value) => value.toMap());
     map['folderId'] = folderId;
@@ -31,10 +31,10 @@ class FolderReplayArgs {
 
   factory FolderReplayArgs.fromMap(Map<String, dynamic> map) {
     return FolderReplayArgs(
-      config: Input.asInput<GoogleCloudPolicysimulatorV1ReplayConfig>(
+      config: pulumi.Input.asInput<GoogleCloudPolicysimulatorV1ReplayConfig>(
           map['config']),
-      folderId: Input.asInput<String>(map['folderId']),
-      location: Input.asOptionalInput<String>(map['location']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
     );
   }
 }

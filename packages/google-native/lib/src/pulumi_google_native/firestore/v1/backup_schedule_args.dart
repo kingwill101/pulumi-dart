@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_firestore_admin_v1_weekly_recurrence.dart';
 
 /// The set of arguments for BackupSchedule.
 class BackupScheduleArgs {
   /// For a schedule that runs daily at a specified time.
-  final Input<Map<String, dynamic>>? dailyRecurrence;
-  final Input<String> databaseId;
-  final Input<String>? project;
+  final pulumi.Input<Map<String, dynamic>>? dailyRecurrence;
+  final pulumi.Input<String> databaseId;
+  final pulumi.Input<String>? project;
 
   /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
-  final Input<String>? retention;
+  final pulumi.Input<String>? retention;
 
   /// For a schedule that runs weekly on a specific day and time.
-  final Input<GoogleFirestoreAdminV1WeeklyRecurrence>? weeklyRecurrence;
+  final pulumi.Input<GoogleFirestoreAdminV1WeeklyRecurrence>? weeklyRecurrence;
 
   BackupScheduleArgs({
     this.dailyRecurrence,
@@ -41,7 +41,7 @@ class BackupScheduleArgs {
     }
     final weeklyRecurrenceValue = weeklyRecurrence;
     if (weeklyRecurrenceValue != null) {
-      map['weeklyRecurrence'] = Input.mapOptionalInputValue<
+      map['weeklyRecurrence'] = pulumi.Input.mapOptionalInputValue<
               GoogleFirestoreAdminV1WeeklyRecurrence, Map<String, dynamic>>(
           weeklyRecurrenceValue, (value) => value.toMap());
     }
@@ -50,13 +50,13 @@ class BackupScheduleArgs {
 
   factory BackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BackupScheduleArgs(
-      dailyRecurrence:
-          Input.asOptionalInput<Map<String, dynamic>>(map['dailyRecurrence']),
-      databaseId: Input.asInput<String>(map['databaseId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      retention: Input.asOptionalInput<String>(map['retention']),
+      dailyRecurrence: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+          map['dailyRecurrence']),
+      databaseId: pulumi.Input.asInput<String>(map['databaseId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      retention: pulumi.Input.asOptionalInput<String>(map['retention']),
       weeklyRecurrence:
-          Input.asOptionalInput<GoogleFirestoreAdminV1WeeklyRecurrence>(
+          pulumi.Input.asOptionalInput<GoogleFirestoreAdminV1WeeklyRecurrence>(
               map['weeklyRecurrence']),
     );
   }

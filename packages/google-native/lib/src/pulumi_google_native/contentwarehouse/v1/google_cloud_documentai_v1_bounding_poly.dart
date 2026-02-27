@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_normalized_vertex.dart';
 import 'google_cloud_documentai_v1_vertex.dart';
 
@@ -21,15 +21,14 @@ class GoogleCloudDocumentaiV1BoundingPoly {
     final map = <String, dynamic>{};
     final normalizedVerticesValue = normalizedVertices;
     if (normalizedVerticesValue != null) {
-      map['normalizedVertices'] = Input.encodeList<
+      map['normalizedVertices'] = pulumi.Input.encodeList<
               GoogleCloudDocumentaiV1NormalizedVertex, Map<String, dynamic>>(
           normalizedVerticesValue, (value) => value.toMap());
     }
     final verticesValue = vertices;
     if (verticesValue != null) {
-      map['vertices'] =
-          Input.encodeList<GoogleCloudDocumentaiV1Vertex, Map<String, dynamic>>(
-              verticesValue, (value) => value.toMap());
+      map['vertices'] = pulumi.Input.encodeList<GoogleCloudDocumentaiV1Vertex,
+          Map<String, dynamic>>(verticesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -39,13 +38,13 @@ class GoogleCloudDocumentaiV1BoundingPoly {
     return GoogleCloudDocumentaiV1BoundingPoly(
       normalizedVertices: map['normalizedVertices'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1NormalizedVertex>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1NormalizedVertex>(
               map['normalizedVertices'],
               (value) => GoogleCloudDocumentaiV1NormalizedVertex.fromMap(
                   (value as Map).cast<String, dynamic>())),
       vertices: map['vertices'] == null
           ? null
-          : Input.decodeList<GoogleCloudDocumentaiV1Vertex>(
+          : pulumi.Input.decodeList<GoogleCloudDocumentaiV1Vertex>(
               map['vertices'],
               (value) => GoogleCloudDocumentaiV1Vertex.fromMap(
                   (value as Map).cast<String, dynamic>())),

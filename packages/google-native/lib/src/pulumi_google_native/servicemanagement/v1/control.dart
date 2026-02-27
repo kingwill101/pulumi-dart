@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'method_policy.dart';
 
 /// Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
@@ -25,7 +25,7 @@ class Control {
     final methodPoliciesValue = methodPolicies;
     if (methodPoliciesValue != null) {
       map['methodPolicies'] =
-          Input.encodeList<MethodPolicy, Map<String, dynamic>>(
+          pulumi.Input.encodeList<MethodPolicy, Map<String, dynamic>>(
               methodPoliciesValue, (value) => value.toMap());
     }
     return map;
@@ -37,7 +37,7 @@ class Control {
           map['environment'] == null ? null : map['environment'] as String,
       methodPolicies: map['methodPolicies'] == null
           ? null
-          : Input.decodeList<MethodPolicy>(
+          : pulumi.Input.decodeList<MethodPolicy>(
               map['methodPolicies'],
               (value) =>
                   MethodPolicy.fromMap((value as Map).cast<String, dynamic>())),

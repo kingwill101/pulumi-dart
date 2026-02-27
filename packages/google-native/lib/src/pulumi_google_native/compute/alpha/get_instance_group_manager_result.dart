@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_policy_response.dart';
 import 'instance_group_manager_actions_summary_response.dart';
 import 'instance_group_manager_all_instances_config_response.dart';
@@ -152,7 +152,7 @@ class GetInstanceGroupManagerResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['allInstancesConfig'] = allInstancesConfig.toMap();
-    map['autoHealingPolicies'] = Input.encodeList<
+    map['autoHealingPolicies'] = pulumi.Input.encodeList<
         InstanceGroupManagerAutoHealingPolicyResponse,
         Map<String, dynamic>>(autoHealingPolicies, (value) => value.toMap());
     map['baseInstanceName'] = baseInstanceName;
@@ -170,7 +170,7 @@ class GetInstanceGroupManagerResult {
     map['listManagedInstancesResults'] = listManagedInstancesResults;
     map['name'] = name;
     map['namedPorts'] =
-        Input.encodeList<NamedPortResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<NamedPortResponse, Map<String, dynamic>>(
             namedPorts, (value) => value.toMap());
     map['region'] = region;
     map['selfLink'] = selfLink;
@@ -185,7 +185,8 @@ class GetInstanceGroupManagerResult {
     map['targetStoppedSize'] = targetStoppedSize;
     map['targetSuspendedSize'] = targetSuspendedSize;
     map['updatePolicy'] = updatePolicy.toMap();
-    map['versions'] = Input.encodeList<InstanceGroupManagerVersionResponse,
+    map['versions'] = pulumi.Input.encodeList<
+        InstanceGroupManagerVersionResponse,
         Map<String, dynamic>>(versions, (value) => value.toMap());
     map['zone'] = zone;
     return map;
@@ -196,11 +197,11 @@ class GetInstanceGroupManagerResult {
       allInstancesConfig:
           InstanceGroupManagerAllInstancesConfigResponse.fromMap(
               (map['allInstancesConfig'] as Map).cast<String, dynamic>()),
-      autoHealingPolicies:
-          Input.decodeList<InstanceGroupManagerAutoHealingPolicyResponse>(
-              map['autoHealingPolicies'],
-              (value) => InstanceGroupManagerAutoHealingPolicyResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      autoHealingPolicies: pulumi.Input.decodeList<
+              InstanceGroupManagerAutoHealingPolicyResponse>(
+          map['autoHealingPolicies'],
+          (value) => InstanceGroupManagerAutoHealingPolicyResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       baseInstanceName: map['baseInstanceName'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       currentActions: InstanceGroupManagerActionsSummaryResponse.fromMap(
@@ -222,7 +223,7 @@ class GetInstanceGroupManagerResult {
       kind: map['kind'] as String,
       listManagedInstancesResults: map['listManagedInstancesResults'] as String,
       name: map['name'] as String,
-      namedPorts: Input.decodeList<NamedPortResponse>(
+      namedPorts: pulumi.Input.decodeList<NamedPortResponse>(
           map['namedPorts'],
           (value) => NamedPortResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -243,7 +244,7 @@ class GetInstanceGroupManagerResult {
       targetSuspendedSize: map['targetSuspendedSize'] as int,
       updatePolicy: InstanceGroupManagerUpdatePolicyResponse.fromMap(
           (map['updatePolicy'] as Map).cast<String, dynamic>()),
-      versions: Input.decodeList<InstanceGroupManagerVersionResponse>(
+      versions: pulumi.Input.decodeList<InstanceGroupManagerVersionResponse>(
           map['versions'],
           (value) => InstanceGroupManagerVersionResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1_encryption_spec.dart';
 import 'google_cloud_aiplatform_v1_featurestore_online_serving_config.dart';
 
 /// The set of arguments for Featurestore.
 class FeaturestoreArgs {
   /// Optional. Customer-managed encryption key spec for data storage. If set, both of the online and offline data storage will be secured by this key.
-  final Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
 
   /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// Required. The ID to use for this Featurestore, which will become the final component of the Featurestore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
-  final Input<String> featurestoreId;
+  final pulumi.Input<String> featurestoreId;
 
   /// Optional. The labels with user-defined metadata to organize your Featurestore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Featurestore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Optional. Config for online storage resources. The field should not co-exist with the field of `OnlineStoreReplicationConfig`. If both of it and OnlineStoreReplicationConfig are unset, the feature store will not have an online store and cannot be used for online serving.
-  final Input<GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig>?
+  final pulumi.Input<GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig>?
       onlineServingConfig;
 
   /// Optional. TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than `online_storage_ttl_days` since the feature generation time. Note that `online_storage_ttl_days` should be less than or equal to `offline_storage_ttl_days` for each EntityType under a featurestore. If not set, default to 4000 days
-  final Input<int>? onlineStorageTtlDays;
-  final Input<String>? project;
+  final pulumi.Input<int>? onlineStorageTtlDays;
+  final pulumi.Input<String>? project;
 
   FeaturestoreArgs({
     this.encryptionSpec,
@@ -42,7 +42,7 @@ class FeaturestoreArgs {
     final map = <String, dynamic>{};
     final encryptionSpecValue = encryptionSpec;
     if (encryptionSpecValue != null) {
-      map['encryptionSpec'] = Input.mapOptionalInputValue<
+      map['encryptionSpec'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudAiplatformV1EncryptionSpec,
           Map<String, dynamic>>(encryptionSpecValue, (value) => value.toMap());
     }
@@ -61,7 +61,7 @@ class FeaturestoreArgs {
     }
     final onlineServingConfigValue = onlineServingConfig;
     if (onlineServingConfigValue != null) {
-      map['onlineServingConfig'] = Input.mapOptionalInputValue<
+      map['onlineServingConfig'] = pulumi.Input.mapOptionalInputValue<
               GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig,
               Map<String, dynamic>>(
           onlineServingConfigValue, (value) => value.toMap());
@@ -80,18 +80,18 @@ class FeaturestoreArgs {
   factory FeaturestoreArgs.fromMap(Map<String, dynamic> map) {
     return FeaturestoreArgs(
       encryptionSpec:
-          Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(
+          pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(
               map['encryptionSpec']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      featurestoreId: Input.asInput<String>(map['featurestoreId']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      onlineServingConfig: Input.asOptionalInput<
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      featurestoreId: pulumi.Input.asInput<String>(map['featurestoreId']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      onlineServingConfig: pulumi.Input.asOptionalInput<
               GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig>(
           map['onlineServingConfig']),
       onlineStorageTtlDays:
-          Input.asOptionalInput<int>(map['onlineStorageTtlDays']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<int>(map['onlineStorageTtlDays']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

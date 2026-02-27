@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSharedflow.
 class GetSharedflowArgs {
-  final Input<String> organizationId;
-  final Input<String> sharedflowId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> sharedflowId;
 
   GetSharedflowArgs({
     required this.organizationId,
@@ -21,8 +21,8 @@ class GetSharedflowArgs {
 
   factory GetSharedflowArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedflowArgs(
-      organizationId: Input.asInput<String>(map['organizationId']),
-      sharedflowId: Input.asInput<String>(map['sharedflowId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      sharedflowId: pulumi.Input.asInput<String>(map['sharedflowId']),
     );
   }
 }

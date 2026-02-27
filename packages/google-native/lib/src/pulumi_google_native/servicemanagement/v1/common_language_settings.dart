@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'common_language_settings_destinations_item.dart';
 
 /// Required information for every language.
@@ -20,9 +20,9 @@ class CommonLanguageSettings {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] =
-          Input.encodeList<CommonLanguageSettingsDestinationsItem, String>(
-              destinationsValue, (value) => value.value);
+      map['destinations'] = pulumi.Input.encodeList<
+          CommonLanguageSettingsDestinationsItem,
+          String>(destinationsValue, (value) => value.value);
     }
     final referenceDocsUriValue = referenceDocsUri;
     if (referenceDocsUriValue != null) {
@@ -35,7 +35,7 @@ class CommonLanguageSettings {
     return CommonLanguageSettings(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<CommonLanguageSettingsDestinationsItem>(
+          : pulumi.Input.decodeList<CommonLanguageSettingsDestinationsItem>(
               map['destinations'],
               (value) => CommonLanguageSettingsDestinationsItem.fromValue(
                   value as String)),

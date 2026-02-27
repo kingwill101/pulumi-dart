@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'response_policy_gkecluster2.dart';
-import 'response_policy_network2.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'response_policy_gkecluster_dns_v1beta2.dart';
+import 'response_policy_network_dns_v1beta2.dart';
 
 /// The set of arguments for ResponsePolicy.
 class ResponsePolicyArgs {
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-  final Input<String>? clientOperationId;
+  final pulumi.Input<String>? clientOperationId;
 
   /// User-provided description for this Response Policy.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The list of Google Kubernetes Engine clusters to which this response policy is applied.
-  final Input<List<ResponsePolicyGKECluster2>>? gkeClusters;
-  final Input<String>? kind;
+  final pulumi.Input<List<ResponsePolicyGKEClusterDnsV1beta2>>? gkeClusters;
+  final pulumi.Input<String>? kind;
 
   /// User labels.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// List of network names specifying networks to which this policy is applied.
-  final Input<List<ResponsePolicyNetwork2>>? networks;
-  final Input<String>? project;
+  final pulumi.Input<List<ResponsePolicyNetworkDnsV1beta2>>? networks;
+  final pulumi.Input<String>? project;
 
   /// User assigned name for this Response Policy.
-  final Input<String>? responsePolicyName;
+  final pulumi.Input<String>? responsePolicyName;
 
   ResponsePolicyArgs({
     this.clientOperationId,
@@ -49,12 +49,12 @@ class ResponsePolicyArgs {
     }
     final gkeClustersValue = gkeClusters;
     if (gkeClustersValue != null) {
-      map['gkeClusters'] = Input.mapOptionalInputValue<
-              List<ResponsePolicyGKECluster2>, List<Map<String, dynamic>>>(
+      map['gkeClusters'] = pulumi.Input.mapOptionalInputValue<
+              List<ResponsePolicyGKEClusterDnsV1beta2>,
+              List<Map<String, dynamic>>>(
           gkeClustersValue,
-          (value) =>
-              Input.encodeList<ResponsePolicyGKECluster2, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<ResponsePolicyGKEClusterDnsV1beta2,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final kindValue = kind;
     if (kindValue != null) {
@@ -66,12 +66,12 @@ class ResponsePolicyArgs {
     }
     final networksValue = networks;
     if (networksValue != null) {
-      map['networks'] = Input.mapOptionalInputValue<
-              List<ResponsePolicyNetwork2>, List<Map<String, dynamic>>>(
+      map['networks'] = pulumi.Input.mapOptionalInputValue<
+              List<ResponsePolicyNetworkDnsV1beta2>,
+              List<Map<String, dynamic>>>(
           networksValue,
-          (value) =>
-              Input.encodeList<ResponsePolicyNetwork2, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<ResponsePolicyNetworkDnsV1beta2,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -87,17 +87,18 @@ class ResponsePolicyArgs {
   factory ResponsePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyArgs(
       clientOperationId:
-          Input.asOptionalInput<String>(map['clientOperationId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      gkeClusters: Input.asOptionalInput<List<ResponsePolicyGKECluster2>>(
-          map['gkeClusters']),
-      kind: Input.asOptionalInput<String>(map['kind']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
+          pulumi.Input.asOptionalInput<String>(map['clientOperationId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      gkeClusters: pulumi.Input.asOptionalInput<
+          List<ResponsePolicyGKEClusterDnsV1beta2>>(map['gkeClusters']),
+      kind: pulumi.Input.asOptionalInput<String>(map['kind']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
       networks:
-          Input.asOptionalInput<List<ResponsePolicyNetwork2>>(map['networks']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<List<ResponsePolicyNetworkDnsV1beta2>>(
+              map['networks']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       responsePolicyName:
-          Input.asOptionalInput<String>(map['responsePolicyName']),
+          pulumi.Input.asOptionalInput<String>(map['responsePolicyName']),
     );
   }
 }

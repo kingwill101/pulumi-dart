@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_config_group_preference_set_assignment_response.dart';
 
 /// Result data returned by getReportConfig.
@@ -38,7 +38,7 @@ class GetReportConfigResult {
     map['createTime'] = createTime;
     map['description'] = description;
     map['displayName'] = displayName;
-    map['groupPreferencesetAssignments'] = Input.encodeList<
+    map['groupPreferencesetAssignments'] = pulumi.Input.encodeList<
             ReportConfigGroupPreferenceSetAssignmentResponse,
             Map<String, dynamic>>(
         groupPreferencesetAssignments, (value) => value.toMap());
@@ -52,12 +52,11 @@ class GetReportConfigResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      groupPreferencesetAssignments:
-          Input.decodeList<ReportConfigGroupPreferenceSetAssignmentResponse>(
-              map['groupPreferencesetAssignments'],
-              (value) =>
-                  ReportConfigGroupPreferenceSetAssignmentResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      groupPreferencesetAssignments: pulumi.Input.decodeList<
+              ReportConfigGroupPreferenceSetAssignmentResponse>(
+          map['groupPreferencesetAssignments'],
+          (value) => ReportConfigGroupPreferenceSetAssignmentResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       updateTime: map['updateTime'] as String,
     );

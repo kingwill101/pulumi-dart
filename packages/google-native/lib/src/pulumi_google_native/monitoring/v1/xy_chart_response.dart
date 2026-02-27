@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'axis_response.dart';
 import 'chart_options_response.dart';
 import 'data_set_response.dart';
@@ -42,10 +42,11 @@ class XyChartResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['chartOptions'] = chartOptions.toMap();
-    map['dataSets'] = Input.encodeList<DataSetResponse, Map<String, dynamic>>(
-        dataSets, (value) => value.toMap());
+    map['dataSets'] =
+        pulumi.Input.encodeList<DataSetResponse, Map<String, dynamic>>(
+            dataSets, (value) => value.toMap());
     map['thresholds'] =
-        Input.encodeList<ThresholdResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<ThresholdResponse, Map<String, dynamic>>(
             thresholds, (value) => value.toMap());
     map['timeshiftDuration'] = timeshiftDuration;
     map['xAxis'] = xAxis.toMap();
@@ -58,11 +59,11 @@ class XyChartResponse {
     return XyChartResponse(
       chartOptions: ChartOptionsResponse.fromMap(
           (map['chartOptions'] as Map).cast<String, dynamic>()),
-      dataSets: Input.decodeList<DataSetResponse>(
+      dataSets: pulumi.Input.decodeList<DataSetResponse>(
           map['dataSets'],
           (value) =>
               DataSetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      thresholds: Input.decodeList<ThresholdResponse>(
+      thresholds: pulumi.Input.decodeList<ThresholdResponse>(
           map['thresholds'],
           (value) => ThresholdResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

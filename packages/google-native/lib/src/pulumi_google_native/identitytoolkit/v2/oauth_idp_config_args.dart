@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_oauth_response_type.dart';
 
 /// The set of arguments for OauthIdpConfig.
 class OauthIdpConfigArgs {
   /// The client id of an OAuth client.
-  final Input<String>? clientId;
+  final pulumi.Input<String>? clientId;
 
   /// The client secret of the OAuth client, to enable OIDC code flow.
-  final Input<String>? clientSecret;
+  final pulumi.Input<String>? clientSecret;
 
   /// The config's display name set by developers.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// True if allows the user to sign in with the provider.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// For OIDC Idps, the issuer identifier.
-  final Input<String>? issuer;
+  final pulumi.Input<String>? issuer;
 
   /// The name of the OAuthIdpConfig resource, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. Ignored during create requests.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The id to use for this config.
-  final Input<String>? oauthIdpConfigId;
-  final Input<String>? project;
+  final pulumi.Input<String>? oauthIdpConfigId;
+  final pulumi.Input<String>? project;
 
   /// The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported.
-  final Input<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>? responseType;
-  final Input<String> tenantId;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>?
+      responseType;
+  final pulumi.Input<String> tenantId;
 
   OauthIdpConfigArgs({
     this.clientId,
@@ -80,7 +81,7 @@ class OauthIdpConfigArgs {
     }
     final responseTypeValue = responseType;
     if (responseTypeValue != null) {
-      map['responseType'] = Input.mapOptionalInputValue<
+      map['responseType'] = pulumi.Input.mapOptionalInputValue<
           GoogleCloudIdentitytoolkitAdminV2OAuthResponseType,
           Map<String, dynamic>>(responseTypeValue, (value) => value.toMap());
     }
@@ -90,18 +91,19 @@ class OauthIdpConfigArgs {
 
   factory OauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return OauthIdpConfigArgs(
-      clientId: Input.asOptionalInput<String>(map['clientId']),
-      clientSecret: Input.asOptionalInput<String>(map['clientSecret']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      issuer: Input.asOptionalInput<String>(map['issuer']),
-      name: Input.asOptionalInput<String>(map['name']),
-      oauthIdpConfigId: Input.asOptionalInput<String>(map['oauthIdpConfigId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      responseType: Input.asOptionalInput<
+      clientId: pulumi.Input.asOptionalInput<String>(map['clientId']),
+      clientSecret: pulumi.Input.asOptionalInput<String>(map['clientSecret']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      issuer: pulumi.Input.asOptionalInput<String>(map['issuer']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      oauthIdpConfigId:
+          pulumi.Input.asOptionalInput<String>(map['oauthIdpConfigId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      responseType: pulumi.Input.asOptionalInput<
               GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>(
           map['responseType']),
-      tenantId: Input.asInput<String>(map['tenantId']),
+      tenantId: pulumi.Input.asInput<String>(map['tenantId']),
     );
   }
 }

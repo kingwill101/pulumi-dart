@@ -2,7 +2,7 @@
 
 import 'forward_ssh_tunnel_connectivity.dart';
 import 'private_connectivity.dart';
-import 'ssl_config5.dart';
+import 'ssl_config_datamigration_v1.dart';
 
 /// Specifies connection parameters required specifically for Oracle databases.
 class OracleConnectionProfile {
@@ -25,7 +25,7 @@ class OracleConnectionProfile {
   final PrivateConnectivity? privateConnectivity;
 
   /// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
-  final SslConfig5? ssl;
+  final SslConfigDatamigrationV1? ssl;
 
   /// Static Service IP connectivity.
   final Map<String, dynamic>? staticServiceIpConnectivity;
@@ -87,7 +87,8 @@ class OracleConnectionProfile {
               (map['privateConnectivity'] as Map).cast<String, dynamic>()),
       ssl: map['ssl'] == null
           ? null
-          : SslConfig5.fromMap((map['ssl'] as Map).cast<String, dynamic>()),
+          : SslConfigDatamigrationV1.fromMap(
+              (map['ssl'] as Map).cast<String, dynamic>()),
       staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null
           ? null
           : (map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>(),

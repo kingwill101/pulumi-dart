@@ -1,27 +1,27 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_entry_args.dart';
 
 /// Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-class EnvironmentEntry extends CustomResource {
-  late final Output<String> environmentId;
-  late final Output<String> keyvaluemapId;
+class EnvironmentEntry extends pulumi.CustomResource {
+  late final pulumi.Output<String> environmentId;
+  late final pulumi.Output<String> keyvaluemapId;
 
   /// Resource URI that can be used to identify the scope of the key value map entries.
-  late final Output<String> name;
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> organizationId;
 
   /// Data or payload that is being retrieved and associated with the unique key.
-  late final Output<String> value;
+  late final pulumi.Output<String> value;
 
   EnvironmentEntry(
     String name, {
     EnvironmentEntryArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:apigee/v1:EnvironmentEntry',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.environmentId = registerOutput<String>('environmentId');
     this.keyvaluemapId = registerOutput<String>('keyvaluemapId');

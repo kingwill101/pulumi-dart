@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_hybrid_inspect_statistics_response.dart';
 import 'google_privacy_dlp_v2_info_type_stats_response.dart';
 
@@ -28,7 +28,7 @@ class GooglePrivacyDlpV2ResultResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['hybridStats'] = hybridStats.toMap();
-    map['infoTypeStats'] = Input.encodeList<
+    map['infoTypeStats'] = pulumi.Input.encodeList<
         GooglePrivacyDlpV2InfoTypeStatsResponse,
         Map<String, dynamic>>(infoTypeStats, (value) => value.toMap());
     map['processedBytes'] = processedBytes;
@@ -40,10 +40,11 @@ class GooglePrivacyDlpV2ResultResponse {
     return GooglePrivacyDlpV2ResultResponse(
       hybridStats: GooglePrivacyDlpV2HybridInspectStatisticsResponse.fromMap(
           (map['hybridStats'] as Map).cast<String, dynamic>()),
-      infoTypeStats: Input.decodeList<GooglePrivacyDlpV2InfoTypeStatsResponse>(
-          map['infoTypeStats'],
-          (value) => GooglePrivacyDlpV2InfoTypeStatsResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      infoTypeStats:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeStatsResponse>(
+              map['infoTypeStats'],
+              (value) => GooglePrivacyDlpV2InfoTypeStatsResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       processedBytes: map['processedBytes'] as String,
       totalEstimatedBytes: map['totalEstimatedBytes'] as String,
     );

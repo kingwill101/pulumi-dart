@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_error_response_policy_response.dart';
 import 'http_header_action_response.dart';
 import 'http_redirect_action_response.dart';
@@ -59,10 +59,11 @@ class PathMatcherResponse {
     map['description'] = description;
     map['headerAction'] = headerAction.toMap();
     map['name'] = name;
-    map['pathRules'] = Input.encodeList<PathRuleResponse, Map<String, dynamic>>(
-        pathRules, (value) => value.toMap());
+    map['pathRules'] =
+        pulumi.Input.encodeList<PathRuleResponse, Map<String, dynamic>>(
+            pathRules, (value) => value.toMap());
     map['routeRules'] =
-        Input.encodeList<HttpRouteRuleResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<HttpRouteRuleResponse, Map<String, dynamic>>(
             routeRules, (value) => value.toMap());
     return map;
   }
@@ -82,11 +83,11 @@ class PathMatcherResponse {
       headerAction: HttpHeaderActionResponse.fromMap(
           (map['headerAction'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      pathRules: Input.decodeList<PathRuleResponse>(
+      pathRules: pulumi.Input.decodeList<PathRuleResponse>(
           map['pathRules'],
           (value) =>
               PathRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      routeRules: Input.decodeList<HttpRouteRuleResponse>(
+      routeRules: pulumi.Input.decodeList<HttpRouteRuleResponse>(
           map['routeRules'],
           (value) => HttpRouteRuleResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

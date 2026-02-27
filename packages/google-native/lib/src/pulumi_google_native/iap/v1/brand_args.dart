@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Brand.
 class BrandArgs {
   /// Application name displayed on OAuth consent screen.
-  final Input<String>? applicationTitle;
-  final Input<String>? project;
+  final pulumi.Input<String>? applicationTitle;
+  final pulumi.Input<String>? project;
 
   /// Support email displayed on the OAuth consent screen.
-  final Input<String>? supportEmail;
+  final pulumi.Input<String>? supportEmail;
 
   BrandArgs({
     this.applicationTitle,
@@ -36,9 +36,10 @@ class BrandArgs {
 
   factory BrandArgs.fromMap(Map<String, dynamic> map) {
     return BrandArgs(
-      applicationTitle: Input.asOptionalInput<String>(map['applicationTitle']),
-      project: Input.asOptionalInput<String>(map['project']),
-      supportEmail: Input.asOptionalInput<String>(map['supportEmail']),
+      applicationTitle:
+          pulumi.Input.asOptionalInput<String>(map['applicationTitle']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      supportEmail: pulumi.Input.asOptionalInput<String>(map['supportEmail']),
     );
   }
 }

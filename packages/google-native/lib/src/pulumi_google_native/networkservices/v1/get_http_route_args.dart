@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHttpRoute.
 class GetHttpRouteArgs {
-  final Input<String> httpRouteId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> httpRouteId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetHttpRouteArgs({
     required this.httpRouteId,
@@ -27,9 +27,9 @@ class GetHttpRouteArgs {
 
   factory GetHttpRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetHttpRouteArgs(
-      httpRouteId: Input.asInput<String>(map['httpRouteId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      httpRouteId: pulumi.Input.asInput<String>(map['httpRouteId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

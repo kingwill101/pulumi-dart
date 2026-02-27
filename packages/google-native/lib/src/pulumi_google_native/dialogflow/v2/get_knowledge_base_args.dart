@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKnowledgeBase.
 class GetKnowledgeBaseArgs {
-  final Input<String> knowledgeBaseId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> knowledgeBaseId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetKnowledgeBaseArgs({
     required this.knowledgeBaseId,
@@ -27,9 +27,9 @@ class GetKnowledgeBaseArgs {
 
   factory GetKnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return GetKnowledgeBaseArgs(
-      knowledgeBaseId: Input.asInput<String>(map['knowledgeBaseId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      knowledgeBaseId: pulumi.Input.asInput<String>(map['knowledgeBaseId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

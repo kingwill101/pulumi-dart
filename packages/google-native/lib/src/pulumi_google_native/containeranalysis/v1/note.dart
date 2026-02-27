@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_note_response.dart';
 import 'build_note_response.dart';
 import 'compliance_note_response.dart';
@@ -16,84 +16,84 @@ import 'vulnerability_note_response.dart';
 
 /// Creates a new note.
 /// Auto-naming is currently not supported for this resource.
-class Note extends CustomResource {
+class Note extends pulumi.CustomResource {
   /// A note describing an attestation role.
-  late final Output<AttestationNoteResponse> attestation;
+  late final pulumi.Output<AttestationNoteResponse> attestation;
 
   /// A note describing build provenance for a verifiable build.
-  late final Output<BuildNoteResponse> build;
+  late final pulumi.Output<BuildNoteResponse> build;
 
   /// A note describing a compliance check.
-  late final Output<ComplianceNoteResponse> compliance;
+  late final pulumi.Output<ComplianceNoteResponse> compliance;
 
   /// The time this note was created. This field can be used as a filter in list requests.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A note describing something that can be deployed.
-  late final Output<DeploymentNoteResponse> deployment;
+  late final pulumi.Output<DeploymentNoteResponse> deployment;
 
   /// A note describing the initial analysis of a resource.
-  late final Output<DiscoveryNoteResponse> discovery;
+  late final pulumi.Output<DiscoveryNoteResponse> discovery;
 
   /// A note describing a dsse attestation note.
-  late final Output<DSSEAttestationNoteResponse> dsseAttestation;
+  late final pulumi.Output<DSSEAttestationNoteResponse> dsseAttestation;
 
   /// Time of expiration for this note. Empty if note does not expire.
-  late final Output<String> expirationTime;
+  late final pulumi.Output<String> expirationTime;
 
   /// A note describing a base image.
-  late final Output<ImageNoteResponse> image;
+  late final pulumi.Output<ImageNoteResponse> image;
 
   /// The type of analysis. This field can be used as a filter in list requests.
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// A detailed description of this note.
-  late final Output<String> longDescription;
+  late final pulumi.Output<String> longDescription;
 
   /// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Required. The ID to use for this note.
-  late final Output<String> noteId;
+  late final pulumi.Output<String> noteId;
 
   /// A note describing a package hosted by various package managers.
-  late final Output<PackageNoteResponse> package;
-  late final Output<String> project;
+  late final pulumi.Output<PackageNoteResponse> package;
+  late final pulumi.Output<String> project;
 
   /// Other notes related to this note.
-  late final Output<List<String>> relatedNoteNames;
+  late final pulumi.Output<List<String>> relatedNoteNames;
 
   /// URLs associated with this note.
-  late final Output<List<RelatedUrlResponse>> relatedUrl;
+  late final pulumi.Output<List<RelatedUrlResponse>> relatedUrl;
 
   /// A note describing an SBOM reference.
-  late final Output<SBOMReferenceNoteResponse> sbomReference;
+  late final pulumi.Output<SBOMReferenceNoteResponse> sbomReference;
 
   /// A one sentence description of this note.
-  late final Output<String> shortDescription;
+  late final pulumi.Output<String> shortDescription;
 
   /// The time this note was last updated. This field can be used as a filter in list requests.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// A note describing available package upgrades.
-  late final Output<UpgradeNoteResponse> upgrade;
+  late final pulumi.Output<UpgradeNoteResponse> upgrade;
 
   /// A note describing a package vulnerability.
-  late final Output<VulnerabilityNoteResponse> vulnerability;
+  late final pulumi.Output<VulnerabilityNoteResponse> vulnerability;
 
   /// A note describing a vulnerability assessment.
-  late final Output<VulnerabilityAssessmentNoteResponse>
+  late final pulumi.Output<VulnerabilityAssessmentNoteResponse>
       vulnerabilityAssessment;
 
   Note(
     String name, {
     NoteArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:containeranalysis/v1:Note',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attestation = registerOutput<AttestationNoteResponse>('attestation');
     this.build = registerOutput<BuildNoteResponse>('build');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'diagnostic_response.dart';
 
 class PollingOptionsResponse {
@@ -30,7 +30,7 @@ class PollingOptionsResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['diagnostics'] =
-        Input.encodeList<DiagnosticResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<DiagnosticResponse, Map<String, dynamic>>(
             diagnostics, (value) => value.toMap());
     map['failCondition'] = failCondition;
     map['finishCondition'] = finishCondition;
@@ -41,7 +41,7 @@ class PollingOptionsResponse {
 
   factory PollingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return PollingOptionsResponse(
-      diagnostics: Input.decodeList<DiagnosticResponse>(
+      diagnostics: pulumi.Input.decodeList<DiagnosticResponse>(
           map['diagnostics'],
           (value) => DiagnosticResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

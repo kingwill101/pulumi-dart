@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNotebookRuntimeTemplate.
 class GetNotebookRuntimeTemplateArgs {
-  final Input<String> location;
-  final Input<String> notebookRuntimeTemplateId;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> notebookRuntimeTemplateId;
+  final pulumi.Input<String>? project;
 
   GetNotebookRuntimeTemplateArgs({
     required this.location,
@@ -27,10 +27,10 @@ class GetNotebookRuntimeTemplateArgs {
 
   factory GetNotebookRuntimeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetNotebookRuntimeTemplateArgs(
-      location: Input.asInput<String>(map['location']),
+      location: pulumi.Input.asInput<String>(map['location']),
       notebookRuntimeTemplateId:
-          Input.asInput<String>(map['notebookRuntimeTemplateId']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['notebookRuntimeTemplateId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,53 +1,53 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_endpoint_association_args.dart';
 
 /// Creates a new FirewallEndpointAssociation in a given project and location.
 /// Auto-naming is currently not supported for this resource.
-class FirewallEndpointAssociation extends CustomResource {
+class FirewallEndpointAssociation extends pulumi.CustomResource {
   /// Create time stamp
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The URL of the FirewallEndpoint that is being associated.
-  late final Output<String> firewallEndpoint;
+  late final pulumi.Output<String> firewallEndpoint;
 
   /// Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_association_id from the method_signature of Create RPC.
-  late final Output<String?> firewallEndpointAssociationId;
+  late final pulumi.Output<String?> firewallEndpointAssociationId;
 
   /// Optional. Labels as key value pairs
-  late final Output<Map<String, String>> labels;
-  late final Output<String> location;
+  late final pulumi.Output<Map<String, String>> labels;
+  late final pulumi.Output<String> location;
 
   /// name of resource
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The URL of the network that is being associated.
-  late final Output<String> network;
-  late final Output<String> project;
+  late final pulumi.Output<String> network;
+  late final pulumi.Output<String> project;
 
   /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  late final Output<String?> requestId;
+  late final pulumi.Output<String?> requestId;
 
   /// Current state of the association.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Optional. The URL of the TlsInspectionPolicy that is being associated.
-  late final Output<String> tlsInspectionPolicy;
+  late final pulumi.Output<String> tlsInspectionPolicy;
 
   /// Update time stamp
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   FirewallEndpointAssociation(
     String name, {
     FirewallEndpointAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:networksecurity/v1beta1:FirewallEndpointAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.firewallEndpoint = registerOutput<String>('firewallEndpoint');

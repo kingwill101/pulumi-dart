@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionBackendService.
 class GetRegionBackendServiceArgs {
-  final Input<String> backendService;
-  final Input<String>? project;
-  final Input<String> region;
+  final pulumi.Input<String> backendService;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
 
   GetRegionBackendServiceArgs({
     required this.backendService,
@@ -27,9 +27,9 @@ class GetRegionBackendServiceArgs {
 
   factory GetRegionBackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceArgs(
-      backendService: Input.asInput<String>(map['backendService']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      backendService: pulumi.Input.asInput<String>(map['backendService']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

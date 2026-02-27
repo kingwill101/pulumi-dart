@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSecret.
 class GetSecretArgs {
-  final Input<String>? project;
-  final Input<String> secretId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> secretId;
 
   GetSecretArgs({
     this.project,
@@ -24,8 +24,8 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      secretId: Input.asInput<String>(map['secretId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      secretId: pulumi.Input.asInput<String>(map['secretId']),
     );
   }
 }

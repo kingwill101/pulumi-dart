@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_intent_message_list_select_item.dart';
 
 /// The card for presenting a list of options to select from.
@@ -22,7 +22,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['items'] = Input.encodeList<
+    map['items'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2IntentMessageListSelectItem,
         Map<String, dynamic>>(items, (value) => value.toMap());
     final subtitleValue = subtitle;
@@ -39,12 +39,11 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
   factory GoogleCloudDialogflowV2IntentMessageListSelect.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageListSelect(
-      items:
-          Input.decodeList<GoogleCloudDialogflowV2IntentMessageListSelectItem>(
-              map['items'],
-              (value) =>
-                  GoogleCloudDialogflowV2IntentMessageListSelectItem.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      items: pulumi.Input.decodeList<
+              GoogleCloudDialogflowV2IntentMessageListSelectItem>(
+          map['items'],
+          (value) => GoogleCloudDialogflowV2IntentMessageListSelectItem.fromMap(
+              (value as Map).cast<String, dynamic>())),
       subtitle: map['subtitle'] == null ? null : map['subtitle'] as String,
       title: map['title'] == null ? null : map['title'] as String,
     );

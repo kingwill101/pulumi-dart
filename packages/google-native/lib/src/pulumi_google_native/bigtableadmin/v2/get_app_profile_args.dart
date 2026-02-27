@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAppProfile.
 class GetAppProfileArgs {
-  final Input<String> appProfileId;
-  final Input<String> instanceId;
-  final Input<String>? project;
+  final pulumi.Input<String> appProfileId;
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String>? project;
 
   GetAppProfileArgs({
     required this.appProfileId,
@@ -27,9 +27,9 @@ class GetAppProfileArgs {
 
   factory GetAppProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetAppProfileArgs(
-      appProfileId: Input.asInput<String>(map['appProfileId']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      appProfileId: pulumi.Input.asInput<String>(map['appProfileId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

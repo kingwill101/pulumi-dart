@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_advertised_ip_range_response.dart';
 import 'router_bgp_peer_bfd_response.dart';
 import 'router_bgp_peer_custom_learned_ip_range_response.dart';
@@ -109,12 +109,12 @@ class RouterBgpPeerResponse {
     final map = <String, dynamic>{};
     map['advertiseMode'] = advertiseMode;
     map['advertisedGroups'] = advertisedGroups;
-    map['advertisedIpRanges'] =
-        Input.encodeList<RouterAdvertisedIpRangeResponse, Map<String, dynamic>>(
-            advertisedIpRanges, (value) => value.toMap());
+    map['advertisedIpRanges'] = pulumi.Input.encodeList<
+        RouterAdvertisedIpRangeResponse,
+        Map<String, dynamic>>(advertisedIpRanges, (value) => value.toMap());
     map['advertisedRoutePriority'] = advertisedRoutePriority;
     map['bfd'] = bfd.toMap();
-    map['customLearnedIpRanges'] = Input.encodeList<
+    map['customLearnedIpRanges'] = pulumi.Input.encodeList<
         RouterBgpPeerCustomLearnedIpRangeResponse,
         Map<String, dynamic>>(customLearnedIpRanges, (value) => value.toMap());
     map['customLearnedRoutePriority'] = customLearnedRoutePriority;
@@ -142,15 +142,16 @@ class RouterBgpPeerResponse {
     return RouterBgpPeerResponse(
       advertiseMode: map['advertiseMode'] as String,
       advertisedGroups: (map['advertisedGroups'] as List).cast<String>(),
-      advertisedIpRanges: Input.decodeList<RouterAdvertisedIpRangeResponse>(
-          map['advertisedIpRanges'],
-          (value) => RouterAdvertisedIpRangeResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      advertisedIpRanges:
+          pulumi.Input.decodeList<RouterAdvertisedIpRangeResponse>(
+              map['advertisedIpRanges'],
+              (value) => RouterAdvertisedIpRangeResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       advertisedRoutePriority: map['advertisedRoutePriority'] as int,
       bfd: RouterBgpPeerBfdResponse.fromMap(
           (map['bfd'] as Map).cast<String, dynamic>()),
       customLearnedIpRanges:
-          Input.decodeList<RouterBgpPeerCustomLearnedIpRangeResponse>(
+          pulumi.Input.decodeList<RouterBgpPeerCustomLearnedIpRangeResponse>(
               map['customLearnedIpRanges'],
               (value) => RouterBgpPeerCustomLearnedIpRangeResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_range_response.dart';
 
 /// Result data returned by getExternalAccessRule.
@@ -66,14 +66,14 @@ class GetExternalAccessRuleResult {
     map['createTime'] = createTime;
     map['description'] = description;
     map['destinationIpRanges'] =
-        Input.encodeList<IpRangeResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<IpRangeResponse, Map<String, dynamic>>(
             destinationIpRanges, (value) => value.toMap());
     map['destinationPorts'] = destinationPorts;
     map['ipProtocol'] = ipProtocol;
     map['name'] = name;
     map['priority'] = priority;
     map['sourceIpRanges'] =
-        Input.encodeList<IpRangeResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<IpRangeResponse, Map<String, dynamic>>(
             sourceIpRanges, (value) => value.toMap());
     map['sourcePorts'] = sourcePorts;
     map['state'] = state;
@@ -87,7 +87,7 @@ class GetExternalAccessRuleResult {
       action: map['action'] as String,
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      destinationIpRanges: Input.decodeList<IpRangeResponse>(
+      destinationIpRanges: pulumi.Input.decodeList<IpRangeResponse>(
           map['destinationIpRanges'],
           (value) =>
               IpRangeResponse.fromMap((value as Map).cast<String, dynamic>())),
@@ -95,7 +95,7 @@ class GetExternalAccessRuleResult {
       ipProtocol: map['ipProtocol'] as String,
       name: map['name'] as String,
       priority: map['priority'] as int,
-      sourceIpRanges: Input.decodeList<IpRangeResponse>(
+      sourceIpRanges: pulumi.Input.decodeList<IpRangeResponse>(
           map['sourceIpRanges'],
           (value) =>
               IpRangeResponse.fromMap((value as Map).cast<String, dynamic>())),

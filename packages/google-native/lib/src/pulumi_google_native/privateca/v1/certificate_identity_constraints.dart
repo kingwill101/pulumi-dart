@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'expr92.dart';
+import 'expr_privateca_v1.dart';
 
 /// Describes constraints on a Certificate's Subject and SubjectAltNames.
 class CertificateIdentityConstraints {
@@ -11,7 +11,7 @@ class CertificateIdentityConstraints {
   final bool allowSubjectPassthrough;
 
   /// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
-  final Expr92? celExpression;
+  final ExprPrivatecaV1? celExpression;
 
   CertificateIdentityConstraints({
     required this.allowSubjectAltNamesPassthrough,
@@ -37,7 +37,7 @@ class CertificateIdentityConstraints {
       allowSubjectPassthrough: map['allowSubjectPassthrough'] as bool,
       celExpression: map['celExpression'] == null
           ? null
-          : Expr92.fromMap(
+          : ExprPrivatecaV1.fromMap(
               (map['celExpression'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPartnerTenant.
 class GetPartnerTenantArgs {
-  final Input<String> organizationId;
-  final Input<String> partnerTenantId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> partnerTenantId;
 
   GetPartnerTenantArgs({
     required this.organizationId,
@@ -21,8 +21,8 @@ class GetPartnerTenantArgs {
 
   factory GetPartnerTenantArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerTenantArgs(
-      organizationId: Input.asInput<String>(map['organizationId']),
-      partnerTenantId: Input.asInput<String>(map['partnerTenantId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      partnerTenantId: pulumi.Input.asInput<String>(map['partnerTenantId']),
     );
   }
 }

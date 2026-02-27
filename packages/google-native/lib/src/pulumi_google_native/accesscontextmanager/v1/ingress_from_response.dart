@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingress_source_response.dart';
 
 /// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
@@ -25,7 +25,7 @@ class IngressFromResponse {
     map['identities'] = identities;
     map['identityType'] = identityType;
     map['sources'] =
-        Input.encodeList<IngressSourceResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<IngressSourceResponse, Map<String, dynamic>>(
             sources, (value) => value.toMap());
     return map;
   }
@@ -34,7 +34,7 @@ class IngressFromResponse {
     return IngressFromResponse(
       identities: (map['identities'] as List).cast<String>(),
       identityType: map['identityType'] as String,
-      sources: Input.decodeList<IngressSourceResponse>(
+      sources: pulumi.Input.decodeList<IngressSourceResponse>(
           map['sources'],
           (value) => IngressSourceResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

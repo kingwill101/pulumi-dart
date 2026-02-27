@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ServiceBinding.
 class ServiceBindingArgs {
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. Set of label tags associated with the ServiceBinding resource.
-  final Input<Map<String, String>>? labels;
-  final Input<String>? location;
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
 
   /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
-  final Input<String>? name;
-  final Input<String>? project;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
 
   /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
-  final Input<String> service;
+  final pulumi.Input<String> service;
 
   /// Required. Short name of the ServiceBinding resource to be created.
-  final Input<String> serviceBindingId;
+  final pulumi.Input<String> serviceBindingId;
 
   ServiceBindingArgs({
     this.description,
@@ -60,13 +60,13 @@ class ServiceBindingArgs {
 
   factory ServiceBindingArgs.fromMap(Map<String, dynamic> map) {
     return ServiceBindingArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      service: Input.asInput<String>(map['service']),
-      serviceBindingId: Input.asInput<String>(map['serviceBindingId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      service: pulumi.Input.asInput<String>(map['service']),
+      serviceBindingId: pulumi.Input.asInput<String>(map['serviceBindingId']),
     );
   }
 }

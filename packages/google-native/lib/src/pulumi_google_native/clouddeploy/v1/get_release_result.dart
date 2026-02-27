@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'build_artifact_response.dart';
 import 'delivery_pipeline_response.dart';
 import 'release_condition_response.dart';
@@ -100,7 +100,7 @@ class GetReleaseResult {
     map['abandoned'] = abandoned;
     map['annotations'] = annotations;
     map['buildArtifacts'] =
-        Input.encodeList<BuildArtifactResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<BuildArtifactResponse, Map<String, dynamic>>(
             buildArtifacts, (value) => value.toMap());
     map['condition'] = condition.toMap();
     map['createTime'] = createTime;
@@ -119,7 +119,7 @@ class GetReleaseResult {
     map['targetArtifacts'] = targetArtifacts;
     map['targetRenders'] = targetRenders;
     map['targetSnapshots'] =
-        Input.encodeList<TargetResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<TargetResponse, Map<String, dynamic>>(
             targetSnapshots, (value) => value.toMap());
     map['uid'] = uid;
     return map;
@@ -129,7 +129,7 @@ class GetReleaseResult {
     return GetReleaseResult(
       abandoned: map['abandoned'] as bool,
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      buildArtifacts: Input.decodeList<BuildArtifactResponse>(
+      buildArtifacts: pulumi.Input.decodeList<BuildArtifactResponse>(
           map['buildArtifacts'],
           (value) => BuildArtifactResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -151,7 +151,7 @@ class GetReleaseResult {
       skaffoldVersion: map['skaffoldVersion'] as String,
       targetArtifacts: (map['targetArtifacts'] as Map).cast<String, String>(),
       targetRenders: (map['targetRenders'] as Map).cast<String, String>(),
-      targetSnapshots: Input.decodeList<TargetResponse>(
+      targetSnapshots: pulumi.Input.decodeList<TargetResponse>(
           map['targetSnapshots'],
           (value) =>
               TargetResponse.fromMap((value as Map).cast<String, dynamic>())),

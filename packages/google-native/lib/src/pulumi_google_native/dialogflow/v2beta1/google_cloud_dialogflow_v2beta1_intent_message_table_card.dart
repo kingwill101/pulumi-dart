@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_basic_card_button.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_column_properties.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_image.dart';
@@ -40,13 +40,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
     final map = <String, dynamic>{};
     final buttonsValue = buttons;
     if (buttonsValue != null) {
-      map['buttons'] = Input.encodeList<
+      map['buttons'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton,
           Map<String, dynamic>>(buttonsValue, (value) => value.toMap());
     }
     final columnPropertiesValue = columnProperties;
     if (columnPropertiesValue != null) {
-      map['columnProperties'] = Input.encodeList<
+      map['columnProperties'] = pulumi.Input.encodeList<
               GoogleCloudDialogflowV2beta1IntentMessageColumnProperties,
               Map<String, dynamic>>(
           columnPropertiesValue, (value) => value.toMap());
@@ -57,7 +57,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
     }
     final rowsValue = rows;
     if (rowsValue != null) {
-      map['rows'] = Input.encodeList<
+      map['rows'] = pulumi.Input.encodeList<
           GoogleCloudDialogflowV2beta1IntentMessageTableCardRow,
           Map<String, dynamic>>(rowsValue, (value) => value.toMap());
     }
@@ -74,7 +74,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCard(
       buttons: map['buttons'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(
               map['buttons'],
               (value) =>
@@ -82,7 +82,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
                       .fromMap((value as Map).cast<String, dynamic>())),
       columnProperties: map['columnProperties'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>(
               map['columnProperties'],
               (value) =>
@@ -94,7 +94,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
               (map['image'] as Map).cast<String, dynamic>()),
       rows: map['rows'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>(
               map['rows'],
               (value) =>

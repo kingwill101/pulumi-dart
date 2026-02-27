@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'logging_destination.dart';
 
 /// Logging configuration of the service. The following example shows how to configure logs to be sent to the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history
@@ -21,13 +21,13 @@ class Logging {
     final consumerDestinationsValue = consumerDestinations;
     if (consumerDestinationsValue != null) {
       map['consumerDestinations'] =
-          Input.encodeList<LoggingDestination, Map<String, dynamic>>(
+          pulumi.Input.encodeList<LoggingDestination, Map<String, dynamic>>(
               consumerDestinationsValue, (value) => value.toMap());
     }
     final producerDestinationsValue = producerDestinations;
     if (producerDestinationsValue != null) {
       map['producerDestinations'] =
-          Input.encodeList<LoggingDestination, Map<String, dynamic>>(
+          pulumi.Input.encodeList<LoggingDestination, Map<String, dynamic>>(
               producerDestinationsValue, (value) => value.toMap());
     }
     return map;
@@ -37,13 +37,13 @@ class Logging {
     return Logging(
       consumerDestinations: map['consumerDestinations'] == null
           ? null
-          : Input.decodeList<LoggingDestination>(
+          : pulumi.Input.decodeList<LoggingDestination>(
               map['consumerDestinations'],
               (value) => LoggingDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),
       producerDestinations: map['producerDestinations'] == null
           ? null
-          : Input.decodeList<LoggingDestination>(
+          : pulumi.Input.decodeList<LoggingDestination>(
               map['producerDestinations'],
               (value) => LoggingDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),

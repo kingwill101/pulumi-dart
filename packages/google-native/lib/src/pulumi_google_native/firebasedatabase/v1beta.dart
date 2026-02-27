@@ -1,8 +1,8 @@
 library module_firebasedatabase_v1beta;
 
-export 'v1beta/get_instance14.dart';
-export 'v1beta/get_instance_args14.dart';
-export 'v1beta/get_instance_result14.dart';
-export 'v1beta/instance14.dart';
-export 'v1beta/instance_args14.dart';
-export 'v1beta/instance_type4.dart';
+export 'v1beta/get_instance_firebasedatabase_v1beta.dart';
+export 'v1beta/get_instance_firebasedatabase_v1beta_args.dart';
+export 'v1beta/get_instance_firebasedatabase_v1beta_result.dart';
+export 'v1beta/instance_firebasedatabase_v1beta.dart';
+export 'v1beta/instance_firebasedatabase_v1beta_args.dart';
+export 'v1beta/instance_type_firebasedatabase_v1beta.dart';

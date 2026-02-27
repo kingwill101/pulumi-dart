@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_entity_normalized_value_response.dart';
 import 'google_cloud_documentai_v1_document_page_anchor_response.dart';
 import 'google_cloud_documentai_v1_document_provenance_response.dart';
@@ -59,7 +59,7 @@ class GoogleCloudDocumentaiV1DocumentEntityResponse {
     map['mentionText'] = mentionText;
     map['normalizedValue'] = normalizedValue.toMap();
     map['pageAnchor'] = pageAnchor.toMap();
-    map['properties'] = Input.encodeList<
+    map['properties'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentEntityResponse,
         Map<String, dynamic>>(properties, (value) => value.toMap());
     map['provenance'] = provenance.toMap();
@@ -80,11 +80,11 @@ class GoogleCloudDocumentaiV1DocumentEntityResponse {
               (map['normalizedValue'] as Map).cast<String, dynamic>()),
       pageAnchor: GoogleCloudDocumentaiV1DocumentPageAnchorResponse.fromMap(
           (map['pageAnchor'] as Map).cast<String, dynamic>()),
-      properties:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentEntityResponse>(
-              map['properties'],
-              (value) => GoogleCloudDocumentaiV1DocumentEntityResponse.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentEntityResponse>(
+          map['properties'],
+          (value) => GoogleCloudDocumentaiV1DocumentEntityResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
       provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(
           (map['provenance'] as Map).cast<String, dynamic>()),
       redacted: map['redacted'] as bool,

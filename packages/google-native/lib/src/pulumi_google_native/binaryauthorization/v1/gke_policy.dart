@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'check_set.dart';
 import 'image_allowlist.dart';
 
@@ -21,8 +21,9 @@ class GkePolicy {
     final map = <String, dynamic>{};
     final checkSetsValue = checkSets;
     if (checkSetsValue != null) {
-      map['checkSets'] = Input.encodeList<CheckSet, Map<String, dynamic>>(
-          checkSetsValue, (value) => value.toMap());
+      map['checkSets'] =
+          pulumi.Input.encodeList<CheckSet, Map<String, dynamic>>(
+              checkSetsValue, (value) => value.toMap());
     }
     final imageAllowlistValue = imageAllowlist;
     if (imageAllowlistValue != null) {
@@ -35,7 +36,7 @@ class GkePolicy {
     return GkePolicy(
       checkSets: map['checkSets'] == null
           ? null
-          : Input.decodeList<CheckSet>(
+          : pulumi.Input.decodeList<CheckSet>(
               map['checkSets'],
               (value) =>
                   CheckSet.fromMap((value as Map).cast<String, dynamic>())),

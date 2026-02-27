@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'duration_response4.dart';
-import 'file_reference_response2.dart';
+import 'duration_response_toolresults_v1beta3.dart';
+import 'file_reference_response_toolresults_v1beta3.dart';
 
 /// A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.
 class TestSuiteOverviewResponse {
   /// Elapsed time of test suite.
-  final DurationResponse4 elapsedTime;
+  final DurationResponseToolresultsV1beta3 elapsedTime;
 
   /// Number of test cases in error, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
   final int errorCount;
@@ -27,7 +27,7 @@ class TestSuiteOverviewResponse {
   final int totalCount;
 
   /// If this test suite was parsed from XML, this is the URI where the original XML file is stored. Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not supported. - In create/response: optional - In update request: never
-  final FileReferenceResponse2 xmlSource;
+  final FileReferenceResponseToolresultsV1beta3 xmlSource;
 
   TestSuiteOverviewResponse({
     required this.elapsedTime,
@@ -55,7 +55,7 @@ class TestSuiteOverviewResponse {
 
   factory TestSuiteOverviewResponse.fromMap(Map<String, dynamic> map) {
     return TestSuiteOverviewResponse(
-      elapsedTime: DurationResponse4.fromMap(
+      elapsedTime: DurationResponseToolresultsV1beta3.fromMap(
           (map['elapsedTime'] as Map).cast<String, dynamic>()),
       errorCount: map['errorCount'] as int,
       failureCount: map['failureCount'] as int,
@@ -63,7 +63,7 @@ class TestSuiteOverviewResponse {
       name: map['name'] as String,
       skippedCount: map['skippedCount'] as int,
       totalCount: map['totalCount'] as int,
-      xmlSource: FileReferenceResponse2.fromMap(
+      xmlSource: FileReferenceResponseToolresultsV1beta3.fromMap(
           (map['xmlSource'] as Map).cast<String, dynamic>()),
     );
   }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDataSource.
 class GetDataSourceArgs {
-  final Input<String> datasourceId;
-  final Input<bool>? debugOptionsEnableDebugging;
+  final pulumi.Input<String> datasourceId;
+  final pulumi.Input<bool>? debugOptionsEnableDebugging;
 
   GetDataSourceArgs({
     required this.datasourceId,
@@ -24,9 +24,9 @@ class GetDataSourceArgs {
 
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
-      datasourceId: Input.asInput<String>(map['datasourceId']),
-      debugOptionsEnableDebugging:
-          Input.asOptionalInput<bool>(map['debugOptionsEnableDebugging']),
+      datasourceId: pulumi.Input.asInput<String>(map['datasourceId']),
+      debugOptionsEnableDebugging: pulumi.Input.asOptionalInput<bool>(
+          map['debugOptionsEnableDebugging']),
     );
   }
 }

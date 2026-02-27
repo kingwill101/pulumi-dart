@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'label_descriptor3.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'label_descriptor_servicemanagement_v1.dart';
 import 'monitored_resource_descriptor_launch_stage.dart';
 
 /// An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API.
@@ -13,7 +13,7 @@ class MonitoredResourceDescriptor {
   final String? displayName;
 
   /// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
-  final List<LabelDescriptor3> labels;
+  final List<LabelDescriptorServicemanagementV1> labels;
 
   /// Optional. The launch stage of the monitored resource definition.
   final MonitoredResourceDescriptorLaunchStage? launchStage;
@@ -43,8 +43,8 @@ class MonitoredResourceDescriptor {
     if (displayNameValue != null) {
       map['displayName'] = displayNameValue;
     }
-    map['labels'] = Input.encodeList<LabelDescriptor3, Map<String, dynamic>>(
-        labels, (value) => value.toMap());
+    map['labels'] = pulumi.Input.encodeList<LabelDescriptorServicemanagementV1,
+        Map<String, dynamic>>(labels, (value) => value.toMap());
     final launchStageValue = launchStage;
     if (launchStageValue != null) {
       map['launchStage'] = launchStageValue.value;
@@ -63,10 +63,10 @@ class MonitoredResourceDescriptor {
           map['description'] == null ? null : map['description'] as String,
       displayName:
           map['displayName'] == null ? null : map['displayName'] as String,
-      labels: Input.decodeList<LabelDescriptor3>(
+      labels: pulumi.Input.decodeList<LabelDescriptorServicemanagementV1>(
           map['labels'],
-          (value) =>
-              LabelDescriptor3.fromMap((value as Map).cast<String, dynamic>())),
+          (value) => LabelDescriptorServicemanagementV1.fromMap(
+              (value as Map).cast<String, dynamic>())),
       launchStage: map['launchStage'] == null
           ? null
           : MonitoredResourceDescriptorLaunchStage.fromValue(

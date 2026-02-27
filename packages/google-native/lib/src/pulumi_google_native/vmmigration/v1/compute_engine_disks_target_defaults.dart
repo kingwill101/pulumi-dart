@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disks_migration_vm_target_defaults.dart';
 import 'persistent_disk_defaults.dart';
 
@@ -34,7 +34,7 @@ class ComputeEngineDisksTargetDefaults {
     final disksValue = disks;
     if (disksValue != null) {
       map['disks'] =
-          Input.encodeList<PersistentDiskDefaults, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PersistentDiskDefaults, Map<String, dynamic>>(
               disksValue, (value) => value.toMap());
     }
     final disksTargetDefaultsValue = disksTargetDefaults;
@@ -60,7 +60,7 @@ class ComputeEngineDisksTargetDefaults {
     return ComputeEngineDisksTargetDefaults(
       disks: map['disks'] == null
           ? null
-          : Input.decodeList<PersistentDiskDefaults>(
+          : pulumi.Input.decodeList<PersistentDiskDefaults>(
               map['disks'],
               (value) => PersistentDiskDefaults.fromMap(
                   (value as Map).cast<String, dynamic>())),

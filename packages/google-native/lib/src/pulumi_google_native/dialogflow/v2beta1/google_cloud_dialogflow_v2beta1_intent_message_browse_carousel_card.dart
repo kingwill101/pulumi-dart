@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2beta1_intent_message_browse_carousel_card_browse_carousel_card_item.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_browse_carousel_card_image_display_options.dart';
 
@@ -26,7 +26,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
     if (imageDisplayOptionsValue != null) {
       map['imageDisplayOptions'] = imageDisplayOptionsValue.value;
     }
-    map['items'] = Input.encodeList<
+    map['items'] = pulumi.Input.encodeList<
         GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem,
         Map<String, dynamic>>(items, (value) => value.toMap());
     return map;
@@ -39,7 +39,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
           ? null
           : GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions
               .fromValue(map['imageDisplayOptions'] as String),
-      items: Input.decodeList<
+      items: pulumi.Input.decodeList<
               GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>(
           map['items'],
           (value) =>

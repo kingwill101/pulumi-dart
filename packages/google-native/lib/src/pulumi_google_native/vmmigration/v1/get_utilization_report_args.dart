@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getUtilizationReport.
 class GetUtilizationReportArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> sourceId;
-  final Input<String> utilizationReportId;
-  final Input<String>? view;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sourceId;
+  final pulumi.Input<String> utilizationReportId;
+  final pulumi.Input<String>? view;
 
   GetUtilizationReportArgs({
     required this.location,
@@ -36,11 +36,12 @@ class GetUtilizationReportArgs {
 
   factory GetUtilizationReportArgs.fromMap(Map<String, dynamic> map) {
     return GetUtilizationReportArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sourceId: Input.asInput<String>(map['sourceId']),
-      utilizationReportId: Input.asInput<String>(map['utilizationReportId']),
-      view: Input.asOptionalInput<String>(map['view']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sourceId: pulumi.Input.asInput<String>(map['sourceId']),
+      utilizationReportId:
+          pulumi.Input.asInput<String>(map['utilizationReportId']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

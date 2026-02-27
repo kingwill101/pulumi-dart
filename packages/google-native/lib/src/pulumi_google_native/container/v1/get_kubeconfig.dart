@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_kubeconfig_args.dart';
 import 'get_kubeconfig_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_kubeconfig_result.dart';
 /// - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
 Future<GetKubeconfigResult> getKubeconfig(
   GetKubeconfigArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:container/v1:Cluster/getKubeconfig',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKubeconfigResult.fromMap(result);
 }

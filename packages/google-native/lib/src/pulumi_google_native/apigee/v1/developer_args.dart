@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_attribute.dart';
 
 /// The set of arguments for Developer.
 class DeveloperArgs {
   /// Access type.
-  final Input<String>? accessType;
+  final pulumi.Input<String>? accessType;
 
   /// Developer app family.
-  final Input<String>? appFamily;
+  final pulumi.Input<String>? appFamily;
 
   /// List of apps associated with the developer.
-  final Input<List<String>>? apps;
+  final pulumi.Input<List<String>>? apps;
 
   /// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
-  final Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
 
   /// List of companies associated with the developer.
-  final Input<List<String>>? companies;
+  final pulumi.Input<List<String>>? companies;
 
   /// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
-  final Input<String>? developerId;
+  final pulumi.Input<String>? developerId;
 
   /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
-  final Input<String> email;
+  final pulumi.Input<String> email;
 
   /// First name of the developer.
-  final Input<String> firstName;
+  final pulumi.Input<String> firstName;
 
   /// Last name of the developer.
-  final Input<String> lastName;
-  final Input<String> organizationId;
+  final pulumi.Input<String> lastName;
+  final pulumi.Input<String> organizationId;
 
   /// User name of the developer. Not used by Apigee hybrid.
-  final Input<String> userName;
+  final pulumi.Input<String> userName;
 
   DeveloperArgs({
     this.accessType,
@@ -66,10 +66,10 @@ class DeveloperArgs {
     }
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.mapOptionalInputValue<
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<
               List<GoogleCloudApigeeV1Attribute>, List<Map<String, dynamic>>>(
           attributesValue,
-          (value) => Input.encodeList<GoogleCloudApigeeV1Attribute,
+          (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1Attribute,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final companiesValue = companies;
@@ -90,18 +90,19 @@ class DeveloperArgs {
 
   factory DeveloperArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperArgs(
-      accessType: Input.asOptionalInput<String>(map['accessType']),
-      appFamily: Input.asOptionalInput<String>(map['appFamily']),
-      apps: Input.asOptionalInput<List<String>>(map['apps']),
-      attributes: Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(
-          map['attributes']),
-      companies: Input.asOptionalInput<List<String>>(map['companies']),
-      developerId: Input.asOptionalInput<String>(map['developerId']),
-      email: Input.asInput<String>(map['email']),
-      firstName: Input.asInput<String>(map['firstName']),
-      lastName: Input.asInput<String>(map['lastName']),
-      organizationId: Input.asInput<String>(map['organizationId']),
-      userName: Input.asInput<String>(map['userName']),
+      accessType: pulumi.Input.asOptionalInput<String>(map['accessType']),
+      appFamily: pulumi.Input.asOptionalInput<String>(map['appFamily']),
+      apps: pulumi.Input.asOptionalInput<List<String>>(map['apps']),
+      attributes:
+          pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(
+              map['attributes']),
+      companies: pulumi.Input.asOptionalInput<List<String>>(map['companies']),
+      developerId: pulumi.Input.asOptionalInput<String>(map['developerId']),
+      email: pulumi.Input.asInput<String>(map['email']),
+      firstName: pulumi.Input.asInput<String>(map['firstName']),
+      lastName: pulumi.Input.asInput<String>(map['lastName']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      userName: pulumi.Input.asInput<String>(map['userName']),
     );
   }
 }

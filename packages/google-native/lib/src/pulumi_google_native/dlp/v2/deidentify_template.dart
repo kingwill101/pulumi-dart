@@ -1,40 +1,40 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deidentify_template_args.dart';
 import 'google_privacy_dlp_v2_deidentify_config_response.dart';
 
 /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
 /// Auto-naming is currently not supported for this resource.
-class DeidentifyTemplate extends CustomResource {
+class DeidentifyTemplate extends pulumi.CustomResource {
   /// The creation timestamp of an inspectTemplate.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The core content of the template.
-  late final Output<GooglePrivacyDlpV2DeidentifyConfigResponse>
+  late final pulumi.Output<GooglePrivacyDlpV2DeidentifyConfigResponse>
       deidentifyConfig;
 
   /// Short description (max 256 chars).
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Display name (max 256 chars).
-  late final Output<String> displayName;
-  late final Output<String> location;
+  late final pulumi.Output<String> displayName;
+  late final pulumi.Output<String> location;
 
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-  late final Output<String> name;
-  late final Output<String> project;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
 
   /// The last update timestamp of an inspectTemplate.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DeidentifyTemplate(
     String name, {
     DeidentifyTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'google-native:dlp/v2:DeidentifyTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deidentifyConfig =

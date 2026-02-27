@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationSourceIamPolicy.
 class GetOrganizationSourceIamPolicyArgs {
-  final Input<String> organizationId;
-  final Input<String> sourceId;
+  final pulumi.Input<String> organizationId;
+  final pulumi.Input<String> sourceId;
 
   GetOrganizationSourceIamPolicyArgs({
     required this.organizationId,
@@ -21,8 +21,8 @@ class GetOrganizationSourceIamPolicyArgs {
 
   factory GetOrganizationSourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSourceIamPolicyArgs(
-      organizationId: Input.asInput<String>(map['organizationId']),
-      sourceId: Input.asInput<String>(map['sourceId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
+      sourceId: pulumi.Input.asInput<String>(map['sourceId']),
     );
   }
 }

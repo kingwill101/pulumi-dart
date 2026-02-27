@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bi_engine_reason_response.dart';
 
 class BiEngineStatisticsResponse {
@@ -24,7 +24,7 @@ class BiEngineStatisticsResponse {
     map['accelerationMode'] = accelerationMode;
     map['biEngineMode'] = biEngineMode;
     map['biEngineReasons'] =
-        Input.encodeList<BiEngineReasonResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<BiEngineReasonResponse, Map<String, dynamic>>(
             biEngineReasons, (value) => value.toMap());
     return map;
   }
@@ -33,7 +33,7 @@ class BiEngineStatisticsResponse {
     return BiEngineStatisticsResponse(
       accelerationMode: map['accelerationMode'] as String,
       biEngineMode: map['biEngineMode'] as String,
-      biEngineReasons: Input.decodeList<BiEngineReasonResponse>(
+      biEngineReasons: pulumi.Input.decodeList<BiEngineReasonResponse>(
           map['biEngineReasons'],
           (value) => BiEngineReasonResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

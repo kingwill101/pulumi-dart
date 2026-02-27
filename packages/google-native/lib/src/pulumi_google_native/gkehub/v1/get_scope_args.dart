@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getScope.
 class GetScopeArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> scopeId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> scopeId;
 
   GetScopeArgs({
     required this.location,
@@ -27,9 +27,9 @@ class GetScopeArgs {
 
   factory GetScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      scopeId: Input.asInput<String>(map['scopeId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      scopeId: pulumi.Input.asInput<String>(map['scopeId']),
     );
   }
 }

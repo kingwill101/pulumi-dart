@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'rbacrole_binding_lifecycle_state_response2.dart';
-import 'role_response2.dart';
+import 'rbacrole_binding_lifecycle_state_response_gkehub_v1alpha.dart';
+import 'role_response_gkehub_v1alpha.dart';
 
 /// Result data returned by getMembershipRbacRoleBinding.
 class GetMembershipRbacRoleBindingResult {
@@ -21,10 +21,10 @@ class GetMembershipRbacRoleBindingResult {
   final String name;
 
   /// Role to bind to the principal
-  final RoleResponse2 role;
+  final RoleResponseGkehubV1alpha role;
 
   /// State of the rbacrolebinding resource.
-  final RBACRoleBindingLifecycleStateResponse2 state;
+  final RBACRoleBindingLifecycleStateResponseGkehubV1alpha state;
 
   /// Google-generated UUID for this resource. This is unique across all rbacrolebinding resources. If a rbacrolebinding resource is deleted and another resource with the same name is created, it gets a different uid.
   final String uid;
@@ -70,8 +70,9 @@ class GetMembershipRbacRoleBindingResult {
       group: map['group'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      role: RoleResponse2.fromMap((map['role'] as Map).cast<String, dynamic>()),
-      state: RBACRoleBindingLifecycleStateResponse2.fromMap(
+      role: RoleResponseGkehubV1alpha.fromMap(
+          (map['role'] as Map).cast<String, dynamic>()),
+      state: RBACRoleBindingLifecycleStateResponseGkehubV1alpha.fromMap(
           (map['state'] as Map).cast<String, dynamic>()),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGrpcRoute.
 class GetGrpcRouteArgs {
-  final Input<String> grpcRouteId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> grpcRouteId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetGrpcRouteArgs({
     required this.grpcRouteId,
@@ -27,9 +27,9 @@ class GetGrpcRouteArgs {
 
   factory GetGrpcRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetGrpcRouteArgs(
-      grpcRouteId: Input.asInput<String>(map['grpcRouteId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      grpcRouteId: pulumi.Input.asInput<String>(map['grpcRouteId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

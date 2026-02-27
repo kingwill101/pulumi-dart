@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_allowed_item_response.dart';
 import 'firewall_denied_item_response.dart';
 import 'firewall_log_config_response.dart';
@@ -92,13 +92,11 @@ class GetFirewallResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allowed'] =
-        Input.encodeList<FirewallAllowedItemResponse, Map<String, dynamic>>(
-            allowed, (value) => value.toMap());
+    map['allowed'] = pulumi.Input.encodeList<FirewallAllowedItemResponse,
+        Map<String, dynamic>>(allowed, (value) => value.toMap());
     map['creationTimestamp'] = creationTimestamp;
-    map['denied'] =
-        Input.encodeList<FirewallDeniedItemResponse, Map<String, dynamic>>(
-            denied, (value) => value.toMap());
+    map['denied'] = pulumi.Input.encodeList<FirewallDeniedItemResponse,
+        Map<String, dynamic>>(denied, (value) => value.toMap());
     map['description'] = description;
     map['destinationRanges'] = destinationRanges;
     map['direction'] = direction;
@@ -121,12 +119,12 @@ class GetFirewallResult {
 
   factory GetFirewallResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallResult(
-      allowed: Input.decodeList<FirewallAllowedItemResponse>(
+      allowed: pulumi.Input.decodeList<FirewallAllowedItemResponse>(
           map['allowed'],
           (value) => FirewallAllowedItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       creationTimestamp: map['creationTimestamp'] as String,
-      denied: Input.decodeList<FirewallDeniedItemResponse>(
+      denied: pulumi.Input.decodeList<FirewallDeniedItemResponse>(
           map['denied'],
           (value) => FirewallDeniedItemResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

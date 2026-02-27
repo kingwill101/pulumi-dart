@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_table_response.dart';
 import 'google_privacy_dlp_v2_field_id_response.dart';
 import 'google_privacy_dlp_v2_quasi_id_field_response.dart';
@@ -24,7 +24,8 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['quasiIds'] = Input.encodeList<GooglePrivacyDlpV2QuasiIdFieldResponse,
+    map['quasiIds'] = pulumi.Input.encodeList<
+        GooglePrivacyDlpV2QuasiIdFieldResponse,
         Map<String, dynamic>>(quasiIds, (value) => value.toMap());
     map['relativeFrequency'] = relativeFrequency.toMap();
     map['table'] = table.toMap();
@@ -34,7 +35,7 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse {
   factory GooglePrivacyDlpV2AuxiliaryTableResponse.fromMap(
       Map<String, dynamic> map) {
     return GooglePrivacyDlpV2AuxiliaryTableResponse(
-      quasiIds: Input.decodeList<GooglePrivacyDlpV2QuasiIdFieldResponse>(
+      quasiIds: pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdFieldResponse>(
           map['quasiIds'],
           (value) => GooglePrivacyDlpV2QuasiIdFieldResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEndpoint.
 class GetEndpointArgs {
-  final Input<String> endpointId;
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> endpointId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetEndpointArgs({
     required this.endpointId,
@@ -27,9 +27,9 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointId: Input.asInput<String>(map['endpointId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      endpointId: pulumi.Input.asInput<String>(map['endpointId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

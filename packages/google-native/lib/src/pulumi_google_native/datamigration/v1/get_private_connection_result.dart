@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'status_response15.dart';
+import 'status_response_datamigration_v1.dart';
 import 'vpc_peering_config_response.dart';
 
 /// Result data returned by getPrivateConnection.
@@ -12,7 +12,7 @@ class GetPrivateConnectionResult {
   final String displayName;
 
   /// The error details in case of state FAILED.
-  final StatusResponse15 error;
+  final StatusResponseDatamigrationV1 error;
 
   /// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
   final Map<String, String> labels;
@@ -57,7 +57,7 @@ class GetPrivateConnectionResult {
     return GetPrivateConnectionResult(
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      error: StatusResponse15.fromMap(
+      error: StatusResponseDatamigrationV1.fromMap(
           (map['error'] as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,

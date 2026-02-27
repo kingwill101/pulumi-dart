@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWorkflowInvocation.
 class GetWorkflowInvocationArgs {
-  final Input<String> location;
-  final Input<String>? project;
-  final Input<String> repositoryId;
-  final Input<String> workflowInvocationId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> repositoryId;
+  final pulumi.Input<String> workflowInvocationId;
 
   GetWorkflowInvocationArgs({
     required this.location,
@@ -30,10 +30,11 @@ class GetWorkflowInvocationArgs {
 
   factory GetWorkflowInvocationArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowInvocationArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      repositoryId: Input.asInput<String>(map['repositoryId']),
-      workflowInvocationId: Input.asInput<String>(map['workflowInvocationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      repositoryId: pulumi.Input.asInput<String>(map['repositoryId']),
+      workflowInvocationId:
+          pulumi.Input.asInput<String>(map['workflowInvocationId']),
     );
   }
 }

@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_conversation_dataset_args.dart';
 import 'get_conversation_dataset_result.dart';
 
 /// Retrieves the specified conversation dataset.
 Future<GetConversationDatasetResult> getConversationDataset(
   GetConversationDatasetArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'google-native:dialogflow/v2:getConversationDataset',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConversationDatasetResult.fromMap(result);
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
-import 'volume4.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'volume_cloudbuild_v1.dart';
 
 /// A step in the build pipeline.
 class BuildStep {
@@ -42,7 +42,7 @@ class BuildStep {
   final String? timeout;
 
   /// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
-  final List<Volume4>? volumes;
+  final List<VolumeCloudbuildV1>? volumes;
 
   /// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
   final List<String>? waitFor;
@@ -113,8 +113,9 @@ class BuildStep {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] = Input.encodeList<Volume4, Map<String, dynamic>>(
-          volumesValue, (value) => value.toMap());
+      map['volumes'] =
+          pulumi.Input.encodeList<VolumeCloudbuildV1, Map<String, dynamic>>(
+              volumesValue, (value) => value.toMap());
     }
     final waitForValue = waitFor;
     if (waitForValue != null) {
@@ -147,10 +148,10 @@ class BuildStep {
       timeout: map['timeout'] == null ? null : map['timeout'] as String,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<Volume4>(
+          : pulumi.Input.decodeList<VolumeCloudbuildV1>(
               map['volumes'],
-              (value) =>
-                  Volume4.fromMap((value as Map).cast<String, dynamic>())),
+              (value) => VolumeCloudbuildV1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       waitFor: map['waitFor'] == null
           ? null
           : (map['waitFor'] as List).cast<String>(),

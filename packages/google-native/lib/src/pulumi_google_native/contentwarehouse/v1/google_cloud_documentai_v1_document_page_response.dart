@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_documentai_v1_document_page_block_response.dart';
 import 'google_cloud_documentai_v1_document_page_detected_barcode_response.dart';
 import 'google_cloud_documentai_v1_document_page_detected_language_response.dart';
@@ -97,43 +97,43 @@ class GoogleCloudDocumentaiV1DocumentPageResponse {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['blocks'] = Input.encodeList<
+    map['blocks'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageBlockResponse,
         Map<String, dynamic>>(blocks, (value) => value.toMap());
-    map['detectedBarcodes'] = Input.encodeList<
+    map['detectedBarcodes'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse,
         Map<String, dynamic>>(detectedBarcodes, (value) => value.toMap());
-    map['detectedLanguages'] = Input.encodeList<
+    map['detectedLanguages'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
         Map<String, dynamic>>(detectedLanguages, (value) => value.toMap());
     map['dimension'] = dimension.toMap();
-    map['formFields'] = Input.encodeList<
+    map['formFields'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageFormFieldResponse,
         Map<String, dynamic>>(formFields, (value) => value.toMap());
     map['image'] = image.toMap();
     map['imageQualityScores'] = imageQualityScores.toMap();
     map['layout'] = layout.toMap();
-    map['lines'] = Input.encodeList<
+    map['lines'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageLineResponse,
         Map<String, dynamic>>(lines, (value) => value.toMap());
     map['pageNumber'] = pageNumber;
-    map['paragraphs'] = Input.encodeList<
+    map['paragraphs'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageParagraphResponse,
         Map<String, dynamic>>(paragraphs, (value) => value.toMap());
     map['provenance'] = provenance.toMap();
-    map['symbols'] = Input.encodeList<
+    map['symbols'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageSymbolResponse,
         Map<String, dynamic>>(symbols, (value) => value.toMap());
-    map['tables'] = Input.encodeList<
+    map['tables'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageTableResponse,
         Map<String, dynamic>>(tables, (value) => value.toMap());
-    map['tokens'] = Input.encodeList<
+    map['tokens'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageTokenResponse,
         Map<String, dynamic>>(tokens, (value) => value.toMap());
-    map['transforms'] = Input.encodeList<
+    map['transforms'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageMatrixResponse,
         Map<String, dynamic>>(transforms, (value) => value.toMap());
-    map['visualElements'] = Input.encodeList<
+    map['visualElements'] = pulumi.Input.encodeList<
         GoogleCloudDocumentaiV1DocumentPageVisualElementResponse,
         Map<String, dynamic>>(visualElements, (value) => value.toMap());
     return map;
@@ -142,25 +142,24 @@ class GoogleCloudDocumentaiV1DocumentPageResponse {
   factory GoogleCloudDocumentaiV1DocumentPageResponse.fromMap(
       Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageResponse(
-      blocks:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentPageBlockResponse>(
-              map['blocks'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentPageBlockResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      detectedBarcodes: Input.decodeList<
+      blocks: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentPageBlockResponse>(
+          map['blocks'],
+          (value) => GoogleCloudDocumentaiV1DocumentPageBlockResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      detectedBarcodes: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse>(
           map['detectedBarcodes'],
           (value) => GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse
               .fromMap((value as Map).cast<String, dynamic>())),
-      detectedLanguages: Input.decodeList<
+      detectedLanguages: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(
           map['detectedLanguages'],
           (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
               .fromMap((value as Map).cast<String, dynamic>())),
       dimension: GoogleCloudDocumentaiV1DocumentPageDimensionResponse.fromMap(
           (map['dimension'] as Map).cast<String, dynamic>()),
-      formFields: Input.decodeList<
+      formFields: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentPageFormFieldResponse>(
           map['formFields'],
           (value) =>
@@ -173,12 +172,13 @@ class GoogleCloudDocumentaiV1DocumentPageResponse {
               (map['imageQualityScores'] as Map).cast<String, dynamic>()),
       layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
           (map['layout'] as Map).cast<String, dynamic>()),
-      lines: Input.decodeList<GoogleCloudDocumentaiV1DocumentPageLineResponse>(
+      lines: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentPageLineResponse>(
           map['lines'],
           (value) => GoogleCloudDocumentaiV1DocumentPageLineResponse.fromMap(
               (value as Map).cast<String, dynamic>())),
       pageNumber: map['pageNumber'] as int,
-      paragraphs: Input.decodeList<
+      paragraphs: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentPageParagraphResponse>(
           map['paragraphs'],
           (value) =>
@@ -186,31 +186,27 @@ class GoogleCloudDocumentaiV1DocumentPageResponse {
                   (value as Map).cast<String, dynamic>())),
       provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(
           (map['provenance'] as Map).cast<String, dynamic>()),
-      symbols:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentPageSymbolResponse>(
-              map['symbols'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentPageSymbolResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      tables:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableResponse>(
-              map['tables'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentPageTableResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      tokens:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTokenResponse>(
-              map['tokens'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentPageTokenResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      transforms:
-          Input.decodeList<GoogleCloudDocumentaiV1DocumentPageMatrixResponse>(
-              map['transforms'],
-              (value) =>
-                  GoogleCloudDocumentaiV1DocumentPageMatrixResponse.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      visualElements: Input.decodeList<
+      symbols: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentPageSymbolResponse>(
+          map['symbols'],
+          (value) => GoogleCloudDocumentaiV1DocumentPageSymbolResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      tables: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentPageTableResponse>(
+          map['tables'],
+          (value) => GoogleCloudDocumentaiV1DocumentPageTableResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      tokens: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentPageTokenResponse>(
+          map['tokens'],
+          (value) => GoogleCloudDocumentaiV1DocumentPageTokenResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      transforms: pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentPageMatrixResponse>(
+          map['transforms'],
+          (value) => GoogleCloudDocumentaiV1DocumentPageMatrixResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      visualElements: pulumi.Input.decodeList<
               GoogleCloudDocumentaiV1DocumentPageVisualElementResponse>(
           map['visualElements'],
           (value) =>

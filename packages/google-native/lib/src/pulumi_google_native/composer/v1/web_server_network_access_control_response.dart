@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allowed_ip_range_response.dart';
 
 /// Network-level access control policy for the Airflow web server.
@@ -15,7 +15,7 @@ class WebServerNetworkAccessControlResponse {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['allowedIpRanges'] =
-        Input.encodeList<AllowedIpRangeResponse, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AllowedIpRangeResponse, Map<String, dynamic>>(
             allowedIpRanges, (value) => value.toMap());
     return map;
   }
@@ -23,7 +23,7 @@ class WebServerNetworkAccessControlResponse {
   factory WebServerNetworkAccessControlResponse.fromMap(
       Map<String, dynamic> map) {
     return WebServerNetworkAccessControlResponse(
-      allowedIpRanges: Input.decodeList<AllowedIpRangeResponse>(
+      allowedIpRanges: pulumi.Input.decodeList<AllowedIpRangeResponse>(
           map['allowedIpRanges'],
           (value) => AllowedIpRangeResponse.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_error_rule.dart';
 
 /// Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
@@ -20,8 +20,9 @@ class CustomError {
     final map = <String, dynamic>{};
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<CustomErrorRule, Map<String, dynamic>>(
-          rulesValue, (value) => value.toMap());
+      map['rules'] =
+          pulumi.Input.encodeList<CustomErrorRule, Map<String, dynamic>>(
+              rulesValue, (value) => value.toMap());
     }
     final typesValue = types;
     if (typesValue != null) {
@@ -34,7 +35,7 @@ class CustomError {
     return CustomError(
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<CustomErrorRule>(
+          : pulumi.Input.decodeList<CustomErrorRule>(
               map['rules'],
               (value) => CustomErrorRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

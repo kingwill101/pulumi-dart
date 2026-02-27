@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getProjectBigQueryExport.
 class GetProjectBigQueryExportArgs {
-  final Input<String> bigQueryExportId;
-  final Input<String>? project;
+  final pulumi.Input<String> bigQueryExportId;
+  final pulumi.Input<String>? project;
 
   GetProjectBigQueryExportArgs({
     required this.bigQueryExportId,
@@ -24,8 +24,8 @@ class GetProjectBigQueryExportArgs {
 
   factory GetProjectBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectBigQueryExportArgs(
-      bigQueryExportId: Input.asInput<String>(map['bigQueryExportId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      bigQueryExportId: pulumi.Input.asInput<String>(map['bigQueryExportId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'category.dart';
 import 'identity.dart';
 
@@ -41,8 +41,9 @@ class WindowsUpdate {
     final map = <String, dynamic>{};
     final categoriesValue = categories;
     if (categoriesValue != null) {
-      map['categories'] = Input.encodeList<Category, Map<String, dynamic>>(
-          categoriesValue, (value) => value.toMap());
+      map['categories'] =
+          pulumi.Input.encodeList<Category, Map<String, dynamic>>(
+              categoriesValue, (value) => value.toMap());
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -75,7 +76,7 @@ class WindowsUpdate {
     return WindowsUpdate(
       categories: map['categories'] == null
           ? null
-          : Input.decodeList<Category>(
+          : pulumi.Input.decodeList<Category>(
               map['categories'],
               (value) =>
                   Category.fromMap((value as Map).cast<String, dynamic>())),

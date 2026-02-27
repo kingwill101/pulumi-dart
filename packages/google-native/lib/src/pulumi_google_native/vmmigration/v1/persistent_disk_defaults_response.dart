@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'encryption_response2.dart';
+import 'encryption_response_vmmigration_v1.dart';
 import 'vm_attachment_details_response.dart';
 
 /// Details for creation of a Persistent Disk.
@@ -15,7 +15,7 @@ class PersistentDiskDefaultsResponse {
   final String diskType;
 
   /// Optional. The encryption to apply to the disk.
-  final EncryptionResponse2 encryption;
+  final EncryptionResponseVmmigrationV1 encryption;
 
   /// The ordinal number of the source VM disk.
   final int sourceDiskNumber;
@@ -48,7 +48,7 @@ class PersistentDiskDefaultsResponse {
       additionalLabels: (map['additionalLabels'] as Map).cast<String, String>(),
       diskName: map['diskName'] as String,
       diskType: map['diskType'] as String,
-      encryption: EncryptionResponse2.fromMap(
+      encryption: EncryptionResponseVmmigrationV1.fromMap(
           (map['encryption'] as Map).cast<String, dynamic>()),
       sourceDiskNumber: map['sourceDiskNumber'] as int,
       vmAttachmentDetails: VmAttachmentDetailsResponse.fromMap(

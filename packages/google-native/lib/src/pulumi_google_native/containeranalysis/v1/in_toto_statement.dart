@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'in_toto_provenance.dart';
 import 'slsa_provenance.dart';
 import 'slsa_provenance_zero_two.dart';
@@ -47,7 +47,7 @@ class InTotoStatement {
     }
     final subjectValue = subject;
     if (subjectValue != null) {
-      map['subject'] = Input.encodeList<Subject, Map<String, dynamic>>(
+      map['subject'] = pulumi.Input.encodeList<Subject, Map<String, dynamic>>(
           subjectValue, (value) => value.toMap());
     }
     final typeValue = type;
@@ -75,7 +75,7 @@ class InTotoStatement {
               (map['slsaProvenanceZeroTwo'] as Map).cast<String, dynamic>()),
       subject: map['subject'] == null
           ? null
-          : Input.decodeList<Subject>(
+          : pulumi.Input.decodeList<Subject>(
               map['subject'],
               (value) =>
                   Subject.fromMap((value as Map).cast<String, dynamic>())),
