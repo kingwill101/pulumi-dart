@@ -3262,6 +3262,7 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 
 var (
 	pulumiCodeChooserMarkerPattern = regexp.MustCompile(`(?i)<!--\s*(Start|End)\s+PulumiCodeChooser\s*-->`)
+	pulumiCodeChooserBlockPattern  = regexp.MustCompile(`(?is)<!--\s*Start\s+PulumiCodeChooser\s*-->.*?<!--\s*End\s+PulumiCodeChooser\s*-->`)
 	htmlSpanTagPattern             = regexp.MustCompile(`(?i)</?span\b[^>]*>`)
 	deprecatedProviderRefPattern   = regexp.MustCompile(`^/resources/pulumi:providers:[^/]+$`)
 )
@@ -3270,6 +3271,9 @@ func sanitizeDartDocComment(comment string) string {
 	// Normalize CRLF/CR from upstream docs to avoid embedding raw carriage
 	// returns that can break Dart parser/formatter behavior.
 	comment = strings.ReplaceAll(comment, "\r", "")
+	// Drop Pulumi code chooser blocks to avoid embedding massive multi-language
+	// snippets in generated Dart API docs.
+	comment = pulumiCodeChooserBlockPattern.ReplaceAllString(comment, "")
 	// Strip Pulumi code chooser markers while preserving enclosed markdown content.
 	comment = pulumiCodeChooserMarkerPattern.ReplaceAllString(comment, "")
 	// Remove pulumi-lang span wrappers while keeping inner text.

@@ -1130,9 +1130,10 @@ func TestGeneratePackageSanitizesDocCommentMarkup(t *testing.T) {
 	assert.NotContains(t, content, "</span>")
 	assert.NotContains(t, content, "Start PulumiCodeChooser")
 	assert.NotContains(t, content, "End PulumiCodeChooser")
+	assert.NotContains(t, content, "Example:")
+	assert.NotContains(t, content, "const widget = new sample.Widget(\"w\");")
 	assert.Contains(t, content, "Widget sample.Widget resource.")
 	assert.Contains(t, content, "A value field.")
-	assert.Contains(t, content, "/// const widget = new sample.Widget(\"w\");")
 }
 
 func TestNormalizeDeprecatedProviderReferences(t *testing.T) {
