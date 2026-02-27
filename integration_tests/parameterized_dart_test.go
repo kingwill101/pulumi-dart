@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"strings"
 	"testing"
@@ -100,30 +101,82 @@ func TestParameterizedDart(t *testing.T) {
 			if _, err := os.Stat(filepath.Join(info.Root, "sdks", "pkg", "pubspec.yaml")); err != nil {
 				return fmt.Errorf("expected generated dart sdk at sdks/pkg/pubspec.yaml: %w", err)
 			}
-			rootSDKPath := filepath.Join(info.Root, "sdks", "pkg", "lib", "pkg.dart")
+			generatedSDKPubspecPath := filepath.Join(info.Root, "sdks", "pkg", "pubspec.yaml")
+			generatedSDKPubspec, err := os.ReadFile(generatedSDKPubspecPath)
+			if err != nil {
+				return fmt.Errorf("failed to read generated sdk pubspec: %w", err)
+			}
+			nameMatch := regexp.MustCompile(`(?m)^name:\s*([a-z0-9_]+)\s*$`).FindStringSubmatch(string(generatedSDKPubspec))
+			if len(nameMatch) < 2 || strings.TrimSpace(nameMatch[1]) == "" {
+				return fmt.Errorf("generated sdk pubspec missing package name: %s", generatedSDKPubspecPath)
+			}
+			packageName := strings.TrimSpace(nameMatch[1])
+			packageImport := fmt.Sprintf("package:%s/%s.dart", packageName, packageName)
+
+			for _, sourceFile := range []string{
+				filepath.Join(info.Root, "bin", "parameterized_dart.dart"),
+				filepath.Join(info.Root, "test", "parameterized_test.dart"),
+			} {
+				content, err := os.ReadFile(sourceFile)
+				if err != nil {
+					return fmt.Errorf("failed to read parameterized fixture source %s: %w", sourceFile, err)
+				}
+				updated := strings.ReplaceAll(string(content), "package:pkg/pkg.dart", packageImport)
+				if err := os.WriteFile(sourceFile, []byte(updated), 0o600); err != nil {
+					return fmt.Errorf("failed to rewrite parameterized fixture source %s: %w", sourceFile, err)
+				}
+			}
+
+			rootSDKPath := filepath.Join(info.Root, "sdks", "pkg", "lib", packageName+".dart")
 			rootSDK, err := os.ReadFile(rootSDKPath)
 			if err != nil {
 				return fmt.Errorf("failed to read generated sdk root library: %w", err)
 			}
-			if !strings.Contains(string(rootSDK), "export 'src/pkg/sdk.dart';") {
+			if !strings.Contains(string(rootSDK), "export 'src/"+packageName+"/sdk.dart';") {
 				return fmt.Errorf("generated sdk root library missing src export: %s", rootSDKPath)
 			}
 
-			implSDKPath := filepath.Join(info.Root, "sdks", "pkg", "lib", "src", "pkg", "sdk.dart")
+			implSDKPath := filepath.Join(info.Root, "sdks", "pkg", "lib", "src", packageName, "sdk.dart")
 			implSDK, err := os.ReadFile(implSDKPath)
 			if err != nil {
 				return fmt.Errorf("failed to read generated sdk implementation library: %w", err)
 			}
 			for _, expected := range []string{
-				"library pkg_sdk;",
-				"class Echo extends CustomResource",
-				"class Random extends CustomResource",
-				"Future<DoEchoResult> doEcho(",
-				"_mapToInputs",
+				"library " + packageName + "_sdk;",
+				"export 'index/echo.dart';",
+				"export 'index/random.dart';",
+				"export 'index/do_echo.dart';",
 			} {
 				if !strings.Contains(string(implSDK), expected) {
 					return fmt.Errorf("generated sdk implementation missing expected content %q: %s", expected, implSDKPath)
 				}
+			}
+
+			echoResourcePath := filepath.Join(info.Root, "sdks", "pkg", "lib", "src", packageName, "index", "echo.dart")
+			echoResource, err := os.ReadFile(echoResourcePath)
+			if err != nil {
+				return fmt.Errorf("failed to read generated echo resource: %w", err)
+			}
+			if !strings.Contains(string(echoResource), "class Echo extends CustomResource") {
+				return fmt.Errorf("generated echo resource missing class declaration: %s", echoResourcePath)
+			}
+
+			randomResourcePath := filepath.Join(info.Root, "sdks", "pkg", "lib", "src", packageName, "index", "random.dart")
+			randomResource, err := os.ReadFile(randomResourcePath)
+			if err != nil {
+				return fmt.Errorf("failed to read generated random resource: %w", err)
+			}
+			if !strings.Contains(string(randomResource), "class Random extends CustomResource") {
+				return fmt.Errorf("generated random resource missing class declaration: %s", randomResourcePath)
+			}
+
+			invokePath := filepath.Join(info.Root, "sdks", "pkg", "lib", "src", packageName, "index", "do_echo.dart")
+			invokeSource, err := os.ReadFile(invokePath)
+			if err != nil {
+				return fmt.Errorf("failed to read generated invoke source: %w", err)
+			}
+			if !strings.Contains(string(invokeSource), "Future<DoEchoResult> doEcho(") {
+				return fmt.Errorf("generated invoke source missing expected function signature: %s", invokePath)
 			}
 
 			cmd = exec.Command("dart", "test")
