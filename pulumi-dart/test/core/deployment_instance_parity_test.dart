@@ -1,6 +1,3 @@
-import 'dart:io';
-import 'dart:convert';
-
 import 'package:grpc/grpc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
@@ -91,28 +88,6 @@ class _CountingMonitor implements monitorpkg.Monitor {
   }
 }
 
-Future<Map<String, dynamic>> _runDeploymentProbe({
-  required String mode,
-  required Map<String, String> env,
-}) async {
-  final result = await Process.run(
-    Platform.resolvedExecutable,
-    ['run', 'test/test_utils/deployment_run_probe.dart', mode],
-    workingDirectory: Directory.current.path,
-    environment: {...Platform.environment, ...env},
-  );
-
-  expect(result.exitCode, equals(0), reason: '${result.stderr}');
-  final stdoutLines = result.stdout
-      .toString()
-      .split('\n')
-      .map((line) => line.trim())
-      .where((line) => line.isNotEmpty)
-      .toList();
-  expect(stdoutLines, isNotEmpty);
-  return jsonDecode(stdoutLines.last) as Map<String, dynamic>;
-}
-
 void main() {
   group('deployment instance parity', () {
     late _CountingMonitor monitor;
@@ -129,10 +104,12 @@ void main() {
         engine: MockEngine(),
       );
       DeploymentImpl.clearInstance();
+      DeploymentImpl.resetEnvironmentProviderForTesting();
     });
 
     tearDown(() {
       DeploymentImpl.clearInstance();
+      DeploymentImpl.resetEnvironmentProviderForTesting();
     });
 
     test('DeploymentImpl.instance throws before initialization', () {
@@ -188,16 +165,7 @@ void main() {
     test(
       'DeploymentImpl.run throws when required Pulumi env vars are missing',
       () async {
-        final hasFullRuntimeEnv =
-            Platform.environment['PULUMI_MONITOR'] != null &&
-            Platform.environment['PULUMI_ENGINE'] != null &&
-            Platform.environment['PULUMI_PROJECT'] != null &&
-            Platform.environment['PULUMI_STACK'] != null &&
-            Platform.environment['PULUMI_DRY_RUN'] != null;
-
-        if (hasFullRuntimeEnv) {
-          return;
-        }
+        DeploymentImpl.setEnvironmentProviderForTesting(() => const {});
 
         await expectLater(
           DeploymentImpl.run(() {}),
@@ -209,16 +177,7 @@ void main() {
     test(
       'Deployment.run and Deployment.runOrThrow surface missing runtime env parity',
       () async {
-        final hasFullRuntimeEnv =
-            Platform.environment['PULUMI_MONITOR'] != null &&
-            Platform.environment['PULUMI_ENGINE'] != null &&
-            Platform.environment['PULUMI_PROJECT'] != null &&
-            Platform.environment['PULUMI_STACK'] != null &&
-            Platform.environment['PULUMI_DRY_RUN'] != null;
-
-        if (hasFullRuntimeEnv) {
-          return;
-        }
+        DeploymentImpl.setEnvironmentProviderForTesting(() => const {});
 
         await expectLater(Deployment.run(() {}), throwsA(isA<StateError>()));
         await expectLater(
@@ -231,9 +190,8 @@ void main() {
     test(
       'DeploymentImpl.run succeeds with host:port monitor and engine envs',
       () async {
-        final payload = await _runDeploymentProbe(
-          mode: 'run-success',
-          env: {
+        DeploymentImpl.setEnvironmentProviderForTesting(
+          () => const {
             'PULUMI_MONITOR': '127.0.0.1:65535',
             'PULUMI_ENGINE': '127.0.0.1:65534',
             'PULUMI_PROJECT': 'project',
@@ -241,18 +199,15 @@ void main() {
             'PULUMI_DRY_RUN': 'false',
           },
         );
-
-        expect(payload['mode'], equals('run-success'));
-        expect(payload['exitCode'], equals(0));
+        expect(await DeploymentImpl.run(() {}), equals(0));
       },
     );
 
     test(
       'DeploymentImpl.run succeeds with http:// monitor and engine envs',
       () async {
-        final payload = await _runDeploymentProbe(
-          mode: 'run-success',
-          env: {
+        DeploymentImpl.setEnvironmentProviderForTesting(
+          () => const {
             'PULUMI_MONITOR': 'http://127.0.0.1:65535',
             'PULUMI_ENGINE': 'http://127.0.0.1:65534',
             'PULUMI_PROJECT': 'project',
@@ -260,18 +215,15 @@ void main() {
             'PULUMI_DRY_RUN': 'true',
           },
         );
-
-        expect(payload['mode'], equals('run-success'));
-        expect(payload['exitCode'], equals(0));
+        expect(await DeploymentImpl.run(() {}), equals(0));
       },
     );
 
     test(
       'DeploymentImpl.run returns non-zero when program throws and runOrThrow surfaces it',
       () async {
-        final runPayload = await _runDeploymentProbe(
-          mode: 'run-catch-error',
-          env: {
+        DeploymentImpl.setEnvironmentProviderForTesting(
+          () => const {
             'PULUMI_MONITOR': '127.0.0.1:65535',
             'PULUMI_ENGINE': '127.0.0.1:65534',
             'PULUMI_PROJECT': 'project',
@@ -279,11 +231,28 @@ void main() {
             'PULUMI_DRY_RUN': 'false',
           },
         );
-        expect(runPayload['exitCode'], equals(1));
 
-        final runOrThrowPayload = await _runDeploymentProbe(
-          mode: 'run-or-throw',
-          env: {
+        expect(
+          await DeploymentImpl.run(() {
+            throw StateError('probe failure');
+          }),
+          equals(1),
+        );
+
+        await expectLater(
+          Deployment.runOrThrow(() {
+            throw StateError('probe failure');
+          }),
+          throwsA(isA<StateError>()),
+        );
+      },
+    );
+
+    test(
+      'Deployment.runOrThrow throws when DeploymentImpl.run returns non-zero',
+      () async {
+        DeploymentImpl.setEnvironmentProviderForTesting(
+          () => const {
             'PULUMI_MONITOR': '127.0.0.1:65535',
             'PULUMI_ENGINE': '127.0.0.1:65534',
             'PULUMI_PROJECT': 'project',
@@ -291,11 +260,18 @@ void main() {
             'PULUMI_DRY_RUN': 'false',
           },
         );
-        expect(runOrThrowPayload['threw'], isTrue);
-        expect(runOrThrowPayload['type'], equals('StateError'));
-        expect(
-          runOrThrowPayload['message'].toString(),
-          contains('Pulumi program failed with exit code 1'),
+
+        await expectLater(
+          Deployment.runOrThrow(() {
+            throw StateError('probe failure');
+          }),
+          throwsA(
+            isA<StateError>().having(
+              (error) => error.message,
+              'message',
+              contains('Pulumi program failed with exit code 1'),
+            ),
+          ),
         );
       },
     );
@@ -303,9 +279,8 @@ void main() {
     test(
       'DeploymentImpl.run rejects invalid monitor endpoint address',
       () async {
-        final payload = await _runDeploymentProbe(
-          mode: 'run-capture-error',
-          env: {
+        DeploymentImpl.setEnvironmentProviderForTesting(
+          () => const {
             'PULUMI_MONITOR': ':65535',
             'PULUMI_ENGINE': '127.0.0.1:65534',
             'PULUMI_PROJECT': 'project',
@@ -314,11 +289,111 @@ void main() {
           },
         );
 
-        expect(payload['threw'], isTrue);
-        expect(payload['type'], equals('StateError'));
+        await expectLater(
+          DeploymentImpl.run(() {}),
+          throwsA(isA<StateError>()),
+        );
+        await expectLater(
+          DeploymentImpl.run(() {}),
+          throwsA(
+            isA<StateError>().having(
+              (error) => error.message,
+              'message',
+              contains('Invalid gRPC endpoint: :65535'),
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'DeploymentImpl.run rejects invalid engine endpoint address',
+      () async {
+        DeploymentImpl.setEnvironmentProviderForTesting(
+          () => const {
+            'PULUMI_MONITOR': '127.0.0.1:65535',
+            'PULUMI_ENGINE': ':65534',
+            'PULUMI_PROJECT': 'project',
+            'PULUMI_STACK': 'stack',
+            'PULUMI_DRY_RUN': 'false',
+          },
+        );
+
+        await expectLater(
+          DeploymentImpl.run(() {}),
+          throwsA(
+            isA<StateError>().having(
+              (error) => error.message,
+              'message',
+              contains('Invalid gRPC endpoint: :65534'),
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'DeploymentImpl.run still attempts registerOutputs after callback throws',
+      () async {
+        DeploymentImpl.setEnvironmentProviderForTesting(
+          () => const {
+            'PULUMI_MONITOR': '127.0.0.1:65535',
+            'PULUMI_ENGINE': '127.0.0.1:65534',
+            'PULUMI_PROJECT': 'project',
+            'PULUMI_STACK': 'stack',
+            'PULUMI_DRY_RUN': 'false',
+          },
+        );
+
+        final exitCode = await DeploymentImpl.run(() {
+          throw StateError('probe failure');
+        });
+
+        expect(exitCode, equals(1));
+      },
+    );
+
+    test(
+      'DeploymentImpl.run succeeds when explicitly passing project/stack and dryRun override',
+      () async {
+        DeploymentImpl.setEnvironmentProviderForTesting(
+          () => const {
+            'PULUMI_MONITOR': '127.0.0.1:65535',
+            'PULUMI_ENGINE': '127.0.0.1:65534',
+            'PULUMI_PROJECT': 'ignored-project',
+            'PULUMI_STACK': 'ignored-stack',
+            'PULUMI_DRY_RUN': 'false',
+          },
+        );
+
+        final exitCode = await DeploymentImpl.run(
+          () {},
+          projectName: 'override-project',
+          stackName: 'override-stack',
+          isDryRun: true,
+        );
+        expect(exitCode, equals(0));
+
+        await expectLater(
+          Deployment.runOrThrow(
+            () {
+              throw StateError('probe failure');
+            },
+            projectName: 'override-project',
+            stackName: 'override-stack',
+            isDryRun: true,
+          ),
+          throwsA(isA<StateError>()),
+        );
+
         expect(
-          payload['message'].toString(),
-          contains('Invalid gRPC endpoint: :65535'),
+          await DeploymentImpl.run(
+            () {},
+            projectName: 'override-project',
+            stackName: 'override-stack',
+            isDryRun: true,
+          ),
+          equals(0),
         );
       },
     );

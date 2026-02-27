@@ -139,6 +139,8 @@ abstract class Deployment {
 class DeploymentImpl extends Deployment
     with ConfigMixin, InvokeMixin, CallMixin {
   static Deployment? _instance;
+  static Map<String, String> Function() _environmentProvider = () =>
+      Platform.environment;
   late final EngineLogger _logger;
   final String _organizationName;
   final String _projectName;
@@ -219,6 +221,18 @@ class DeploymentImpl extends Deployment
     _instance = testInstance;
   }
 
+  @visibleForTesting
+  static void setEnvironmentProviderForTesting(
+    Map<String, String> Function() provider,
+  ) {
+    _environmentProvider = provider;
+  }
+
+  @visibleForTesting
+  static void resetEnvironmentProviderForTesting() {
+    _environmentProvider = () => Platform.environment;
+  }
+
   @override
   String get organizationName => _organizationName;
 
@@ -257,12 +271,13 @@ class DeploymentImpl extends Deployment
     monitorpkg.Monitor? monitor,
     Engine? engine,
   }) async {
-    final monitorAddr = Platform.environment['PULUMI_MONITOR'];
-    final engineAddr = Platform.environment['PULUMI_ENGINE'];
-    projectName ??= Platform.environment['PULUMI_PROJECT'];
-    organizationName ??= Platform.environment['PULUMI_ORGANIZATION'];
-    stackName ??= Platform.environment['PULUMI_STACK'];
-    final dryRun = Platform.environment['PULUMI_DRY_RUN'];
+    final environment = _environmentProvider();
+    final monitorAddr = environment['PULUMI_MONITOR'];
+    final engineAddr = environment['PULUMI_ENGINE'];
+    projectName ??= environment['PULUMI_PROJECT'];
+    organizationName ??= environment['PULUMI_ORGANIZATION'];
+    stackName ??= environment['PULUMI_STACK'];
+    final dryRun = environment['PULUMI_DRY_RUN'];
 
     if (monitorAddr == null ||
         engineAddr == null ||
