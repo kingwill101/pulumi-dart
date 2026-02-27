@@ -64,6 +64,22 @@ void main() {
       );
     });
 
+    test('Serialize Asset with debug output preserves payload shape', () async {
+      final debugSerializer = Serializer(excessiveDebugOutput: true);
+      final result = await debugSerializer.serializeAsync(
+        'debug.asset',
+        FileAsset('path/to/file.txt'),
+        false,
+      );
+      expect(
+        result,
+        equals({
+          Constants.specialSigKey: Constants.specialAssetSig,
+          Constants.assetOrArchivePathName: 'path/to/file.txt',
+        }),
+      );
+    });
+
     test('Serialize Archive', () async {
       var archive = FileArchive('path/to/archive.zip');
       var result = await serializer.serializeAsync('test', archive, false);
@@ -324,6 +340,49 @@ void main() {
             Constants.resourceUrnName:
                 'urn:pulumi:stack::project::test:index:Component::component',
           }),
+        );
+      },
+    );
+
+    test(
+      'Serialize CustomResource and ComponentResource with debug output preserves values',
+      () async {
+        final debugSerializer = Serializer(excessiveDebugOutput: true);
+
+        final custom = MockCustomResource();
+        when(custom.getResourceType()).thenReturn('aws:s3/bucket:Bucket');
+        when(custom.getResourceName()).thenReturn('my-bucket');
+        when(custom.urn).thenReturn(
+          Output.create(
+            'urn:pulumi:stack::project::aws:s3/bucket:Bucket::my-bucket',
+          ),
+        );
+        when(custom.id).thenReturn(Output.create('bucket-id'));
+
+        final customSerialized = await debugSerializer.serializeAsync(
+          'debug.custom',
+          custom,
+          false,
+        );
+        expect(customSerialized, equals('bucket-id'));
+
+        final component = MockComponentResource();
+        when(component.getResourceType()).thenReturn('test:index:Component');
+        when(component.getResourceName()).thenReturn('component');
+        when(component.urn).thenReturn(
+          Output.create(
+            'urn:pulumi:stack::project::test:index:Component::component',
+          ),
+        );
+
+        final componentSerialized = await debugSerializer.serializeAsync(
+          'debug.component',
+          component,
+          false,
+        );
+        expect(
+          componentSerialized,
+          equals('urn:pulumi:stack::project::test:index:Component::component'),
         );
       },
     );
