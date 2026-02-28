@@ -799,6 +799,86 @@ providers:
 	assert.Contains(t, pubspec, "pulumi_policy: ^0.3.0")
 }
 
+func TestGeneratePackageReadsPubspecStyleDependencySpecsFromRegistry(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	workspaceDir := t.TempDir()
+	targetDir := filepath.Join(workspaceDir, "sdks", "sample")
+	require.NoError(t, os.MkdirAll(filepath.Join(workspaceDir, "packages"), 0o700))
+	registry := strings.TrimSpace(`
+providers:
+  sample:
+    dependencies:
+      pulumi_local_path:
+        path: ../local/pulumi-local-path
+      pulumi_local_git:
+        git:
+          url: https://github.com/example/pulumi-local-git.git
+          ref: main
+`) + "\n"
+	require.NoError(
+		t,
+		os.WriteFile(filepath.Join(workspaceDir, "packages", "sdk_dependency_registry.yaml"), []byte(registry), 0o600),
+	)
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi_local_path:")
+	assert.Contains(t, pubspec, "path: ../local/pulumi-local-path")
+	assert.Contains(t, pubspec, "pulumi_local_git:")
+	assert.Contains(t, pubspec, "git:")
+	assert.Contains(t, pubspec, "url: https://github.com/example/pulumi-local-git.git")
+	assert.Contains(t, pubspec, "ref: main")
+}
+
+func TestGeneratePackageRegistryMatchesProviderNameCanonicalization(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	workspaceDir := t.TempDir()
+	targetDir := filepath.Join(workspaceDir, "sdks", "sample-provider")
+	require.NoError(t, os.MkdirAll(filepath.Join(workspaceDir, "packages"), 0o700))
+	registry := strings.TrimSpace(`
+providers:
+  sample_provider:
+    dependencies:
+      pulumi_policy: ^1.2.3
+`) + "\n"
+	require.NoError(
+		t,
+		os.WriteFile(filepath.Join(workspaceDir, "packages", "sdk_dependency_registry.yaml"), []byte(registry), 0o600),
+	)
+
+	schema := `{
+		"name": "sample-provider",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi_policy: ^1.2.3")
+}
+
 func TestGeneratePackageUpdatesExistingPubspecWhenEnabled(t *testing.T) {
 	t.Setenv("PULUMI_DART_UPDATE_EXISTING_PUBSPEC", "true")
 

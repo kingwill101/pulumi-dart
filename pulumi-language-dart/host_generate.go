@@ -555,11 +555,141 @@ func localRegistryDartDependencies(providerName, outputDir string) map[string]in
 	if providerName == "" {
 		return nil
 	}
-	providerEntry, ok := registry.Providers[providerName]
-	if !ok || len(providerEntry.Dependencies) == 0 {
+
+	lookupName := canonicalProviderName(providerName)
+	var providerEntry struct {
+		Dependencies map[string]interface{} `yaml:"dependencies"`
+	}
+	found := false
+	for rawName, entry := range registry.Providers {
+		if canonicalProviderName(rawName) != lookupName {
+			continue
+		}
+		providerEntry = entry
+		found = true
+		break
+	}
+	if !found || len(providerEntry.Dependencies) == 0 {
 		return nil
 	}
-	return providerEntry.Dependencies
+
+	normalized := map[string]interface{}{}
+	for dependencyName, spec := range providerEntry.Dependencies {
+		name := strings.TrimSpace(dependencyName)
+		if name == "" {
+			continue
+		}
+		normalizedSpec, ok := normalizeRegistryDependencySpec(spec)
+		if !ok {
+			continue
+		}
+		normalized[name] = normalizedSpec
+	}
+	if len(normalized) == 0 {
+		return nil
+	}
+
+	return normalized
+}
+
+func normalizeRegistryDependencySpec(spec interface{}) (interface{}, bool) {
+	switch value := spec.(type) {
+	case nil:
+		return nil, false
+	case string:
+		trimmed := strings.TrimSpace(value)
+		if trimmed == "" {
+			return nil, false
+		}
+		return trimmed, true
+	case map[string]interface{}:
+		normalized, ok := normalizeRegistryDependencyMap(value)
+		if !ok {
+			return nil, false
+		}
+		return normalized, true
+	case map[interface{}]interface{}:
+		normalizedAny, ok := normalizeRegistryDependencyValue(value)
+		if !ok {
+			return nil, false
+		}
+		normalizedMap, ok := normalizedAny.(map[string]interface{})
+		if !ok {
+			return nil, false
+		}
+		return normalizedMap, true
+	default:
+		return nil, false
+	}
+}
+
+func normalizeRegistryDependencyMap(value map[string]interface{}) (map[string]interface{}, bool) {
+	normalized := map[string]interface{}{}
+	for rawKey, rawValue := range value {
+		key := strings.TrimSpace(rawKey)
+		if key == "" {
+			continue
+		}
+		normalizedValue, ok := normalizeRegistryDependencyValue(rawValue)
+		if !ok {
+			continue
+		}
+		normalized[key] = normalizedValue
+	}
+	if len(normalized) == 0 {
+		return nil, false
+	}
+	return normalized, true
+}
+
+func normalizeRegistryDependencyValue(value interface{}) (interface{}, bool) {
+	switch typed := value.(type) {
+	case nil:
+		return nil, false
+	case string:
+		trimmed := strings.TrimSpace(typed)
+		if trimmed == "" {
+			return nil, false
+		}
+		return trimmed, true
+	case bool, int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, float32, float64:
+		return typed, true
+	case []interface{}:
+		items := make([]interface{}, 0, len(typed))
+		for _, item := range typed {
+			normalizedItem, ok := normalizeRegistryDependencyValue(item)
+			if !ok {
+				continue
+			}
+			items = append(items, normalizedItem)
+		}
+		return items, true
+	case map[string]interface{}:
+		return normalizeRegistryDependencyMap(typed)
+	case map[interface{}]interface{}:
+		normalized := map[string]interface{}{}
+		for rawKey, rawValue := range typed {
+			key, ok := rawKey.(string)
+			if !ok {
+				continue
+			}
+			trimmedKey := strings.TrimSpace(key)
+			if trimmedKey == "" {
+				continue
+			}
+			normalizedValue, ok := normalizeRegistryDependencyValue(rawValue)
+			if !ok {
+				continue
+			}
+			normalized[trimmedKey] = normalizedValue
+		}
+		if len(normalized) == 0 {
+			return nil, false
+		}
+		return normalized, true
+	default:
+		return nil, false
+	}
 }
 
 func resolveDependencyRegistryPath(outputDir string) string {
