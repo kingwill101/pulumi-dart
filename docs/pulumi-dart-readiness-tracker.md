@@ -1,6 +1,6 @@
 # Pulumi Dart Readiness Tracker
 
-Last updated: 2026-02-27
+Last updated: 2026-02-28
 
 ## Executive Status
 
@@ -68,11 +68,12 @@ Current validation snapshot (2026-02-27):
 - `task smoke:preview PACKAGE=random|aws|gcp`: **PASS**.
 - `task verify:terraform` (opt-in): **PASS** (`terraform@6.0.1`, analyze 0 issues, smoke preview pass).
 - Known warning class during generation for some schemas (`gcp`, `aws`, `random`): upstream schema emits deprecated provider-reference warnings (`/resources/pulumi:providers:<pkg>` vs `#/provider`); generation succeeds and this does not currently block SDK output.
-- `go test ./... -run TestParameterizedDart -count=1 -v` (from `integration_tests`): **PASS** after aligning tests with generated package naming/layout (`lib/<pkg>.dart`, `lib/src/<pkg>/sdk.dart`) and dynamic import rewrite in fixture sources.
+- `go test ./... -run TestParameterizedDart -count=1 -v` (from `integration_tests`): **PASS** after aligning tests with generated package naming/layout (`lib/<pkg>.dart`, module entry files under `lib/<module>.dart` + `lib/src/<module>.dart`) and dynamic import rewrite in fixture sources.
 
 Current behavior in Dart language host:
 
-- `GeneratePackage` emits a public root library (`lib/<pkg>.dart`) and an implementation SDK (`lib/src/<pkg>/sdk.dart`).
+- `GeneratePackage` emits a public root library (`lib/<pkg>.dart`) plus module entry files (`lib/<module>.dart`) and implementation module exports (`lib/src/<module>.dart` + per-symbol files under `lib/src/<module>/`).
+- root package access now uses module namespaces (for example `pkg.index.RandomPet(...)`) to reduce symbol collisions while still exposing typed constructors/functions.
 - typed generation now covers resources/functions, named object/enum types, config getters, and typed args/results.
 - nested collection mappings for named refs are generated for `List<T>` / `Map<String, T>` in args/results/config.
 - schema binding path uses Pulumi `schema.BindSpec` when `loader_target` is provided, with permissive raw-schema fallback when loader resolution is unavailable.
@@ -83,13 +84,13 @@ Evidence:
 
 - `pulumi-language-dart/main.go`:
   - `packageSchema` includes resources/functions/config/enums/object classes and typed property metadata
-  - `GeneratePackage` writes root export + SDK implementation layout
+  - `GeneratePackage` writes root namespace + module export layout
   - generation emits typed `CustomResource` / `ComponentResource`, invoke wrappers, enums/object classes/config class, and collection encode/decode helpers
 - `pulumi-language-dart/generate_pack_test.go`:
-  - golden snapshot tests for generated public + SDK files
+  - golden snapshot tests for generated public + module files
   - collection ref mapping coverage (`List`/`Map` of enum/object refs)
   - regression coverage for resource output-property name collisions with constructor parameters
-- integration consumers now assert the root-export + `lib/src/<pkg>/sdk.dart` layout:
+- integration consumers now assert the root namespace + module export layout:
   - `integration_tests/parameterized_dart_test.go`
   - `integration_tests/integration_dart_test.go` (`TestPackageAddNamespaceDart`)
 - `pulumi_generator` now has concrete docs/examples/tests for its builder:
@@ -217,7 +218,18 @@ Current issues:
 - config-missing parity fixture/test is now ported (`config_missing`) and validates required-config failure behavior.
 - parameterized SDK coverage now validates generated package structure, expected resource-class emissions, generated invoke symbol export, and live runtime semantics for generated resource/invoke wrappers (`pkg.Echo`, `pkg.doEcho`) in the parameterized fixture using pure parameterized plugin resolution (without local `pkg` provider mapping).
 - namespace package-add flow now validates generated SDK structure and typed behavior for enum/object/config/args/result symbols in a non-testprovider schema, but does not yet validate live invoke/runtime semantics for generated functions.
-- broader upstream parity classes (for example policy pack publish/lifecycle cloud flows and additional automation API variants) still need Dart ports.
+- upstream integration name parity audit now reports `0` missing after adding the `DuplicateOutput` Dart fixture/test and aligning test-name ports (`CallFailures`, `EnumOutputs`, `ConvertTerraformProvider`).
+- Dart now has first-class `automation` and `dynamic` SDK modules:
+  - `package:pulumi/automation.dart` with `LocalWorkspace` + `Stack` CLI orchestration APIs and dedicated unit coverage.
+  - `package:pulumi/dynamic.dart` with upstream-shaped provider/result models and `dynamic.Resource` `__provider` payload injection semantics with dedicated unit coverage.
+- dynamic integration coverage is now live (not skip-only) for:
+  - `TestDynamicProviderDart` (non-secret provider payload stays plain string)
+  - `TestDynamicProviderSecretsDart` (`__provider` input/output secret-envelope semantics + expected output value)
+- stack output collection now auto-registers `Stack.getOutputProperties()` during deployment finalization (while preserving manual `registerOutputs(...)` usage).
+- runtime store/project resolution now honors `PULUMI_PROJECT`/`PULUMI_STACK` fallback (in addition to `PULUMI_NODEJS_*`) to keep config bag resolution aligned with language-host env injection.
+- remaining hard gaps are now represented as explicit skipped Dart tests (instead of ignore-file-only drift) for:
+  - `FailsOnImplicitDependencyCycles`
+    - current note: direct Dart port attempts currently succeed unexpectedly in local validation; we need upstream-aligned fixture semantics or engine-level repro before unskipping.
 - plugin debugger attach flow is now validated via StartDebugging event + advertised DAP config to avoid known connection-refused race in parallel attach timing.
 - SDK test-surface parity audit is now scripted via `task parity:audit:sdk`:
   - upstream NodeJS/Python SDK topics considered: `120`
@@ -251,8 +263,15 @@ Evidence:
 - `integration_tests/integration_dart_test.go`
 - `integration_tests/package_add/namespace/*`
 - `integration_tests/debugger_dart_test.go`
+- `integration_tests/dynamic/dart/*`
+- `integration_tests/dynamic/dart-secrets/*`
+- `integration_tests/dynamic/pulumi-dart-provider-go/main.go`
 - `integration_tests/upstream_dart_ports_test.go`
 - `integration_tests/upstream_policy_plugin_automation_dart_test.go`
+- `pulumi-dart/lib/src/deployment/stack.dart`
+- `pulumi-dart/lib/src/deployment/deployment.dart`
+- `pulumi-dart/lib/src/store/store.dart`
+- `pulumi-dart/test/core/runtime/runtime_environment_settings_test.dart`
 - `integration_tests/config_missing/*`
 - `integration_tests/policy_dart/*`
 - `integration_tests/plugin_install/*`

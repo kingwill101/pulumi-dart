@@ -30,6 +30,21 @@ curl -fsSL https://raw.githubusercontent.com/pulumi/pulumi-dart/main/scripts/ins
 
 By default, the script installs to `~/.local/bin`.
 
+### Optional: install via Dart CLI wrapper
+
+If you already added the `pulumi` Dart package globally, you can invoke the installer through:
+
+```bash
+dart pub global activate pulumi
+pulumi-dart install-language-host
+```
+
+With explicit version:
+
+```bash
+pulumi-dart install-language-host --version v0.1.0
+```
+
 ## Option B: build from source
 
 ```bash

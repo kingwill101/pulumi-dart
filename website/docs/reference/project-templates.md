@@ -4,9 +4,26 @@ sidebar_position: 1
 
 # Project Templates
 
-Use these templates to bootstrap Pulumi Dart projects quickly.
+Use the maintained templates in this repo to bootstrap Pulumi Dart projects quickly.
 
-## Template A: minimal stack project
+## Official community templates
+
+- `templates/dart-minimal`
+- `templates/dart-random`
+
+Local:
+
+```bash
+pulumi new ./templates/dart-minimal -y --name my-dart-stack --stack dev --secrets-provider passphrase
+```
+
+Remote:
+
+```bash
+pulumi new https://github.com/pulumi/pulumi-dart/tree/main/templates/dart-minimal -y --name my-dart-stack --stack dev --secrets-provider passphrase
+```
+
+## Minimal stack file structure
 
 `Pulumi.yaml`:
 
@@ -45,6 +62,22 @@ Future<void> main() async {
   await Deployment.runOrThrow(() => AppStack());
 }
 ```
+
+During `pulumi new`, `pulumi-language-dart` rewrites unresolved `pulumi` constraints
+to a known source dependency so clean-environment installs succeed before pub.dev publish.
+You can customize source selection with environment variables:
+
+- `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
+- `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL`
+- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH`
+- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF`
+- `PULUMI_DART_TEMPLATE_REWRITE_PULUMI=false` to disable rewrite
+
+For stricter generation checks (typically in CI):
+
+- `PULUMI_DART_VALIDATE_DEPENDENCY_PATHS=true`
+- `PULUMI_DART_VALIDATE_PUBDEV=true`
 
 ## Template B: local-dev project using path override
 

@@ -1,158 +1,150 @@
 # Pulumi Dart
 
-This repository contains the Pulumi Dart language host, core SDK, generator, and integration tests.
+Community Pulumi support for Dart.
 
-## Local Provider SDK Testing (No Publish Required)
+## Table Of Contents
 
-You do not need to publish `pulumi` or generated provider packages to pub.dev to test locally.
-Use local `path` dependencies plus a `dependency_overrides` entry for `pulumi`.
+- [Quickstart](#quickstart)
+- [Templates](#templates)
+- [Generate Provider SDKs](#generate-provider-sdks)
+- [Contributing](#contributing)
 
-### Generate a provider SDK
+## Quickstart
+
+### 1) Install Pulumi CLI
+
+```bash
+curl -fsSL https://get.pulumi.com | sh
+pulumi version
+```
+
+### 2) Install `pulumi-language-dart`
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/pulumi/pulumi-dart/main/scripts/install-pulumi-language-dart.sh | bash
+which pulumi-language-dart
+pulumi-language-dart -help
+```
+
+### 3) Create a Pulumi Dart project
+
+Recommended: use the maintained template:
+
+```bash
+pulumi new https://github.com/pulumi/pulumi-dart/tree/main/templates/dart-minimal -y --name pulumi-dart-quickstart --stack dev --secrets-provider passphrase
+```
+
+or locally from a clone:
+
+```bash
+pulumi new ./templates/dart-minimal -y --name pulumi-dart-quickstart --stack dev --secrets-provider passphrase
+```
+
+Manual setup (for customization) is still supported:
+
+```bash
+mkdir pulumi-dart-quickstart
+cd pulumi-dart-quickstart
+mkdir -p bin
+```
+
+Create `Pulumi.yaml`:
+
+```yaml
+name: pulumi-dart-quickstart
+runtime: dart
+description: First Pulumi Dart stack
+```
+
+Create `pubspec.yaml`:
+
+```yaml
+name: pulumi_dart_quickstart
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi:
+    git:
+      url: https://github.com/pulumi/pulumi-dart.git
+      path: pulumi-dart
+  pulumi_random:
+    git:
+      url: https://github.com/pulumi/pulumi-dart.git
+      path: packages/random
+```
+
+Create `bin/pulumi_dart_quickstart.dart`:
+
+```dart
+import 'package:pulumi/pulumi.dart';
+import 'package:pulumi_random/index.dart' as random;
+
+class QuickstartStack extends Stack {
+  QuickstartStack() {
+    final pet = random.RandomPet(
+      'pet',
+      args: random.RandomPetArgs(prefix: 'dart'),
+    );
+
+    registerOutputs({'petName': pet.id});
+  }
+}
+
+Future<void> main() async {
+  await Deployment.runOrThrow(() => QuickstartStack());
+}
+```
+
+Install dependencies:
+
+```bash
+dart pub get
+```
+
+### 4) Preview and deploy
+
+```bash
+pulumi stack init dev
+pulumi preview
+pulumi up
+```
+
+Destroy when done:
+
+```bash
+pulumi destroy
+```
+
+## Templates
+
+User-facing templates live under [`templates/`](templates/README.md).
+
+By default, `pulumi-language-dart` rewrites unresolved `pulumi` dependency constraints
+during `pulumi new` to a known source dependency so clean-environment installs work.
+You can override source selection with:
+
+- `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
+- `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
+- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL`
+- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH`
+- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF`
+- `PULUMI_DART_TEMPLATE_REWRITE_PULUMI=false` to disable rewrite
+
+## Generate Provider SDKs
+
+In this repo, generated providers live under `packages/<provider>`.
 
 ```bash
 task setup
 task generate:provider PACKAGE=gcp
-
-# Optional generation controls:
-# - keep manually curated examples across regenerations (default true)
-# - run dart format on generated package output (default true)
-task generate:provider PACKAGE=gcp PRESERVE_EXAMPLES=true FORMAT_GENERATED=true
-
-# Fail generation if formatter finds parse errors (default is warning-only)
-task generate:provider PACKAGE=gcp STRICT_FORMAT=true
 ```
 
-Generated SDKs are placed under `packages/<provider>`.
+Full details: [`packages/README.md`](packages/README.md)
 
-Generated providers also include namespaced root module entrypoints under
-`lib/<module>.dart` (for example `package:pulumi_aws/ec2.dart`), so
-consumer code can import modules with explicit aliases.
+## Contributing
 
-### Quick smoke test project
-
-```bash
-task smoke:init PACKAGE=gcp
-task smoke:preview PACKAGE=gcp
-
-# Optional Terraform end-to-end verification (opt-in because it is heavier):
-task verify:terraform
-
-# Full generator verification matrix (generate + analyze + smoke):
-task verify:matrix
-```
-
-Run any custom command with the same local smoke env setup:
-
-```bash
-task smoke:exec PACKAGE=gcp CMD='pulumi about'
-task smoke:stack PACKAGE=gcp
-task smoke:up PACKAGE=gcp
-
-# Optional: override the default local passphrase for this run.
-task smoke:preview PACKAGE=gcp DEFAULT_PULUMI_CONFIG_PASSPHRASE=my-passphrase
-```
-
-`smoke:*` tasks now derive a deterministic stack name from the active passphrase
-(`dev-<sha1_8>` by default), which avoids passphrase-mismatch failures
-when old local smoke stacks were encrypted with a different passphrase.
-
-This creates a project at `.gen/smoke/<provider>` wired to:
-
-- `pulumi_<provider>` from `packages/<provider>` via `path:`
-- `pulumi` from local `pulumi-dart/` via `dependency_overrides`
-
-### Wire an existing Pulumi Dart project to local SDKs
-
-```bash
-task project:use-local-provider \
-  PROJECT_DIR=/abs/path/to/your/pulumi-project \
-  PACKAGE=gcp
-```
-
-Then run preview from that project:
-
-```bash
-pulumi stack select dev --create --non-interactive
-pulumi preview --non-interactive
-```
-
-If you still run preview manually in a local smoke project, include:
-
-```bash
-cd .gen/smoke/gcp
-export PATH="/abs/path/to/pulumi-dart/pulumi-language-dart:$PATH"
-export PULUMI_CONFIG_PASSPHRASE="pulumi-dart-smoke"
-STACK_HASH="$(printf '%s' "${PULUMI_CONFIG_PASSPHRASE}" | sha1sum | awk '{print substr($1,1,8)}')"
-pulumi stack select "dev-${STACK_HASH}" --create --non-interactive >/dev/null
-pulumi preview --non-interactive
-```
-
-## More Details
-
-For full generator and package workflow details, see [`packages/README.md`](packages/README.md).
-
-## Schema Drift Monitoring
-
-Provider schema drift is tracked via:
-
-- manifest: `packages/schema_sources.json`
-- checker: `scripts/check-schema-drift.sh`
-- CI workflow: `.github/workflows/dart-schema-drift.yml`
-
-Run locally:
-
-```bash
-./scripts/check-schema-drift.sh --pretty
-./scripts/check-schema-drift.sh --provider aws --pretty
-./scripts/check-schema-drift.sh --fail-on-drift
-```
-
-## Documentation Site
-
-A dedicated Docusaurus docs site lives at [`website/`](website/README.md).
-
-Run locally:
-
-```bash
-cd website
-npm install
-npm start
-```
-
-## SDK Mutation Testing
-
-`pulumi-dart/` is configured for mutation testing with `mutation_test`.
-
-```bash
-task test:coverage
-task test:mutation:dry
-task test:mutation:dry:coverage
-task test:mutation
-task test:mutation:coverage
-```
-
-The mutation config is at `pulumi-dart/mutation-test.xml` and focuses on the
-runtime surface (`lib/src/deployment`, `lib/src/resource`, serialization,
-monitor/callback paths).
-
-Coverage ratchet baseline:
-
-- current baseline: `29.27%` line coverage
-- enforcement command: `task test:coverage:ratchet`
-- canonical artifact path (local + CI upload target): `pulumi-dart/coverage/lcov.info`
-
-Parity backlog inventory and resolved marker classification:
-
-- [`docs/pulumi-dart-parity-backlog.md`](docs/pulumi-dart-parity-backlog.md)
-
-## Integration Parity Audit
-
-Run a recurring audit against upstream Go/Node/Python integration test names:
-
-```bash
-task parity:audit
-```
-
-Audit ignore list (intentional temporary gaps):
-
-- `docs/parity-audit-ignore.txt`
+Contributor workflows and helper file references are in [`CONTRIBUTING.md`](CONTRIBUTING.md).

@@ -1,49 +1,83 @@
-# Contributing
+# Contributing To Pulumi Dart
 
-This repo is made up of three main components: the host runtime (`pulumi-language-dart`), the Dart SDK (`pulumi-dart`), and integration tests (`integration_tests`).
+This guide is for contributors working on the language host, core SDK, and provider generation workflow.
 
 ## Prerequisites
 
-- Dart SDK
 - Go
+- Dart SDK
 - Pulumi CLI
-- Initialize git submodules:
+- `jq`
+- `curl`
+- `task` (Taskfile runner)
 
-```shell
+Initialize submodules:
+
+```bash
 git submodule update --init --recursive
 ```
 
-The `pulumi` submodule is used as the upstream reference for shared integration assets/providers (same pattern used by `pulumi-dotnet`).
-If you need to pin it to the expected release tag:
+## Helper Files
 
-```shell
-make pin-pulumi-submodule PULUMI_VERSION=v3.223.0
+Use these as the source of truth for contributor workflows:
+
+- `Taskfile.yml`: primary command entrypoint for setup, generation, smoke tests, and checks
+- `packages/README.md`: generated provider package workflow and conventions
+- `packages/schema_sources.json`: provider schema sources and local mapping
+- `packages/sdk_dependency_registry.yaml`: cross-provider dependency mapping for generated pubspecs
+- `scripts/check-schema-drift.sh`: upstream schema drift detection
+- `scripts/install-pulumi-language-dart.sh`: install script for language host releases
+- `website/README.md`: docs site development commands
+
+## Common Workflows
+
+### Core SDK and Host Validation
+
+```bash
+cd pulumi-language-dart
+go test -count=1 ./...
+
+cd ../pulumi-dart
+dart pub get
+dart analyze
+dart test
 ```
 
-## Changelog
+### Generate A Provider SDK
 
-Changelog management is done via [`changie`](https://changie.dev/).
-See the [installation](https://changie.dev/guide/installation/) guide for `changie`.
-
-Run `changie new` in the top level directory. Here is an example of what that looks like:
-
-```shell
-$ changie new
-✔ Component … sdk
-✔ Kind … Improvements
-✔ Body … Cool new SDK feature.
-✔ GitHub Pull Request … 123
+```bash
+task setup
+task generate:provider PACKAGE=gcp
 ```
 
-## Release
+Generated output goes to `packages/<provider>`.
 
-To release a new version use `changie` to update the changelog file, open a PR for that change. Once that PR merges it will trigger a release workflow.
+### Smoke Test A Generated Provider
 
-```shell
-$ changie batch auto
-$ changie merge
-$ git add .
-$ git commit -m "Changelog for $(changie latest)"
+```bash
+task smoke:init PACKAGE=gcp
+task smoke:preview PACKAGE=gcp
 ```
 
-After the release, also bump the version in `pulumi/pulumi`.  It needs to be bumped both in `scripts/get-language-providers.sh` and `pkg/codegen/testing/test/helpers.go`.  Especially if the latter is not bumped, codegen tests will start failing once providers start requiring the new pulumi-dotnet version. See https://github.com/pulumi/pulumi/pull/16919/files for example.
+### Check Schema Drift
+
+```bash
+./scripts/check-schema-drift.sh --pretty
+./scripts/check-schema-drift.sh --provider aws --pretty
+./scripts/check-schema-drift.sh --fail-on-drift
+```
+
+## Pull Request Checklist
+
+- Keep commits atomic and scoped.
+- Run tests/checks for the subsystem you changed.
+- If generator output changes, regenerate affected provider packages.
+- Update docs when behavior or contributor workflow changes.
+
+## CI And Release Workflows
+
+- `.github/workflows/dart-ci.yml`
+- `.github/workflows/dart-schema-drift.yml`
+- `.github/workflows/dart-release-language-host.yml`
+
+Language host release artifacts are produced from version tags (`vX.Y.Z`).
