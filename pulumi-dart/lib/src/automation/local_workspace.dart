@@ -128,6 +128,8 @@ class LocalWorkspaceOptions {
     this.workDir,
     this.environmentVariables = const <String, String>{},
     this.pulumiBinary = 'pulumi',
+    this.pulumiHome,
+    this.secretsProvider,
     this.runInShell = true,
     this.skipVersionCheck = false,
     this.remote = false,
@@ -147,6 +149,12 @@ class LocalWorkspaceOptions {
 
   /// Pulumi executable path/name.
   final String pulumiBinary;
+
+  /// Optional `$PULUMI_HOME` override.
+  final String? pulumiHome;
+
+  /// Optional stack secrets provider used on stack init.
+  final String? secretsProvider;
 
   /// Whether to run commands in a shell.
   final bool runInShell;
@@ -173,6 +181,8 @@ class LocalWorkspaceOptions {
     String? workDir,
     Map<String, String>? environmentVariables,
     String? pulumiBinary,
+    String? pulumiHome,
+    String? secretsProvider,
     bool? runInShell,
     bool? skipVersionCheck,
     bool? remote,
@@ -185,6 +195,8 @@ class LocalWorkspaceOptions {
       workDir: workDir ?? this.workDir,
       environmentVariables: environmentVariables ?? this.environmentVariables,
       pulumiBinary: pulumiBinary ?? this.pulumiBinary,
+      pulumiHome: pulumiHome ?? this.pulumiHome,
+      secretsProvider: secretsProvider ?? this.secretsProvider,
       runInShell: runInShell ?? this.runInShell,
       skipVersionCheck: skipVersionCheck ?? this.skipVersionCheck,
       remote: remote ?? this.remote,
@@ -202,6 +214,8 @@ class LocalWorkspace {
     required this.workDir,
     required this.environmentVariables,
     required this.pulumiBinary,
+    required this.pulumiHome,
+    required this.secretsProvider,
     required this.runInShell,
     required this.skipVersionCheck,
     required this.remote,
@@ -227,6 +241,8 @@ class LocalWorkspace {
         options.environmentVariables,
       ),
       pulumiBinary: options.pulumiBinary,
+      pulumiHome: options.pulumiHome,
+      secretsProvider: options.secretsProvider,
       runInShell: options.runInShell,
       skipVersionCheck: options.skipVersionCheck,
       remote: options.remote,
@@ -295,6 +311,12 @@ class LocalWorkspace {
   /// Pulumi executable path/name.
   final String pulumiBinary;
 
+  /// Optional `$PULUMI_HOME` override.
+  final String? pulumiHome;
+
+  /// Optional stack secrets provider used on stack init.
+  final String? secretsProvider;
+
   /// Whether commands run in a shell.
   final bool runInShell;
 
@@ -331,6 +353,8 @@ class LocalWorkspace {
       environment: <String, String>{
         ...Platform.environment,
         ...environmentVariables,
+        if (pulumiHome != null && pulumiHome!.trim().isNotEmpty)
+          'PULUMI_HOME': pulumiHome!,
         if (remote) 'PULUMI_EXPERIMENTAL': 'true',
         if (extraEnvironment != null) ...extraEnvironment,
       },
@@ -373,7 +397,11 @@ class LocalWorkspace {
 
   /// Creates a stack in this workspace.
   Future<void> createStackInWorkspace(String stackName) async {
-    await runPulumiCommand(['stack', 'init', stackName]);
+    final args = <String>['stack', 'init', stackName];
+    if (secretsProvider != null && secretsProvider!.trim().isNotEmpty) {
+      args.addAll(<String>['--secrets-provider', secretsProvider!]);
+    }
+    await runPulumiCommand(args);
   }
 
   /// Selects an existing stack in this workspace.
@@ -417,6 +445,7 @@ class LocalWorkspace {
     String stackName, {
     bool yes = true,
     bool force = false,
+    bool preserveConfig = false,
   }) async {
     final args = <String>['stack', 'rm', stackName];
     if (yes) {
@@ -424,6 +453,9 @@ class LocalWorkspace {
     }
     if (force) {
       args.add('--force');
+    }
+    if (preserveConfig) {
+      args.add('--preserve-config');
     }
     await runPulumiCommand(args);
   }

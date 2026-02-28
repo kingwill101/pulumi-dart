@@ -64,6 +64,32 @@ void main() {
       },
     );
 
+    test('createStackInWorkspace passes configured secrets provider', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+          secretsProvider: 'passphrase',
+        ),
+      );
+
+      await workspace.createStackInWorkspace('dev');
+
+      expect(
+        runner.requests.single.arguments,
+        equals(<String>[
+          'stack',
+          'init',
+          'dev',
+          '--secrets-provider',
+          'passphrase',
+        ]),
+      );
+    });
+
     test(
       'createOrSelectStack only selects when stack already exists',
       () async {
@@ -528,6 +554,26 @@ void main() {
       );
     });
 
+    test('pulumiHome is forwarded as PULUMI_HOME', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+          pulumiHome: '/tmp/pulumi-home',
+        ),
+      );
+
+      await workspace.runPulumiCommand(<String>['whoami'], check: false);
+
+      expect(
+        runner.requests.single.environment['PULUMI_HOME'],
+        equals('/tmp/pulumi-home'),
+      );
+    });
+
     test('workspace env var APIs mutate scoped environment', () async {
       final runner = _FakeRunner(<PulumiCommandResult>[
         const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
@@ -635,6 +681,37 @@ void main() {
       expect(
         runner.requests[1].arguments,
         equals(<String>['stack', 'ls', '--json']),
+      );
+    });
+
+    test('removeStack supports force and preserveConfig flags', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+
+      await workspace.removeStack(
+        'dev',
+        yes: true,
+        force: true,
+        preserveConfig: true,
+      );
+
+      expect(
+        runner.requests.single.arguments,
+        equals(<String>[
+          'stack',
+          'rm',
+          'dev',
+          '--yes',
+          '--force',
+          '--preserve-config',
+        ]),
       );
     });
 
