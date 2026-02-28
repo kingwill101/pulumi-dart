@@ -1,3 +1,0 @@
-library module_apigateway_rest_api_endpoint_configuration;
-
-export 'rest_api_endpoint_configuration/rest_api_endpoint_configuration.dart';

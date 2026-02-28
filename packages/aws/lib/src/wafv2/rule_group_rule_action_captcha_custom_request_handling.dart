@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'rule_group_rule_action_captcha_custom_request_handling_insert_header.dart';
+
+class RuleGroupRuleActionCaptchaCustomRequestHandling {
+  /// The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
+  final List<RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader>
+      insertHeaders;
+
+  /// Creates a new [RuleGroupRuleActionCaptchaCustomRequestHandling].
+  /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
+  RuleGroupRuleActionCaptchaCustomRequestHandling({
+    required this.insertHeaders,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['insertHeaders'] = pulumi.Input.encodeList<
+        RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader,
+        Map<String, dynamic>>(insertHeaders, (value) => value.toMap());
+    return map;
+  }
+
+  factory RuleGroupRuleActionCaptchaCustomRequestHandling.fromMap(
+      Map<String, dynamic> map) {
+    return RuleGroupRuleActionCaptchaCustomRequestHandling(
+      insertHeaders: pulumi.Input.decodeList<
+              RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader>(
+          map['insertHeaders'],
+          (value) => RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader
+              .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

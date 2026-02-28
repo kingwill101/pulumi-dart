@@ -1,3 +1,3 @@
 library pulumi_aws_rum;
 
-export 'package:pulumi_aws/src/pulumi_aws/rum.dart';
+export 'package:pulumi_aws/src/rum.dart';

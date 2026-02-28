@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_confirmation_setting_failure_response;
-
-export 'v2models_intent_confirmation_setting_failure_response/v2models_intent_confirmation_setting_failure_response.dart';

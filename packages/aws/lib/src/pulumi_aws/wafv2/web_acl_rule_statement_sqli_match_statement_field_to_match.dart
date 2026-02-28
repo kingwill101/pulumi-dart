@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_rule_statement_sqli_match_statement_field_to_match;
-
-export 'web_acl_rule_statement_sqli_match_statement_field_to_match/web_acl_rule_statement_sqli_match_statement_field_to_match.dart';

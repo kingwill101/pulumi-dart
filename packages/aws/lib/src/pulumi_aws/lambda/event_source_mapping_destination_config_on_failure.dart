@@ -1,3 +1,0 @@
-library module_lambda_event_source_mapping_destination_config_on_failure;
-
-export 'event_source_mapping_destination_config_on_failure/event_source_mapping_destination_config_on_failure.dart';

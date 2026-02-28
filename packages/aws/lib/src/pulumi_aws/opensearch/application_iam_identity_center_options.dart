@@ -1,3 +1,0 @@
-library module_opensearch_application_iam_identity_center_options;
-
-export 'application_iam_identity_center_options/application_iam_identity_center_options.dart';

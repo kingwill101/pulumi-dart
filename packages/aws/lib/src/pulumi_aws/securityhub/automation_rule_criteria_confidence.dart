@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_confidence;
-
-export 'automation_rule_criteria_confidence/automation_rule_criteria_confidence.dart';

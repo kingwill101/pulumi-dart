@@ -1,3 +1,0 @@
-library module_ec2_network_insights_analysis_explanation_vpc_endpoint;
-
-export 'network_insights_analysis_explanation_vpc_endpoint/network_insights_analysis_explanation_vpc_endpoint.dart';

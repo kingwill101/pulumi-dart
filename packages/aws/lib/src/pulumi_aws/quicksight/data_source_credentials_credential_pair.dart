@@ -1,3 +1,0 @@
-library module_quicksight_data_source_credentials_credential_pair;
-
-export 'data_source_credentials_credential_pair/data_source_credentials_credential_pair.dart';

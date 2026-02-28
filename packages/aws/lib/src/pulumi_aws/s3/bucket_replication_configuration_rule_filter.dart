@@ -1,3 +1,0 @@
-library module_s3_bucket_replication_configuration_rule_filter;
-
-export 'bucket_replication_configuration_rule_filter/bucket_replication_configuration_rule_filter.dart';

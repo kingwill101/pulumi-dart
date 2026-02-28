@@ -1,3 +1,0 @@
-library module_gamelift_game_server_group_launch_template;
-
-export 'game_server_group_launch_template/game_server_group_launch_template.dart';

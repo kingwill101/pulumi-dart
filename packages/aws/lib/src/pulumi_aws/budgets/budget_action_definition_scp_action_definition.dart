@@ -1,3 +1,0 @@
-library module_budgets_budget_action_definition_scp_action_definition;
-
-export 'budget_action_definition_scp_action_definition/budget_action_definition_scp_action_definition.dart';

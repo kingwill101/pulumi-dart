@@ -1,4 +1,0 @@
-library module_ec2_vpc_block_public_access_exclusion;
-
-export 'vpc_block_public_access_exclusion/vpc_block_public_access_exclusion.dart';
-export 'vpc_block_public_access_exclusion/vpc_block_public_access_exclusion_args.dart';

@@ -1,5 +1,0 @@
-library module_ec2_get_local_gateway_route_table;
-
-export 'get_local_gateway_route_table/get_local_gateway_route_table.dart';
-export 'get_local_gateway_route_table/get_local_gateway_route_table_args.dart';
-export 'get_local_gateway_route_table/get_local_gateway_route_table_result.dart';

@@ -1,3 +1,0 @@
-library module_kendra_data_source_configuration_s3_configuration;
-
-export 'data_source_configuration_s3_configuration/data_source_configuration_s3_configuration.dart';

@@ -1,3 +1,0 @@
-library module_kendra_data_source_configuration_template_configuration;
-
-export 'data_source_configuration_template_configuration/data_source_configuration_template_configuration.dart';

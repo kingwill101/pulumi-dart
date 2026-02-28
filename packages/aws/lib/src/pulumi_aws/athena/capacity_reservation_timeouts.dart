@@ -1,3 +1,0 @@
-library module_athena_capacity_reservation_timeouts;
-
-export 'capacity_reservation_timeouts/capacity_reservation_timeouts.dart';

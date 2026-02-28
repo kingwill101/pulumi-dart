@@ -1,3 +1,0 @@
-library module_opensearch_outbound_connection_remote_domain_info;
-
-export 'outbound_connection_remote_domain_info/outbound_connection_remote_domain_info.dart';

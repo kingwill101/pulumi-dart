@@ -1,3 +1,0 @@
-library module_emr_managed_scaling_policy_compute_limit;
-
-export 'managed_scaling_policy_compute_limit/managed_scaling_policy_compute_limit.dart';

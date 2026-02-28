@@ -1,3 +1,0 @@
-library module_sagemaker_app_image_config_jupyter_lab_image_config_file_system_config;
-
-export 'app_image_config_jupyter_lab_image_config_file_system_config/app_image_config_jupyter_lab_image_config_file_system_config.dart';

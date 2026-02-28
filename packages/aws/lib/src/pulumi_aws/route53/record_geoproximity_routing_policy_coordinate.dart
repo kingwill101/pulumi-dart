@@ -1,3 +1,0 @@
-library module_route53_record_geoproximity_routing_policy_coordinate;
-
-export 'record_geoproximity_routing_policy_coordinate/record_geoproximity_routing_policy_coordinate.dart';

@@ -1,3 +1,0 @@
-library module_redshiftserverless_workgroup_price_performance_target;
-
-export 'workgroup_price_performance_target/workgroup_price_performance_target.dart';

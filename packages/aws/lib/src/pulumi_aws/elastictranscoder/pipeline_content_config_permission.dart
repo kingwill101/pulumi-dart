@@ -1,3 +1,0 @@
-library module_elastictranscoder_pipeline_content_config_permission;
-
-export 'pipeline_content_config_permission/pipeline_content_config_permission.dart';

@@ -1,3 +1,0 @@
-library module_lex_bot_clarification_prompt_message;
-
-export 'bot_clarification_prompt_message/bot_clarification_prompt_message.dart';

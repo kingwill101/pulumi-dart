@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_service_spec_provider_virtual_router;
-
-export 'get_virtual_service_spec_provider_virtual_router/get_virtual_service_spec_provider_virtual_router.dart';

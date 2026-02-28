@@ -1,3 +1,0 @@
-library module_glue_partition_storage_descriptor_skewed_info;
-
-export 'partition_storage_descriptor_skewed_info/partition_storage_descriptor_skewed_info.dart';

@@ -1,4 +1,0 @@
-library module_directconnect_hosted_transit_virtual_interface_acceptor;
-
-export 'hosted_transit_virtual_interface_acceptor/hosted_transit_virtual_interface_acceptor.dart';
-export 'hosted_transit_virtual_interface_acceptor/hosted_transit_virtual_interface_acceptor_args.dart';

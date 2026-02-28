@@ -1,3 +1,0 @@
-library module_amplify_app_auto_branch_creation_config;
-
-export 'app_auto_branch_creation_config/app_auto_branch_creation_config.dart';

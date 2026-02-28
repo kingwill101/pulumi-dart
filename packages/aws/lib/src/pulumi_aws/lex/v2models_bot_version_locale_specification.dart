@@ -1,3 +1,0 @@
-library module_lex_v2models_bot_version_locale_specification;
-
-export 'v2models_bot_version_locale_specification/v2models_bot_version_locale_specification.dart';

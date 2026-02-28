@@ -1,3 +1,0 @@
-library module_route53domains_registered_domain_admin_contact;
-
-export 'registered_domain_admin_contact/registered_domain_admin_contact.dart';

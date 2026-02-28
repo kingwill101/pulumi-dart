@@ -1,0 +1,73 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_redshift_endpoint_authorization_endpoint_authorization_args_doc}
+/// The set of arguments for EndpointAuthorization.
+/// {@endtemplate}
+/// {@macro pulumi_redshift_endpoint_authorization_endpoint_authorization_args_doc}
+class EndpointAuthorizationArgs {
+  /// The Amazon Web Services account ID to grant access to.
+  final pulumi.Input<String> account;
+
+  /// The cluster identifier of the cluster to grant access to.
+  final pulumi.Input<String> clusterIdentifier;
+
+  /// Indicates whether to force the revoke action. If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted. Default value is `false`.
+  final pulumi.Input<bool>? forceDelete;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
+  final pulumi.Input<List<String>>? vpcIds;
+
+  /// Creates a new [EndpointAuthorizationArgs].
+  /// [account] The Amazon Web Services account ID to grant access to.
+  /// [clusterIdentifier] The cluster identifier of the cluster to grant access to.
+  /// [forceDelete] Indicates whether to force the revoke action. If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted. Default value is `false`.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [vpcIds] The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
+  EndpointAuthorizationArgs({
+    required String account,
+    required String clusterIdentifier,
+    bool? forceDelete,
+    String? region,
+    List<String>? vpcIds,
+  })  : account = pulumi.Input.asInput<String>(account),
+        clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
+        forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        vpcIds = pulumi.Input.asOptionalInput<List<String>>(vpcIds);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['account'] = account;
+    map['clusterIdentifier'] = clusterIdentifier;
+    final forceDeleteValue = forceDelete;
+    if (forceDeleteValue != null) {
+      map['forceDelete'] = forceDeleteValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final vpcIdsValue = vpcIds;
+    if (vpcIdsValue != null) {
+      map['vpcIds'] = vpcIdsValue;
+    }
+    return map;
+  }
+
+  factory EndpointAuthorizationArgs.fromMap(Map<String, dynamic> map) {
+    return EndpointAuthorizationArgs(
+      account: map['account'] as String,
+      clusterIdentifier: map['clusterIdentifier'] as String,
+      forceDelete:
+          map['forceDelete'] == null ? null : map['forceDelete'] as bool,
+      region: map['region'] == null ? null : map['region'] as String,
+      vpcIds:
+          map['vpcIds'] == null ? null : (map['vpcIds'] as List).cast<String>(),
+    );
+  }
+}

@@ -1,3 +1,0 @@
-library module_oam_link_link_configuration_metric_configuration;
-
-export 'link_link_configuration_metric_configuration/link_link_configuration_metric_configuration.dart';

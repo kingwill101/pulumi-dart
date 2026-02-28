@@ -1,3 +1,0 @@
-library module_lex_v2models_slot_obfuscation_setting;
-
-export 'v2models_slot_obfuscation_setting/v2models_slot_obfuscation_setting.dart';

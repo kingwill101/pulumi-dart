@@ -1,3 +1,0 @@
-library module_s3_bucket_lifecycle_configuration_v2_rule;
-
-export 'bucket_lifecycle_configuration_v2_rule/bucket_lifecycle_configuration_v2_rule.dart';

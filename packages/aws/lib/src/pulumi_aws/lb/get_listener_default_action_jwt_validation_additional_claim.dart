@@ -1,3 +1,0 @@
-library module_lb_get_listener_default_action_jwt_validation_additional_claim;
-
-export 'get_listener_default_action_jwt_validation_additional_claim/get_listener_default_action_jwt_validation_additional_claim_lb.dart';

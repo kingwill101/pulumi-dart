@@ -1,3 +1,0 @@
-library module_secretsmanager_get_secret_rotation_rotation_rule;
-
-export 'get_secret_rotation_rotation_rule/get_secret_rotation_rotation_rule.dart';

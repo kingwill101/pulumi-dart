@@ -1,3 +1,0 @@
-library module_timestreamquery_scheduled_query_last_run_summary;
-
-export 'scheduled_query_last_run_summary/scheduled_query_last_run_summary.dart';

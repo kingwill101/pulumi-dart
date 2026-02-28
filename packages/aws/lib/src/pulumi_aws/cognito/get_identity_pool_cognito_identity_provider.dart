@@ -1,3 +1,0 @@
-library module_cognito_get_identity_pool_cognito_identity_provider;
-
-export 'get_identity_pool_cognito_identity_provider/get_identity_pool_cognito_identity_provider.dart';

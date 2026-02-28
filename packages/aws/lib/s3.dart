@@ -1,3 +1,3 @@
 library pulumi_aws_s3;
 
-export 'package:pulumi_aws/src/pulumi_aws/s3.dart';
+export 'package:pulumi_aws/src/s3.dart';

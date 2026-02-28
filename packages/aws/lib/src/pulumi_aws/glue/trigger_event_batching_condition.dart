@@ -1,3 +1,0 @@
-library module_glue_trigger_event_batching_condition;
-
-export 'trigger_event_batching_condition/trigger_event_batching_condition.dart';

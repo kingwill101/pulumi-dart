@@ -1,3 +1,0 @@
-library module_lakeformation_get_permissions_data_location;
-
-export 'get_permissions_data_location/get_permissions_data_location.dart';

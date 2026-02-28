@@ -1,3 +1,0 @@
-library module_ec2_encryption_control_resource_exclusions_virtual_private_gateway;
-
-export 'encryption_control_resource_exclusions_virtual_private_gateway/encryption_control_resource_exclusions_virtual_private_gateway.dart';

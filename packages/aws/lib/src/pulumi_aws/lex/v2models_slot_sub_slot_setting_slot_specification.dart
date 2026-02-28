@@ -1,3 +1,0 @@
-library module_lex_v2models_slot_sub_slot_setting_slot_specification;
-
-export 'v2models_slot_sub_slot_setting_slot_specification/v2models_slot_sub_slot_setting_slot_specification.dart';

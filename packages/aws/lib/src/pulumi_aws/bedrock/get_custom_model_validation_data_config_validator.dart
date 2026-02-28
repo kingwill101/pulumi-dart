@@ -1,3 +1,0 @@
-library module_bedrock_get_custom_model_validation_data_config_validator;
-
-export 'get_custom_model_validation_data_config_validator/get_custom_model_validation_data_config_validator.dart';

@@ -1,3 +1,0 @@
-library module_bedrock_custom_model_validation_metric;
-
-export 'custom_model_validation_metric/custom_model_validation_metric.dart';

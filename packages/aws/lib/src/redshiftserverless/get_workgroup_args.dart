@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_redshiftserverless_get_workgroup_get_workgroup_args_doc}
+/// Arguments for getWorkgroup.
+/// {@endtemplate}
+/// {@macro pulumi_redshiftserverless_get_workgroup_get_workgroup_args_doc}
+class GetWorkgroupArgs {
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// The name of the workgroup associated with the database.
+  final pulumi.Input<String> workgroupName;
+
+  /// Creates a new [GetWorkgroupArgs].
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [workgroupName] The name of the workgroup associated with the database.
+  GetWorkgroupArgs({
+    String? region,
+    required String workgroupName,
+  })  : region = pulumi.Input.asOptionalInput<String>(region),
+        workgroupName = pulumi.Input.asInput<String>(workgroupName);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['workgroupName'] = workgroupName;
+    return map;
+  }
+
+  factory GetWorkgroupArgs.fromMap(Map<String, dynamic> map) {
+    return GetWorkgroupArgs(
+      region: map['region'] == null ? null : map['region'] as String,
+      workgroupName: map['workgroupName'] as String,
+    );
+  }
+}

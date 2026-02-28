@@ -1,3 +1,0 @@
-library module_costexplorer_get_tags_filter_and_dimension;
-
-export 'get_tags_filter_and_dimension/get_tags_filter_and_dimension.dart';

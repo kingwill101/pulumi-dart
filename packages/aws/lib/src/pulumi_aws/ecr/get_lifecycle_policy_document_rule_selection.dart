@@ -1,3 +1,0 @@
-library module_ecr_get_lifecycle_policy_document_rule_selection;
-
-export 'get_lifecycle_policy_document_rule_selection/get_lifecycle_policy_document_rule_selection.dart';

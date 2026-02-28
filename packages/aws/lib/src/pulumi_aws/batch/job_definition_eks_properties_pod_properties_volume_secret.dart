@@ -1,3 +1,0 @@
-library module_batch_job_definition_eks_properties_pod_properties_volume_secret;
-
-export 'job_definition_eks_properties_pod_properties_volume_secret/job_definition_eks_properties_pod_properties_volume_secret.dart';

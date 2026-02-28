@@ -1,3 +1,0 @@
-library module_ec2_network_insights_path_filter_at_destination;
-
-export 'network_insights_path_filter_at_destination/network_insights_path_filter_at_destination.dart';

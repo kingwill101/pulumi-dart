@@ -1,3 +1,0 @@
-library module_datasync_location_fsx_ontap_file_system_protocol_smb_mount_options;
-
-export 'location_fsx_ontap_file_system_protocol_smb_mount_options/location_fsx_ontap_file_system_protocol_smb_mount_options.dart';

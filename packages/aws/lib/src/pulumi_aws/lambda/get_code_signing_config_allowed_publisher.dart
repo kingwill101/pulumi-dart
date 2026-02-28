@@ -1,3 +1,0 @@
-library module_lambda_get_code_signing_config_allowed_publisher;
-
-export 'get_code_signing_config_allowed_publisher/get_code_signing_config_allowed_publisher.dart';

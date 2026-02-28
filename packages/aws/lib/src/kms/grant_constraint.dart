@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GrantConstraint {
+  /// A list of key-value pairs that must match the encryption context in subsequent cryptographic operation requests. The grant allows the operation only when the encryption context in the request is the same as the encryption context specified in this constraint. Conflicts with `encryption_context_subset`.
+  final Map<String, String>? encryptionContextEquals;
+
+  /// A list of key-value pairs that must be included in the encryption context of subsequent cryptographic operation requests. The grant allows the cryptographic operation only when the encryption context in the request includes the key-value pairs specified in this constraint, although it can include additional key-value pairs. Conflicts with `encryption_context_equals`.
+  final Map<String, String>? encryptionContextSubset;
+
+  /// Creates a new [GrantConstraint].
+  /// [encryptionContextEquals] A list of key-value pairs that must match the encryption context in subsequent cryptographic operation requests. The grant allows the operation only when the encryption context in the request is the same as the encryption context specified in this constraint. Conflicts with `encryption_context_subset`.
+  /// [encryptionContextSubset] A list of key-value pairs that must be included in the encryption context of subsequent cryptographic operation requests. The grant allows the cryptographic operation only when the encryption context in the request includes the key-value pairs specified in this constraint, although it can include additional key-value pairs. Conflicts with `encryption_context_equals`.
+  GrantConstraint({
+    this.encryptionContextEquals,
+    this.encryptionContextSubset,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final encryptionContextEqualsValue = encryptionContextEquals;
+    if (encryptionContextEqualsValue != null) {
+      map['encryptionContextEquals'] = encryptionContextEqualsValue;
+    }
+    final encryptionContextSubsetValue = encryptionContextSubset;
+    if (encryptionContextSubsetValue != null) {
+      map['encryptionContextSubset'] = encryptionContextSubsetValue;
+    }
+    return map;
+  }
+
+  factory GrantConstraint.fromMap(Map<String, dynamic> map) {
+    return GrantConstraint(
+      encryptionContextEquals: map['encryptionContextEquals'] == null
+          ? null
+          : (map['encryptionContextEquals'] as Map).cast<String, String>(),
+      encryptionContextSubset: map['encryptionContextSubset'] == null
+          ? null
+          : (map['encryptionContextSubset'] as Map).cast<String, String>(),
+    );
+  }
+}

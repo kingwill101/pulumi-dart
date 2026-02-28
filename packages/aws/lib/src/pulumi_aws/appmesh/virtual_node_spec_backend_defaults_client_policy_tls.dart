@@ -1,3 +1,0 @@
-library module_appmesh_virtual_node_spec_backend_defaults_client_policy_tls;
-
-export 'virtual_node_spec_backend_defaults_client_policy_tls/virtual_node_spec_backend_defaults_client_policy_tls.dart';

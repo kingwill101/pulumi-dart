@@ -1,4 +1,0 @@
-library module_networkfirewall_logging_configuration;
-
-export 'logging_configuration/logging_configuration_networkfirewall.dart';
-export 'logging_configuration/logging_configuration_networkfirewall_args.dart';

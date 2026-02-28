@@ -1,4 +1,0 @@
-library module_networkfirewall_resource_policy;
-
-export 'resource_policy/resource_policy_networkfirewall.dart';
-export 'resource_policy/resource_policy_networkfirewall_args.dart';

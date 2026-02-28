@@ -1,3 +1,0 @@
-library module_odb_network_peering_connection_timeouts;
-
-export 'network_peering_connection_timeouts/network_peering_connection_timeouts.dart';

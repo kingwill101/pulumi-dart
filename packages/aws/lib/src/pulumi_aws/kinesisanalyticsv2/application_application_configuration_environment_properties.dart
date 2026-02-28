@@ -1,3 +1,0 @@
-library module_kinesisanalyticsv2_application_application_configuration_environment_properties;
-
-export 'application_application_configuration_environment_properties/application_application_configuration_environment_properties.dart';

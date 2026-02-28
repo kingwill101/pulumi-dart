@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_aws_account_id;
-
-export 'filter_filter_criteria_aws_account_id/filter_filter_criteria_aws_account_id.dart';

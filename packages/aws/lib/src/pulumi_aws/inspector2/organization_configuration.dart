@@ -1,4 +1,0 @@
-library module_inspector2_organization_configuration;
-
-export 'organization_configuration/organization_configuration_inspector2.dart';
-export 'organization_configuration/organization_configuration_inspector2_args.dart';

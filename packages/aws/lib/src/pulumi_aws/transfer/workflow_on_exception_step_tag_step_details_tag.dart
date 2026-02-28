@@ -1,3 +1,0 @@
-library module_transfer_workflow_on_exception_step_tag_step_details_tag;
-
-export 'workflow_on_exception_step_tag_step_details_tag/workflow_on_exception_step_tag_step_details_tag.dart';

@@ -1,3 +1,0 @@
-library module_s3_vectors_index_encryption_configuration;
-
-export 'vectors_index_encryption_configuration/vectors_index_encryption_configuration.dart';

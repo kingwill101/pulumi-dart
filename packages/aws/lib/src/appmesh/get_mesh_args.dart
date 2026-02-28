@@ -1,0 +1,65 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_appmesh_get_mesh_get_mesh_args_doc}
+/// Arguments for getMesh.
+/// {@endtemplate}
+/// {@macro pulumi_appmesh_get_mesh_get_mesh_args_doc}
+class GetMeshArgs {
+  /// AWS account ID of the service mesh's owner.
+  final pulumi.Input<String>? meshOwner;
+
+  /// Name of the service mesh.
+  final pulumi.Input<String> name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Map of tags.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [GetMeshArgs].
+  /// [meshOwner] AWS account ID of the service mesh's owner.
+  /// [name] Name of the service mesh.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Map of tags.
+  GetMeshArgs({
+    String? meshOwner,
+    required String name,
+    String? region,
+    Map<String, String>? tags,
+  })  : meshOwner = pulumi.Input.asOptionalInput<String>(meshOwner),
+        name = pulumi.Input.asInput<String>(name),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final meshOwnerValue = meshOwner;
+    if (meshOwnerValue != null) {
+      map['meshOwner'] = meshOwnerValue;
+    }
+    map['name'] = name;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory GetMeshArgs.fromMap(Map<String, dynamic> map) {
+    return GetMeshArgs(
+      meshOwner: map['meshOwner'] == null ? null : map['meshOwner'] as String,
+      name: map['name'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

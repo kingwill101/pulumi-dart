@@ -1,3 +1,0 @@
-library module_medialive_multiplex_program_multiplex_program_settings_service_descriptor;
-
-export 'multiplex_program_multiplex_program_settings_service_descriptor/multiplex_program_multiplex_program_settings_service_descriptor.dart';

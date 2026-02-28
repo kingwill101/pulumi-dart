@@ -1,3 +1,0 @@
-library module_globalaccelerator_get_custom_routing_accelerator_attribute;
-
-export 'get_custom_routing_accelerator_attribute/get_custom_routing_accelerator_attribute.dart';

@@ -1,3 +1,0 @@
-library module_bedrock_agent_agent_guardrail_configuration;
-
-export 'agent_agent_guardrail_configuration/agent_agent_guardrail_configuration.dart';

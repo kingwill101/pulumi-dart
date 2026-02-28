@@ -1,3 +1,0 @@
-library module_cfg_rule_source_custom_policy_details;
-
-export 'rule_source_custom_policy_details/rule_source_custom_policy_details.dart';

@@ -1,3 +1,0 @@
-library module_backup_selection_condition_string_equal;
-
-export 'selection_condition_string_equal/selection_condition_string_equal.dart';

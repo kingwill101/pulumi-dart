@@ -1,3 +1,0 @@
-library module_finspace_kx_cluster_tickerplant_log_configuration;
-
-export 'kx_cluster_tickerplant_log_configuration/kx_cluster_tickerplant_log_configuration.dart';

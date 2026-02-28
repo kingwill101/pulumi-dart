@@ -1,3 +1,0 @@
-library module_opensearch_domain_saml_options_saml_options_idp;
-
-export 'domain_saml_options_saml_options_idp/domain_saml_options_saml_options_idp_opensearch.dart';

@@ -1,3 +1,0 @@
-library module_ecs_express_gateway_service_primary_container_secret;
-
-export 'express_gateway_service_primary_container_secret/express_gateway_service_primary_container_secret.dart';

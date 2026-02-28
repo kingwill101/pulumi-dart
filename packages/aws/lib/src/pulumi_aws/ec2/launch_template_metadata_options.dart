@@ -1,3 +1,0 @@
-library module_ec2_launch_template_metadata_options;
-
-export 'launch_template_metadata_options/launch_template_metadata_options.dart';

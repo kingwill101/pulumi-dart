@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_gateway_spec_listener_health_check;
-
-export 'get_virtual_gateway_spec_listener_health_check/get_virtual_gateway_spec_listener_health_check.dart';

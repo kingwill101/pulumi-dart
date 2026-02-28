@@ -1,4 +1,0 @@
-library module_shield_application_layer_automatic_response;
-
-export 'application_layer_automatic_response/application_layer_automatic_response.dart';
-export 'application_layer_automatic_response/application_layer_automatic_response_args.dart';

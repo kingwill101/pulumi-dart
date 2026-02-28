@@ -1,3 +1,0 @@
-library module_networkmanager_connect_peer_bgp_options;
-
-export 'connect_peer_bgp_options/connect_peer_bgp_options.dart';

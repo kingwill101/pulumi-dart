@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class TargetGroupStickiness {
+  /// Only used when the type is `lb_cookie`. The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).
+  final int? cookieDuration;
+
+  /// Name of the application based cookie. AWSALB, AWSALBAPP, and AWSALBTG prefixes are reserved and cannot be used. Only needed when type is `app_cookie`.
+  final String? cookieName;
+
+  /// Boolean to enable / disable `stickiness`. Default is `true`.
+  final bool? enabled;
+
+  /// The type of sticky sessions. The only current possible values are `lb_cookie`, `app_cookie` for ALBs, `source_ip` for NLBs, and `source_ip_dest_ip`, `source_ip_dest_ip_proto` for GWLBs.
+  final String type;
+
+  /// Creates a new [TargetGroupStickiness].
+  /// [cookieDuration] Only used when the type is `lb_cookie`. The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).
+  /// [cookieName] Name of the application based cookie. AWSALB, AWSALBAPP, and AWSALBTG prefixes are reserved and cannot be used. Only needed when type is `app_cookie`.
+  /// [enabled] Boolean to enable / disable `stickiness`. Default is `true`.
+  /// [type] The type of sticky sessions. The only current possible values are `lb_cookie`, `app_cookie` for ALBs, `source_ip` for NLBs, and `source_ip_dest_ip`, `source_ip_dest_ip_proto` for GWLBs.
+  TargetGroupStickiness({
+    this.cookieDuration,
+    this.cookieName,
+    this.enabled,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final cookieDurationValue = cookieDuration;
+    if (cookieDurationValue != null) {
+      map['cookieDuration'] = cookieDurationValue;
+    }
+    final cookieNameValue = cookieName;
+    if (cookieNameValue != null) {
+      map['cookieName'] = cookieNameValue;
+    }
+    final enabledValue = enabled;
+    if (enabledValue != null) {
+      map['enabled'] = enabledValue;
+    }
+    map['type'] = type;
+    return map;
+  }
+
+  factory TargetGroupStickiness.fromMap(Map<String, dynamic> map) {
+    return TargetGroupStickiness(
+      cookieDuration:
+          map['cookieDuration'] == null ? null : map['cookieDuration'] as int,
+      cookieName:
+          map['cookieName'] == null ? null : map['cookieName'] as String,
+      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      type: map['type'] as String,
+    );
+  }
+}

@@ -1,3 +1,0 @@
-library module_s3_bucket_notification_lambda_function;
-
-export 'bucket_notification_lambda_function/bucket_notification_lambda_function.dart';

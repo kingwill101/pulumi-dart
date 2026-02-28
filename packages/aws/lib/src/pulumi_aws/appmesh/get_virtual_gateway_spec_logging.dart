@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_gateway_spec_logging;
-
-export 'get_virtual_gateway_spec_logging/get_virtual_gateway_spec_logging.dart';

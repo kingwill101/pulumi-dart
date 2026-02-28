@@ -1,3 +1,0 @@
-library module_fis_experiment_template_target_resource_tag;
-
-export 'experiment_template_target_resource_tag/experiment_template_target_resource_tag.dart';

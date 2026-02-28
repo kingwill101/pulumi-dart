@@ -1,3 +1,0 @@
-library module_cloudfront_multitenant_distribution_restrictions_geo_restriction;
-
-export 'multitenant_distribution_restrictions_geo_restriction/multitenant_distribution_restrictions_geo_restriction.dart';

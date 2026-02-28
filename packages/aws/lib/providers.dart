@@ -1,3 +1,3 @@
 library pulumi_aws_providers;
 
-export 'package:pulumi_aws/src/pulumi_aws/providers.dart';
+export 'package:pulumi_aws/src/providers.dart';

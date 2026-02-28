@@ -1,3 +1,0 @@
-library module_elasticsearch_domain_node_to_node_encryption;
-
-export 'domain_node_to_node_encryption/domain_node_to_node_encryption.dart';

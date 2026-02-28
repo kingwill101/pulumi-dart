@@ -1,3 +1,0 @@
-library module_elb_load_balancer_policy_policy_attribute;
-
-export 'load_balancer_policy_policy_attribute/load_balancer_policy_policy_attribute.dart';

@@ -1,3 +1,0 @@
-library module_appsync_data_source_opensearchservice_config;
-
-export 'data_source_opensearchservice_config/data_source_opensearchservice_config.dart';

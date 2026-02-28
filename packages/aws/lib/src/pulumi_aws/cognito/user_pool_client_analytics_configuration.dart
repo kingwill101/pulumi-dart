@@ -1,3 +1,0 @@
-library module_cognito_user_pool_client_analytics_configuration;
-
-export 'user_pool_client_analytics_configuration/user_pool_client_analytics_configuration.dart';

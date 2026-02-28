@@ -1,3 +1,0 @@
-library module_redshift_scheduled_action_target_action;
-
-export 'scheduled_action_target_action/scheduled_action_target_action.dart';

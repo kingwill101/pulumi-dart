@@ -1,3 +1,0 @@
-library module_codedeploy_deployment_config_minimum_healthy_hosts;
-
-export 'deployment_config_minimum_healthy_hosts/deployment_config_minimum_healthy_hosts.dart';

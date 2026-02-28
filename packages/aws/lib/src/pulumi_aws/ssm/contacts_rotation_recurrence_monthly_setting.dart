@@ -1,3 +1,0 @@
-library module_ssm_contacts_rotation_recurrence_monthly_setting;
-
-export 'contacts_rotation_recurrence_monthly_setting/contacts_rotation_recurrence_monthly_setting.dart';

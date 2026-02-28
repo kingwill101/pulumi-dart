@@ -1,3 +1,0 @@
-library module_ec2_get_network_interface_association;
-
-export 'get_network_interface_association/get_network_interface_association.dart';

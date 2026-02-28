@@ -1,3 +1,0 @@
-library module_cognito_get_user_pool_schema_attribute_string_attribute_constraint;
-
-export 'get_user_pool_schema_attribute_string_attribute_constraint/get_user_pool_schema_attribute_string_attribute_constraint.dart';

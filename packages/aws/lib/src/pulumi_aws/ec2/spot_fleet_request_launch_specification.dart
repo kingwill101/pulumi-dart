@@ -1,3 +1,0 @@
-library module_ec2_spot_fleet_request_launch_specification;
-
-export 'spot_fleet_request_launch_specification/spot_fleet_request_launch_specification.dart';

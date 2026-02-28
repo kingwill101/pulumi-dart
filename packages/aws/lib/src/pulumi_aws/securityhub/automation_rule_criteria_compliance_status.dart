@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_compliance_status;
-
-export 'automation_rule_criteria_compliance_status/automation_rule_criteria_compliance_status.dart';

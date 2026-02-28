@@ -1,3 +1,0 @@
-library module_cloudwatch_event_target_input_transformer;
-
-export 'event_target_input_transformer/event_target_input_transformer.dart';

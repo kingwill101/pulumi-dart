@@ -1,3 +1,0 @@
-library module_evidently_launch_scheduled_splits_config_step;
-
-export 'launch_scheduled_splits_config_step/launch_scheduled_splits_config_step.dart';

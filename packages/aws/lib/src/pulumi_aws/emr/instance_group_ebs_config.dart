@@ -1,3 +1,0 @@
-library module_emr_instance_group_ebs_config;
-
-export 'instance_group_ebs_config/instance_group_ebs_config.dart';

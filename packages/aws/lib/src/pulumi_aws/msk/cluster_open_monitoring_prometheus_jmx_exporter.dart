@@ -1,3 +1,0 @@
-library module_msk_cluster_open_monitoring_prometheus_jmx_exporter;
-
-export 'cluster_open_monitoring_prometheus_jmx_exporter/cluster_open_monitoring_prometheus_jmx_exporter.dart';

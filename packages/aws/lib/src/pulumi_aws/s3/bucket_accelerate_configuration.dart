@@ -1,4 +1,0 @@
-library module_s3_bucket_accelerate_configuration;
-
-export 'bucket_accelerate_configuration/bucket_accelerate_configuration.dart';
-export 'bucket_accelerate_configuration/bucket_accelerate_configuration_args.dart';

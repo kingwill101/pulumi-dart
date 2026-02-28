@@ -1,3 +1,0 @@
-library module_kinesis_analytics_application_inputs_processing_configuration_lambda;
-
-export 'analytics_application_inputs_processing_configuration_lambda/analytics_application_inputs_processing_configuration_lambda.dart';

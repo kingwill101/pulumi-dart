@@ -1,3 +1,0 @@
-library module_servicecatalog_service_action_definition;
-
-export 'service_action_definition/service_action_definition.dart';

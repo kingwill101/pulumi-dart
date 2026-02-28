@@ -1,3 +1,0 @@
-library module_networkmanager_dx_gateway_attachment_timeouts;
-
-export 'dx_gateway_attachment_timeouts/dx_gateway_attachment_timeouts.dart';

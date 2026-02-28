@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_job_definition_node_property_node_range_property_container_log_configuration_secret_option.dart';
+
+class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
+  /// The log driver to use for the container.
+  final String logDriver;
+
+  /// The configuration options to send to the log driver.
+  final Map<String, String> options;
+
+  /// The secrets to pass to the log configuration.
+  final List<
+          GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>
+      secretOptions;
+
+  /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration].
+  /// [logDriver] The log driver to use for the container.
+  /// [options] The configuration options to send to the log driver.
+  /// [secretOptions] The secrets to pass to the log configuration.
+  GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration({
+    required this.logDriver,
+    required this.options,
+    required this.secretOptions,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['logDriver'] = logDriver;
+    map['options'] = options;
+    map['secretOptions'] = pulumi.Input.encodeList<
+        GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption,
+        Map<String, dynamic>>(secretOptions, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration.fromMap(
+      Map<String, dynamic> map) {
+    return GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration(
+      logDriver: map['logDriver'] as String,
+      options: (map['options'] as Map).cast<String, String>(),
+      secretOptions: pulumi.Input.decodeList<
+              GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>(
+          map['secretOptions'],
+          (value) =>
+              GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

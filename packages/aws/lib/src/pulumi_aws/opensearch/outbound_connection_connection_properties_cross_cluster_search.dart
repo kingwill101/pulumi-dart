@@ -1,3 +1,0 @@
-library module_opensearch_outbound_connection_connection_properties_cross_cluster_search;
-
-export 'outbound_connection_connection_properties_cross_cluster_search/outbound_connection_connection_properties_cross_cluster_search.dart';

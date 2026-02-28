@@ -1,3 +1,0 @@
-library module_servicecatalog_get_portfolio_constraints_detail;
-
-export 'get_portfolio_constraints_detail/get_portfolio_constraints_detail.dart';

@@ -1,3 +1,0 @@
-library module_dms_endpoint_oracle_settings;
-
-export 'endpoint_oracle_settings/endpoint_oracle_settings.dart';

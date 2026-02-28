@@ -1,3 +1,0 @@
-library module_cloudfront_vpc_origin_vpc_origin_endpoint_config_origin_ssl_protocols;
-
-export 'vpc_origin_vpc_origin_endpoint_config_origin_ssl_protocols/vpc_origin_vpc_origin_endpoint_config_origin_ssl_protocols.dart';

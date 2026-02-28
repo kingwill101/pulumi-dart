@@ -1,3 +1,0 @@
-library module_appstream_image_builder_vpc_config;
-
-export 'image_builder_vpc_config/image_builder_vpc_config.dart';

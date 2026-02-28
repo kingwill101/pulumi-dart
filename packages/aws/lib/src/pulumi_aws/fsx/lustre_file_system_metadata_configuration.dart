@@ -1,3 +1,0 @@
-library module_fsx_lustre_file_system_metadata_configuration;
-
-export 'lustre_file_system_metadata_configuration/lustre_file_system_metadata_configuration.dart';

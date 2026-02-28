@@ -1,3 +1,0 @@
-library module_cloudfront_continuous_deployment_policy_staging_distribution_dns_names;
-
-export 'continuous_deployment_policy_staging_distribution_dns_names/continuous_deployment_policy_staging_distribution_dns_names.dart';

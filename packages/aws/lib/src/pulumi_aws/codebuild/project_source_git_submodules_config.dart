@@ -1,3 +1,0 @@
-library module_codebuild_project_source_git_submodules_config;
-
-export 'project_source_git_submodules_config/project_source_git_submodules_config.dart';

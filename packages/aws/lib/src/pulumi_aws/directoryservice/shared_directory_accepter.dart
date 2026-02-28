@@ -1,4 +1,0 @@
-library module_directoryservice_shared_directory_accepter;
-
-export 'shared_directory_accepter/shared_directory_accepter.dart';
-export 'shared_directory_accepter/shared_directory_accepter_args.dart';

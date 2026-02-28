@@ -1,3 +1,0 @@
-library module_quicksight_data_set_refresh_properties;
-
-export 'data_set_refresh_properties/data_set_refresh_properties.dart';

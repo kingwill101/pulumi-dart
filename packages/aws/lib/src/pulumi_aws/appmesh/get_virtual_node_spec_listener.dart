@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_node_spec_listener;
-
-export 'get_virtual_node_spec_listener/get_virtual_node_spec_listener.dart';

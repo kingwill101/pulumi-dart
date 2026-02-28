@@ -1,3 +1,0 @@
-library module_ses_event_destination_sns_destination;
-
-export 'event_destination_sns_destination/event_destination_sns_destination.dart';

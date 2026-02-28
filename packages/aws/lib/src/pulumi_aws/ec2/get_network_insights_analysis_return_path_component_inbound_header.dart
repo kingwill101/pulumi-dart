@@ -1,3 +1,0 @@
-library module_ec2_get_network_insights_analysis_return_path_component_inbound_header;
-
-export 'get_network_insights_analysis_return_path_component_inbound_header/get_network_insights_analysis_return_path_component_inbound_header.dart';

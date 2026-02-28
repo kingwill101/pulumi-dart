@@ -1,3 +1,0 @@
-library module_securitylake_custom_log_source_configuration_crawler_configuration;
-
-export 'custom_log_source_configuration_crawler_configuration/custom_log_source_configuration_crawler_configuration.dart';

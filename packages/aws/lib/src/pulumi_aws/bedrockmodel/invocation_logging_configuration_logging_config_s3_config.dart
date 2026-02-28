@@ -1,3 +1,0 @@
-library module_bedrockmodel_invocation_logging_configuration_logging_config_s3_config;
-
-export 'invocation_logging_configuration_logging_config_s3_config/invocation_logging_configuration_logging_config_s3_config.dart';

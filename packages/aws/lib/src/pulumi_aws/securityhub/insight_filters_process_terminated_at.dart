@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_process_terminated_at;
-
-export 'insight_filters_process_terminated_at/insight_filters_process_terminated_at.dart';

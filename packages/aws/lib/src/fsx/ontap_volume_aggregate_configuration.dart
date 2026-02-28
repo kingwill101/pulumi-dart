@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class OntapVolumeAggregateConfiguration {
+  /// Used to specify the names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
+  final List<String>? aggregates;
+
+  /// Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
+  final int? constituentsPerAggregate;
+
+  /// The total amount of constituents for a `FLEXGROUP` volume. This would equal constituents_per_aggregate x aggregates.
+  final int? totalConstituents;
+
+  /// Creates a new [OntapVolumeAggregateConfiguration].
+  /// [aggregates] Used to specify the names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
+  /// [constituentsPerAggregate] Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
+  /// [totalConstituents] The total amount of constituents for a `FLEXGROUP` volume. This would equal constituents_per_aggregate x aggregates.
+  OntapVolumeAggregateConfiguration({
+    this.aggregates,
+    this.constituentsPerAggregate,
+    this.totalConstituents,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final aggregatesValue = aggregates;
+    if (aggregatesValue != null) {
+      map['aggregates'] = aggregatesValue;
+    }
+    final constituentsPerAggregateValue = constituentsPerAggregate;
+    if (constituentsPerAggregateValue != null) {
+      map['constituentsPerAggregate'] = constituentsPerAggregateValue;
+    }
+    final totalConstituentsValue = totalConstituents;
+    if (totalConstituentsValue != null) {
+      map['totalConstituents'] = totalConstituentsValue;
+    }
+    return map;
+  }
+
+  factory OntapVolumeAggregateConfiguration.fromMap(Map<String, dynamic> map) {
+    return OntapVolumeAggregateConfiguration(
+      aggregates: map['aggregates'] == null
+          ? null
+          : (map['aggregates'] as List).cast<String>(),
+      constituentsPerAggregate: map['constituentsPerAggregate'] == null
+          ? null
+          : map['constituentsPerAggregate'] as int,
+      totalConstituents: map['totalConstituents'] == null
+          ? null
+          : map['totalConstituents'] as int,
+    );
+  }
+}

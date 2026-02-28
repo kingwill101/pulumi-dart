@@ -1,3 +1,0 @@
-library module_ec2_get_launch_template_secondary_interface;
-
-export 'get_launch_template_secondary_interface/get_launch_template_secondary_interface.dart';

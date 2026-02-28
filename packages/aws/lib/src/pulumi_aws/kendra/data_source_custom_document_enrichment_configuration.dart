@@ -1,3 +1,0 @@
-library module_kendra_data_source_custom_document_enrichment_configuration;
-
-export 'data_source_custom_document_enrichment_configuration/data_source_custom_document_enrichment_configuration.dart';

@@ -1,3 +1,0 @@
-library module_ec2_launch_template_network_interface_ena_srd_specification;
-
-export 'launch_template_network_interface_ena_srd_specification/launch_template_network_interface_ena_srd_specification.dart';

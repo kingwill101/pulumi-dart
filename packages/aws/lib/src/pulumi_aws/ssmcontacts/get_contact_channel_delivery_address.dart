@@ -1,3 +1,0 @@
-library module_ssmcontacts_get_contact_channel_delivery_address;
-
-export 'get_contact_channel_delivery_address/get_contact_channel_delivery_address.dart';

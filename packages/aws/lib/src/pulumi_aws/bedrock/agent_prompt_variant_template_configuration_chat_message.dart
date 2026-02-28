@@ -1,3 +1,0 @@
-library module_bedrock_agent_prompt_variant_template_configuration_chat_message;
-
-export 'agent_prompt_variant_template_configuration_chat_message/agent_prompt_variant_template_configuration_chat_message.dart';

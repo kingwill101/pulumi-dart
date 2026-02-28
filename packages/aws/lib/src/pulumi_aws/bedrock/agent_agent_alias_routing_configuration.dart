@@ -1,3 +1,0 @@
-library module_bedrock_agent_agent_alias_routing_configuration;
-
-export 'agent_agent_alias_routing_configuration/agent_agent_alias_routing_configuration.dart';

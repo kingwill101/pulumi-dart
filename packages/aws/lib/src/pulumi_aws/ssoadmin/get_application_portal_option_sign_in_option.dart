@@ -1,3 +1,0 @@
-library module_ssoadmin_get_application_portal_option_sign_in_option;
-
-export 'get_application_portal_option_sign_in_option/get_application_portal_option_sign_in_option.dart';

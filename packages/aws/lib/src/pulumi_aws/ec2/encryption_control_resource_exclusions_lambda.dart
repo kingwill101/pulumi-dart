@@ -1,3 +1,0 @@
-library module_ec2_encryption_control_resource_exclusions_lambda;
-
-export 'encryption_control_resource_exclusions_lambda/encryption_control_resource_exclusions_lambda.dart';

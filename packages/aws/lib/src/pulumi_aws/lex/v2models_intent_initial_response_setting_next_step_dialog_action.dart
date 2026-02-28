@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_initial_response_setting_next_step_dialog_action;
-
-export 'v2models_intent_initial_response_setting_next_step_dialog_action/v2models_intent_initial_response_setting_next_step_dialog_action.dart';

@@ -1,3 +1,3 @@
 library pulumi_aws_controltower;
 
-export 'package:pulumi_aws/src/pulumi_aws/controltower.dart';
+export 'package:pulumi_aws/src/controltower.dart';

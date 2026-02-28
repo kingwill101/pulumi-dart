@@ -1,3 +1,0 @@
-library module_ec2transitgateway_default_route_table_propagation_timeouts;
-
-export 'default_route_table_propagation_timeouts/default_route_table_propagation_timeouts.dart';

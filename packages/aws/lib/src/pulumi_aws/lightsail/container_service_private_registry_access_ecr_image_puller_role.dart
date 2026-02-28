@@ -1,3 +1,0 @@
-library module_lightsail_container_service_private_registry_access_ecr_image_puller_role;
-
-export 'container_service_private_registry_access_ecr_image_puller_role/container_service_private_registry_access_ecr_image_puller_role.dart';

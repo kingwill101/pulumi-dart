@@ -1,3 +1,0 @@
-library module_organizations_get_delegated_services_delegated_service;
-
-export 'get_delegated_services_delegated_service/get_delegated_services_delegated_service.dart';

@@ -1,3 +1,0 @@
-library module_connect_get_user_hierarchy_structure_hierarchy_structure;
-
-export 'get_user_hierarchy_structure_hierarchy_structure/get_user_hierarchy_structure_hierarchy_structure.dart';

@@ -1,3 +1,0 @@
-library module_ec2_network_insights_analysis_explanation_transit_gateway_route_table;
-
-export 'network_insights_analysis_explanation_transit_gateway_route_table/network_insights_analysis_explanation_transit_gateway_route_table.dart';

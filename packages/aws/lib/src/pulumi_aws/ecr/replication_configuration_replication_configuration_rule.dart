@@ -1,3 +1,0 @@
-library module_ecr_replication_configuration_replication_configuration_rule;
-
-export 'replication_configuration_replication_configuration_rule/replication_configuration_replication_configuration_rule.dart';

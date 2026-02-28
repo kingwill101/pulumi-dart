@@ -1,3 +1,0 @@
-library module_s3_bucket_v2_replication_configuration;
-
-export 'bucket_v2_replication_configuration/bucket_v2_replication_configuration.dart';

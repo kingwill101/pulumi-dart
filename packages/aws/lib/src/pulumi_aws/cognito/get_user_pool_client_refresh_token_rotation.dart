@@ -1,3 +1,0 @@
-library module_cognito_get_user_pool_client_refresh_token_rotation;
-
-export 'get_user_pool_client_refresh_token_rotation/get_user_pool_client_refresh_token_rotation.dart';

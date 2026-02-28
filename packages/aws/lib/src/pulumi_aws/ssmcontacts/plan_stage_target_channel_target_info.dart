@@ -1,3 +1,0 @@
-library module_ssmcontacts_plan_stage_target_channel_target_info;
-
-export 'plan_stage_target_channel_target_info/plan_stage_target_channel_target_info.dart';

@@ -1,3 +1,0 @@
-library module_glue_get_catalog_table_target_table;
-
-export 'get_catalog_table_target_table/get_catalog_table_target_table.dart';

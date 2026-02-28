@@ -1,4 +1,0 @@
-library module_s3control_access_grants_instance_resource_policy;
-
-export 'access_grants_instance_resource_policy/access_grants_instance_resource_policy.dart';
-export 'access_grants_instance_resource_policy/access_grants_instance_resource_policy_args.dart';

@@ -1,3 +1,0 @@
-library module_codegurureviewer_repository_association_repository_codecommit;
-
-export 'repository_association_repository_codecommit/repository_association_repository_codecommit.dart';

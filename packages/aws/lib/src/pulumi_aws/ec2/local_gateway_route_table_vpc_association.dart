@@ -1,4 +1,0 @@
-library module_ec2_local_gateway_route_table_vpc_association;
-
-export 'local_gateway_route_table_vpc_association/local_gateway_route_table_vpc_association.dart';
-export 'local_gateway_route_table_vpc_association/local_gateway_route_table_vpc_association_args.dart';

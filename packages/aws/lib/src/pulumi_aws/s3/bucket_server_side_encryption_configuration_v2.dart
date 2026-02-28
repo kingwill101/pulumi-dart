@@ -1,4 +1,0 @@
-library module_s3_bucket_server_side_encryption_configuration_v2;
-
-export 'bucket_server_side_encryption_configuration_v2/bucket_server_side_encryption_configuration_v2.dart';
-export 'bucket_server_side_encryption_configuration_v2/bucket_server_side_encryption_configuration_v2_args.dart';

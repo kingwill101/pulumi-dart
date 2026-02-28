@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_source_url;
-
-export 'automation_rule_criteria_source_url/automation_rule_criteria_source_url.dart';

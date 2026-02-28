@@ -1,3 +1,0 @@
-library module_fsx_get_ontap_storage_virtual_machine_endpoint_nf;
-
-export 'get_ontap_storage_virtual_machine_endpoint_nf/get_ontap_storage_virtual_machine_endpoint_nf.dart';

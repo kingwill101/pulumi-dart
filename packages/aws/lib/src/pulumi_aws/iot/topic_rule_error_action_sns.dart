@@ -1,3 +1,0 @@
-library module_iot_topic_rule_error_action_sns;
-
-export 'topic_rule_error_action_sns/topic_rule_error_action_sns.dart';

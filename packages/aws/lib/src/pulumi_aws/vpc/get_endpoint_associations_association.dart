@@ -1,3 +1,0 @@
-library module_vpc_get_endpoint_associations_association;
-
-export 'get_endpoint_associations_association/get_endpoint_associations_association.dart';

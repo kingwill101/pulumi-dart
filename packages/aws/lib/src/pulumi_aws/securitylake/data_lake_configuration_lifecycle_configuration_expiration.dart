@@ -1,3 +1,0 @@
-library module_securitylake_data_lake_configuration_lifecycle_configuration_expiration;
-
-export 'data_lake_configuration_lifecycle_configuration_expiration/data_lake_configuration_lifecycle_configuration_expiration.dart';

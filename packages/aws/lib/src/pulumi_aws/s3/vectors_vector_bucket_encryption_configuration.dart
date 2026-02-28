@@ -1,3 +1,0 @@
-library module_s3_vectors_vector_bucket_encryption_configuration;
-
-export 'vectors_vector_bucket_encryption_configuration/vectors_vector_bucket_encryption_configuration.dart';

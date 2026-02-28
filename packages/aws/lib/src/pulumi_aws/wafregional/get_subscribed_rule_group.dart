@@ -1,5 +1,0 @@
-library module_wafregional_get_subscribed_rule_group;
-
-export 'get_subscribed_rule_group/get_subscribed_rule_group_wafregional.dart';
-export 'get_subscribed_rule_group/get_subscribed_rule_group_wafregional_args.dart';
-export 'get_subscribed_rule_group/get_subscribed_rule_group_wafregional_result.dart';

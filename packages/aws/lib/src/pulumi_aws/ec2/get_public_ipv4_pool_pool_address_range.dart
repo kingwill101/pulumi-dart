@@ -1,3 +1,0 @@
-library module_ec2_get_public_ipv4_pool_pool_address_range;
-
-export 'get_public_ipv4_pool_pool_address_range/get_public_ipv4_pool_pool_address_range.dart';

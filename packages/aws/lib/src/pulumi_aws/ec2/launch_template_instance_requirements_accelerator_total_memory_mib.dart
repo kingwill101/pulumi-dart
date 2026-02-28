@@ -1,3 +1,0 @@
-library module_ec2_launch_template_instance_requirements_accelerator_total_memory_mib;
-
-export 'launch_template_instance_requirements_accelerator_total_memory_mib/launch_template_instance_requirements_accelerator_total_memory_mib.dart';

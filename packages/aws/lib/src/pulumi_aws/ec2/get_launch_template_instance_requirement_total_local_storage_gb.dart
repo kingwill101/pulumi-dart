@@ -1,3 +1,0 @@
-library module_ec2_get_launch_template_instance_requirement_total_local_storage_gb;
-
-export 'get_launch_template_instance_requirement_total_local_storage_gb/get_launch_template_instance_requirement_total_local_storage_gb.dart';

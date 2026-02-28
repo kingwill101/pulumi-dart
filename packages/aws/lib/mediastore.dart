@@ -1,3 +1,3 @@
 library pulumi_aws_mediastore;
 
-export 'package:pulumi_aws/src/pulumi_aws/mediastore.dart';
+export 'package:pulumi_aws/src/mediastore.dart';

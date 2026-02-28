@@ -1,3 +1,0 @@
-library module_lakeformation_data_cells_filter_table_data;
-
-export 'data_cells_filter_table_data/data_cells_filter_table_data.dart';

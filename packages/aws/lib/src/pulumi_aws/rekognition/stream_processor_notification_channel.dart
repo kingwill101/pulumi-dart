@@ -1,3 +1,0 @@
-library module_rekognition_stream_processor_notification_channel;
-
-export 'stream_processor_notification_channel/stream_processor_notification_channel.dart';

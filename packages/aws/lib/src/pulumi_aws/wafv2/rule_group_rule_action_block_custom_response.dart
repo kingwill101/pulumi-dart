@@ -1,3 +1,0 @@
-library module_wafv2_rule_group_rule_action_block_custom_response;
-
-export 'rule_group_rule_action_block_custom_response/rule_group_rule_action_block_custom_response.dart';

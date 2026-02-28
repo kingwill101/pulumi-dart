@@ -1,3 +1,0 @@
-library module_ec2clientvpn_get_endpoint_authentication_option;
-
-export 'get_endpoint_authentication_option/get_endpoint_authentication_option.dart';

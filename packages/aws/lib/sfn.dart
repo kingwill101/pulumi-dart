@@ -1,3 +1,3 @@
 library pulumi_aws_sfn;
 
-export 'package:pulumi_aws/src/pulumi_aws/sfn.dart';
+export 'package:pulumi_aws/src/sfn.dart';

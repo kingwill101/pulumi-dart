@@ -1,3 +1,0 @@
-library module_directoryservice_get_directory_vpc_setting;
-
-export 'get_directory_vpc_setting/get_directory_vpc_setting.dart';

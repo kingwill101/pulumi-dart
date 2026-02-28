@@ -1,3 +1,0 @@
-library module_cloudwatch_event_target_appsync_target;
-
-export 'event_target_appsync_target/event_target_appsync_target.dart';

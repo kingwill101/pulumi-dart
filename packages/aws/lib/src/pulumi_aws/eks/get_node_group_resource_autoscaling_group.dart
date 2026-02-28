@@ -1,3 +1,0 @@
-library module_eks_get_node_group_resource_autoscaling_group;
-
-export 'get_node_group_resource_autoscaling_group/get_node_group_resource_autoscaling_group.dart';

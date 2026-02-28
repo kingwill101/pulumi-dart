@@ -1,8 +1,0 @@
-library module_dax;
-
-export 'dax/cluster.dart';
-export 'dax/cluster_node.dart';
-export 'dax/cluster_server_side_encryption.dart';
-export 'dax/parameter_group.dart';
-export 'dax/parameter_group_parameter.dart';
-export 'dax/subnet_group.dart';

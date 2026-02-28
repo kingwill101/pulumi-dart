@@ -1,3 +1,0 @@
-library module_eks_capability_configuration_argo_cd;
-
-export 'capability_configuration_argo_cd/capability_configuration_argo_cd.dart';

@@ -1,3 +1,3 @@
 library pulumi_aws_msk;
 
-export 'package:pulumi_aws/src/pulumi_aws/msk.dart';
+export 'package:pulumi_aws/src/msk.dart';

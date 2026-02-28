@@ -1,3 +1,0 @@
-library module_odb_network_managed_service_zero_etl_access;
-
-export 'network_managed_service_zero_etl_access/network_managed_service_zero_etl_access.dart';

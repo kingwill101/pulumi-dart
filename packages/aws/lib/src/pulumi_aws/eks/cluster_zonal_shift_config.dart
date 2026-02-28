@@ -1,3 +1,0 @@
-library module_eks_cluster_zonal_shift_config;
-
-export 'cluster_zonal_shift_config/cluster_zonal_shift_config.dart';

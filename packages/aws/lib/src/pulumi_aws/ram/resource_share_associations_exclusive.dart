@@ -1,4 +1,0 @@
-library module_ram_resource_share_associations_exclusive;
-
-export 'resource_share_associations_exclusive/resource_share_associations_exclusive.dart';
-export 'resource_share_associations_exclusive/resource_share_associations_exclusive_args.dart';

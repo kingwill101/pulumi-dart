@@ -1,3 +1,0 @@
-library module_connect_quick_connect_quick_connect_config_phone_config;
-
-export 'quick_connect_quick_connect_config_phone_config/quick_connect_quick_connect_config_phone_config.dart';

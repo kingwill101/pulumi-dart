@@ -1,0 +1,410 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'log_transformer_transformer_config_add_keys.dart';
+import 'log_transformer_transformer_config_copy_value.dart';
+import 'log_transformer_transformer_config_csv.dart';
+import 'log_transformer_transformer_config_date_time_converter.dart';
+import 'log_transformer_transformer_config_delete_key.dart';
+import 'log_transformer_transformer_config_grok.dart';
+import 'log_transformer_transformer_config_list_to_map.dart';
+import 'log_transformer_transformer_config_lower_case_string.dart';
+import 'log_transformer_transformer_config_move_key.dart';
+import 'log_transformer_transformer_config_parse_cloudfront.dart';
+import 'log_transformer_transformer_config_parse_json.dart';
+import 'log_transformer_transformer_config_parse_key_value.dart';
+import 'log_transformer_transformer_config_parse_postgres.dart';
+import 'log_transformer_transformer_config_parse_route53.dart';
+import 'log_transformer_transformer_config_parse_to_ocsf.dart';
+import 'log_transformer_transformer_config_parse_vpc.dart';
+import 'log_transformer_transformer_config_parse_waf.dart';
+import 'log_transformer_transformer_config_rename_key.dart';
+import 'log_transformer_transformer_config_split_string.dart';
+import 'log_transformer_transformer_config_substitute_string.dart';
+import 'log_transformer_transformer_config_trim_string.dart';
+import 'log_transformer_transformer_config_type_converter.dart';
+import 'log_transformer_transformer_config_upper_case_string.dart';
+
+class LogTransformerTransformerConfig {
+  /// Adds new key-value pairs to the log event. See `add_keys` below for details.
+  final LogTransformerTransformerConfigAddKeys? addKeys;
+
+  /// Copies values within a log event. See `copy_value` below for details.
+  final LogTransformerTransformerConfigCopyValue? copyValue;
+
+  /// Parses comma-separated values (CSV) from the log events into columns. See `csv` below for details.
+  final List<LogTransformerTransformerConfigCsv>? csvs;
+
+  /// Converts a datetime string into a format that you specify. See `date_time_converter` below for details.
+  final List<LogTransformerTransformerConfigDateTimeConverter>?
+      dateTimeConverters;
+
+  /// Deletes entry from a log event. See `delete_keys` below for details.
+  final List<LogTransformerTransformerConfigDeleteKey>? deleteKeys;
+
+  /// Parses and structures unstructured data by using pattern matching. See `grok` below for details.
+  final LogTransformerTransformerConfigGrok? grok;
+
+  /// Converts list of objects that contain key fields into a map of target keys. See `list_to_map` below for details.
+  final List<LogTransformerTransformerConfigListToMap>? listToMaps;
+
+  /// Converts a string to lowercase. See `lower_case_string` below for details.
+  final List<LogTransformerTransformerConfigLowerCaseString>? lowerCaseStrings;
+
+  /// Moves a key from one field to another. See `move_keys` below for details.
+  final List<LogTransformerTransformerConfigMoveKey>? moveKeys;
+
+  /// Parses CloudFront vended logs, extracts fields, and converts them into JSON format. See `parse_cloudfront` below for details.
+  final LogTransformerTransformerConfigParseCloudfront? parseCloudfront;
+
+  /// Parses log events that are in JSON format. See `parse_json` below for details.
+  final List<LogTransformerTransformerConfigParseJson>? parseJsons;
+
+  /// Parses a specified field in the original log event into key-value pairs. See `parse_key_value` below for details.
+  final List<LogTransformerTransformerConfigParseKeyValue>? parseKeyValues;
+
+  /// Parses RDS for PostgreSQL vended logs, extracts fields, and and convert them into a JSON format. See `parse_postgres` below for details.
+  final LogTransformerTransformerConfigParsePostgres? parsePostgres;
+
+  /// Parses Route 53 vended logs, extracts fields, and converts them into JSON format. See `parse_route53` below for details.
+  final LogTransformerTransformerConfigParseRoute53? parseRoute53;
+
+  /// Parses logs events and converts them into Open Cybersecurity Schema Framework (OCSF) events. See `parse_to_ocsf` below for details.
+  final LogTransformerTransformerConfigParseToOcsf? parseToOcsf;
+
+  /// Parses Amazon VPC vended logs, extracts fields, and converts them into JSON format. See `parse_vpc` below for details.
+  final LogTransformerTransformerConfigParseVpc? parseVpc;
+
+  /// Parses AWS WAF vended logs, extracts fields, and converts them into JSON format. See `parse_waf` below for details.
+  final LogTransformerTransformerConfigParseWaf? parseWaf;
+
+  /// Renames keys in a log event. See `rename_keys` below for details.
+  final List<LogTransformerTransformerConfigRenameKey>? renameKeys;
+
+  /// Splits a field into an array of strings using a delimiting character. See `split_string` below for details.
+  final List<LogTransformerTransformerConfigSplitString>? splitStrings;
+
+  /// Matches a key’s value against a regular expression and replaces all matches with a replacement string. See `substitute_string` below for details.
+  final List<LogTransformerTransformerConfigSubstituteString>?
+      substituteStrings;
+
+  /// Removes leading and trailing whitespace from a string. See `trim_string` below for details.
+  final List<LogTransformerTransformerConfigTrimString>? trimStrings;
+
+  /// Converts a value type associated with the specified key to the specified type. See `type_converter` below for details.
+  final List<LogTransformerTransformerConfigTypeConverter>? typeConverters;
+
+  /// Converts a string to uppercase. See `upper_case_string` below for details.
+  final List<LogTransformerTransformerConfigUpperCaseString>? upperCaseStrings;
+
+  /// Creates a new [LogTransformerTransformerConfig].
+  /// [addKeys] Adds new key-value pairs to the log event. See `add_keys` below for details.
+  /// [copyValue] Copies values within a log event. See `copy_value` below for details.
+  /// [csvs] Parses comma-separated values (CSV) from the log events into columns. See `csv` below for details.
+  /// [dateTimeConverters] Converts a datetime string into a format that you specify. See `date_time_converter` below for details.
+  /// [deleteKeys] Deletes entry from a log event. See `delete_keys` below for details.
+  /// [grok] Parses and structures unstructured data by using pattern matching. See `grok` below for details.
+  /// [listToMaps] Converts list of objects that contain key fields into a map of target keys. See `list_to_map` below for details.
+  /// [lowerCaseStrings] Converts a string to lowercase. See `lower_case_string` below for details.
+  /// [moveKeys] Moves a key from one field to another. See `move_keys` below for details.
+  /// [parseCloudfront] Parses CloudFront vended logs, extracts fields, and converts them into JSON format. See `parse_cloudfront` below for details.
+  /// [parseJsons] Parses log events that are in JSON format. See `parse_json` below for details.
+  /// [parseKeyValues] Parses a specified field in the original log event into key-value pairs. See `parse_key_value` below for details.
+  /// [parsePostgres] Parses RDS for PostgreSQL vended logs, extracts fields, and and convert them into a JSON format. See `parse_postgres` below for details.
+  /// [parseRoute53] Parses Route 53 vended logs, extracts fields, and converts them into JSON format. See `parse_route53` below for details.
+  /// [parseToOcsf] Parses logs events and converts them into Open Cybersecurity Schema Framework (OCSF) events. See `parse_to_ocsf` below for details.
+  /// [parseVpc] Parses Amazon VPC vended logs, extracts fields, and converts them into JSON format. See `parse_vpc` below for details.
+  /// [parseWaf] Parses AWS WAF vended logs, extracts fields, and converts them into JSON format. See `parse_waf` below for details.
+  /// [renameKeys] Renames keys in a log event. See `rename_keys` below for details.
+  /// [splitStrings] Splits a field into an array of strings using a delimiting character. See `split_string` below for details.
+  /// [substituteStrings] Matches a key’s value against a regular expression and replaces all matches with a replacement string. See `substitute_string` below for details.
+  /// [trimStrings] Removes leading and trailing whitespace from a string. See `trim_string` below for details.
+  /// [typeConverters] Converts a value type associated with the specified key to the specified type. See `type_converter` below for details.
+  /// [upperCaseStrings] Converts a string to uppercase. See `upper_case_string` below for details.
+  LogTransformerTransformerConfig({
+    this.addKeys,
+    this.copyValue,
+    this.csvs,
+    this.dateTimeConverters,
+    this.deleteKeys,
+    this.grok,
+    this.listToMaps,
+    this.lowerCaseStrings,
+    this.moveKeys,
+    this.parseCloudfront,
+    this.parseJsons,
+    this.parseKeyValues,
+    this.parsePostgres,
+    this.parseRoute53,
+    this.parseToOcsf,
+    this.parseVpc,
+    this.parseWaf,
+    this.renameKeys,
+    this.splitStrings,
+    this.substituteStrings,
+    this.trimStrings,
+    this.typeConverters,
+    this.upperCaseStrings,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final addKeysValue = addKeys;
+    if (addKeysValue != null) {
+      map['addKeys'] = addKeysValue.toMap();
+    }
+    final copyValueValue = copyValue;
+    if (copyValueValue != null) {
+      map['copyValue'] = copyValueValue.toMap();
+    }
+    final csvsValue = csvs;
+    if (csvsValue != null) {
+      map['csvs'] = pulumi.Input.encodeList<LogTransformerTransformerConfigCsv,
+          Map<String, dynamic>>(csvsValue, (value) => value.toMap());
+    }
+    final dateTimeConvertersValue = dateTimeConverters;
+    if (dateTimeConvertersValue != null) {
+      map['dateTimeConverters'] = pulumi.Input.encodeList<
+              LogTransformerTransformerConfigDateTimeConverter,
+              Map<String, dynamic>>(
+          dateTimeConvertersValue, (value) => value.toMap());
+    }
+    final deleteKeysValue = deleteKeys;
+    if (deleteKeysValue != null) {
+      map['deleteKeys'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigDeleteKey,
+          Map<String, dynamic>>(deleteKeysValue, (value) => value.toMap());
+    }
+    final grokValue = grok;
+    if (grokValue != null) {
+      map['grok'] = grokValue.toMap();
+    }
+    final listToMapsValue = listToMaps;
+    if (listToMapsValue != null) {
+      map['listToMaps'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigListToMap,
+          Map<String, dynamic>>(listToMapsValue, (value) => value.toMap());
+    }
+    final lowerCaseStringsValue = lowerCaseStrings;
+    if (lowerCaseStringsValue != null) {
+      map['lowerCaseStrings'] = pulumi.Input.encodeList<
+              LogTransformerTransformerConfigLowerCaseString,
+              Map<String, dynamic>>(
+          lowerCaseStringsValue, (value) => value.toMap());
+    }
+    final moveKeysValue = moveKeys;
+    if (moveKeysValue != null) {
+      map['moveKeys'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigMoveKey,
+          Map<String, dynamic>>(moveKeysValue, (value) => value.toMap());
+    }
+    final parseCloudfrontValue = parseCloudfront;
+    if (parseCloudfrontValue != null) {
+      map['parseCloudfront'] = parseCloudfrontValue.toMap();
+    }
+    final parseJsonsValue = parseJsons;
+    if (parseJsonsValue != null) {
+      map['parseJsons'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigParseJson,
+          Map<String, dynamic>>(parseJsonsValue, (value) => value.toMap());
+    }
+    final parseKeyValuesValue = parseKeyValues;
+    if (parseKeyValuesValue != null) {
+      map['parseKeyValues'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigParseKeyValue,
+          Map<String, dynamic>>(parseKeyValuesValue, (value) => value.toMap());
+    }
+    final parsePostgresValue = parsePostgres;
+    if (parsePostgresValue != null) {
+      map['parsePostgres'] = parsePostgresValue.toMap();
+    }
+    final parseRoute53Value = parseRoute53;
+    if (parseRoute53Value != null) {
+      map['parseRoute53'] = parseRoute53Value.toMap();
+    }
+    final parseToOcsfValue = parseToOcsf;
+    if (parseToOcsfValue != null) {
+      map['parseToOcsf'] = parseToOcsfValue.toMap();
+    }
+    final parseVpcValue = parseVpc;
+    if (parseVpcValue != null) {
+      map['parseVpc'] = parseVpcValue.toMap();
+    }
+    final parseWafValue = parseWaf;
+    if (parseWafValue != null) {
+      map['parseWaf'] = parseWafValue.toMap();
+    }
+    final renameKeysValue = renameKeys;
+    if (renameKeysValue != null) {
+      map['renameKeys'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigRenameKey,
+          Map<String, dynamic>>(renameKeysValue, (value) => value.toMap());
+    }
+    final splitStringsValue = splitStrings;
+    if (splitStringsValue != null) {
+      map['splitStrings'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigSplitString,
+          Map<String, dynamic>>(splitStringsValue, (value) => value.toMap());
+    }
+    final substituteStringsValue = substituteStrings;
+    if (substituteStringsValue != null) {
+      map['substituteStrings'] = pulumi.Input.encodeList<
+              LogTransformerTransformerConfigSubstituteString,
+              Map<String, dynamic>>(
+          substituteStringsValue, (value) => value.toMap());
+    }
+    final trimStringsValue = trimStrings;
+    if (trimStringsValue != null) {
+      map['trimStrings'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigTrimString,
+          Map<String, dynamic>>(trimStringsValue, (value) => value.toMap());
+    }
+    final typeConvertersValue = typeConverters;
+    if (typeConvertersValue != null) {
+      map['typeConverters'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigTypeConverter,
+          Map<String, dynamic>>(typeConvertersValue, (value) => value.toMap());
+    }
+    final upperCaseStringsValue = upperCaseStrings;
+    if (upperCaseStringsValue != null) {
+      map['upperCaseStrings'] = pulumi.Input.encodeList<
+              LogTransformerTransformerConfigUpperCaseString,
+              Map<String, dynamic>>(
+          upperCaseStringsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory LogTransformerTransformerConfig.fromMap(Map<String, dynamic> map) {
+    return LogTransformerTransformerConfig(
+      addKeys: map['addKeys'] == null
+          ? null
+          : LogTransformerTransformerConfigAddKeys.fromMap(
+              (map['addKeys'] as Map).cast<String, dynamic>()),
+      copyValue: map['copyValue'] == null
+          ? null
+          : LogTransformerTransformerConfigCopyValue.fromMap(
+              (map['copyValue'] as Map).cast<String, dynamic>()),
+      csvs: map['csvs'] == null
+          ? null
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigCsv>(
+              map['csvs'],
+              (value) => LogTransformerTransformerConfigCsv.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      dateTimeConverters: map['dateTimeConverters'] == null
+          ? null
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigDateTimeConverter>(
+              map['dateTimeConverters'],
+              (value) =>
+                  LogTransformerTransformerConfigDateTimeConverter.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+      deleteKeys: map['deleteKeys'] == null
+          ? null
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigDeleteKey>(
+              map['deleteKeys'],
+              (value) => LogTransformerTransformerConfigDeleteKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      grok: map['grok'] == null
+          ? null
+          : LogTransformerTransformerConfigGrok.fromMap(
+              (map['grok'] as Map).cast<String, dynamic>()),
+      listToMaps: map['listToMaps'] == null
+          ? null
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigListToMap>(
+              map['listToMaps'],
+              (value) => LogTransformerTransformerConfigListToMap.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      lowerCaseStrings: map['lowerCaseStrings'] == null
+          ? null
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigLowerCaseString>(
+              map['lowerCaseStrings'],
+              (value) => LogTransformerTransformerConfigLowerCaseString.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      moveKeys: map['moveKeys'] == null
+          ? null
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigMoveKey>(
+              map['moveKeys'],
+              (value) => LogTransformerTransformerConfigMoveKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      parseCloudfront: map['parseCloudfront'] == null
+          ? null
+          : LogTransformerTransformerConfigParseCloudfront.fromMap(
+              (map['parseCloudfront'] as Map).cast<String, dynamic>()),
+      parseJsons: map['parseJsons'] == null
+          ? null
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigParseJson>(
+              map['parseJsons'],
+              (value) => LogTransformerTransformerConfigParseJson.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      parseKeyValues: map['parseKeyValues'] == null
+          ? null
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigParseKeyValue>(
+              map['parseKeyValues'],
+              (value) => LogTransformerTransformerConfigParseKeyValue.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      parsePostgres: map['parsePostgres'] == null
+          ? null
+          : LogTransformerTransformerConfigParsePostgres.fromMap(
+              (map['parsePostgres'] as Map).cast<String, dynamic>()),
+      parseRoute53: map['parseRoute53'] == null
+          ? null
+          : LogTransformerTransformerConfigParseRoute53.fromMap(
+              (map['parseRoute53'] as Map).cast<String, dynamic>()),
+      parseToOcsf: map['parseToOcsf'] == null
+          ? null
+          : LogTransformerTransformerConfigParseToOcsf.fromMap(
+              (map['parseToOcsf'] as Map).cast<String, dynamic>()),
+      parseVpc: map['parseVpc'] == null
+          ? null
+          : LogTransformerTransformerConfigParseVpc.fromMap(
+              (map['parseVpc'] as Map).cast<String, dynamic>()),
+      parseWaf: map['parseWaf'] == null
+          ? null
+          : LogTransformerTransformerConfigParseWaf.fromMap(
+              (map['parseWaf'] as Map).cast<String, dynamic>()),
+      renameKeys: map['renameKeys'] == null
+          ? null
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigRenameKey>(
+              map['renameKeys'],
+              (value) => LogTransformerTransformerConfigRenameKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      splitStrings: map['splitStrings'] == null
+          ? null
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigSplitString>(
+              map['splitStrings'],
+              (value) => LogTransformerTransformerConfigSplitString.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      substituteStrings: map['substituteStrings'] == null
+          ? null
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigSubstituteString>(
+              map['substituteStrings'],
+              (value) =>
+                  LogTransformerTransformerConfigSubstituteString.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+      trimStrings: map['trimStrings'] == null
+          ? null
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigTrimString>(
+              map['trimStrings'],
+              (value) => LogTransformerTransformerConfigTrimString.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      typeConverters: map['typeConverters'] == null
+          ? null
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigTypeConverter>(
+              map['typeConverters'],
+              (value) => LogTransformerTransformerConfigTypeConverter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      upperCaseStrings: map['upperCaseStrings'] == null
+          ? null
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigUpperCaseString>(
+              map['upperCaseStrings'],
+              (value) => LogTransformerTransformerConfigUpperCaseString.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

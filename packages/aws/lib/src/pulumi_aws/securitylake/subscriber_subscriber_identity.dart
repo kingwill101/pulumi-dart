@@ -1,3 +1,0 @@
-library module_securitylake_subscriber_subscriber_identity;
-
-export 'subscriber_subscriber_identity/subscriber_subscriber_identity.dart';

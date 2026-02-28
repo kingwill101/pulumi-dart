@@ -1,0 +1,24 @@
+library module_rekognition;
+
+export 'rekognition/collection.dart';
+export 'rekognition/collection_args.dart';
+export 'rekognition/collection_timeouts.dart';
+export 'rekognition/project.dart';
+export 'rekognition/project_args.dart';
+export 'rekognition/project_timeouts.dart';
+export 'rekognition/stream_processor.dart';
+export 'rekognition/stream_processor_args.dart';
+export 'rekognition/stream_processor_data_sharing_preference.dart';
+export 'rekognition/stream_processor_input.dart';
+export 'rekognition/stream_processor_input_kinesis_video_stream.dart';
+export 'rekognition/stream_processor_notification_channel.dart';
+export 'rekognition/stream_processor_output.dart';
+export 'rekognition/stream_processor_output_kinesis_data_stream.dart';
+export 'rekognition/stream_processor_output_s3_destination.dart';
+export 'rekognition/stream_processor_regions_of_interest.dart';
+export 'rekognition/stream_processor_regions_of_interest_bounding_box.dart';
+export 'rekognition/stream_processor_regions_of_interest_polygon.dart';
+export 'rekognition/stream_processor_settings.dart';
+export 'rekognition/stream_processor_settings_connected_home.dart';
+export 'rekognition/stream_processor_settings_face_search.dart';
+export 'rekognition/stream_processor_timeouts.dart';

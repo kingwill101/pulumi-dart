@@ -1,3 +1,0 @@
-library module_sagemaker_app_image_config_code_editor_app_image_config;
-
-export 'app_image_config_code_editor_app_image_config/app_image_config_code_editor_app_image_config.dart';

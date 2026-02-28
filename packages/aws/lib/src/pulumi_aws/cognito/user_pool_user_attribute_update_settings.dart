@@ -1,3 +1,0 @@
-library module_cognito_user_pool_user_attribute_update_settings;
-
-export 'user_pool_user_attribute_update_settings/user_pool_user_attribute_update_settings.dart';

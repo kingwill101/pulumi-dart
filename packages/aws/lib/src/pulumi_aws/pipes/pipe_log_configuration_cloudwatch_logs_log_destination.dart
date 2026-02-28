@@ -1,3 +1,0 @@
-library module_pipes_pipe_log_configuration_cloudwatch_logs_log_destination;
-
-export 'pipe_log_configuration_cloudwatch_logs_log_destination/pipe_log_configuration_cloudwatch_logs_log_destination.dart';

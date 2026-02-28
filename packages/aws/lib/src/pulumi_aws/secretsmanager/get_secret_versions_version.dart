@@ -1,3 +1,0 @@
-library module_secretsmanager_get_secret_versions_version;
-
-export 'get_secret_versions_version/get_secret_versions_version.dart';

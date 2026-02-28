@@ -1,3 +1,0 @@
-library module_wafv2_rule_group_rule_statement_or_statement;
-
-export 'rule_group_rule_statement_or_statement/rule_group_rule_statement_or_statement.dart';

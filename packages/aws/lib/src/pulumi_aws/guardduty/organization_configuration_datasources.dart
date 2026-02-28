@@ -1,3 +1,0 @@
-library module_guardduty_organization_configuration_datasources;
-
-export 'organization_configuration_datasources/organization_configuration_datasources.dart';

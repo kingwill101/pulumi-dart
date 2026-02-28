@@ -1,3 +1,0 @@
-library module_codepipeline_pipeline_stage_before_entry_condition;
-
-export 'pipeline_stage_before_entry_condition/pipeline_stage_before_entry_condition.dart';

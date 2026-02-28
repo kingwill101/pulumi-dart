@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'analyzer_configuration_internal_access.dart';
+import 'analyzer_configuration_unused_access.dart';
+
+class AnalyzerConfiguration {
+  /// Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internal_access` Block for details.
+  final AnalyzerConfigurationInternalAccess? internalAccess;
+
+  /// Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unused_access` Block for details.
+  final AnalyzerConfigurationUnusedAccess? unusedAccess;
+
+  /// Creates a new [AnalyzerConfiguration].
+  /// [internalAccess] Specifies the configuration of an internal access analyzer for an AWS organization or account. This configuration determines how the analyzer evaluates access within your AWS environment. See `internal_access` Block for details.
+  /// [unusedAccess] Specifies the configuration of an unused access analyzer for an AWS organization or account. See `unused_access` Block for details.
+  AnalyzerConfiguration({
+    this.internalAccess,
+    this.unusedAccess,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final internalAccessValue = internalAccess;
+    if (internalAccessValue != null) {
+      map['internalAccess'] = internalAccessValue.toMap();
+    }
+    final unusedAccessValue = unusedAccess;
+    if (unusedAccessValue != null) {
+      map['unusedAccess'] = unusedAccessValue.toMap();
+    }
+    return map;
+  }
+
+  factory AnalyzerConfiguration.fromMap(Map<String, dynamic> map) {
+    return AnalyzerConfiguration(
+      internalAccess: map['internalAccess'] == null
+          ? null
+          : AnalyzerConfigurationInternalAccess.fromMap(
+              (map['internalAccess'] as Map).cast<String, dynamic>()),
+      unusedAccess: map['unusedAccess'] == null
+          ? null
+          : AnalyzerConfigurationUnusedAccess.fromMap(
+              (map['unusedAccess'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

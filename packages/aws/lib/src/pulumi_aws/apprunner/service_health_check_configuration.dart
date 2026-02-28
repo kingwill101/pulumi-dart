@@ -1,3 +1,0 @@
-library module_apprunner_service_health_check_configuration;
-
-export 'service_health_check_configuration/service_health_check_configuration.dart';

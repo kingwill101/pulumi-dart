@@ -1,3 +1,0 @@
-library module_ec2_vpn_connection_vgw_telemetry;
-
-export 'vpn_connection_vgw_telemetry/vpn_connection_vgw_telemetry.dart';

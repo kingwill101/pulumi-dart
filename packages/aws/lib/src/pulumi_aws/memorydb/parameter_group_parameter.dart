@@ -1,3 +1,0 @@
-library module_memorydb_parameter_group_parameter;
-
-export 'parameter_group_parameter/parameter_group_parameter_memorydb.dart';

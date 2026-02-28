@@ -1,3 +1,0 @@
-library module_opensearch_domain_aiml_options_s3_vectors_engine;
-
-export 'domain_aiml_options_s3_vectors_engine/domain_aiml_options_s3_vectors_engine.dart';

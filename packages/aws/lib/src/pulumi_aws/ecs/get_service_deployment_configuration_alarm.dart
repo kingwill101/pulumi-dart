@@ -1,3 +1,0 @@
-library module_ecs_get_service_deployment_configuration_alarm;
-
-export 'get_service_deployment_configuration_alarm/get_service_deployment_configuration_alarm.dart';

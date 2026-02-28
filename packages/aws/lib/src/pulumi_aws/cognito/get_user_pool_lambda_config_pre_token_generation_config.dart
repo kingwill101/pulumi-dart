@@ -1,3 +1,0 @@
-library module_cognito_get_user_pool_lambda_config_pre_token_generation_config;
-
-export 'get_user_pool_lambda_config_pre_token_generation_config/get_user_pool_lambda_config_pre_token_generation_config.dart';

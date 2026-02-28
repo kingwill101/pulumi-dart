@@ -1,3 +1,0 @@
-library module_appflow_flow_source_flow_config_source_connector_properties_infor_nexus;
-
-export 'flow_source_flow_config_source_connector_properties_infor_nexus/flow_source_flow_config_source_connector_properties_infor_nexus.dart';

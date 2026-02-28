@@ -1,3 +1,0 @@
-library module_alb_listener_rule_transform_url_rewrite_config_rewrite;
-
-export 'listener_rule_transform_url_rewrite_config_rewrite/listener_rule_transform_url_rewrite_config_rewrite.dart';

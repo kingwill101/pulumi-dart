@@ -1,3 +1,0 @@
-library module_fsx_data_repository_association_s3_auto_import_policy;
-
-export 'data_repository_association_s3_auto_import_policy/data_repository_association_s3_auto_import_policy.dart';

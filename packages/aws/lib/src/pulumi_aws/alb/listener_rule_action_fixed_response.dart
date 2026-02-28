@@ -1,3 +1,0 @@
-library module_alb_listener_rule_action_fixed_response;
-
-export 'listener_rule_action_fixed_response/listener_rule_action_fixed_response.dart';

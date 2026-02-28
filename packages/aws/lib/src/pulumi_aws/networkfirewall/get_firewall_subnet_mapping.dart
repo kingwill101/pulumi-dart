@@ -1,3 +1,0 @@
-library module_networkfirewall_get_firewall_subnet_mapping;
-
-export 'get_firewall_subnet_mapping/get_firewall_subnet_mapping.dart';

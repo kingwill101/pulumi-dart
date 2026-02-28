@@ -1,3 +1,0 @@
-library module_medialive_channel_encoder_settings_timecode_config;
-
-export 'channel_encoder_settings_timecode_config/channel_encoder_settings_timecode_config.dart';

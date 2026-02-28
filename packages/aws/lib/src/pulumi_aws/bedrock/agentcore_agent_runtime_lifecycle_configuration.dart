@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_agent_runtime_lifecycle_configuration;
-
-export 'agentcore_agent_runtime_lifecycle_configuration/agentcore_agent_runtime_lifecycle_configuration.dart';

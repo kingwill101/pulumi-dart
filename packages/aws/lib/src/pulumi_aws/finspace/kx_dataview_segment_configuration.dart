@@ -1,3 +1,0 @@
-library module_finspace_kx_dataview_segment_configuration;
-
-export 'kx_dataview_segment_configuration/kx_dataview_segment_configuration.dart';

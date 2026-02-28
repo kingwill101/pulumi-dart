@@ -1,3 +1,0 @@
-library module_timestreaminfluxdb_db_cluster_log_delivery_configuration_s3_configuration;
-
-export 'db_cluster_log_delivery_configuration_s3_configuration/db_cluster_log_delivery_configuration_s3_configuration.dart';

@@ -1,3 +1,0 @@
-library module_cloudwatch_log_transformer_transformer_config_grok;
-
-export 'log_transformer_transformer_config_grok/log_transformer_transformer_config_grok.dart';

@@ -1,3 +1,0 @@
-library module_ec2_spot_fleet_request_spot_maintenance_strategies;
-
-export 'spot_fleet_request_spot_maintenance_strategies/spot_fleet_request_spot_maintenance_strategies.dart';

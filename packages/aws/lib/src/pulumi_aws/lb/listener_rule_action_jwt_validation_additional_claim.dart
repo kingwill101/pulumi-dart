@@ -1,3 +1,0 @@
-library module_lb_listener_rule_action_jwt_validation_additional_claim;
-
-export 'listener_rule_action_jwt_validation_additional_claim/listener_rule_action_jwt_validation_additional_claim_lb.dart';

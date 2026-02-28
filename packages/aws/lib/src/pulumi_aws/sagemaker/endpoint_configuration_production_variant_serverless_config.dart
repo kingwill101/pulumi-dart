@@ -1,3 +1,0 @@
-library module_sagemaker_endpoint_configuration_production_variant_serverless_config;
-
-export 'endpoint_configuration_production_variant_serverless_config/endpoint_configuration_production_variant_serverless_config.dart';

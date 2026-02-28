@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_company_name;
-
-export 'automation_rule_criteria_company_name/automation_rule_criteria_company_name.dart';

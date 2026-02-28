@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'pipeline_stage_on_success_condition.dart';
+
+class PipelineStageOnSuccess {
+  /// The conditions that are success conditions. Defined as a `condition` block below.
+  final PipelineStageOnSuccessCondition condition;
+
+  /// Creates a new [PipelineStageOnSuccess].
+  /// [condition] The conditions that are success conditions. Defined as a `condition` block below.
+  PipelineStageOnSuccess({
+    required this.condition,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['condition'] = condition.toMap();
+    return map;
+  }
+
+  factory PipelineStageOnSuccess.fromMap(Map<String, dynamic> map) {
+    return PipelineStageOnSuccess(
+      condition: PipelineStageOnSuccessCondition.fromMap(
+          (map['condition'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

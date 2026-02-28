@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class AgentFlowDefinitionConnectionConfigurationData {
+  /// The name of the output in the source node that the connection begins from.
+  final String sourceOutput;
+
+  /// The name of the input in the target node that the connection ends at.
+  final String targetInput;
+
+  /// Creates a new [AgentFlowDefinitionConnectionConfigurationData].
+  /// [sourceOutput] The name of the output in the source node that the connection begins from.
+  /// [targetInput] The name of the input in the target node that the connection ends at.
+  AgentFlowDefinitionConnectionConfigurationData({
+    required this.sourceOutput,
+    required this.targetInput,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['sourceOutput'] = sourceOutput;
+    map['targetInput'] = targetInput;
+    return map;
+  }
+
+  factory AgentFlowDefinitionConnectionConfigurationData.fromMap(
+      Map<String, dynamic> map) {
+    return AgentFlowDefinitionConnectionConfigurationData(
+      sourceOutput: map['sourceOutput'] as String,
+      targetInput: map['targetInput'] as String,
+    );
+  }
+}

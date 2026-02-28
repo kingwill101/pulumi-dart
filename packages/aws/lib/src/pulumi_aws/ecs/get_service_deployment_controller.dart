@@ -1,3 +1,0 @@
-library module_ecs_get_service_deployment_controller;
-
-export 'get_service_deployment_controller/get_service_deployment_controller.dart';

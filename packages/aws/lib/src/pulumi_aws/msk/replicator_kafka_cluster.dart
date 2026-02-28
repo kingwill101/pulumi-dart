@@ -1,3 +1,0 @@
-library module_msk_replicator_kafka_cluster;
-
-export 'replicator_kafka_cluster/replicator_kafka_cluster.dart';

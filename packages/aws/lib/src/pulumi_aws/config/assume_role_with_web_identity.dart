@@ -1,3 +1,0 @@
-library module_config_assume_role_with_web_identity;
-
-export 'assume_role_with_web_identity/assume_role_with_web_identity.dart';

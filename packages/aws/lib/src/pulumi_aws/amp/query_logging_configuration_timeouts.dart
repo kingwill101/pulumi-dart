@@ -1,3 +1,0 @@
-library module_amp_query_logging_configuration_timeouts;
-
-export 'query_logging_configuration_timeouts/query_logging_configuration_timeouts.dart';

@@ -1,3 +1,0 @@
-library module_sesv2_configuration_set_delivery_options;
-
-export 'configuration_set_delivery_options/configuration_set_delivery_options_sesv2.dart';

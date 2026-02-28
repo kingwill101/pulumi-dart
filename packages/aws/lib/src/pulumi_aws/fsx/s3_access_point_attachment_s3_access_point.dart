@@ -1,3 +1,0 @@
-library module_fsx_s3_access_point_attachment_s3_access_point;
-
-export 's3_access_point_attachment_s3_access_point/s3_access_point_attachment_s3_access_point.dart';

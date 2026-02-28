@@ -1,3 +1,0 @@
-library module_opensearch_domain_aiml_options_serverless_vector_acceleration;
-
-export 'domain_aiml_options_serverless_vector_acceleration/domain_aiml_options_serverless_vector_acceleration.dart';

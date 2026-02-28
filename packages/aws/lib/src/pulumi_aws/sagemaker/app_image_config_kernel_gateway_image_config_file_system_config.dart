@@ -1,3 +1,0 @@
-library module_sagemaker_app_image_config_kernel_gateway_image_config_file_system_config;
-
-export 'app_image_config_kernel_gateway_image_config_file_system_config/app_image_config_kernel_gateway_image_config_file_system_config.dart';

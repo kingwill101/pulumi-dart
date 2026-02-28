@@ -1,3 +1,0 @@
-library module_redshift_parameter_group_parameter;
-
-export 'parameter_group_parameter/parameter_group_parameter_redshift.dart';

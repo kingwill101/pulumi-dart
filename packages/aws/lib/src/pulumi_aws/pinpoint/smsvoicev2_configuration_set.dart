@@ -1,4 +1,0 @@
-library module_pinpoint_smsvoicev2_configuration_set;
-
-export 'smsvoicev2_configuration_set/smsvoicev2_configuration_set.dart';
-export 'smsvoicev2_configuration_set/smsvoicev2_configuration_set_args.dart';

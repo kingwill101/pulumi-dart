@@ -1,3 +1,0 @@
-library module_organizations_organizational_unit_account;
-
-export 'organizational_unit_account/organizational_unit_account.dart';

@@ -1,3 +1,0 @@
-library module_cloudfront_response_headers_policy_server_timing_headers_config;
-
-export 'response_headers_policy_server_timing_headers_config/response_headers_policy_server_timing_headers_config.dart';

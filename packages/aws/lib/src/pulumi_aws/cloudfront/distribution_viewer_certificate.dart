@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_viewer_certificate;
-
-export 'distribution_viewer_certificate/distribution_viewer_certificate.dart';

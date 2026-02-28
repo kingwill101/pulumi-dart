@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class CertificateOptions {
+  /// Whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
+  final String? certificateTransparencyLoggingPreference;
+
+  /// Whether the certificate can be exported. Valid values are `ENABLED` or `DISABLED` (default). **Note** Issuing an exportable certificate is subject to additional charges. See [AWS Certificate Manager pricing](https://aws.amazon.com/certificate-manager/pricing/) for more details.
+  final String? export;
+
+  /// Creates a new [CertificateOptions].
+  /// [certificateTransparencyLoggingPreference] Whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
+  /// [export] Whether the certificate can be exported. Valid values are `ENABLED` or `DISABLED` (default). **Note** Issuing an exportable certificate is subject to additional charges. See [AWS Certificate Manager pricing](https://aws.amazon.com/certificate-manager/pricing/) for more details.
+  CertificateOptions({
+    this.certificateTransparencyLoggingPreference,
+    this.export,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final certificateTransparencyLoggingPreferenceValue =
+        certificateTransparencyLoggingPreference;
+    if (certificateTransparencyLoggingPreferenceValue != null) {
+      map['certificateTransparencyLoggingPreference'] =
+          certificateTransparencyLoggingPreferenceValue;
+    }
+    final exportValue = export;
+    if (exportValue != null) {
+      map['export'] = exportValue;
+    }
+    return map;
+  }
+
+  factory CertificateOptions.fromMap(Map<String, dynamic> map) {
+    return CertificateOptions(
+      certificateTransparencyLoggingPreference:
+          map['certificateTransparencyLoggingPreference'] == null
+              ? null
+              : map['certificateTransparencyLoggingPreference'] as String,
+      export: map['export'] == null ? null : map['export'] as String,
+    );
+  }
+}

@@ -1,5 +1,0 @@
-library module_iam_get_principal_policy_simulation;
-
-export 'get_principal_policy_simulation/get_principal_policy_simulation.dart';
-export 'get_principal_policy_simulation/get_principal_policy_simulation_args.dart';
-export 'get_principal_policy_simulation/get_principal_policy_simulation_iam_result.dart';

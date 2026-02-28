@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_first_observed_at;
-
-export 'filter_filter_criteria_first_observed_at/filter_filter_criteria_first_observed_at.dart';

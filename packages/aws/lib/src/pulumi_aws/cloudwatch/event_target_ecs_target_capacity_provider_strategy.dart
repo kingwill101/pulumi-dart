@@ -1,3 +1,0 @@
-library module_cloudwatch_event_target_ecs_target_capacity_provider_strategy;
-
-export 'event_target_ecs_target_capacity_provider_strategy/event_target_ecs_target_capacity_provider_strategy.dart';

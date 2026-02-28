@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_waf_get_rate_based_rule_get_rate_based_rule_args_doc}
+/// Arguments for getRateBasedRule.
+/// {@endtemplate}
+/// {@macro pulumi_waf_get_rate_based_rule_get_rate_based_rule_args_doc}
+class GetRateBasedRuleArgs {
+  /// Name of the WAF rate based rule.
+  final pulumi.Input<String> name;
+
+  /// Creates a new [GetRateBasedRuleArgs].
+  /// [name] Name of the WAF rate based rule.
+  GetRateBasedRuleArgs({
+    required String name,
+  }) : name = pulumi.Input.asInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['name'] = name;
+    return map;
+  }
+
+  factory GetRateBasedRuleArgs.fromMap(Map<String, dynamic> map) {
+    return GetRateBasedRuleArgs(
+      name: map['name'] as String,
+    );
+  }
+}

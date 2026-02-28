@@ -1,3 +1,0 @@
-library module_networkfirewall_rule_group_rule_group_rules_source_stateful_rule;
-
-export 'rule_group_rule_group_rules_source_stateful_rule/rule_group_rule_group_rules_source_stateful_rule.dart';

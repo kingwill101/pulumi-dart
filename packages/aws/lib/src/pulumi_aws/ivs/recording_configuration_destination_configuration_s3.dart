@@ -1,3 +1,0 @@
-library module_ivs_recording_configuration_destination_configuration_s3;
-
-export 'recording_configuration_destination_configuration_s3/recording_configuration_destination_configuration_s3.dart';

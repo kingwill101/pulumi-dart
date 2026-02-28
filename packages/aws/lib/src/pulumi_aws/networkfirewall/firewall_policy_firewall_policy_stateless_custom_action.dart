@@ -1,3 +1,0 @@
-library module_networkfirewall_firewall_policy_firewall_policy_stateless_custom_action;
-
-export 'firewall_policy_firewall_policy_stateless_custom_action/firewall_policy_firewall_policy_stateless_custom_action.dart';

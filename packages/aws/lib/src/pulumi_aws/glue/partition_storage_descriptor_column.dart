@@ -1,3 +1,0 @@
-library module_glue_partition_storage_descriptor_column;
-
-export 'partition_storage_descriptor_column/partition_storage_descriptor_column.dart';

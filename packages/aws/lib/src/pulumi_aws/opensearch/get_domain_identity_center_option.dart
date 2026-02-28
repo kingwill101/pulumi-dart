@@ -1,3 +1,0 @@
-library module_opensearch_get_domain_identity_center_option;
-
-export 'get_domain_identity_center_option/get_domain_identity_center_option.dart';

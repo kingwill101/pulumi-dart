@@ -1,3 +1,0 @@
-library module_bedrockfoundation_get_models_model_summary;
-
-export 'get_models_model_summary/get_models_model_summary.dart';

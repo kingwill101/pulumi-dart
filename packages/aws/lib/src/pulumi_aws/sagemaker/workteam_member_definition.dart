@@ -1,3 +1,0 @@
-library module_sagemaker_workteam_member_definition;
-
-export 'workteam_member_definition/workteam_member_definition.dart';

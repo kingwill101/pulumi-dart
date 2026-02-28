@@ -1,3 +1,0 @@
-library module_pipes_pipe_enrichment_parameters_http_parameters;
-
-export 'pipe_enrichment_parameters_http_parameters/pipe_enrichment_parameters_http_parameters.dart';

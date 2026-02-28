@@ -1,3 +1,0 @@
-library module_s3_access_point_public_access_block_configuration;
-
-export 'access_point_public_access_block_configuration/access_point_public_access_block_configuration.dart';

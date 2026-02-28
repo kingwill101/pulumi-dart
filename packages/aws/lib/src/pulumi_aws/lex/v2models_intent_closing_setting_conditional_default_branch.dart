@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_closing_setting_conditional_default_branch;
-
-export 'v2models_intent_closing_setting_conditional_default_branch/v2models_intent_closing_setting_conditional_default_branch.dart';

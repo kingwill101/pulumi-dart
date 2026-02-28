@@ -1,3 +1,3 @@
 library pulumi_aws_pipes;
 
-export 'package:pulumi_aws/src/pulumi_aws/pipes.dart';
+export 'package:pulumi_aws/src/pipes.dart';

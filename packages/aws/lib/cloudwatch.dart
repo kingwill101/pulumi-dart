@@ -1,3 +1,3 @@
 library pulumi_aws_cloudwatch;
 
-export 'package:pulumi_aws/src/pulumi_aws/cloudwatch.dart';
+export 'package:pulumi_aws/src/cloudwatch.dart';

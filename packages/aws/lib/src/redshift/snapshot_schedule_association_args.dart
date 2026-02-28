@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_redshift_snapshot_schedule_association_snapshot_schedule_association_args_doc}
+/// The set of arguments for SnapshotScheduleAssociation.
+/// {@endtemplate}
+/// {@macro pulumi_redshift_snapshot_schedule_association_snapshot_schedule_association_args_doc}
+class SnapshotScheduleAssociationArgs {
+  /// The cluster identifier.
+  final pulumi.Input<String> clusterIdentifier;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// The snapshot schedule identifier.
+  final pulumi.Input<String> scheduleIdentifier;
+
+  /// Creates a new [SnapshotScheduleAssociationArgs].
+  /// [clusterIdentifier] The cluster identifier.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [scheduleIdentifier] The snapshot schedule identifier.
+  SnapshotScheduleAssociationArgs({
+    required String clusterIdentifier,
+    String? region,
+    required String scheduleIdentifier,
+  })  : clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        scheduleIdentifier = pulumi.Input.asInput<String>(scheduleIdentifier);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['clusterIdentifier'] = clusterIdentifier;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['scheduleIdentifier'] = scheduleIdentifier;
+    return map;
+  }
+
+  factory SnapshotScheduleAssociationArgs.fromMap(Map<String, dynamic> map) {
+    return SnapshotScheduleAssociationArgs(
+      clusterIdentifier: map['clusterIdentifier'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      scheduleIdentifier: map['scheduleIdentifier'] as String,
+    );
+  }
+}

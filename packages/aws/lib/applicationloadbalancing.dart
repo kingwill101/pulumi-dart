@@ -1,3 +1,3 @@
 library pulumi_aws_applicationloadbalancing;
 
-export 'package:pulumi_aws/src/pulumi_aws/applicationloadbalancing.dart';
+export 'package:pulumi_aws/src/applicationloadbalancing.dart';

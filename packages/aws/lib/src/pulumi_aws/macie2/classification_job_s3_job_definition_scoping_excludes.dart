@@ -1,3 +1,0 @@
-library module_macie2_classification_job_s3_job_definition_scoping_excludes;
-
-export 'classification_job_s3_job_definition_scoping_excludes/classification_job_s3_job_definition_scoping_excludes.dart';

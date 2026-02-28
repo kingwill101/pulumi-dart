@@ -1,3 +1,0 @@
-library module_eks_get_cluster_identity_oidc;
-
-export 'get_cluster_identity_oidc/get_cluster_identity_oidc.dart';

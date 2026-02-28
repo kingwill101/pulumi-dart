@@ -1,3 +1,0 @@
-library module_mskconnect_connector_kafka_cluster_client_authentication;
-
-export 'connector_kafka_cluster_client_authentication/connector_kafka_cluster_client_authentication.dart';

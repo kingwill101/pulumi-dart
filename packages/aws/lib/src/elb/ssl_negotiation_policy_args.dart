@@ -1,0 +1,103 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'ssl_negotiation_policy_attribute.dart';
+
+/// {@template pulumi_elb_ssl_negotiation_policy_ssl_negotiation_policy_args_doc}
+/// The set of arguments for SslNegotiationPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_elb_ssl_negotiation_policy_ssl_negotiation_policy_args_doc}
+class SslNegotiationPolicyArgs {
+  /// An SSL Negotiation policy attribute. Each has two properties:
+  final pulumi.Input<List<SslNegotiationPolicyAttribute>>? attributes;
+
+  /// The load balancer port to which the policy
+  /// should be applied. This must be an active listener on the load
+  /// balancer.
+  final pulumi.Input<int> lbPort;
+
+  /// The load balancer to which the policy
+  /// should be attached.
+  final pulumi.Input<String> loadBalancer;
+
+  /// The name of the SSL negotiation policy.
+  final pulumi.Input<String>? name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
+  ///
+  /// To set your attributes, please see the [AWS Elastic Load Balancing Developer Guide](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-policy-table.html) for a listing of the supported SSL protocols, SSL options, and SSL ciphers.
+  ///
+  /// > **NOTE:** The AWS documentation references Server Order Preference, which the AWS Elastic Load Balancing API refers to as `Server-Defined-Cipher-Order`. If you wish to set Server Order Preference, use this value instead.
+  final pulumi.Input<Map<String, String>>? triggers;
+
+  /// Creates a new [SslNegotiationPolicyArgs].
+  /// [attributes] An SSL Negotiation policy attribute. Each has two properties:
+  /// [lbPort] The load balancer port to which the policy
+  /// [loadBalancer] The load balancer to which the policy
+  /// [name] The name of the SSL negotiation policy.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment.
+  SslNegotiationPolicyArgs({
+    List<SslNegotiationPolicyAttribute>? attributes,
+    required int lbPort,
+    required String loadBalancer,
+    String? name,
+    String? region,
+    Map<String, String>? triggers,
+  })  : attributes =
+            pulumi.Input.asOptionalInput<List<SslNegotiationPolicyAttribute>>(
+                attributes),
+        lbPort = pulumi.Input.asInput<int>(lbPort),
+        loadBalancer = pulumi.Input.asInput<String>(loadBalancer),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final attributesValue = attributes;
+    if (attributesValue != null) {
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<
+              List<SslNegotiationPolicyAttribute>, List<Map<String, dynamic>>>(
+          attributesValue,
+          (value) => pulumi.Input.encodeList<SslNegotiationPolicyAttribute,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    map['lbPort'] = lbPort;
+    map['loadBalancer'] = loadBalancer;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final triggersValue = triggers;
+    if (triggersValue != null) {
+      map['triggers'] = triggersValue;
+    }
+    return map;
+  }
+
+  factory SslNegotiationPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return SslNegotiationPolicyArgs(
+      attributes: map['attributes'] == null
+          ? null
+          : pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(
+              map['attributes'],
+              (value) => SslNegotiationPolicyAttribute.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      lbPort: map['lbPort'] as int,
+      loadBalancer: map['loadBalancer'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      triggers: map['triggers'] == null
+          ? null
+          : (map['triggers'] as Map).cast<String, String>(),
+    );
+  }
+}

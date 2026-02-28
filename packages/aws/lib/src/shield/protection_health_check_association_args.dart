@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_shield_protection_health_check_association_protection_health_check_association_args_doc}
+/// The set of arguments for ProtectionHealthCheckAssociation.
+/// {@endtemplate}
+/// {@macro pulumi_shield_protection_health_check_association_protection_health_check_association_args_doc}
+class ProtectionHealthCheckAssociationArgs {
+  /// The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
+  final pulumi.Input<String> healthCheckArn;
+
+  /// The ID of the protected resource.
+  final pulumi.Input<String> shieldProtectionId;
+
+  /// Creates a new [ProtectionHealthCheckAssociationArgs].
+  /// [healthCheckArn] The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
+  /// [shieldProtectionId] The ID of the protected resource.
+  ProtectionHealthCheckAssociationArgs({
+    required String healthCheckArn,
+    required String shieldProtectionId,
+  })  : healthCheckArn = pulumi.Input.asInput<String>(healthCheckArn),
+        shieldProtectionId = pulumi.Input.asInput<String>(shieldProtectionId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['healthCheckArn'] = healthCheckArn;
+    map['shieldProtectionId'] = shieldProtectionId;
+    return map;
+  }
+
+  factory ProtectionHealthCheckAssociationArgs.fromMap(
+      Map<String, dynamic> map) {
+    return ProtectionHealthCheckAssociationArgs(
+      healthCheckArn: map['healthCheckArn'] as String,
+      shieldProtectionId: map['shieldProtectionId'] as String,
+    );
+  }
+}

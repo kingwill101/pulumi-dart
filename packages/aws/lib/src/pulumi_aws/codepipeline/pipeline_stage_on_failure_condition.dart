@@ -1,3 +1,0 @@
-library module_codepipeline_pipeline_stage_on_failure_condition;
-
-export 'pipeline_stage_on_failure_condition/pipeline_stage_on_failure_condition.dart';

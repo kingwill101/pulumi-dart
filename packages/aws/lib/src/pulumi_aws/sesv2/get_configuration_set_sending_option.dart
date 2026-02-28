@@ -1,3 +1,0 @@
-library module_sesv2_get_configuration_set_sending_option;
-
-export 'get_configuration_set_sending_option/get_configuration_set_sending_option.dart';

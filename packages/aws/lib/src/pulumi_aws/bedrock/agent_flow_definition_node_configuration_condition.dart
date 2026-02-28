@@ -1,3 +1,0 @@
-library module_bedrock_agent_flow_definition_node_configuration_condition;
-
-export 'agent_flow_definition_node_configuration_condition/agent_flow_definition_node_configuration_condition.dart';

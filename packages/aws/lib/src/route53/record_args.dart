@@ -1,0 +1,280 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'record_alias.dart';
+import 'record_cidr_routing_policy.dart';
+import 'record_failover_routing_policy.dart';
+import 'record_geolocation_routing_policy.dart';
+import 'record_geoproximity_routing_policy.dart';
+import 'record_latency_routing_policy.dart';
+import 'record_weighted_routing_policy.dart';
+
+/// {@template pulumi_route53_record_record_args_doc}
+/// The set of arguments for Record.
+/// {@endtemplate}
+/// {@macro pulumi_route53_record_record_args_doc}
+class RecordArgs {
+  /// An alias block. Conflicts with `ttl` & `records`.
+  /// Documented below.
+  final pulumi.Input<List<RecordAlias>>? aliases;
+
+  /// Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
+  ///
+  /// Exactly one of `records` or `alias` must be specified: this determines whether it's an alias record.
+  final pulumi.Input<bool>? allowOverwrite;
+
+  /// A block indicating a routing policy based on the IP network ranges of requestors. Conflicts with any other routing policy. Documented below.
+  final pulumi.Input<RecordCidrRoutingPolicy>? cidrRoutingPolicy;
+
+  /// A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
+  final pulumi.Input<List<RecordFailoverRoutingPolicy>>?
+      failoverRoutingPolicies;
+
+  /// A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
+  final pulumi.Input<List<RecordGeolocationRoutingPolicy>>?
+      geolocationRoutingPolicies;
+
+  /// A block indicating a routing policy based on the geoproximity of the requestor. Conflicts with any other routing policy. Documented below.
+  final pulumi.Input<RecordGeoproximityRoutingPolicy>?
+      geoproximityRoutingPolicy;
+
+  /// The health check the record should be associated with.
+  final pulumi.Input<String>? healthCheckId;
+
+  /// A block indicating a routing policy based on the latency between the requestor and an AWS region. Conflicts with any other routing policy. Documented below.
+  final pulumi.Input<List<RecordLatencyRoutingPolicy>>? latencyRoutingPolicies;
+
+  /// Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
+  final pulumi.Input<bool>? multivalueAnswerRoutingPolicy;
+
+  /// The name of the record.
+  final pulumi.Input<String> name;
+
+  /// A string list of records. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g., `"first255characters\"\"morecharacters"`).
+  final pulumi.Input<List<String>>? records;
+
+  /// Unique identifier to differentiate records with routing policies from one another. Required if using `cidr_routing_policy`, `failover_routing_policy`, `geolocation_routing_policy`,`geoproximity_routing_policy`, `latency_routing_policy`, `multivalue_answer_routing_policy`, or `weighted_routing_policy`.
+  final pulumi.Input<String>? setIdentifier;
+
+  /// The TTL of the record.
+  final pulumi.Input<int>? ttl;
+
+  /// The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `DS`, `HTTPS`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+  final pulumi.Input<String> type;
+
+  /// A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
+  final pulumi.Input<List<RecordWeightedRoutingPolicy>>?
+      weightedRoutingPolicies;
+
+  /// The ID of the hosted zone to contain this record.
+  final pulumi.Input<String> zoneId;
+
+  /// Creates a new [RecordArgs].
+  /// [aliases] An alias block. Conflicts with `ttl` & `records`.
+  /// [allowOverwrite] Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
+  /// [cidrRoutingPolicy] A block indicating a routing policy based on the IP network ranges of requestors. Conflicts with any other routing policy. Documented below.
+  /// [failoverRoutingPolicies] A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
+  /// [geolocationRoutingPolicies] A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
+  /// [geoproximityRoutingPolicy] A block indicating a routing policy based on the geoproximity of the requestor. Conflicts with any other routing policy. Documented below.
+  /// [healthCheckId] The health check the record should be associated with.
+  /// [latencyRoutingPolicies] A block indicating a routing policy based on the latency between the requestor and an AWS region. Conflicts with any other routing policy. Documented below.
+  /// [multivalueAnswerRoutingPolicy] Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
+  /// [name] The name of the record.
+  /// [records] A string list of records. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g., `"first255characters\"\"morecharacters"`).
+  /// [setIdentifier] Unique identifier to differentiate records with routing policies from one another. Required if using `cidr_routing_policy`, `failover_routing_policy`, `geolocation_routing_policy`,`geoproximity_routing_policy`, `latency_routing_policy`, `multivalue_answer_routing_policy`, or `weighted_routing_policy`.
+  /// [ttl] The TTL of the record.
+  /// [type] The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `DS`, `HTTPS`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+  /// [weightedRoutingPolicies] A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
+  /// [zoneId] The ID of the hosted zone to contain this record.
+  RecordArgs({
+    List<RecordAlias>? aliases,
+    bool? allowOverwrite,
+    RecordCidrRoutingPolicy? cidrRoutingPolicy,
+    List<RecordFailoverRoutingPolicy>? failoverRoutingPolicies,
+    List<RecordGeolocationRoutingPolicy>? geolocationRoutingPolicies,
+    RecordGeoproximityRoutingPolicy? geoproximityRoutingPolicy,
+    String? healthCheckId,
+    List<RecordLatencyRoutingPolicy>? latencyRoutingPolicies,
+    bool? multivalueAnswerRoutingPolicy,
+    required String name,
+    List<String>? records,
+    String? setIdentifier,
+    int? ttl,
+    required String type,
+    List<RecordWeightedRoutingPolicy>? weightedRoutingPolicies,
+    required String zoneId,
+  })  : aliases = pulumi.Input.asOptionalInput<List<RecordAlias>>(aliases),
+        allowOverwrite = pulumi.Input.asOptionalInput<bool>(allowOverwrite),
+        cidrRoutingPolicy =
+            pulumi.Input.asOptionalInput<RecordCidrRoutingPolicy>(
+                cidrRoutingPolicy),
+        failoverRoutingPolicies =
+            pulumi.Input.asOptionalInput<List<RecordFailoverRoutingPolicy>>(
+                failoverRoutingPolicies),
+        geolocationRoutingPolicies =
+            pulumi.Input.asOptionalInput<List<RecordGeolocationRoutingPolicy>>(
+                geolocationRoutingPolicies),
+        geoproximityRoutingPolicy =
+            pulumi.Input.asOptionalInput<RecordGeoproximityRoutingPolicy>(
+                geoproximityRoutingPolicy),
+        healthCheckId = pulumi.Input.asOptionalInput<String>(healthCheckId),
+        latencyRoutingPolicies =
+            pulumi.Input.asOptionalInput<List<RecordLatencyRoutingPolicy>>(
+                latencyRoutingPolicies),
+        multivalueAnswerRoutingPolicy =
+            pulumi.Input.asOptionalInput<bool>(multivalueAnswerRoutingPolicy),
+        name = pulumi.Input.asInput<String>(name),
+        records = pulumi.Input.asOptionalInput<List<String>>(records),
+        setIdentifier = pulumi.Input.asOptionalInput<String>(setIdentifier),
+        ttl = pulumi.Input.asOptionalInput<int>(ttl),
+        type = pulumi.Input.asInput<String>(type),
+        weightedRoutingPolicies =
+            pulumi.Input.asOptionalInput<List<RecordWeightedRoutingPolicy>>(
+                weightedRoutingPolicies),
+        zoneId = pulumi.Input.asInput<String>(zoneId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final aliasesValue = aliases;
+    if (aliasesValue != null) {
+      map['aliases'] = pulumi.Input.mapOptionalInputValue<List<RecordAlias>,
+              List<Map<String, dynamic>>>(
+          aliasesValue,
+          (value) => pulumi.Input.encodeList<RecordAlias, Map<String, dynamic>>(
+              value, (value) => value.toMap()));
+    }
+    final allowOverwriteValue = allowOverwrite;
+    if (allowOverwriteValue != null) {
+      map['allowOverwrite'] = allowOverwriteValue;
+    }
+    final cidrRoutingPolicyValue = cidrRoutingPolicy;
+    if (cidrRoutingPolicyValue != null) {
+      map['cidrRoutingPolicy'] = pulumi.Input.mapOptionalInputValue<
+              RecordCidrRoutingPolicy, Map<String, dynamic>>(
+          cidrRoutingPolicyValue, (value) => value.toMap());
+    }
+    final failoverRoutingPoliciesValue = failoverRoutingPolicies;
+    if (failoverRoutingPoliciesValue != null) {
+      map['failoverRoutingPolicies'] = pulumi.Input.mapOptionalInputValue<
+              List<RecordFailoverRoutingPolicy>, List<Map<String, dynamic>>>(
+          failoverRoutingPoliciesValue,
+          (value) => pulumi.Input.encodeList<RecordFailoverRoutingPolicy,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    final geolocationRoutingPoliciesValue = geolocationRoutingPolicies;
+    if (geolocationRoutingPoliciesValue != null) {
+      map['geolocationRoutingPolicies'] = pulumi.Input.mapOptionalInputValue<
+              List<RecordGeolocationRoutingPolicy>, List<Map<String, dynamic>>>(
+          geolocationRoutingPoliciesValue,
+          (value) => pulumi.Input.encodeList<RecordGeolocationRoutingPolicy,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    final geoproximityRoutingPolicyValue = geoproximityRoutingPolicy;
+    if (geoproximityRoutingPolicyValue != null) {
+      map['geoproximityRoutingPolicy'] = pulumi.Input.mapOptionalInputValue<
+              RecordGeoproximityRoutingPolicy, Map<String, dynamic>>(
+          geoproximityRoutingPolicyValue, (value) => value.toMap());
+    }
+    final healthCheckIdValue = healthCheckId;
+    if (healthCheckIdValue != null) {
+      map['healthCheckId'] = healthCheckIdValue;
+    }
+    final latencyRoutingPoliciesValue = latencyRoutingPolicies;
+    if (latencyRoutingPoliciesValue != null) {
+      map['latencyRoutingPolicies'] = pulumi.Input.mapOptionalInputValue<
+              List<RecordLatencyRoutingPolicy>, List<Map<String, dynamic>>>(
+          latencyRoutingPoliciesValue,
+          (value) => pulumi.Input.encodeList<RecordLatencyRoutingPolicy,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    final multivalueAnswerRoutingPolicyValue = multivalueAnswerRoutingPolicy;
+    if (multivalueAnswerRoutingPolicyValue != null) {
+      map['multivalueAnswerRoutingPolicy'] = multivalueAnswerRoutingPolicyValue;
+    }
+    map['name'] = name;
+    final recordsValue = records;
+    if (recordsValue != null) {
+      map['records'] = recordsValue;
+    }
+    final setIdentifierValue = setIdentifier;
+    if (setIdentifierValue != null) {
+      map['setIdentifier'] = setIdentifierValue;
+    }
+    final ttlValue = ttl;
+    if (ttlValue != null) {
+      map['ttl'] = ttlValue;
+    }
+    map['type'] = type;
+    final weightedRoutingPoliciesValue = weightedRoutingPolicies;
+    if (weightedRoutingPoliciesValue != null) {
+      map['weightedRoutingPolicies'] = pulumi.Input.mapOptionalInputValue<
+              List<RecordWeightedRoutingPolicy>, List<Map<String, dynamic>>>(
+          weightedRoutingPoliciesValue,
+          (value) => pulumi.Input.encodeList<RecordWeightedRoutingPolicy,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    map['zoneId'] = zoneId;
+    return map;
+  }
+
+  factory RecordArgs.fromMap(Map<String, dynamic> map) {
+    return RecordArgs(
+      aliases: map['aliases'] == null
+          ? null
+          : pulumi.Input.decodeList<RecordAlias>(
+              map['aliases'],
+              (value) =>
+                  RecordAlias.fromMap((value as Map).cast<String, dynamic>())),
+      allowOverwrite:
+          map['allowOverwrite'] == null ? null : map['allowOverwrite'] as bool,
+      cidrRoutingPolicy: map['cidrRoutingPolicy'] == null
+          ? null
+          : RecordCidrRoutingPolicy.fromMap(
+              (map['cidrRoutingPolicy'] as Map).cast<String, dynamic>()),
+      failoverRoutingPolicies: map['failoverRoutingPolicies'] == null
+          ? null
+          : pulumi.Input.decodeList<RecordFailoverRoutingPolicy>(
+              map['failoverRoutingPolicies'],
+              (value) => RecordFailoverRoutingPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      geolocationRoutingPolicies: map['geolocationRoutingPolicies'] == null
+          ? null
+          : pulumi.Input.decodeList<RecordGeolocationRoutingPolicy>(
+              map['geolocationRoutingPolicies'],
+              (value) => RecordGeolocationRoutingPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      geoproximityRoutingPolicy: map['geoproximityRoutingPolicy'] == null
+          ? null
+          : RecordGeoproximityRoutingPolicy.fromMap(
+              (map['geoproximityRoutingPolicy'] as Map)
+                  .cast<String, dynamic>()),
+      healthCheckId:
+          map['healthCheckId'] == null ? null : map['healthCheckId'] as String,
+      latencyRoutingPolicies: map['latencyRoutingPolicies'] == null
+          ? null
+          : pulumi.Input.decodeList<RecordLatencyRoutingPolicy>(
+              map['latencyRoutingPolicies'],
+              (value) => RecordLatencyRoutingPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      multivalueAnswerRoutingPolicy:
+          map['multivalueAnswerRoutingPolicy'] == null
+              ? null
+              : map['multivalueAnswerRoutingPolicy'] as bool,
+      name: map['name'] as String,
+      records: map['records'] == null
+          ? null
+          : (map['records'] as List).cast<String>(),
+      setIdentifier:
+          map['setIdentifier'] == null ? null : map['setIdentifier'] as String,
+      ttl: map['ttl'] == null ? null : map['ttl'] as int,
+      type: map['type'] as String,
+      weightedRoutingPolicies: map['weightedRoutingPolicies'] == null
+          ? null
+          : pulumi.Input.decodeList<RecordWeightedRoutingPolicy>(
+              map['weightedRoutingPolicies'],
+              (value) => RecordWeightedRoutingPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      zoneId: map['zoneId'] as String,
+    );
+  }
+}

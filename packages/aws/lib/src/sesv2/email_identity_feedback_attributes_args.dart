@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_sesv2_email_identity_feedback_attributes_email_identity_feedback_attributes_args_doc}
+/// The set of arguments for EmailIdentityFeedbackAttributes.
+/// {@endtemplate}
+/// {@macro pulumi_sesv2_email_identity_feedback_attributes_email_identity_feedback_attributes_args_doc}
+class EmailIdentityFeedbackAttributesArgs {
+  /// Sets the feedback forwarding configuration for the identity.
+  final pulumi.Input<bool>? emailForwardingEnabled;
+
+  /// The email identity.
+  final pulumi.Input<String> emailIdentity;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [EmailIdentityFeedbackAttributesArgs].
+  /// [emailForwardingEnabled] Sets the feedback forwarding configuration for the identity.
+  /// [emailIdentity] The email identity.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  EmailIdentityFeedbackAttributesArgs({
+    bool? emailForwardingEnabled,
+    required String emailIdentity,
+    String? region,
+  })  : emailForwardingEnabled =
+            pulumi.Input.asOptionalInput<bool>(emailForwardingEnabled),
+        emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final emailForwardingEnabledValue = emailForwardingEnabled;
+    if (emailForwardingEnabledValue != null) {
+      map['emailForwardingEnabled'] = emailForwardingEnabledValue;
+    }
+    map['emailIdentity'] = emailIdentity;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory EmailIdentityFeedbackAttributesArgs.fromMap(
+      Map<String, dynamic> map) {
+    return EmailIdentityFeedbackAttributesArgs(
+      emailForwardingEnabled: map['emailForwardingEnabled'] == null
+          ? null
+          : map['emailForwardingEnabled'] as bool,
+      emailIdentity: map['emailIdentity'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

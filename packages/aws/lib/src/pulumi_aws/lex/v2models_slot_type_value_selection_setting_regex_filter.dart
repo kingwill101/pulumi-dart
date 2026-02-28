@@ -1,3 +1,0 @@
-library module_lex_v2models_slot_type_value_selection_setting_regex_filter;
-
-export 'v2models_slot_type_value_selection_setting_regex_filter/v2models_slot_type_value_selection_setting_regex_filter.dart';

@@ -1,3 +1,0 @@
-library module_bedrock_agent_knowledge_base_storage_configuration_pinecone_configuration;
-
-export 'agent_knowledge_base_storage_configuration_pinecone_configuration/agent_knowledge_base_storage_configuration_pinecone_configuration.dart';

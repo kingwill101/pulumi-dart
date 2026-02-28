@@ -1,3 +1,0 @@
-library module_gamelift_build_storage_location;
-
-export 'build_storage_location/build_storage_location.dart';

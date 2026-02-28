@@ -1,3 +1,0 @@
-library module_redshift_endpoint_access_vpc_endpoint_network_interface;
-
-export 'endpoint_access_vpc_endpoint_network_interface/endpoint_access_vpc_endpoint_network_interface.dart';

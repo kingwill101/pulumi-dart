@@ -1,3 +1,0 @@
-library module_imagebuilder_image_logging_configuration;
-
-export 'image_logging_configuration/image_logging_configuration.dart';

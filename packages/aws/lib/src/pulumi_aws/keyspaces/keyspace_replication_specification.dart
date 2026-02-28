@@ -1,3 +1,0 @@
-library module_keyspaces_keyspace_replication_specification;
-
-export 'keyspace_replication_specification/keyspace_replication_specification.dart';

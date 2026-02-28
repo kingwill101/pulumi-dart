@@ -1,3 +1,3 @@
 library pulumi_aws_ses;
 
-export 'package:pulumi_aws/src/pulumi_aws/ses.dart';
+export 'package:pulumi_aws/src/ses.dart';

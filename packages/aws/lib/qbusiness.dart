@@ -1,3 +1,3 @@
 library pulumi_aws_qbusiness;
 
-export 'package:pulumi_aws/src/pulumi_aws/qbusiness.dart';
+export 'package:pulumi_aws/src/qbusiness.dart';

@@ -1,3 +1,3 @@
 library pulumi_aws_lightsail;
 
-export 'package:pulumi_aws/src/pulumi_aws/lightsail.dart';
+export 'package:pulumi_aws/src/lightsail.dart';

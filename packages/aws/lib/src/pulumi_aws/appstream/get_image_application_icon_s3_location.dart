@@ -1,3 +1,0 @@
-library module_appstream_get_image_application_icon_s3_location;
-
-export 'get_image_application_icon_s3_location/get_image_application_icon_s3_location.dart';

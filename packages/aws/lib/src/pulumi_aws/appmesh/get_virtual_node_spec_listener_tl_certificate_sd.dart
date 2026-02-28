@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_node_spec_listener_tl_certificate_sd;
-
-export 'get_virtual_node_spec_listener_tl_certificate_sd/get_virtual_node_spec_listener_tl_certificate_sd.dart';

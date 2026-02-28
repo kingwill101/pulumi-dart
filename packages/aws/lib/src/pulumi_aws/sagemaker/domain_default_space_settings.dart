@@ -1,3 +1,0 @@
-library module_sagemaker_domain_default_space_settings;
-
-export 'domain_default_space_settings/domain_default_space_settings.dart';

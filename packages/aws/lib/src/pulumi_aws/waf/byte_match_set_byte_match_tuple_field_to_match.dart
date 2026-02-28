@@ -1,3 +1,0 @@
-library module_waf_byte_match_set_byte_match_tuple_field_to_match;
-
-export 'byte_match_set_byte_match_tuple_field_to_match/byte_match_set_byte_match_tuple_field_to_match.dart';

@@ -1,3 +1,0 @@
-library module_ec2_nat_gateway_eip_association_timeouts;
-
-export 'nat_gateway_eip_association_timeouts/nat_gateway_eip_association_timeouts.dart';

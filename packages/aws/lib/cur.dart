@@ -1,3 +1,3 @@
 library pulumi_aws_cur;
 
-export 'package:pulumi_aws/src/pulumi_aws/cur.dart';
+export 'package:pulumi_aws/src/cur.dart';

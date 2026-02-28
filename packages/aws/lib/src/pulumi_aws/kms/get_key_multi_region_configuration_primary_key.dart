@@ -1,3 +1,0 @@
-library module_kms_get_key_multi_region_configuration_primary_key;
-
-export 'get_key_multi_region_configuration_primary_key/get_key_multi_region_configuration_primary_key.dart';

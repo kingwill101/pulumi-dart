@@ -1,3 +1,0 @@
-library module_storagegateway_smb_file_share_cache_attributes;
-
-export 'smb_file_share_cache_attributes/smb_file_share_cache_attributes.dart';

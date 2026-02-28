@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_verification_state;
-
-export 'insight_filters_verification_state/insight_filters_verification_state.dart';

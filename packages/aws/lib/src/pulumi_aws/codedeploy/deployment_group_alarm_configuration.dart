@@ -1,3 +1,0 @@
-library module_codedeploy_deployment_group_alarm_configuration;
-
-export 'deployment_group_alarm_configuration/deployment_group_alarm_configuration.dart';

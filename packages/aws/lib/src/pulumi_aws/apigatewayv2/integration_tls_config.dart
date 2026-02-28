@@ -1,3 +1,0 @@
-library module_apigatewayv2_integration_tls_config;
-
-export 'integration_tls_config/integration_tls_config_apigatewayv2.dart';

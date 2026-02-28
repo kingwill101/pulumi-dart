@@ -1,3 +1,0 @@
-library module_eks_fargate_profile_selector;
-
-export 'fargate_profile_selector/fargate_profile_selector.dart';

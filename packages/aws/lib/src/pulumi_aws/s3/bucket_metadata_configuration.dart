@@ -1,4 +1,0 @@
-library module_s3_bucket_metadata_configuration;
-
-export 'bucket_metadata_configuration/bucket_metadata_configuration.dart';
-export 'bucket_metadata_configuration/bucket_metadata_configuration_args.dart';

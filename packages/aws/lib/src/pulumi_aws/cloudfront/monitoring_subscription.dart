@@ -1,4 +1,0 @@
-library module_cloudfront_monitoring_subscription;
-
-export 'monitoring_subscription/monitoring_subscription.dart';
-export 'monitoring_subscription/monitoring_subscription_args.dart';

@@ -1,3 +1,0 @@
-library module_rekognition_stream_processor_data_sharing_preference;
-
-export 'stream_processor_data_sharing_preference/stream_processor_data_sharing_preference.dart';

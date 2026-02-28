@@ -1,5 +1,0 @@
-library module_ecr_get_authorization_token;
-
-export 'get_authorization_token/get_authorization_token_ecr.dart';
-export 'get_authorization_token/get_authorization_token_ecr_args.dart';
-export 'get_authorization_token/get_authorization_token_ecr_result.dart';

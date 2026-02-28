@@ -1,3 +1,0 @@
-library module_lb_target_group_target_group_health;
-
-export 'target_group_target_group_health/target_group_target_group_health_lb.dart';

@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_lambda_function_recursion_config_function_recursion_config_args_doc}
+/// The set of arguments for FunctionRecursionConfig.
+/// {@endtemplate}
+/// {@macro pulumi_lambda_function_recursion_config_function_recursion_config_args_doc}
+class FunctionRecursionConfigArgs {
+  /// Name of the Lambda function.
+  final pulumi.Input<String> functionName;
+
+  /// Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<String> recursiveLoop;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [FunctionRecursionConfigArgs].
+  /// [functionName] Name of the Lambda function.
+  /// [recursiveLoop] Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  FunctionRecursionConfigArgs({
+    required String functionName,
+    required String recursiveLoop,
+    String? region,
+  })  : functionName = pulumi.Input.asInput<String>(functionName),
+        recursiveLoop = pulumi.Input.asInput<String>(recursiveLoop),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['functionName'] = functionName;
+    map['recursiveLoop'] = recursiveLoop;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory FunctionRecursionConfigArgs.fromMap(Map<String, dynamic> map) {
+    return FunctionRecursionConfigArgs(
+      functionName: map['functionName'] as String,
+      recursiveLoop: map['recursiveLoop'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

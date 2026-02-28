@@ -1,3 +1,0 @@
-library module_networkflowmonitor_scope_target_target_identifier;
-
-export 'scope_target_target_identifier/scope_target_target_identifier.dart';

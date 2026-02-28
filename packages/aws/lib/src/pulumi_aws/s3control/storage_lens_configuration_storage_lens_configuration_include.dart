@@ -1,3 +1,0 @@
-library module_s3control_storage_lens_configuration_storage_lens_configuration_include;
-
-export 'storage_lens_configuration_storage_lens_configuration_include/storage_lens_configuration_storage_lens_configuration_include.dart';

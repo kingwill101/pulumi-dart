@@ -1,3 +1,0 @@
-library module_costexplorer_cost_category_rule_rule_not;
-
-export 'cost_category_rule_rule_not/cost_category_rule_rule_not.dart';

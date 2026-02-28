@@ -1,3 +1,0 @@
-library module_identitystore_get_users_user_external_id;
-
-export 'get_users_user_external_id/get_users_user_external_id.dart';

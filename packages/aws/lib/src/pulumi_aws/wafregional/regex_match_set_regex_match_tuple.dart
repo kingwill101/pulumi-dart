@@ -1,3 +1,0 @@
-library module_wafregional_regex_match_set_regex_match_tuple;
-
-export 'regex_match_set_regex_match_tuple/regex_match_set_regex_match_tuple_wafregional.dart';

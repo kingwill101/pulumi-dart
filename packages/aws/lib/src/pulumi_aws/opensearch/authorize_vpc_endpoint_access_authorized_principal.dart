@@ -1,3 +1,0 @@
-library module_opensearch_authorize_vpc_endpoint_access_authorized_principal;
-
-export 'authorize_vpc_endpoint_access_authorized_principal/authorize_vpc_endpoint_access_authorized_principal.dart';

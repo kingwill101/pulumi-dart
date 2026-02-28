@@ -1,4 +1,0 @@
-library module_ec2transitgateway_default_route_table_propagation;
-
-export 'default_route_table_propagation/default_route_table_propagation.dart';
-export 'default_route_table_propagation/default_route_table_propagation_args.dart';

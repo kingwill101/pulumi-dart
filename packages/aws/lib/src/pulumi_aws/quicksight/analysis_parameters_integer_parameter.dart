@@ -1,3 +1,0 @@
-library module_quicksight_analysis_parameters_integer_parameter;
-
-export 'analysis_parameters_integer_parameter/analysis_parameters_integer_parameter.dart';

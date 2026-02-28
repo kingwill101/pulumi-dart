@@ -1,3 +1,0 @@
-library module_odb_get_db_servers_db_server;
-
-export 'get_db_servers_db_server/get_db_servers_db_server.dart';

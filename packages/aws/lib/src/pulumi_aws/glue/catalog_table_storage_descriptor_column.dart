@@ -1,3 +1,0 @@
-library module_glue_catalog_table_storage_descriptor_column;
-
-export 'catalog_table_storage_descriptor_column/catalog_table_storage_descriptor_column.dart';

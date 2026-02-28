@@ -1,4 +1,0 @@
-library module_apprunner_custom_domain_association;
-
-export 'custom_domain_association/custom_domain_association.dart';
-export 'custom_domain_association/custom_domain_association_args.dart';

@@ -1,3 +1,0 @@
-library module_ec2_get_managed_prefix_lists_filter;
-
-export 'get_managed_prefix_lists_filter/get_managed_prefix_lists_filter.dart';

@@ -1,3 +1,0 @@
-library module_ec2_launch_configuration_metadata_options;
-
-export 'launch_configuration_metadata_options/launch_configuration_metadata_options.dart';

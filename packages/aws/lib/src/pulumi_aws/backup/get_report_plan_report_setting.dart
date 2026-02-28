@@ -1,3 +1,0 @@
-library module_backup_get_report_plan_report_setting;
-
-export 'get_report_plan_report_setting/get_report_plan_report_setting.dart';

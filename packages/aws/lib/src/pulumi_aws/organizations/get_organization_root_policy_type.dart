@@ -1,3 +1,0 @@
-library module_organizations_get_organization_root_policy_type;
-
-export 'get_organization_root_policy_type/get_organization_root_policy_type.dart';

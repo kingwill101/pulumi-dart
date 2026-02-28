@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_atp_rule_set_request_inspection_password_field.dart';
+import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_atp_rule_set_request_inspection_username_field.dart';
+
+class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection {
+  /// Details about your login page password field. See `password_field` for more details.
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspectionPasswordField
+      passwordField;
+
+  /// The payload type for your login endpoint, either JSON or form encoded.
+  final String payloadType;
+
+  /// Details about your login page username field. See `username_field` for more details.
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspectionUsernameField
+      usernameField;
+
+  /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection].
+  /// [passwordField] Details about your login page password field. See `password_field` for more details.
+  /// [payloadType] The payload type for your login endpoint, either JSON or form encoded.
+  /// [usernameField] Details about your login page username field. See `username_field` for more details.
+  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection({
+    required this.passwordField,
+    required this.payloadType,
+    required this.usernameField,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['passwordField'] = passwordField.toMap();
+    map['payloadType'] = payloadType;
+    map['usernameField'] = usernameField.toMap();
+    return map;
+  }
+
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection.fromMap(
+      Map<String, dynamic> map) {
+    return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection(
+      passwordField:
+          WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspectionPasswordField
+              .fromMap((map['passwordField'] as Map).cast<String, dynamic>()),
+      payloadType: map['payloadType'] as String,
+      usernameField:
+          WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspectionUsernameField
+              .fromMap((map['usernameField'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

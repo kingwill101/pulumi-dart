@@ -1,3 +1,0 @@
-library module_bedrock_get_inference_profiles_inference_profile_summary_model;
-
-export 'get_inference_profiles_inference_profile_summary_model/get_inference_profiles_inference_profile_summary_model.dart';

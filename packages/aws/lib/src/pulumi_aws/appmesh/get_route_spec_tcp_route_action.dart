@@ -1,3 +1,0 @@
-library module_appmesh_get_route_spec_tcp_route_action;
-
-export 'get_route_spec_tcp_route_action/get_route_spec_tcp_route_action.dart';

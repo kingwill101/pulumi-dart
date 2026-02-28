@@ -1,3 +1,0 @@
-library module_pipes_pipe_target_parameters_sqs_queue_parameters;
-
-export 'pipe_target_parameters_sqs_queue_parameters/pipe_target_parameters_sqs_queue_parameters.dart';

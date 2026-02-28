@@ -1,4 +1,0 @@
-library module_auditmanager_organization_admin_account_registration;
-
-export 'organization_admin_account_registration/organization_admin_account_registration.dart';
-export 'organization_admin_account_registration/organization_admin_account_registration_args.dart';

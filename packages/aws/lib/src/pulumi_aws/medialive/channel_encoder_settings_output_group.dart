@@ -1,3 +1,0 @@
-library module_medialive_channel_encoder_settings_output_group;
-
-export 'channel_encoder_settings_output_group/channel_encoder_settings_output_group.dart';

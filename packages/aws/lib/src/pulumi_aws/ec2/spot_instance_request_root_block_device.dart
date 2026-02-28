@@ -1,3 +1,0 @@
-library module_ec2_spot_instance_request_root_block_device;
-
-export 'spot_instance_request_root_block_device/spot_instance_request_root_block_device.dart';

@@ -1,5 +1,0 @@
-library module_ses_get_active_receipt_rule_set;
-
-export 'get_active_receipt_rule_set/get_active_receipt_rule_set.dart';
-export 'get_active_receipt_rule_set/get_active_receipt_rule_set_args.dart';
-export 'get_active_receipt_rule_set/get_active_receipt_rule_set_result.dart';

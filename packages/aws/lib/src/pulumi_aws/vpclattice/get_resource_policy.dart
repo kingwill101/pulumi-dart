@@ -1,5 +1,0 @@
-library module_vpclattice_get_resource_policy;
-
-export 'get_resource_policy/get_resource_policy_vpclattice.dart';
-export 'get_resource_policy/get_resource_policy_vpclattice_args.dart';
-export 'get_resource_policy/get_resource_policy_vpclattice_result.dart';

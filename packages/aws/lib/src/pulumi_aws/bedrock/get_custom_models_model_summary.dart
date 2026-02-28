@@ -1,3 +1,0 @@
-library module_bedrock_get_custom_models_model_summary;
-
-export 'get_custom_models_model_summary/get_custom_models_model_summary.dart';

@@ -1,3 +1,0 @@
-library module_identitystore_get_user_alternate_identifier_unique_attribute;
-
-export 'get_user_alternate_identifier_unique_attribute/get_user_alternate_identifier_unique_attribute.dart';

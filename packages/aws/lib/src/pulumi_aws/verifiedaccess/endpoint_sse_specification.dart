@@ -1,3 +1,0 @@
-library module_verifiedaccess_endpoint_sse_specification;
-
-export 'endpoint_sse_specification/endpoint_sse_specification.dart';

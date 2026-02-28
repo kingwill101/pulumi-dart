@@ -1,3 +1,0 @@
-library module_amp_query_logging_configuration_destination_filters;
-
-export 'query_logging_configuration_destination_filters/query_logging_configuration_destination_filters.dart';

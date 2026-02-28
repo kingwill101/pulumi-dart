@@ -1,3 +1,0 @@
-library module_quicksight_dashboard_dashboard_publish_options_visual_menu_option;
-
-export 'dashboard_dashboard_publish_options_visual_menu_option/dashboard_dashboard_publish_options_visual_menu_option.dart';

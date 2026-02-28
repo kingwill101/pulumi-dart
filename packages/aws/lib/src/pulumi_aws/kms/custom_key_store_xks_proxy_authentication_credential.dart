@@ -1,3 +1,0 @@
-library module_kms_custom_key_store_xks_proxy_authentication_credential;
-
-export 'custom_key_store_xks_proxy_authentication_credential/custom_key_store_xks_proxy_authentication_credential.dart';

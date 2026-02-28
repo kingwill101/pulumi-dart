@@ -1,3 +1,0 @@
-library module_appmesh_virtual_node_spec_listener_timeout_grpc_idle;
-
-export 'virtual_node_spec_listener_timeout_grpc_idle/virtual_node_spec_listener_timeout_grpc_idle.dart';

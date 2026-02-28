@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'signing_job_source_s3.dart';
+
+class SigningJobSource {
+  /// A configuration block describing the S3 Source object: See S3 Source below for details.
+  final SigningJobSourceS3 s3;
+
+  /// Creates a new [SigningJobSource].
+  /// [s3] A configuration block describing the S3 Source object: See S3 Source below for details.
+  SigningJobSource({
+    required this.s3,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['s3'] = s3.toMap();
+    return map;
+  }
+
+  factory SigningJobSource.fromMap(Map<String, dynamic> map) {
+    return SigningJobSource(
+      s3: SigningJobSourceS3.fromMap(
+          (map['s3'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

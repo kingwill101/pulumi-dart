@@ -1,3 +1,0 @@
-library module_transfer_connector_egress_config;
-
-export 'connector_egress_config/connector_egress_config.dart';

@@ -1,3 +1,0 @@
-library module_cloudwatch_log_transformer_transformer_config_add_keys;
-
-export 'log_transformer_transformer_config_add_keys/log_transformer_transformer_config_add_keys.dart';

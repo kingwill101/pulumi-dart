@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_code_repository_provider_type;
-
-export 'filter_filter_criteria_code_repository_provider_type/filter_filter_criteria_code_repository_provider_type.dart';

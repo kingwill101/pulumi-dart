@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_lambda_function_execution_role_arn;
-
-export 'filter_filter_criteria_lambda_function_execution_role_arn/filter_filter_criteria_lambda_function_execution_role_arn.dart';

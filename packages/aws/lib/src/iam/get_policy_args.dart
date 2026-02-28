@@ -1,0 +1,73 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_iam_get_policy_get_policy_args_doc}
+/// Arguments for getPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_iam_get_policy_get_policy_args_doc}
+class GetPolicyArgs {
+  /// ARN of the IAM policy.
+  /// Conflicts with `name` and `path_prefix`.
+  final pulumi.Input<String>? arn;
+
+  /// Name of the IAM policy.
+  /// Conflicts with `arn`.
+  final pulumi.Input<String>? name;
+
+  /// Prefix of the path to the IAM policy.
+  /// Defaults to a slash (`/`).
+  /// Conflicts with `arn`.
+  final pulumi.Input<String>? pathPrefix;
+
+  /// Key-value mapping of tags for the IAM Policy.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [GetPolicyArgs].
+  /// [arn] ARN of the IAM policy.
+  /// [name] Name of the IAM policy.
+  /// [pathPrefix] Prefix of the path to the IAM policy.
+  /// [tags] Key-value mapping of tags for the IAM Policy.
+  GetPolicyArgs({
+    String? arn,
+    String? name,
+    String? pathPrefix,
+    Map<String, String>? tags,
+  })  : arn = pulumi.Input.asOptionalInput<String>(arn),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        pathPrefix = pulumi.Input.asOptionalInput<String>(pathPrefix),
+        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final arnValue = arn;
+    if (arnValue != null) {
+      map['arn'] = arnValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final pathPrefixValue = pathPrefix;
+    if (pathPrefixValue != null) {
+      map['pathPrefix'] = pathPrefixValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetPolicyArgs(
+      arn: map['arn'] == null ? null : map['arn'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      pathPrefix:
+          map['pathPrefix'] == null ? null : map['pathPrefix'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

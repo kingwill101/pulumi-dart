@@ -1,3 +1,0 @@
-library module_cognito_user_pool_admin_create_user_config;
-
-export 'user_pool_admin_create_user_config/user_pool_admin_create_user_config.dart';

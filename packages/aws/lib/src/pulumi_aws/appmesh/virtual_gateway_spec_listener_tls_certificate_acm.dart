@@ -1,3 +1,0 @@
-library module_appmesh_virtual_gateway_spec_listener_tls_certificate_acm;
-
-export 'virtual_gateway_spec_listener_tls_certificate_acm/virtual_gateway_spec_listener_tls_certificate_acm.dart';

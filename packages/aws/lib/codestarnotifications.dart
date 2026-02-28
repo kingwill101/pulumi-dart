@@ -1,3 +1,3 @@
 library pulumi_aws_codestarnotifications;
 
-export 'package:pulumi_aws/src/pulumi_aws/codestarnotifications.dart';
+export 'package:pulumi_aws/src/codestarnotifications.dart';

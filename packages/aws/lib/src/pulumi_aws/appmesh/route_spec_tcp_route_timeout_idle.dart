@@ -1,3 +1,0 @@
-library module_appmesh_route_spec_tcp_route_timeout_idle;
-
-export 'route_spec_tcp_route_timeout_idle/route_spec_tcp_route_timeout_idle.dart';

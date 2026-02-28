@@ -1,3 +1,0 @@
-library module_cloudwatch_event_connection_invocation_connectivity_parameters;
-
-export 'event_connection_invocation_connectivity_parameters/event_connection_invocation_connectivity_parameters.dart';

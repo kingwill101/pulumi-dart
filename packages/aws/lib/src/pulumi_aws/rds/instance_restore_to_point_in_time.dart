@@ -1,3 +1,0 @@
-library module_rds_instance_restore_to_point_in_time;
-
-export 'instance_restore_to_point_in_time/instance_restore_to_point_in_time.dart';

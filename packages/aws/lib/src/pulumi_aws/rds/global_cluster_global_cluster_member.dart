@@ -1,3 +1,0 @@
-library module_rds_global_cluster_global_cluster_member;
-
-export 'global_cluster_global_cluster_member/global_cluster_global_cluster_member_rds.dart';

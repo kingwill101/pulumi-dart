@@ -1,4 +1,0 @@
-library module_ec2_vpc_network_performance_metric_subscription;
-
-export 'vpc_network_performance_metric_subscription/vpc_network_performance_metric_subscription.dart';
-export 'vpc_network_performance_metric_subscription/vpc_network_performance_metric_subscription_args.dart';

@@ -1,3 +1,0 @@
-library module_emr_instance_fleet_instance_type_config_ebs_config;
-
-export 'instance_fleet_instance_type_config_ebs_config/instance_fleet_instance_type_config_ebs_config.dart';

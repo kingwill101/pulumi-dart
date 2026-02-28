@@ -1,0 +1,80 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'sdkvoice_sip_media_application_endpoints.dart';
+
+/// {@template pulumi_chime_sdkvoice_sip_media_application_sdkvoice_sip_media_application_args_doc}
+/// The set of arguments for SdkvoiceSipMediaApplication.
+/// {@endtemplate}
+/// {@macro pulumi_chime_sdkvoice_sip_media_application_sdkvoice_sip_media_application_args_doc}
+class SdkvoiceSipMediaApplicationArgs {
+  /// The AWS Region in which the AWS Chime SDK Voice Sip Media Application is created.
+  final pulumi.Input<String> awsRegion;
+
+  /// List of endpoints (Lambda Amazon Resource Names) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
+  final pulumi.Input<SdkvoiceSipMediaApplicationEndpoints> endpoints;
+
+  /// The name of the AWS Chime SDK Voice Sip Media Application.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<String>? name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [SdkvoiceSipMediaApplicationArgs].
+  /// [awsRegion] The AWS Region in which the AWS Chime SDK Voice Sip Media Application is created.
+  /// [endpoints] List of endpoints (Lambda Amazon Resource Names) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
+  /// [name] The name of the AWS Chime SDK Voice Sip Media Application.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  SdkvoiceSipMediaApplicationArgs({
+    required String awsRegion,
+    required SdkvoiceSipMediaApplicationEndpoints endpoints,
+    String? name,
+    String? region,
+    Map<String, String>? tags,
+  })  : awsRegion = pulumi.Input.asInput<String>(awsRegion),
+        endpoints = pulumi.Input.asInput<SdkvoiceSipMediaApplicationEndpoints>(
+            endpoints),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['awsRegion'] = awsRegion;
+    map['endpoints'] = pulumi.Input.mapInputValue<
+        SdkvoiceSipMediaApplicationEndpoints,
+        Map<String, dynamic>>(endpoints, (value) => value.toMap());
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory SdkvoiceSipMediaApplicationArgs.fromMap(Map<String, dynamic> map) {
+    return SdkvoiceSipMediaApplicationArgs(
+      awsRegion: map['awsRegion'] as String,
+      endpoints: SdkvoiceSipMediaApplicationEndpoints.fromMap(
+          (map['endpoints'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : map['name'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

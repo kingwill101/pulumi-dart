@@ -1,3 +1,0 @@
-library module_networkfirewall_get_firewall_firewall_status_capacity_usage_summary;
-
-export 'get_firewall_firewall_status_capacity_usage_summary/get_firewall_firewall_status_capacity_usage_summary.dart';

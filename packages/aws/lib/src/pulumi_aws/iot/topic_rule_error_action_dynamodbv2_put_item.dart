@@ -1,3 +1,0 @@
-library module_iot_topic_rule_error_action_dynamodbv2_put_item;
-
-export 'topic_rule_error_action_dynamodbv2_put_item/topic_rule_error_action_dynamodbv2_put_item.dart';

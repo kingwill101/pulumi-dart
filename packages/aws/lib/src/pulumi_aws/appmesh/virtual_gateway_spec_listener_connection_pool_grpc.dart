@@ -1,3 +1,0 @@
-library module_appmesh_virtual_gateway_spec_listener_connection_pool_grpc;
-
-export 'virtual_gateway_spec_listener_connection_pool_grpc/virtual_gateway_spec_listener_connection_pool_grpc.dart';

@@ -1,0 +1,653 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'cloud_vm_cluster_args.dart';
+import 'cloud_vm_cluster_data_collection_options.dart';
+import 'cloud_vm_cluster_iorm_config_cache.dart';
+import 'cloud_vm_cluster_timeouts.dart';
+
+/// Terraform to manage cloud vm cluster resource in AWS for Oracle Database@AWS. If underlying odb network and cloud exadata infrastructure is shared, ARN must be used while creating VM cluster.
+///
+/// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const withMinimumParameter = new aws.odb.CloudVmCluster("with_minimum_parameter", {
+///     displayName: "my_vm_cluster",
+///     cloudExadataInfrastructureId: "<aws_odb_cloud_exadata_infrastructure_id>",
+///     cpuCoreCount: 6,
+///     giVersion: "23.0.0.0",
+///     hostnamePrefix: "apollo12",
+///     sshPublicKeys: ["public-ssh-key"],
+///     odbNetworkId: "<aws_odb_network_id>",
+///     isLocalBackupEnabled: true,
+///     isSparseDiskgroupEnabled: true,
+///     licenseModel: "LICENSE_INCLUDED",
+///     dataStorageSizeInTbs: 20,
+///     dbServers: [
+///         "db-server-1",
+///         "db-server-2",
+///     ],
+///     dbNodeStorageSizeInGbs: 120,
+///     memorySizeInGbs: 60,
+///     dataCollectionOptions: {
+///         isDiagnosticsEventsEnabled: false,
+///         isHealthMonitoringEnabled: false,
+///         isIncidentLogsEnabled: false,
+///     },
+/// });
+/// const withAllParameters = new aws.odb.CloudVmCluster("with_all_parameters", {
+///     displayName: "my_vm_cluster",
+///     cloudExadataInfrastructureId: "<aws_odb_cloud_exadata_infrastructure_id>",
+///     cpuCoreCount: 6,
+///     giVersion: "23.0.0.0",
+///     hostnamePrefix: "apollo12",
+///     sshPublicKeys: ["my-ssh-key"],
+///     odbNetworkId: "<aws_odb_network_id>",
+///     isLocalBackupEnabled: true,
+///     isSparseDiskgroupEnabled: true,
+///     licenseModel: "LICENSE_INCLUDED",
+///     dataStorageSizeInTbs: 20,
+///     dbServers: [
+///         "my-dbserver-1",
+///         "my-db-server-2",
+///     ],
+///     dbNodeStorageSizeInGbs: 120,
+///     memorySizeInGbs: 60,
+///     clusterName: "julia-13",
+///     timezone: "UTC",
+///     scanListenerPortTcp: 1521,
+///     tags: {
+///         env: "dev",
+///     },
+///     dataCollectionOptions: {
+///         isDiagnosticsEventsEnabled: true,
+///         isHealthMonitoringEnabled: true,
+///         isIncidentLogsEnabled: true,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// with_minimum_parameter = aws.odb.CloudVmCluster("with_minimum_parameter",
+///     display_name="my_vm_cluster",
+///     cloud_exadata_infrastructure_id="<aws_odb_cloud_exadata_infrastructure_id>",
+///     cpu_core_count=6,
+///     gi_version="23.0.0.0",
+///     hostname_prefix="apollo12",
+///     ssh_public_keys=["public-ssh-key"],
+///     odb_network_id="<aws_odb_network_id>",
+///     is_local_backup_enabled=True,
+///     is_sparse_diskgroup_enabled=True,
+///     license_model="LICENSE_INCLUDED",
+///     data_storage_size_in_tbs=20,
+///     db_servers=[
+///         "db-server-1",
+///         "db-server-2",
+///     ],
+///     db_node_storage_size_in_gbs=120,
+///     memory_size_in_gbs=60,
+///     data_collection_options={
+///         "is_diagnostics_events_enabled": False,
+///         "is_health_monitoring_enabled": False,
+///         "is_incident_logs_enabled": False,
+///     })
+/// with_all_parameters = aws.odb.CloudVmCluster("with_all_parameters",
+///     display_name="my_vm_cluster",
+///     cloud_exadata_infrastructure_id="<aws_odb_cloud_exadata_infrastructure_id>",
+///     cpu_core_count=6,
+///     gi_version="23.0.0.0",
+///     hostname_prefix="apollo12",
+///     ssh_public_keys=["my-ssh-key"],
+///     odb_network_id="<aws_odb_network_id>",
+///     is_local_backup_enabled=True,
+///     is_sparse_diskgroup_enabled=True,
+///     license_model="LICENSE_INCLUDED",
+///     data_storage_size_in_tbs=20,
+///     db_servers=[
+///         "my-dbserver-1",
+///         "my-db-server-2",
+///     ],
+///     db_node_storage_size_in_gbs=120,
+///     memory_size_in_gbs=60,
+///     cluster_name="julia-13",
+///     timezone="UTC",
+///     scan_listener_port_tcp=1521,
+///     tags={
+///         "env": "dev",
+///     },
+///     data_collection_options={
+///         "is_diagnostics_events_enabled": True,
+///         "is_health_monitoring_enabled": True,
+///         "is_incident_logs_enabled": True,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var withMinimumParameter = new Aws.Odb.CloudVmCluster("with_minimum_parameter", new()
+///     {
+///         DisplayName = "my_vm_cluster",
+///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
+///         CpuCoreCount = 6,
+///         GiVersion = "23.0.0.0",
+///         HostnamePrefix = "apollo12",
+///         SshPublicKeys = new[]
+///         {
+///             "public-ssh-key",
+///         },
+///         OdbNetworkId = "<aws_odb_network_id>",
+///         IsLocalBackupEnabled = true,
+///         IsSparseDiskgroupEnabled = true,
+///         LicenseModel = "LICENSE_INCLUDED",
+///         DataStorageSizeInTbs = 20,
+///         DbServers = new[]
+///         {
+///             "db-server-1",
+///             "db-server-2",
+///         },
+///         DbNodeStorageSizeInGbs = 120,
+///         MemorySizeInGbs = 60,
+///         DataCollectionOptions = new Aws.Odb.Inputs.CloudVmClusterDataCollectionOptionsArgs
+///         {
+///             IsDiagnosticsEventsEnabled = false,
+///             IsHealthMonitoringEnabled = false,
+///             IsIncidentLogsEnabled = false,
+///         },
+///     });
+///
+///     var withAllParameters = new Aws.Odb.CloudVmCluster("with_all_parameters", new()
+///     {
+///         DisplayName = "my_vm_cluster",
+///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
+///         CpuCoreCount = 6,
+///         GiVersion = "23.0.0.0",
+///         HostnamePrefix = "apollo12",
+///         SshPublicKeys = new[]
+///         {
+///             "my-ssh-key",
+///         },
+///         OdbNetworkId = "<aws_odb_network_id>",
+///         IsLocalBackupEnabled = true,
+///         IsSparseDiskgroupEnabled = true,
+///         LicenseModel = "LICENSE_INCLUDED",
+///         DataStorageSizeInTbs = 20,
+///         DbServers = new[]
+///         {
+///             "my-dbserver-1",
+///             "my-db-server-2",
+///         },
+///         DbNodeStorageSizeInGbs = 120,
+///         MemorySizeInGbs = 60,
+///         ClusterName = "julia-13",
+///         Timezone = "UTC",
+///         ScanListenerPortTcp = 1521,
+///         Tags =
+///         {
+///             { "env", "dev" },
+///         },
+///         DataCollectionOptions = new Aws.Odb.Inputs.CloudVmClusterDataCollectionOptionsArgs
+///         {
+///             IsDiagnosticsEventsEnabled = true,
+///             IsHealthMonitoringEnabled = true,
+///             IsIncidentLogsEnabled = true,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/odb"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := odb.NewCloudVmCluster(ctx, "with_minimum_parameter", &odb.CloudVmClusterArgs{
+/// 			DisplayName:                  pulumi.String("my_vm_cluster"),
+/// 			CloudExadataInfrastructureId: pulumi.String("<aws_odb_cloud_exadata_infrastructure_id>"),
+/// 			CpuCoreCount:                 pulumi.Int(6),
+/// 			GiVersion:                    pulumi.String("23.0.0.0"),
+/// 			HostnamePrefix:               pulumi.String("apollo12"),
+/// 			SshPublicKeys: pulumi.StringArray{
+/// 				pulumi.String("public-ssh-key"),
+/// 			},
+/// 			OdbNetworkId:             pulumi.String("<aws_odb_network_id>"),
+/// 			IsLocalBackupEnabled:     pulumi.Bool(true),
+/// 			IsSparseDiskgroupEnabled: pulumi.Bool(true),
+/// 			LicenseModel:             pulumi.String("LICENSE_INCLUDED"),
+/// 			DataStorageSizeInTbs:     pulumi.Float64(20),
+/// 			DbServers: pulumi.StringArray{
+/// 				pulumi.String("db-server-1"),
+/// 				pulumi.String("db-server-2"),
+/// 			},
+/// 			DbNodeStorageSizeInGbs: pulumi.Int(120),
+/// 			MemorySizeInGbs:        pulumi.Int(60),
+/// 			DataCollectionOptions: &odb.CloudVmClusterDataCollectionOptionsArgs{
+/// 				IsDiagnosticsEventsEnabled: pulumi.Bool(false),
+/// 				IsHealthMonitoringEnabled:  pulumi.Bool(false),
+/// 				IsIncidentLogsEnabled:      pulumi.Bool(false),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = odb.NewCloudVmCluster(ctx, "with_all_parameters", &odb.CloudVmClusterArgs{
+/// 			DisplayName:                  pulumi.String("my_vm_cluster"),
+/// 			CloudExadataInfrastructureId: pulumi.String("<aws_odb_cloud_exadata_infrastructure_id>"),
+/// 			CpuCoreCount:                 pulumi.Int(6),
+/// 			GiVersion:                    pulumi.String("23.0.0.0"),
+/// 			HostnamePrefix:               pulumi.String("apollo12"),
+/// 			SshPublicKeys: pulumi.StringArray{
+/// 				pulumi.String("my-ssh-key"),
+/// 			},
+/// 			OdbNetworkId:             pulumi.String("<aws_odb_network_id>"),
+/// 			IsLocalBackupEnabled:     pulumi.Bool(true),
+/// 			IsSparseDiskgroupEnabled: pulumi.Bool(true),
+/// 			LicenseModel:             pulumi.String("LICENSE_INCLUDED"),
+/// 			DataStorageSizeInTbs:     pulumi.Float64(20),
+/// 			DbServers: pulumi.StringArray{
+/// 				pulumi.String("my-dbserver-1"),
+/// 				pulumi.String("my-db-server-2"),
+/// 			},
+/// 			DbNodeStorageSizeInGbs: pulumi.Int(120),
+/// 			MemorySizeInGbs:        pulumi.Int(60),
+/// 			ClusterName:            pulumi.String("julia-13"),
+/// 			Timezone:               pulumi.String("UTC"),
+/// 			ScanListenerPortTcp:    pulumi.Int(1521),
+/// 			Tags: pulumi.StringMap{
+/// 				"env": pulumi.String("dev"),
+/// 			},
+/// 			DataCollectionOptions: &odb.CloudVmClusterDataCollectionOptionsArgs{
+/// 				IsDiagnosticsEventsEnabled: pulumi.Bool(true),
+/// 				IsHealthMonitoringEnabled:  pulumi.Bool(true),
+/// 				IsIncidentLogsEnabled:      pulumi.Bool(true),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.odb.CloudVmCluster;
+/// import com.pulumi.aws.odb.CloudVmClusterArgs;
+/// import com.pulumi.aws.odb.inputs.CloudVmClusterDataCollectionOptionsArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var withMinimumParameter = new CloudVmCluster("withMinimumParameter", CloudVmClusterArgs.builder()
+///             .displayName("my_vm_cluster")
+///             .cloudExadataInfrastructureId("<aws_odb_cloud_exadata_infrastructure_id>")
+///             .cpuCoreCount(6)
+///             .giVersion("23.0.0.0")
+///             .hostnamePrefix("apollo12")
+///             .sshPublicKeys("public-ssh-key")
+///             .odbNetworkId("<aws_odb_network_id>")
+///             .isLocalBackupEnabled(true)
+///             .isSparseDiskgroupEnabled(true)
+///             .licenseModel("LICENSE_INCLUDED")
+///             .dataStorageSizeInTbs(20.0)
+///             .dbServers(
+///                 "db-server-1",
+///                 "db-server-2")
+///             .dbNodeStorageSizeInGbs(120)
+///             .memorySizeInGbs(60)
+///             .dataCollectionOptions(CloudVmClusterDataCollectionOptionsArgs.builder()
+///                 .isDiagnosticsEventsEnabled(false)
+///                 .isHealthMonitoringEnabled(false)
+///                 .isIncidentLogsEnabled(false)
+///                 .build())
+///             .build());
+///
+///         var withAllParameters = new CloudVmCluster("withAllParameters", CloudVmClusterArgs.builder()
+///             .displayName("my_vm_cluster")
+///             .cloudExadataInfrastructureId("<aws_odb_cloud_exadata_infrastructure_id>")
+///             .cpuCoreCount(6)
+///             .giVersion("23.0.0.0")
+///             .hostnamePrefix("apollo12")
+///             .sshPublicKeys("my-ssh-key")
+///             .odbNetworkId("<aws_odb_network_id>")
+///             .isLocalBackupEnabled(true)
+///             .isSparseDiskgroupEnabled(true)
+///             .licenseModel("LICENSE_INCLUDED")
+///             .dataStorageSizeInTbs(20.0)
+///             .dbServers(
+///                 "my-dbserver-1",
+///                 "my-db-server-2")
+///             .dbNodeStorageSizeInGbs(120)
+///             .memorySizeInGbs(60)
+///             .clusterName("julia-13")
+///             .timezone("UTC")
+///             .scanListenerPortTcp(1521)
+///             .tags(Map.of("env", "dev"))
+///             .dataCollectionOptions(CloudVmClusterDataCollectionOptionsArgs.builder()
+///                 .isDiagnosticsEventsEnabled(true)
+///                 .isHealthMonitoringEnabled(true)
+///                 .isIncidentLogsEnabled(true)
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   withMinimumParameter:
+///     type: aws:odb:CloudVmCluster
+///     name: with_minimum_parameter
+///     properties:
+///       displayName: my_vm_cluster
+///       cloudExadataInfrastructureId: <aws_odb_cloud_exadata_infrastructure_id>
+///       cpuCoreCount: 6
+///       giVersion: 23.0.0.0
+///       hostnamePrefix: apollo12
+///       sshPublicKeys:
+///         - public-ssh-key
+///       odbNetworkId: <aws_odb_network_id>
+///       isLocalBackupEnabled: true
+///       isSparseDiskgroupEnabled: true
+///       licenseModel: LICENSE_INCLUDED
+///       dataStorageSizeInTbs: 20
+///       dbServers:
+///         - db-server-1
+///         - db-server-2
+///       dbNodeStorageSizeInGbs: 120
+///       memorySizeInGbs: 60
+///       dataCollectionOptions:
+///         isDiagnosticsEventsEnabled: false
+///         isHealthMonitoringEnabled: false
+///         isIncidentLogsEnabled: false
+///   withAllParameters:
+///     type: aws:odb:CloudVmCluster
+///     name: with_all_parameters
+///     properties:
+///       displayName: my_vm_cluster
+///       cloudExadataInfrastructureId: <aws_odb_cloud_exadata_infrastructure_id>
+///       cpuCoreCount: 6
+///       giVersion: 23.0.0.0
+///       hostnamePrefix: apollo12
+///       sshPublicKeys:
+///         - my-ssh-key
+///       odbNetworkId: <aws_odb_network_id>
+///       isLocalBackupEnabled: true
+///       isSparseDiskgroupEnabled: true
+///       licenseModel: LICENSE_INCLUDED
+///       dataStorageSizeInTbs: 20
+///       dbServers:
+///         - my-dbserver-1
+///         - my-db-server-2
+///       dbNodeStorageSizeInGbs: 120
+///       memorySizeInGbs: 60
+///       clusterName: julia-13
+///       timezone: UTC
+///       scanListenerPortTcp: 1521
+///       tags:
+///         env: dev
+///       dataCollectionOptions:
+///         isDiagnosticsEventsEnabled: true
+///         isHealthMonitoringEnabled: true
+///         isIncidentLogsEnabled: true
+/// ```
+///
+///
+/// ## Import
+///
+/// Using `pulumi import`, import cloud vm cluster using the `id`. For example:
+///
+/// ```sh
+/// $ pulumi import aws:odb/cloudVmCluster:CloudVmCluster example example
+/// ```
+class CloudVmCluster extends pulumi.CustomResource {
+  /// The Amazon Resource Name (ARN) for the cloud vm cluster.
+  late final pulumi.Output<String> arn;
+
+  /// The ARN of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
+  late final pulumi.Output<String> cloudExadataInfrastructureArn;
+
+  /// The unique identifier of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
+  late final pulumi.Output<String> cloudExadataInfrastructureId;
+
+  /// The name of the Grid Infrastructure (GI) cluster. Changing this will create a new resource.
+  late final pulumi.Output<String> clusterName;
+
+  /// The compute model used when the instance is created or cloned — either ECPU or OCPU. ECPU is a virtualized compute unit; OCPU is a physical processor core with hyper-threading.
+  late final pulumi.Output<String> computeModel;
+
+  /// The number of CPU cores to enable on the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<int> cpuCoreCount;
+
+  /// The timestamp when the VM cluster was created.
+  late final pulumi.Output<String> createdAt;
+
+  /// The set of preferences for the various diagnostic collection options for the VM cluster.
+  late final pulumi.Output<CloudVmClusterDataCollectionOptions>
+      dataCollectionOptions;
+
+  /// The size of the data disk group, in terabytes (TBs), to allocate for the VM cluster. Changing this will create a new resource.
+  ///
+  /// The following arguments are optional:
+  late final pulumi.Output<double> dataStorageSizeInTbs;
+
+  /// The amount of local node storage, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<int> dbNodeStorageSizeInGbs;
+
+  /// The list of database servers for the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<List<String>> dbServers;
+
+  /// The type of redundancy for the VM cluster: NORMAL (2-way) or HIGH (3-way).
+  /// * `AttrDomain` - The domain name associated with the VM cluster.
+  late final pulumi.Output<String> diskRedundancy;
+
+  /// A user-friendly name for the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<String> displayName;
+
+  /// The domain name associated with the VM cluster.
+  late final pulumi.Output<String> domain;
+
+  /// A valid software version of Oracle Grid Infrastructure (GI). To get the list of valid values, use the ListGiVersions operation and specify the shape of the Exadata infrastructure. Example: 19.0.0.0 Changing this will create a new resource.
+  late final pulumi.Output<String> giVersion;
+
+  /// A complete software version of Oracle Grid Infrastructure (GI).
+  late final pulumi.Output<String> giVersionComputed;
+
+  /// The host name prefix for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. Changing this will create a new resource.
+  late final pulumi.Output<String> hostnamePrefix;
+
+  /// The host name for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. This member is required. Changing this will create a new resource.
+  late final pulumi.Output<String> hostnamePrefixComputed;
+
+  /// The Exadata IORM (I/O Resource Manager) configuration cache details for the VM cluster.
+  late final pulumi.Output<List<CloudVmClusterIormConfigCache>>
+      iormConfigCaches;
+
+  /// Specifies whether to enable database backups to local Exadata storage for the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<bool> isLocalBackupEnabled;
+
+  /// Specifies whether to create a sparse disk group for the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<bool> isSparseDiskgroupEnabled;
+
+  /// The OCID of the most recent maintenance update history entry.
+  late final pulumi.Output<String> lastUpdateHistoryEntryId;
+
+  /// The Oracle license model to apply to the VM cluster. Default: LICENSE_INCLUDED. Changing this will create a new resource.
+  late final pulumi.Output<String> licenseModel;
+
+  /// The listener port number configured on the VM cluster.
+  late final pulumi.Output<int> listenerPort;
+
+  /// The amount of memory, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<int> memorySizeInGbs;
+
+  /// The total number of nodes in the VM cluster.
+  late final pulumi.Output<int> nodeCount;
+
+  /// The name of the OCI resource anchor associated with the VM cluster.
+  late final pulumi.Output<String> ociResourceAnchorName;
+
+  /// The HTTPS link to the VM cluster resource in OCI.
+  late final pulumi.Output<String> ociUrl;
+
+  /// The OCID (Oracle Cloud Identifier) of the VM cluster.
+  late final pulumi.Output<String> ocid;
+
+  /// The ARN of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
+  late final pulumi.Output<String> odbNetworkArn;
+
+  /// The unique identifier of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
+  late final pulumi.Output<String> odbNetworkId;
+
+  /// The percentage of progress made on the current operation for the VM cluster.
+  late final pulumi.Output<double> percentProgress;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final pulumi.Output<String> region;
+
+  /// The fully qualified domain name (FQDN) for the SCAN IP addresses associated with the VM cluster.
+  late final pulumi.Output<String> scanDnsName;
+
+  /// The OCID of the DNS record for the SCAN IPs linked to the VM cluster.
+  late final pulumi.Output<String> scanDnsRecordId;
+
+  /// The list of OCIDs for SCAN IP addresses associated with the VM cluster.
+  late final pulumi.Output<List<String>> scanIpIds;
+
+  /// The port number for TCP connections to the single client access name (SCAN) listener. Valid values: 1024–8999, except 2484, 6100, 6200, 7060, 7070, 7085, and 7879. Default: 1521. Changing this will create a new resource.
+  late final pulumi.Output<int> scanListenerPortTcp;
+
+  /// The hardware model name of the Exadata infrastructure running the VM cluster.
+  late final pulumi.Output<String> shape;
+
+  /// The public key portion of one or more key pairs used for SSH access to the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<List<String>> sshPublicKeys;
+
+  /// The current lifecycle status of the VM cluster.
+  late final pulumi.Output<String> status;
+
+  /// Additional information regarding the current status of the VM cluster.
+  late final pulumi.Output<String> statusReason;
+
+  /// The local node storage allocated to the VM cluster, in gigabytes (GB).
+  late final pulumi.Output<int> storageSizeInGbs;
+
+  /// The operating system version of the image chosen for the VM cluster.
+  late final pulumi.Output<String> systemVersion;
+
+  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final pulumi.Output<Map<String, String>?> tags;
+
+  /// The combined set of user-defined and provider-defined tags.
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<CloudVmClusterTimeouts?> timeouts;
+
+  /// The configured time zone of the VM cluster. Changing this will create a new resource.
+  late final pulumi.Output<String> timezone;
+
+  /// The virtual IP (VIP) addresses assigned to the VM cluster. CRS assigns one VIP per node for failover support.
+  late final pulumi.Output<List<String>> vipIds;
+
+  /// Creates a new [CloudVmCluster].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [CloudVmCluster]. {@macro pulumi_odb_cloud_vm_cluster_cloud_vm_cluster_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  CloudVmCluster(
+    String name, {
+    CloudVmClusterArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:odb/cloudVmCluster:CloudVmCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.arn = registerOutput<String>('arn');
+    this.cloudExadataInfrastructureArn =
+        registerOutput<String>('cloudExadataInfrastructureArn');
+    this.cloudExadataInfrastructureId =
+        registerOutput<String>('cloudExadataInfrastructureId');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.computeModel = registerOutput<String>('computeModel');
+    this.cpuCoreCount = registerOutput<int>('cpuCoreCount');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.dataCollectionOptions =
+        registerOutput<CloudVmClusterDataCollectionOptions>(
+            'dataCollectionOptions');
+    this.dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
+    this.dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
+    this.dbServers = registerOutput<List<String>>('dbServers');
+    this.diskRedundancy = registerOutput<String>('diskRedundancy');
+    this.displayName = registerOutput<String>('displayName');
+    this.domain = registerOutput<String>('domain');
+    this.giVersion = registerOutput<String>('giVersion');
+    this.giVersionComputed = registerOutput<String>('giVersionComputed');
+    this.hostnamePrefix = registerOutput<String>('hostnamePrefix');
+    this.hostnamePrefixComputed =
+        registerOutput<String>('hostnamePrefixComputed');
+    this.iormConfigCaches =
+        registerOutput<List<CloudVmClusterIormConfigCache>>('iormConfigCaches');
+    this.isLocalBackupEnabled = registerOutput<bool>('isLocalBackupEnabled');
+    this.isSparseDiskgroupEnabled =
+        registerOutput<bool>('isSparseDiskgroupEnabled');
+    this.lastUpdateHistoryEntryId =
+        registerOutput<String>('lastUpdateHistoryEntryId');
+    this.licenseModel = registerOutput<String>('licenseModel');
+    this.listenerPort = registerOutput<int>('listenerPort');
+    this.memorySizeInGbs = registerOutput<int>('memorySizeInGbs');
+    this.nodeCount = registerOutput<int>('nodeCount');
+    this.ociResourceAnchorName =
+        registerOutput<String>('ociResourceAnchorName');
+    this.ociUrl = registerOutput<String>('ociUrl');
+    this.ocid = registerOutput<String>('ocid');
+    this.odbNetworkArn = registerOutput<String>('odbNetworkArn');
+    this.odbNetworkId = registerOutput<String>('odbNetworkId');
+    this.percentProgress = registerOutput<double>('percentProgress');
+    this.region = registerOutput<String>('region');
+    this.scanDnsName = registerOutput<String>('scanDnsName');
+    this.scanDnsRecordId = registerOutput<String>('scanDnsRecordId');
+    this.scanIpIds = registerOutput<List<String>>('scanIpIds');
+    this.scanListenerPortTcp = registerOutput<int>('scanListenerPortTcp');
+    this.shape = registerOutput<String>('shape');
+    this.sshPublicKeys = registerOutput<List<String>>('sshPublicKeys');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.storageSizeInGbs = registerOutput<int>('storageSizeInGbs');
+    this.systemVersion = registerOutput<String>('systemVersion');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<CloudVmClusterTimeouts?>('timeouts');
+    this.timezone = registerOutput<String>('timezone');
+    this.vipIds = registerOutput<List<String>>('vipIds');
+  }
+}

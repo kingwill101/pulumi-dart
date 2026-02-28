@@ -1,3 +1,0 @@
-library module_fsx_ontap_file_system_endpoint_management;
-
-export 'ontap_file_system_endpoint_management/ontap_file_system_endpoint_management.dart';

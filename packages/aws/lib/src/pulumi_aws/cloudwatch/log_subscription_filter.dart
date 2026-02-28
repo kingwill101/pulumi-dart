@@ -1,4 +1,0 @@
-library module_cloudwatch_log_subscription_filter;
-
-export 'log_subscription_filter/log_subscription_filter.dart';
-export 'log_subscription_filter/log_subscription_filter_args.dart';

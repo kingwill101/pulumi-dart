@@ -1,5 +1,0 @@
-library module_dynamodb_get_table;
-
-export 'get_table/get_table.dart';
-export 'get_table/get_table_args.dart';
-export 'get_table/get_table_result.dart';

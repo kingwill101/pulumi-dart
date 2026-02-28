@@ -1,3 +1,0 @@
-library module_autoscalingplans_scaling_plan_scaling_instruction;
-
-export 'scaling_plan_scaling_instruction/scaling_plan_scaling_instruction.dart';

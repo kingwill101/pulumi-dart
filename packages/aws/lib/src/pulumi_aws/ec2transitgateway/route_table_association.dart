@@ -1,4 +1,0 @@
-library module_ec2transitgateway_route_table_association;
-
-export 'route_table_association/route_table_association_ec2transitgateway.dart';
-export 'route_table_association/route_table_association_ec2transitgateway_args.dart';

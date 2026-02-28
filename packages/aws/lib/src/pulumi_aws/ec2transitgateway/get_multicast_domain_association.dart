@@ -1,3 +1,0 @@
-library module_ec2transitgateway_get_multicast_domain_association;
-
-export 'get_multicast_domain_association/get_multicast_domain_association.dart';

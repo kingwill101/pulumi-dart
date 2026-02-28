@@ -1,3 +1,0 @@
-library module_codebuild_project_environment_environment_variable;
-
-export 'project_environment_environment_variable/project_environment_environment_variable.dart';

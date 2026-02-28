@@ -1,0 +1,98 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_glue_workflow_workflow_args_doc}
+/// The set of arguments for Workflow.
+/// {@endtemplate}
+/// {@macro pulumi_glue_workflow_workflow_args_doc}
+class WorkflowArgs {
+  /// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
+  final pulumi.Input<Map<String, String>>? defaultRunProperties;
+
+  /// Description of the workflow.
+  final pulumi.Input<String>? description;
+
+  /// Prevents exceeding the maximum number of concurrent runs of any of the component jobs. If you leave this parameter blank, there is no limit to the number of concurrent workflow runs.
+  final pulumi.Input<int>? maxConcurrentRuns;
+
+  /// The name you assign to this workflow.
+  final pulumi.Input<String>? name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [WorkflowArgs].
+  /// [defaultRunProperties] A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
+  /// [description] Description of the workflow.
+  /// [maxConcurrentRuns] Prevents exceeding the maximum number of concurrent runs of any of the component jobs. If you leave this parameter blank, there is no limit to the number of concurrent workflow runs.
+  /// [name] The name you assign to this workflow.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  WorkflowArgs({
+    Map<String, String>? defaultRunProperties,
+    String? description,
+    int? maxConcurrentRuns,
+    String? name,
+    String? region,
+    Map<String, String>? tags,
+  })  : defaultRunProperties =
+            pulumi.Input.asOptionalInput<Map<String, String>>(
+                defaultRunProperties),
+        description = pulumi.Input.asOptionalInput<String>(description),
+        maxConcurrentRuns =
+            pulumi.Input.asOptionalInput<int>(maxConcurrentRuns),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final defaultRunPropertiesValue = defaultRunProperties;
+    if (defaultRunPropertiesValue != null) {
+      map['defaultRunProperties'] = defaultRunPropertiesValue;
+    }
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    final maxConcurrentRunsValue = maxConcurrentRuns;
+    if (maxConcurrentRunsValue != null) {
+      map['maxConcurrentRuns'] = maxConcurrentRunsValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
+    return WorkflowArgs(
+      defaultRunProperties: map['defaultRunProperties'] == null
+          ? null
+          : (map['defaultRunProperties'] as Map).cast<String, String>(),
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      maxConcurrentRuns: map['maxConcurrentRuns'] == null
+          ? null
+          : map['maxConcurrentRuns'] as int,
+      name: map['name'] == null ? null : map['name'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

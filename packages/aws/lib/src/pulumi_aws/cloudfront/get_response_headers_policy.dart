@@ -1,5 +1,0 @@
-library module_cloudfront_get_response_headers_policy;
-
-export 'get_response_headers_policy/get_response_headers_policy.dart';
-export 'get_response_headers_policy/get_response_headers_policy_args.dart';
-export 'get_response_headers_policy/get_response_headers_policy_result.dart';

@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_odb_get_network_peering_connection_get_network_peering_connection_args_doc}
+/// Arguments for getNetworkPeeringConnection.
+/// {@endtemplate}
+/// {@macro pulumi_odb_get_network_peering_connection_get_network_peering_connection_args_doc}
+class GetNetworkPeeringConnectionArgs {
+  /// The unique identifier of the ODB network peering connection.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<String> id;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [GetNetworkPeeringConnectionArgs].
+  /// [id] The unique identifier of the ODB network peering connection.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  GetNetworkPeeringConnectionArgs({
+    required String id,
+    String? region,
+  })  : id = pulumi.Input.asInput<String>(id),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory GetNetworkPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
+    return GetNetworkPeeringConnectionArgs(
+      id: map['id'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

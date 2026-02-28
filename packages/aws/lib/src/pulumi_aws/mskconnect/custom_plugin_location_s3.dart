@@ -1,3 +1,0 @@
-library module_mskconnect_custom_plugin_location_s3;
-
-export 'custom_plugin_location_s3/custom_plugin_location_s3.dart';

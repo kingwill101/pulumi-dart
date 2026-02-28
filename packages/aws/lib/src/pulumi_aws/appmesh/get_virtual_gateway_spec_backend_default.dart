@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_gateway_spec_backend_default;
-
-export 'get_virtual_gateway_spec_backend_default/get_virtual_gateway_spec_backend_default.dart';

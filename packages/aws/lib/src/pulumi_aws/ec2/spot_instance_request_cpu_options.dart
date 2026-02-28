@@ -1,3 +1,0 @@
-library module_ec2_spot_instance_request_cpu_options;
-
-export 'spot_instance_request_cpu_options/spot_instance_request_cpu_options.dart';

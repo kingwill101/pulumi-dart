@@ -1,5 +1,0 @@
-library module_outposts_get_outpost_instance_type;
-
-export 'get_outpost_instance_type/get_outpost_instance_type.dart';
-export 'get_outpost_instance_type/get_outpost_instance_type_args.dart';
-export 'get_outpost_instance_type/get_outpost_instance_type_result.dart';

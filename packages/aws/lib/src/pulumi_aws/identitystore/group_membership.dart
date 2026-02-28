@@ -1,4 +1,0 @@
-library module_identitystore_group_membership;
-
-export 'group_membership/group_membership_identitystore.dart';
-export 'group_membership/group_membership_identitystore_args.dart';

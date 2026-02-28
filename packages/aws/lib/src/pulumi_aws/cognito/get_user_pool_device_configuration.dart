@@ -1,3 +1,0 @@
-library module_cognito_get_user_pool_device_configuration;
-
-export 'get_user_pool_device_configuration/get_user_pool_device_configuration.dart';

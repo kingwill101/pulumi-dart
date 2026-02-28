@@ -1,3 +1,0 @@
-library module_fsx_ontap_storage_virtual_machine_active_directory_configuration;
-
-export 'ontap_storage_virtual_machine_active_directory_configuration/ontap_storage_virtual_machine_active_directory_configuration.dart';

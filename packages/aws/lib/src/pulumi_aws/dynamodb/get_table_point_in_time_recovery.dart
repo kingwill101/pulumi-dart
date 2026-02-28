@@ -1,3 +1,0 @@
-library module_dynamodb_get_table_point_in_time_recovery;
-
-export 'get_table_point_in_time_recovery/get_table_point_in_time_recovery.dart';

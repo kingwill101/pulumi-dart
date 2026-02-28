@@ -1,3 +1,0 @@
-library module_mskconnect_connector_kafka_cluster_apache_kafka_cluster_vpc;
-
-export 'connector_kafka_cluster_apache_kafka_cluster_vpc/connector_kafka_cluster_apache_kafka_cluster_vpc.dart';

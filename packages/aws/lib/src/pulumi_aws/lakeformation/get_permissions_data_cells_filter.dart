@@ -1,3 +1,0 @@
-library module_lakeformation_get_permissions_data_cells_filter;
-
-export 'get_permissions_data_cells_filter/get_permissions_data_cells_filter.dart';

@@ -1,4 +1,0 @@
-library module_cloudtrail_organization_delegated_admin_account;
-
-export 'organization_delegated_admin_account/organization_delegated_admin_account.dart';
-export 'organization_delegated_admin_account/organization_delegated_admin_account_args.dart';

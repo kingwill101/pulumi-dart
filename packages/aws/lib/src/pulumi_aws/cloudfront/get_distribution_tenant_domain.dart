@@ -1,3 +1,0 @@
-library module_cloudfront_get_distribution_tenant_domain;
-
-export 'get_distribution_tenant_domain/get_distribution_tenant_domain.dart';

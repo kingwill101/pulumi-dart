@@ -1,3 +1,0 @@
-library module_quicksight_custom_permissions_capabilities;
-
-export 'custom_permissions_capabilities/custom_permissions_capabilities.dart';

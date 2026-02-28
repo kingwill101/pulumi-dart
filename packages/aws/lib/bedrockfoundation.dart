@@ -1,3 +1,3 @@
 library pulumi_aws_bedrockfoundation;
 
-export 'package:pulumi_aws/src/pulumi_aws/bedrockfoundation.dart';
+export 'package:pulumi_aws/src/bedrockfoundation.dart';

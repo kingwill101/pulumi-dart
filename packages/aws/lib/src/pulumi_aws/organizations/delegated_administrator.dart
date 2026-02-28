@@ -1,4 +1,0 @@
-library module_organizations_delegated_administrator;
-
-export 'delegated_administrator/delegated_administrator.dart';
-export 'delegated_administrator/delegated_administrator_args.dart';

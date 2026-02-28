@@ -1,3 +1,0 @@
-library module_workspaces_workspace_workspace_properties;
-
-export 'workspace_workspace_properties/workspace_workspace_properties.dart';

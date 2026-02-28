@@ -1,3 +1,0 @@
-library module_inspector_assessment_template_event_subscription;
-
-export 'assessment_template_event_subscription/assessment_template_event_subscription.dart';

@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_gateway_spec_backend_default_client_policy_tl;
-
-export 'get_virtual_gateway_spec_backend_default_client_policy_tl/get_virtual_gateway_spec_backend_default_client_policy_tl.dart';

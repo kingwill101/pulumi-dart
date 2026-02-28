@@ -1,3 +1,0 @@
-library module_ec2_get_network_insights_analysis_alternate_path_hint;
-
-export 'get_network_insights_analysis_alternate_path_hint/get_network_insights_analysis_alternate_path_hint.dart';

@@ -1,3 +1,0 @@
-library module_route53domains_domain_admin_contact_extra_param;
-
-export 'domain_admin_contact_extra_param/domain_admin_contact_extra_param.dart';

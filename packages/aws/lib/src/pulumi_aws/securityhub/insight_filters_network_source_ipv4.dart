@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_network_source_ipv4;
-
-export 'insight_filters_network_source_ipv4/insight_filters_network_source_ipv4.dart';

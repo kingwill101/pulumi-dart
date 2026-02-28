@@ -1,3 +1,0 @@
-library module_appmesh_virtual_gateway_spec_listener_connection_pool;
-
-export 'virtual_gateway_spec_listener_connection_pool/virtual_gateway_spec_listener_connection_pool.dart';

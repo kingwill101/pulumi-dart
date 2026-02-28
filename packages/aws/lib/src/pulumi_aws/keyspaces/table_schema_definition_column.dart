@@ -1,3 +1,0 @@
-library module_keyspaces_table_schema_definition_column;
-
-export 'table_schema_definition_column/table_schema_definition_column.dart';

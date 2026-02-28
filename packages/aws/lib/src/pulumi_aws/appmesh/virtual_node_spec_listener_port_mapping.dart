@@ -1,3 +1,0 @@
-library module_appmesh_virtual_node_spec_listener_port_mapping;
-
-export 'virtual_node_spec_listener_port_mapping/virtual_node_spec_listener_port_mapping.dart';

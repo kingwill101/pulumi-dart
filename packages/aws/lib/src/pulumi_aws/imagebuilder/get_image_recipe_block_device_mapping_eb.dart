@@ -1,3 +1,0 @@
-library module_imagebuilder_get_image_recipe_block_device_mapping_eb;
-
-export 'get_image_recipe_block_device_mapping_eb/get_image_recipe_block_device_mapping_eb.dart';

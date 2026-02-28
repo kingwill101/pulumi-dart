@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'template_source_entity_source_analysis.dart';
+import 'template_source_entity_source_template.dart';
+
+class TemplateSourceEntity {
+  /// The source analysis, if it is based on an analysis.. Only one of `source_analysis` or `source_template` should be configured. See source_analysis.
+  final TemplateSourceEntitySourceAnalysis? sourceAnalysis;
+
+  /// The source template, if it is based on an template.. Only one of `source_analysis` or `source_template` should be configured. See source_template.
+  final TemplateSourceEntitySourceTemplate? sourceTemplate;
+
+  /// Creates a new [TemplateSourceEntity].
+  /// [sourceAnalysis] The source analysis, if it is based on an analysis.. Only one of `source_analysis` or `source_template` should be configured. See source_analysis.
+  /// [sourceTemplate] The source template, if it is based on an template.. Only one of `source_analysis` or `source_template` should be configured. See source_template.
+  TemplateSourceEntity({
+    this.sourceAnalysis,
+    this.sourceTemplate,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final sourceAnalysisValue = sourceAnalysis;
+    if (sourceAnalysisValue != null) {
+      map['sourceAnalysis'] = sourceAnalysisValue.toMap();
+    }
+    final sourceTemplateValue = sourceTemplate;
+    if (sourceTemplateValue != null) {
+      map['sourceTemplate'] = sourceTemplateValue.toMap();
+    }
+    return map;
+  }
+
+  factory TemplateSourceEntity.fromMap(Map<String, dynamic> map) {
+    return TemplateSourceEntity(
+      sourceAnalysis: map['sourceAnalysis'] == null
+          ? null
+          : TemplateSourceEntitySourceAnalysis.fromMap(
+              (map['sourceAnalysis'] as Map).cast<String, dynamic>()),
+      sourceTemplate: map['sourceTemplate'] == null
+          ? null
+          : TemplateSourceEntitySourceTemplate.fromMap(
+              (map['sourceTemplate'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

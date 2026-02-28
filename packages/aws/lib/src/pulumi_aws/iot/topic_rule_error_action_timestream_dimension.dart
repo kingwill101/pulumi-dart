@@ -1,3 +1,0 @@
-library module_iot_topic_rule_error_action_timestream_dimension;
-
-export 'topic_rule_error_action_timestream_dimension/topic_rule_error_action_timestream_dimension.dart';

@@ -1,3 +1,0 @@
-library module_sagemaker_domain_domain_settings_trusted_identity_propagation_settings;
-
-export 'domain_domain_settings_trusted_identity_propagation_settings/domain_domain_settings_trusted_identity_propagation_settings.dart';

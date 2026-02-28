@@ -1,3 +1,3 @@
 library pulumi_aws_servicecatalog;
 
-export 'package:pulumi_aws/src/pulumi_aws/servicecatalog.dart';
+export 'package:pulumi_aws/src/servicecatalog.dart';

@@ -1,3 +1,0 @@
-library module_ecs_service_network_configuration;
-
-export 'service_network_configuration/service_network_configuration_ecs.dart';

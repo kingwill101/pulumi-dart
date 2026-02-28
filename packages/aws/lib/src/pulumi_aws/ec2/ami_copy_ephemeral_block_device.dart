@@ -1,3 +1,0 @@
-library module_ec2_ami_copy_ephemeral_block_device;
-
-export 'ami_copy_ephemeral_block_device/ami_copy_ephemeral_block_device.dart';

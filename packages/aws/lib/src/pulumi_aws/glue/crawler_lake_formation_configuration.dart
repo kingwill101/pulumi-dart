@@ -1,3 +1,0 @@
-library module_glue_crawler_lake_formation_configuration;
-
-export 'crawler_lake_formation_configuration/crawler_lake_formation_configuration.dart';

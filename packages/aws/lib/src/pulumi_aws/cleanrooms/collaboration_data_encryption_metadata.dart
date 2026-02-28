@@ -1,3 +1,0 @@
-library module_cleanrooms_collaboration_data_encryption_metadata;
-
-export 'collaboration_data_encryption_metadata/collaboration_data_encryption_metadata.dart';

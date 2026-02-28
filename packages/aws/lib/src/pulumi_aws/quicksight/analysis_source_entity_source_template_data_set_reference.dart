@@ -1,3 +1,0 @@
-library module_quicksight_analysis_source_entity_source_template_data_set_reference;
-
-export 'analysis_source_entity_source_template_data_set_reference/analysis_source_entity_source_template_data_set_reference.dart';

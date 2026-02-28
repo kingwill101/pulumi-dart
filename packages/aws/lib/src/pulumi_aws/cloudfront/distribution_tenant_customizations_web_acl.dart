@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_tenant_customizations_web_acl;
-
-export 'distribution_tenant_customizations_web_acl/distribution_tenant_customizations_web_acl.dart';

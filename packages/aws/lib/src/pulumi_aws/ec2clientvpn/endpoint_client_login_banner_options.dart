@@ -1,3 +1,0 @@
-library module_ec2clientvpn_endpoint_client_login_banner_options;
-
-export 'endpoint_client_login_banner_options/endpoint_client_login_banner_options.dart';

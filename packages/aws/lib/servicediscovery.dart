@@ -1,3 +1,3 @@
 library pulumi_aws_servicediscovery;
 
-export 'package:pulumi_aws/src/pulumi_aws/servicediscovery.dart';
+export 'package:pulumi_aws/src/servicediscovery.dart';

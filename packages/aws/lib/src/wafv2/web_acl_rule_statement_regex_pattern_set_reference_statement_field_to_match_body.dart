@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody {
+  /// What WAF should do if the body is larger than WAF can inspect. WAF does not support inspecting the entire contents of the body of a web request when the body exceeds 8 KB (8192 bytes). Only the first 8 KB of the request body are forwarded to WAF by the underlying host service. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.
+  final String? oversizeHandling;
+
+  /// Creates a new [WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody].
+  /// [oversizeHandling] What WAF should do if the body is larger than WAF can inspect. WAF does not support inspecting the entire contents of the body of a web request when the body exceeds 8 KB (8192 bytes). Only the first 8 KB of the request body are forwarded to WAF by the underlying host service. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.
+  WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody({
+    this.oversizeHandling,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final oversizeHandlingValue = oversizeHandling;
+    if (oversizeHandlingValue != null) {
+      map['oversizeHandling'] = oversizeHandlingValue;
+    }
+    return map;
+  }
+
+  factory WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(
+      Map<String, dynamic> map) {
+    return WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody(
+      oversizeHandling: map['oversizeHandling'] == null
+          ? null
+          : map['oversizeHandling'] as String,
+    );
+  }
+}

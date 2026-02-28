@@ -1,3 +1,3 @@
 library pulumi_aws_secretsmanager;
 
-export 'package:pulumi_aws/src/pulumi_aws/secretsmanager.dart';
+export 'package:pulumi_aws/src/secretsmanager.dart';

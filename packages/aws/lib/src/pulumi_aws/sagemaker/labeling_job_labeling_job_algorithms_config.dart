@@ -1,3 +1,0 @@
-library module_sagemaker_labeling_job_labeling_job_algorithms_config;
-
-export 'labeling_job_labeling_job_algorithms_config/labeling_job_labeling_job_algorithms_config.dart';

@@ -1,5 +1,0 @@
-library module_ec2_get_instance_type_offerings;
-
-export 'get_instance_type_offerings/get_instance_type_offerings.dart';
-export 'get_instance_type_offerings/get_instance_type_offerings_args.dart';
-export 'get_instance_type_offerings/get_instance_type_offerings_result.dart';

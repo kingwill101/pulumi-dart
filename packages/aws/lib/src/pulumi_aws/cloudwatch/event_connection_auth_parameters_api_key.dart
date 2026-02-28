@@ -1,3 +1,0 @@
-library module_cloudwatch_event_connection_auth_parameters_api_key;
-
-export 'event_connection_auth_parameters_api_key/event_connection_auth_parameters_api_key.dart';

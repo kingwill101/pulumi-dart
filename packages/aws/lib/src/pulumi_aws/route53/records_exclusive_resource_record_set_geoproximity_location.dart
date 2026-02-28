@@ -1,3 +1,0 @@
-library module_route53_records_exclusive_resource_record_set_geoproximity_location;
-
-export 'records_exclusive_resource_record_set_geoproximity_location/records_exclusive_resource_record_set_geoproximity_location.dart';

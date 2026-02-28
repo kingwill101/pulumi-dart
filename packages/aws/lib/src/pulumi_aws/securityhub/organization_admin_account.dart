@@ -1,4 +1,0 @@
-library module_securityhub_organization_admin_account;
-
-export 'organization_admin_account/organization_admin_account_securityhub.dart';
-export 'organization_admin_account/organization_admin_account_securityhub_args.dart';

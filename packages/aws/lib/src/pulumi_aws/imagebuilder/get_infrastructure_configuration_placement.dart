@@ -1,3 +1,0 @@
-library module_imagebuilder_get_infrastructure_configuration_placement;
-
-export 'get_infrastructure_configuration_placement/get_infrastructure_configuration_placement.dart';

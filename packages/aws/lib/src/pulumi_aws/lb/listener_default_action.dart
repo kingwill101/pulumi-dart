@@ -1,3 +1,0 @@
-library module_lb_listener_default_action;
-
-export 'listener_default_action/listener_default_action_lb.dart';

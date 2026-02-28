@@ -1,3 +1,0 @@
-library module_networkfirewall_rule_group_rule_group;
-
-export 'rule_group_rule_group/rule_group_rule_group.dart';

@@ -1,3 +1,0 @@
-library module_opensearchingest_pipeline_encryption_at_rest_options;
-
-export 'pipeline_encryption_at_rest_options/pipeline_encryption_at_rest_options.dart';

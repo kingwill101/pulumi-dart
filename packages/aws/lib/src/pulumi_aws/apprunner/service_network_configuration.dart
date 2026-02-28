@@ -1,3 +1,0 @@
-library module_apprunner_service_network_configuration;
-
-export 'service_network_configuration/service_network_configuration.dart';

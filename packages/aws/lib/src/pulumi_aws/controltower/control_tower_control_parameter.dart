@@ -1,3 +1,0 @@
-library module_controltower_control_tower_control_parameter;
-
-export 'control_tower_control_parameter/control_tower_control_parameter.dart';

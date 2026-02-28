@@ -1,3 +1,0 @@
-library module_imagebuilder_container_recipe_instance_configuration_block_device_mapping;
-
-export 'container_recipe_instance_configuration_block_device_mapping/container_recipe_instance_configuration_block_device_mapping.dart';

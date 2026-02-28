@@ -1,3 +1,0 @@
-library module_appmesh_get_route_spec_http2_route_match_header_match;
-
-export 'get_route_spec_http2_route_match_header_match/get_route_spec_http2_route_match_header_match.dart';

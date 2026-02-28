@@ -1,3 +1,0 @@
-library module_licensemanager_get_received_license_validity;
-
-export 'get_received_license_validity/get_received_license_validity.dart';

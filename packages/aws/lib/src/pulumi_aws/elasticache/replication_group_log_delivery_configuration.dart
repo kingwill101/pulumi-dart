@@ -1,3 +1,0 @@
-library module_elasticache_replication_group_log_delivery_configuration;
-
-export 'replication_group_log_delivery_configuration/replication_group_log_delivery_configuration.dart';

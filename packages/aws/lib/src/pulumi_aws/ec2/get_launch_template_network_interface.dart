@@ -1,3 +1,0 @@
-library module_ec2_get_launch_template_network_interface;
-
-export 'get_launch_template_network_interface/get_launch_template_network_interface.dart';

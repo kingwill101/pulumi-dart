@@ -1,3 +1,0 @@
-library module_imagebuilder_infrastructure_configuration_instance_metadata_options;
-
-export 'infrastructure_configuration_instance_metadata_options/infrastructure_configuration_instance_metadata_options.dart';

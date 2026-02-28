@@ -1,3 +1,0 @@
-library module_budgets_budget_filter_expression_and_and_tags;
-
-export 'budget_filter_expression_and_and_tags/budget_filter_expression_and_and_tags.dart';

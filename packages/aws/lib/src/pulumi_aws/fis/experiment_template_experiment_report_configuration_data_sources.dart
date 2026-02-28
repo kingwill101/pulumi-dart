@@ -1,3 +1,0 @@
-library module_fis_experiment_template_experiment_report_configuration_data_sources;
-
-export 'experiment_template_experiment_report_configuration_data_sources/experiment_template_experiment_report_configuration_data_sources.dart';

@@ -1,0 +1,64 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Result data returned by getInvocation.
+class GetInvocationResult {
+  final String functionName;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final String input;
+  final String? qualifier;
+  final String region;
+
+  /// String result of the Lambda function invocation.
+  final String result;
+  final String? tenantId;
+
+  /// Creates a new [GetInvocationResult].
+  /// [functionName] Required.
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [input] Required.
+  /// [qualifier] Optional.
+  /// [region] Required.
+  /// [result] String result of the Lambda function invocation.
+  /// [tenantId] Optional.
+  GetInvocationResult({
+    required this.functionName,
+    required this.id,
+    required this.input,
+    this.qualifier,
+    required this.region,
+    required this.result,
+    this.tenantId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['functionName'] = functionName;
+    map['id'] = id;
+    map['input'] = input;
+    final qualifierValue = qualifier;
+    if (qualifierValue != null) {
+      map['qualifier'] = qualifierValue;
+    }
+    map['region'] = region;
+    map['result'] = result;
+    final tenantIdValue = tenantId;
+    if (tenantIdValue != null) {
+      map['tenantId'] = tenantIdValue;
+    }
+    return map;
+  }
+
+  factory GetInvocationResult.fromMap(Map<String, dynamic> map) {
+    return GetInvocationResult(
+      functionName: map['functionName'] as String,
+      id: map['id'] as String,
+      input: map['input'] as String,
+      qualifier: map['qualifier'] == null ? null : map['qualifier'] as String,
+      region: map['region'] as String,
+      result: map['result'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+    );
+  }
+}

@@ -1,0 +1,24 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetBundleComputeType {
+  /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
+  final String name;
+
+  /// Creates a new [GetBundleComputeType].
+  /// [name] Name of the bundle. You cannot combine this parameter with `bundle_id`.
+  GetBundleComputeType({
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['name'] = name;
+    return map;
+  }
+
+  factory GetBundleComputeType.fromMap(Map<String, dynamic> map) {
+    return GetBundleComputeType(
+      name: map['name'] as String,
+    );
+  }
+}

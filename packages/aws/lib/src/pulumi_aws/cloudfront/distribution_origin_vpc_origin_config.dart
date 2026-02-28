@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_origin_vpc_origin_config;
-
-export 'distribution_origin_vpc_origin_config/distribution_origin_vpc_origin_config.dart';

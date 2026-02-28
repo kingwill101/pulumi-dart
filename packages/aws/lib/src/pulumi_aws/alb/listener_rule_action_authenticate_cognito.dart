@@ -1,3 +1,0 @@
-library module_alb_listener_rule_action_authenticate_cognito;
-
-export 'listener_rule_action_authenticate_cognito/listener_rule_action_authenticate_cognito.dart';

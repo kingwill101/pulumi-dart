@@ -1,4 +1,0 @@
-library module_networkmanager_customer_gateway_association;
-
-export 'customer_gateway_association/customer_gateway_association.dart';
-export 'customer_gateway_association/customer_gateway_association_args.dart';

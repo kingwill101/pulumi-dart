@@ -1,5 +1,0 @@
-library module_s3_get_bucket_object_lock_configuration;
-
-export 'get_bucket_object_lock_configuration/get_bucket_object_lock_configuration.dart';
-export 'get_bucket_object_lock_configuration/get_bucket_object_lock_configuration_args.dart';
-export 'get_bucket_object_lock_configuration/get_bucket_object_lock_configuration_result.dart';

@@ -1,0 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_virtual_node_spec_backend_default_client_policy_tl_certificate_file.dart';
+import 'get_virtual_node_spec_backend_default_client_policy_tl_certificate_sd.dart';
+
+class GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate {
+  final List<GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile>
+      files;
+  final List<GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateSd> sds;
+
+  /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate].
+  /// [files] Required.
+  /// [sds] Required.
+  GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate({
+    required this.files,
+    required this.sds,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['files'] = pulumi.Input.encodeList<
+        GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile,
+        Map<String, dynamic>>(files, (value) => value.toMap());
+    map['sds'] = pulumi.Input.encodeList<
+        GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateSd,
+        Map<String, dynamic>>(sds, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate.fromMap(
+      Map<String, dynamic> map) {
+    return GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate(
+      files: pulumi.Input.decodeList<
+              GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile>(
+          map['files'],
+          (value) =>
+              GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      sds: pulumi.Input.decodeList<
+              GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateSd>(
+          map['sds'],
+          (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateSd
+              .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

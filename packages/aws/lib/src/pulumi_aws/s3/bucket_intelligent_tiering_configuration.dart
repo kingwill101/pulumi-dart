@@ -1,4 +1,0 @@
-library module_s3_bucket_intelligent_tiering_configuration;
-
-export 'bucket_intelligent_tiering_configuration/bucket_intelligent_tiering_configuration.dart';
-export 'bucket_intelligent_tiering_configuration/bucket_intelligent_tiering_configuration_args.dart';

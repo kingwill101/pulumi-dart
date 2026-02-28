@@ -1,3 +1,0 @@
-library module_lambda_event_source_mapping_filter_criteria_filter;
-
-export 'event_source_mapping_filter_criteria_filter/event_source_mapping_filter_criteria_filter.dart';

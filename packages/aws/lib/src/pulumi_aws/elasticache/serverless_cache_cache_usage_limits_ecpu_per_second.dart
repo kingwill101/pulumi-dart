@@ -1,3 +1,0 @@
-library module_elasticache_serverless_cache_cache_usage_limits_ecpu_per_second;
-
-export 'serverless_cache_cache_usage_limits_ecpu_per_second/serverless_cache_cache_usage_limits_ecpu_per_second.dart';

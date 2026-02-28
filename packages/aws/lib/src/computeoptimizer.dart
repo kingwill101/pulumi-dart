@@ -1,0 +1,12 @@
+library module_computeoptimizer;
+
+export 'computeoptimizer/enrollment_status.dart';
+export 'computeoptimizer/enrollment_status_args.dart';
+export 'computeoptimizer/enrollment_status_timeouts.dart';
+export 'computeoptimizer/recommendation_preferences.dart';
+export 'computeoptimizer/recommendation_preferences_args.dart';
+export 'computeoptimizer/recommendation_preferences_external_metrics_preference.dart';
+export 'computeoptimizer/recommendation_preferences_preferred_resource.dart';
+export 'computeoptimizer/recommendation_preferences_scope.dart';
+export 'computeoptimizer/recommendation_preferences_utilization_preference.dart';
+export 'computeoptimizer/recommendation_preferences_utilization_preference_metric_parameters.dart';

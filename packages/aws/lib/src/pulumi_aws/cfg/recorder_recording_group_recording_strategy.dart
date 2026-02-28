@@ -1,3 +1,0 @@
-library module_cfg_recorder_recording_group_recording_strategy;
-
-export 'recorder_recording_group_recording_strategy/recorder_recording_group_recording_strategy.dart';

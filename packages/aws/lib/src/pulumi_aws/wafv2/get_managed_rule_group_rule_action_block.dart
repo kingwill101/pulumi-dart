@@ -1,3 +1,0 @@
-library module_wafv2_get_managed_rule_group_rule_action_block;
-
-export 'get_managed_rule_group_rule_action_block/get_managed_rule_group_rule_action_block.dart';

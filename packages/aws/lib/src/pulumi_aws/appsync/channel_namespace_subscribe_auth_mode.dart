@@ -1,3 +1,0 @@
-library module_appsync_channel_namespace_subscribe_auth_mode;
-
-export 'channel_namespace_subscribe_auth_mode/channel_namespace_subscribe_auth_mode.dart';

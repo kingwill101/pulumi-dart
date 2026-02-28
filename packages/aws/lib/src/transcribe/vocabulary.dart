@@ -1,0 +1,303 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'vocabulary_args.dart';
+
+/// Resource for managing an AWS Transcribe Vocabulary.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.s3.Bucket("example", {
+///     bucket: "example-vocab-123",
+///     forceDestroy: true,
+/// });
+/// const object = new aws.s3.BucketObjectv2("object", {
+///     bucket: example.id,
+///     key: "transcribe/test1.txt",
+///     source: new pulumi.asset.FileAsset("test.txt"),
+/// });
+/// const exampleVocabulary = new aws.transcribe.Vocabulary("example", {
+///     vocabularyName: "example",
+///     languageCode: "en-US",
+///     vocabularyFileUri: pulumi.interpolate`s3://${example.id}/${object.key}`,
+///     tags: {
+///         tag1: "value1",
+///         tag2: "value3",
+///     },
+/// }, {
+///     dependsOn: [object],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.s3.Bucket("example",
+///     bucket="example-vocab-123",
+///     force_destroy=True)
+/// object = aws.s3.BucketObjectv2("object",
+///     bucket=example.id,
+///     key="transcribe/test1.txt",
+///     source=pulumi.FileAsset("test.txt"))
+/// example_vocabulary = aws.transcribe.Vocabulary("example",
+///     vocabulary_name="example",
+///     language_code="en-US",
+///     vocabulary_file_uri=pulumi.Output.all(
+///         id=example.id,
+///         key=object.key
+/// ).apply(lambda resolved_outputs: f"s3://{resolved_outputs['id']}/{resolved_outputs['key']}")
+/// ,
+///     tags={
+///         "tag1": "value1",
+///         "tag2": "value3",
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[object]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.S3.Bucket("example", new()
+///     {
+///         BucketName = "example-vocab-123",
+///         ForceDestroy = true,
+///     });
+///
+///     var @object = new Aws.S3.BucketObjectv2("object", new()
+///     {
+///         Bucket = example.Id,
+///         Key = "transcribe/test1.txt",
+///         Source = new FileAsset("test.txt"),
+///     });
+///
+///     var exampleVocabulary = new Aws.Transcribe.Vocabulary("example", new()
+///     {
+///         VocabularyName = "example",
+///         LanguageCode = "en-US",
+///         VocabularyFileUri = Output.Tuple(example.Id, @object.Key).Apply(values =>
+///         {
+///             var id = values.Item1;
+///             var key = values.Item2;
+///             return $"s3://{id}/{key}";
+///         }),
+///         Tags =
+///         {
+///             { "tag1", "value1" },
+///             { "tag2", "value3" },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             @object,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/transcribe"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := s3.NewBucket(ctx, "example", &s3.BucketArgs{
+/// 			Bucket:       pulumi.String("example-vocab-123"),
+/// 			ForceDestroy: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		object, err := s3.NewBucketObjectv2(ctx, "object", &s3.BucketObjectv2Args{
+/// 			Bucket: example.ID(),
+/// 			Key:    pulumi.String("transcribe/test1.txt"),
+/// 			Source: pulumi.NewFileAsset("test.txt"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = transcribe.NewVocabulary(ctx, "example", &transcribe.VocabularyArgs{
+/// 			VocabularyName: pulumi.String("example"),
+/// 			LanguageCode:   pulumi.String("en-US"),
+/// 			VocabularyFileUri: pulumi.All(example.ID(), object.Key).ApplyT(func(_args []interface{}) (string, error) {
+/// 				id := _args[0].(string)
+/// 				key := _args[1].(string)
+/// 				return fmt.Sprintf("s3://%v/%v", id, key), nil
+/// 			}).(pulumi.StringOutput),
+/// 			Tags: pulumi.StringMap{
+/// 				"tag1": pulumi.String("value1"),
+/// 				"tag2": pulumi.String("value3"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			object,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.Bucket;
+/// import com.pulumi.aws.s3.BucketArgs;
+/// import com.pulumi.aws.s3.BucketObjectv2;
+/// import com.pulumi.aws.s3.BucketObjectv2Args;
+/// import com.pulumi.aws.transcribe.Vocabulary;
+/// import com.pulumi.aws.transcribe.VocabularyArgs;
+/// import com.pulumi.asset.FileAsset;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Bucket("example", BucketArgs.builder()
+///             .bucket("example-vocab-123")
+///             .forceDestroy(true)
+///             .build());
+///
+///         var object = new BucketObjectv2("object", BucketObjectv2Args.builder()
+///             .bucket(example.id())
+///             .key("transcribe/test1.txt")
+///             .source(new FileAsset("test.txt"))
+///             .build());
+///
+///         var exampleVocabulary = new Vocabulary("exampleVocabulary", VocabularyArgs.builder()
+///             .vocabularyName("example")
+///             .languageCode("en-US")
+///             .vocabularyFileUri(Output.tuple(example.id(), object.key()).applyValue(values -> {
+///                 var id = values.t1;
+///                 var key = values.t2;
+///                 return String.format("s3://%s/%s", id,key);
+///             }))
+///             .tags(Map.ofEntries(
+///                 Map.entry("tag1", "value1"),
+///                 Map.entry("tag2", "value3")
+///             ))
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(object)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:s3:Bucket
+///     properties:
+///       bucket: example-vocab-123
+///       forceDestroy: true
+///   object:
+///     type: aws:s3:BucketObjectv2
+///     properties:
+///       bucket: ${example.id}
+///       key: transcribe/test1.txt
+///       source:
+///         fn::FileAsset: test.txt
+///   exampleVocabulary:
+///     type: aws:transcribe:Vocabulary
+///     name: example
+///     properties:
+///       vocabularyName: example
+///       languageCode: en-US
+///       vocabularyFileUri: s3://${example.id}/${object.key}
+///       tags:
+///         tag1: value1
+///         tag2: value3
+///     options:
+///       dependsOn:
+///         - ${object}
+/// ```
+///
+///
+/// ## Import
+///
+/// Using `pulumi import`, import Transcribe Vocabulary using the `vocabulary_name`. For example:
+///
+/// ```sh
+/// $ pulumi import aws:transcribe/vocabulary:Vocabulary example example-name
+/// ```
+class Vocabulary extends pulumi.CustomResource {
+  /// ARN of the Vocabulary.
+  late final pulumi.Output<String> arn;
+
+  /// Generated download URI.
+  late final pulumi.Output<String> downloadUri;
+
+  /// The language code you selected for your vocabulary.
+  late final pulumi.Output<String> languageCode;
+
+  /// A list of terms to include in the vocabulary. Conflicts with `vocabulary_file_uri`
+  late final pulumi.Output<List<String>?> phrases;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final pulumi.Output<String> region;
+
+  /// A map of tags to assign to the Vocabulary. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+
+  /// The Amazon S3 location (URI) of the text file that contains your custom vocabulary. Conflicts wth `phrases`.
+  late final pulumi.Output<String> vocabularyFileUri;
+
+  /// The name of the Vocabulary.
+  ///
+  /// The following arguments are optional:
+  late final pulumi.Output<String> vocabularyName;
+
+  /// Creates a new [Vocabulary].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Vocabulary]. {@macro pulumi_transcribe_vocabulary_vocabulary_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Vocabulary(
+    String name, {
+    VocabularyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:transcribe/vocabulary:Vocabulary',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.arn = registerOutput<String>('arn');
+    this.downloadUri = registerOutput<String>('downloadUri');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.phrases = registerOutput<List<String>?>('phrases');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vocabularyFileUri = registerOutput<String>('vocabularyFileUri');
+    this.vocabularyName = registerOutput<String>('vocabularyName');
+  }
+}

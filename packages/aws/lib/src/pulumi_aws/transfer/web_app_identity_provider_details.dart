@@ -1,3 +1,0 @@
-library module_transfer_web_app_identity_provider_details;
-
-export 'web_app_identity_provider_details/web_app_identity_provider_details.dart';

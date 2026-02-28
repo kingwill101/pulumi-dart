@@ -1,3 +1,0 @@
-library module_ssm_contacts_rotation_recurrence_shift_coverage_coverage_time_end;
-
-export 'contacts_rotation_recurrence_shift_coverage_coverage_time_end/contacts_rotation_recurrence_shift_coverage_coverage_time_end.dart';

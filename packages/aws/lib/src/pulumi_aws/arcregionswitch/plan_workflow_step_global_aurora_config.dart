@@ -1,3 +1,0 @@
-library module_arcregionswitch_plan_workflow_step_global_aurora_config;
-
-export 'plan_workflow_step_global_aurora_config/plan_workflow_step_global_aurora_config.dart';

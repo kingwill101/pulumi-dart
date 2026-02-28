@@ -1,3 +1,0 @@
-library module_ec2_vpc_peering_connection_requester;
-
-export 'vpc_peering_connection_requester/vpc_peering_connection_requester.dart';

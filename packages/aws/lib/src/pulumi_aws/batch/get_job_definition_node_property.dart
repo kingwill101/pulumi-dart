@@ -1,3 +1,0 @@
-library module_batch_get_job_definition_node_property;
-
-export 'get_job_definition_node_property/get_job_definition_node_property.dart';

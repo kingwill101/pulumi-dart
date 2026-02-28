@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_note_text;
-
-export 'insight_filters_note_text/insight_filters_note_text.dart';

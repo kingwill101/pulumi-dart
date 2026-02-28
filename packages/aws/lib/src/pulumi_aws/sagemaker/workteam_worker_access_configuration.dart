@@ -1,3 +1,0 @@
-library module_sagemaker_workteam_worker_access_configuration;
-
-export 'workteam_worker_access_configuration/workteam_worker_access_configuration.dart';

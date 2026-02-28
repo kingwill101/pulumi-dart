@@ -1,3 +1,0 @@
-library module_codecatalyst_get_dev_environment_ide;
-
-export 'get_dev_environment_ide/get_dev_environment_ide.dart';

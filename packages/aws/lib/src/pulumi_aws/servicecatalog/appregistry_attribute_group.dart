@@ -1,4 +1,0 @@
-library module_servicecatalog_appregistry_attribute_group;
-
-export 'appregistry_attribute_group/appregistry_attribute_group.dart';
-export 'appregistry_attribute_group/appregistry_attribute_group_args.dart';

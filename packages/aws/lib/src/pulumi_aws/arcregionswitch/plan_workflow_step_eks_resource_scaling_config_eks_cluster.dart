@@ -1,3 +1,0 @@
-library module_arcregionswitch_plan_workflow_step_eks_resource_scaling_config_eks_cluster;
-
-export 'plan_workflow_step_eks_resource_scaling_config_eks_cluster/plan_workflow_step_eks_resource_scaling_config_eks_cluster.dart';

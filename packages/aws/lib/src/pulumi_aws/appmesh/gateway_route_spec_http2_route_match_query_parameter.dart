@@ -1,3 +1,0 @@
-library module_appmesh_gateway_route_spec_http2_route_match_query_parameter;
-
-export 'gateway_route_spec_http2_route_match_query_parameter/gateway_route_spec_http2_route_match_query_parameter.dart';

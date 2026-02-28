@@ -1,3 +1,0 @@
-library module_codebuild_project_secondary_source_build_status_config;
-
-export 'project_secondary_source_build_status_config/project_secondary_source_build_status_config.dart';

@@ -1,3 +1,0 @@
-library module_ec2_get_launch_configuration_root_block_device;
-
-export 'get_launch_configuration_root_block_device/get_launch_configuration_root_block_device.dart';

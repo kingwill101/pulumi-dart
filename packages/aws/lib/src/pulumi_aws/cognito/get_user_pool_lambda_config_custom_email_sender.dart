@@ -1,3 +1,0 @@
-library module_cognito_get_user_pool_lambda_config_custom_email_sender;
-
-export 'get_user_pool_lambda_config_custom_email_sender/get_user_pool_lambda_config_custom_email_sender.dart';

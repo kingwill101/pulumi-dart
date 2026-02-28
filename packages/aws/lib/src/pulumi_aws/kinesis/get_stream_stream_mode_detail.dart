@@ -1,3 +1,0 @@
-library module_kinesis_get_stream_stream_mode_detail;
-
-export 'get_stream_stream_mode_detail/get_stream_stream_mode_detail.dart';

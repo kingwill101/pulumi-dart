@@ -1,3 +1,0 @@
-library module_route53_get_records_resource_record_set_cidr_routing_config;
-
-export 'get_records_resource_record_set_cidr_routing_config/get_records_resource_record_set_cidr_routing_config.dart';

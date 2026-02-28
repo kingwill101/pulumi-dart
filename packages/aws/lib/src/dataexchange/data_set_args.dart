@@ -1,0 +1,73 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dataexchange_data_set_data_set_args_doc}
+/// The set of arguments for DataSet.
+/// {@endtemplate}
+/// {@macro pulumi_dataexchange_data_set_data_set_args_doc}
+class DataSetArgs {
+  /// The type of asset that is added to a data set. Valid values include `API_GATEWAY_API`, `LAKE_FORMATION_DATA_PERMISSION`, `REDSHIFT_DATA_SHARE`, `S3_DATA_ACCESS`, `S3_SNAPSHOT`.
+  final pulumi.Input<String> assetType;
+
+  /// A description for the data set.
+  final pulumi.Input<String> description;
+
+  /// The name of the data set.
+  final pulumi.Input<String>? name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [DataSetArgs].
+  /// [assetType] The type of asset that is added to a data set. Valid values include `API_GATEWAY_API`, `LAKE_FORMATION_DATA_PERMISSION`, `REDSHIFT_DATA_SHARE`, `S3_DATA_ACCESS`, `S3_SNAPSHOT`.
+  /// [description] A description for the data set.
+  /// [name] The name of the data set.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  DataSetArgs({
+    required String assetType,
+    required String description,
+    String? name,
+    String? region,
+    Map<String, String>? tags,
+  })  : assetType = pulumi.Input.asInput<String>(assetType),
+        description = pulumi.Input.asInput<String>(description),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['assetType'] = assetType;
+    map['description'] = description;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory DataSetArgs.fromMap(Map<String, dynamic> map) {
+    return DataSetArgs(
+      assetType: map['assetType'] as String,
+      description: map['description'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

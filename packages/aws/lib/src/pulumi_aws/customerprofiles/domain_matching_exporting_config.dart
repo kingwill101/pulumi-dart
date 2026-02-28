@@ -1,3 +1,0 @@
-library module_customerprofiles_domain_matching_exporting_config;
-
-export 'domain_matching_exporting_config/domain_matching_exporting_config.dart';

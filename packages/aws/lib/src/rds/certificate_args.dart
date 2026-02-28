@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_rds_certificate_certificate_args_doc}
+/// The set of arguments for Certificate.
+/// {@endtemplate}
+/// {@macro pulumi_rds_certificate_certificate_args_doc}
+class CertificateArgs {
+  /// Certificate identifier. For example, `rds-ca-rsa4096-g1`. Refer to [AWS RDS (Relational Database) Certificate Identifier](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html#UsingWithRDS.SSL.CertificateIdentifier) for more information.
+  final pulumi.Input<String> certificateIdentifier;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [CertificateArgs].
+  /// [certificateIdentifier] Certificate identifier. For example, `rds-ca-rsa4096-g1`. Refer to [AWS RDS (Relational Database) Certificate Identifier](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html#UsingWithRDS.SSL.CertificateIdentifier) for more information.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  CertificateArgs({
+    required String certificateIdentifier,
+    String? region,
+  })  : certificateIdentifier =
+            pulumi.Input.asInput<String>(certificateIdentifier),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['certificateIdentifier'] = certificateIdentifier;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory CertificateArgs.fromMap(Map<String, dynamic> map) {
+    return CertificateArgs(
+      certificateIdentifier: map['certificateIdentifier'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

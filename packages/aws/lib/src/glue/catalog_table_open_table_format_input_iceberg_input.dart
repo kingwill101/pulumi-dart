@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class CatalogTableOpenTableFormatInputIcebergInput {
+  /// A required metadata operation. Can only be set to CREATE.
+  final String metadataOperation;
+
+  /// The table version for the Iceberg table. Defaults to 2.
+  final String? version;
+
+  /// Creates a new [CatalogTableOpenTableFormatInputIcebergInput].
+  /// [metadataOperation] A required metadata operation. Can only be set to CREATE.
+  /// [version] The table version for the Iceberg table. Defaults to 2.
+  CatalogTableOpenTableFormatInputIcebergInput({
+    required this.metadataOperation,
+    this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['metadataOperation'] = metadataOperation;
+    final versionValue = version;
+    if (versionValue != null) {
+      map['version'] = versionValue;
+    }
+    return map;
+  }
+
+  factory CatalogTableOpenTableFormatInputIcebergInput.fromMap(
+      Map<String, dynamic> map) {
+    return CatalogTableOpenTableFormatInputIcebergInput(
+      metadataOperation: map['metadataOperation'] as String,
+      version: map['version'] == null ? null : map['version'] as String,
+    );
+  }
+}

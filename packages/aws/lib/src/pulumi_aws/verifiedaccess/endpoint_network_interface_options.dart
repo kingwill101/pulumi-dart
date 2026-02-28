@@ -1,3 +1,0 @@
-library module_verifiedaccess_endpoint_network_interface_options;
-
-export 'endpoint_network_interface_options/endpoint_network_interface_options.dart';

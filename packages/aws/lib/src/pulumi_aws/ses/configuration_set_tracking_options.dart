@@ -1,3 +1,0 @@
-library module_ses_configuration_set_tracking_options;
-
-export 'configuration_set_tracking_options/configuration_set_tracking_options.dart';

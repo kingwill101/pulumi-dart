@@ -1,5 +1,0 @@
-library module_ec2_get_ipam_preview_next_cidr;
-
-export 'get_ipam_preview_next_cidr/get_ipam_preview_next_cidr.dart';
-export 'get_ipam_preview_next_cidr/get_ipam_preview_next_cidr_args.dart';
-export 'get_ipam_preview_next_cidr/get_ipam_preview_next_cidr_result.dart';

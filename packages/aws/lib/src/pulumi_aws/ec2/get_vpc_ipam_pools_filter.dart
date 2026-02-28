@@ -1,3 +1,0 @@
-library module_ec2_get_vpc_ipam_pools_filter;
-
-export 'get_vpc_ipam_pools_filter/get_vpc_ipam_pools_filter.dart';

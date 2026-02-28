@@ -1,3 +1,0 @@
-library module_cloudfront_continuous_deployment_policy_traffic_config;
-
-export 'continuous_deployment_policy_traffic_config/continuous_deployment_policy_traffic_config.dart';

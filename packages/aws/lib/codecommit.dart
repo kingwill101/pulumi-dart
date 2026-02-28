@@ -1,3 +1,3 @@
 library pulumi_aws_codecommit;
 
-export 'package:pulumi_aws/src/pulumi_aws/codecommit.dart';
+export 'package:pulumi_aws/src/codecommit.dart';

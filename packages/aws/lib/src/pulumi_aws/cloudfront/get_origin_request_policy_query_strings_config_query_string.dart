@@ -1,3 +1,0 @@
-library module_cloudfront_get_origin_request_policy_query_strings_config_query_string;
-
-export 'get_origin_request_policy_query_strings_config_query_string/get_origin_request_policy_query_strings_config_query_string.dart';

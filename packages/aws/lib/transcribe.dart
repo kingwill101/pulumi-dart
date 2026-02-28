@@ -1,3 +1,3 @@
 library pulumi_aws_transcribe;
 
-export 'package:pulumi_aws/src/pulumi_aws/transcribe.dart';
+export 'package:pulumi_aws/src/transcribe.dart';

@@ -1,3 +1,0 @@
-library module_kendra_index_user_token_configurations_jwt_token_type_configuration;
-
-export 'index_user_token_configurations_jwt_token_type_configuration/index_user_token_configurations_jwt_token_type_configuration.dart';

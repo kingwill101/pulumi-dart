@@ -1,3 +1,0 @@
-library module_pipes_pipe_source_parameters_filter_criteria_filter;
-
-export 'pipe_source_parameters_filter_criteria_filter/pipe_source_parameters_filter_criteria_filter.dart';

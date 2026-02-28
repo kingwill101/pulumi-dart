@@ -1,3 +1,0 @@
-library module_ec2_vpc_block_public_access_options_timeouts;
-
-export 'vpc_block_public_access_options_timeouts/vpc_block_public_access_options_timeouts.dart';

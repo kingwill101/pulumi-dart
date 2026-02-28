@@ -1,3 +1,0 @@
-library module_sagemaker_data_quality_job_definition_network_config;
-
-export 'data_quality_job_definition_network_config/data_quality_job_definition_network_config.dart';

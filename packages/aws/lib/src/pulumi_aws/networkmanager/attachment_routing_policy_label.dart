@@ -1,4 +1,0 @@
-library module_networkmanager_attachment_routing_policy_label;
-
-export 'attachment_routing_policy_label/attachment_routing_policy_label.dart';
-export 'attachment_routing_policy_label/attachment_routing_policy_label_args.dart';

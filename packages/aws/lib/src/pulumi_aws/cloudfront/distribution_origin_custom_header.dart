@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_origin_custom_header;
-
-export 'distribution_origin_custom_header/distribution_origin_custom_header.dart';

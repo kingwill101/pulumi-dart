@@ -1,3 +1,0 @@
-library module_cloudfront_multitenant_distribution_cache_behavior_function_association;
-
-export 'multitenant_distribution_cache_behavior_function_association/multitenant_distribution_cache_behavior_function_association.dart';

@@ -1,3 +1,3 @@
 library pulumi_aws_devopsguru;
 
-export 'package:pulumi_aws/src/pulumi_aws/devopsguru.dart';
+export 'package:pulumi_aws/src/devopsguru.dart';

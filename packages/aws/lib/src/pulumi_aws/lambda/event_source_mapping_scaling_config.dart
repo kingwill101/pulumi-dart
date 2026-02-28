@@ -1,3 +1,0 @@
-library module_lambda_event_source_mapping_scaling_config;
-
-export 'event_source_mapping_scaling_config/event_source_mapping_scaling_config.dart';

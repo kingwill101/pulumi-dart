@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_confirmation_setting_failure_next_step;
-
-export 'v2models_intent_confirmation_setting_failure_next_step/v2models_intent_confirmation_setting_failure_next_step.dart';

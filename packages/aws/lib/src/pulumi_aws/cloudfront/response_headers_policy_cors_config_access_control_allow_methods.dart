@@ -1,3 +1,0 @@
-library module_cloudfront_response_headers_policy_cors_config_access_control_allow_methods;
-
-export 'response_headers_policy_cors_config_access_control_allow_methods/response_headers_policy_cors_config_access_control_allow_methods.dart';

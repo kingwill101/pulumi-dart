@@ -1,3 +1,0 @@
-library module_gamelift_game_server_group_instance_definition;
-
-export 'game_server_group_instance_definition/game_server_group_instance_definition.dart';

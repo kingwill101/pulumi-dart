@@ -1,3 +1,0 @@
-library module_gamelift_fleet_ec2_inbound_permission;
-
-export 'fleet_ec2_inbound_permission/fleet_ec2_inbound_permission.dart';

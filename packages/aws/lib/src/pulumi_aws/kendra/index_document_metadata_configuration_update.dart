@@ -1,3 +1,0 @@
-library module_kendra_index_document_metadata_configuration_update;
-
-export 'index_document_metadata_configuration_update/index_document_metadata_configuration_update.dart';

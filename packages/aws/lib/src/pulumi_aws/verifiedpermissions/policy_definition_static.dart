@@ -1,3 +1,0 @@
-library module_verifiedpermissions_policy_definition_static;
-
-export 'policy_definition_static/policy_definition_static.dart';

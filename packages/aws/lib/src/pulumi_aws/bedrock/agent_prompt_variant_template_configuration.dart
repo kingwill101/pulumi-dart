@@ -1,3 +1,0 @@
-library module_bedrock_agent_prompt_variant_template_configuration;
-
-export 'agent_prompt_variant_template_configuration/agent_prompt_variant_template_configuration.dart';

@@ -1,3 +1,0 @@
-library module_lambda_get_function_logging_config;
-
-export 'get_function_logging_config/get_function_logging_config.dart';

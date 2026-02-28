@@ -1,3 +1,0 @@
-library module_cloudfront_multitenant_distribution_viewer_certificate;
-
-export 'multitenant_distribution_viewer_certificate/multitenant_distribution_viewer_certificate.dart';

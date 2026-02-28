@@ -1,3 +1,0 @@
-library module_networkfirewall_firewall_policy_firewall_policy_policy_variables_rule_variable;
-
-export 'firewall_policy_firewall_policy_policy_variables_rule_variable/firewall_policy_firewall_policy_policy_variables_rule_variable.dart';

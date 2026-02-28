@@ -1,3 +1,3 @@
 library pulumi_aws_auditmanager;
 
-export 'package:pulumi_aws/src/pulumi_aws/auditmanager.dart';
+export 'package:pulumi_aws/src/auditmanager.dart';

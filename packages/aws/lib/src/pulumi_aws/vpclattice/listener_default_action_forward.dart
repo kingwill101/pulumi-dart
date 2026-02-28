@@ -1,3 +1,0 @@
-library module_vpclattice_listener_default_action_forward;
-
-export 'listener_default_action_forward/listener_default_action_forward_vpclattice.dart';

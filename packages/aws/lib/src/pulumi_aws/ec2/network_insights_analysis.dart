@@ -1,4 +1,0 @@
-library module_ec2_network_insights_analysis;
-
-export 'network_insights_analysis/network_insights_analysis.dart';
-export 'network_insights_analysis/network_insights_analysis_args.dart';

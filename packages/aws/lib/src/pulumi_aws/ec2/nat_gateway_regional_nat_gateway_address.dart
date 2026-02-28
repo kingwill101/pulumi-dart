@@ -1,3 +1,0 @@
-library module_ec2_nat_gateway_regional_nat_gateway_address;
-
-export 'nat_gateway_regional_nat_gateway_address/nat_gateway_regional_nat_gateway_address.dart';

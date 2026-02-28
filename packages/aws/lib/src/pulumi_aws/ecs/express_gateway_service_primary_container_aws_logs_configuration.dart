@@ -1,3 +1,0 @@
-library module_ecs_express_gateway_service_primary_container_aws_logs_configuration;
-
-export 'express_gateway_service_primary_container_aws_logs_configuration/express_gateway_service_primary_container_aws_logs_configuration.dart';

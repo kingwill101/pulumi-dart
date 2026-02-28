@@ -1,3 +1,0 @@
-library module_glue_crawler_schema_change_policy;
-
-export 'crawler_schema_change_policy/crawler_schema_change_policy.dart';

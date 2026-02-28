@@ -1,3 +1,0 @@
-library module_ecs_cluster_configuration_managed_storage_configuration;
-
-export 'cluster_configuration_managed_storage_configuration/cluster_configuration_managed_storage_configuration.dart';

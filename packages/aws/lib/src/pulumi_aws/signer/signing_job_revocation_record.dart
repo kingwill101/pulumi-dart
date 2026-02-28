@@ -1,3 +1,0 @@
-library module_signer_signing_job_revocation_record;
-
-export 'signing_job_revocation_record/signing_job_revocation_record.dart';

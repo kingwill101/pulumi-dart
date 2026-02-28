@@ -1,3 +1,0 @@
-library module_athena_workgroup_configuration;
-
-export 'workgroup_configuration/workgroup_configuration.dart';

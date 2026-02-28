@@ -1,3 +1,0 @@
-library module_quicksight_get_theme_configuration_sheet_tile;
-
-export 'get_theme_configuration_sheet_tile/get_theme_configuration_sheet_tile.dart';

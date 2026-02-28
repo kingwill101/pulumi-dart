@@ -1,3 +1,0 @@
-library module_cloudwatch_log_transformer_transformer_config_date_time_converter;
-
-export 'log_transformer_transformer_config_date_time_converter/log_transformer_transformer_config_date_time_converter.dart';

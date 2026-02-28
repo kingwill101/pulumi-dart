@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_initial_response_setting;
-
-export 'v2models_intent_initial_response_setting/v2models_intent_initial_response_setting.dart';

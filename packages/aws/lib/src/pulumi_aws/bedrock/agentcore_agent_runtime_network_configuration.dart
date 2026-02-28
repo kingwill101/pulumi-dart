@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_agent_runtime_network_configuration;
-
-export 'agentcore_agent_runtime_network_configuration/agentcore_agent_runtime_network_configuration.dart';

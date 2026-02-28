@@ -1,3 +1,0 @@
-library module_eks_access_policy_association_access_scope;
-
-export 'access_policy_association_access_scope/access_policy_association_access_scope.dart';

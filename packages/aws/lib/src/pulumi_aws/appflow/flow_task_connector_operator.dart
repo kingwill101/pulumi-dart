@@ -1,3 +1,0 @@
-library module_appflow_flow_task_connector_operator;
-
-export 'flow_task_connector_operator/flow_task_connector_operator.dart';

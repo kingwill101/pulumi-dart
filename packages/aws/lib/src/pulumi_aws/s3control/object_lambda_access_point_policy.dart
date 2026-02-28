@@ -1,4 +1,0 @@
-library module_s3control_object_lambda_access_point_policy;
-
-export 'object_lambda_access_point_policy/object_lambda_access_point_policy.dart';
-export 'object_lambda_access_point_policy/object_lambda_access_point_policy_args.dart';

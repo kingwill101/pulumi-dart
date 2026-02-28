@@ -1,3 +1,0 @@
-library module_ecr_get_repository_image_tag_mutability_exclusion_filter;
-
-export 'get_repository_image_tag_mutability_exclusion_filter/get_repository_image_tag_mutability_exclusion_filter.dart';

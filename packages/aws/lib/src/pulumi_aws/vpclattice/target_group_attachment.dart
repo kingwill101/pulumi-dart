@@ -1,4 +1,0 @@
-library module_vpclattice_target_group_attachment;
-
-export 'target_group_attachment/target_group_attachment_vpclattice.dart';
-export 'target_group_attachment/target_group_attachment_vpclattice_args.dart';

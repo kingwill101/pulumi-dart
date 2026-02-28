@@ -1,3 +1,0 @@
-library module_s3tables_table_maintenance_configuration_iceberg_snapshot_management;
-
-export 'table_maintenance_configuration_iceberg_snapshot_management/table_maintenance_configuration_iceberg_snapshot_management.dart';

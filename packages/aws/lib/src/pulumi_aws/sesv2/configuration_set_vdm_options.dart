@@ -1,3 +1,0 @@
-library module_sesv2_configuration_set_vdm_options;
-
-export 'configuration_set_vdm_options/configuration_set_vdm_options.dart';

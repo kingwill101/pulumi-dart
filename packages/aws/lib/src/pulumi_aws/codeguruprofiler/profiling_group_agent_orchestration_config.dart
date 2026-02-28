@@ -1,3 +1,0 @@
-library module_codeguruprofiler_profiling_group_agent_orchestration_config;
-
-export 'profiling_group_agent_orchestration_config/profiling_group_agent_orchestration_config.dart';

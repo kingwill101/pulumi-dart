@@ -1,3 +1,0 @@
-library module_ec2_encryption_control_resource_exclusions_nat_gateway;
-
-export 'encryption_control_resource_exclusions_nat_gateway/encryption_control_resource_exclusions_nat_gateway.dart';

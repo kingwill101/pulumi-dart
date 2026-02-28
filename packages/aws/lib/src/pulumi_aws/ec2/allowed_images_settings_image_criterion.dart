@@ -1,3 +1,0 @@
-library module_ec2_allowed_images_settings_image_criterion;
-
-export 'allowed_images_settings_image_criterion/allowed_images_settings_image_criterion.dart';

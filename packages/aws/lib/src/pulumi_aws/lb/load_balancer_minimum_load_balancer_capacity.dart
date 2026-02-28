@@ -1,3 +1,0 @@
-library module_lb_load_balancer_minimum_load_balancer_capacity;
-
-export 'load_balancer_minimum_load_balancer_capacity/load_balancer_minimum_load_balancer_capacity_lb.dart';

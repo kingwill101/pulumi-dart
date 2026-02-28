@@ -1,3 +1,0 @@
-library module_route53domains_domain_tech_contact_extra_param;
-
-export 'domain_tech_contact_extra_param/domain_tech_contact_extra_param.dart';

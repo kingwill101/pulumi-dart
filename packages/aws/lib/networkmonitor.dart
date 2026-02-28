@@ -1,3 +1,3 @@
 library pulumi_aws_networkmonitor;
 
-export 'package:pulumi_aws/src/pulumi_aws/networkmonitor.dart';
+export 'package:pulumi_aws/src/networkmonitor.dart';

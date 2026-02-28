@@ -1,3 +1,0 @@
-library module_glue_get_catalog_table_storage_descriptor_schema_reference;
-
-export 'get_catalog_table_storage_descriptor_schema_reference/get_catalog_table_storage_descriptor_schema_reference.dart';

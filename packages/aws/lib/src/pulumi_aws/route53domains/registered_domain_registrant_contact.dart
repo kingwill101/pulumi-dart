@@ -1,3 +1,0 @@
-library module_route53domains_registered_domain_registrant_contact;
-
-export 'registered_domain_registrant_contact/registered_domain_registrant_contact.dart';

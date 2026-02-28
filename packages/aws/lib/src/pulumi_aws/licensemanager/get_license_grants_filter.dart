@@ -1,3 +1,0 @@
-library module_licensemanager_get_license_grants_filter;
-
-export 'get_license_grants_filter/get_license_grants_filter.dart';

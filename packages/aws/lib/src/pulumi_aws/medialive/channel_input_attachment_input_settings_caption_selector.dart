@@ -1,3 +1,0 @@
-library module_medialive_channel_input_attachment_input_settings_caption_selector;
-
-export 'channel_input_attachment_input_settings_caption_selector/channel_input_attachment_input_settings_caption_selector.dart';

@@ -1,3 +1,0 @@
-library module_wafv2_get_managed_rule_group_rule_action_allow_custom_request_handling;
-
-export 'get_managed_rule_group_rule_action_allow_custom_request_handling/get_managed_rule_group_rule_action_allow_custom_request_handling.dart';

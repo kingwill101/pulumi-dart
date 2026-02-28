@@ -1,3 +1,0 @@
-library module_alb_listener_rule_condition_http_request_method;
-
-export 'listener_rule_condition_http_request_method/listener_rule_condition_http_request_method.dart';

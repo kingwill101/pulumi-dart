@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_lambda_function_name;
-
-export 'filter_filter_criteria_lambda_function_name/filter_filter_criteria_lambda_function_name.dart';

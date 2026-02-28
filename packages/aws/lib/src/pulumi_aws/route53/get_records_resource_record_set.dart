@@ -1,3 +1,0 @@
-library module_route53_get_records_resource_record_set;
-
-export 'get_records_resource_record_set/get_records_resource_record_set.dart';

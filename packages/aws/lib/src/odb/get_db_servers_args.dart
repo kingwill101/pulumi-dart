@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_odb_get_db_servers_get_db_servers_args_doc}
+/// Arguments for getDbServers.
+/// {@endtemplate}
+/// {@macro pulumi_odb_get_db_servers_get_db_servers_args_doc}
+class GetDbServersArgs {
+  /// The unique identifier of the cloud vm cluster.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<String> cloudExadataInfrastructureId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [GetDbServersArgs].
+  /// [cloudExadataInfrastructureId] The unique identifier of the cloud vm cluster.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  GetDbServersArgs({
+    required String cloudExadataInfrastructureId,
+    String? region,
+  })  : cloudExadataInfrastructureId =
+            pulumi.Input.asInput<String>(cloudExadataInfrastructureId),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['cloudExadataInfrastructureId'] = cloudExadataInfrastructureId;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory GetDbServersArgs.fromMap(Map<String, dynamic> map) {
+    return GetDbServersArgs(
+      cloudExadataInfrastructureId:
+          map['cloudExadataInfrastructureId'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

@@ -1,4 +1,0 @@
-library module_shield_drt_access_role_arn_association;
-
-export 'drt_access_role_arn_association/drt_access_role_arn_association.dart';
-export 'drt_access_role_arn_association/drt_access_role_arn_association_args.dart';

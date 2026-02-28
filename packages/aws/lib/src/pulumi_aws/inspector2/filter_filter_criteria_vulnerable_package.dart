@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_vulnerable_package;
-
-export 'filter_filter_criteria_vulnerable_package/filter_filter_criteria_vulnerable_package.dart';

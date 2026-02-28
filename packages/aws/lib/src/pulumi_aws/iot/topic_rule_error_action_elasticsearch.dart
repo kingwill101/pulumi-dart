@@ -1,3 +1,0 @@
-library module_iot_topic_rule_error_action_elasticsearch;
-
-export 'topic_rule_error_action_elasticsearch/topic_rule_error_action_elasticsearch.dart';

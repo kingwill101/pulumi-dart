@@ -1,3 +1,0 @@
-library module_networkmanager_get_core_network_policy_document_segment_action_when_sent_to;
-
-export 'get_core_network_policy_document_segment_action_when_sent_to/get_core_network_policy_document_segment_action_when_sent_to.dart';

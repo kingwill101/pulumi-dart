@@ -1,4 +1,0 @@
-library module_imagebuilder_infrastructure_configuration;
-
-export 'infrastructure_configuration/infrastructure_configuration.dart';
-export 'infrastructure_configuration/infrastructure_configuration_args.dart';

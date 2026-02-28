@@ -1,3 +1,0 @@
-library module_kendra_experience_configuration_user_identity_configuration;
-
-export 'experience_configuration_user_identity_configuration/experience_configuration_user_identity_configuration.dart';

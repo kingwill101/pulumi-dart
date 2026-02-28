@@ -1,3 +1,0 @@
-library module_appflow_flow_destination_flow_config_destination_connector_properties;
-
-export 'flow_destination_flow_config_destination_connector_properties/flow_destination_flow_config_destination_connector_properties.dart';

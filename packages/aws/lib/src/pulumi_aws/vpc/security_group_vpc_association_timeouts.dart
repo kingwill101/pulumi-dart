@@ -1,3 +1,0 @@
-library module_vpc_security_group_vpc_association_timeouts;
-
-export 'security_group_vpc_association_timeouts/security_group_vpc_association_timeouts.dart';

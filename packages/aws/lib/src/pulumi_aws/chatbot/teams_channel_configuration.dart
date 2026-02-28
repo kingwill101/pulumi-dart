@@ -1,4 +1,0 @@
-library module_chatbot_teams_channel_configuration;
-
-export 'teams_channel_configuration/teams_channel_configuration.dart';
-export 'teams_channel_configuration/teams_channel_configuration_args.dart';

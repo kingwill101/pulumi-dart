@@ -1,3 +1,3 @@
 library pulumi_aws_directconnect;
 
-export 'package:pulumi_aws/src/pulumi_aws/directconnect.dart';
+export 'package:pulumi_aws/src/directconnect.dart';

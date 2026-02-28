@@ -1,3 +1,0 @@
-library module_fsx_s3_access_point_attachment_s3_access_point_vpc_configuration;
-
-export 's3_access_point_attachment_s3_access_point_vpc_configuration/s3_access_point_attachment_s3_access_point_vpc_configuration.dart';

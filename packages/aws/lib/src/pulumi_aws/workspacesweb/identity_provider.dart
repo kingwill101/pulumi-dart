@@ -1,4 +1,0 @@
-library module_workspacesweb_identity_provider;
-
-export 'identity_provider/identity_provider_workspacesweb.dart';
-export 'identity_provider/identity_provider_workspacesweb_args.dart';

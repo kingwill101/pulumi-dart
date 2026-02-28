@@ -1,3 +1,0 @@
-library module_lb_listener_rule_action_authenticate_oidc;
-
-export 'listener_rule_action_authenticate_oidc/listener_rule_action_authenticate_oidc_lb.dart';

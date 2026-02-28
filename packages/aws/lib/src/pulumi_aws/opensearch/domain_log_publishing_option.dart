@@ -1,3 +1,0 @@
-library module_opensearch_domain_log_publishing_option;
-
-export 'domain_log_publishing_option/domain_log_publishing_option_opensearch.dart';

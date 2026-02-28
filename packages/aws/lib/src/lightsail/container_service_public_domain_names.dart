@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'container_service_public_domain_names_certificate.dart';
+
+class ContainerServicePublicDomainNames {
+  /// Set of certificate configurations for the public domain names. Each element contains the following attributes:
+  final List<ContainerServicePublicDomainNamesCertificate> certificates;
+
+  /// Creates a new [ContainerServicePublicDomainNames].
+  /// [certificates] Set of certificate configurations for the public domain names. Each element contains the following attributes:
+  ContainerServicePublicDomainNames({
+    required this.certificates,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['certificates'] = pulumi.Input.encodeList<
+        ContainerServicePublicDomainNamesCertificate,
+        Map<String, dynamic>>(certificates, (value) => value.toMap());
+    return map;
+  }
+
+  factory ContainerServicePublicDomainNames.fromMap(Map<String, dynamic> map) {
+    return ContainerServicePublicDomainNames(
+      certificates:
+          pulumi.Input.decodeList<ContainerServicePublicDomainNamesCertificate>(
+              map['certificates'],
+              (value) => ContainerServicePublicDomainNamesCertificate.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

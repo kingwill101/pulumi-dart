@@ -1,3 +1,0 @@
-library module_ec2_get_vpc_endpoint_dns_entry;
-
-export 'get_vpc_endpoint_dns_entry/get_vpc_endpoint_dns_entry.dart';

@@ -1,4 +1,0 @@
-library module_ssoadmin_application_access_scope;
-
-export 'application_access_scope/application_access_scope.dart';
-export 'application_access_scope/application_access_scope_args.dart';

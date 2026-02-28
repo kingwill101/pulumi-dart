@@ -1,3 +1,0 @@
-library module_timestreamquery_scheduled_query_error_report_configuration_s3_configuration;
-
-export 'scheduled_query_error_report_configuration_s3_configuration/scheduled_query_error_report_configuration_s3_configuration.dart';

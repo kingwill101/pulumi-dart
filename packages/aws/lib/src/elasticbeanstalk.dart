@@ -1,0 +1,22 @@
+library module_elasticbeanstalk;
+
+export 'elasticbeanstalk/application.dart';
+export 'elasticbeanstalk/application_appversion_lifecycle.dart';
+export 'elasticbeanstalk/application_args.dart';
+export 'elasticbeanstalk/application_version.dart';
+export 'elasticbeanstalk/application_version_args.dart';
+export 'elasticbeanstalk/configuration_template.dart';
+export 'elasticbeanstalk/configuration_template_args.dart';
+export 'elasticbeanstalk/configuration_template_setting.dart';
+export 'elasticbeanstalk/environment.dart';
+export 'elasticbeanstalk/environment_all_setting.dart';
+export 'elasticbeanstalk/environment_args.dart';
+export 'elasticbeanstalk/environment_setting.dart';
+export 'elasticbeanstalk/functions.dart';
+export 'elasticbeanstalk/get_application_appversion_lifecycle.dart';
+export 'elasticbeanstalk/get_application_args.dart';
+export 'elasticbeanstalk/get_application_result.dart';
+export 'elasticbeanstalk/get_hosted_zone_args.dart';
+export 'elasticbeanstalk/get_hosted_zone_result.dart';
+export 'elasticbeanstalk/get_solution_stack_args.dart';
+export 'elasticbeanstalk/get_solution_stack_result.dart';

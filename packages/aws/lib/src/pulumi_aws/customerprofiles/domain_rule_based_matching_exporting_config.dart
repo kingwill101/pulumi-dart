@@ -1,3 +1,0 @@
-library module_customerprofiles_domain_rule_based_matching_exporting_config;
-
-export 'domain_rule_based_matching_exporting_config/domain_rule_based_matching_exporting_config.dart';

@@ -1,4 +1,0 @@
-library module_rds_cluster_role_association;
-
-export 'cluster_role_association/cluster_role_association.dart';
-export 'cluster_role_association/cluster_role_association_args.dart';

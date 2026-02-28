@@ -1,3 +1,0 @@
-library module_ecs_get_service_load_balancer_advanced_configuration;
-
-export 'get_service_load_balancer_advanced_configuration/get_service_load_balancer_advanced_configuration.dart';

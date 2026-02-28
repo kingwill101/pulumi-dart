@@ -1,3 +1,0 @@
-library module_mwaa_environment_logging_configuration_worker_logs;
-
-export 'environment_logging_configuration_worker_logs/environment_logging_configuration_worker_logs.dart';

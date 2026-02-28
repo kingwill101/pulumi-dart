@@ -1,3 +1,0 @@
-library module_waf_web_acl_logging_configuration_redacted_fields;
-
-export 'web_acl_logging_configuration_redacted_fields/web_acl_logging_configuration_redacted_fields.dart';

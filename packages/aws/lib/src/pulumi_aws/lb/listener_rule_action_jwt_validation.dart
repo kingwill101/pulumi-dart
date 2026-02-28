@@ -1,3 +1,0 @@
-library module_lb_listener_rule_action_jwt_validation;
-
-export 'listener_rule_action_jwt_validation/listener_rule_action_jwt_validation_lb.dart';

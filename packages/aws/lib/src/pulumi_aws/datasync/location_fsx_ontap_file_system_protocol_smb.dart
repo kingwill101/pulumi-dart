@@ -1,3 +1,0 @@
-library module_datasync_location_fsx_ontap_file_system_protocol_smb;
-
-export 'location_fsx_ontap_file_system_protocol_smb/location_fsx_ontap_file_system_protocol_smb.dart';

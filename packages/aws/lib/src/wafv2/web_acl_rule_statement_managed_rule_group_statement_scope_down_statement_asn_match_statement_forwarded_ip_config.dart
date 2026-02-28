@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatementForwardedIpConfig {
+  /// Match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
+  final String fallbackBehavior;
+
+  /// Name of the HTTP header to use for the IP address.
+  final String headerName;
+
+  /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatementForwardedIpConfig].
+  /// [fallbackBehavior] Match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
+  /// [headerName] Name of the HTTP header to use for the IP address.
+  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatementForwardedIpConfig({
+    required this.fallbackBehavior,
+    required this.headerName,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['fallbackBehavior'] = fallbackBehavior;
+    map['headerName'] = headerName;
+    return map;
+  }
+
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatementForwardedIpConfig.fromMap(
+      Map<String, dynamic> map) {
+    return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatementForwardedIpConfig(
+      fallbackBehavior: map['fallbackBehavior'] as String,
+      headerName: map['headerName'] as String,
+    );
+  }
+}

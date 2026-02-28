@@ -1,3 +1,0 @@
-library module_ssmincidents_response_plan_action_ssm_automation_parameter;
-
-export 'response_plan_action_ssm_automation_parameter/response_plan_action_ssm_automation_parameter.dart';

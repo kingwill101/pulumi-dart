@@ -1,3 +1,0 @@
-library module_quicksight_data_source_parameters_aurora_postgresql;
-
-export 'data_source_parameters_aurora_postgresql/data_source_parameters_aurora_postgresql.dart';

@@ -1,3 +1,0 @@
-library module_kendra_query_suggestions_block_list_source_s3_path;
-
-export 'query_suggestions_block_list_source_s3_path/query_suggestions_block_list_source_s3_path.dart';

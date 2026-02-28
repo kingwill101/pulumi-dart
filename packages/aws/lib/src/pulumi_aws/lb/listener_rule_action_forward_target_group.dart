@@ -1,3 +1,0 @@
-library module_lb_listener_rule_action_forward_target_group;
-
-export 'listener_rule_action_forward_target_group/listener_rule_action_forward_target_group_lb.dart';

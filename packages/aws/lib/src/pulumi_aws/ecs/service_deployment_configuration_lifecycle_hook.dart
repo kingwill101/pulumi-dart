@@ -1,3 +1,0 @@
-library module_ecs_service_deployment_configuration_lifecycle_hook;
-
-export 'service_deployment_configuration_lifecycle_hook/service_deployment_configuration_lifecycle_hook.dart';

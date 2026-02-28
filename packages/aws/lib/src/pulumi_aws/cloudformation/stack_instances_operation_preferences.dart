@@ -1,3 +1,0 @@
-library module_cloudformation_stack_instances_operation_preferences;
-
-export 'stack_instances_operation_preferences/stack_instances_operation_preferences.dart';

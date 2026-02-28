@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_ordered_cache_behavior_grpc_config;
-
-export 'distribution_ordered_cache_behavior_grpc_config/distribution_ordered_cache_behavior_grpc_config.dart';

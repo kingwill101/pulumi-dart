@@ -1,3 +1,0 @@
-library module_imagebuilder_get_container_recipes_filter;
-
-export 'get_container_recipes_filter/get_container_recipes_filter.dart';

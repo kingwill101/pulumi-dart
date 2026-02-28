@@ -1,3 +1,0 @@
-library module_codedeploy_deployment_config_traffic_routing_config;
-
-export 'deployment_config_traffic_routing_config/deployment_config_traffic_routing_config.dart';

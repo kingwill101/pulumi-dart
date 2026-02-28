@@ -1,3 +1,0 @@
-library module_ec2_eip_domain_name_timeouts;
-
-export 'eip_domain_name_timeouts/eip_domain_name_timeouts.dart';

@@ -1,0 +1,55 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class VpcEndpointVpcOptions {
+  final List<String>? availabilityZones;
+
+  /// The list of security group IDs associated with the VPC endpoints for the domain. If you do not provide a security group ID, elasticsearch Service uses the default security group for the VPC.
+  final List<String>? securityGroupIds;
+
+  /// A list of subnet IDs associated with the VPC endpoints for the domain. If your domain uses multiple Availability Zones, you need to provide two subnet IDs, one per zone. Otherwise, provide only one.
+  final List<String> subnetIds;
+  final String? vpcId;
+
+  /// Creates a new [VpcEndpointVpcOptions].
+  /// [availabilityZones] Optional.
+  /// [securityGroupIds] The list of security group IDs associated with the VPC endpoints for the domain. If you do not provide a security group ID, elasticsearch Service uses the default security group for the VPC.
+  /// [subnetIds] A list of subnet IDs associated with the VPC endpoints for the domain. If your domain uses multiple Availability Zones, you need to provide two subnet IDs, one per zone. Otherwise, provide only one.
+  /// [vpcId] Optional.
+  VpcEndpointVpcOptions({
+    this.availabilityZones,
+    this.securityGroupIds,
+    required this.subnetIds,
+    this.vpcId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final availabilityZonesValue = availabilityZones;
+    if (availabilityZonesValue != null) {
+      map['availabilityZones'] = availabilityZonesValue;
+    }
+    final securityGroupIdsValue = securityGroupIds;
+    if (securityGroupIdsValue != null) {
+      map['securityGroupIds'] = securityGroupIdsValue;
+    }
+    map['subnetIds'] = subnetIds;
+    final vpcIdValue = vpcId;
+    if (vpcIdValue != null) {
+      map['vpcId'] = vpcIdValue;
+    }
+    return map;
+  }
+
+  factory VpcEndpointVpcOptions.fromMap(Map<String, dynamic> map) {
+    return VpcEndpointVpcOptions(
+      availabilityZones: map['availabilityZones'] == null
+          ? null
+          : (map['availabilityZones'] as List).cast<String>(),
+      securityGroupIds: map['securityGroupIds'] == null
+          ? null
+          : (map['securityGroupIds'] as List).cast<String>(),
+      subnetIds: (map['subnetIds'] as List).cast<String>(),
+      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+    );
+  }
+}

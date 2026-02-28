@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ContainerServicePrivateRegistryAccessEcrImagePullerRole {
+  /// Whether to activate the role. Defaults to `false`.
+  final bool? isActive;
+
+  /// Principal ARN of the container service. The principal ARN can be used to create a trust relationship between your standard AWS account and your Lightsail container service.
+  final String? principalArn;
+
+  /// Creates a new [ContainerServicePrivateRegistryAccessEcrImagePullerRole].
+  /// [isActive] Whether to activate the role. Defaults to `false`.
+  /// [principalArn] Principal ARN of the container service. The principal ARN can be used to create a trust relationship between your standard AWS account and your Lightsail container service.
+  ContainerServicePrivateRegistryAccessEcrImagePullerRole({
+    this.isActive,
+    this.principalArn,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final isActiveValue = isActive;
+    if (isActiveValue != null) {
+      map['isActive'] = isActiveValue;
+    }
+    final principalArnValue = principalArn;
+    if (principalArnValue != null) {
+      map['principalArn'] = principalArnValue;
+    }
+    return map;
+  }
+
+  factory ContainerServicePrivateRegistryAccessEcrImagePullerRole.fromMap(
+      Map<String, dynamic> map) {
+    return ContainerServicePrivateRegistryAccessEcrImagePullerRole(
+      isActive: map['isActive'] == null ? null : map['isActive'] as bool,
+      principalArn:
+          map['principalArn'] == null ? null : map['principalArn'] as String,
+    );
+  }
+}

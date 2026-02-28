@@ -1,3 +1,0 @@
-library module_redshift_idc_application_service_integration_lake_formation;
-
-export 'idc_application_service_integration_lake_formation/idc_application_service_integration_lake_formation.dart';

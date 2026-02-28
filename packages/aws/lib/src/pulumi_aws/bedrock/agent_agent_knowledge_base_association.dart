@@ -1,4 +1,0 @@
-library module_bedrock_agent_agent_knowledge_base_association;
-
-export 'agent_agent_knowledge_base_association/agent_agent_knowledge_base_association.dart';
-export 'agent_agent_knowledge_base_association/agent_agent_knowledge_base_association_args.dart';

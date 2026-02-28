@@ -1,3 +1,0 @@
-library module_imagebuilder_image_workflow_parameter;
-
-export 'image_workflow_parameter/image_workflow_parameter.dart';

@@ -1,3 +1,0 @@
-library module_cloudwatch_event_target_run_command_target;
-
-export 'event_target_run_command_target/event_target_run_command_target.dart';

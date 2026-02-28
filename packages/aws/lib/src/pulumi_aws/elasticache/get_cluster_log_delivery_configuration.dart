@@ -1,3 +1,0 @@
-library module_elasticache_get_cluster_log_delivery_configuration;
-
-export 'get_cluster_log_delivery_configuration/get_cluster_log_delivery_configuration.dart';

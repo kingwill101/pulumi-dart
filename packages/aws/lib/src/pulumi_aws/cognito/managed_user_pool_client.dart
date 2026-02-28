@@ -1,4 +1,0 @@
-library module_cognito_managed_user_pool_client;
-
-export 'managed_user_pool_client/managed_user_pool_client.dart';
-export 'managed_user_pool_client/managed_user_pool_client_args.dart';

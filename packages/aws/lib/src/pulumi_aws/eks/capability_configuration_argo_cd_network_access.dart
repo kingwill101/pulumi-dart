@@ -1,3 +1,0 @@
-library module_eks_capability_configuration_argo_cd_network_access;
-
-export 'capability_configuration_argo_cd_network_access/capability_configuration_argo_cd_network_access.dart';

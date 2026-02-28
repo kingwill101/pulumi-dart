@@ -1,3 +1,0 @@
-library module_codecatalyst_dev_environment_persistent_storage;
-
-export 'dev_environment_persistent_storage/dev_environment_persistent_storage.dart';

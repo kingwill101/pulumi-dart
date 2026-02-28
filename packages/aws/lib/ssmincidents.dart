@@ -1,3 +1,3 @@
 library pulumi_aws_ssmincidents;
 
-export 'package:pulumi_aws/src/pulumi_aws/ssmincidents.dart';
+export 'package:pulumi_aws/src/ssmincidents.dart';

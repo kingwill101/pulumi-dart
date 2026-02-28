@@ -1,3 +1,0 @@
-library module_redshift_get_cluster_cluster_node;
-
-export 'get_cluster_cluster_node/get_cluster_cluster_node.dart';

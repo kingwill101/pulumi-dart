@@ -1,3 +1,0 @@
-library module_athena_workgroup_configuration_managed_query_results_configuration;
-
-export 'workgroup_configuration_managed_query_results_configuration/workgroup_configuration_managed_query_results_configuration.dart';

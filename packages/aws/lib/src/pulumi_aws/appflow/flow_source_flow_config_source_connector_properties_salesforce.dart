@@ -1,3 +1,0 @@
-library module_appflow_flow_source_flow_config_source_connector_properties_salesforce;
-
-export 'flow_source_flow_config_source_connector_properties_salesforce/flow_source_flow_config_source_connector_properties_salesforce.dart';

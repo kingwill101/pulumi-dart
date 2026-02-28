@@ -1,3 +1,0 @@
-library module_timestreamquery_scheduled_query_recently_failed_run;
-
-export 'scheduled_query_recently_failed_run/scheduled_query_recently_failed_run.dart';

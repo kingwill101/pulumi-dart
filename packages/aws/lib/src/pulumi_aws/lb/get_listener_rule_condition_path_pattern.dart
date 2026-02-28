@@ -1,3 +1,0 @@
-library module_lb_get_listener_rule_condition_path_pattern;
-
-export 'get_listener_rule_condition_path_pattern/get_listener_rule_condition_path_pattern.dart';

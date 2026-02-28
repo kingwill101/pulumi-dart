@@ -1,3 +1,0 @@
-library module_chime_sdkvoice_voice_profile_domain_server_side_encryption_configuration;
-
-export 'sdkvoice_voice_profile_domain_server_side_encryption_configuration/sdkvoice_voice_profile_domain_server_side_encryption_configuration.dart';

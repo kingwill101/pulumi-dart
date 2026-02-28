@@ -1,3 +1,0 @@
-library module_route53_record_geolocation_routing_policy;
-
-export 'record_geolocation_routing_policy/record_geolocation_routing_policy.dart';

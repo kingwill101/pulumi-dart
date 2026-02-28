@@ -1,3 +1,0 @@
-library module_signer_signing_profile_signing_material;
-
-export 'signing_profile_signing_material/signing_profile_signing_material.dart';

@@ -1,3 +1,0 @@
-library module_bedrock_agent_agent_action_group_function_schema;
-
-export 'agent_agent_action_group_function_schema/agent_agent_action_group_function_schema.dart';

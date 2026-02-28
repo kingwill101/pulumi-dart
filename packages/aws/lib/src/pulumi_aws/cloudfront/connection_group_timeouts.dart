@@ -1,3 +1,0 @@
-library module_cloudfront_connection_group_timeouts;
-
-export 'connection_group_timeouts/connection_group_timeouts.dart';

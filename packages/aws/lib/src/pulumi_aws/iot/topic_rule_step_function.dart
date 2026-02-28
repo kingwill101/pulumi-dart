@@ -1,3 +1,0 @@
-library module_iot_topic_rule_step_function;
-
-export 'topic_rule_step_function/topic_rule_step_function.dart';

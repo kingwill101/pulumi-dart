@@ -1,4 +1,0 @@
-library module_ec2_vpc_ipam_preview_next_cidr;
-
-export 'vpc_ipam_preview_next_cidr/vpc_ipam_preview_next_cidr.dart';
-export 'vpc_ipam_preview_next_cidr/vpc_ipam_preview_next_cidr_args.dart';

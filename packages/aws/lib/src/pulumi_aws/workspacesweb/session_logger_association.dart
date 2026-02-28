@@ -1,4 +1,0 @@
-library module_workspacesweb_session_logger_association;
-
-export 'session_logger_association/session_logger_association.dart';
-export 'session_logger_association/session_logger_association_args.dart';

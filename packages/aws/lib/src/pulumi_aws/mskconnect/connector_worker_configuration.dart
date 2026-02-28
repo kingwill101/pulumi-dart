@@ -1,3 +1,0 @@
-library module_mskconnect_connector_worker_configuration;
-
-export 'connector_worker_configuration/connector_worker_configuration.dart';

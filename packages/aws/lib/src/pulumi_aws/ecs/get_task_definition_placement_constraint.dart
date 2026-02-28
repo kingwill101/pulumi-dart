@@ -1,3 +1,0 @@
-library module_ecs_get_task_definition_placement_constraint;
-
-export 'get_task_definition_placement_constraint/get_task_definition_placement_constraint.dart';

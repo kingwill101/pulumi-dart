@@ -1,3 +1,3 @@
 library pulumi_aws_devicefarm;
 
-export 'package:pulumi_aws/src/pulumi_aws/devicefarm.dart';
+export 'package:pulumi_aws/src/devicefarm.dart';

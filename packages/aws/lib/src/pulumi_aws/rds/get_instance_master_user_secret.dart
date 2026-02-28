@@ -1,3 +1,0 @@
-library module_rds_get_instance_master_user_secret;
-
-export 'get_instance_master_user_secret/get_instance_master_user_secret.dart';

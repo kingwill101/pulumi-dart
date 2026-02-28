@@ -1,3 +1,0 @@
-library module_bedrock_agent_data_source_server_side_encryption_configuration;
-
-export 'agent_data_source_server_side_encryption_configuration/agent_data_source_server_side_encryption_configuration.dart';

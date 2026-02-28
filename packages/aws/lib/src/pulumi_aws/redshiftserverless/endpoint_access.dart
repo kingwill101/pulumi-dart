@@ -1,4 +1,0 @@
-library module_redshiftserverless_endpoint_access;
-
-export 'endpoint_access/endpoint_access_redshiftserverless.dart';
-export 'endpoint_access/endpoint_access_redshiftserverless_args.dart';

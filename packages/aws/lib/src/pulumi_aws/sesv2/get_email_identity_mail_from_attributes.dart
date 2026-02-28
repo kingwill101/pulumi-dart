@@ -1,5 +1,0 @@
-library module_sesv2_get_email_identity_mail_from_attributes;
-
-export 'get_email_identity_mail_from_attributes/get_email_identity_mail_from_attributes.dart';
-export 'get_email_identity_mail_from_attributes/get_email_identity_mail_from_attributes_args.dart';
-export 'get_email_identity_mail_from_attributes/get_email_identity_mail_from_attributes_result.dart';

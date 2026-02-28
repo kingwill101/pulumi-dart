@@ -1,3 +1,0 @@
-library module_codedeploy_deployment_group_ecs_service;
-
-export 'deployment_group_ecs_service/deployment_group_ecs_service.dart';

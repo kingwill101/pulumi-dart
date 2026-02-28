@@ -1,3 +1,0 @@
-library module_fsx_get_open_zfs_snapshot_filter;
-
-export 'get_open_zfs_snapshot_filter/get_open_zfs_snapshot_filter.dart';

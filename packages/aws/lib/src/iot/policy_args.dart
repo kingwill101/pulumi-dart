@@ -1,0 +1,65 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_iot_policy_policy_args_doc}
+/// The set of arguments for Policy.
+/// {@endtemplate}
+/// {@macro pulumi_iot_policy_policy_args_doc}
+class PolicyArgs {
+  /// The name of the policy.
+  final pulumi.Input<String>? name;
+
+  /// The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
+  final pulumi.Input<String> policy;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [PolicyArgs].
+  /// [name] The name of the policy.
+  /// [policy] The policy document. This is a JSON formatted string. Use the [IoT Developer Guide](http://docs.aws.amazon.com/iot/latest/developerguide/iot-policies.html) for more information on IoT Policies.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  PolicyArgs({
+    String? name,
+    required String policy,
+    String? region,
+    Map<String, String>? tags,
+  })  : name = pulumi.Input.asOptionalInput<String>(name),
+        policy = pulumi.Input.asInput<String>(policy),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    map['policy'] = policy;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory PolicyArgs.fromMap(Map<String, dynamic> map) {
+    return PolicyArgs(
+      name: map['name'] == null ? null : map['name'] as String,
+      policy: map['policy'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

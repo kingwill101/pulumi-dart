@@ -1,3 +1,0 @@
-library module_vpc_endpoint_service_private_dns_verification_timeouts;
-
-export 'endpoint_service_private_dns_verification_timeouts/endpoint_service_private_dns_verification_timeouts.dart';

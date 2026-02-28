@@ -1,3 +1,0 @@
-library module_ec2transitgateway_get_route_table_propagations_filter;
-
-export 'get_route_table_propagations_filter/get_route_table_propagations_filter.dart';

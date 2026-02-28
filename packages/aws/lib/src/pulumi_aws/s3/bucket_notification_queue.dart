@@ -1,3 +1,0 @@
-library module_s3_bucket_notification_queue;
-
-export 'bucket_notification_queue/bucket_notification_queue.dart';

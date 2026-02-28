@@ -1,3 +1,0 @@
-library module_efs_get_access_point_root_directory_creation_info;
-
-export 'get_access_point_root_directory_creation_info/get_access_point_root_directory_creation_info.dart';

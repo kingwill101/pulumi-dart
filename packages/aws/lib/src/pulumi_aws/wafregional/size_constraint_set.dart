@@ -1,4 +1,0 @@
-library module_wafregional_size_constraint_set;
-
-export 'size_constraint_set/size_constraint_set_wafregional.dart';
-export 'size_constraint_set/size_constraint_set_wafregional_args.dart';

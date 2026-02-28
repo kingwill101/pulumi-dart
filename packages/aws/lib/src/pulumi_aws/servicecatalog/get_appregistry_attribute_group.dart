@@ -1,5 +1,0 @@
-library module_servicecatalog_get_appregistry_attribute_group;
-
-export 'get_appregistry_attribute_group/get_appregistry_attribute_group.dart';
-export 'get_appregistry_attribute_group/get_appregistry_attribute_group_args.dart';
-export 'get_appregistry_attribute_group/get_appregistry_attribute_group_result.dart';

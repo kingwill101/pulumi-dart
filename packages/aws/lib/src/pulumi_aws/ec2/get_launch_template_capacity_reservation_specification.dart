@@ -1,3 +1,0 @@
-library module_ec2_get_launch_template_capacity_reservation_specification;
-
-export 'get_launch_template_capacity_reservation_specification/get_launch_template_capacity_reservation_specification.dart';

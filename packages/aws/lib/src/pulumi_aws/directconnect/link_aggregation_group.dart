@@ -1,4 +1,0 @@
-library module_directconnect_link_aggregation_group;
-
-export 'link_aggregation_group/link_aggregation_group.dart';
-export 'link_aggregation_group/link_aggregation_group_args.dart';

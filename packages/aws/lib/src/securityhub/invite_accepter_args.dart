@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_securityhub_invite_accepter_invite_accepter_args_doc}
+/// The set of arguments for InviteAccepter.
+/// {@endtemplate}
+/// {@macro pulumi_securityhub_invite_accepter_invite_accepter_args_doc}
+class InviteAccepterArgs {
+  /// The account ID of the master Security Hub account whose invitation you're accepting.
+  final pulumi.Input<String> masterId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [InviteAccepterArgs].
+  /// [masterId] The account ID of the master Security Hub account whose invitation you're accepting.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  InviteAccepterArgs({
+    required String masterId,
+    String? region,
+  })  : masterId = pulumi.Input.asInput<String>(masterId),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['masterId'] = masterId;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory InviteAccepterArgs.fromMap(Map<String, dynamic> map) {
+    return InviteAccepterArgs(
+      masterId: map['masterId'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

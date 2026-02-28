@@ -1,3 +1,0 @@
-library module_oam_link_link_configuration_log_group_configuration;
-
-export 'link_link_configuration_log_group_configuration/link_link_configuration_log_group_configuration.dart';

@@ -1,4 +1,0 @@
-library module_rds_cluster_parameter_group;
-
-export 'cluster_parameter_group/cluster_parameter_group_rds.dart';
-export 'cluster_parameter_group/cluster_parameter_group_rds_args.dart';

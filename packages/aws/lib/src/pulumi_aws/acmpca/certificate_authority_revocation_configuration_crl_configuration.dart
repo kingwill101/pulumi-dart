@@ -1,3 +1,0 @@
-library module_acmpca_certificate_authority_revocation_configuration_crl_configuration;
-
-export 'certificate_authority_revocation_configuration_crl_configuration/certificate_authority_revocation_configuration_crl_configuration.dart';

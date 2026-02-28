@@ -1,4 +1,0 @@
-library module_guardduty_organization_configuration;
-
-export 'organization_configuration/organization_configuration_guardduty.dart';
-export 'organization_configuration/organization_configuration_guardduty_args.dart';

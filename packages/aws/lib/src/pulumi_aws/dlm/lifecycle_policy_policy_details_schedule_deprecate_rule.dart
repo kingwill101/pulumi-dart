@@ -1,3 +1,0 @@
-library module_dlm_lifecycle_policy_policy_details_schedule_deprecate_rule;
-
-export 'lifecycle_policy_policy_details_schedule_deprecate_rule/lifecycle_policy_policy_details_schedule_deprecate_rule.dart';

@@ -1,3 +1,0 @@
-library module_sfn_state_machine_tracing_configuration;
-
-export 'state_machine_tracing_configuration/state_machine_tracing_configuration.dart';

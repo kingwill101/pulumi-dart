@@ -1,3 +1,0 @@
-library module_codedeploy_deployment_group_ec2_tag_filter;
-
-export 'deployment_group_ec2_tag_filter/deployment_group_ec2_tag_filter.dart';

@@ -1,3 +1,0 @@
-library module_kendra_index_server_side_encryption_configuration;
-
-export 'index_server_side_encryption_configuration/index_server_side_encryption_configuration.dart';

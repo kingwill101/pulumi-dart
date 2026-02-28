@@ -1,3 +1,0 @@
-library module_appmesh_virtual_node_spec_listener_connection_pool_http;
-
-export 'virtual_node_spec_listener_connection_pool_http/virtual_node_spec_listener_connection_pool_http.dart';

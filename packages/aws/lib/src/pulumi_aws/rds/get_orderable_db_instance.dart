@@ -1,5 +1,0 @@
-library module_rds_get_orderable_db_instance;
-
-export 'get_orderable_db_instance/get_orderable_db_instance_rds.dart';
-export 'get_orderable_db_instance/get_orderable_db_instance_rds_args.dart';
-export 'get_orderable_db_instance/get_orderable_db_instance_rds_result.dart';

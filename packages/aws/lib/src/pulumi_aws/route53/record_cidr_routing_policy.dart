@@ -1,3 +1,0 @@
-library module_route53_record_cidr_routing_policy;
-
-export 'record_cidr_routing_policy/record_cidr_routing_policy.dart';

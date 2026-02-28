@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_resource_region;
-
-export 'insight_filters_resource_region/insight_filters_resource_region.dart';

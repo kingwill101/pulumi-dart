@@ -1,3 +1,0 @@
-library module_alb_listener_default_action_jwt_validation;
-
-export 'listener_default_action_jwt_validation/listener_default_action_jwt_validation.dart';

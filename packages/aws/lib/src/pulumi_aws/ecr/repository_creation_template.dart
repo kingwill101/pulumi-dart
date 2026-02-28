@@ -1,4 +1,0 @@
-library module_ecr_repository_creation_template;
-
-export 'repository_creation_template/repository_creation_template.dart';
-export 'repository_creation_template/repository_creation_template_args.dart';

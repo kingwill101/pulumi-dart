@@ -1,3 +1,0 @@
-library module_wafregional_web_acl_default_action;
-
-export 'web_acl_default_action/web_acl_default_action_wafregional.dart';

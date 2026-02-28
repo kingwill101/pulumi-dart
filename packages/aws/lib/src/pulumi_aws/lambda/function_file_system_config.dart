@@ -1,3 +1,0 @@
-library module_lambda_function_file_system_config;
-
-export 'function_file_system_config/function_file_system_config.dart';

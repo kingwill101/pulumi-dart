@@ -1,3 +1,0 @@
-library module_lambda_event_source_mapping_self_managed_event_source;
-
-export 'event_source_mapping_self_managed_event_source/event_source_mapping_self_managed_event_source.dart';

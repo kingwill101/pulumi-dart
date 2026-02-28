@@ -1,4 +1,0 @@
-library module_directconnect_hosted_public_virtual_interface_accepter;
-
-export 'hosted_public_virtual_interface_accepter/hosted_public_virtual_interface_accepter.dart';
-export 'hosted_public_virtual_interface_accepter/hosted_public_virtual_interface_accepter_args.dart';

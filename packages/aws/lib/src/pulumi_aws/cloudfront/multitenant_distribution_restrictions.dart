@@ -1,3 +1,0 @@
-library module_cloudfront_multitenant_distribution_restrictions;
-
-export 'multitenant_distribution_restrictions/multitenant_distribution_restrictions.dart';

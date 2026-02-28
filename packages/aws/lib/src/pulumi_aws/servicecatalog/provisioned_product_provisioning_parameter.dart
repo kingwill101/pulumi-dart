@@ -1,3 +1,0 @@
-library module_servicecatalog_provisioned_product_provisioning_parameter;
-
-export 'provisioned_product_provisioning_parameter/provisioned_product_provisioning_parameter.dart';

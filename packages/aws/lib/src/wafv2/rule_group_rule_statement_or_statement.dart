@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'rule_group_rule_statement.dart';
+
+class RuleGroupRuleStatementOrStatement {
+  /// The statements to combine.
+  final List<RuleGroupRuleStatement> statements;
+
+  /// Creates a new [RuleGroupRuleStatementOrStatement].
+  /// [statements] The statements to combine.
+  RuleGroupRuleStatementOrStatement({
+    required this.statements,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['statements'] =
+        pulumi.Input.encodeList<RuleGroupRuleStatement, Map<String, dynamic>>(
+            statements, (value) => value.toMap());
+    return map;
+  }
+
+  factory RuleGroupRuleStatementOrStatement.fromMap(Map<String, dynamic> map) {
+    return RuleGroupRuleStatementOrStatement(
+      statements: pulumi.Input.decodeList<RuleGroupRuleStatement>(
+          map['statements'],
+          (value) => RuleGroupRuleStatement.fromMap(
+              (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

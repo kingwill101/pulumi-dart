@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_severity_label;
-
-export 'insight_filters_severity_label/insight_filters_severity_label.dart';

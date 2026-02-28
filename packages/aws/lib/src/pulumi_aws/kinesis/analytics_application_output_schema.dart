@@ -1,3 +1,0 @@
-library module_kinesis_analytics_application_output_schema;
-
-export 'analytics_application_output_schema/analytics_application_output_schema.dart';

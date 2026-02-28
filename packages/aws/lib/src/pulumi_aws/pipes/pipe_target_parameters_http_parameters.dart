@@ -1,3 +1,0 @@
-library module_pipes_pipe_target_parameters_http_parameters;
-
-export 'pipe_target_parameters_http_parameters/pipe_target_parameters_http_parameters.dart';

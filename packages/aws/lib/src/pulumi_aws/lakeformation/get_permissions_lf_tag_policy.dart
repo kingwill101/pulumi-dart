@@ -1,3 +1,0 @@
-library module_lakeformation_get_permissions_lf_tag_policy;
-
-export 'get_permissions_lf_tag_policy/get_permissions_lf_tag_policy.dart';

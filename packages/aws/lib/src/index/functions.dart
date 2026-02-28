@@ -1,0 +1,2810 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_arn_args.dart';
+import 'get_arn_result.dart';
+import 'get_availability_zone_args.dart';
+import 'get_availability_zone_result.dart';
+import 'get_availability_zones_args.dart';
+import 'get_availability_zones_result.dart';
+import 'get_billing_service_account_args.dart';
+import 'get_billing_service_account_result.dart';
+import 'get_caller_identity_args.dart';
+import 'get_caller_identity_result.dart';
+import 'get_default_tags_args.dart';
+import 'get_default_tags_result.dart';
+import 'get_ip_ranges_args.dart';
+import 'get_ip_ranges_result.dart';
+import 'get_partition_args.dart';
+import 'get_partition_result.dart';
+import 'get_region_args.dart';
+import 'get_region_result.dart';
+import 'get_regions_args.dart';
+import 'get_regions_result.dart';
+import 'get_service_args.dart';
+import 'get_service_principal_args.dart';
+import 'get_service_principal_result.dart';
+import 'get_service_result.dart';
+
+/// Parses an ARN into its constituent parts.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const dbInstance = aws.getArn({
+///     arn: "arn:aws:rds:eu-west-1:123456789012:db:mysql-db",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// db_instance = aws.get_arn(arn="arn:aws:rds:eu-west-1:123456789012:db:mysql-db")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var dbInstance = Aws.GetArn.Invoke(new()
+///     {
+///         Arn = "arn:aws:rds:eu-west-1:123456789012:db:mysql-db",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetArn(ctx, &aws.GetArnArgs{
+/// 			Arn: "arn:aws:rds:eu-west-1:123456789012:db:mysql-db",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetArnArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var dbInstance = AwsFunctions.getArn(GetArnArgs.builder()
+///             .arn("arn:aws:rds:eu-west-1:123456789012:db:mysql-db")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   dbInstance:
+///     fn::invoke:
+///       function: aws:getArn
+///       arguments:
+///         arn: arn:aws:rds:eu-west-1:123456789012:db:mysql-db
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_arn_get_arn_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetArnResult> getArn(
+  GetArnArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getArn:getArn',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetArnResult.fromMap(result);
+}
+
+/// `aws.getAvailabilityZone` provides details about a specific availability zone (AZ)
+/// in the current Region.
+///
+/// This can be used both to validate an availability zone given in a variable
+/// and to split the AZ name into its component parts of an AWS Region and an
+/// AZ identifier letter. The latter may be useful e.g., for implementing a
+/// consistent subnet numbering scheme across several regions by mapping both
+/// the region and the subnet letter to network numbers.
+///
+/// This is different from the `aws.getAvailabilityZones` (plural) data source,
+/// which provides a list of the available zones.
+///
+/// ## Example Usage
+///
+/// The following example shows how this data source might be used to derive
+/// VPC and subnet CIDR prefixes systematically for an availability zone.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+/// import * as std from "@pulumi/std";
+///
+/// const config = new pulumi.Config();
+/// const regionNumber = config.getObject<any>("regionNumber") || {
+///     "ap-northeast-1": 5,
+///     "eu-central-1": 4,
+///     "us-east-1": 1,
+///     "us-west-1": 2,
+///     "us-west-2": 3,
+/// };
+/// const azNumber = config.getObject<any>("azNumber") || {
+///     a: 1,
+///     b: 2,
+///     c: 3,
+///     d: 4,
+///     e: 5,
+///     f: 6,
+/// };
+/// // Retrieve the AZ where we want to create network resources
+/// // This must be in the region selected on the AWS provider.
+/// const example = aws.getAvailabilityZone({
+///     name: "eu-central-1a",
+/// });
+/// // Create a VPC for the region associated with the AZ
+/// const exampleVpc = new aws.ec2.Vpc("example", {cidrBlock: example.then(example => std.cidrsubnet({
+///     input: "10.0.0.0/8",
+///     newbits: 4,
+///     netnum: regionNumber[example.region],
+/// })).then(invoke => invoke.result)});
+/// // Create a subnet for the AZ within the regional VPC
+/// const exampleSubnet = new aws.ec2.Subnet("example", {
+///     vpcId: exampleVpc.id,
+///     cidrBlock: pulumi.all([exampleVpc.cidrBlock, example]).apply(([cidrBlock, example]) => std.cidrsubnetOutput({
+///         input: cidrBlock,
+///         newbits: 4,
+///         netnum: azNumber[example.nameSuffix],
+///     })).apply(invoke => invoke.result),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+/// import pulumi_std as std
+///
+/// config = pulumi.Config()
+/// region_number = config.get_object("regionNumber")
+/// if region_number is None:
+///     region_number = {
+///         "ap-northeast-1": 5,
+///         "eu-central-1": 4,
+///         "us-east-1": 1,
+///         "us-west-1": 2,
+///         "us-west-2": 3,
+///     }
+/// az_number = config.get_object("azNumber")
+/// if az_number is None:
+///     az_number = {
+///         "a": 1,
+///         "b": 2,
+///         "c": 3,
+///         "d": 4,
+///         "e": 5,
+///         "f": 6,
+///     }
+/// # Retrieve the AZ where we want to create network resources
+/// # This must be in the region selected on the AWS provider.
+/// example = aws.get_availability_zone(name="eu-central-1a")
+/// # Create a VPC for the region associated with the AZ
+/// example_vpc = aws.ec2.Vpc("example", cidr_block=std.cidrsubnet(input="10.0.0.0/8",
+///     newbits=4,
+///     netnum=region_number[example.region]).result)
+/// # Create a subnet for the AZ within the regional VPC
+/// example_subnet = aws.ec2.Subnet("example",
+///     vpc_id=example_vpc.id,
+///     cidr_block=example_vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet(input=cidr_block,
+///         newbits=4,
+///         netnum=az_number[example.name_suffix])).apply(lambda invoke: invoke.result))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var config = new Config();
+///     var regionNumber = config.GetObject<dynamic>("regionNumber") ??
+///     {
+///         { "ap-northeast-1", 5 },
+///         { "eu-central-1", 4 },
+///         { "us-east-1", 1 },
+///         { "us-west-1", 2 },
+///         { "us-west-2", 3 },
+///     };
+///     var azNumber = config.GetObject<dynamic>("azNumber") ??
+///     {
+///         { "a", 1 },
+///         { "b", 2 },
+///         { "c", 3 },
+///         { "d", 4 },
+///         { "e", 5 },
+///         { "f", 6 },
+///     };
+///     // Retrieve the AZ where we want to create network resources
+///     // This must be in the region selected on the AWS provider.
+///     var example = Aws.GetAvailabilityZone.Invoke(new()
+///     {
+///         Name = "eu-central-1a",
+///     });
+///
+///     // Create a VPC for the region associated with the AZ
+///     var exampleVpc = new Aws.Ec2.Vpc("example", new()
+///     {
+///         CidrBlock = Std.Cidrsubnet.Invoke(new()
+///         {
+///             Input = "10.0.0.0/8",
+///             Newbits = 4,
+///             Netnum = regionNumber[example.Apply(getAvailabilityZoneResult => getAvailabilityZoneResult.Region)],
+///         }).Apply(invoke => invoke.Result),
+///     });
+///
+///     // Create a subnet for the AZ within the regional VPC
+///     var exampleSubnet = new Aws.Ec2.Subnet("example", new()
+///     {
+///         VpcId = exampleVpc.Id,
+///         CidrBlock = Output.Tuple(exampleVpc.CidrBlock, example).Apply(values =>
+///         {
+///             var cidrBlock = values.Item1;
+///             var example = values.Item2;
+///             return Std.Cidrsubnet.Invoke(new()
+///             {
+///                 Input = cidrBlock,
+///                 Newbits = 4,
+///                 Netnum = azNumber[example.Apply(getAvailabilityZoneResult => getAvailabilityZoneResult.NameSuffix)],
+///             });
+///         }).Apply(invoke => invoke.Result),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// cfg := config.New(ctx, "")
+/// regionNumber := map[string]interface{}{
+/// "ap-northeast-1": 5,
+/// "eu-central-1": 4,
+/// "us-east-1": 1,
+/// "us-west-1": 2,
+/// "us-west-2": 3,
+/// };
+/// if param := cfg.GetObject("regionNumber"); param != nil {
+/// regionNumber = param
+/// }
+/// azNumber := map[string]interface{}{
+/// "a": 1,
+/// "b": 2,
+/// "c": 3,
+/// "d": 4,
+/// "e": 5,
+/// "f": 6,
+/// };
+/// if param := cfg.GetObject("azNumber"); param != nil {
+/// azNumber = param
+/// }
+/// // Retrieve the AZ where we want to create network resources
+/// // This must be in the region selected on the AWS provider.
+/// example, err := aws.GetAvailabilityZone(ctx, &aws.GetAvailabilityZoneArgs{
+/// Name: pulumi.StringRef("eu-central-1a"),
+/// }, nil);
+/// if err != nil {
+/// return err
+/// }
+/// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+/// Input: "10.0.0.0/8",
+/// Newbits: 4,
+/// Netnum: regionNumber[example.Region],
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// // Create a VPC for the region associated with the AZ
+/// exampleVpc, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
+/// CidrBlock: pulumi.String(invokeCidrsubnet.Result),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+/// Input: cidrBlock,
+/// Newbits: 4,
+/// Netnum: pulumi.Int(azNumber[example.NameSuffix]),
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// // Create a subnet for the AZ within the regional VPC
+/// _, err = ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
+/// VpcId: exampleVpc.ID(),
+/// CidrBlock: pulumi.String(exampleVpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
+/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+/// return invoke.Result, nil
+/// }).(pulumi.StringPtrOutput)),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetAvailabilityZoneArgs;
+/// import com.pulumi.aws.ec2.Vpc;
+/// import com.pulumi.aws.ec2.VpcArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.CidrsubnetArgs;
+/// import com.pulumi.aws.ec2.Subnet;
+/// import com.pulumi.aws.ec2.SubnetArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var config = ctx.config();
+///         final var regionNumber = config.get("regionNumber").orElse(Map.ofEntries(
+///             Map.entry("ap-northeast-1", 5),
+///             Map.entry("eu-central-1", 4),
+///             Map.entry("us-east-1", 1),
+///             Map.entry("us-west-1", 2),
+///             Map.entry("us-west-2", 3)
+///         ));
+///         final var azNumber = config.get("azNumber").orElse(Map.ofEntries(
+///             Map.entry("a", 1),
+///             Map.entry("b", 2),
+///             Map.entry("c", 3),
+///             Map.entry("d", 4),
+///             Map.entry("e", 5),
+///             Map.entry("f", 6)
+///         ));
+///         // Retrieve the AZ where we want to create network resources
+///         // This must be in the region selected on the AWS provider.
+///         final var example = AwsFunctions.getAvailabilityZone(GetAvailabilityZoneArgs.builder()
+///             .name("eu-central-1a")
+///             .build());
+///
+///         // Create a VPC for the region associated with the AZ
+///         var exampleVpc = new Vpc("exampleVpc", VpcArgs.builder()
+///             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                 .input("10.0.0.0/8")
+///                 .newbits(4)
+///                 .netnum(regionNumber[example.region()])
+///                 .build()).result())
+///             .build());
+///
+///         // Create a subnet for the AZ within the regional VPC
+///         var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()
+///             .vpcId(exampleVpc.id())
+///             .cidrBlock(exampleVpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+///                 .input(_cidrBlock)
+///                 .newbits(4)
+///                 .netnum(azNumber[example.nameSuffix()])
+///                 .build())).applyValue(_invoke -> _invoke.result()))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_availability_zone_get_availability_zone_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAvailabilityZoneResult> getAvailabilityZone(
+  GetAvailabilityZoneArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getAvailabilityZone:getAvailabilityZone',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAvailabilityZoneResult.fromMap(result);
+}
+
+/// The Availability Zones data source allows access to the list of AWS
+/// Availability Zones which can be accessed by an AWS account within the region
+/// configured in the provider.
+///
+/// This is different from the `aws.getAvailabilityZone` (singular) data source,
+/// which provides some details about a specific availability zone.
+///
+/// > When [Local Zones](https://aws.amazon.com/about-aws/global-infrastructure/localzones/) are enabled in a region, by default the API and this data source include both Local Zones and Availability Zones. To return only Availability Zones, see the example section below.
+///
+/// ## Example Usage
+///
+/// ### By State
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// // Declare the data source
+/// const available = aws.getAvailabilityZones({
+///     state: "available",
+/// });
+/// // e.g., Create subnets in the first two available availability zones
+/// const primary = new aws.ec2.Subnet("primary", {availabilityZone: available.then(available => available.names?.[0])});
+/// const secondary = new aws.ec2.Subnet("secondary", {availabilityZone: available.then(available => available.names?.[1])});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// # Declare the data source
+/// available = aws.get_availability_zones(state="available")
+/// # e.g., Create subnets in the first two available availability zones
+/// primary = aws.ec2.Subnet("primary", availability_zone=available.names[0])
+/// secondary = aws.ec2.Subnet("secondary", availability_zone=available.names[1])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     // Declare the data source
+///     var available = Aws.GetAvailabilityZones.Invoke(new()
+///     {
+///         State = "available",
+///     });
+///
+///     // e.g., Create subnets in the first two available availability zones
+///     var primary = new Aws.Ec2.Subnet("primary", new()
+///     {
+///         AvailabilityZone = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[0]),
+///     });
+///
+///     var secondary = new Aws.Ec2.Subnet("secondary", new()
+///     {
+///         AvailabilityZone = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[1]),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		// Declare the data source
+/// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+/// 			State: pulumi.StringRef("available"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// e.g., Create subnets in the first two available availability zones
+/// 		_, err = ec2.NewSubnet(ctx, "primary", &ec2.SubnetArgs{
+/// 			AvailabilityZone: pulumi.String(available.Names[0]),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ec2.NewSubnet(ctx, "secondary", &ec2.SubnetArgs{
+/// 			AvailabilityZone: pulumi.String(available.Names[1]),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import com.pulumi.aws.ec2.Subnet;
+/// import com.pulumi.aws.ec2.SubnetArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         // Declare the data source
+///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+///             .state("available")
+///             .build());
+///
+///         // e.g., Create subnets in the first two available availability zones
+///         var primary = new Subnet("primary", SubnetArgs.builder()
+///             .availabilityZone(available.names()[0])
+///             .build());
+///
+///         var secondary = new Subnet("secondary", SubnetArgs.builder()
+///             .availabilityZone(available.names()[1])
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   # e.g., Create subnets in the first two available availability zones
+///   primary:
+///     type: aws:ec2:Subnet
+///     properties:
+///       availabilityZone: ${available.names[0]}
+///   secondary:
+///     type: aws:ec2:Subnet
+///     properties:
+///       availabilityZone: ${available.names[1]}
+/// variables:
+///   # Declare the data source
+///   available:
+///     fn::invoke:
+///       function: aws:getAvailabilityZones
+///       arguments:
+///         state: available
+/// ```
+///
+///
+/// ### By Filter
+///
+/// All Local Zones (regardless of opt-in status):
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.getAvailabilityZones({
+///     allAvailabilityZones: true,
+///     filters: [{
+///         name: "opt-in-status",
+///         values: [
+///             "not-opted-in",
+///             "opted-in",
+///         ],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.get_availability_zones(all_availability_zones=True,
+///     filters=[{
+///         "name": "opt-in-status",
+///         "values": [
+///             "not-opted-in",
+///             "opted-in",
+///         ],
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.GetAvailabilityZones.Invoke(new()
+///     {
+///         AllAvailabilityZones = true,
+///         Filters = new[]
+///         {
+///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
+///             {
+///                 Name = "opt-in-status",
+///                 Values = new[]
+///                 {
+///                     "not-opted-in",
+///                     "opted-in",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+/// 			AllAvailabilityZones: pulumi.BoolRef(true),
+/// 			Filters: []aws.GetAvailabilityZonesFilter{
+/// 				{
+/// 					Name: "opt-in-status",
+/// 					Values: []string{
+/// 						"not-opted-in",
+/// 						"opted-in",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+///             .allAvailabilityZones(true)
+///             .filters(GetAvailabilityZonesFilterArgs.builder()
+///                 .name("opt-in-status")
+///                 .values(
+///                     "not-opted-in",
+///                     "opted-in")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:getAvailabilityZones
+///       arguments:
+///         allAvailabilityZones: true
+///         filters:
+///           - name: opt-in-status
+///             values:
+///               - not-opted-in
+///               - opted-in
+/// ```
+///
+///
+/// Only Availability Zones (no Local Zones):
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.getAvailabilityZones({
+///     filters: [{
+///         name: "opt-in-status",
+///         values: ["opt-in-not-required"],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.get_availability_zones(filters=[{
+///     "name": "opt-in-status",
+///     "values": ["opt-in-not-required"],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.GetAvailabilityZones.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
+///             {
+///                 Name = "opt-in-status",
+///                 Values = new[]
+///                 {
+///                     "opt-in-not-required",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+/// 			Filters: []aws.GetAvailabilityZonesFilter{
+/// 				{
+/// 					Name: "opt-in-status",
+/// 					Values: []string{
+/// 						"opt-in-not-required",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+///             .filters(GetAvailabilityZonesFilterArgs.builder()
+///                 .name("opt-in-status")
+///                 .values("opt-in-not-required")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:getAvailabilityZones
+///       arguments:
+///         filters:
+///           - name: opt-in-status
+///             values:
+///               - opt-in-not-required
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_availability_zones_get_availability_zones_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAvailabilityZonesResult> getAvailabilityZones(
+  GetAvailabilityZonesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getAvailabilityZones:getAvailabilityZones',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAvailabilityZonesResult.fromMap(result);
+}
+
+/// Use this data source to get the Account ID of the [AWS Billing and Cost Management Service Account](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-getting-started.html#step-2) for the purpose of permitting in S3 bucket policy.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const main = aws.getBillingServiceAccount({});
+/// const billingLogs = new aws.s3.Bucket("billing_logs", {bucket: "my-billing-tf-test-bucket"});
+/// const billingLogsAcl = new aws.s3.BucketAcl("billing_logs_acl", {
+///     bucket: billingLogs.id,
+///     acl: "private",
+/// });
+/// const allowBillingLogging = pulumi.all([main, billingLogs.arn, main, billingLogs.arn]).apply(([main, billingLogsArn, main1, billingLogsArn1]) => aws.iam.getPolicyDocumentOutput({
+///     statements: [
+///         {
+///             effect: "Allow",
+///             principals: [{
+///                 type: "AWS",
+///                 identifiers: [main.arn],
+///             }],
+///             actions: [
+///                 "s3:GetBucketAcl",
+///                 "s3:GetBucketPolicy",
+///             ],
+///             resources: [billingLogsArn],
+///         },
+///         {
+///             effect: "Allow",
+///             principals: [{
+///                 type: "AWS",
+///                 identifiers: [main1.arn],
+///             }],
+///             actions: ["s3:PutObject"],
+///             resources: [`${billingLogsArn1}/*`],
+///         },
+///     ],
+/// }));
+/// const allowBillingLoggingBucketPolicy = new aws.s3.BucketPolicy("allow_billing_logging", {
+///     bucket: billingLogs.id,
+///     policy: allowBillingLogging.apply(allowBillingLogging => allowBillingLogging.json),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// main = aws.get_billing_service_account()
+/// billing_logs = aws.s3.Bucket("billing_logs", bucket="my-billing-tf-test-bucket")
+/// billing_logs_acl = aws.s3.BucketAcl("billing_logs_acl",
+///     bucket=billing_logs.id,
+///     acl="private")
+/// allow_billing_logging = pulumi.Output.all(
+///     billingLogsArn=billing_logs.arn,
+///     billingLogsArn1=billing_logs.arn
+/// ).apply(lambda resolved_outputs: aws.iam.get_policy_document(statements=[
+///     {
+///         "effect": "Allow",
+///         "principals": [{
+///             "type": "AWS",
+///             "identifiers": [main.arn],
+///         }],
+///         "actions": [
+///             "s3:GetBucketAcl",
+///             "s3:GetBucketPolicy",
+///         ],
+///         "resources": [resolved_outputs['billingLogsArn']],
+///     },
+///     {
+///         "effect": "Allow",
+///         "principals": [{
+///             "type": "AWS",
+///             "identifiers": [main.arn],
+///         }],
+///         "actions": ["s3:PutObject"],
+///         "resources": [f"{resolved_outputs['billingLogsArn1']}/*"],
+///     },
+/// ]))
+///
+/// allow_billing_logging_bucket_policy = aws.s3.BucketPolicy("allow_billing_logging",
+///     bucket=billing_logs.id,
+///     policy=allow_billing_logging.json)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var main = Aws.GetBillingServiceAccount.Invoke();
+///
+///     var billingLogs = new Aws.S3.Bucket("billing_logs", new()
+///     {
+///         BucketName = "my-billing-tf-test-bucket",
+///     });
+///
+///     var billingLogsAcl = new Aws.S3.BucketAcl("billing_logs_acl", new()
+///     {
+///         Bucket = billingLogs.Id,
+///         Acl = "private",
+///     });
+///
+///     var allowBillingLogging = Aws.Iam.GetPolicyDocument.Invoke(new()
+///     {
+///         Statements = new[]
+///         {
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             {
+///                 Effect = "Allow",
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             main.Apply(getBillingServiceAccountResult => getBillingServiceAccountResult.Arn),
+///                         },
+///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "s3:GetBucketAcl",
+///                     "s3:GetBucketPolicy",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     billingLogs.Arn,
+///                 },
+///             },
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+///             {
+///                 Effect = "Allow",
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             main.Apply(getBillingServiceAccountResult => getBillingServiceAccountResult.Arn),
+///                         },
+///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "s3:PutObject",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"{billingLogs.Arn}/*",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var allowBillingLoggingBucketPolicy = new Aws.S3.BucketPolicy("allow_billing_logging", new()
+///     {
+///         Bucket = billingLogs.Id,
+///         Policy = allowBillingLogging.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// main, err := aws.GetBillingServiceAccount(ctx, &aws.GetBillingServiceAccountArgs{
+/// }, nil);
+/// if err != nil {
+/// return err
+/// }
+/// billingLogs, err := s3.NewBucket(ctx, "billing_logs", &s3.BucketArgs{
+/// Bucket: pulumi.String("my-billing-tf-test-bucket"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = s3.NewBucketAcl(ctx, "billing_logs_acl", &s3.BucketAclArgs{
+/// Bucket: billingLogs.ID(),
+/// Acl: pulumi.String("private"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// allowBillingLogging := pulumi.All(billingLogs.Arn,billingLogs.Arn).ApplyT(func(_args []interface{}) (iam.GetPolicyDocumentResult, error) {
+/// billingLogsArn := _args[0].(string)
+/// billingLogsArn1 := _args[1].(string)
+/// return iam.GetPolicyDocumentResult(interface{}(iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// Statements: []iam.GetPolicyDocumentStatement(pulumi.Array{
+/// iam.GetPolicyDocumentStatement{
+/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
+/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// {
+/// Type: "AWS",
+/// Identifiers: interface{}{
+/// main.Arn,
+/// },
+/// },
+/// },
+/// Actions: []string{
+/// "s3:GetBucketAcl",
+/// "s3:GetBucketPolicy",
+/// },
+/// Resources: []string{
+/// billingLogsArn,
+/// },
+/// },
+/// iam.GetPolicyDocumentStatement{
+/// Effect: pulumi.StringRef(pulumi.String(pulumi.StringRef("Allow"))),
+/// Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// {
+/// Type: "AWS",
+/// Identifiers: interface{}{
+/// main.Arn,
+/// },
+/// },
+/// },
+/// Actions: []string{
+/// "s3:PutObject",
+/// },
+/// Resources: []string{
+/// fmt.Sprintf("%v/*", billingLogsArn1),
+/// },
+/// },
+/// }),
+/// }, nil))), nil
+/// }).(iam.GetPolicyDocumentResultOutput)
+/// _, err = s3.NewBucketPolicy(ctx, "allow_billing_logging", &s3.BucketPolicyArgs{
+/// Bucket: billingLogs.ID(),
+/// Policy: pulumi.String(allowBillingLogging.ApplyT(func(allowBillingLogging iam.GetPolicyDocumentResult) (*string, error) {
+/// return &allowBillingLogging.Json, nil
+/// }).(pulumi.StringPtrOutput)),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetBillingServiceAccountArgs;
+/// import com.pulumi.aws.s3.Bucket;
+/// import com.pulumi.aws.s3.BucketArgs;
+/// import com.pulumi.aws.s3.BucketAcl;
+/// import com.pulumi.aws.s3.BucketAclArgs;
+/// import com.pulumi.aws.iam.IamFunctions;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.s3.BucketPolicy;
+/// import com.pulumi.aws.s3.BucketPolicyArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var main = AwsFunctions.getBillingServiceAccount(GetBillingServiceAccountArgs.builder()
+///             .build());
+///
+///         var billingLogs = new Bucket("billingLogs", BucketArgs.builder()
+///             .bucket("my-billing-tf-test-bucket")
+///             .build());
+///
+///         var billingLogsAcl = new BucketAcl("billingLogsAcl", BucketAclArgs.builder()
+///             .bucket(billingLogs.id())
+///             .acl("private")
+///             .build());
+///
+///         final var allowBillingLogging = Output.tuple(billingLogs.arn(), billingLogs.arn()).applyValue(values -> {
+///             var billingLogsArn = values.t1;
+///             var billingLogsArn1 = values.t2;
+///             return IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///                 .statements(
+///                     GetPolicyDocumentStatementArgs.builder()
+///                         .effect("Allow")
+///                         .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                             .type("AWS")
+///                             .identifiers(main.arn())
+///                             .build())
+///                         .actions(
+///                             "s3:GetBucketAcl",
+///                             "s3:GetBucketPolicy")
+///                         .resources(billingLogsArn)
+///                         .build(),
+///                     GetPolicyDocumentStatementArgs.builder()
+///                         .effect("Allow")
+///                         .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                             .type("AWS")
+///                             .identifiers(main.arn())
+///                             .build())
+///                         .actions("s3:PutObject")
+///                         .resources(String.format("%s/*", billingLogsArn1))
+///                         .build())
+///                 .build());
+///         });
+///
+///         var allowBillingLoggingBucketPolicy = new BucketPolicy("allowBillingLoggingBucketPolicy", BucketPolicyArgs.builder()
+///             .bucket(billingLogs.id())
+///             .policy(allowBillingLogging.json())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   billingLogs:
+///     type: aws:s3:Bucket
+///     name: billing_logs
+///     properties:
+///       bucket: my-billing-tf-test-bucket
+///   billingLogsAcl:
+///     type: aws:s3:BucketAcl
+///     name: billing_logs_acl
+///     properties:
+///       bucket: ${billingLogs.id}
+///       acl: private
+///   allowBillingLoggingBucketPolicy:
+///     type: aws:s3:BucketPolicy
+///     name: allow_billing_logging
+///     properties:
+///       bucket: ${billingLogs.id}
+///       policy: ${allowBillingLogging.json}
+/// variables:
+///   main:
+///     fn::invoke:
+///       function: aws:getBillingServiceAccount
+///       arguments: {}
+///   allowBillingLogging:
+///     fn::invoke:
+///       function: aws:iam:getPolicyDocument
+///       arguments:
+///         statements:
+///           - effect: Allow
+///             principals:
+///               - type: AWS
+///                 identifiers:
+///                   - ${main.arn}
+///             actions:
+///               - s3:GetBucketAcl
+///               - s3:GetBucketPolicy
+///             resources:
+///               - ${billingLogs.arn}
+///           - effect: Allow
+///             principals:
+///               - type: AWS
+///                 identifiers:
+///                   - ${main.arn}
+///             actions:
+///               - s3:PutObject
+///             resources:
+///               - ${billingLogs.arn}/*
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_billing_service_account_get_billing_service_account_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetBillingServiceAccountResult> getBillingServiceAccount(
+  GetBillingServiceAccountArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getBillingServiceAccount:getBillingServiceAccount',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetBillingServiceAccountResult.fromMap(result);
+}
+
+/// Use this data source to get the access to the effective Account ID, User ID, and ARN in
+/// which this provider is authorized.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getCallerIdentity({});
+/// export const accountId = current.then(current => current.accountId);
+/// export const callerArn = current.then(current => current.arn);
+/// export const callerUser = current.then(current => current.userId);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_caller_identity()
+/// pulumi.export("accountId", current.account_id)
+/// pulumi.export("callerArn", current.arn)
+/// pulumi.export("callerUser", current.user_id)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetCallerIdentity.Invoke();
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["accountId"] = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
+///         ["callerArn"] = current.Apply(getCallerIdentityResult => getCallerIdentityResult.Arn),
+///         ["callerUser"] = current.Apply(getCallerIdentityResult => getCallerIdentityResult.UserId),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("accountId", current.AccountId)
+/// 		ctx.Export("callerArn", current.Arn)
+/// 		ctx.Export("callerUser", current.UserId)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getCallerIdentity(GetCallerIdentityArgs.builder()
+///             .build());
+///
+///         ctx.export("accountId", current.accountId());
+///         ctx.export("callerArn", current.arn());
+///         ctx.export("callerUser", current.userId());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getCallerIdentity
+///       arguments: {}
+/// outputs:
+///   accountId: ${current.accountId}
+///   callerArn: ${current.arn}
+///   callerUser: ${current.userId}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_caller_identity_get_caller_identity_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetCallerIdentityResult> getCallerIdentity(
+  GetCallerIdentityArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getCallerIdentity:getCallerIdentity',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetCallerIdentityResult.fromMap(result);
+}
+
+/// Use this data source to get the default tags configured on the provider.
+///
+/// With this data source, you can apply default tags to resources not _directly_ managed by a resource, such as the instances underneath an Auto Scaling group or the volumes created for an EC2 instance.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.getDefaultTags({});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.get_default_tags()
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.GetDefaultTags.Invoke();
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetDefaultTags(ctx, &aws.GetDefaultTagsArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetDefaultTagsArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = AwsFunctions.getDefaultTags(GetDefaultTagsArgs.builder()
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:getDefaultTags
+///       arguments: {}
+/// ```
+///
+///
+/// ### Dynamically Apply Default Tags to Auto Scaling Group
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.getDefaultTags({});
+/// const exampleGroup = new aws.autoscaling.Group("example", {tags: .map(entry => ({
+///     key: entry.key,
+///     value: entry.value,
+///     propagateAtLaunch: true,
+/// }))});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.get_default_tags()
+/// example_group = aws.autoscaling.Group("example", tags=[{"key": k, "value": v} for k, v in example.tags].apply(lambda entries: [{
+///     "key": entry["key"],
+///     "value": entry["value"],
+///     "propagateAtLaunch": True,
+/// } for entry in entries]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.GetDefaultTags.Invoke();
+///
+///     var exampleGroup = new Aws.AutoScaling.Group("example", new()
+///     {
+///         Tags = ,
+///     });
+///
+/// });
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_default_tags_get_default_tags_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDefaultTagsResult> getDefaultTags(
+  GetDefaultTagsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getDefaultTags:getDefaultTags',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDefaultTagsResult.fromMap(result);
+}
+
+/// Use this data source to get the IP ranges of various AWS products and services. For more information about the contents of this data source and required JSON syntax if referencing a custom URL, see the [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const europeanEc2 = aws.getIpRanges({
+///     regions: [
+///         "eu-west-1",
+///         "eu-central-1",
+///     ],
+///     services: ["ec2"],
+/// });
+/// const fromEurope = new aws.ec2.SecurityGroup("from_europe", {
+///     name: "from_europe",
+///     ingress: [{
+///         fromPort: 443,
+///         toPort: 443,
+///         protocol: "tcp",
+///         cidrBlocks: europeanEc2.then(europeanEc2 => europeanEc2.cidrBlocks),
+///         ipv6CidrBlocks: europeanEc2.then(europeanEc2 => europeanEc2.ipv6CidrBlocks),
+///     }],
+///     tags: {
+///         CreateDate: europeanEc2.then(europeanEc2 => europeanEc2.createDate),
+///         SyncToken: europeanEc2.then(europeanEc2 => europeanEc2.syncToken),
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// european_ec2 = aws.get_ip_ranges(regions=[
+///         "eu-west-1",
+///         "eu-central-1",
+///     ],
+///     services=["ec2"])
+/// from_europe = aws.ec2.SecurityGroup("from_europe",
+///     name="from_europe",
+///     ingress=[{
+///         "from_port": 443,
+///         "to_port": 443,
+///         "protocol": "tcp",
+///         "cidr_blocks": european_ec2.cidr_blocks,
+///         "ipv6_cidr_blocks": european_ec2.ipv6_cidr_blocks,
+///     }],
+///     tags={
+///         "CreateDate": european_ec2.create_date,
+///         "SyncToken": european_ec2.sync_token,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var europeanEc2 = Aws.GetIpRanges.Invoke(new()
+///     {
+///         Regions = new[]
+///         {
+///             "eu-west-1",
+///             "eu-central-1",
+///         },
+///         Services = new[]
+///         {
+///             "ec2",
+///         },
+///     });
+///
+///     var fromEurope = new Aws.Ec2.SecurityGroup("from_europe", new()
+///     {
+///         Name = "from_europe",
+///         Ingress = new[]
+///         {
+///             new Aws.Ec2.Inputs.SecurityGroupIngressArgs
+///             {
+///                 FromPort = 443,
+///                 ToPort = 443,
+///                 Protocol = "tcp",
+///                 CidrBlocks = europeanEc2.Apply(getIpRangesResult => getIpRangesResult.CidrBlocks),
+///                 Ipv6CidrBlocks = europeanEc2.Apply(getIpRangesResult => getIpRangesResult.Ipv6CidrBlocks),
+///             },
+///         },
+///         Tags =
+///         {
+///             { "CreateDate", europeanEc2.Apply(getIpRangesResult => getIpRangesResult.CreateDate) },
+///             { "SyncToken", europeanEc2.Apply(getIpRangesResult => getIpRangesResult.SyncToken) },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		europeanEc2, err := aws.GetIpRanges(ctx, &aws.GetIpRangesArgs{
+/// 			Regions: []string{
+/// 				"eu-west-1",
+/// 				"eu-central-1",
+/// 			},
+/// 			Services: []string{
+/// 				"ec2",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ec2.NewSecurityGroup(ctx, "from_europe", &ec2.SecurityGroupArgs{
+/// 			Name: pulumi.String("from_europe"),
+/// 			Ingress: ec2.SecurityGroupIngressArray{
+/// 				&ec2.SecurityGroupIngressArgs{
+/// 					FromPort:       pulumi.Int(443),
+/// 					ToPort:         pulumi.Int(443),
+/// 					Protocol:       pulumi.String("tcp"),
+/// 					CidrBlocks:     interface{}(europeanEc2.CidrBlocks),
+/// 					Ipv6CidrBlocks: interface{}(europeanEc2.Ipv6CidrBlocks),
+/// 				},
+/// 			},
+/// 			Tags: pulumi.StringMap{
+/// 				"CreateDate": pulumi.String(europeanEc2.CreateDate),
+/// 				"SyncToken":  pulumi.Int(europeanEc2.SyncToken),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetIpRangesArgs;
+/// import com.pulumi.aws.ec2.SecurityGroup;
+/// import com.pulumi.aws.ec2.SecurityGroupArgs;
+/// import com.pulumi.aws.ec2.inputs.SecurityGroupIngressArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var europeanEc2 = AwsFunctions.getIpRanges(GetIpRangesArgs.builder()
+///             .regions(
+///                 "eu-west-1",
+///                 "eu-central-1")
+///             .services("ec2")
+///             .build());
+///
+///         var fromEurope = new SecurityGroup("fromEurope", SecurityGroupArgs.builder()
+///             .name("from_europe")
+///             .ingress(SecurityGroupIngressArgs.builder()
+///                 .fromPort(443)
+///                 .toPort(443)
+///                 .protocol("tcp")
+///                 .cidrBlocks(europeanEc2.cidrBlocks())
+///                 .ipv6CidrBlocks(europeanEc2.ipv6CidrBlocks())
+///                 .build())
+///             .tags(Map.ofEntries(
+///                 Map.entry("CreateDate", europeanEc2.createDate()),
+///                 Map.entry("SyncToken", europeanEc2.syncToken())
+///             ))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   fromEurope:
+///     type: aws:ec2:SecurityGroup
+///     name: from_europe
+///     properties:
+///       name: from_europe
+///       ingress:
+///         - fromPort: '443'
+///           toPort: '443'
+///           protocol: tcp
+///           cidrBlocks: ${europeanEc2.cidrBlocks}
+///           ipv6CidrBlocks: ${europeanEc2.ipv6CidrBlocks}
+///       tags:
+///         CreateDate: ${europeanEc2.createDate}
+///         SyncToken: ${europeanEc2.syncToken}
+/// variables:
+///   europeanEc2:
+///     fn::invoke:
+///       function: aws:getIpRanges
+///       arguments:
+///         regions:
+///           - eu-west-1
+///           - eu-central-1
+///         services:
+///           - ec2
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_ip_ranges_get_ip_ranges_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetIpRangesResult> getIpRanges(
+  GetIpRangesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getIpRanges:getIpRanges',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetIpRangesResult.fromMap(result);
+}
+
+/// Use this data source to lookup information about the current AWS partition in
+/// which the provider is working.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getPartition({});
+/// const s3Policy = current.then(current => aws.iam.getPolicyDocument({
+///     statements: [{
+///         sid: "1",
+///         actions: ["s3:ListBucket"],
+///         resources: [`arn:${current.partition}:s3:::my-bucket`],
+///     }],
+/// }));
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_partition()
+/// s3_policy = aws.iam.get_policy_document(statements=[{
+///     "sid": "1",
+///     "actions": ["s3:ListBucket"],
+///     "resources": [f"arn:{current.partition}:s3:::my-bucket"],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetPartition.Invoke();
+///
+///     var s3Policy = Aws.Iam.GetPolicyDocument.Invoke(new()
+///     {
+///         Statements = new[]
+///         {
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+///             {
+///                 Sid = "1",
+///                 Actions = new[]
+///                 {
+///                     "s3:ListBucket",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:s3:::my-bucket",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetPartition(ctx, &aws.GetPartitionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Sid: pulumi.StringRef("1"),
+/// 					Actions: []string{
+/// 						"s3:ListBucket",
+/// 					},
+/// 					Resources: []string{
+/// 						fmt.Sprintf("arn:%v:s3:::my-bucket", current.Partition),
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetPartitionArgs;
+/// import com.pulumi.aws.iam.IamFunctions;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getPartition(GetPartitionArgs.builder()
+///             .build());
+///
+///         final var s3Policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///             .statements(GetPolicyDocumentStatementArgs.builder()
+///                 .sid("1")
+///                 .actions("s3:ListBucket")
+///                 .resources(String.format("arn:%s:s3:::my-bucket", current.partition()))
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getPartition
+///       arguments: {}
+///   s3Policy:
+///     fn::invoke:
+///       function: aws:iam:getPolicyDocument
+///       arguments:
+///         statements:
+///           - sid: '1'
+///             actions:
+///               - s3:ListBucket
+///             resources:
+///               - arn:${current.partition}:s3:::my-bucket
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_partition_get_partition_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetPartitionResult> getPartition(
+  GetPartitionArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getPartition:getPartition',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetPartitionResult.fromMap(result);
+}
+
+/// `aws.getRegion` provides details about a specific AWS Region.
+///
+/// As well as validating a given Region name this resource can be used to
+/// discover the name of the Region configured within the provider. The latter
+/// can be useful in a child module which is inheriting an AWS provider
+/// configuration from its parent module.
+///
+/// ## Example Usage
+///
+/// The following example shows how the resource might be used to obtain
+/// the name of the AWS Region configured on the provider.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getRegion({});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_region()
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetRegion.Invoke();
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetRegionArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getRegion(GetRegionArgs.builder()
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getRegion
+///       arguments: {}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_region_get_region_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRegionResult> getRegion(
+  GetRegionArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getRegion:getRegion',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRegionResult.fromMap(result);
+}
+
+/// Provides information about AWS Regions. Can be used to filter regions i.e., by Opt-In status or only regions enabled for current account. To get details like endpoint and description of each region the data source can be combined with the `aws.getRegion` data source.
+///
+/// ## Example Usage
+///
+/// Enabled AWS Regions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getRegions({});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_regions()
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetRegions.Invoke();
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetRegions(ctx, &aws.GetRegionsArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetRegionsArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getRegions(GetRegionsArgs.builder()
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getRegions
+///       arguments: {}
+/// ```
+///
+///
+/// All the regions regardless of the availability
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getRegions({
+///     allRegions: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_regions(all_regions=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetRegions.Invoke(new()
+///     {
+///         AllRegions = true,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetRegions(ctx, &aws.GetRegionsArgs{
+/// 			AllRegions: pulumi.BoolRef(true),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetRegionsArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getRegions(GetRegionsArgs.builder()
+///             .allRegions(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getRegions
+///       arguments:
+///         allRegions: true
+/// ```
+///
+///
+/// To see regions that are filtered by `"not-opted-in"`, the `all_regions` argument needs to be set to `true` or no results will be returned.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getRegions({
+///     allRegions: true,
+///     filters: [{
+///         name: "opt-in-status",
+///         values: ["not-opted-in"],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_regions(all_regions=True,
+///     filters=[{
+///         "name": "opt-in-status",
+///         "values": ["not-opted-in"],
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetRegions.Invoke(new()
+///     {
+///         AllRegions = true,
+///         Filters = new[]
+///         {
+///             new Aws.Inputs.GetRegionsFilterInputArgs
+///             {
+///                 Name = "opt-in-status",
+///                 Values = new[]
+///                 {
+///                     "not-opted-in",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetRegions(ctx, &aws.GetRegionsArgs{
+/// 			AllRegions: pulumi.BoolRef(true),
+/// 			Filters: []aws.GetRegionsFilter{
+/// 				{
+/// 					Name: "opt-in-status",
+/// 					Values: []string{
+/// 						"not-opted-in",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetRegionsArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getRegions(GetRegionsArgs.builder()
+///             .allRegions(true)
+///             .filters(GetRegionsFilterArgs.builder()
+///                 .name("opt-in-status")
+///                 .values("not-opted-in")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getRegions
+///       arguments:
+///         allRegions: true
+///         filters:
+///           - name: opt-in-status
+///             values:
+///               - not-opted-in
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_regions_get_regions_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRegionsResult> getRegions(
+  GetRegionsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getRegions:getRegions',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRegionsResult.fromMap(result);
+}
+
+/// Use this data source to compose and decompose AWS service DNS names.
+///
+/// ## Example Usage
+///
+/// ### Get Service DNS Name
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getRegion({});
+/// const test = current.then(current => aws.getService({
+///     region: current.region,
+///     serviceId: "ec2",
+/// }));
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_region()
+/// test = aws.get_service(region=current.region,
+///     service_id="ec2")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetRegion.Invoke();
+///
+///     var test = Aws.GetService.Invoke(new()
+///     {
+///         Region = current.Apply(getRegionResult => getRegionResult.Region),
+///         ServiceId = "ec2",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = aws.GetService(ctx, &aws.GetServiceArgs{
+/// 			Region:    pulumi.StringRef(current.Region),
+/// 			ServiceId: pulumi.StringRef("ec2"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetRegionArgs;
+/// import com.pulumi.aws.inputs.GetServiceArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getRegion(GetRegionArgs.builder()
+///             .build());
+///
+///         final var test = AwsFunctions.getService(GetServiceArgs.builder()
+///             .region(current.region())
+///             .serviceId("ec2")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getRegion
+///       arguments: {}
+///   test:
+///     fn::invoke:
+///       function: aws:getService
+///       arguments:
+///         region: ${current.region}
+///         serviceId: ec2
+/// ```
+///
+///
+/// ### Use Service Reverse DNS Name to Get Components
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const s3 = aws.getService({
+///     reverseDnsName: "cn.com.amazonaws.cn-north-1.s3",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// s3 = aws.get_service(reverse_dns_name="cn.com.amazonaws.cn-north-1.s3")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var s3 = Aws.GetService.Invoke(new()
+///     {
+///         ReverseDnsName = "cn.com.amazonaws.cn-north-1.s3",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetService(ctx, &aws.GetServiceArgs{
+/// 			ReverseDnsName: pulumi.StringRef("cn.com.amazonaws.cn-north-1.s3"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetServiceArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var s3 = AwsFunctions.getService(GetServiceArgs.builder()
+///             .reverseDnsName("cn.com.amazonaws.cn-north-1.s3")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   s3:
+///     fn::invoke:
+///       function: aws:getService
+///       arguments:
+///         reverseDnsName: cn.com.amazonaws.cn-north-1.s3
+/// ```
+///
+///
+/// ### Determine Regional Support for a Service
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const s3 = aws.getService({
+///     reverseDnsName: "com.amazonaws.us-gov-west-1.waf",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// s3 = aws.get_service(reverse_dns_name="com.amazonaws.us-gov-west-1.waf")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var s3 = Aws.GetService.Invoke(new()
+///     {
+///         ReverseDnsName = "com.amazonaws.us-gov-west-1.waf",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetService(ctx, &aws.GetServiceArgs{
+/// 			ReverseDnsName: pulumi.StringRef("com.amazonaws.us-gov-west-1.waf"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetServiceArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var s3 = AwsFunctions.getService(GetServiceArgs.builder()
+///             .reverseDnsName("com.amazonaws.us-gov-west-1.waf")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   s3:
+///     fn::invoke:
+///       function: aws:getService
+///       arguments:
+///         reverseDnsName: com.amazonaws.us-gov-west-1.waf
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_service_get_service_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceResult> getService(
+  GetServiceArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getService:getService',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceResult.fromMap(result);
+}
+
+/// Use this data source to create a Service Principal Name for a service in a given region. Service Principal Names should always end in the standard global format: `{servicename}.amazonaws.com`. However, in some AWS partitions, AWS may expect a different format.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getServicePrincipal({
+///     serviceName: "s3",
+/// });
+/// const test = aws.getServicePrincipal({
+///     serviceName: "s3",
+///     region: "us-iso-east-1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_service_principal(service_name="s3")
+/// test = aws.get_service_principal(service_name="s3",
+///     region="us-iso-east-1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetServicePrincipal.Invoke(new()
+///     {
+///         ServiceName = "s3",
+///     });
+///
+///     var test = Aws.GetServicePrincipal.Invoke(new()
+///     {
+///         ServiceName = "s3",
+///         Region = "us-iso-east-1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := aws.GetServicePrincipal(ctx, &aws.GetServicePrincipalArgs{
+/// 			ServiceName: "s3",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = aws.GetServicePrincipal(ctx, &aws.GetServicePrincipalArgs{
+/// 			ServiceName: "s3",
+/// 			Region:      pulumi.StringRef("us-iso-east-1"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetServicePrincipalArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+///             .serviceName("s3")
+///             .build());
+///
+///         final var test = AwsFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+///             .serviceName("s3")
+///             .region("us-iso-east-1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getServicePrincipal
+///       arguments:
+///         serviceName: s3
+///   test:
+///     fn::invoke:
+///       function: aws:getServicePrincipal
+///       arguments:
+///         serviceName: s3
+///         region: us-iso-east-1
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_service_principal_get_service_principal_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServicePrincipalResult> getServicePrincipal(
+  GetServicePrincipalArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:index/getServicePrincipal:getServicePrincipal',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServicePrincipalResult.fromMap(result);
+}

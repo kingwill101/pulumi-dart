@@ -1,3 +1,0 @@
-library module_synthetics_get_runtime_versions_runtime_version;
-
-export 'get_runtime_versions_runtime_version/get_runtime_versions_runtime_version.dart';

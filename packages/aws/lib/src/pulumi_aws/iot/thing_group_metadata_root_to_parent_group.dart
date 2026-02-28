@@ -1,3 +1,0 @@
-library module_iot_thing_group_metadata_root_to_parent_group;
-
-export 'thing_group_metadata_root_to_parent_group/thing_group_metadata_root_to_parent_group.dart';

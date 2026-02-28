@@ -1,3 +1,0 @@
-library module_sagemaker_monitoring_schedule_monitoring_schedule_config;
-
-export 'monitoring_schedule_monitoring_schedule_config/monitoring_schedule_monitoring_schedule_config.dart';

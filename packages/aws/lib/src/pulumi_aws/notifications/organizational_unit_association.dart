@@ -1,4 +1,0 @@
-library module_notifications_organizational_unit_association;
-
-export 'organizational_unit_association/organizational_unit_association.dart';
-export 'organizational_unit_association/organizational_unit_association_args.dart';

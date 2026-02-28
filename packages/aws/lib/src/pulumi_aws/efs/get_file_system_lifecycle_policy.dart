@@ -1,3 +1,0 @@
-library module_efs_get_file_system_lifecycle_policy;
-
-export 'get_file_system_lifecycle_policy/get_file_system_lifecycle_policy.dart';

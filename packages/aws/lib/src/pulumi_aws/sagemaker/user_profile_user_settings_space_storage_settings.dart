@@ -1,3 +1,0 @@
-library module_sagemaker_user_profile_user_settings_space_storage_settings;
-
-export 'user_profile_user_settings_space_storage_settings/user_profile_user_settings_space_storage_settings.dart';

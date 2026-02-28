@@ -1,5 +1,0 @@
-library module_amp_get_default_scraper_configuration;
-
-export 'get_default_scraper_configuration/get_default_scraper_configuration.dart';
-export 'get_default_scraper_configuration/get_default_scraper_configuration_args.dart';
-export 'get_default_scraper_configuration/get_default_scraper_configuration_result.dart';

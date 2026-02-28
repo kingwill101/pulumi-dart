@@ -1,3 +1,0 @@
-library module_kinesis_analytics_application_reference_data_sources_schema;
-
-export 'analytics_application_reference_data_sources_schema/analytics_application_reference_data_sources_schema.dart';

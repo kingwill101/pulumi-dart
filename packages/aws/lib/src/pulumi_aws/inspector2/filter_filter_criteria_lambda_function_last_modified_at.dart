@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_lambda_function_last_modified_at;
-
-export 'filter_filter_criteria_lambda_function_last_modified_at/filter_filter_criteria_lambda_function_last_modified_at.dart';

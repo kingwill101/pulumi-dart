@@ -1,3 +1,0 @@
-library module_xray_group_insights_configuration;
-
-export 'group_insights_configuration/group_insights_configuration.dart';

@@ -1,3 +1,0 @@
-library module_ec2_get_local_gateways_filter;
-
-export 'get_local_gateways_filter/get_local_gateways_filter.dart';

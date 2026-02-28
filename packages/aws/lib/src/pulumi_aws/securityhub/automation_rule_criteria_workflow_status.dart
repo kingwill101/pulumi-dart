@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_workflow_status;
-
-export 'automation_rule_criteria_workflow_status/automation_rule_criteria_workflow_status.dart';

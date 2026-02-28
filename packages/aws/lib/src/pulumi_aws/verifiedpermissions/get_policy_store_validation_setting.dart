@@ -1,3 +1,0 @@
-library module_verifiedpermissions_get_policy_store_validation_setting;
-
-export 'get_policy_store_validation_setting/get_policy_store_validation_setting.dart';

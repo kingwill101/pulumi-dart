@@ -1,3 +1,0 @@
-library module_efs_get_access_point_root_directory;
-
-export 'get_access_point_root_directory/get_access_point_root_directory.dart';

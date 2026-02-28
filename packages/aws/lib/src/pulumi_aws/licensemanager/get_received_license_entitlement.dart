@@ -1,3 +1,0 @@
-library module_licensemanager_get_received_license_entitlement;
-
-export 'get_received_license_entitlement/get_received_license_entitlement.dart';

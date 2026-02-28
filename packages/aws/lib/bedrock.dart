@@ -1,3 +1,3 @@
 library pulumi_aws_bedrock;
 
-export 'package:pulumi_aws/src/pulumi_aws/bedrock.dart';
+export 'package:pulumi_aws/src/bedrock.dart';

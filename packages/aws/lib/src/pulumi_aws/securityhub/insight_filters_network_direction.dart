@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_network_direction;
-
-export 'insight_filters_network_direction/insight_filters_network_direction.dart';

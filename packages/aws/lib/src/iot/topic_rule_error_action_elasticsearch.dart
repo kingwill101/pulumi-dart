@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class TopicRuleErrorActionElasticsearch {
+  /// The endpoint of your Elasticsearch domain.
+  final String endpoint;
+
+  /// The unique identifier for the document you are storing.
+  final String id;
+
+  /// The Elasticsearch index where you want to store your data.
+  final String index;
+
+  /// The IAM role ARN that has access to Elasticsearch.
+  final String roleArn;
+
+  /// The type of document you are storing.
+  final String type;
+
+  /// Creates a new [TopicRuleErrorActionElasticsearch].
+  /// [endpoint] The endpoint of your Elasticsearch domain.
+  /// [id] The unique identifier for the document you are storing.
+  /// [index] The Elasticsearch index where you want to store your data.
+  /// [roleArn] The IAM role ARN that has access to Elasticsearch.
+  /// [type] The type of document you are storing.
+  TopicRuleErrorActionElasticsearch({
+    required this.endpoint,
+    required this.id,
+    required this.index,
+    required this.roleArn,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['endpoint'] = endpoint;
+    map['id'] = id;
+    map['index'] = index;
+    map['roleArn'] = roleArn;
+    map['type'] = type;
+    return map;
+  }
+
+  factory TopicRuleErrorActionElasticsearch.fromMap(Map<String, dynamic> map) {
+    return TopicRuleErrorActionElasticsearch(
+      endpoint: map['endpoint'] as String,
+      id: map['id'] as String,
+      index: map['index'] as String,
+      roleArn: map['roleArn'] as String,
+      type: map['type'] as String,
+    );
+  }
+}

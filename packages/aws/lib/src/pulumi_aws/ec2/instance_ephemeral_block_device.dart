@@ -1,3 +1,0 @@
-library module_ec2_instance_ephemeral_block_device;
-
-export 'instance_ephemeral_block_device/instance_ephemeral_block_device.dart';

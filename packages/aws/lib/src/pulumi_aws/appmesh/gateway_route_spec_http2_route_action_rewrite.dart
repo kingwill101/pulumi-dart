@@ -1,3 +1,0 @@
-library module_appmesh_gateway_route_spec_http2_route_action_rewrite;
-
-export 'gateway_route_spec_http2_route_action_rewrite/gateway_route_spec_http2_route_action_rewrite.dart';

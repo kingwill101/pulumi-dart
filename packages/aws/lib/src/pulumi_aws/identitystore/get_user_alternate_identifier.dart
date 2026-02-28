@@ -1,3 +1,0 @@
-library module_identitystore_get_user_alternate_identifier;
-
-export 'get_user_alternate_identifier/get_user_alternate_identifier.dart';

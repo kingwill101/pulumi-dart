@@ -1,3 +1,0 @@
-library module_imagebuilder_lifecycle_policy_policy_detail_exclusion_rules;
-
-export 'lifecycle_policy_policy_detail_exclusion_rules/lifecycle_policy_policy_detail_exclusion_rules.dart';

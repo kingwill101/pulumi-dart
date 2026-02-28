@@ -1,3 +1,0 @@
-library module_quicksight_data_set_data_set_usage_configuration;
-
-export 'data_set_data_set_usage_configuration/data_set_data_set_usage_configuration.dart';

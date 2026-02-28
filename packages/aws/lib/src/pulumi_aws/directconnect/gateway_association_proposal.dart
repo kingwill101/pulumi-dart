@@ -1,4 +1,0 @@
-library module_directconnect_gateway_association_proposal;
-
-export 'gateway_association_proposal/gateway_association_proposal.dart';
-export 'gateway_association_proposal/gateway_association_proposal_args.dart';

@@ -1,3 +1,0 @@
-library module_appmesh_route_spec_http2_route_action;
-
-export 'route_spec_http2_route_action/route_spec_http2_route_action.dart';

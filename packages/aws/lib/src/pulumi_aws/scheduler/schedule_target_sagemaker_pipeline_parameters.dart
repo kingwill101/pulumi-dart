@@ -1,3 +1,0 @@
-library module_scheduler_schedule_target_sagemaker_pipeline_parameters;
-
-export 'schedule_target_sagemaker_pipeline_parameters/schedule_target_sagemaker_pipeline_parameters.dart';

@@ -1,4 +1,0 @@
-library module_neptune_cluster_parameter_group;
-
-export 'cluster_parameter_group/cluster_parameter_group_neptune.dart';
-export 'cluster_parameter_group/cluster_parameter_group_neptune_args.dart';

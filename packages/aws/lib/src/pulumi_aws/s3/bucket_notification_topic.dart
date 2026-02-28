@@ -1,3 +1,0 @@
-library module_s3_bucket_notification_topic;
-
-export 'bucket_notification_topic/bucket_notification_topic.dart';

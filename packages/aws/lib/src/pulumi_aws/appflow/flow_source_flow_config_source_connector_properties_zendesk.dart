@@ -1,3 +1,0 @@
-library module_appflow_flow_source_flow_config_source_connector_properties_zendesk;
-
-export 'flow_source_flow_config_source_connector_properties_zendesk/flow_source_flow_config_source_connector_properties_zendesk.dart';

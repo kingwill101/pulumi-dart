@@ -1,3 +1,0 @@
-library module_redshift_idc_application_service_integration_s3_access_grants;
-
-export 'idc_application_service_integration_s3_access_grants/idc_application_service_integration_s3_access_grants.dart';

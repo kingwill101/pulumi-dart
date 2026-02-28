@@ -1,3 +1,0 @@
-library module_bedrock_inference_profile_timeouts;
-
-export 'inference_profile_timeouts/inference_profile_timeouts.dart';

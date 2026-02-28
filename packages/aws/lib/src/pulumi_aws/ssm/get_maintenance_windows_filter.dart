@@ -1,3 +1,0 @@
-library module_ssm_get_maintenance_windows_filter;
-
-export 'get_maintenance_windows_filter/get_maintenance_windows_filter.dart';

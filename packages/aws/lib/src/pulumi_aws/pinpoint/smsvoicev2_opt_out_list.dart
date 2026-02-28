@@ -1,4 +1,0 @@
-library module_pinpoint_smsvoicev2_opt_out_list;
-
-export 'smsvoicev2_opt_out_list/smsvoicev2_opt_out_list.dart';
-export 'smsvoicev2_opt_out_list/smsvoicev2_opt_out_list_args.dart';

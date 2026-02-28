@@ -1,3 +1,0 @@
-library module_eks_get_cluster_outpost_config_control_plane_placement;
-
-export 'get_cluster_outpost_config_control_plane_placement/get_cluster_outpost_config_control_plane_placement.dart';

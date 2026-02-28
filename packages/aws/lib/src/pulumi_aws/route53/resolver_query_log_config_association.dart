@@ -1,4 +1,0 @@
-library module_route53_resolver_query_log_config_association;
-
-export 'resolver_query_log_config_association/resolver_query_log_config_association.dart';
-export 'resolver_query_log_config_association/resolver_query_log_config_association_args.dart';

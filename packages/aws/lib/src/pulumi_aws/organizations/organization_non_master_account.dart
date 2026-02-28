@@ -1,3 +1,0 @@
-library module_organizations_organization_non_master_account;
-
-export 'organization_non_master_account/organization_non_master_account.dart';

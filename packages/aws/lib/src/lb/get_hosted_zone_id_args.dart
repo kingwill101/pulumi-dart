@@ -1,0 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_lb_get_hosted_zone_id_get_hosted_zone_id_args_doc}
+/// Arguments for getHostedZoneId.
+/// {@endtemplate}
+/// {@macro pulumi_lb_get_hosted_zone_id_get_hosted_zone_id_args_doc}
+class GetHostedZoneIdArgs {
+  /// Type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.
+  final pulumi.Input<String>? loadBalancerType;
+
+  /// Name of the Region whose AWS ELB HostedZoneId is desired. Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [GetHostedZoneIdArgs].
+  /// [loadBalancerType] Type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.
+  /// [region] Name of the Region whose AWS ELB HostedZoneId is desired. Defaults to the Region set in the provider configuration.
+  GetHostedZoneIdArgs({
+    String? loadBalancerType,
+    String? region,
+  })  : loadBalancerType =
+            pulumi.Input.asOptionalInput<String>(loadBalancerType),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final loadBalancerTypeValue = loadBalancerType;
+    if (loadBalancerTypeValue != null) {
+      map['loadBalancerType'] = loadBalancerTypeValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory GetHostedZoneIdArgs.fromMap(Map<String, dynamic> map) {
+    return GetHostedZoneIdArgs(
+      loadBalancerType: map['loadBalancerType'] == null
+          ? null
+          : map['loadBalancerType'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

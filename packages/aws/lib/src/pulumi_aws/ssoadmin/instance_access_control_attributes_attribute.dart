@@ -1,3 +1,0 @@
-library module_ssoadmin_instance_access_control_attributes_attribute;
-
-export 'instance_access_control_attributes_attribute/instance_access_control_attributes_attribute.dart';

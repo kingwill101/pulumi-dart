@@ -1,3 +1,0 @@
-library module_appmesh_virtual_service_spec_provider;
-
-export 'virtual_service_spec_provider/virtual_service_spec_provider.dart';

@@ -1,3 +1,0 @@
-library module_securitylake_data_lake_configuration;
-
-export 'data_lake_configuration/data_lake_configuration.dart';

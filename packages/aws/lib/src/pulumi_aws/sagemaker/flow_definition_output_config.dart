@@ -1,3 +1,0 @@
-library module_sagemaker_flow_definition_output_config;
-
-export 'flow_definition_output_config/flow_definition_output_config.dart';

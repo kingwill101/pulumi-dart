@@ -1,3 +1,0 @@
-library module_bedrock_agent_knowledge_base_storage_configuration;
-
-export 'agent_knowledge_base_storage_configuration/agent_knowledge_base_storage_configuration.dart';

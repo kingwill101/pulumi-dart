@@ -1,3 +1,0 @@
-library module_ebs_snapshot_import_disk_container_user_bucket;
-
-export 'snapshot_import_disk_container_user_bucket/snapshot_import_disk_container_user_bucket.dart';

@@ -1,3 +1,0 @@
-library module_emr_get_supported_instance_types_supported_instance_type;
-
-export 'get_supported_instance_types_supported_instance_type/get_supported_instance_types_supported_instance_type.dart';

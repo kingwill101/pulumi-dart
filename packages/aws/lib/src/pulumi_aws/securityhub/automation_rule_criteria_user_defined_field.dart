@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_user_defined_field;
-
-export 'automation_rule_criteria_user_defined_field/automation_rule_criteria_user_defined_field.dart';

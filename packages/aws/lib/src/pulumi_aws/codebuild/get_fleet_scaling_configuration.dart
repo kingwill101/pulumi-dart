@@ -1,3 +1,0 @@
-library module_codebuild_get_fleet_scaling_configuration;
-
-export 'get_fleet_scaling_configuration/get_fleet_scaling_configuration.dart';

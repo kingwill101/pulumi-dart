@@ -1,3 +1,0 @@
-library module_sagemaker_domain_default_user_settings_custom_posix_user_config;
-
-export 'domain_default_user_settings_custom_posix_user_config/domain_default_user_settings_custom_posix_user_config.dart';

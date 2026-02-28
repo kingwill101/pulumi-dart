@@ -1,3 +1,0 @@
-library module_costexplorer_anomaly_subscription_threshold_expression_tags;
-
-export 'anomaly_subscription_threshold_expression_tags/anomaly_subscription_threshold_expression_tags.dart';

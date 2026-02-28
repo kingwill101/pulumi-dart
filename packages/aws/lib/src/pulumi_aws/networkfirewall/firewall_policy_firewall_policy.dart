@@ -1,3 +1,0 @@
-library module_networkfirewall_firewall_policy_firewall_policy;
-
-export 'firewall_policy_firewall_policy/firewall_policy_firewall_policy.dart';

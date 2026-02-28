@@ -1,3 +1,0 @@
-library module_quicksight_refresh_schedule_schedule_schedule_frequency_refresh_on_day;
-
-export 'refresh_schedule_schedule_schedule_frequency_refresh_on_day/refresh_schedule_schedule_schedule_frequency_refresh_on_day.dart';

@@ -1,3 +1,0 @@
-library module_dataexchange_revision_assets_asset_import_assets_from_signed_url;
-
-export 'revision_assets_asset_import_assets_from_signed_url/revision_assets_asset_import_assets_from_signed_url.dart';

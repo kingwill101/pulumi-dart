@@ -1,3 +1,0 @@
-library module_shield_proactive_engagement_emergency_contact;
-
-export 'proactive_engagement_emergency_contact/proactive_engagement_emergency_contact.dart';

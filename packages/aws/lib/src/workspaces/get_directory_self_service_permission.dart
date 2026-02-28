@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetDirectorySelfServicePermission {
+  /// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace.
+  final bool changeComputeType;
+
+  /// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace.
+  final bool increaseVolumeSize;
+
+  /// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state.
+  final bool rebuildWorkspace;
+
+  /// Whether WorkSpaces directory users can restart their workspace.
+  final bool restartWorkspace;
+
+  /// Whether WorkSpaces directory users can switch the running mode of their workspace.
+  final bool switchRunningMode;
+
+  /// Creates a new [GetDirectorySelfServicePermission].
+  /// [changeComputeType] Whether WorkSpaces directory users can change the compute type (bundle) for their workspace.
+  /// [increaseVolumeSize] Whether WorkSpaces directory users can increase the volume size of the drives on their workspace.
+  /// [rebuildWorkspace] Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state.
+  /// [restartWorkspace] Whether WorkSpaces directory users can restart their workspace.
+  /// [switchRunningMode] Whether WorkSpaces directory users can switch the running mode of their workspace.
+  GetDirectorySelfServicePermission({
+    required this.changeComputeType,
+    required this.increaseVolumeSize,
+    required this.rebuildWorkspace,
+    required this.restartWorkspace,
+    required this.switchRunningMode,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['changeComputeType'] = changeComputeType;
+    map['increaseVolumeSize'] = increaseVolumeSize;
+    map['rebuildWorkspace'] = rebuildWorkspace;
+    map['restartWorkspace'] = restartWorkspace;
+    map['switchRunningMode'] = switchRunningMode;
+    return map;
+  }
+
+  factory GetDirectorySelfServicePermission.fromMap(Map<String, dynamic> map) {
+    return GetDirectorySelfServicePermission(
+      changeComputeType: map['changeComputeType'] as bool,
+      increaseVolumeSize: map['increaseVolumeSize'] as bool,
+      rebuildWorkspace: map['rebuildWorkspace'] as bool,
+      restartWorkspace: map['restartWorkspace'] as bool,
+      switchRunningMode: map['switchRunningMode'] as bool,
+    );
+  }
+}

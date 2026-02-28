@@ -1,3 +1,0 @@
-library module_kendra_index_user_token_configurations;
-
-export 'index_user_token_configurations/index_user_token_configurations.dart';

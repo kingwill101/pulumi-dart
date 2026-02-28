@@ -1,3 +1,0 @@
-library module_networkfirewall_vpc_endpoint_association_subnet_mapping;
-
-export 'vpc_endpoint_association_subnet_mapping/vpc_endpoint_association_subnet_mapping.dart';

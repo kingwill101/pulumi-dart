@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_criticality;
-
-export 'automation_rule_criteria_criticality/automation_rule_criteria_criticality.dart';

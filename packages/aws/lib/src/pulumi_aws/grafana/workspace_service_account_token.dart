@@ -1,4 +1,0 @@
-library module_grafana_workspace_service_account_token;
-
-export 'workspace_service_account_token/workspace_service_account_token.dart';
-export 'workspace_service_account_token/workspace_service_account_token_args.dart';

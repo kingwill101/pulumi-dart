@@ -1,3 +1,0 @@
-library module_emr_cluster_master_instance_fleet_launch_specifications;
-
-export 'cluster_master_instance_fleet_launch_specifications/cluster_master_instance_fleet_launch_specifications.dart';

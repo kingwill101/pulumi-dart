@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_cluster_identity_oidc.dart';
+
+class GetClusterIdentity {
+  /// Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster.
+  final List<GetClusterIdentityOidc> oidcs;
+
+  /// Creates a new [GetClusterIdentity].
+  /// [oidcs] Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster.
+  GetClusterIdentity({
+    required this.oidcs,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['oidcs'] =
+        pulumi.Input.encodeList<GetClusterIdentityOidc, Map<String, dynamic>>(
+            oidcs, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetClusterIdentity.fromMap(Map<String, dynamic> map) {
+    return GetClusterIdentity(
+      oidcs: pulumi.Input.decodeList<GetClusterIdentityOidc>(
+          map['oidcs'],
+          (value) => GetClusterIdentityOidc.fromMap(
+              (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

@@ -1,4 +1,0 @@
-library module_glue_security_configuration;
-
-export 'security_configuration/security_configuration_glue.dart';
-export 'security_configuration/security_configuration_glue_args.dart';

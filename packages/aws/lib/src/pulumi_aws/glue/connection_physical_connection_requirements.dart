@@ -1,3 +1,0 @@
-library module_glue_connection_physical_connection_requirements;
-
-export 'connection_physical_connection_requirements/connection_physical_connection_requirements.dart';

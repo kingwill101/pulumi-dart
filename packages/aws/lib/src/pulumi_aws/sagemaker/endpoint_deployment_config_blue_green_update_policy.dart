@@ -1,3 +1,0 @@
-library module_sagemaker_endpoint_deployment_config_blue_green_update_policy;
-
-export 'endpoint_deployment_config_blue_green_update_policy/endpoint_deployment_config_blue_green_update_policy.dart';

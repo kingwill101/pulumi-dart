@@ -1,0 +1,92 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'distribution_configuration_distribution.dart';
+
+/// {@template pulumi_imagebuilder_distribution_configuration_distribution_configuration_args_doc}
+/// The set of arguments for DistributionConfiguration.
+/// {@endtemplate}
+/// {@macro pulumi_imagebuilder_distribution_configuration_distribution_configuration_args_doc}
+class DistributionConfigurationArgs {
+  /// Description of the distribution configuration.
+  final pulumi.Input<String>? description;
+
+  /// One or more configuration blocks with distribution settings. Detailed below.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<List<DistributionConfigurationDistribution>> distributions;
+
+  /// Name of the distribution configuration.
+  final pulumi.Input<String>? name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Key-value map of resource tags for the distribution configuration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [DistributionConfigurationArgs].
+  /// [description] Description of the distribution configuration.
+  /// [distributions] One or more configuration blocks with distribution settings. Detailed below.
+  /// [name] Name of the distribution configuration.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Key-value map of resource tags for the distribution configuration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  DistributionConfigurationArgs({
+    String? description,
+    required List<DistributionConfigurationDistribution> distributions,
+    String? name,
+    String? region,
+    Map<String, String>? tags,
+  })  : description = pulumi.Input.asOptionalInput<String>(description),
+        distributions =
+            pulumi.Input.asInput<List<DistributionConfigurationDistribution>>(
+                distributions),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    map['distributions'] = pulumi.Input.mapInputValue<
+            List<DistributionConfigurationDistribution>,
+            List<Map<String, dynamic>>>(
+        distributions,
+        (value) => pulumi.Input.encodeList<
+            DistributionConfigurationDistribution,
+            Map<String, dynamic>>(value, (value) => value.toMap()));
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory DistributionConfigurationArgs.fromMap(Map<String, dynamic> map) {
+    return DistributionConfigurationArgs(
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      distributions:
+          pulumi.Input.decodeList<DistributionConfigurationDistribution>(
+              map['distributions'],
+              (value) => DistributionConfigurationDistribution.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : map['name'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

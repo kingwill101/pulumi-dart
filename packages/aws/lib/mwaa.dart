@@ -1,3 +1,3 @@
 library pulumi_aws_mwaa;
 
-export 'package:pulumi_aws/src/pulumi_aws/mwaa.dart';
+export 'package:pulumi_aws/src/mwaa.dart';

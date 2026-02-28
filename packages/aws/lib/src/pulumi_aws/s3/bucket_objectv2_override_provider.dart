@@ -1,3 +1,0 @@
-library module_s3_bucket_objectv2_override_provider;
-
-export 'bucket_objectv2_override_provider/bucket_objectv2_override_provider.dart';

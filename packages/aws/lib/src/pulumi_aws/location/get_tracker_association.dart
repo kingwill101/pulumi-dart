@@ -1,5 +1,0 @@
-library module_location_get_tracker_association;
-
-export 'get_tracker_association/get_tracker_association.dart';
-export 'get_tracker_association/get_tracker_association_args.dart';
-export 'get_tracker_association/get_tracker_association_result.dart';

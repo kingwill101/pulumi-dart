@@ -1,3 +1,0 @@
-library module_iam_get_policy_document_statement_principal;
-
-export 'get_policy_document_statement_principal/get_policy_document_statement_principal.dart';

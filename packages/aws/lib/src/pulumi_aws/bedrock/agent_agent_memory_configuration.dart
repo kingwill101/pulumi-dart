@@ -1,3 +1,0 @@
-library module_bedrock_agent_agent_memory_configuration;
-
-export 'agent_agent_memory_configuration/agent_agent_memory_configuration.dart';

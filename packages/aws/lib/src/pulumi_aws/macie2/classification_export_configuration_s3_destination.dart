@@ -1,3 +1,0 @@
-library module_macie2_classification_export_configuration_s3_destination;
-
-export 'classification_export_configuration_s3_destination/classification_export_configuration_s3_destination.dart';

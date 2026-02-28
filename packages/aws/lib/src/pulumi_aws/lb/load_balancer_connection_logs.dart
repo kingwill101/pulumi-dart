@@ -1,3 +1,0 @@
-library module_lb_load_balancer_connection_logs;
-
-export 'load_balancer_connection_logs/load_balancer_connection_logs_lb.dart';

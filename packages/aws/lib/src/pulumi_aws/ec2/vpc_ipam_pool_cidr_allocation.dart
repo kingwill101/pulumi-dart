@@ -1,4 +1,0 @@
-library module_ec2_vpc_ipam_pool_cidr_allocation;
-
-export 'vpc_ipam_pool_cidr_allocation/vpc_ipam_pool_cidr_allocation.dart';
-export 'vpc_ipam_pool_cidr_allocation/vpc_ipam_pool_cidr_allocation_args.dart';

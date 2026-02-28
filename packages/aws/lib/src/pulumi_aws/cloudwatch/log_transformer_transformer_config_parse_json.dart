@@ -1,3 +1,0 @@
-library module_cloudwatch_log_transformer_transformer_config_parse_json;
-
-export 'log_transformer_transformer_config_parse_json/log_transformer_transformer_config_parse_json.dart';

@@ -1,3 +1,0 @@
-library module_glue_data_quality_ruleset_target_table;
-
-export 'data_quality_ruleset_target_table/data_quality_ruleset_target_table.dart';

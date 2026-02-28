@@ -1,3 +1,0 @@
-library module_medialive_multiplex_program_timeouts;
-
-export 'multiplex_program_timeouts/multiplex_program_timeouts.dart';

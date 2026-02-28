@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_threat_intel_indicator_category;
-
-export 'insight_filters_threat_intel_indicator_category/insight_filters_threat_intel_indicator_category.dart';

@@ -1,3 +1,0 @@
-library module_alb_get_load_balancer_connection_log;
-
-export 'get_load_balancer_connection_log/get_load_balancer_connection_log.dart';

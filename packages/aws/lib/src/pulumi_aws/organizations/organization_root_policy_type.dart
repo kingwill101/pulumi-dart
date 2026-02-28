@@ -1,3 +1,0 @@
-library module_organizations_organization_root_policy_type;
-
-export 'organization_root_policy_type/organization_root_policy_type.dart';

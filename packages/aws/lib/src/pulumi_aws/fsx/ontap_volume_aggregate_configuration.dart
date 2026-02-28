@@ -1,3 +1,0 @@
-library module_fsx_ontap_volume_aggregate_configuration;
-
-export 'ontap_volume_aggregate_configuration/ontap_volume_aggregate_configuration.dart';

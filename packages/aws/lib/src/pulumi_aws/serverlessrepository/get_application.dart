@@ -1,5 +1,0 @@
-library module_serverlessrepository_get_application;
-
-export 'get_application/get_application_serverlessrepository.dart';
-export 'get_application/get_application_serverlessrepository_args.dart';
-export 'get_application/get_application_serverlessrepository_result.dart';

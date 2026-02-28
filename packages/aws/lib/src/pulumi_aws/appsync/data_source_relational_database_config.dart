@@ -1,3 +1,0 @@
-library module_appsync_data_source_relational_database_config;
-
-export 'data_source_relational_database_config/data_source_relational_database_config.dart';

@@ -1,3 +1,0 @@
-library module_timestreamwrite_get_table_retention_property;
-
-export 'get_table_retention_property/get_table_retention_property.dart';

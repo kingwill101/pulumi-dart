@@ -1,3 +1,0 @@
-library module_sagemaker_domain_domain_settings_docker_settings;
-
-export 'domain_domain_settings_docker_settings/domain_domain_settings_docker_settings.dart';

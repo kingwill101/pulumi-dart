@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_product_name;
-
-export 'insight_filters_product_name/insight_filters_product_name.dart';

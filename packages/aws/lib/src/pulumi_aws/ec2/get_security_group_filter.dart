@@ -1,3 +1,0 @@
-library module_ec2_get_security_group_filter;
-
-export 'get_security_group_filter/get_security_group_filter.dart';

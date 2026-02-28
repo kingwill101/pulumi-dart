@@ -1,3 +1,0 @@
-library module_appmesh_virtual_node_spec_backend_virtual_service;
-
-export 'virtual_node_spec_backend_virtual_service/virtual_node_spec_backend_virtual_service.dart';

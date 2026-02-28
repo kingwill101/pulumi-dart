@@ -1,3 +1,0 @@
-library module_appmesh_virtual_gateway_spec_listener_tls;
-
-export 'virtual_gateway_spec_listener_tls/virtual_gateway_spec_listener_tls.dart';

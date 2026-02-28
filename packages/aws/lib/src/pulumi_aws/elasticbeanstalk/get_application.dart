@@ -1,5 +1,0 @@
-library module_elasticbeanstalk_get_application;
-
-export 'get_application/get_application_elasticbeanstalk.dart';
-export 'get_application/get_application_elasticbeanstalk_args.dart';
-export 'get_application/get_application_elasticbeanstalk_result.dart';

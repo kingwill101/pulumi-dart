@@ -1,3 +1,0 @@
-library module_devopsguru_resource_collection_cloudformation;
-
-export 'resource_collection_cloudformation/resource_collection_cloudformation.dart';

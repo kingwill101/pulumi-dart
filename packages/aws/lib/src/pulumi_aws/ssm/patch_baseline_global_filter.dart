@@ -1,3 +1,0 @@
-library module_ssm_patch_baseline_global_filter;
-
-export 'patch_baseline_global_filter/patch_baseline_global_filter.dart';

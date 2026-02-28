@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cloudfront_get_response_headers_policy_get_response_headers_policy_args_doc}
+/// Arguments for getResponseHeadersPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_cloudfront_get_response_headers_policy_get_response_headers_policy_args_doc}
+class GetResponseHeadersPolicyArgs {
+  /// Identifier for the response headers policy.
+  final pulumi.Input<String>? id;
+
+  /// Unique name to identify the response headers policy.
+  final pulumi.Input<String>? name;
+
+  /// Creates a new [GetResponseHeadersPolicyArgs].
+  /// [id] Identifier for the response headers policy.
+  /// [name] Unique name to identify the response headers policy.
+  GetResponseHeadersPolicyArgs({
+    String? id,
+    String? name,
+  })  : id = pulumi.Input.asOptionalInput<String>(id),
+        name = pulumi.Input.asOptionalInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final idValue = id;
+    if (idValue != null) {
+      map['id'] = idValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    return map;
+  }
+
+  factory GetResponseHeadersPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetResponseHeadersPolicyArgs(
+      id: map['id'] == null ? null : map['id'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}

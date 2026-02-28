@@ -1,3 +1,0 @@
-library module_odb_cloud_autonomous_vm_cluster_maintenance_window_days_of_week;
-
-export 'cloud_autonomous_vm_cluster_maintenance_window_days_of_week/cloud_autonomous_vm_cluster_maintenance_window_days_of_week.dart';

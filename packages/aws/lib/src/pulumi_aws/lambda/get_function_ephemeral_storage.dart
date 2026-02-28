@@ -1,3 +1,0 @@
-library module_lambda_get_function_ephemeral_storage;
-
-export 'get_function_ephemeral_storage/get_function_ephemeral_storage.dart';

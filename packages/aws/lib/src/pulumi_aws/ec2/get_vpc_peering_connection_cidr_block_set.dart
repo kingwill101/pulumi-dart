@@ -1,3 +1,0 @@
-library module_ec2_get_vpc_peering_connection_cidr_block_set;
-
-export 'get_vpc_peering_connection_cidr_block_set/get_vpc_peering_connection_cidr_block_set.dart';

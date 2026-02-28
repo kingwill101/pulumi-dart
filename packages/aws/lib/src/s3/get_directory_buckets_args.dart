@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_s3_get_directory_buckets_get_directory_buckets_args_doc}
+/// Arguments for getDirectoryBuckets.
+/// {@endtemplate}
+/// {@macro pulumi_s3_get_directory_buckets_get_directory_buckets_args_doc}
+class GetDirectoryBucketsArgs {
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [GetDirectoryBucketsArgs].
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  GetDirectoryBucketsArgs({
+    String? region,
+  }) : region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory GetDirectoryBucketsArgs.fromMap(Map<String, dynamic> map) {
+    return GetDirectoryBucketsArgs(
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

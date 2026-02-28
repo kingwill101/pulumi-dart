@@ -1,3 +1,3 @@
 library pulumi_aws_codedeploy;
 
-export 'package:pulumi_aws/src/pulumi_aws/codedeploy.dart';
+export 'package:pulumi_aws/src/codedeploy.dart';

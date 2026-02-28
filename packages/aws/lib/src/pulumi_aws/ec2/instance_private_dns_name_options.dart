@@ -1,3 +1,0 @@
-library module_ec2_instance_private_dns_name_options;
-
-export 'instance_private_dns_name_options/instance_private_dns_name_options.dart';

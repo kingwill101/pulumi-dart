@@ -1,3 +1,0 @@
-library module_ec2_launch_template_tag_specification;
-
-export 'launch_template_tag_specification/launch_template_tag_specification.dart';

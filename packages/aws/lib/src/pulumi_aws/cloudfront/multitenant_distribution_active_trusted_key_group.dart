@@ -1,3 +1,0 @@
-library module_cloudfront_multitenant_distribution_active_trusted_key_group;
-
-export 'multitenant_distribution_active_trusted_key_group/multitenant_distribution_active_trusted_key_group.dart';

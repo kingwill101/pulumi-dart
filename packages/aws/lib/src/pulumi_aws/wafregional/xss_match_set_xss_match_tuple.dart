@@ -1,3 +1,0 @@
-library module_wafregional_xss_match_set_xss_match_tuple;
-
-export 'xss_match_set_xss_match_tuple/xss_match_set_xss_match_tuple_wafregional.dart';

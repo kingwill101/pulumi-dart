@@ -1,3 +1,0 @@
-library module_s3_bucket_versioning_v2_versioning_configuration;
-
-export 'bucket_versioning_v2_versioning_configuration/bucket_versioning_v2_versioning_configuration.dart';

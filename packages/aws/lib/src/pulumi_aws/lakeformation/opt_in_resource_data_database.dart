@@ -1,3 +1,0 @@
-library module_lakeformation_opt_in_resource_data_database;
-
-export 'opt_in_resource_data_database/opt_in_resource_data_database.dart';

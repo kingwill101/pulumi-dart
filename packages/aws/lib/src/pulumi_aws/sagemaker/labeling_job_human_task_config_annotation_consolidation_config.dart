@@ -1,3 +1,0 @@
-library module_sagemaker_labeling_job_human_task_config_annotation_consolidation_config;
-
-export 'labeling_job_human_task_config_annotation_consolidation_config/labeling_job_human_task_config_annotation_consolidation_config.dart';

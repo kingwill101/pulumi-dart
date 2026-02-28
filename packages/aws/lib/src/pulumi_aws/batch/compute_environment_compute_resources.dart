@@ -1,3 +1,0 @@
-library module_batch_compute_environment_compute_resources;
-
-export 'compute_environment_compute_resources/compute_environment_compute_resources.dart';

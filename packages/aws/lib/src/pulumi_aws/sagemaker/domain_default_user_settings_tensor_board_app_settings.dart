@@ -1,3 +1,0 @@
-library module_sagemaker_domain_default_user_settings_tensor_board_app_settings;
-
-export 'domain_default_user_settings_tensor_board_app_settings/domain_default_user_settings_tensor_board_app_settings.dart';

@@ -1,3 +1,0 @@
-library module_apigatewayv2_routing_rule_action_invoke_api;
-
-export 'routing_rule_action_invoke_api/routing_rule_action_invoke_api.dart';

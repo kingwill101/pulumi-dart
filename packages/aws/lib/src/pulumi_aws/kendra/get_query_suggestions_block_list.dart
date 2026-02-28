@@ -1,5 +1,0 @@
-library module_kendra_get_query_suggestions_block_list;
-
-export 'get_query_suggestions_block_list/get_query_suggestions_block_list.dart';
-export 'get_query_suggestions_block_list/get_query_suggestions_block_list_args.dart';
-export 'get_query_suggestions_block_list/get_query_suggestions_block_list_result.dart';

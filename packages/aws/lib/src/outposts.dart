@@ -1,0 +1,19 @@
+library module_outposts;
+
+export 'outposts/functions.dart';
+export 'outposts/get_asset_args.dart';
+export 'outposts/get_asset_result.dart';
+export 'outposts/get_assets_args.dart';
+export 'outposts/get_assets_result.dart';
+export 'outposts/get_outpost_args.dart';
+export 'outposts/get_outpost_instance_type_args.dart';
+export 'outposts/get_outpost_instance_type_result.dart';
+export 'outposts/get_outpost_instance_types_args.dart';
+export 'outposts/get_outpost_instance_types_result.dart';
+export 'outposts/get_outpost_result.dart';
+export 'outposts/get_outposts_args.dart';
+export 'outposts/get_outposts_result.dart';
+export 'outposts/get_site_args.dart';
+export 'outposts/get_site_result.dart';
+export 'outposts/get_sites_args.dart';
+export 'outposts/get_sites_result.dart';

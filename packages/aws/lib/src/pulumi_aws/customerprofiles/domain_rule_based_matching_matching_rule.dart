@@ -1,3 +1,0 @@
-library module_customerprofiles_domain_rule_based_matching_matching_rule;
-
-export 'domain_rule_based_matching_matching_rule/domain_rule_based_matching_matching_rule.dart';

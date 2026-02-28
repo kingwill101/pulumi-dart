@@ -1,3 +1,0 @@
-library module_medialive_channel_encoder_settings_global_configuration;
-
-export 'channel_encoder_settings_global_configuration/channel_encoder_settings_global_configuration.dart';

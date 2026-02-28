@@ -1,3 +1,0 @@
-library module_quicksight_data_source_parameters_aurora;
-
-export 'data_source_parameters_aurora/data_source_parameters_aurora.dart';

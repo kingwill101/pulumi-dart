@@ -1,3 +1,0 @@
-library module_alb_get_listener_default_action_authenticate_cognito;
-
-export 'get_listener_default_action_authenticate_cognito/get_listener_default_action_authenticate_cognito.dart';

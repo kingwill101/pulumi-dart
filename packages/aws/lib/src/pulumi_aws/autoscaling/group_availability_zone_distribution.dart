@@ -1,3 +1,0 @@
-library module_autoscaling_group_availability_zone_distribution;
-
-export 'group_availability_zone_distribution/group_availability_zone_distribution.dart';

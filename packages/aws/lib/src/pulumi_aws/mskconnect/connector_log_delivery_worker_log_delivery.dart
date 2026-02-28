@@ -1,3 +1,0 @@
-library module_mskconnect_connector_log_delivery_worker_log_delivery;
-
-export 'connector_log_delivery_worker_log_delivery/connector_log_delivery_worker_log_delivery.dart';

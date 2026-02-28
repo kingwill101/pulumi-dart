@@ -1,3 +1,0 @@
-library module_codegurureviewer_repository_association_repository_bitbucket;
-
-export 'repository_association_repository_bitbucket/repository_association_repository_bitbucket.dart';

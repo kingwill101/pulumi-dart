@@ -1,4 +1,0 @@
-library module_workspacesweb_browser_settings_association;
-
-export 'browser_settings_association/browser_settings_association.dart';
-export 'browser_settings_association/browser_settings_association_args.dart';

@@ -1,3 +1,3 @@
 library pulumi_aws_quicksight;
 
-export 'package:pulumi_aws/src/pulumi_aws/quicksight.dart';
+export 'package:pulumi_aws/src/quicksight.dart';

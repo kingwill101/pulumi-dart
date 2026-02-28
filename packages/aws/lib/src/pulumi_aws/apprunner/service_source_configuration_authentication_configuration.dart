@@ -1,3 +1,0 @@
-library module_apprunner_service_source_configuration_authentication_configuration;
-
-export 'service_source_configuration_authentication_configuration/service_source_configuration_authentication_configuration.dart';

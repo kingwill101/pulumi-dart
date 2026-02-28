@@ -1,3 +1,0 @@
-library module_networkmanager_connect_peer_configuration_bgp_configuration;
-
-export 'connect_peer_configuration_bgp_configuration/connect_peer_configuration_bgp_configuration.dart';

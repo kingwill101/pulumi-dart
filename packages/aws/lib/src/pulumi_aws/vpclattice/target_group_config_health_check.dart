@@ -1,3 +1,0 @@
-library module_vpclattice_target_group_config_health_check;
-
-export 'target_group_config_health_check/target_group_config_health_check.dart';

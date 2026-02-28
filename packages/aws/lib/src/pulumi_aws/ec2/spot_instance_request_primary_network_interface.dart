@@ -1,3 +1,0 @@
-library module_ec2_spot_instance_request_primary_network_interface;
-
-export 'spot_instance_request_primary_network_interface/spot_instance_request_primary_network_interface.dart';

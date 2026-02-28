@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_user_defined_value;
-
-export 'insight_filters_user_defined_value/insight_filters_user_defined_value.dart';

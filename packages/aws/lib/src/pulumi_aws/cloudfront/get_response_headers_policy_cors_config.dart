@@ -1,3 +1,0 @@
-library module_cloudfront_get_response_headers_policy_cors_config;
-
-export 'get_response_headers_policy_cors_config/get_response_headers_policy_cors_config.dart';

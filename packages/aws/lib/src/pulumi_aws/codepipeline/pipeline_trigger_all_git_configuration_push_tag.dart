@@ -1,3 +1,0 @@
-library module_codepipeline_pipeline_trigger_all_git_configuration_push_tag;
-
-export 'pipeline_trigger_all_git_configuration_push_tag/pipeline_trigger_all_git_configuration_push_tag.dart';

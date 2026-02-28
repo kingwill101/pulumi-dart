@@ -1,3 +1,0 @@
-library module_autoscaling_group_instance_refresh_preferences;
-
-export 'group_instance_refresh_preferences/group_instance_refresh_preferences.dart';

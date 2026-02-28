@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_index_get_arn_get_arn_args_doc}
+/// Arguments for getArn.
+/// {@endtemplate}
+/// {@macro pulumi_index_get_arn_get_arn_args_doc}
+class GetArnArgs {
+  /// ARN to parse.
+  final pulumi.Input<String> arn;
+  final pulumi.Input<String>? id;
+
+  /// Creates a new [GetArnArgs].
+  /// [arn] ARN to parse.
+  /// [id] Optional.
+  GetArnArgs({
+    required String arn,
+    String? id,
+  })  : arn = pulumi.Input.asInput<String>(arn),
+        id = pulumi.Input.asOptionalInput<String>(id);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['arn'] = arn;
+    final idValue = id;
+    if (idValue != null) {
+      map['id'] = idValue;
+    }
+    return map;
+  }
+
+  factory GetArnArgs.fromMap(Map<String, dynamic> map) {
+    return GetArnArgs(
+      arn: map['arn'] as String,
+      id: map['id'] == null ? null : map['id'] as String,
+    );
+  }
+}

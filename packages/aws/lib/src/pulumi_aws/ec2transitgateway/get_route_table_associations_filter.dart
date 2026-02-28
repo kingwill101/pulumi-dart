@@ -1,3 +1,0 @@
-library module_ec2transitgateway_get_route_table_associations_filter;
-
-export 'get_route_table_associations_filter/get_route_table_associations_filter.dart';

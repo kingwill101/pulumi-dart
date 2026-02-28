@@ -1,3 +1,0 @@
-library module_signer_signing_profile_revocation_record;
-
-export 'signing_profile_revocation_record/signing_profile_revocation_record.dart';

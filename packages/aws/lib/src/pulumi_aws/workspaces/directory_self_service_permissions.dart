@@ -1,3 +1,0 @@
-library module_workspaces_directory_self_service_permissions;
-
-export 'directory_self_service_permissions/directory_self_service_permissions.dart';

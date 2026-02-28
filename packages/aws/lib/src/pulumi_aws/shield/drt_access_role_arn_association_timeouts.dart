@@ -1,3 +1,0 @@
-library module_shield_drt_access_role_arn_association_timeouts;
-
-export 'drt_access_role_arn_association_timeouts/drt_access_role_arn_association_timeouts.dart';

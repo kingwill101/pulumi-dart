@@ -1,3 +1,3 @@
 library pulumi_aws_notifications;
 
-export 'package:pulumi_aws/src/pulumi_aws/notifications.dart';
+export 'package:pulumi_aws/src/notifications.dart';

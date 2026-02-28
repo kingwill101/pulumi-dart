@@ -1,3 +1,3 @@
 library pulumi_aws_dax;
 
-export 'package:pulumi_aws/src/pulumi_aws/dax.dart';
+export 'package:pulumi_aws/src/dax.dart';

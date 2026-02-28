@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_notifications_notification_configuration_notification_configuration_args_doc}
+/// The set of arguments for NotificationConfiguration.
+/// {@endtemplate}
+/// {@macro pulumi_notifications_notification_configuration_notification_configuration_args_doc}
+class NotificationConfigurationArgs {
+  /// Aggregation preference of the NotificationConfiguration. Valid values: `LONG` (
+  /// aggregate notifications for 12 hours), `SHORT` (aggregate notifications for 5 minutes), `NONE` (don't aggregate
+  /// notifications). Default: `NONE`.
+  final pulumi.Input<String>? aggregationDuration;
+
+  /// Description of the NotificationConfiguration. Length constraints: Minimum length of 0,
+  /// maximum length of 256.
+  final pulumi.Input<String> description;
+
+  /// Name of the NotificationConfiguration. Supports RFC 3986's unreserved characters. Length
+  /// constraints: Minimum length of 1, maximum length of 64. Pattern: `[A-Za-z0-9_\-]+`.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<String>? name;
+
+  /// Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
+  /// configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those
+  /// defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [NotificationConfigurationArgs].
+  /// [aggregationDuration] Aggregation preference of the NotificationConfiguration. Valid values: `LONG` (
+  /// [description] Description of the NotificationConfiguration. Length constraints: Minimum length of 0,
+  /// [name] Name of the NotificationConfiguration. Supports RFC 3986's unreserved characters. Length
+  /// [tags] Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
+  NotificationConfigurationArgs({
+    String? aggregationDuration,
+    required String description,
+    String? name,
+    Map<String, String>? tags,
+  })  : aggregationDuration =
+            pulumi.Input.asOptionalInput<String>(aggregationDuration),
+        description = pulumi.Input.asInput<String>(description),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final aggregationDurationValue = aggregationDuration;
+    if (aggregationDurationValue != null) {
+      map['aggregationDuration'] = aggregationDurationValue;
+    }
+    map['description'] = description;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory NotificationConfigurationArgs.fromMap(Map<String, dynamic> map) {
+    return NotificationConfigurationArgs(
+      aggregationDuration: map['aggregationDuration'] == null
+          ? null
+          : map['aggregationDuration'] as String,
+      description: map['description'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

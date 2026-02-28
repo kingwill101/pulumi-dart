@@ -1,3 +1,0 @@
-library module_ec2_network_insights_path_filter_at_destination_source_port_range;
-
-export 'network_insights_path_filter_at_destination_source_port_range/network_insights_path_filter_at_destination_source_port_range.dart';

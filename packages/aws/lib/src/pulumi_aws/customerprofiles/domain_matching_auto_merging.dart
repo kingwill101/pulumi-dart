@@ -1,3 +1,0 @@
-library module_customerprofiles_domain_matching_auto_merging;
-
-export 'domain_matching_auto_merging/domain_matching_auto_merging.dart';

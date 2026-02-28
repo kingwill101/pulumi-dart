@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_rule_action_block_custom_response;
-
-export 'web_acl_rule_action_block_custom_response/web_acl_rule_action_block_custom_response.dart';

@@ -1,4 +1,0 @@
-library module_servicecatalog_organizations_access;
-
-export 'organizations_access/organizations_access_servicecatalog.dart';
-export 'organizations_access/organizations_access_servicecatalog_args.dart';

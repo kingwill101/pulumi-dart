@@ -1,3 +1,0 @@
-library module_budgets_budget_auto_adjust_data_historical_options;
-
-export 'budget_auto_adjust_data_historical_options/budget_auto_adjust_data_historical_options.dart';

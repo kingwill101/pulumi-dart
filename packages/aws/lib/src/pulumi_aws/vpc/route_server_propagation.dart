@@ -1,4 +1,0 @@
-library module_vpc_route_server_propagation;
-
-export 'route_server_propagation/route_server_propagation.dart';
-export 'route_server_propagation/route_server_propagation_args.dart';

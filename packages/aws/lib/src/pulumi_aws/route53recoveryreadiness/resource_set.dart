@@ -1,4 +1,0 @@
-library module_route53recoveryreadiness_resource_set;
-
-export 'resource_set/resource_set_route53recoveryreadiness.dart';
-export 'resource_set/resource_set_route53recoveryreadiness_args.dart';

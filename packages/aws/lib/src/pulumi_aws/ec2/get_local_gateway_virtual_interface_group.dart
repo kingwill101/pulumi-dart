@@ -1,5 +1,0 @@
-library module_ec2_get_local_gateway_virtual_interface_group;
-
-export 'get_local_gateway_virtual_interface_group/get_local_gateway_virtual_interface_group.dart';
-export 'get_local_gateway_virtual_interface_group/get_local_gateway_virtual_interface_group_args.dart';
-export 'get_local_gateway_virtual_interface_group/get_local_gateway_virtual_interface_group_result.dart';

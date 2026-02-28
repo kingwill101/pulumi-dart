@@ -1,3 +1,0 @@
-library module_lb_listener_rule_condition;
-
-export 'listener_rule_condition/listener_rule_condition_lb.dart';

@@ -1,3 +1,0 @@
-library module_storagegateway_nfs_file_share_cache_attributes;
-
-export 'nfs_file_share_cache_attributes/nfs_file_share_cache_attributes.dart';

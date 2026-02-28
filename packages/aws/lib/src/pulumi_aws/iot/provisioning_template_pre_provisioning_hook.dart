@@ -1,3 +1,0 @@
-library module_iot_provisioning_template_pre_provisioning_hook;
-
-export 'provisioning_template_pre_provisioning_hook/provisioning_template_pre_provisioning_hook.dart';

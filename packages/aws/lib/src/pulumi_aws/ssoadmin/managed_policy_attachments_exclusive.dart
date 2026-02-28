@@ -1,4 +1,0 @@
-library module_ssoadmin_managed_policy_attachments_exclusive;
-
-export 'managed_policy_attachments_exclusive/managed_policy_attachments_exclusive.dart';
-export 'managed_policy_attachments_exclusive/managed_policy_attachments_exclusive_args.dart';

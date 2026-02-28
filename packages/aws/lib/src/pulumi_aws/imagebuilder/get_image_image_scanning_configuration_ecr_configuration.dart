@@ -1,3 +1,0 @@
-library module_imagebuilder_get_image_image_scanning_configuration_ecr_configuration;
-
-export 'get_image_image_scanning_configuration_ecr_configuration/get_image_image_scanning_configuration_ecr_configuration.dart';

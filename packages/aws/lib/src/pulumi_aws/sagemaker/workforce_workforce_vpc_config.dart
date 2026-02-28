@@ -1,3 +1,0 @@
-library module_sagemaker_workforce_workforce_vpc_config;
-
-export 'workforce_workforce_vpc_config/workforce_workforce_vpc_config.dart';

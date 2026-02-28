@@ -1,4 +1,0 @@
-library module_vpc_endpoint_service_private_dns_verification;
-
-export 'endpoint_service_private_dns_verification/endpoint_service_private_dns_verification.dart';
-export 'endpoint_service_private_dns_verification/endpoint_service_private_dns_verification_args.dart';

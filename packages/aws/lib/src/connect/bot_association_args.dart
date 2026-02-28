@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bot_association_lex_bot.dart';
+
+/// {@template pulumi_connect_bot_association_bot_association_args_doc}
+/// The set of arguments for BotAssociation.
+/// {@endtemplate}
+/// {@macro pulumi_connect_bot_association_bot_association_args_doc}
+class BotAssociationArgs {
+  /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
+  final pulumi.Input<String> instanceId;
+
+  /// Configuration information of an Amazon Lex (V1) bot. Detailed below.
+  final pulumi.Input<BotAssociationLexBot> lexBot;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [BotAssociationArgs].
+  /// [instanceId] The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
+  /// [lexBot] Configuration information of an Amazon Lex (V1) bot. Detailed below.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  BotAssociationArgs({
+    required String instanceId,
+    required BotAssociationLexBot lexBot,
+    String? region,
+  })  : instanceId = pulumi.Input.asInput<String>(instanceId),
+        lexBot = pulumi.Input.asInput<BotAssociationLexBot>(lexBot),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['instanceId'] = instanceId;
+    map['lexBot'] =
+        pulumi.Input.mapInputValue<BotAssociationLexBot, Map<String, dynamic>>(
+            lexBot, (value) => value.toMap());
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory BotAssociationArgs.fromMap(Map<String, dynamic> map) {
+    return BotAssociationArgs(
+      instanceId: map['instanceId'] as String,
+      lexBot: BotAssociationLexBot.fromMap(
+          (map['lexBot'] as Map).cast<String, dynamic>()),
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

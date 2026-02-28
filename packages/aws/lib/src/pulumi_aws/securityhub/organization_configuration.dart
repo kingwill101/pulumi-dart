@@ -1,4 +1,0 @@
-library module_securityhub_organization_configuration;
-
-export 'organization_configuration/organization_configuration_securityhub.dart';
-export 'organization_configuration/organization_configuration_securityhub_args.dart';

@@ -1,3 +1,0 @@
-library module_lightsail_distribution_default_cache_behavior;
-
-export 'distribution_default_cache_behavior/distribution_default_cache_behavior_lightsail.dart';

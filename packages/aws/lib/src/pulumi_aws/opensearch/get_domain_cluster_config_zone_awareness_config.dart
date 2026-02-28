@@ -1,3 +1,0 @@
-library module_opensearch_get_domain_cluster_config_zone_awareness_config;
-
-export 'get_domain_cluster_config_zone_awareness_config/get_domain_cluster_config_zone_awareness_config_opensearch.dart';

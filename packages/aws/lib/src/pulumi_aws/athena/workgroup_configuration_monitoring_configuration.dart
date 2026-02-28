@@ -1,3 +1,0 @@
-library module_athena_workgroup_configuration_monitoring_configuration;
-
-export 'workgroup_configuration_monitoring_configuration/workgroup_configuration_monitoring_configuration.dart';

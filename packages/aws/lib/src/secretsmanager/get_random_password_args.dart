@@ -1,0 +1,137 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_secretsmanager_get_random_password_get_random_password_args_doc}
+/// Arguments for getRandomPassword.
+/// {@endtemplate}
+/// {@macro pulumi_secretsmanager_get_random_password_get_random_password_args_doc}
+class GetRandomPasswordArgs {
+  /// String of the characters that you don't want in the password.
+  final pulumi.Input<String>? excludeCharacters;
+
+  /// Specifies whether to exclude lowercase letters from the password.
+  final pulumi.Input<bool>? excludeLowercase;
+
+  /// Specifies whether to exclude numbers from the password.
+  final pulumi.Input<bool>? excludeNumbers;
+
+  /// Specifies whether to exclude the following punctuation characters from the password: ``! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ .``
+  final pulumi.Input<bool>? excludePunctuation;
+
+  /// Specifies whether to exclude uppercase letters from the password.
+  final pulumi.Input<bool>? excludeUppercase;
+
+  /// Specifies whether to include the space character.
+  final pulumi.Input<bool>? includeSpace;
+
+  /// Length of the password.
+  final pulumi.Input<int>? passwordLength;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.
+  final pulumi.Input<bool>? requireEachIncludedType;
+
+  /// Creates a new [GetRandomPasswordArgs].
+  /// [excludeCharacters] String of the characters that you don't want in the password.
+  /// [excludeLowercase] Specifies whether to exclude lowercase letters from the password.
+  /// [excludeNumbers] Specifies whether to exclude numbers from the password.
+  /// [excludePunctuation] Specifies whether to exclude the following punctuation characters from the password: ``! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ .``
+  /// [excludeUppercase] Specifies whether to exclude uppercase letters from the password.
+  /// [includeSpace] Specifies whether to include the space character.
+  /// [passwordLength] Length of the password.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [requireEachIncludedType] Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.
+  GetRandomPasswordArgs({
+    String? excludeCharacters,
+    bool? excludeLowercase,
+    bool? excludeNumbers,
+    bool? excludePunctuation,
+    bool? excludeUppercase,
+    bool? includeSpace,
+    int? passwordLength,
+    String? region,
+    bool? requireEachIncludedType,
+  })  : excludeCharacters =
+            pulumi.Input.asOptionalInput<String>(excludeCharacters),
+        excludeLowercase = pulumi.Input.asOptionalInput<bool>(excludeLowercase),
+        excludeNumbers = pulumi.Input.asOptionalInput<bool>(excludeNumbers),
+        excludePunctuation =
+            pulumi.Input.asOptionalInput<bool>(excludePunctuation),
+        excludeUppercase = pulumi.Input.asOptionalInput<bool>(excludeUppercase),
+        includeSpace = pulumi.Input.asOptionalInput<bool>(includeSpace),
+        passwordLength = pulumi.Input.asOptionalInput<int>(passwordLength),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        requireEachIncludedType =
+            pulumi.Input.asOptionalInput<bool>(requireEachIncludedType);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final excludeCharactersValue = excludeCharacters;
+    if (excludeCharactersValue != null) {
+      map['excludeCharacters'] = excludeCharactersValue;
+    }
+    final excludeLowercaseValue = excludeLowercase;
+    if (excludeLowercaseValue != null) {
+      map['excludeLowercase'] = excludeLowercaseValue;
+    }
+    final excludeNumbersValue = excludeNumbers;
+    if (excludeNumbersValue != null) {
+      map['excludeNumbers'] = excludeNumbersValue;
+    }
+    final excludePunctuationValue = excludePunctuation;
+    if (excludePunctuationValue != null) {
+      map['excludePunctuation'] = excludePunctuationValue;
+    }
+    final excludeUppercaseValue = excludeUppercase;
+    if (excludeUppercaseValue != null) {
+      map['excludeUppercase'] = excludeUppercaseValue;
+    }
+    final includeSpaceValue = includeSpace;
+    if (includeSpaceValue != null) {
+      map['includeSpace'] = includeSpaceValue;
+    }
+    final passwordLengthValue = passwordLength;
+    if (passwordLengthValue != null) {
+      map['passwordLength'] = passwordLengthValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final requireEachIncludedTypeValue = requireEachIncludedType;
+    if (requireEachIncludedTypeValue != null) {
+      map['requireEachIncludedType'] = requireEachIncludedTypeValue;
+    }
+    return map;
+  }
+
+  factory GetRandomPasswordArgs.fromMap(Map<String, dynamic> map) {
+    return GetRandomPasswordArgs(
+      excludeCharacters: map['excludeCharacters'] == null
+          ? null
+          : map['excludeCharacters'] as String,
+      excludeLowercase: map['excludeLowercase'] == null
+          ? null
+          : map['excludeLowercase'] as bool,
+      excludeNumbers:
+          map['excludeNumbers'] == null ? null : map['excludeNumbers'] as bool,
+      excludePunctuation: map['excludePunctuation'] == null
+          ? null
+          : map['excludePunctuation'] as bool,
+      excludeUppercase: map['excludeUppercase'] == null
+          ? null
+          : map['excludeUppercase'] as bool,
+      includeSpace:
+          map['includeSpace'] == null ? null : map['includeSpace'] as bool,
+      passwordLength:
+          map['passwordLength'] == null ? null : map['passwordLength'] as int,
+      region: map['region'] == null ? null : map['region'] as String,
+      requireEachIncludedType: map['requireEachIncludedType'] == null
+          ? null
+          : map['requireEachIncludedType'] as bool,
+    );
+  }
+}

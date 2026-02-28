@@ -1,3 +1,0 @@
-library module_costexplorer_cost_category_rule_rule_and_or_dimension;
-
-export 'cost_category_rule_rule_and_or_dimension/cost_category_rule_rule_and_or_dimension.dart';

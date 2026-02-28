@@ -1,3 +1,0 @@
-library module_cfg_configuration_aggregator_account_aggregation_source;
-
-export 'configuration_aggregator_account_aggregation_source/configuration_aggregator_account_aggregation_source.dart';

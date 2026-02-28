@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_ordered_cache_behavior_function_association;
-
-export 'distribution_ordered_cache_behavior_function_association/distribution_ordered_cache_behavior_function_association.dart';

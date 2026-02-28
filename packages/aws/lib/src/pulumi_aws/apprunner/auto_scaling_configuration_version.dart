@@ -1,4 +1,0 @@
-library module_apprunner_auto_scaling_configuration_version;
-
-export 'auto_scaling_configuration_version/auto_scaling_configuration_version.dart';
-export 'auto_scaling_configuration_version/auto_scaling_configuration_version_args.dart';

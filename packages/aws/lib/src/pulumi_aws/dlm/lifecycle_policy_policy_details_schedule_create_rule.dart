@@ -1,3 +1,0 @@
-library module_dlm_lifecycle_policy_policy_details_schedule_create_rule;
-
-export 'lifecycle_policy_policy_details_schedule_create_rule/lifecycle_policy_policy_details_schedule_create_rule.dart';

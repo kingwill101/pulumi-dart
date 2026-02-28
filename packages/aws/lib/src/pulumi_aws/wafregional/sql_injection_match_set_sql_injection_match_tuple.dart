@@ -1,3 +1,0 @@
-library module_wafregional_sql_injection_match_set_sql_injection_match_tuple;
-
-export 'sql_injection_match_set_sql_injection_match_tuple/sql_injection_match_set_sql_injection_match_tuple_wafregional.dart';

@@ -1,3 +1,0 @@
-library module_eks_get_addon_pod_identity_association;
-
-export 'get_addon_pod_identity_association/get_addon_pod_identity_association.dart';

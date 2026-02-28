@@ -1,5 +1,0 @@
-library module_connect_get_contact_flow_module;
-
-export 'get_contact_flow_module/get_contact_flow_module.dart';
-export 'get_contact_flow_module/get_contact_flow_module_args.dart';
-export 'get_contact_flow_module/get_contact_flow_module_result.dart';

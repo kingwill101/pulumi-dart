@@ -1,3 +1,0 @@
-library module_kendra_get_index_document_metadata_configuration_update_search;
-
-export 'get_index_document_metadata_configuration_update_search/get_index_document_metadata_configuration_update_search.dart';

@@ -1,3 +1,0 @@
-library module_ecs_task_definition_ephemeral_storage;
-
-export 'task_definition_ephemeral_storage/task_definition_ephemeral_storage.dart';

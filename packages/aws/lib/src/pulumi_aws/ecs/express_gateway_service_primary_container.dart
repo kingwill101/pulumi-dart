@@ -1,3 +1,0 @@
-library module_ecs_express_gateway_service_primary_container;
-
-export 'express_gateway_service_primary_container/express_gateway_service_primary_container.dart';

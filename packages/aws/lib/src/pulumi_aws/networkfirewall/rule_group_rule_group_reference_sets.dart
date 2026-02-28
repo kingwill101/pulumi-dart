@@ -1,3 +1,0 @@
-library module_networkfirewall_rule_group_rule_group_reference_sets;
-
-export 'rule_group_rule_group_reference_sets/rule_group_rule_group_reference_sets.dart';

@@ -1,3 +1,0 @@
-library module_verifiedaccess_trust_provider_native_application_oidc_options;
-
-export 'trust_provider_native_application_oidc_options/trust_provider_native_application_oidc_options.dart';

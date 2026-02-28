@@ -1,3 +1,0 @@
-library module_kinesis_firehose_delivery_stream_snowflake_configuration_s3_configuration;
-
-export 'firehose_delivery_stream_snowflake_configuration_s3_configuration/firehose_delivery_stream_snowflake_configuration_s3_configuration.dart';

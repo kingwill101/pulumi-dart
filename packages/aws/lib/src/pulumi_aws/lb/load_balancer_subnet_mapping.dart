@@ -1,3 +1,0 @@
-library module_lb_load_balancer_subnet_mapping;
-
-export 'load_balancer_subnet_mapping/load_balancer_subnet_mapping_lb.dart';

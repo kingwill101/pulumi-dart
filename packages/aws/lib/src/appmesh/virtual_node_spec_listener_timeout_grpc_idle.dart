@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class VirtualNodeSpecListenerTimeoutGrpcIdle {
+  /// Unit of time. Valid values: `ms`, `s`.
+  final String unit;
+
+  /// Number of time units. Minimum value of `0`.
+  final int value;
+
+  /// Creates a new [VirtualNodeSpecListenerTimeoutGrpcIdle].
+  /// [unit] Unit of time. Valid values: `ms`, `s`.
+  /// [value] Number of time units. Minimum value of `0`.
+  VirtualNodeSpecListenerTimeoutGrpcIdle({
+    required this.unit,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['unit'] = unit;
+    map['value'] = value;
+    return map;
+  }
+
+  factory VirtualNodeSpecListenerTimeoutGrpcIdle.fromMap(
+      Map<String, dynamic> map) {
+    return VirtualNodeSpecListenerTimeoutGrpcIdle(
+      unit: map['unit'] as String,
+      value: map['value'] as int,
+    );
+  }
+}

@@ -1,3 +1,0 @@
-library module_wafv2_rule_group_rule_statement_rate_based_statement_custom_key;
-
-export 'rule_group_rule_statement_rate_based_statement_custom_key/rule_group_rule_statement_rate_based_statement_custom_key.dart';

@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_record_state;
-
-export 'automation_rule_criteria_record_state/automation_rule_criteria_record_state.dart';

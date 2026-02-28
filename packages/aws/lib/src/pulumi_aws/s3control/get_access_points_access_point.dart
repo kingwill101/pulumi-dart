@@ -1,3 +1,0 @@
-library module_s3control_get_access_points_access_point;
-
-export 'get_access_points_access_point/get_access_points_access_point.dart';

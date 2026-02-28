@@ -1,3 +1,0 @@
-library module_efs_access_point_root_directory;
-
-export 'access_point_root_directory/access_point_root_directory.dart';

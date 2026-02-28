@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_updated_at_date_range;
-
-export 'automation_rule_criteria_updated_at_date_range/automation_rule_criteria_updated_at_date_range.dart';

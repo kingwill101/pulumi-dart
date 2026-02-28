@@ -1,3 +1,0 @@
-library module_opensearch_domain_advanced_security_options;
-
-export 'domain_advanced_security_options/domain_advanced_security_options_opensearch.dart';

@@ -1,3 +1,0 @@
-library module_ec2_default_credit_specification_timeouts;
-
-export 'default_credit_specification_timeouts/default_credit_specification_timeouts.dart';

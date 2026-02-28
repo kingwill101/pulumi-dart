@@ -1,3 +1,3 @@
 library pulumi_aws_dynamodb;
 
-export 'package:pulumi_aws/src/pulumi_aws/dynamodb.dart';
+export 'package:pulumi_aws/src/dynamodb.dart';
