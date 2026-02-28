@@ -4,6 +4,19 @@ import 'dart:io';
 import 'command.dart';
 import 'stack.dart';
 
+/// Summary metadata for a stack returned by `pulumi stack ls --json`.
+class AutomationStackSummary {
+  const AutomationStackSummary({
+    required this.name,
+    required this.current,
+    required this.raw,
+  });
+
+  final String name;
+  final bool current;
+  final Map<String, dynamic> raw;
+}
+
 Future<PulumiCommandResult> _defaultCommandRunner(
   PulumiCommandRequest request,
 ) async {
@@ -256,6 +269,63 @@ class LocalWorkspace {
       args.add('--force');
     }
     await runPulumiCommand(args);
+  }
+
+  /// Returns information about the currently authenticated user.
+  Future<Map<String, dynamic>> whoAmI() async {
+    final jsonResult = await runPulumiCommand(<String>[
+      'whoami',
+      '--json',
+    ], check: false);
+    if (jsonResult.succeeded) {
+      final decoded = jsonDecode(jsonResult.stdout);
+      if (decoded is Map) {
+        return decoded.map((key, value) => MapEntry('$key', value));
+      }
+      throw FormatException('Expected object JSON from `pulumi whoami --json`');
+    }
+
+    final textResult = await runPulumiCommand(<String>['whoami']);
+    return <String, dynamic>{'user': textResult.stdout.trim()};
+  }
+
+  /// Returns stack summaries from `pulumi stack ls --json`.
+  Future<List<AutomationStackSummary>> listStacks({bool all = false}) async {
+    final args = <String>['stack', 'ls', '--json'];
+    if (all) {
+      args.add('--all');
+    }
+
+    final result = await runPulumiCommand(args);
+    final decoded = jsonDecode(result.stdout);
+    if (decoded is! List) {
+      throw FormatException(
+        'Expected array JSON from `pulumi stack ls --json`',
+      );
+    }
+
+    return decoded
+        .whereType<Map>()
+        .map((entry) {
+          final mapped = entry.map((key, value) => MapEntry('$key', value));
+          return AutomationStackSummary(
+            name: '${mapped['name'] ?? ''}',
+            current: mapped['current'] == true,
+            raw: mapped,
+          );
+        })
+        .toList(growable: false);
+  }
+
+  /// Returns the currently selected stack summary, if one exists.
+  Future<AutomationStackSummary?> stack() async {
+    final stacks = await listStacks();
+    for (final summary in stacks) {
+      if (summary.current) {
+        return summary;
+      }
+    }
+    return null;
   }
 
   bool _looksLikeMissingStackError(PulumiCommandResult result) {

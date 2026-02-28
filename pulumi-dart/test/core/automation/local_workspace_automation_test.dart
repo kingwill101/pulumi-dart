@@ -480,5 +480,86 @@ void main() {
         equals('pulumi-dart-dev'),
       );
     });
+
+    test('whoAmI uses json output when supported', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: '{"user":"alice","url":"https://app.pulumi.com"}',
+          stderr: '',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+
+      final who = await workspace.whoAmI();
+
+      expect(who['user'], equals('alice'));
+      expect(
+        runner.requests.single.arguments,
+        equals(<String>['whoami', '--json']),
+      );
+    });
+
+    test('whoAmI falls back to plain output on older cli behavior', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(
+          exitCode: 1,
+          stdout: '',
+          stderr: 'unknown flag: --json',
+        ),
+        const PulumiCommandResult(exitCode: 0, stdout: 'alice\n', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+
+      final who = await workspace.whoAmI();
+
+      expect(who['user'], equals('alice'));
+      expect(
+        runner.requests[0].arguments,
+        equals(<String>['whoami', '--json']),
+      );
+      expect(runner.requests[1].arguments, equals(<String>['whoami']));
+    });
+
+    test('listStacks and stack parse current stack summary', () async {
+      const payload =
+          '[{"name":"dev","current":true},{"name":"stage","current":false}]';
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: payload, stderr: ''),
+        const PulumiCommandResult(exitCode: 0, stdout: payload, stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+
+      final allStacks = await workspace.listStacks(all: true);
+      final current = await workspace.stack();
+
+      expect(allStacks, hasLength(2));
+      expect(allStacks.first.name, equals('dev'));
+      expect(allStacks.first.current, isTrue);
+      expect(current?.name, equals('dev'));
+      expect(
+        runner.requests[0].arguments,
+        equals(<String>['stack', 'ls', '--json', '--all']),
+      );
+      expect(
+        runner.requests[1].arguments,
+        equals(<String>['stack', 'ls', '--json']),
+      );
+    });
   });
 }
