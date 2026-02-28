@@ -1,0 +1,67 @@
+.hero {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(38, 113, 255, 0.35), transparent 45%),
+    radial-gradient(circle at 92% 18%, rgba(255, 169, 31, 0.32), transparent 45%),
+    linear-gradient(140deg, #071428 0%, #11264a 55%, #1b2440 100%);
+  color: #f4f7ff;
+  padding: 5.5rem 0 4.5rem;
+}
+
+.eyebrow {
+  color: #9dc1ff;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.08;
+  margin: 0 0 0.9rem;
+  max-width: 16ch;
+}
+
+.subtitle {
+  color: #c9d8ff;
+  max-width: 66ch;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.main {
+  padding: 2rem 0 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 996px) {
+  .hero {
+    padding: 3.4rem 0 2.8rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,118 @@
+---
+sidebar_position: 3
+---
+
+# Create Your First Pulumi Dart Project
+
+This guide creates a stack that provisions `random:RandomPet` and exports its generated name.
+
+## 1. Create project structure
+
+```bash
+mkdir pulumi-dart-quickstart
+cd pulumi-dart-quickstart
+mkdir -p bin
+```
+
+Resulting layout:
+
+```text
+pulumi-dart-quickstart/
+  Pulumi.yaml
+  pubspec.yaml
+  bin/
+    pulumi_dart_quickstart.dart
+```
+
+## 2. Define `Pulumi.yaml`
+
+```yaml title="Pulumi.yaml"
+name: pulumi-dart-quickstart
+runtime: dart
+description: First Pulumi program in Dart
+```
+
+## 3. Define `pubspec.yaml`
+
+### Option A: use published packages
+
+```yaml title="pubspec.yaml"
+name: pulumi_dart_quickstart
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi: ^1.0.0
+  pulumi_random: ^4.19.1
+```
+
+### Option B: use Git source directly (community flow)
+
+```yaml title="pubspec.yaml (Git dependencies)"
+name: pulumi_dart_quickstart
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi:
+    git:
+      url: https://github.com/pulumi/pulumi-dart.git
+      path: pulumi-dart
+  pulumi_random:
+    git:
+      url: https://github.com/pulumi/pulumi-dart.git
+      path: packages/random
+```
+
+Install dependencies:
+
+```bash
+dart pub get
+```
+
+## 4. Add stack program
+
+```dart title="bin/pulumi_dart_quickstart.dart"
+import 'package:pulumi/pulumi.dart';
+import 'package:pulumi_random/index.dart' as random;
+
+class QuickstartStack extends Stack {
+  QuickstartStack() {
+    final pet = random.RandomPet(
+      'pet',
+      args: random.RandomPetArgs(prefix: 'dart'),
+    );
+
+    registerOutputs({'petName': pet.id});
+  }
+}
+
+Future<void> main() async {
+  await Deployment.runOrThrow(() => QuickstartStack());
+}
+```
+
+## 5. Validate Dart project state
+
+```bash
+dart analyze
+dart run bin/pulumi_dart_quickstart.dart || true
+```
+
+`dart run` outside Pulumi will fail or no-op for deployment RPCs; this is expected. Real execution is through Pulumi CLI.
+
+## Next steps
+
+- [Preview and deploy](./deploy.md)
+
+## Related links
+
+- [Use published providers](../providers/use-published-providers.md)
+- [Generate provider SDKs from schemas](../providers/generate-provider-sdk.md)
+- [Project templates](../reference/project-templates.md)
