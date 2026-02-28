@@ -78,3 +78,88 @@ class PulumiCommandException implements Exception {
         'stderr:\n${result.stderr}';
   }
 }
+
+/// An error resulting from a failed Pulumi command.
+class CommandError extends PulumiCommandException {
+  const CommandError({required super.request, required super.result});
+}
+
+/// Thrown when selecting a stack that does not exist.
+class StackNotFoundError extends CommandError {
+  const StackNotFoundError({required super.request, required super.result});
+}
+
+/// Thrown when creating a stack that already exists.
+class StackAlreadyExistsError extends CommandError {
+  const StackAlreadyExistsError({
+    required super.request,
+    required super.result,
+  });
+}
+
+/// Thrown when another update is already in progress.
+class ConcurrentUpdateError extends CommandError {
+  const ConcurrentUpdateError({required super.request, required super.result});
+}
+
+/// Thrown when inline source execution fails at runtime.
+class InlineSourceRuntimeError extends CommandError {
+  const InlineSourceRuntimeError({
+    required super.request,
+    required super.result,
+  });
+}
+
+/// Thrown when a Pulumi program fails at runtime.
+class RuntimeError extends CommandError {
+  const RuntimeError({required super.request, required super.result});
+}
+
+/// Thrown when a Pulumi program fails to compile/build.
+class CompilationError extends CommandError {
+  const CompilationError({required super.request, required super.result});
+}
+
+final RegExp _notFoundRegex = RegExp(r'no stack named.*found');
+final RegExp _alreadyExistsRegex = RegExp(r'stack.*already exists');
+final RegExp _runtimeErrorRegex = RegExp(
+  r'failed with an unhandled exception|panic: runtime error|an unhandled error occurred:',
+);
+final RegExp _compilationErrorRegex = RegExp(
+  r'Build FAILED.|Unable to compile TypeScript|: syntax error:|: undefined:',
+);
+const String _conflictText =
+    '[409] Conflict: Another update is currently in progress.';
+const String _diyBackendConflictText = 'the stack is currently locked by';
+const String _inlineSourceErrorText = 'python inline source runtime error';
+
+/// Maps a failed command to a more specific automation error subtype.
+PulumiCommandException createCommandException(
+  PulumiCommandRequest request,
+  PulumiCommandResult result,
+) {
+  final stderr = result.stderr;
+  final stdout = result.stdout;
+
+  if (_notFoundRegex.hasMatch(stderr)) {
+    return StackNotFoundError(request: request, result: result);
+  }
+  if (_alreadyExistsRegex.hasMatch(stderr)) {
+    return StackAlreadyExistsError(request: request, result: result);
+  }
+  if (stderr.contains(_conflictText) ||
+      stderr.contains(_diyBackendConflictText)) {
+    return ConcurrentUpdateError(request: request, result: result);
+  }
+  if (_compilationErrorRegex.hasMatch(stdout)) {
+    return CompilationError(request: request, result: result);
+  }
+  if (stdout.contains(_inlineSourceErrorText)) {
+    return InlineSourceRuntimeError(request: request, result: result);
+  }
+  if (_runtimeErrorRegex.hasMatch(stdout)) {
+    return RuntimeError(request: request, result: result);
+  }
+
+  return CommandError(request: request, result: result);
+}

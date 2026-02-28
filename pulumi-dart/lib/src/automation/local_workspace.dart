@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'command.dart';
 import 'stack.dart';
+import 'version.dart';
 
 /// Summary metadata for a stack returned by `pulumi stack ls --json`.
 class AutomationStackSummary {
@@ -55,6 +56,9 @@ class LocalWorkspaceOptions {
     this.environmentVariables = const <String, String>{},
     this.pulumiBinary = 'pulumi',
     this.runInShell = true,
+    this.skipVersionCheck = false,
+    this.remote = false,
+    this.remoteArgs = const <String>[],
     this.commandRunner,
     this.stdoutEncoding = utf8,
     this.stderrEncoding = utf8,
@@ -74,6 +78,15 @@ class LocalWorkspaceOptions {
   /// Whether to run commands in a shell.
   final bool runInShell;
 
+  /// Whether to skip Pulumi CLI version compatibility checks.
+  final bool skipVersionCheck;
+
+  /// Whether this workspace should run operations in remote mode.
+  final bool remote;
+
+  /// Additional CLI args appended for remote operations.
+  final List<String> remoteArgs;
+
   /// Optional command runner override (primarily for tests/custom execution).
   final PulumiCommandRunner? commandRunner;
 
@@ -88,6 +101,9 @@ class LocalWorkspaceOptions {
     Map<String, String>? environmentVariables,
     String? pulumiBinary,
     bool? runInShell,
+    bool? skipVersionCheck,
+    bool? remote,
+    List<String>? remoteArgs,
     PulumiCommandRunner? commandRunner,
     Encoding? stdoutEncoding,
     Encoding? stderrEncoding,
@@ -97,6 +113,9 @@ class LocalWorkspaceOptions {
       environmentVariables: environmentVariables ?? this.environmentVariables,
       pulumiBinary: pulumiBinary ?? this.pulumiBinary,
       runInShell: runInShell ?? this.runInShell,
+      skipVersionCheck: skipVersionCheck ?? this.skipVersionCheck,
+      remote: remote ?? this.remote,
+      remoteArgs: remoteArgs ?? this.remoteArgs,
       commandRunner: commandRunner ?? this.commandRunner,
       stdoutEncoding: stdoutEncoding ?? this.stdoutEncoding,
       stderrEncoding: stderrEncoding ?? this.stderrEncoding,
@@ -111,6 +130,9 @@ class LocalWorkspace {
     required this.environmentVariables,
     required this.pulumiBinary,
     required this.runInShell,
+    required this.skipVersionCheck,
+    required this.remote,
+    required this.remoteArgs,
     required PulumiCommandRunner commandRunner,
     required this.stdoutEncoding,
     required this.stderrEncoding,
@@ -133,6 +155,9 @@ class LocalWorkspace {
       ),
       pulumiBinary: options.pulumiBinary,
       runInShell: options.runInShell,
+      skipVersionCheck: options.skipVersionCheck,
+      remote: options.remote,
+      remoteArgs: List<String>.unmodifiable(options.remoteArgs),
       commandRunner: options.commandRunner ?? _defaultCommandRunner,
       stdoutEncoding: options.stdoutEncoding,
       stderrEncoding: options.stderrEncoding,
@@ -178,6 +203,15 @@ class LocalWorkspace {
   /// Whether commands run in a shell.
   final bool runInShell;
 
+  /// Whether Pulumi version compatibility checks are disabled.
+  final bool skipVersionCheck;
+
+  /// Whether remote mode is enabled for stack operations.
+  final bool remote;
+
+  /// Remote operation CLI args.
+  final List<String> remoteArgs;
+
   /// Encoding for stdout.
   final Encoding stdoutEncoding;
 
@@ -193,13 +227,16 @@ class LocalWorkspace {
     String? workingDirectory,
     Map<String, String>? extraEnvironment,
   }) async {
+    final effectiveArgs = _remoteArgsForCommand(arguments);
+
     final request = PulumiCommandRequest(
       executable: pulumiBinary,
-      arguments: arguments,
+      arguments: effectiveArgs,
       workingDirectory: workingDirectory ?? workDir,
       environment: <String, String>{
         ...Platform.environment,
         ...environmentVariables,
+        if (remote) 'PULUMI_EXPERIMENTAL': 'true',
         if (extraEnvironment != null) ...extraEnvironment,
       },
       runInShell: runInShell,
@@ -209,9 +246,34 @@ class LocalWorkspace {
 
     final result = await _commandRunner(request);
     if (check && !result.succeeded) {
-      throw PulumiCommandException(request: request, result: result);
+      throw createCommandException(request, result);
     }
     return result;
+  }
+
+  List<String> _remoteArgsForCommand(List<String> arguments) {
+    if (!remote || remoteArgs.isEmpty || !_supportsRemoteArguments(arguments)) {
+      return List<String>.from(arguments);
+    }
+    return <String>[...arguments, ...remoteArgs];
+  }
+
+  bool _supportsRemoteArguments(List<String> arguments) {
+    if (arguments.isEmpty) {
+      return false;
+    }
+    final command = arguments.first;
+    if (command == 'up' ||
+        command == 'preview' ||
+        command == 'refresh' ||
+        command == 'destroy') {
+      return true;
+    }
+    if (command == 'stack' && arguments.length > 1) {
+      final stackCommand = arguments[1];
+      return stackCommand == 'init' || stackCommand == 'select';
+    }
+    return false;
   }
 
   /// Creates a stack in this workspace.
@@ -269,6 +331,30 @@ class LocalWorkspace {
       args.add('--force');
     }
     await runPulumiCommand(args);
+  }
+
+  /// Resolves and validates the installed Pulumi CLI version.
+  Future<PulumiVersion?> pulumiVersion({
+    PulumiVersion minimumVersion = minimumPulumiVersion,
+    bool? skipCheck,
+  }) async {
+    final result = await runPulumiCommand(
+      <String>['version'],
+      extraEnvironment: const <String, String>{
+        'PULUMI_SKIP_UPDATE_CHECK': 'true',
+      },
+    );
+
+    final output = result.stdout.trim().split('\n').first.trim();
+    final shouldSkipCheck =
+        skipCheck == true ||
+        skipVersionCheck ||
+        Platform.environment.containsKey(skipVersionCheckVar);
+    return parseAndValidatePulumiVersion(
+      minimumVersion,
+      output,
+      shouldSkipCheck,
+    );
   }
 
   /// Returns information about the currently authenticated user.

@@ -561,5 +561,55 @@ void main() {
         equals(<String>['stack', 'ls', '--json']),
       );
     });
+
+    test('pulumiVersion resolves and validates CLI version output', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: 'v3.140.0\n',
+          stderr: '',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+
+      final version = await workspace.pulumiVersion();
+
+      expect(version, isNotNull);
+      expect(version.toString(), equals('3.140.0'));
+      expect(runner.requests.single.arguments, equals(<String>['version']));
+      expect(
+        runner.requests.single.environment['PULUMI_SKIP_UPDATE_CHECK'],
+        equals('true'),
+      );
+    });
+
+    test(
+      'pulumiVersion throws on invalid output when version checks enabled',
+      () async {
+        final runner = _FakeRunner(<PulumiCommandResult>[
+          const PulumiCommandResult(
+            exitCode: 0,
+            stdout: 'not-a-version',
+            stderr: '',
+          ),
+        ]);
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+          ),
+        );
+
+        await expectLater(
+          workspace.pulumiVersion(skipCheck: false),
+          throwsA(isA<AutomationInvalidVersionException>()),
+        );
+      },
+    );
   });
 }
