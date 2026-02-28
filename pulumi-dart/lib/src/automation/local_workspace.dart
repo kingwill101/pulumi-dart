@@ -223,7 +223,7 @@ class LocalWorkspace {
 
     return LocalWorkspace._(
       workDir: workDir,
-      environmentVariables: Map<String, String>.unmodifiable(
+      environmentVariables: Map<String, String>.from(
         options.environmentVariables,
       ),
       pulumiBinary: options.pulumiBinary,
@@ -269,6 +269,28 @@ class LocalWorkspace {
 
   /// Environment variables merged into every command.
   final Map<String, String> environmentVariables;
+
+  /// Returns workspace-scoped environment variables.
+  Map<String, String> getEnvVars() {
+    return Map<String, String>.unmodifiable(environmentVariables);
+  }
+
+  /// Replaces all workspace-scoped environment variables.
+  void setEnvVars(Map<String, String> envVars) {
+    environmentVariables
+      ..clear()
+      ..addAll(envVars);
+  }
+
+  /// Sets a single workspace-scoped environment variable.
+  void setEnvVar(String key, String value) {
+    environmentVariables[key] = value;
+  }
+
+  /// Removes a workspace-scoped environment variable.
+  void unsetEnvVar(String key) {
+    environmentVariables.remove(key);
+  }
 
   /// Pulumi executable path/name.
   final String pulumiBinary;

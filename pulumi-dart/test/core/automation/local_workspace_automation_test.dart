@@ -481,6 +481,35 @@ void main() {
       );
     });
 
+    test('workspace env var APIs mutate scoped environment', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+          environmentVariables: const <String, String>{'A': '1'},
+        ),
+      );
+
+      expect(workspace.getEnvVars()['A'], equals('1'));
+
+      workspace.setEnvVar('B', '2');
+      workspace.unsetEnvVar('A');
+      workspace.setEnvVars(const <String, String>{'C': '3'});
+
+      expect(workspace.getEnvVars().containsKey('A'), isFalse);
+      expect(workspace.getEnvVars()['B'], isNull);
+      expect(workspace.getEnvVars()['C'], equals('3'));
+
+      await workspace.runPulumiCommand(<String>['whoami'], check: false);
+
+      expect(runner.requests.single.environment['A'], isNull);
+      expect(runner.requests.single.environment['B'], isNull);
+      expect(runner.requests.single.environment['C'], equals('3'));
+    });
+
     test('whoAmI uses json output when supported', () async {
       final runner = _FakeRunner(<PulumiCommandResult>[
         const PulumiCommandResult(
