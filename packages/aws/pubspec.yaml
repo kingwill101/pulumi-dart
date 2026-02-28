@@ -9,5 +9,8 @@ topics:
     - aws
 environment:
     sdk: ^3.10.0
+resolution: workspace
 dependencies:
     pulumi: ^1.0.0
+dev_dependencies:
+    very_good_analysis: any

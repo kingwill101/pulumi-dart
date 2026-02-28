@@ -1,0 +1,16 @@
+name: pulumi_packages_workspace
+publish_to: none
+environment:
+  sdk: ^3.10.0
+workspace:
+  - aws
+  - awsx
+  - gcp
+  - gcp-global-cloudrun
+  - google-native
+  - policy
+  - random
+  - terraform
+dependency_overrides:
+  pulumi:
+    path: ../pulumi-dart
