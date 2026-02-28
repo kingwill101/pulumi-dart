@@ -77,6 +77,28 @@ template:
       expect(decoded['description'], equals('saved'));
     });
 
+    test(
+      'typed project settings round-trip through workspace helpers',
+      () async {
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(workDir: tempDir.path),
+        );
+        final settings = ProjectSettings(
+          name: 'typed-project',
+          runtime: const ProjectRuntimeInfo(name: 'dart'),
+          description: 'typed settings',
+        );
+
+        await workspace.saveProjectSettingsObject(settings);
+        final loaded = await workspace.projectSettingsObject();
+
+        expect(loaded.name, equals('typed-project'));
+        expect(loaded.runtime, isA<ProjectRuntimeInfo>());
+        expect((loaded.runtime as ProjectRuntimeInfo).name, equals('dart'));
+        expect(loaded.description, equals('typed settings'));
+      },
+    );
+
     test('stackSettings normalizes serialized key casing', () async {
       final file = File(p.join(tempDir.path, 'Pulumi.dev.yaml'));
       await file.writeAsString('''
@@ -113,6 +135,26 @@ config:
       expect(decoded['encryptedkey'], equals('abc123'));
       expect(decoded.containsKey('secretsProvider'), isFalse);
       expect(decoded.containsKey('encryptedKey'), isFalse);
+    });
+
+    test('typed stack settings round-trip through workspace helpers', () async {
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(workDir: tempDir.path),
+      );
+
+      await workspace.saveStackSettingsObject(
+        'org/project/dev',
+        const StackSettings(
+          secretsProvider: 'passphrase',
+          encryptedKey: 'abc123',
+          config: <String, dynamic>{'proj:value': 'hello'},
+        ),
+      );
+
+      final loaded = await workspace.stackSettingsObject('org/project/dev');
+      expect(loaded.secretsProvider, equals('passphrase'));
+      expect(loaded.encryptedKey, equals('abc123'));
+      expect(loaded.config?['proj:value'], equals('hello'));
     });
 
     test('plugin commands and listPlugins use expected CLI shapes', () async {

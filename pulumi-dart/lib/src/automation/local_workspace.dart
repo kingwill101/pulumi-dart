@@ -6,6 +6,7 @@ import 'package:yaml/yaml.dart';
 
 import 'command.dart';
 import 'config.dart';
+import 'settings.dart';
 import 'stack.dart';
 import 'version.dart';
 
@@ -477,6 +478,16 @@ class LocalWorkspace {
     await _writeSettings(path, settings);
   }
 
+  /// Returns typed project settings.
+  Future<ProjectSettings> projectSettingsObject() async {
+    return ProjectSettings.fromJson(await projectSettings());
+  }
+
+  /// Saves typed project settings.
+  Future<void> saveProjectSettingsObject(ProjectSettings settings) {
+    return saveProjectSettings(settings.toJson());
+  }
+
   /// Returns stack settings from `Pulumi.<stack>.{yaml,yml,json}`.
   Future<Map<String, dynamic>> stackSettings(String stackName) async {
     final stackSettingsName = _stackSettingsName(stackName);
@@ -520,6 +531,19 @@ class LocalWorkspace {
     }
 
     await _writeSettings(path, serialized);
+  }
+
+  /// Returns typed stack settings.
+  Future<StackSettings> stackSettingsObject(String stackName) async {
+    return StackSettings.fromJson(await stackSettings(stackName));
+  }
+
+  /// Saves typed stack settings.
+  Future<void> saveStackSettingsObject(
+    String stackName,
+    StackSettings settings,
+  ) {
+    return saveStackSettings(stackName, settings.toJson());
   }
 
   /// Installs a Pulumi plugin in this workspace.
