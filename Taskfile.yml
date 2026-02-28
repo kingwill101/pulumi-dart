@@ -161,6 +161,19 @@ tasks:
         set -eu
         PROJECT_DIR="{{.GEN_PROJECT_DIR}}"
         mkdir -p "${PROJECT_DIR}"
+        LOCAL_OVERRIDES=""
+        for PKG_PUBSPEC in "{{.PACKAGES_DIR}}"/*/pubspec.yaml; do
+          [ -f "${PKG_PUBSPEC}" ] || continue
+          PKG_NAME="$(sed -n 's/^name:[[:space:]]*//p' "${PKG_PUBSPEC}" | head -n 1)"
+          [ -n "${PKG_NAME}" ] || continue
+          if [ "${PKG_NAME}" = "pulumi" ]; then
+            continue
+          fi
+          PKG_DIR="$(dirname "${PKG_PUBSPEC}")"
+          LOCAL_OVERRIDES="${LOCAL_OVERRIDES}
+          ${PKG_NAME}:
+            path: ${PKG_DIR}"
+        done
 
         cat > "${PROJECT_DIR}/Pulumi.yaml" <<EOF
         name: dart-sdk-gen
@@ -179,6 +192,7 @@ tasks:
         dependency_overrides:
           pulumi:
             path: {{.PULUMI_DART_PATH}}
+        ${LOCAL_OVERRIDES}
         EOF
 
         (cd "${PROJECT_DIR}" && dart pub get)
@@ -227,6 +241,17 @@ tasks:
         FORMAT_GENERATED="{{.FORMAT_GENERATED}}"
         STRICT_FORMAT="{{.STRICT_FORMAT}}"
         EXAMPLE_BACKUP_DIR=""
+        DOCS_BACKUP_DIR=""
+        PACKAGE_GIT_REPO_URL="$(git -C "{{.ROOT_DIR}}" remote get-url origin 2>/dev/null || true)"
+        case "${PACKAGE_GIT_REPO_URL}" in
+          git@github.com:*)
+            PACKAGE_GIT_REPO_URL="https://github.com/${PACKAGE_GIT_REPO_URL#git@github.com:}"
+            ;;
+        esac
+        export PULUMI_DART_SDK_GIT_URL="${PACKAGE_GIT_REPO_URL}"
+        export PULUMI_DART_SDK_GIT_REF="${PULUMI_DART_SDK_GIT_REF:-main}"
+        export PULUMI_DART_DEPENDENCY_REGISTRY="{{.PACKAGES_DIR}}/sdk_dependency_registry.yaml"
+        export PULUMI_DART_UPDATE_EXISTING_PUBSPEC="true"
         export PATH="{{.LANGUAGE_HOST_DIR}}:${PATH}"
 
         echo "Generating Dart SDK for ${PACKAGE}..."
@@ -243,6 +268,15 @@ tasks:
           cp -R "${OUTPUT_DIR}/example" "${EXAMPLE_BACKUP_DIR}/example"
           echo "Preserved existing examples from ${OUTPUT_DIR}/example"
         fi
+        if [ -d "${OUTPUT_DIR}" ]; then
+          DOCS_BACKUP_DIR="$(mktemp -d)"
+          for DOC_FILE in README.md CHANGELOG.md analysis_options.yaml; do
+            if [ -f "${OUTPUT_DIR}/${DOC_FILE}" ]; then
+              cp "${OUTPUT_DIR}/${DOC_FILE}" "${DOCS_BACKUP_DIR}/${DOC_FILE}"
+              echo "Preserved existing ${OUTPUT_DIR}/${DOC_FILE}"
+            fi
+          done
+        fi
 
         rm -rf "${OUTPUT_DIR}"
         cp -R "${PROJECT_DIR}/sdks/${PACKAGE}" "${OUTPUT_DIR}"
@@ -252,6 +286,15 @@ tasks:
           cp -R "${EXAMPLE_BACKUP_DIR}/example" "${OUTPUT_DIR}/example"
           rm -rf "${EXAMPLE_BACKUP_DIR}"
           echo "Restored preserved examples to ${OUTPUT_DIR}/example"
+        fi
+        if [ -n "${DOCS_BACKUP_DIR}" ]; then
+          for DOC_FILE in README.md CHANGELOG.md analysis_options.yaml; do
+            if [ -f "${DOCS_BACKUP_DIR}/${DOC_FILE}" ]; then
+              cp "${DOCS_BACKUP_DIR}/${DOC_FILE}" "${OUTPUT_DIR}/${DOC_FILE}"
+              echo "Restored preserved ${OUTPUT_DIR}/${DOC_FILE}"
+            fi
+          done
+          rm -rf "${DOCS_BACKUP_DIR}"
         fi
 
         if [ "${FORMAT_GENERATED}" = "true" ]; then

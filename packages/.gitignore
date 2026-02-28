@@ -8,3 +8,4 @@
 
 # Local analyzer outputs
 analysis/
+/aws/dependency_overrides.yaml
