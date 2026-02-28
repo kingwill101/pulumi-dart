@@ -815,6 +815,25 @@ class LocalWorkspace {
     return decoded.map((key, value) => MapEntry('$key', value));
   }
 
+  /// Returns stack outputs with secret metadata for [stackName].
+  Future<Map<String, AutomationOutputValue>> stackOutputsWithMetadata(
+    String stackName,
+  ) async {
+    final masked = await stackOutputs(stackName, showSecrets: false);
+    final plaintext = await stackOutputs(stackName, showSecrets: true);
+    final outputs = <String, AutomationOutputValue>{};
+
+    for (final entry in plaintext.entries) {
+      final key = entry.key;
+      outputs[key] = AutomationOutputValue(
+        value: entry.value,
+        secret: masked[key] == '[secret]',
+      );
+    }
+
+    return outputs;
+  }
+
   /// Installs a Pulumi resource plugin from a third-party server.
   Future<void> installPluginFromServer(
     String name,

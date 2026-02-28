@@ -213,6 +213,11 @@ class Stack {
     return workspace.stackOutputs(name, showSecrets: showSecrets);
   }
 
+  /// Returns stack outputs with secret metadata.
+  Future<Map<String, AutomationOutputValue>> outputsWithMetadata() {
+    return workspace.stackOutputsWithMetadata(name);
+  }
+
   /// Exports deployment state for this stack.
   Future<Map<String, dynamic>> exportStack({bool showSecrets = true}) {
     return workspace.exportStack(name, showSecrets: showSecrets);

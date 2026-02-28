@@ -357,6 +357,53 @@ void main() {
       );
     });
 
+    test(
+      'outputsWithMetadata marks secrets by comparing masked/plaintext',
+      () async {
+        final runner = _FakeRunner(<PulumiCommandResult>[
+          const PulumiCommandResult(
+            exitCode: 0,
+            stdout: '{"petName":"[secret]","region":"us-west-2"}',
+            stderr: '',
+          ),
+          const PulumiCommandResult(
+            exitCode: 0,
+            stdout: '{"petName":"otis","region":"us-west-2"}',
+            stderr: '',
+          ),
+        ]);
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+          ),
+        );
+        final stack = Stack('dev', workspace);
+
+        final outputs = await stack.outputsWithMetadata();
+
+        expect(outputs['petName']?.value, equals('otis'));
+        expect(outputs['petName']?.secret, isTrue);
+        expect(outputs['region']?.value, equals('us-west-2'));
+        expect(outputs['region']?.secret, isFalse);
+        expect(
+          runner.requests[0].arguments,
+          equals(<String>['stack', 'output', '--json', '--stack', 'dev']),
+        );
+        expect(
+          runner.requests[1].arguments,
+          equals(<String>[
+            'stack',
+            'output',
+            '--json',
+            '--stack',
+            'dev',
+            '--show-secrets',
+          ]),
+        );
+      },
+    );
+
     test('history/info parse json and apply pagination args', () async {
       final runner = _FakeRunner(<PulumiCommandResult>[
         const PulumiCommandResult(
