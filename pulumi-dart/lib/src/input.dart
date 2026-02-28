@@ -42,26 +42,36 @@ abstract class Input<T> {
   ///
   /// ## Example
   /// ```dart
-  /// Input<String> ensureInput(dynamic v) => Input.asInput<String>(v);
+  /// Input<String> ensureInput(Object v) => Input.asInput<String>(v);
   /// ```
-  static Input<T> asInput<T>(dynamic value) {
+  static Input<T> asInput<T>(Object? value) {
     if (value is Input<T>) {
       return value;
     }
-    return Input.fromValue(value as T);
+    if (value is T) {
+      return Input.fromValue(value);
+    }
+    throw ArgumentError.value(value, 'value', 'Expected Input<$T> or $T');
   }
 
   /// Like [asInput], but returns `null` when [value] is `null`.
   ///
   /// Useful for optional resource arguments.
-  static Input<T>? asOptionalInput<T>(dynamic value) {
+  static Input<T>? asOptionalInput<T>(Object? value) {
     if (value == null) {
       return null;
     }
     if (value is Input<T>) {
       return value;
     }
-    return Input.fromValue(value as T);
+    if (value is T) {
+      return Input.fromValue(value as T);
+    }
+    throw ArgumentError.value(
+      value,
+      'value',
+      'Expected Input<$T>, $T, or null',
+    );
   }
 
   /// Maps the eventual value inside an [Input] while preserving dependencies.
