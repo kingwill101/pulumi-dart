@@ -18,6 +18,9 @@ import 'resource/custom_resource.dart';
 /// {@endtemplate}
 ///
 class Serializer {
+  static final Expando<Set<Resource>> _directDependencies =
+      Expando<Set<Resource>>('_direct_computed_dependencies');
+
   final Set<Resource> dependentResources = {};
   final bool _excessiveDebugOutput;
 
@@ -395,6 +398,50 @@ class Serializer {
     }
 
     return urns;
+  }
+
+  /// Remembers that [fromResource] depends on [toResource] unless that would
+  /// form a cycle in the known dependency graph.
+  static bool declareDependency(Resource fromResource, Resource toResource) {
+    if (_reachable(fromResource: toResource, toResource: fromResource)) {
+      return false;
+    }
+
+    _dependenciesFor(fromResource).add(toResource);
+    return true;
+  }
+
+  static Set<Resource> _dependenciesFor(Resource resource) {
+    final existing = _directDependencies[resource];
+    if (existing != null) {
+      return existing;
+    }
+    final created = <Resource>{};
+    _directDependencies[resource] = created;
+    return created;
+  }
+
+  static bool _reachable({
+    required Resource fromResource,
+    required Resource toResource,
+  }) {
+    final visited = <Resource>{};
+    bool dfs(Resource current) {
+      if (!visited.add(current)) {
+        return false;
+      }
+      if (current == toResource) {
+        return true;
+      }
+      for (final dep in _dependenciesFor(current)) {
+        if (dfs(dep)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    return dfs(fromResource);
   }
 
   String _unknownSentinelForOutput(Output output) {

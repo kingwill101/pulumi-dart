@@ -32,6 +32,7 @@ abstract class Resource {
   final String _type;
   final String _name;
   final bool _custom;
+  final bool _remote;
   final Set<Resource> childResources = HashSet<Resource>();
 
   late final Output<String> urn;
@@ -67,6 +68,7 @@ abstract class Resource {
     models.RegisterPackageRequest? registerPackageRequest,
     bool ignoreDeployment = false,
   }) : _custom = custom,
+       _remote = remote,
        _protect = false,
        _transformations = [],
        _resourceTransforms = [],
@@ -228,6 +230,15 @@ abstract class Resource {
     if (!_urnCompleter.isCompleted) {
       _urnCompleter.complete(value);
     }
+  }
+
+  /// Completes this resource URN with an error when registration fails.
+  void failUrn(Object error) {
+    if (_urnCompleter.isCompleted) {
+      return;
+    }
+    final exception = error is Exception ? error : Exception(error.toString());
+    _urnCompleter.completeError(exception);
   }
 
   /// Registers a dynamic output property for this resource.
@@ -450,6 +461,9 @@ abstract class Resource {
 
   /// Returns whether this resource is provider-managed.
   bool get isCustom => _custom;
+
+  /// Whether this resource is registered as remote.
+  bool get isRemote => _remote;
 
   /// Returns whether this resource is protected from deletion.
   bool get isProtected => _protect;

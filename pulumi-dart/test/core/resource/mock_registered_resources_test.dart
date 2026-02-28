@@ -3,22 +3,23 @@ import 'package:test/test.dart';
 
 import '../../mocks/mock_engine.dart';
 import '../../mocks/mock_monitor.dart';
-import '../../mocks/mocks.dart';
+import '../../mocks/mocks.dart' as test_mocks;
 
-class _TestMocks implements IMocks {
+class _TestMocks implements test_mocks.IMocks {
   @override
-  Future<Map<String, dynamic>> call(MockCallArgs args) async => const {};
+  Future<Map<String, dynamic>> call(test_mocks.MockCallArgs args) async =>
+      const {};
 
   @override
   Future<(String?, Map<String, dynamic>)> newResource(
-    MockResourceArgs args,
+    test_mocks.MockResourceArgs args,
   ) async {
     return ('${args.name}-id', args.inputs);
   }
 
   @override
   Future<void> registerResourceOutputs(
-    MockRegisterResourceOutputsRequest args,
+    test_mocks.MockRegisterResourceOutputsRequest args,
   ) async {}
 }
 

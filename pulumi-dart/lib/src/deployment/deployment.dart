@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:io';
 
 import 'package:grpc/grpc.dart';
@@ -27,6 +28,7 @@ import '../pulumirpc/pulumi/resource.pbgrpc.dart';
 import '../resource/resource.dart';
 import '../resource/resource_options.dart';
 import '../resource/custom_resource.dart';
+import '../resource/component_resource.dart';
 import 'stack.dart';
 
 /// {@template pulumi.deployment.summary}
@@ -196,6 +198,8 @@ class DeploymentImpl extends Deployment
   final monitorpkg.Monitor monitor;
   final Engine engine;
   static const String rootPulumiStackTypeName = 'pulumi:pulumi:Stack';
+  static const String _errorOnDependencyCyclesVar =
+      'PULUMI_ERROR_ON_DEPENDENCY_CYCLES';
 
   DeploymentImpl._({
     required String organizationName,
@@ -231,6 +235,30 @@ class DeploymentImpl extends Deployment
     _instance = null;
   }
 
+  /// Clears the active deployment instance used by runtime mocks.
+  static void clearMockInstance() {
+    _instance = null;
+  }
+
+  /// Creates a deployment instance backed by explicit monitor/engine mocks.
+  static DeploymentImpl createForMocks({
+    required String organizationName,
+    required String projectName,
+    required String stackName,
+    required bool isDryRun,
+    required monitorpkg.Monitor monitor,
+    required Engine engine,
+  }) {
+    return DeploymentImpl._(
+      organizationName: organizationName,
+      projectName: projectName,
+      stackName: stackName,
+      isDryRun: isDryRun,
+      monitor: monitor,
+      engine: engine,
+    );
+  }
+
   @visibleForTesting
   static DeploymentImpl createForTesting({
     required String organizationName,
@@ -240,7 +268,7 @@ class DeploymentImpl extends Deployment
     required monitorpkg.Monitor monitor,
     required Engine engine,
   }) {
-    return DeploymentImpl._(
+    return createForMocks(
       organizationName: organizationName,
       projectName: projectName,
       stackName: stackName,
@@ -389,210 +417,218 @@ class DeploymentImpl extends Deployment
     required ResourceOptions opts,
     models.RegisterPackageRequest? registerPackageRequest,
   }) async {
-    if (resource.isCustom && opts.id != null) {
-      await _readResource(
-        resource: resource as CustomResource,
-        args: args,
-        opts: opts,
-      );
-      return;
-    }
-
-    final serializedProps = <String, dynamic>{};
-    final propertyDependencies =
-        <String, RegisterResourceRequest_PropertyDependencies>{};
-
-    for (final entry in args.entries) {
-      final serializer = Serializer();
-      final serialized = await serializer.serializeAsync(
-        'resource:${resource.getResourceName()}.${entry.key}',
-        entry.value,
-        true,
-      );
-      if (serialized == null) {
-        continue;
+    try {
+      if (resource.isCustom && opts.id != null) {
+        await _readResource(
+          resource: resource as CustomResource,
+          args: args,
+          opts: opts,
+        );
+        return;
       }
 
-      serializedProps[entry.key] = serialized;
+      final serializedProps = <String, dynamic>{};
+      final propertyDependencies =
+          <String, RegisterResourceRequest_PropertyDependencies>{};
 
-      final urns = await Serializer.getAllTransitivelyReferencedResourceUrns(
-        serializer.dependentResources,
-      );
-      if (urns.isNotEmpty) {
-        final sortedUrns = urns.toList()..sort();
-        propertyDependencies[entry.key] =
-            RegisterResourceRequest_PropertyDependencies()
-              ..urns.addAll(sortedUrns);
+      for (final entry in args.entries) {
+        final serializer = Serializer();
+        final serialized = await serializer.serializeAsync(
+          'resource:${resource.getResourceName()}.${entry.key}',
+          entry.value,
+          true,
+        );
+        if (serialized == null) {
+          continue;
+        }
+
+        serializedProps[entry.key] = serialized;
+
+        final urns = await _expandDependencies(
+          serializer.dependentResources,
+          fromResource: resource,
+        );
+        if (urns.isNotEmpty) {
+          final sortedUrns = urns.toList()..sort();
+          propertyDependencies[entry.key] =
+              RegisterResourceRequest_PropertyDependencies()
+                ..urns.addAll(sortedUrns);
+        }
       }
-    }
 
-    final serializedStruct = await StructConverter.toStruct(serializedProps);
-    final request = RegisterResourceRequest()
-      ..type = resource.getResourceType()
-      ..name = resource.getResourceName()
-      ..custom = resource.isCustom
-      ..remote = remote
-      ..object = serializedStruct
-      ..protect = resource.isProtected
-      ..acceptSecrets = true
-      ..acceptResources = true
-      ..supportsPartialValues = true;
-    applyRequestSourceMetadata(request, StackTrace.current);
+      final serializedStruct = await StructConverter.toStruct(serializedProps);
+      final request = RegisterResourceRequest()
+        ..type = resource.getResourceType()
+        ..name = resource.getResourceName()
+        ..custom = resource.isCustom
+        ..remote = remote
+        ..object = serializedStruct
+        ..protect = resource.isProtected
+        ..acceptSecrets = true
+        ..acceptResources = true
+        ..supportsPartialValues = true;
+      applyRequestSourceMetadata(request, StackTrace.current);
 
-    request.propertyDependencies.addAll(propertyDependencies);
+      request.propertyDependencies.addAll(propertyDependencies);
 
-    final preparedHooks = await _prepareHooks(opts.hooks);
-    if (preparedHooks != null) {
-      request.hooks = preparedHooks;
-    }
+      final preparedHooks = await _prepareHooks(opts.hooks);
+      if (preparedHooks != null) {
+        request.hooks = preparedHooks;
+      }
 
-    if (opts.parent != null) {
-      request.parent = await opts.parent!.urn.getValue();
-    }
+      if (opts.parent != null) {
+        request.parent = await opts.parent!.urn.getValue();
+      }
 
-    if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
-      final deps = <String>[];
-      final seenDeps = <String>{};
-      for (final dep in opts.dependsOn!) {
-        final transitivelyReferencedUrns =
-            await Serializer.getAllTransitivelyReferencedResourceUrns({dep});
-        for (final urn in transitivelyReferencedUrns) {
-          if (seenDeps.add(urn)) {
-            deps.add(urn);
+      if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
+        final deps = await _expandDependencies(
+          opts.dependsOn!,
+          fromResource: resource,
+        );
+        request.dependencies.addAll(deps.toList()..sort());
+      }
+
+      final typeComponents = resource.getResourceType().split(':');
+      final resourcePackage = typeComponents.length == 3
+          ? typeComponents[0]
+          : null;
+
+      if (opts.provider != null) {
+        final providerRef =
+            await ProviderResource.register(opts.provider) ?? '';
+        if (resource.isCustom) {
+          request.provider = providerRef;
+        } else {
+          request.providers[opts.provider!.package] = providerRef;
+          if (remote && opts.provider!.package == resourcePackage) {
+            request.provider = providerRef;
           }
         }
       }
-      request.dependencies.addAll(deps);
-    }
 
-    final typeComponents = resource.getResourceType().split(':');
-    final resourcePackage = typeComponents.length == 3
-        ? typeComponents[0]
-        : null;
-
-    if (opts.provider != null) {
-      final providerRef = await ProviderResource.register(opts.provider) ?? '';
-      if (resource.isCustom) {
-        request.provider = providerRef;
-      } else {
-        request.providers[opts.provider!.package] = providerRef;
-        if (remote && opts.provider!.package == resourcePackage) {
-          request.provider = providerRef;
+      if (opts.providers.isNotEmpty) {
+        for (final provider in opts.providers) {
+          request.providers[provider.package] =
+              await ProviderResource.register(provider) ?? '';
         }
       }
-    }
 
-    if (opts.providers.isNotEmpty) {
-      for (final provider in opts.providers) {
-        request.providers[provider.package] =
-            await ProviderResource.register(provider) ?? '';
+      if (remote && request.provider.isEmpty && resourcePackage != null) {
+        final packageProvider = request.providers[resourcePackage];
+        if (packageProvider != null && packageProvider.isNotEmpty) {
+          request.provider = packageProvider;
+        }
       }
-    }
 
-    if (remote && request.provider.isEmpty && resourcePackage != null) {
-      final packageProvider = request.providers[resourcePackage];
-      if (packageProvider != null && packageProvider.isNotEmpty) {
-        request.provider = packageProvider;
-      }
-    }
-
-    if (opts.aliases != null && opts.aliases!.isNotEmpty) {
-      final aliases = await Future.wait(
-        opts.aliases!.map((a) => a.serializeAsync()),
-      );
-      request.aliases.addAll(aliases);
-      request.aliasSpecs = true;
-    }
-
-    if (opts.version != null) {
-      request.version = opts.version!;
-    }
-    final validatedIgnoreChanges = _validatePropertyPaths(
-      opts.ignoreChanges,
-      optionName: 'ignoreChanges',
-    );
-    if (validatedIgnoreChanges.isNotEmpty) {
-      request.ignoreChanges.addAll(validatedIgnoreChanges);
-    }
-    final validatedReplaceOnChanges = _validatePropertyPaths(
-      opts.replaceOnChanges,
-      optionName: 'replaceOnChanges',
-    );
-    if (validatedReplaceOnChanges.isNotEmpty) {
-      request.replaceOnChanges.addAll(validatedReplaceOnChanges);
-    }
-    if (opts.pluginDownloadURL != null) {
-      request.pluginDownloadURL = opts.pluginDownloadURL!;
-    }
-    if (opts.deleteBeforeReplace != null) {
-      request.deleteBeforeReplace = opts.deleteBeforeReplace!;
-      request.deleteBeforeReplaceDefined = true;
-    }
-    if (opts.customTimeouts != null) {
-      final customTimeouts = RegisterResourceRequest_CustomTimeouts();
-      if (opts.customTimeouts!.create != null) {
-        customTimeouts.create_1 = opts.customTimeouts!.create!;
-      }
-      if (opts.customTimeouts!.update != null) {
-        customTimeouts.update = opts.customTimeouts!.update!;
-      }
-      if (opts.customTimeouts!.delete != null) {
-        customTimeouts.delete = opts.customTimeouts!.delete!;
-      }
-      request.customTimeouts = customTimeouts;
-    }
-    if (opts.retainOnDelete != null) {
-      request.retainOnDelete = opts.retainOnDelete!;
-    }
-    if (opts.deletedWith != null) {
-      request.deletedWith = await opts.deletedWith!.urn.getValue();
-    }
-    if (opts.additionalSecretOutputs != null &&
-        opts.additionalSecretOutputs!.isNotEmpty) {
-      request.additionalSecretOutputs.addAll(opts.additionalSecretOutputs!);
-    }
-    final replacementTrigger = opts.effectiveReplacementTrigger;
-    if (replacementTrigger != null) {
-      final serializer = Serializer();
-      final serialized = await serializer.serializeAsync(
-        'resource:${resource.getResourceName()}.replacementTrigger',
-        replacementTrigger,
-        true,
-      );
-      if (serialized != null) {
-        request.replacementTrigger = await StructConverter.toValue(serialized);
-      }
-    }
-    if (registerPackageRequest != null) {
-      final packageRef = await _resolvePackageRef(registerPackageRequest);
-      if (packageRef != null) {
-        request.packageRef = packageRef;
-      }
-    }
-    if (resource.resourceTransforms.isNotEmpty) {
-      if (!await _monitorSupportsTransforms()) {
-        throw Exception(
-          'The Pulumi CLI does not support transforms. Please update the Pulumi CLI.',
+      if (opts.aliases != null && opts.aliases!.isNotEmpty) {
+        final aliases = await Future.wait(
+          opts.aliases!.map((a) => a.serializeAsync()),
         );
+        request.aliases.addAll(aliases);
+        request.aliasSpecs = true;
       }
-      _callbacks ??= CallbackServer(monitor.client);
-      for (final transform in resource.resourceTransforms) {
-        request.transforms.add(await _callbacks!.registerTransform(transform));
-      }
-    }
 
-    RegisterResourceResponse response;
-    try {
-      response = await monitor.registerResource(resource, request);
+      if (opts.version != null) {
+        request.version = opts.version!;
+      }
+      final validatedIgnoreChanges = _validatePropertyPaths(
+        opts.ignoreChanges,
+        optionName: 'ignoreChanges',
+      );
+      if (validatedIgnoreChanges.isNotEmpty) {
+        request.ignoreChanges.addAll(validatedIgnoreChanges);
+      }
+      final validatedReplaceOnChanges = _validatePropertyPaths(
+        opts.replaceOnChanges,
+        optionName: 'replaceOnChanges',
+      );
+      if (validatedReplaceOnChanges.isNotEmpty) {
+        request.replaceOnChanges.addAll(validatedReplaceOnChanges);
+      }
+      if (opts.pluginDownloadURL != null) {
+        request.pluginDownloadURL = opts.pluginDownloadURL!;
+      }
+      if (opts.deleteBeforeReplace != null) {
+        request.deleteBeforeReplace = opts.deleteBeforeReplace!;
+        request.deleteBeforeReplaceDefined = true;
+      }
+      if (opts.customTimeouts != null) {
+        final customTimeouts = RegisterResourceRequest_CustomTimeouts();
+        if (opts.customTimeouts!.create != null) {
+          customTimeouts.create_1 = opts.customTimeouts!.create!;
+        }
+        if (opts.customTimeouts!.update != null) {
+          customTimeouts.update = opts.customTimeouts!.update!;
+        }
+        if (opts.customTimeouts!.delete != null) {
+          customTimeouts.delete = opts.customTimeouts!.delete!;
+        }
+        request.customTimeouts = customTimeouts;
+      }
+      if (opts.retainOnDelete != null) {
+        request.retainOnDelete = opts.retainOnDelete!;
+      }
+      if (opts.deletedWith != null) {
+        request.deletedWith = await opts.deletedWith!.urn.getValue();
+      }
+      if (opts.additionalSecretOutputs != null &&
+          opts.additionalSecretOutputs!.isNotEmpty) {
+        request.additionalSecretOutputs.addAll(opts.additionalSecretOutputs!);
+      }
+      final replacementTrigger = opts.effectiveReplacementTrigger;
+      if (replacementTrigger != null) {
+        final serializer = Serializer();
+        final serialized = await serializer.serializeAsync(
+          'resource:${resource.getResourceName()}.replacementTrigger',
+          replacementTrigger,
+          true,
+        );
+        if (serialized != null) {
+          request.replacementTrigger = await StructConverter.toValue(
+            serialized,
+          );
+        }
+      }
+      if (registerPackageRequest != null) {
+        final packageRef = await _resolvePackageRef(registerPackageRequest);
+        if (packageRef != null) {
+          request.packageRef = packageRef;
+        }
+      }
+      if (resource.resourceTransforms.isNotEmpty) {
+        if (!await _monitorSupportsTransforms()) {
+          throw Exception(
+            'The Pulumi CLI does not support transforms. Please update the Pulumi CLI.',
+          );
+        }
+        _callbacks ??= CallbackServer(monitor.client);
+        for (final transform in resource.resourceTransforms) {
+          request.transforms.add(
+            await _callbacks!.registerTransform(transform),
+          );
+        }
+      }
+
+      RegisterResourceResponse response;
+      try {
+        response = await monitor.registerResource(resource, request);
+      } catch (error) {
+        resource.failOutputs(error);
+        rethrow;
+      }
+
+      resource.resolveUrn(response.urn);
+      resource.resolveOutputs(response.object);
+      if (resource.isCustom) {
+        (resource as CustomResource).resolveId(response.id, isKnown: !isDryRun);
+      }
     } catch (error) {
+      resource.failUrn(error);
       resource.failOutputs(error);
+      if (resource is CustomResource) {
+        resource.failId(error);
+      }
       rethrow;
-    }
-
-    resource.resolveUrn(response.urn);
-    resource.resolveOutputs(response.object);
-    if (resource.isCustom) {
-      (resource as CustomResource).resolveId(response.id, isKnown: !isDryRun);
     }
   }
 
@@ -617,18 +653,17 @@ class DeploymentImpl extends Deployment
 
       serializedProps[entry.key] = serialized;
 
-      final urns = await Serializer.getAllTransitivelyReferencedResourceUrns(
+      final urns = await _expandDependencies(
         serializer.dependentResources,
+        fromResource: resource,
       );
       dependencyUrns.addAll(urns);
     }
 
     if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
-      for (final dep in opts.dependsOn!) {
-        dependencyUrns.addAll(
-          await Serializer.getAllTransitivelyReferencedResourceUrns({dep}),
-        );
-      }
+      dependencyUrns.addAll(
+        await _expandDependencies(opts.dependsOn!, fromResource: resource),
+      );
     }
 
     final idData = await opts.id!.toOutput().getData();
@@ -718,6 +753,54 @@ class DeploymentImpl extends Deployment
       validated.add(path);
     }
     return validated;
+  }
+
+  Future<Set<String>> _expandDependencies(
+    Iterable<Resource> dependencies, {
+    required Resource fromResource,
+  }) async {
+    final expandedUrns = <String>{};
+    final queue = ListQueue<Resource>.from(dependencies);
+    final visited = <Resource>{};
+
+    while (queue.isNotEmpty) {
+      final dependency = queue.removeFirst();
+      if (!visited.add(dependency)) {
+        continue;
+      }
+
+      final noCycles = Serializer.declareDependency(fromResource, dependency);
+      if (!noCycles) {
+        final errorOnCycles =
+            (Platform.environment[_errorOnDependencyCyclesVar] ?? 'true')
+                .toLowerCase() ==
+            'true';
+        if (!errorOnCycles) {
+          continue;
+        }
+
+        throw Exception(
+          'We have detected a circular dependency involving a resource of type '
+          '${dependency.getResourceType()} named ${dependency.getResourceName()}.\n'
+          'Please review any `depends_on`, `parent` or other dependency '
+          'relationships between your resources to ensure no cycles have been '
+          'introduced in your program.',
+        );
+      }
+
+      if (dependency is ComponentResource && !dependency.isRemote) {
+        queue.addAll(dependency.childResources.toList(growable: false));
+        continue;
+      }
+
+      final urnData = await dependency.urn.getData();
+      final urn = urnData.value;
+      if (urnData.isKnown && urn is String && urn.isNotEmpty) {
+        expandedUrns.add(urn);
+      }
+    }
+
+    return expandedUrns;
   }
 
   Future<bool> _monitorSupportsTransforms() async {
@@ -871,7 +954,28 @@ class DeploymentImpl extends Deployment
     _stack?.registerPropertyOutputs();
 
     if (_resourceOperations.isNotEmpty) {
-      await Future.wait(_resourceOperations);
+      // IMPORTANT:
+      // We intentionally use `eagerError: true` here.
+      //
+      // Why:
+      // During shutdown we await all in-flight resource operations. If one
+      // operation fails quickly (for example dependency-cycle detection) while a
+      // sibling operation is stuck waiting on values that will never resolve
+      // after that failure, plain `Future.wait(...)` can hang forever.
+      // In integration this manifests as `pulumi up` never completing even
+      // though the root error has already occurred.
+      //
+      // Effect:
+      // `Future.wait(..., eagerError: true)` returns/throws on the first error,
+      // allowing the deployment to fail fast with the real diagnostic instead of
+      // deadlocking.
+      //
+      // Tradeoff:
+      // We stop waiting for remaining sibling operations once a fatal error is
+      // observed. Those siblings may still complete in the background, but we do
+      // not block shutdown on them. This matches the desired behavior for a
+      // failed deployment: prioritize surfacing the primary failure deterministically.
+      await Future.wait(_resourceOperations, eagerError: true);
       _resourceOperations.clear();
     }
 

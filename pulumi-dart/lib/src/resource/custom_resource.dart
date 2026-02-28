@@ -101,4 +101,13 @@ class CustomResource extends Resource {
       ),
     );
   }
+
+  /// Completes this resource ID with an error when registration fails.
+  void failId(Object error) {
+    if (_idCompleter.isCompleted) {
+      return;
+    }
+    final exception = error is Exception ? error : Exception(error.toString());
+    _idCompleter.completeError(exception);
+  }
 }
