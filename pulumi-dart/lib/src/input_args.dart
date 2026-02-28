@@ -5,15 +5,24 @@ import 'package:pulumi/src/output.dart';
 
 import 'input.dart';
 
+/// {@template pulumi.input_args.summary}
+/// Base class for strongly-typed argument objects that serialize to Pulumi maps.
+///
+/// Generated provider SDK argument classes can extend this type to centralize
+/// field metadata and serialization behavior.
+/// {@endtemplate}
+///
 abstract class InputArgs {
   Map<String, InputInfo> get inputInfos;
 
   InputArgs();
 
+  /// Validates an argument member before serialization.
   void validateMember(Type memberType, String fullName) {
     // Implement any necessary validation here
   }
 
+  /// Converts this argument object to a plain dictionary.
   Future<Map<String, dynamic>> toDictionary() async {
     var result = <String, dynamic>{};
     for (var entry in inputInfos.entries) {
@@ -35,6 +44,7 @@ abstract class InputArgs {
     return result;
   }
 
+  /// Converts input values into JSON-encoded string inputs.
   Future<Input<String>?> convertToJson(String context, dynamic input) async {
     if (input == null) return null;
 
@@ -74,18 +84,32 @@ abstract class InputArgs {
   }
 }
 
+/// Metadata describing one argument field.
 class InputInfo {
+  /// Field serialization attributes.
   final InputInfoArg attribute;
+
+  /// Dart member name.
   final String memberName;
+
+  /// Dart member type.
   final Type memberType;
+
+  /// Extractor function from instance -> member value.
   final dynamic Function(dynamic) getValue;
 
   InputInfo(this.attribute, this.memberName, this.memberType, this.getValue);
 }
 
+/// Field-level serialization attributes for [InputInfo].
 class InputInfoArg {
+  /// Serialized property name.
   final String name;
+
+  /// Whether the property is required.
   final bool isRequired;
+
+  /// Whether the property should be JSON-encoded.
   final bool json;
 
   const InputInfoArg({

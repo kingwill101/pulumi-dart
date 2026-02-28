@@ -1,8 +1,92 @@
-/// Support for doing something awesome.
+/// Core Pulumi SDK for Dart.
 ///
-/// More dartdocs go here.
+/// This package provides the runtime primitives used to build Pulumi programs.
+/// Generated provider packages (for example `pulumi_aws`, `pulumi_gcp`) are
+/// built on top of these APIs.
+///
+/// ## Core concepts
+/// - Extend [Stack] to define your deployment root.
+/// - Declare resources by extending [CustomResource] or [ComponentResource].
+/// - Flow values with [Input] and [Output].
+/// - Read stack configuration with [Config].
+/// - Run the program with [Deployment.run] or [Deployment.runOrThrow].
+///
+/// ## Minimal program
+/// ```dart
+/// import 'package:pulumi/pulumi.dart';
+///
+/// class AppStack extends Stack {
+///   late final Output<Object?> greeting;
+///
+///   AppStack() {
+///     final cfg = Config();
+///     final name = cfg.get('name') ?? 'world';
+///     greeting = Output.create<Object?>('hello-$name');
+///   }
+///
+///   @override
+///   List<OutputProperty> getOutputProperties() {
+///     return [OutputProperty('greeting', greeting)];
+///   }
+/// }
+///
+/// Future<void> main() async {
+///   await Deployment.runOrThrow(() => AppStack());
+/// }
+/// ```
+///
+/// ## Using generated providers
+/// Provider SDKs use this runtime package for all resource operations:
+/// ```dart
+/// import 'package:pulumi/pulumi.dart' as pulumi;
+/// // import 'package:pulumi_random/pulumi_random.dart' as random;
+///
+/// class ProviderStack extends pulumi.Stack {
+///   late final pulumi.Output<Object?> value;
+///
+///   ProviderStack() {
+///     // Example shape:
+///     // final pet = random.RandomPet('pet');
+///     // value = pet.id.apply<Object?>((v) => v);
+///     value = pulumi.Output.create<Object?>('example');
+///   }
+///
+///   @override
+///   List<pulumi.OutputProperty> getOutputProperties() {
+///     return [pulumi.OutputProperty('value', value)];
+///   }
+/// }
+/// ```
+///
+/// ## Output semantics
+/// [Output] is not just a value container. It carries:
+/// - value (possibly unresolved until runtime)
+/// - known/unknown state (preview vs update planning)
+/// - secret taint
+/// - dependency provenance
+///
+/// Prefer [Output.apply], [Output.all], and `tuple` helpers for composition.
+/// Avoid eager extraction of unresolved values during resource construction.
+///
+/// ## Resource options and lifecycle
+/// [ResourceOptions] controls parent/provider inheritance, aliases,
+/// dependency edges, replacement/delete behavior, and plugin resolution.
+/// [Alias], transforms, and hooks let you evolve infrastructure safely without
+/// unnecessary replacement.
+///
+/// ## API map
+/// - Values: [Input], [Output], [InputList], [InputMap], [InputUnion]
+/// - Resources: [Resource], [CustomResource], [ComponentResource], [ProviderResource]
+/// - Runtime: [Deployment], [Stack], [Config], [Monitor], [EngineLogger]
+/// - Lifecycle controls: [ResourceOptions], [CustomTimeouts], [Alias]
+/// - Interop types: [Asset], [Archive], [StackReference]
+///
+/// ## Entrypoint recommendation
+/// For application code, call [Deployment.runOrThrow]. For tests or custom
+/// runners, [Deployment.run] gives explicit exit-code control.
 library;
 
+// Value flow and conversion primitives.
 export 'src/output.dart';
 export 'src/output_helpers.dart';
 export 'src/iterable.dart';
@@ -12,6 +96,7 @@ export 'src/input_union.dart';
 export 'src/input_args.dart';
 export 'src/invoke.dart';
 
+// Core runtime and stack/config APIs.
 export 'src/alias.dart';
 export 'src/asset_archive.dart';
 export 'src/config.dart';
@@ -19,6 +104,7 @@ export 'src/deployment/deployment.dart';
 export 'src/deployment/stack.dart';
 export 'src/deprecated.dart';
 
+// Engine/monitor integration and helpers.
 export 'src/engine.dart';
 export 'src/engine_logger.dart';
 export 'src/monitor.dart';
@@ -26,6 +112,7 @@ export 'src/type_token.dart';
 export 'src/urn.dart';
 export 'src/utils.dart';
 
+// Resource model and lifecycle controls.
 export 'src/resource/resource.dart';
 export 'src/resource/resource_options.dart';
 export 'src/resource/resource_hooks.dart';

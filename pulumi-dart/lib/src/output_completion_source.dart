@@ -2,25 +2,44 @@ import 'output.dart';
 import 'resource/resource.dart';
 import 'dart:async';
 
+/// {@template pulumi.output_completion_source.summary}
+/// Contract for dynamically completing resource output properties.
+///
+/// Resource instances register output properties before monitor responses are
+/// available. Completion sources bridge that gap.
+/// {@endtemplate}
+///
 abstract class IOutputCompletionSource {
+  /// Target Dart type for this output property.
   Type get targetType;
 
+  /// Output instance completed by this source.
   Output get output;
 
+  /// Completes with an exception when output resolution fails.
   void trySetException(Exception exception);
 
+  /// Completes with a default value (`null`) and known/unknown state.
   void trySetDefaultResult(bool isKnown);
 
+  /// Completes from a string payload, coercing to target type when possible.
   void setStringValue(String value, bool isKnown);
 
+  /// Completes from already-deserialized [OutputData].
   void setValue(OutputData<Object?> data);
 }
 
+/// Factory helpers for [IOutputCompletionSource] instances.
 class OutputCompletionSource {
+  /// Creates a typed completion source for a resource output property.
   static IOutputCompletionSource create<T>(Resource resource) {
     return _TypedOutputCompletionSource<T>(resource);
   }
 
+  /// Initializes predeclared outputs for [resource].
+  ///
+  /// Current implementation returns an empty map; outputs are dynamically
+  /// registered by resource constructors.
   static Map<String, IOutputCompletionSource> initializeOutputs(
     Resource resource,
   ) {
@@ -28,15 +47,19 @@ class OutputCompletionSource {
   }
 }
 
+/// Typed completion source implementation for one output property.
 class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
   final Resource _resource;
   final Completer<OutputData<T>> _completer = Completer<OutputData<T>>();
 
+  /// Creates a typed output completion source for one property.
   _TypedOutputCompletionSource(this._resource);
 
+  /// Target type represented by `T`.
   @override
   Type get targetType => T;
 
+  /// Output completed by this source.
   @override
   Output<T> get output => Output<T>(_completer.future);
 

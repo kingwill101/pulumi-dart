@@ -24,23 +24,47 @@ import 'resource/resource_transformation.dart';
 import 'resource/resource_hooks.dart';
 import 'struct_converter.dart';
 
+/// Contract for callback server functionality used by the runtime.
 abstract class ICallbackServer {
+  /// Registers a resource transform callback and returns callback metadata.
   Future<Callback> registerTransform(ResourceTransform callback);
+
+  /// Registers a resource lifecycle hook and returns the hook name.
   Future<String> registerResourceHook(ResourceHook hook);
+
+  /// Registers an error hook and returns the hook name.
   Future<String> registerErrorHook(ErrorHook hook);
+
+  /// Registers a stack-level resource transform.
   void registerStackTransform(ResourceTransform callback);
+
+  /// Registers a stack-level invoke transform.
   void registerStackInvokeTransform(InvokeTransform callback);
+
+  /// Async variant returning callback metadata.
   Future<Callback> registerStackInvokeTransformAsync(InvokeTransform callback);
+
+  /// Shuts down the callback server.
   void shutdown();
 
   // Wait for any pending registerStackTransform calls to complete.
+  /// Waits for pending stack transform/invoke registrations.
   Future<void> awaitStackRegistrations();
 }
 
+/// Maximum gRPC message size for callback payloads.
 const int maxRPCMessageSize = 1024 * 1024 * 400; // 400 MB
 
+/// Internal callback function signature.
 typedef CallbackFunction = Future<GeneratedMessage> Function(Uint8List args);
 
+/// {@template pulumi.callback_server.summary}
+/// Local gRPC callback server that hosts transforms and hooks.
+///
+/// The server binds ephemeral callbacks to UUID tokens, then registers those
+/// tokens with the monitor so the engine can invoke Dart callbacks remotely.
+/// {@endtemplate}
+///
 class CallbackServer implements ICallbackServer {
   final Map<String, CallbackFunction> _callbacks = {};
   final Set<String> _registeredResourceHookNames = {};
@@ -103,6 +127,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   @override
+  /// Stops accepting callbacks and shuts down the gRPC server.
   void shutdown() {
     _server.shutdown();
   }
@@ -125,6 +150,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   @override
+  /// Registers an async resource transform callback.
   Future<Callback> registerTransform(ResourceTransform transform) async {
     Future<TransformResponse> cb(Uint8List bytes) async {
       final request = TransformRequest.fromBuffer(bytes);
@@ -179,6 +205,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   @override
+  /// Registers a resource lifecycle hook with the monitor.
   Future<String> registerResourceHook(ResourceHook hook) async {
     if (_registeredResourceHookNames.contains(hook.name)) {
       return hook.name;
@@ -197,6 +224,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   @override
+  /// Registers an error hook with the monitor.
   Future<String> registerErrorHook(ErrorHook hook) async {
     if (_registeredErrorHookNames.contains(hook.name)) {
       return hook.name;
@@ -291,6 +319,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   @override
+  /// Registers and publishes a stack-level resource transform.
   void registerStackTransform(ResourceTransform transform) {
     _pendingRegistrations++;
 
@@ -315,6 +344,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   @override
+  /// Registers an async stack-level invoke transform callback.
   Future<Callback> registerStackInvokeTransformAsync(
     InvokeTransform transform,
   ) async {
@@ -368,6 +398,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   @override
+  /// Registers and publishes a stack-level invoke transform.
   void registerStackInvokeTransform(InvokeTransform transform) {
     _pendingRegistrations++;
 
@@ -665,6 +696,7 @@ String _formatExceptionWithStackTrace(Object error, StackTrace stackTrace) {
   return '${error.toString()}\n$trace';
 }
 
+/// gRPC service that dispatches callback invocations to [CallbackServer].
 class _CallbackService extends CallbacksServiceBase {
   final CallbackServer _server;
 

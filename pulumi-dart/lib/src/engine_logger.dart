@@ -6,8 +6,22 @@ import 'dart:collection';
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/engine.pbgrpc.dart' as pb;
 
+/// Log severity levels understood by the Pulumi engine.
 enum LogSeverity { debug, info, warning, error }
 
+/// {@template pulumi.engine_logger.summary}
+/// Queued logger that serializes log delivery to the Pulumi engine.
+///
+/// This class preserves log ordering and tracks whether any error-level logs
+/// were emitted.
+///
+/// ## Example
+/// ```dart
+/// final logger = Deployment.instance.logger;
+/// await logger.info('starting deployment');
+/// ```
+/// {@endtemplate}
+///
 class EngineLogger {
   final Deployment _deployment;
   final Engine _engine;
@@ -17,8 +31,10 @@ class EngineLogger {
 
   EngineLogger(this._deployment, this._engine);
 
+  /// Returns `true` when at least one error log has been recorded.
   bool get loggedErrors => _errorCount > 0;
 
+  /// Emits a debug message.
   Future<void> debug(
     String message, {
     Resource? resource,
@@ -34,6 +50,7 @@ class EngineLogger {
     );
   }
 
+  /// Emits an informational message.
   Future<void> info(
     String message, {
     Resource? resource,
@@ -49,6 +66,7 @@ class EngineLogger {
     );
   }
 
+  /// Emits a warning message.
   Future<void> warn(
     String message, {
     Resource? resource,
@@ -64,6 +82,7 @@ class EngineLogger {
     );
   }
 
+  /// Emits an error message and increments error count.
   Future<void> error(
     String message, {
     Resource? resource,
@@ -169,6 +188,8 @@ class EngineLogger {
   }
 
   /// Waits for all pending log operations to complete.
+  ///
+  /// Useful before process shutdown in tests.
   Future<void> waitForPendingLogs() async {
     while (_logQueue.isNotEmpty || _isProcessing) {
       await Future.delayed(Duration(milliseconds: 10));
@@ -194,6 +215,7 @@ class _LogOperation {
   });
 }
 
+/// Error raised when a log operation fails.
 class LogException implements Exception {
   final dynamic originalException;
 
@@ -203,11 +225,21 @@ class LogException implements Exception {
   String toString() => 'LogException: $originalException';
 }
 
+/// Runtime log payload sent to the Pulumi engine.
 class LogRequest {
+  /// Severity for this log entry.
   final LogSeverity severity;
+
+  /// Human-readable message.
   final String message;
+
+  /// Optional associated resource URN.
   final String urn;
+
+  /// Stream ID used by Pulumi CLI output routing.
   final int streamId;
+
+  /// Whether this message should be treated as ephemeral by the CLI.
   final bool ephemeral;
 
   LogRequest({

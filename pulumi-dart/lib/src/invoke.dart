@@ -5,8 +5,16 @@ import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/resource/resource.dart';
 import 'resource/provider_resource.dart';
 
+/// {@template pulumi.invoke_options.summary}
 /// [InvokeOptions] is a bag of options that control the behavior of a call
 /// to `runtime.invoke`.
+///
+/// ## Example
+/// ```dart
+/// final opts = InvokeOptions(version: '6.0.0');
+/// ```
+/// {@endtemplate}
+///
 class InvokeOptions {
   /// An optional parent to use for default options for this invoke (e.g. the default provider to use).
   Resource? parent;
@@ -41,6 +49,7 @@ class InvokeOptions {
   });
 }
 
+/// Converts public invoke options to the deployment-runtime model.
 deployment_models.InvokeOptions? toDeploymentInvokeOptions(
   InvokeOptions? options,
 ) {
@@ -58,21 +67,36 @@ deployment_models.InvokeOptions? toDeploymentInvokeOptions(
 
 /// [InvokeTransform] is the callback signature for the `transforms`
 /// resource option for invokes. A transform is passed the same set of inputs
-/// provided to the [Invoke] constructor, and can optionally return back
+/// provided to an invoke call, and can optionally return back
 /// alternate values for the `args` and/or `opts` prior to the invoke actually
 /// being executed. The effect will be as though those args and opts were passed
-/// in place of the original call to the [Invoke]. If the transform
+/// in place of the original invoke call. If the transform
 /// returns null, this indicates
-/// that the Invoke should proceed with the original arguments.
+/// that invoke should proceed with the original arguments.
+///
+/// ## Example
+/// ```dart
+/// Future<InvokeTransformResult?> setVersion(InvokeTransformArgs args) async {
+///   return InvokeTransformResult(
+///     args: args.args,
+///     opts: InvokeOptions(
+///       parent: args.opts.parent,
+///       provider: args.opts.provider,
+///       version: '1.2.3',
+///       pluginDownloadURL: args.opts.pluginDownloadURL,
+///     ),
+///   );
+/// }
+/// ```
 typedef InvokeTransform =
     FutureOr<InvokeTransformResult?> Function(InvokeTransformArgs args);
 
-/// [InvokeTransformArgs] is the argument bag passed to an invoke transform.
+/// Argument bag passed to an invoke transform.
 class InvokeTransformArgs {
-  /// The token of the Invoke.
+  /// Token of the invoke being transformed.
   final String token;
 
-  /// The original args passed to the Invoke constructor.
+  /// Original argument map passed to invoke.
   final Inputs args;
 
   /// The original invoke options passed to the Invoke constructor.
@@ -85,9 +109,9 @@ class InvokeTransformArgs {
   });
 }
 
-/// [InvokeTransformResult] is the result that must be returned by an invoke
+/// Result returned by an invoke
 /// transform callback. It includes new values to use for the `args` and `opts`
-/// of the `Invoke` in place of the originally provided values.
+/// of invoke in place of the originally provided values.
 class InvokeTransformResult {
   /// The new properties to use in place of the original `args`.
   final Inputs args;

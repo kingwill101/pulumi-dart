@@ -3,12 +3,22 @@ import 'output.dart';
 import 'resource/custom_resource.dart';
 import 'resource/resource.dart';
 
+/// {@template pulumi.stack_reference_args.summary}
+/// Constructor arguments for [StackReference].
+/// {@endtemplate}
+///
 class StackReferenceArgs {
   final Input<String>? name;
 
   const StackReferenceArgs({this.name});
 }
 
+/// {@template pulumi.stack_reference_output_details.summary}
+/// Output details for a referenced stack output.
+///
+/// Exactly one of [value] or [secretValue] is set when present.
+/// {@endtemplate}
+///
 class StackReferenceOutputDetails {
   final dynamic value;
   final dynamic secretValue;
@@ -16,6 +26,19 @@ class StackReferenceOutputDetails {
   const StackReferenceOutputDetails({this.value, this.secretValue});
 }
 
+/// {@template pulumi.stack_reference.summary}
+/// A resource handle to outputs from another Pulumi stack.
+///
+/// This is modeled as `pulumi:pulumi:StackReference` and supports both
+/// optional/required lookups as plain values or outputs.
+///
+/// ## Example
+/// ```dart
+/// final ref = StackReference('org/network/dev');
+/// final vpcId = ref.requireOutput(Input.fromValue('vpcId'));
+/// ```
+/// {@endtemplate}
+///
 class StackReference extends CustomResource {
   /// The name of the referenced stack.
   late final Output<String> name;
@@ -41,14 +64,21 @@ class StackReference extends CustomResource {
     secretOutputNames = registerOutput<List<String>?>('secretOutputNames');
   }
 
+  /// Returns an optional output from the referenced stack.
+  ///
+  /// Result is unknown during preview when referenced outputs are unknown.
   Output<dynamic> getOutput(Input<String> outputName) {
     return Output<dynamic>(_readOutput(outputName, required: false));
   }
 
+  /// Returns a required output from the referenced stack.
+  ///
+  /// Throws if the output does not exist once known.
   Output<dynamic> requireOutput(Input<String> outputName) {
     return Output<dynamic>(_readOutput(outputName, required: true));
   }
 
+  /// Gets detailed output information, preserving secret status.
   Future<StackReferenceOutputDetails> getOutputDetails(
     String outputName,
   ) async {
@@ -62,6 +92,9 @@ class StackReference extends CustomResource {
     return StackReferenceOutputDetails(value: data.value);
   }
 
+  /// Gets a resolved non-secret output value.
+  ///
+  /// Throws when the output is secret.
   Future<dynamic> getValue(Input<String> outputName) async {
     final data = await getOutput(outputName).getData();
     if (data.isSecret) {
@@ -72,6 +105,9 @@ class StackReference extends CustomResource {
     return data.value;
   }
 
+  /// Gets a required resolved non-secret output value.
+  ///
+  /// Throws when missing or when the output is secret.
   Future<dynamic> requireValue(Input<String> outputName) async {
     final data = await requireOutput(outputName).getData();
     if (data.isSecret) {

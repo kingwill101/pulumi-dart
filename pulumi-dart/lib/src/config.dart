@@ -3,6 +3,10 @@ import 'dart:io';
 
 import 'store/store.dart' as runtime_store;
 
+/// {@template pulumi.config_mixin.summary}
+/// Shared config parsing logic used by runtime settings.
+/// {@endtemplate}
+///
 mixin ConfigMixin {
   static const String _configEnvKey = 'PULUMI_CONFIG';
   static const String _configSecretKeysEnvKey = 'PULUMI_CONFIG_SECRET_KEYS';
@@ -80,13 +84,35 @@ mixin ConfigMixin {
   }
 }
 
+/// {@template pulumi.config.summary}
+/// Accesses stack configuration values for a project/package namespace.
+///
+/// Keys are resolved relative to the config bag name unless fully-qualified
+/// keys (`<namespace>:<key>`) are provided.
+///
+/// ## Example
+/// ```dart
+/// final config = Config();
+/// final region = config.require('region');
+/// final replicas = config.getNumber('replicas') ?? 1;
+/// ```
+///
+/// ## Example (namespace override)
+/// ```dart
+/// final cfg = Config('my-package');
+/// final endpoint = cfg.get('endpoint');
+/// ```
+/// {@endtemplate}
+///
 class Config {
   final String _name;
 
   Config([String? name]) : _name = _resolveConfigName(name);
 
+  /// Namespace for this config bag.
   String get name => _name;
 
+  /// Gets an optional string config value with optional validation constraints.
   String? get(
     String key, {
     List<String>? allowedValues,
@@ -111,6 +137,7 @@ class Config {
     return value;
   }
 
+  /// Gets a required string config value with optional validation constraints.
   String require(
     String key, {
     List<String>? allowedValues,
@@ -133,6 +160,7 @@ class Config {
     return value;
   }
 
+  /// Gets an optional boolean config value.
   bool? getBoolean(String key) {
     final fullKey = _fullKey(key);
     final value = get(key);
@@ -151,6 +179,7 @@ class Config {
     );
   }
 
+  /// Gets a required boolean config value.
   bool requireBoolean(String key) {
     final value = getBoolean(key);
     if (value == null) {
@@ -161,6 +190,7 @@ class Config {
     return value;
   }
 
+  /// Gets an optional numeric config value.
   double? getNumber(String key, {num? min, num? max}) {
     final fullKey = _fullKey(key);
     final value = get(key);
@@ -179,6 +209,7 @@ class Config {
     return parsed;
   }
 
+  /// Gets a required numeric config value.
   double requireNumber(String key, {num? min, num? max}) {
     final value = getNumber(key, min: min, max: max);
     if (value == null) {
@@ -189,6 +220,9 @@ class Config {
     return value;
   }
 
+  /// Gets an optional JSON-encoded config object.
+  ///
+  /// The caller is responsible for casting/parsing the decoded structure.
   T? getObject<T>(String key) {
     final fullKey = _fullKey(key);
     final value = get(key);
@@ -205,6 +239,7 @@ class Config {
     }
   }
 
+  /// Gets a required JSON-encoded config object.
   T requireObject<T>(String key) {
     final value = getObject<T>(key);
     if (value == null) {
@@ -215,6 +250,10 @@ class Config {
     return value;
   }
 
+  /// Returns whether the config key is marked secret.
+  ///
+  /// This reflects metadata provided by the Pulumi CLI/engine and does not
+  /// decrypt any values by itself.
   bool isSecret(String key) => runtime_store.isConfigSecret(_fullKey(key));
 
   String _fullKey(String key) {
@@ -283,6 +322,7 @@ class Config {
   }
 }
 
+/// Error thrown for invalid or missing config values.
 class ConfigException implements Exception {
   final String message;
 

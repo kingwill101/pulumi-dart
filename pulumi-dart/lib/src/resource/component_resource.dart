@@ -5,6 +5,21 @@ import 'resource.dart';
 import 'resource_options.dart';
 import 'resource_transformation.dart';
 
+/// {@template pulumi.component_resource.summary}
+/// A logical resource that groups and orchestrates child resources.
+///
+/// Component resources do not have provider-managed CRUD operations; they are
+/// used to model reusable infrastructure abstractions.
+///
+/// ## Example
+/// ```dart
+/// class Network extends ComponentResource {
+///   Network(String name)
+///       : super('acme:infra:Network', name, {}, ComponentResourceOptions());
+/// }
+/// ```
+/// {@endtemplate}
+///
 class ComponentResource extends Resource {
   ComponentResource(
     String type,
@@ -21,17 +36,20 @@ class ComponentResource extends Resource {
          remote: remote,
        );
 
+  /// Registers component outputs with the engine.
   void registerOutputs([Map<String, dynamic>? outputs]) {
     final resolvedOutputs = outputs ?? _collectOutputs();
     registerOutputsOutput(Output.create(resolvedOutputs));
   }
 
+  /// Async variant of [registerOutputs].
   Future<void> registerOutputsAsync(
     Future<Map<String, dynamic>> outputs,
   ) async {
     registerOutputsOutput(Output.create(await outputs));
   }
 
+  /// Registers an already-computed output map.
   void registerOutputsOutput(Output<Map<String, dynamic>> outputs) {
     final operation = DeploymentImpl.instance.registerResourceOutputs(
       this,
@@ -47,6 +65,7 @@ class ComponentResource extends Resource {
   }
 }
 
+/// Resource options specialized for [ComponentResource].
 class ComponentResourceOptions extends ResourceOptions {
   ComponentResourceOptions({
     super.id,

@@ -2,7 +2,15 @@ import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/constants.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
+/// {@template pulumi.deserializer.summary}
+/// Deserializes Pulumi RPC values into Dart runtime values.
+///
+/// Handles Pulumi special signatures for secrets, assets/archives, resource
+/// references, output envelopes, and unknown sentinels.
+/// {@endtemplate}
+///
 class Deserializer {
+  /// Deserializes a protobuf [Value] into [OutputData].
   static OutputData<T> deserialize<T>(Value value) {
     var (innerVal, isSecret) = _unwrapSecret(value);
     value = innerVal;

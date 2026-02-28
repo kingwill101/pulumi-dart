@@ -21,16 +21,19 @@ import 'package:pulumi/src/store/async_store.dart';
 
 import '../deployment/stack.dart';
 
-// Placeholder for gRPC client interfaces
+/// Placeholder abstraction for the resource monitor client.
 abstract class IResourceMonitorClient {}
 
+/// Placeholder abstraction for the engine client.
 abstract class IEngineClient {}
 
-// Placeholder for ResourceModule and ResourcePackage
+/// Placeholder for resource module registration metadata.
 class ResourceModule {}
 
+/// Placeholder for resource package registration metadata.
 class ResourcePackage {}
 
+/// Environment variable keys used by the NodeJS compatibility runtime layer.
 class NodeEnvKeys {
   static const String project = 'PULUMI_NODEJS_PROJECT';
   static const String stack = 'PULUMI_NODEJS_STACK';
@@ -45,23 +48,50 @@ class NodeEnvKeys {
   static const String organization = 'PULUMI_NODEJS_ORGANIZATION';
 }
 
+/// Environment variable keys used by Pulumi runtime toggles.
 class PulumiEnvKeys {
   static const String legacyApply = 'PULUMI_ENABLE_LEGACY_APPLY';
 }
 
+/// Mutable runtime options that can be overridden in tests.
 class WriteableOptions {
+  /// Project name.
   String? project;
+
+  /// Stack name.
   String? stack;
+
+  /// Parallelism level for resource operations.
   int? parallel;
+
+  /// Engine gRPC address.
   String? engineAddr;
+
+  /// Monitor gRPC address.
   String? monitorAddr;
+
+  /// Whether preview/dry-run mode is enabled.
   bool? dryRun;
+
+  /// Whether test mode is enabled.
   bool? testModeEnabled;
+
+  /// Whether query mode is enabled.
   bool? queryMode;
+
+  /// Whether legacy apply behavior is enabled.
   bool? legacyApply;
+
+  /// Whether dynamic provider caching is enabled.
   bool? cacheDynamicProviders;
+
+  /// Pulumi organization.
   String? organization;
+
+  /// Max process listeners used by compatibility layers.
   int maximumProcessListeners;
+
+  /// Directory used for sync invoke request/response files.
   String? syncDir;
 
   WriteableOptions({
@@ -81,11 +111,24 @@ class WriteableOptions {
   });
 }
 
+/// {@template pulumi.store.settings.summary}
+/// Runtime settings container.
+/// {@endtemplate}
+///
 class Settings {
+  /// Mutable runtime options.
   WriteableOptions options;
+
+  /// Resource monitor client.
   IResourceMonitorClient? monitor;
+
+  /// Engine client.
   IEngineClient? engine;
+
+  /// Completion future for outstanding RPCs.
   Future<void> rpcDone;
+
+  /// Feature support map keyed by feature name.
   Map<String, bool> featureSupport;
 
   Settings({
@@ -118,12 +161,30 @@ class Settings {
   }
 }
 
+/// {@template pulumi.store.summary}
+/// Global runtime state store.
+///
+/// This structure mirrors NodeJS runtime store concepts and is primarily used
+/// by compatibility/runtime plumbing.
+/// {@endtemplate}
+///
 class Store {
+  /// Runtime settings.
   Settings settings;
+
+  /// Serialized config env payloads.
   Map<String, String> config;
+
+  /// Current stack root resource.
   Stack? stackResource;
+
+  /// Futures tracked for leak diagnostics.
   Set<Future> leakCandidates;
+
+  /// Number of error logs sent.
   int logErrorCount;
+
+  /// Feature support flags.
   bool supportsSecrets;
   bool supportsResourceReferences;
   bool supportsOutputValues;
@@ -131,8 +192,14 @@ class Store {
   bool supportsAliasSpecs;
   bool supportsTransforms;
   bool supportsInvokeTransforms;
+
+  /// Callback server instance.
   ICallbackServer? callbacks;
+
+  /// Registered resource package metadata.
   Map<String, List<ResourcePackage>> resourcePackages;
+
+  /// Registered resource module metadata.
   Map<String, List<ResourceModule>> resourceModules;
 
   Store({
@@ -154,6 +221,7 @@ class Store {
   });
 }
 
+/// Default in-process [Store] implementation.
 class LocalStore implements Store {
   @override
   Settings settings = Settings.fromEnvironment();
@@ -207,12 +275,15 @@ class LocalStore implements Store {
 // Global state management
 Store? _globalStore;
 
+/// Async-local store scope used to isolate concurrent runtime contexts.
 AsyncLocalStorage<Store> asyncLocalStorage = AsyncLocalStorage<Store>();
 
+/// Returns the current stack resource, if set.
 Stack? getStackResource() {
   return getStore().stackResource;
 }
 
+/// Returns registered resource package metadata.
 Map<String, List<ResourcePackage>> getResourcePackages() {
   final store = getGlobalStore();
   if (store.resourcePackages.isEmpty) {
@@ -221,6 +292,7 @@ Map<String, List<ResourcePackage>> getResourcePackages() {
   return store.resourcePackages;
 }
 
+/// Returns registered resource module metadata.
 Map<String, List<ResourceModule>> getResourceModules() {
   final store = getGlobalStore();
   if (store.resourceModules.isEmpty) {
@@ -229,16 +301,19 @@ Map<String, List<ResourceModule>> getResourceModules() {
   return store.resourceModules;
 }
 
+/// Sets the current stack resource in global and local store contexts.
 void setStackResource(Stack? newStackResource) {
   final localStore = getStore();
   _globalStore?.stackResource = newStackResource;
   localStore.stackResource = newStackResource;
 }
 
+/// Returns the async-local store for the current zone.
 Store? getLocalStore() {
   return asyncLocalStorage.getStore();
 }
 
+/// Returns the active store, preferring the async-local store when present.
 Store getStore() {
   final localStore = getLocalStore();
   if (localStore == null) {
@@ -247,6 +322,7 @@ Store getStore() {
   return localStore;
 }
 
+/// Returns the global fallback store singleton.
 Store getGlobalStore() {
   _globalStore ??= LocalStore();
   return _globalStore!;
@@ -254,14 +330,19 @@ Store getGlobalStore() {
 
 // Configuration management
 
+/// Environment key containing serialized config values.
 const String configEnvKey = 'PULUMI_CONFIG';
+
+/// Environment key containing serialized config secret key names.
 const String configSecretKeysEnvKey = 'PULUMI_CONFIG_SECRET_KEYS';
 
+/// Returns all parsed config values.
 Map<String, String> allConfig() {
   final config = parseConfig();
   return Map<String, String>.from(config);
 }
 
+/// Replaces all config values and optional secret key names.
 void setAllConfig(Map<String, String> c, [List<String>? secretKeys]) {
   final obj = <String, String>{};
   for (final k in c.keys) {
@@ -270,17 +351,20 @@ void setAllConfig(Map<String, String> c, [List<String>? secretKeys]) {
   persistConfig(obj, secretKeys);
 }
 
+/// Sets a single config key/value entry.
 void setConfig(String k, String v) {
   final config = parseConfig();
   config[cleanKey(k)] = v;
   persistConfig(config, []);
 }
 
+/// Gets a single config value by key.
 String? getConfig(String k) {
   final config = parseConfig();
   return config[k];
 }
 
+/// Returns whether [k] is marked as a secret config value.
 bool isConfigSecret(String k) {
   final store = getStore();
   final envConfigSecretKeys = store.config[configSecretKeysEnvKey];
@@ -299,6 +383,7 @@ bool isConfigSecret(String k) {
   return false;
 }
 
+/// Parses config JSON into a normalized key/value map.
 Map<String, String> parseConfig() {
   final store = getStore();
   final parsedConfig = <String, String>{};
@@ -316,6 +401,7 @@ Map<String, String> parseConfig() {
   return parsedConfig;
 }
 
+/// Persists config and secret keys into the in-memory store.
 void persistConfig(Map<String, String> config, [List<String>? secretKeys]) {
   final store = getStore();
   final serializedConfig = jsonEncode(config);
@@ -326,6 +412,7 @@ void persistConfig(Map<String, String> config, [List<String>? secretKeys]) {
   store.config[configSecretKeysEnvKey] = serializedSecretKeys;
 }
 
+/// Normalizes legacy `config:` key prefixes into canonical key format.
 String cleanKey(String key) {
   final idx = key.indexOf(':');
   if (idx > 0 && key.startsWith('config:', idx + 1)) {

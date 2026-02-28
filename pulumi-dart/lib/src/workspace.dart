@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:path/path.dart' as p;
 
+/// Searches upward from [startDir] for [fileToFind].
 String? _searchUp(String startDir, String fileToFind) {
   var currentDir = p.normalize(startDir);
   while (true) {
@@ -17,6 +18,7 @@ String? _searchUp(String startDir, String fileToFind) {
   }
 }
 
+/// Parses workspace globs from a `package.json` file.
 List<String> _parseWorkspaces(String packageJsonPath) {
   final packageJson = jsonDecode(File(packageJsonPath).readAsStringSync());
   final workspaces = packageJson['workspaces'];
@@ -32,6 +34,7 @@ List<String> _parseWorkspaces(String packageJsonPath) {
   return const <String>[];
 }
 
+/// Returns whether [relativePath] matches a workspace glob [pattern].
 bool _workspacePatternMatches(String pattern, String relativePath) {
   final normalizedPattern = p.normalize(pattern).replaceAll('\\', '/');
   final normalizedRelative = p.normalize(relativePath).replaceAll('\\', '/');
@@ -43,8 +46,16 @@ bool _workspacePatternMatches(String pattern, String relativePath) {
   return regex.hasMatch(normalizedRelative);
 }
 
+/// {@template pulumi.workspace.find_root}
 /// Finds the root directory of a package.json workspace that contains
 /// [startingPath]. Returns `null` when no containing workspace is found.
+///
+/// ## Example
+/// ```dart
+/// final root = findWorkspaceRoot('/repo/packages/app/lib/main.dart');
+/// ```
+/// {@endtemplate}
+///
 String? findWorkspaceRoot(String startingPath) {
   var start = startingPath;
   final type = FileSystemEntity.typeSync(startingPath);

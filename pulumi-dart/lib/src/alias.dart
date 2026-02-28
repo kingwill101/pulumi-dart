@@ -3,6 +3,18 @@ import 'output.dart';
 import 'pulumirpc/pulumi/alias.pb.dart' as pb;
 import 'resource/resource.dart';
 
+/// {@template pulumi.alias.summary}
+/// Describes a prior identity for a resource.
+///
+/// Aliases preserve continuity across rename/reparent/type migrations so
+/// Pulumi can adopt existing state instead of replacing resources.
+///
+/// ## Example
+/// ```dart
+/// final alias = Alias(name: Input.fromValue('old-name'));
+/// ```
+/// {@endtemplate}
+///
 class Alias {
   final String? _urn;
   final Input<String>? _name;
@@ -31,6 +43,10 @@ class Alias {
        _parentUrn = parentUrn,
        _noParent = noParent;
 
+  /// Creates an alias from either a full URN or partial alias spec fields.
+  ///
+  /// Exactly one parent selector should be used: [parent], [parentUrn], or
+  /// [noParent].
   factory Alias({
     String? urn,
     Input<String>? name,
@@ -53,13 +69,28 @@ class Alias {
     );
   }
 
+  /// Full alias URN, when specified directly.
   String? get urn => _urn;
+
+  /// Alias resource name override.
   Input<String>? get name => _name;
+
+  /// Alias type token override.
   Input<String>? get type => _type;
+
+  /// Alias stack name override.
   Input<String>? get stack => _stack;
+
+  /// Alias project name override.
   Input<String>? get project => _project;
+
+  /// Alias parent resource.
   Resource? get parent => _parent;
+
+  /// Alias parent URN override.
   Input<String>? get parentUrn => _parentUrn;
+
+  /// Explicitly marks alias as having no parent.
   bool get noParent => _noParent;
 
   Future<String> _resolve(Input<String>? value, String whenUnknown) async {
@@ -69,6 +100,7 @@ class Alias {
     return value.toOutput().getValue(whenUnknown: whenUnknown);
   }
 
+  /// Serializes this alias to protobuf wire format for monitor RPCs.
   Future<pb.Alias> serializeAsync() async {
     if (_urn != null) {
       if (_name != null ||
@@ -121,6 +153,9 @@ class Alias {
   }
 }
 
+/// Collapses an [Alias] spec into a concrete URN input.
+///
+/// Used by the deployment runtime to materialize alias data before RPC calls.
 Input<String> collapseAliasToUrn(
   Alias alias, {
   required String name,
@@ -168,6 +203,9 @@ Input<String> collapseAliasToUrn(
   );
 }
 
+/// Computes an inherited child alias from a parent alias.
+///
+/// This is used to preserve child identities when parent names change.
 Input<String> inheritedChildAlias(
   String childName,
   String parentName,
@@ -200,6 +238,10 @@ Input<String> inheritedChildAlias(
   );
 }
 
+/// Computes the full alias set for a child resource.
+///
+/// This includes explicit child aliases and aliases inherited from parent
+/// aliases.
 List<Input<String>> allAliases({
   required List<Alias> childAliases,
   required String childName,

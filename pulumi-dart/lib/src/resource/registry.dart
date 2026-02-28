@@ -6,6 +6,13 @@ import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
 import '../pulumirpc/pulumi/resource.pbgrpc.dart';
 
+/// {@template pulumi.resource_registry.summary}
+/// Registry used to construct resources from type tokens at runtime.
+///
+/// Generated/provider code can register factories so unknown runtime resource
+/// types can be mapped back to concrete Dart classes.
+/// {@endtemplate}
+///
 class ResourceRegistry {
   static final ResourceRegistry _instance = ResourceRegistry._internal();
   factory ResourceRegistry() => _instance;
@@ -17,6 +24,7 @@ class ResourceRegistry {
   >
   _resourceFactories = {};
 
+  /// Registers a constructor factory for a resource type token.
   void registerResourceFactory(
     String type,
     Resource Function(String, Map<String, Input<dynamic>>, ResourceOptions)
@@ -25,6 +33,7 @@ class ResourceRegistry {
     _resourceFactories[type] = factory;
   }
 
+  /// Registers a resource through the monitor and returns registration details.
   Future<RegisterResourceResult> registerResourceAsync(
     String type,
     String name,
@@ -59,6 +68,7 @@ class ResourceRegistry {
     }
   }
 
+  /// Constructs a resource from registered factory, or falls back to dependency.
   Resource constructResource(
     String type,
     String name,
@@ -74,6 +84,10 @@ class ResourceRegistry {
   }
 }
 
+/// {@template pulumi.resource_registry.register_result}
+/// Result payload returned from resource registration.
+/// {@endtemplate}
+///
 class RegisterResourceResult {
   final String urn;
   final String? id;

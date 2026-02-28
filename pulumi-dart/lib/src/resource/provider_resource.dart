@@ -3,6 +3,18 @@ import 'package:pulumi/src/resource/custom_resource.dart';
 import '../constants.dart';
 import '../input.dart';
 
+/// {@template pulumi.provider_resource.summary}
+/// A configured provider instance for a Pulumi package.
+///
+/// Provider resources use the type token `pulumi:providers:<package>` and can
+/// be passed via resource/invoke options to select explicit provider behavior.
+///
+/// ## Example
+/// ```dart
+/// final randomProvider = ProviderResource('random', 'default', {}, null);
+/// ```
+/// {@endtemplate}
+///
 class ProviderResource extends CustomResource {
   final String package;
   String? registrationId;
@@ -35,6 +47,7 @@ class ProviderResource extends CustomResource {
     registrationId = "$urn::${hasKnownID ? id : Constants.unknownValue}";
   }
 
+  /// Returns the provider registration identifier (`<urn>::<id>`).
   static Future<String?> register(ProviderResource? providerResource) async {
     if (providerResource == null) return null;
 

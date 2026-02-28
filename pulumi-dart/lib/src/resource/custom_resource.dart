@@ -8,6 +8,10 @@ import 'resource.dart';
 import 'resource_options.dart';
 import 'resource_transformation.dart';
 
+/// {@template pulumi.custom_resource_options.summary}
+/// Resource options specialized for [CustomResource].
+/// {@endtemplate}
+///
 class CustomResourceOptions extends ResourceOptions {
   CustomResourceOptions({
     super.id,
@@ -36,6 +40,27 @@ class CustomResourceOptions extends ResourceOptions {
        );
 }
 
+/// {@template pulumi.custom_resource.summary}
+/// A resource whose lifecycle is implemented by a provider plugin.
+///
+/// Custom resources represent concrete cloud/service objects. Their provider
+/// `id` is often unknown during preview and is resolved after registration.
+///
+/// Generated provider SDK resources typically extend this class.
+///
+/// ## Example
+/// ```dart
+/// class RandomPet extends CustomResource {
+///   late final Output<String?> result;
+///
+///   RandomPet(String name, Inputs args, CustomResourceOptions opts)
+///       : super('random:index:RandomPet', name, args, opts) {
+///     result = registerOutput<String?>('id');
+///   }
+/// }
+/// ```
+/// {@endtemplate}
+///
 class CustomResource extends Resource {
   late Output<String?> id;
   final Completer<OutputData<String?>> _idCompleter =
@@ -62,6 +87,7 @@ class CustomResource extends Resource {
     id = Output<String?>(_idCompleter.future);
   }
 
+  /// Resolves the provider-assigned ID for this resource.
   void resolveId(String? value, {required bool isKnown}) {
     if (_idCompleter.isCompleted) {
       return;

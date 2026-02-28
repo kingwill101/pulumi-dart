@@ -6,10 +6,24 @@ import 'input_args.dart';
 import 'output.dart';
 import 'resource/resource.dart';
 
+/// {@template pulumi.output_helpers.output}
+/// Converts an arbitrary value into an [Output].
+///
+/// This helper recursively resolves nested [Input], [Output], [Future], maps,
+/// and lists.
+/// {@endtemplate}
+///
 Output<dynamic> output(dynamic value) {
   return Output<dynamic>(_resolveOutputData(value));
 }
 
+/// {@template pulumi.output_helpers.secret}
+/// Converts a value into a secret [Output].
+///
+/// Secret marking is applied to the final output regardless of whether the
+/// original value was already secret.
+/// {@endtemplate}
+///
 Output<dynamic> secret(dynamic value) {
   return Output<dynamic>(
     _resolveOutputData(value).then(
@@ -23,21 +37,34 @@ Output<dynamic> secret(dynamic value) {
   );
 }
 
+/// Removes the secret bit from an output.
 Output<T> unsecret<T>(Output<T> value) => Output.unsecret(value);
 
+/// JSON-encodes the resolved value of an output-like input.
 Output<String> jsonStringify(dynamic value) {
   return output(value).apply((resolved) => jsonEncode(resolved));
 }
 
+/// JSON-decodes the resolved string value of an output-like input.
 Output<dynamic> jsonParse(dynamic value) {
   return output(value).apply((resolved) => jsonDecode(resolved as String));
 }
 
+/// Resolves and JSON-encodes a value using runtime output semantics.
 Future<String> runtimeToJson(dynamic value) async {
   final resolved = await _resolveOutputData(value);
   return jsonEncode(resolved.value);
 }
 
+/// Creates a deferred output and a resolver callback.
+///
+/// The returned resolver wires another output into the deferred output.
+///
+/// ## Example
+/// ```dart
+/// final (out, resolve) = deferredOutput<String>();
+/// resolve(Output.create('ready'));
+/// ```
 (Output<T>, void Function(Output<T>)) deferredOutput<T>() {
   final completer = Completer<OutputData<T>>();
   final result = Output<T>(completer.future);

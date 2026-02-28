@@ -3,6 +3,17 @@ import 'dart:collection';
 import 'input.dart';
 import 'output.dart';
 
+/// {@template pulumi.input_list.summary}
+/// A list of [Input] values that is itself an [Input] list.
+///
+/// ## Example
+/// ```dart
+/// final ids = InputList<String>()
+///   ..addValue('a')
+///   ..add(Input.fromValue('b'));
+/// ```
+/// {@endtemplate}
+///
 class InputList<T> extends ListBase<Input<T>> implements Input<List<T>> {
   final List<Input<T>> _list = [];
 
@@ -59,6 +70,15 @@ class InputList<T> extends ListBase<Input<T>> implements Input<List<T>> {
   bool get isNotEmpty => _list.isNotEmpty;
 }
 
+/// {@template pulumi.input_map.summary}
+/// A string-keyed map of [Input] values that is itself an [Input] map.
+///
+/// ## Example
+/// ```dart
+/// final tags = InputMap<String>()..setValue('env', 'dev');
+/// ```
+/// {@endtemplate}
+///
 class InputMap<V> extends MapBase<String, Input<V>>
     implements Input<Map<String, V>> {
   final Map<String, Input<V>> _map = {};

@@ -6,34 +6,115 @@ import 'resource.dart';
 import 'resource_hooks.dart';
 import 'resource_transformation.dart';
 
+/// {@template pulumi.custom_timeouts.summary}
+/// Per-operation timeout overrides for custom resources.
+///
+/// Timeout strings follow Pulumi duration formats (for example `5m`, `1h`).
+/// {@endtemplate}
+///
 class CustomTimeouts {
+  /// Create operation timeout.
   final String? create;
+
+  /// Update operation timeout.
   final String? update;
+
+  /// Delete operation timeout.
   final String? delete;
 
   const CustomTimeouts({this.create, this.update, this.delete});
 }
 
+/// {@template pulumi.resource_options.summary}
+/// A bag of optional controls for resource registration and lifecycle behavior.
+///
+/// These options map to Pulumi's cross-language `ResourceOptions` concept.
+/// Common controls include parent/provider inheritance, explicit dependencies,
+/// aliases for rename/reparent operations, replacement/deletion behavior, and
+/// plugin/version selection.
+///
+/// ## Precedence
+/// When options are merged, scalar values use "last non-null wins" and
+/// collection values are concatenated.
+///
+/// ## Example
+/// ```dart
+/// final opts = ResourceOptions(
+///   protect: true,
+///   ignoreChanges: ['tags'],
+/// );
+/// ```
+///
+/// ## Example (advanced)
+/// ```dart
+/// final opts = ResourceOptions(
+///   dependsOn: [networkResource],
+///   aliases: [Alias(name: Input.fromValue('old-name'))],
+///   customTimeouts: CustomTimeouts(create: '10m', update: '10m'),
+///   deleteBeforeReplace: false,
+/// );
+/// ```
+/// {@endtemplate}
+///
 class ResourceOptions {
+  /// Existing resource ID for read/import-style operations.
   final Input<String>? id;
+
+  /// Parent resource used for hierarchy/provider inheritance.
   final Resource? parent;
+
+  /// Explicit dependency edges that must complete before this resource.
   final List<Resource>? dependsOn;
+
+  /// When `true`, prevents deletion unless protection is removed.
   final bool? protect;
+
+  /// Explicit provider instance for provider-managed resources/invokes.
   final ProviderResource? provider;
+
+  /// Provider map candidates used by components and package scoping.
   final List<ProviderResource> providers;
+
+  /// Prior identities used to avoid replacement during renames/reparents.
   final List<Alias>? aliases;
+
+  /// Per-operation timeout overrides for custom resources.
   final CustomTimeouts? customTimeouts;
+
+  /// When `true`, delete before replace instead of create-before-delete.
   final bool? deleteBeforeReplace;
+
+  /// When `true`, retain remote object during deletion from state.
   final bool? retainOnDelete;
+
+  /// Deletes this resource when [deletedWith] is deleted.
   final Resource? deletedWith;
+
+  /// Output property names to always mark as secret.
   final List<String>? additionalSecretOutputs;
+
+  /// Property names ignored during diff.
   final List<String>? ignoreChanges;
+
+  /// Property names that force replacement when changed.
   final List<String>? replaceOnChanges;
+
+  /// Provider plugin version constraint.
   final String? version;
+
+  /// Provider plugin download URL override.
   final String? pluginDownloadURL;
+
+  /// Arbitrary provider-specific replacement trigger metadata.
   final dynamic replacementTrigger;
+
+  /// Legacy synchronous transformations.
   final List<ResourceTransformation> resourceTransformations;
+
+  /// Async resource transforms.
   final List<ResourceTransform> resourceTransforms;
+
+  /// Lifecycle and error hooks grouped by phase.
   final ResourceHookBinding? hooks;
 
   const ResourceOptions({
@@ -59,8 +140,15 @@ class ResourceOptions {
     this.hooks,
   }) : providers = providers ?? const [];
 
+  /// Returns the effective replacement trigger payload.
   dynamic get effectiveReplacementTrigger => replacementTrigger;
 
+  /// Merges [options] onto this instance.
+  ///
+  /// Scalar fields use "last non-null wins", while list-like fields are
+  /// concatenated to preserve inherited and local values.
+  ///
+  /// This behavior matches Pulumi SDK behavior in other languages.
   ResourceOptions merge(ResourceOptions? options) {
     if (options == null) return this;
 
@@ -103,6 +191,7 @@ class ResourceOptions {
   ResourceOptions clone() => createComponentResourceOptionsCopy(this);
 }
 
+/// Merges two hook bindings by phase.
 ResourceHookBinding? mergeHooks(
   ResourceHookBinding? binding1,
   ResourceHookBinding? binding2,
@@ -122,6 +211,9 @@ ResourceHookBinding? mergeHooks(
   );
 }
 
+/// Merges provider lists using package name as the uniqueness key.
+///
+/// When both lists include the same package, the latter provider wins.
 List<ProviderResource> mergeProviders(
   List<ProviderResource> prov1,
   List<ProviderResource> prov2,
@@ -136,6 +228,7 @@ List<ProviderResource> mergeProviders(
   return byPackage.values.toList(growable: false);
 }
 
+/// Creates a defensive copy of [options].
 ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
   return ResourceOptions(
     id: options.id,

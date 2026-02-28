@@ -7,6 +7,16 @@ import 'input.dart';
 import 'output.dart';
 import 'resource/custom_resource.dart';
 
+/// {@template pulumi.serializer.summary}
+/// Serializes Dart inputs/resources to Pulumi RPC-compatible values.
+///
+/// This encoder preserves Pulumi wire-format semantics:
+/// - unknown sentinels for preview-time unknowns
+/// - secret wrappers
+/// - resource references (URN/ID)
+/// - output-value envelopes when requested
+/// {@endtemplate}
+///
 class Serializer {
   final Set<Resource> dependentResources = {};
   final bool _excessiveDebugOutput;
@@ -14,6 +24,10 @@ class Serializer {
   Serializer({bool excessiveDebugOutput = false})
     : _excessiveDebugOutput = excessiveDebugOutput;
 
+  /// Serializes [prop] in context [ctx].
+  ///
+  /// When [keepResources] is `true`, resources are encoded as structured
+  /// references. When [keepOutputValues] is `true`, output envelopes are kept.
   Future<dynamic> serializeAsync(
     String ctx,
     dynamic prop,
@@ -213,6 +227,7 @@ class Serializer {
     );
   }
 
+  /// Serializes a resource argument map.
   Future<Map<String, dynamic>> serializeResourceArgs(
     String ctx,
     Inputs args,
@@ -226,6 +241,7 @@ class Serializer {
     return serializeMap(ctx, args, keepResources, keepOutputValues);
   }
 
+  /// Serializes an [AssetOrArchive] into Pulumi signature maps.
   Future<Map<String, dynamic>> serializeAssetOrArchive(
     String ctx,
     AssetOrArchive assetOrArchive,
@@ -286,6 +302,7 @@ class Serializer {
     return {Constants.specialSigKey: sigKey, propName: serializedValue};
   }
 
+  /// Serializes map values recursively.
   Future<Map<String, dynamic>> serializeMap(
     String ctx,
     Map<String, dynamic> map,
@@ -316,6 +333,7 @@ class Serializer {
     return result;
   }
 
+  /// Serializes list values recursively.
   Future<List<dynamic>> serializeList(
     String ctx,
     Iterable iterable,

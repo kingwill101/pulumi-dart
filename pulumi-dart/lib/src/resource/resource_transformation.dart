@@ -4,19 +4,36 @@ import '../input.dart';
 import 'resource.dart';
 import 'resource_options.dart';
 
+/// {@template pulumi.resource_transformation.summary}
+/// Legacy synchronous resource transformation callback.
+///
+/// Transformations run before resource registration and may replace arguments
+/// and options.
+/// {@endtemplate}
+///
 typedef ResourceTransformation =
     ResourceTransformationResult? Function(ResourceTransformationArgs args);
 
+/// Arguments passed to a [ResourceTransformation].
 class ResourceTransformationArgs {
+  /// Resource instance being registered.
   final Resource resource;
+
+  /// Input arguments provided at construction.
   final Inputs args;
+
+  /// Resource options provided at construction.
   final ResourceOptions options;
 
   ResourceTransformationArgs(this.resource, this.args, this.options);
 }
 
+/// Result returned by a [ResourceTransformation].
 class ResourceTransformationResult {
+  /// Replacement argument map.
   final Inputs args;
+
+  /// Replacement options.
   final ResourceOptions options;
 
   ResourceTransformationResult(this.args, this.options);
@@ -26,12 +43,22 @@ class ResourceTransformationResult {
 /// Resource constructor and can optionally return modified values. The new values will be used in place
 /// of the original arguments and options when creating the resource. If the transform returns null,
 /// it indicates that the resource will not be transformed.
+///
+/// ## Example
+/// ```dart
+/// Future<ResourceTransformResult?> addTag(ResourceTransformArgs args, [CancellationToken? _]) async {
+///   final props = Map<String, Object?>.from(args.args);
+///   props['managedBy'] = 'pulumi-dart';
+///   return ResourceTransformResult(props, args.options);
+/// }
+/// ```
 typedef ResourceTransform =
     Future<ResourceTransformResult?> Function(
       ResourceTransformArgs args, [
       CancellationToken? cancellationToken,
     ]);
 
+/// Arguments passed to a [ResourceTransform].
 class ResourceTransformArgs {
   /// The name of the resource being transformed.
   final String name;
@@ -57,6 +84,7 @@ class ResourceTransformArgs {
   );
 }
 
+/// Result returned from a [ResourceTransform].
 class ResourceTransformResult {
   /// The modified properties for the resource.
   final Map<String, Object?> args;
@@ -67,6 +95,10 @@ class ResourceTransformResult {
   ResourceTransformResult(this.args, this.options);
 }
 
+/// {@template pulumi.cancellation_token.summary}
+/// Cooperative cancellation token for async transforms.
+/// {@endtemplate}
+///
 class CancellationToken {
   final Completer<void> _completer = Completer<void>();
 

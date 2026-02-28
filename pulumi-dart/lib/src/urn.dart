@@ -1,8 +1,18 @@
+/// Parsed components of a Pulumi URN.
 class ParsedUrn {
+  /// Logical resource name (tail after type section).
   final String urnName;
+
+  /// Full `pkg:module:type` token.
   final String typ;
+
+  /// Package segment.
   final String pkgName;
+
+  /// Module segment.
   final String modName;
+
+  /// Type segment.
   final String typName;
 
   const ParsedUrn({
@@ -14,6 +24,16 @@ class ParsedUrn {
   });
 }
 
+/// Parses a Pulumi URN into package/module/type/name components.
+///
+/// ## Example
+/// ```dart
+/// final p = parseUrn('urn:pulumi:dev::proj::aws:s3/bucket:Bucket::logs');
+/// // p.pkgName == 'aws'
+/// // p.modName == 's3/bucket'
+/// // p.typName == 'Bucket'
+/// // p.urnName == 'logs'
+/// ```
 ParsedUrn parseUrn(String urn) {
   final parts = urn.split('::');
   if (parts.length < 3) {

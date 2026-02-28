@@ -1,5 +1,9 @@
 import 'package:pulumi/src/pulumirpc/pulumi/source.pb.dart' as pulumi_source;
 
+/// {@template pulumi.source_position.metadata}
+/// Captured source position and stack trace metadata for an RPC request.
+/// {@endtemplate}
+///
 class RequestSourceMetadata {
   final pulumi_source.SourcePosition? sourcePosition;
   final pulumi_source.StackTrace stackTrace;
@@ -10,6 +14,9 @@ class RequestSourceMetadata {
   });
 }
 
+/// Captures source metadata from a Dart [StackTrace].
+///
+/// Internal Pulumi SDK frames are filtered to prefer user-code frames.
 RequestSourceMetadata captureRequestSourceMetadata(
   StackTrace stackTrace, {
   int maxFrames = 32,
@@ -42,6 +49,7 @@ RequestSourceMetadata captureRequestSourceMetadata(
   );
 }
 
+/// Applies request source metadata to a protobuf request payload.
 void applyRequestSourceMetadata(dynamic request, StackTrace stackTrace) {
   final metadata = captureRequestSourceMetadata(stackTrace);
   if (metadata.sourcePosition != null) {

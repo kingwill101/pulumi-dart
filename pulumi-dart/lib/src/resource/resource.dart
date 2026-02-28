@@ -17,6 +17,17 @@ import 'provider_resource.dart';
 import 'resource_options.dart';
 import 'resource_transformation.dart';
 
+/// {@template pulumi.resource.summary}
+/// Base class for all Pulumi resources.
+///
+/// A resource has a stable URN identity and participates in Pulumi's
+/// dependency graph. Concrete resource types such as custom resources and
+/// component resources build on top of this registration lifecycle.
+///
+/// Subclasses typically register typed outputs using [registerOutput], and
+/// the runtime resolves those outputs as monitor responses arrive.
+/// {@endtemplate}
+///
 abstract class Resource {
   final String _type;
   final String _name;
@@ -35,7 +46,10 @@ abstract class Resource {
   String? _version;
   String? _pluginDownloadURL;
 
+  /// Inherited/explicit legacy transformations.
   List<ResourceTransformation> get transformations => _transformations;
+
+  /// Inherited/explicit async transforms.
   List<ResourceTransform> get resourceTransforms => _resourceTransforms;
 
   late final Map<String, IOutputCompletionSource> completionSources;
@@ -209,12 +223,20 @@ abstract class Resource {
     DeploymentImpl.instance.registerResourceOperation(register);
   }
 
+  /// Resolves this resource's URN once assigned by the engine.
   void resolveUrn(String value) {
     if (!_urnCompleter.isCompleted) {
       _urnCompleter.complete(value);
     }
   }
 
+  /// Registers a dynamic output property for this resource.
+  ///
+  /// Subclasses usually expose a typed field and assign it from this method:
+  /// ```dart
+  /// late final Output<String> name;
+  /// name = registerOutput<String>('name');
+  /// ```
   Output<T> registerOutput<T>(String propertyName) {
     final source = OutputCompletionSource.create<T>(this);
     completionSources[propertyName] = source;
@@ -226,6 +248,7 @@ abstract class Resource {
     return source.output as Output<T>;
   }
 
+  /// Resolves all output properties from a monitor response payload.
   void resolveOutputs(Struct outputs) {
     _pendingResolvedOutputs = outputs;
     if (completionSources.isEmpty) {
@@ -237,6 +260,7 @@ abstract class Resource {
     }
   }
 
+  /// Completes all output properties with [error].
   void failOutputs(Object error) {
     final exception = error is Exception ? error : Exception(error.toString());
     _pendingOutputException = exception;
@@ -272,6 +296,7 @@ abstract class Resource {
     );
   }
 
+  /// Serializes resource properties for RPC transmission.
   Future<Struct> serializeProperties(Map<String, dynamic> properties) async {
     final serializedProps = Struct();
     for (var entry in properties.entries) {
@@ -423,13 +448,19 @@ abstract class Resource {
     return false;
   }
 
+  /// Returns whether this resource is provider-managed.
   bool get isCustom => _custom;
+
+  /// Returns whether this resource is protected from deletion.
   bool get isProtected => _protect;
 
+  /// Returns this resource's Pulumi type token.
   String getResourceType() => _type;
 
+  /// Returns this resource's logical name.
   String getResourceName() => _name;
 
+  /// Returns provider for [moduleMember]'s package, if configured.
   ProviderResource? getProvider(String moduleMember) {
     var memComponents = moduleMember.split(':');
     if (memComponents.length != 3) {
@@ -451,6 +482,7 @@ abstract class Resource {
   }
 }
 
+/// Error thrown for resource-related failures.
 class ResourceException implements Exception {
   final String message;
   final Resource? parent;

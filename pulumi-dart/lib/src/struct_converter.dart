@@ -4,7 +4,15 @@ import 'output.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'resource/resource.dart';
 
+/// {@template pulumi.struct_converter.summary}
+/// Converts between Dart values and protobuf `Struct`/`Value`.
+///
+/// This converter is used in monitor/engine/callback RPC request-response
+/// paths and preserves Pulumi secret/resource reference conventions.
+/// {@endtemplate}
+///
 class StructConverter {
+  /// Converts a map into protobuf [Struct].
   static Future<Struct> toStruct(Map<String, dynamic> input) async {
     final struct = Struct();
     for (final entry in input.entries) {
@@ -13,6 +21,7 @@ class StructConverter {
     return struct;
   }
 
+  /// Converts a Dart value into protobuf [Value].
   static Future<Value> toValue(dynamic value) async {
     final result = Value();
 
@@ -129,10 +138,12 @@ class StructConverter {
     return result;
   }
 
+  /// Converts protobuf [Struct] to a Dart map.
   static Map<String, dynamic> fromStruct(Struct value) {
     return value.fields.map((key, v) => MapEntry(key, fromValue(v)));
   }
 
+  /// Converts protobuf [Value] to a Dart value.
   static dynamic fromValue(Value value) {
     switch (value.whichKind()) {
       case Value_Kind.nullValue:

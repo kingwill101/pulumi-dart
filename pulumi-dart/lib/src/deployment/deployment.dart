@@ -29,9 +29,24 @@ import '../resource/resource_options.dart';
 import '../resource/custom_resource.dart';
 import 'stack.dart';
 
+/// {@template pulumi.deployment.summary}
+/// Active Pulumi deployment runtime contract.
+///
+/// The deployment orchestrates resource registration, invokes/calls, transform
+/// registration, and final stack output publication for a single program run.
+///
+/// Most programs only use [run] or [runOrThrow].
+/// {@endtemplate}
+///
 abstract class Deployment {
   static Deployment get instance => DeploymentImpl.instance;
 
+  /// Runs a Pulumi program callback and returns the process exit code.
+  ///
+  /// ## Example
+  /// ```dart
+  /// final code = await Deployment.run(() => MyStack());
+  /// ```
   static Future<int> run(
     Function() func, {
     String? organizationName,
@@ -52,6 +67,7 @@ abstract class Deployment {
     );
   }
 
+  /// Runs a Pulumi program callback and throws on non-zero exit.
   static Future<void> runOrThrow(
     Function() func, {
     String? organizationName,
@@ -75,24 +91,34 @@ abstract class Deployment {
     }
   }
 
+  /// Organization associated with the current deployment.
   String get organizationName;
 
+  /// Project associated with the current deployment.
   String get projectName;
 
+  /// Stack associated with the current deployment.
   String get stackName;
 
+  /// Whether the deployment is running in dry-run (preview) mode.
   bool get isDryRun;
 
+  /// Deployment logger.
   EngineLogger get logger;
 
+  /// Active root stack resource.
   Stack get stack;
 
+  /// Sets the active root stack resource.
   void setStack(Stack stack);
 
+  /// Gets a raw config value by key.
   String? getConfig(String key);
 
+  /// Returns whether a config key is marked secret.
   bool isConfigSecret(String key);
 
+  /// Reads an existing resource or registers a new one.
   Future<void> readOrRegisterResource({
     required Resource resource,
     required bool remote,
@@ -102,15 +128,19 @@ abstract class Deployment {
     models.RegisterPackageRequest? registerPackageRequest,
   });
 
+  /// Registers an async resource operation for run completion tracking.
   void registerResourceOperation(Future<void> operation);
 
+  /// Registers resource outputs with the monitor.
   Future<void> registerResourceOutputs(
     Resource resource,
     Output<Map<String, dynamic>> outputs,
   );
 
+  /// Waits for all tracked resource operations and publishes outputs.
   Future<void> registerOutputs();
 
+  /// Collapses an alias spec to a URN input for monitor RPCs.
   Input<String> collapseAliasToUrn(
     dynamic alias,
     String name,
@@ -118,10 +148,13 @@ abstract class Deployment {
     Resource? parent,
   );
 
+  /// Registers a global resource transform for the current deployment.
   Future<void> registerResourceTransform(ResourceTransform transform);
 
+  /// Registers a global invoke transform for the current deployment.
   Future<void> registerInvokeTransform(pulumi_invoke.InvokeTransform transform);
 
+  /// Invokes a provider function and returns deserialized result object.
   Future<T> invoke<T>(
     String token,
     Map<String, dynamic> args, {
@@ -129,6 +162,7 @@ abstract class Deployment {
     models.RegisterPackageRequest? registerPackageRequest,
   });
 
+  /// Invokes a provider function and unwraps single-property result payloads.
   Future<T> invokeSingle<T>(
     String token,
     Map<String, dynamic> args, {
@@ -137,6 +171,7 @@ abstract class Deployment {
   });
 }
 
+/// Default implementation of [Deployment] used by Pulumi programs.
 class DeploymentImpl extends Deployment
     with ConfigMixin, InvokeMixin, CallMixin {
   static Map<String, String> _platformEnvironment() => Platform.environment;

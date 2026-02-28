@@ -8,9 +8,20 @@ import 'package:pulumi/src/struct_converter.dart';
 import '../pulumirpc/pulumi/resource.pb.dart' as pb;
 import 'models.dart' as models;
 
+/// {@template pulumi.deployment.invoke_mixin}
+/// Deployment helper mixin for provider `invoke` operations.
+///
+/// This mixin is used by [DeploymentImpl] to issue `ResourceInvokeRequest`
+/// calls through the monitor and deserialize responses into Dart values.
+/// {@endtemplate}
+///
 mixin InvokeMixin {
+  /// Active monitor RPC wrapper.
   Monitor get monitor;
 
+  /// Invokes a provider function token and deserializes its return payload.
+  ///
+  /// [token] is typically in `pkg:module:function` form.
   Future<T> invoke<T>(
     String token,
     Map<String, dynamic> args, {
@@ -48,6 +59,9 @@ mixin InvokeMixin {
     return _deserializeInvokeResponse<T>(response.return_1);
   }
 
+  /// Invokes and returns the first value from an object result payload.
+  ///
+  /// Useful for provider APIs that return a single named property.
   Future<T> invokeSingle<T>(
     String token,
     Map<String, dynamic> args, {
@@ -63,6 +77,7 @@ mixin InvokeMixin {
     return result.values.first as T;
   }
 
+  /// Registers a package with the monitor and returns package reference.
   Future<String?> _resolvePackageRef(
     models.RegisterPackageRequest request,
   ) async {
@@ -70,6 +85,7 @@ mixin InvokeMixin {
     return response.ref;
   }
 
+  /// Deserializes monitor invoke responses using Pulumi wire semantics.
   T _deserializeInvokeResponse<T>(Struct response) {
     if (T == Null) {
       return null as T;

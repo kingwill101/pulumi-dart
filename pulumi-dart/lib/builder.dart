@@ -6,6 +6,7 @@ import 'package:analyzer/dart/element/element.dart';
 
 import 'src/resource/resource_annotations.dart';
 
+/// Source generator for `@PulumiResource`-annotated classes.
 class ResourceGenerator extends GeneratorForAnnotation<PulumiResource> {
   @override
   String generateForAnnotatedElement(
@@ -32,5 +33,6 @@ class ResourceGenerator extends GeneratorForAnnotation<PulumiResource> {
   }
 }
 
+/// Creates the `source_gen` builder for Pulumi resource helpers.
 Builder resourceGenerator(BuilderOptions options) =>
     SharedPartBuilder([ResourceGenerator()], 'resource');

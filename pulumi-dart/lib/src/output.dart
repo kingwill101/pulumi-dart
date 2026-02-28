@@ -1,11 +1,42 @@
 import 'dart:async';
 import 'resource/resource.dart';
 
+/// {@template pulumi.output.summary}
+/// A Pulumi output value with dependency and secrecy metadata.
+///
+/// An [Output] carries four pieces of information:
+/// - the eventual value
+/// - whether the value is currently known (for preview vs update)
+/// - whether the value is secret
+/// - which resources the value depends on
+///
+/// This mirrors Pulumi's cross-language output semantics and is the primary
+/// mechanism used to compose values while preserving resource graph accuracy.
+///
+/// ## Example: apply/composition
+/// ```dart
+/// final first = Output.create('pulumi');
+/// final second = Output.create('dart');
+///
+/// final sentence = Output.tuple(first, second).apply((pair) {
+///   return '${pair.$1} + ${pair.$2}';
+/// });
+/// ```
+///
+/// ## Example: secret propagation
+/// ```dart
+/// final token = Output.create('abc123');
+/// final secretToken = Output.createSecret(token);
+/// final isSecret = await Output.isSecretAsync(secretToken); // true
+/// ```
+/// {@endtemplate}
+///
 class Output<T> {
   final Future<OutputData<T>> _dataFuture;
 
   Output(this._dataFuture);
 
+  /// Creates a known, non-secret output from a plain value.
   static Output<T> create<T>(T value) {
     return Output<T>(
       Future.value(
@@ -19,6 +50,12 @@ class Output<T> {
     );
   }
 
+  /// Resolves the concrete value.
+  ///
+  /// Throws when the value is unknown unless [whenUnknown] is provided.
+  ///
+  /// This is primarily useful in tests and helper utilities. In resource
+  /// constructors, prefer composition through [apply] and other output helpers.
   Future<T> getValue({T? whenUnknown}) async {
     final data = await _dataFuture;
     return data.isKnown
@@ -26,8 +63,16 @@ class Output<T> {
         : (whenUnknown ?? (throw StateError('Value is unknown')));
   }
 
+  /// Returns full output metadata.
   Future<OutputData<T>> getData() => _dataFuture;
 
+  /// Applies [func] to the resolved value and returns a new output.
+  ///
+  /// If this output is unknown, [func] is not invoked and the resulting output
+  /// remains unknown.
+  ///
+  /// If [func] returns another [Output] or [Future], this method flattens the
+  /// result and preserves dependency/secret metadata.
   Output<U> apply<U>(FutureOr<dynamic> Function(T) func) {
     return Output<U>(_applyHelper(func));
   }
@@ -80,6 +125,10 @@ class Output<T> {
     }
   }
 
+  /// Combines many outputs into one output list.
+  ///
+  /// The combined output is known when all inputs are known, and secret when
+  /// any input is secret.
   static Output<List<T>> all<T>(Iterable<Output<T>> outputs) {
     return Output<List<T>>(_allHelper(outputs));
   }
@@ -110,6 +159,7 @@ class Output<T> {
     );
   }
 
+  /// Marks an output as secret while preserving value/dependencies.
   static Output<T> createSecret<T>(Output<T> value) {
     return Output<T>(
       value._dataFuture.then(
@@ -123,6 +173,7 @@ class Output<T> {
     );
   }
 
+  /// Removes secret marking from an output while preserving value/dependencies.
   static Output<T> unsecret<T>(Output<T> output) {
     return Output<T>(
       output._dataFuture.then(
@@ -136,6 +187,7 @@ class Output<T> {
     );
   }
 
+  /// Creates an unknown output placeholder.
   static Output<T> createUnknown<T>([FutureOr<T> Function()? valueFactory]) {
     return Output<T>(
       Future(() async {
@@ -149,17 +201,20 @@ class Output<T> {
     );
   }
 
+  /// Returns whether an output is marked as secret.
   static Future<bool> isSecretAsync<T>(Output<T> output) async {
     final data = await output.getData();
     return data.isSecret;
   }
 
+  /// Combines two outputs into a tuple output.
   static Output<(T1, T2)> tuple<T1, T2>(Output<T1> item1, Output<T2> item2) {
     return Output(
       _combineOutputs([item1, item2]),
     ).apply((v) => (v[0] as T1, v[1] as T2));
   }
 
+  /// Combines three outputs into a tuple output.
   static Output<(T1, T2, T3)> tuple3<T1, T2, T3>(
     Output<T1> item1,
     Output<T2> item2,
@@ -170,6 +225,7 @@ class Output<T> {
     ).apply((v) => (v[0] as T1, v[1] as T2, v[2] as T3));
   }
 
+  /// Combines four outputs into a tuple output.
   static Output<(T1, T2, T3, T4)> tuple4<T1, T2, T3, T4>(
     Output<T1> item1,
     Output<T2> item2,
@@ -199,6 +255,7 @@ class Output<T> {
   }
 }
 
+/// Internal representation of an [Output] value and its metadata.
 class OutputData<T> {
   final T? value;
   final bool isKnown;
@@ -212,6 +269,7 @@ class OutputData<T> {
     required this.resources,
   });
 
+  /// Creates an [OutputData] instance from explicit fields.
   static OutputData<X> create<X>(
     Set<Resource> resources,
     X value,
@@ -226,6 +284,7 @@ class OutputData<T> {
     );
   }
 
+  /// Combines known/secret flags with this value's flags.
   static (bool, bool) combine<X>(
     OutputData<X> data,
     bool isKnown,

@@ -8,35 +8,73 @@ import 'package:path/path.dart' as path;
 
 import 'callback_server.dart';
 
+/// {@template pulumi.runtime.summary}
+/// Global runtime host state for Pulumi program execution.
+///
+/// This singleton coordinates monitor/engine connectivity, callback server
+/// lifecycle, and runtime feature support probes.
+/// {@endtemplate}
+///
 class Runtime {
   static final Runtime _instance = Runtime._internal();
+
+  /// Returns the process-wide runtime singleton.
   factory Runtime() => _instance;
   Runtime._internal();
 
+  /// Runtime settings.
   Settings settings = Settings();
   ResourceMonitorClient? _monitor;
   ClientChannel? _monitorChannel;
   EngineClient? _engine;
   ClientChannel? _engineChannel;
+
+  /// Feature support flags populated from monitor probes.
   bool supportsSecrets = false;
+
+  /// Supports resource reference serialization/deserialization.
   bool supportsResourceReferences = false;
+
+  /// Supports output-value envelopes from monitor.
   bool supportsOutputValues = false;
+
+  /// Supports `deletedWith` resource option.
   bool supportsDeletedWith = false;
+
+  /// Supports alias spec payloads.
   bool supportsAliasSpecs = false;
+
+  /// Supports resource transforms.
   bool supportsTransforms = false;
+
+  /// Supports invoke transforms.
   bool supportsInvokeTransforms = false;
+
+  /// Callback server used for transform/hook callbacks.
   ICallbackServer? callbacks;
+
+  /// Root stack resource for the current run.
   ComponentResource? stackResource;
   int _activeRpcKeepAlives = 0;
   Completer<void>? _rpcDrainCompleter;
 
   static const int maxRPCMessageSize = 1024 * 1024 * 400; // 400 MB
 
+  /// Whether deployment is running in preview mode.
   bool get isDryRun => settings.dryRun;
+
+  /// Whether query mode is enabled.
   bool get isQueryMode => settings.queryMode;
+
+  /// Whether legacy apply semantics are enabled.
   bool get isLegacyApplyEnabled => settings.legacyApply;
+
+  /// Whether dynamic providers should be cached.
   bool get cacheDynamicProviders => settings.cacheDynamicProviders;
 
+  /// Organization name, if available.
+  ///
+  /// Throws if missing in non-test contexts.
   String get organization {
     if (settings.organization != null) {
       return settings.organization!;
@@ -46,12 +84,19 @@ class Runtime {
     );
   }
 
+  /// Current project name.
   String get project => settings.project ?? "";
+
+  /// Current stack name.
   String get stack => settings.stack ?? "";
 
+  /// Whether monitor client is connected/configured.
   bool get hasMonitor => _monitor != null && settings.monitorAddr != null;
+
+  /// Whether engine client is connected/configured.
   bool get hasEngine => _engine != null && settings.engineAddr != null;
 
+  /// Returns a connected resource monitor client, creating one if needed.
   ResourceMonitorClient? getMonitor() {
     if (_monitor == null && settings.monitorAddr != null) {
       final endpoint = _GrpcEndpoint.parse(settings.monitorAddr!);
@@ -72,6 +117,7 @@ class Runtime {
     return _monitor;
   }
 
+  /// Returns a connected engine client, creating one if needed.
   EngineClient? getEngine() {
     if (_engine == null && settings.engineAddr != null) {
       final endpoint = _GrpcEndpoint.parse(settings.engineAddr!);
@@ -92,6 +138,7 @@ class Runtime {
     return _engine;
   }
 
+  /// Populates feature support flags by probing the monitor.
   Future<void> awaitFeatureSupport() async {
     final monitor = getMonitor();
     if (monitor != null) {
@@ -134,6 +181,7 @@ class Runtime {
     }
   }
 
+  /// Resets runtime options and drops existing RPC clients/callback servers.
   void resetOptions({
     String? project,
     String? stack,
@@ -167,6 +215,7 @@ class Runtime {
     stackResource = null;
   }
 
+  /// Configures test/mock mode and replaces monitor client.
   void setMockOptions(
     dynamic mockMonitor, {
     String? project,
@@ -183,12 +232,14 @@ class Runtime {
     _monitor = mockMonitor;
   }
 
+  /// Waits for any asynchronous stack-level transform registrations.
   Future<void> awaitStackRegistrations() async {
     if (callbacks != null) {
       await callbacks!.awaitStackRegistrations();
     }
   }
 
+  /// Returns the callback server, creating one when monitor is available.
   ICallbackServer? getCallbacks() {
     if (callbacks != null) {
       return callbacks;
@@ -203,6 +254,7 @@ class Runtime {
     return callbacks;
   }
 
+  /// Returns synchronous invoke file handles when sync mode is enabled.
   SyncInvokes? tryGetSyncInvokes() {
     if (settings.syncDir != null) {
       final requestsFile = File(path.join(settings.syncDir!, 'invoke_req'));
@@ -215,12 +267,15 @@ class Runtime {
     return null;
   }
 
+  /// Whether RPC operations should be serialized.
   bool serialize() => settings.parallel == 1;
 
+  /// Alias for immediate RPC termination.
   void terminateRpcs() {
     disconnectSync();
   }
 
+  /// Waits for in-flight RPCs then disconnects clients.
   Future<void> disconnect() async {
     await _waitForRPCs(disconnectFromServers: true);
   }
@@ -238,6 +293,7 @@ class Runtime {
     }
   }
 
+  /// Immediately disconnects callback server and gRPC channels.
   void disconnectSync() {
     _activeRpcKeepAlives = 0;
     _rpcDrainCompleter?.complete();
@@ -255,6 +311,9 @@ class Runtime {
     _engineChannel = null;
   }
 
+  /// Creates a keep-alive token for an in-flight RPC operation.
+  ///
+  /// The returned callback must be invoked when the RPC completes.
   void Function() rpcKeepAlive() {
     _activeRpcKeepAlives += 1;
     _rpcDrainCompleter ??= Completer<void>();
@@ -278,6 +337,7 @@ class Runtime {
     };
   }
 
+  /// Sets the deployment root resource on the Pulumi engine.
   Future<void> setRootResource(ComponentResource res) async {
     await awaitFeatureSupport();
 
@@ -301,18 +361,42 @@ class Runtime {
   }
 }
 
+/// Mutable runtime settings derived from environment and test overrides.
 class Settings {
+  /// Project name.
   String? project;
+
+  /// Stack name.
   String? stack;
+
+  /// Parallelism level.
   int? parallel;
+
+  /// Engine gRPC address.
   String? engineAddr;
+
+  /// Monitor gRPC address.
   String? monitorAddr;
+
+  /// Whether preview mode is enabled.
   bool dryRun;
+
+  /// Whether test mode is enabled.
   bool testModeEnabled;
+
+  /// Whether query mode is enabled.
   bool queryMode;
+
+  /// Whether legacy apply behavior is enabled.
   bool legacyApply;
+
+  /// Whether dynamic provider caching is enabled.
   bool cacheDynamicProviders;
+
+  /// Organization name.
   String? organization;
+
+  /// Directory for synchronous invoke IPC files.
   String? syncDir;
 
   Settings({
@@ -331,6 +415,7 @@ class Settings {
   });
 }
 
+/// File handles used for synchronous invoke request/response plumbing.
 class SyncInvokes {
   final RandomAccessFile requests;
   final RandomAccessFile responses;
@@ -338,6 +423,7 @@ class SyncInvokes {
   SyncInvokes({required this.requests, required this.responses});
 }
 
+/// Parsed host/port gRPC endpoint.
 class _GrpcEndpoint {
   final String host;
   final int port;

@@ -2,6 +2,13 @@ import 'package:pulumi/src/resource/resource_options.dart';
 
 import 'resource.dart';
 
+/// {@template pulumi.dependency_resource.summary}
+/// A lightweight resource used only to model an existing dependency edge.
+///
+/// Dependency resources do not perform provider operations; they exist to
+/// preserve graph relationships when only URN/ID references are available.
+/// {@endtemplate}
+///
 class DependencyResource extends Resource {
   final String _urn;
 

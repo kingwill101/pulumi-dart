@@ -1,6 +1,7 @@
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/output.dart';
 
+/// Converts a plain/Input/Output value into an [Output].
 Output<T> _toOutputValue<T>(dynamic value) {
   if (value is Output<T>) {
     return value;
@@ -11,8 +12,19 @@ Output<T> _toOutputValue<T>(dynamic value) {
   return Input.asInput<T>(value).toOutput();
 }
 
+/// {@template pulumi.iterable.to_object}
 /// Converts a collection into an [Output] map by projecting each item into a
 /// key/value pair. Keys and values may be plain values, [Input]s, or [Output]s.
+///
+/// ## Example
+/// ```dart
+/// final result = toObject<int, String, int>(
+///   [1, 2, 3],
+///   (v) => ('k$v', v * 10),
+/// );
+/// ```
+/// {@endtemplate}
+///
 Output<Map<K, V>> toObject<T, K, V>(
   Iterable<T> values,
   (dynamic, dynamic) Function(T value) selector,
@@ -31,8 +43,19 @@ Output<Map<K, V>> toObject<T, K, V>(
   });
 }
 
+/// {@template pulumi.iterable.group_by}
 /// Groups a collection into an [Output] map of key -> list of values.
 /// Keys and values may be plain values, [Input]s, or [Output]s.
+///
+/// ## Example
+/// ```dart
+/// final grouped = groupBy<String, String, String>(
+///   ['a1', 'a2', 'b1'],
+///   (v) => (v.substring(0, 1), v),
+/// );
+/// ```
+/// {@endtemplate}
+///
 Output<Map<K, List<V>>> groupBy<T, K, V>(
   Iterable<T> values,
   (dynamic, dynamic) Function(T value) selector,

@@ -9,9 +9,18 @@ import 'package:pulumi/src/struct_converter.dart';
 import '../pulumirpc/pulumi/resource.pb.dart' as pb;
 import 'models.dart' as models;
 
+/// {@template pulumi.deployment.call_mixin}
+/// Deployment helper mixin for provider `call` operations.
+///
+/// Calls are similar to invokes but may include dependency-aware argument
+/// tracking and an optional `__self__` resource context.
+/// {@endtemplate}
+///
 mixin CallMixin {
+  /// Active monitor RPC wrapper.
   Monitor get monitor;
 
+  /// Executes a provider call and ignores return payload.
   Future<void> call(
     String token,
     Map<String, dynamic> args, {
@@ -28,6 +37,7 @@ mixin CallMixin {
     );
   }
 
+  /// Executes a provider call and deserializes the return payload.
   Future<T> callWithResult<T>(
     String token,
     Map<String, dynamic> args, {
@@ -71,6 +81,7 @@ mixin CallMixin {
     return _deserializeCallResponse<T>(response.return_1);
   }
 
+  /// Registers a package with the monitor and returns package reference.
   Future<String?> _resolvePackageRef(
     models.RegisterPackageRequest request,
   ) async {
@@ -78,6 +89,7 @@ mixin CallMixin {
     return response.ref;
   }
 
+  /// Deserializes monitor call responses using Pulumi wire semantics.
   T _deserializeCallResponse<T>(Struct response) {
     if (T == Null) {
       return null as T;

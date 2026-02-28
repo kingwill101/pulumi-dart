@@ -4,8 +4,16 @@ import 'pulumirpc/pulumi/engine.pbgrpc.dart';
 import 'settings.dart';
 import 'store/store.dart';
 
+/// {@template pulumi.runtime.log.last_log}
+/// Completion future for serialized log delivery.
+/// {@endtemplate}
+///
 Future<void> lastLog = Future.value();
 
+/// {@template pulumi.runtime.log.levels}
+/// Mapping from engine log severity enum to string labels.
+/// {@endtemplate}
+///
 const messageLevels = {
   LogSeverity.DEBUG: "debug",
   LogSeverity.INFO: "info",
@@ -18,7 +26,10 @@ bool hasErrors() {
   return getStore().logErrorCount > 0;
 }
 
+/// {@template pulumi.runtime.log.debug}
 /// Logs a debug-level message that is generally hidden from end-users.
+/// {@endtemplate}
+///
 Future<void> debug(
   String msg, {
   Resource? resource,
@@ -33,8 +44,11 @@ Future<void> debug(
   }
 }
 
+/// {@template pulumi.runtime.log.info}
 /// Logs an informational message that is generally printed to standard output
 /// during resource operations.
+/// {@endtemplate}
+///
 Future<void> info(
   String msg, {
   Resource? resource,
@@ -50,7 +64,10 @@ Future<void> info(
   }
 }
 
+/// {@template pulumi.runtime.log.warn}
 /// Logs a warning to indicate that something went wrong, but not catastrophically so.
+/// {@endtemplate}
+///
 Future<void> warn(
   String msg, {
   Resource? resource,
@@ -66,7 +83,10 @@ Future<void> warn(
   }
 }
 
+/// {@template pulumi.runtime.log.error}
 /// Logs a fatal condition. Consider raising an exception after calling error to stop the Pulumi program.
+/// {@endtemplate}
+///
 Future<void> error(
   String msg, {
   Resource? resource,
@@ -84,6 +104,10 @@ Future<void> error(
   }
 }
 
+/// Sends a log message to the Pulumi engine in serialized order.
+///
+/// Ordering guarantees mirror other Pulumi SDKs and avoid interleaving under
+/// concurrent logging.
 Future<void> log(
   EngineClient engine,
   LogSeverity sev,
