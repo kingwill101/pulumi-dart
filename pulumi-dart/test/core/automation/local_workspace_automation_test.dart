@@ -132,10 +132,195 @@ void main() {
           'config',
           'set',
           'password',
-          's3cret',
           '--stack',
           'dev',
           '--secret',
+          '--non-interactive',
+          '--',
+          's3cret',
+        ]),
+      );
+    });
+
+    test('setAllConfig emits secret/plaintext flags per entry', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      await stack.setAllConfig(<String, AutomationConfigValue>{
+        'proj:plain': const AutomationConfigValue(value: 'abc', secret: false),
+        'proj:secret': const AutomationConfigValue(value: 'def', secret: true),
+      });
+
+      expect(
+        runner.requests.single.arguments,
+        equals(<String>[
+          'config',
+          'set-all',
+          '--stack',
+          'dev',
+          '--plaintext',
+          'proj:plain=abc',
+          '--secret',
+          'proj:secret=def',
+        ]),
+      );
+    });
+
+    test('removeConfig and removeAllConfig use expected commands', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      await stack.removeConfig('proj:one');
+      await stack.removeAllConfig(<String>['proj:one', 'proj:two']);
+
+      expect(
+        runner.requests[0].arguments,
+        equals(<String>['config', 'rm', 'proj:one', '--stack', 'dev']),
+      );
+      expect(
+        runner.requests[1].arguments,
+        equals(<String>[
+          'config',
+          'rm-all',
+          'proj:one',
+          'proj:two',
+          '--stack',
+          'dev',
+        ]),
+      );
+    });
+
+    test('add/list/remove environments use expected commands', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: '["automation-api-test-env","automation-api-test-env-2"]',
+          stderr: '',
+        ),
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      await stack.addEnvironments(<String>[
+        'automation-api-test-env',
+        'automation-api-test-env-2',
+      ]);
+      final envs = await stack.listEnvironments();
+      await stack.removeEnvironment('automation-api-test-env');
+
+      expect(
+        runner.requests[0].arguments,
+        equals(<String>[
+          'config',
+          'env',
+          'add',
+          'automation-api-test-env',
+          'automation-api-test-env-2',
+          '--stack',
+          'dev',
+          '--yes',
+        ]),
+      );
+      expect(
+        runner.requests[1].arguments,
+        equals(<String>['config', 'env', 'ls', '--stack', 'dev', '--json']),
+      );
+      expect(
+        runner.requests[2].arguments,
+        equals(<String>[
+          'config',
+          'env',
+          'rm',
+          'automation-api-test-env',
+          '--stack',
+          'dev',
+          '--yes',
+        ]),
+      );
+      expect(
+        envs,
+        equals(<String>[
+          'automation-api-test-env',
+          'automation-api-test-env-2',
+        ]),
+      );
+    });
+
+    test('getConfig and getAllConfig decode pulumi json shape', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: '{"value":"test_value","secret":false}',
+          stderr: '',
+        ),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout:
+              '{"proj:new_key":{"value":"test_value","secret":false},"proj:test_secret":{"value":"s3cret","secret":true}}',
+          stderr: '',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      final single = await stack.getConfig('proj:new_key');
+      final all = await stack.getAllConfig();
+
+      expect(single.value, equals('test_value'));
+      expect(single.secret, isFalse);
+      expect(all['proj:new_key']?.value, equals('test_value'));
+      expect(all['proj:new_key']?.secret, isFalse);
+      expect(all['proj:test_secret']?.value, equals('s3cret'));
+      expect(all['proj:test_secret']?.secret, isTrue);
+
+      expect(
+        runner.requests[0].arguments,
+        equals(<String>[
+          'config',
+          'get',
+          'proj:new_key',
+          '--json',
+          '--stack',
+          'dev',
+        ]),
+      );
+      expect(
+        runner.requests[1].arguments,
+        equals(<String>[
+          'config',
+          '--show-secrets',
+          '--json',
+          '--stack',
+          'dev',
         ]),
       );
     });
