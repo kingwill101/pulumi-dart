@@ -15,7 +15,10 @@ import (
 
 	semver "github.com/blang/semver"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/encoding"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/workspace"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	codegenrpc "github.com/pulumi/pulumi/sdk/v3/proto/go/codegen"
 	"google.golang.org/grpc/codes"
@@ -56,25 +59,33 @@ func (host *dartLanguageHost) GenerateProject(
 	}
 
 	projectName := sanitizeDartIdentifier(filepath.Base(req.GetTargetDirectory()))
+	project := workspace.Project{
+		Name: tokens.PackageName(projectName),
+	}
+
 	if rawProject := strings.TrimSpace(req.GetProject()); rawProject != "" {
-		var projectSpec map[string]interface{}
-		if err := json.Unmarshal([]byte(rawProject), &projectSpec); err == nil {
-			if name, ok := projectSpec["name"].(string); ok && strings.TrimSpace(name) != "" {
-				projectName = sanitizeDartIdentifier(name)
-			}
-			projectYAML, err := yaml.Marshal(projectSpec)
-			if err != nil {
-				return nil, fmt.Errorf("failed to marshal Pulumi project YAML: %w", err)
-			}
-			if err := os.WriteFile(filepath.Join(req.GetTargetDirectory(), "Pulumi.yaml"), projectYAML, 0o600); err != nil {
-				return nil, fmt.Errorf("failed to write Pulumi.yaml: %w", err)
-			}
-		} else {
-			// Fallback to raw content if it is already YAML-like.
-			if err := os.WriteFile(filepath.Join(req.GetTargetDirectory(), "Pulumi.yaml"), []byte(rawProject), 0o600); err != nil {
-				return nil, fmt.Errorf("failed to write Pulumi.yaml: %w", err)
-			}
+		if err := json.Unmarshal([]byte(rawProject), &project); err != nil {
+			return nil, fmt.Errorf("failed to unmarshal Pulumi project JSON: %w", err)
 		}
+	}
+
+	if name := strings.TrimSpace(project.Name.String()); name != "" {
+		projectName = sanitizeDartIdentifier(name)
+	} else {
+		project.Name = tokens.PackageName(projectName)
+	}
+
+	// Keep runtime parity with upstream language hosts: the generated Pulumi
+	// project should always target this language host, regardless of the source
+	// project/runtime used by `pulumi convert`.
+	project.Runtime = workspace.NewProjectRuntimeInfo("dart", nil)
+
+	projectYAML, err := encoding.YAML.Marshal(project)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal Pulumi project YAML: %w", err)
+	}
+	if err := os.WriteFile(filepath.Join(req.GetTargetDirectory(), "Pulumi.yaml"), projectYAML, 0o600); err != nil {
+		return nil, fmt.Errorf("failed to write Pulumi.yaml: %w", err)
 	}
 
 	pubspec := buildGeneratedPubspec(projectName, req.GetLocalDependencies(), nil)

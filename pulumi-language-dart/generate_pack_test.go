@@ -133,6 +133,29 @@ func TestGenerateProjectWritesProjectScaffold(t *testing.T) {
 	pulumiProjectData, err := os.ReadFile(filepath.Join(targetDir, "Pulumi.yaml"))
 	require.NoError(t, err)
 	assert.Contains(t, string(pulumiProjectData), "name: example_project")
+	assert.Contains(t, string(pulumiProjectData), "runtime: dart")
+}
+
+func TestGenerateProjectForcesDartRuntimeForConvertedProjects(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+
+	resp, err := host.GenerateProject(context.Background(), &pulumirpc.GenerateProjectRequest{
+		TargetDirectory: targetDir,
+		Project:         `{"name":"convert_project","runtime":"terraform"}`,
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+
+	pulumiProjectData, err := os.ReadFile(filepath.Join(targetDir, "Pulumi.yaml"))
+	require.NoError(t, err)
+	pulumiProjectText := string(pulumiProjectData)
+	assert.Contains(t, pulumiProjectText, "name: convert_project")
+	assert.Contains(t, pulumiProjectText, "runtime: dart")
+	assert.NotContains(t, pulumiProjectText, "runtime: terraform")
+	assert.NotContains(t, pulumiProjectText, "AdditionalKeys")
 }
 
 func TestGenerateProjectRequiresTargetDirectory(t *testing.T) {

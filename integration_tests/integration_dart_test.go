@@ -207,10 +207,6 @@ func TestConfigBasicDart(t *testing.T) {
 
 // Tests basic environments from the perspective of a Pulumi Dart program.
 func TestEnvironmentsBasicDart(t *testing.T) {
-	if os.Getenv("PULUMI_ACCESS_TOKEN") == "" {
-		t.Skip("requires Pulumi service access token")
-	}
-
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:            "config_basic",
 		Quick:          true,
@@ -260,10 +256,6 @@ func TestEnvironmentsBasicDart(t *testing.T) {
 
 // Tests merged environments from the perspective of a Pulumi Dart program.
 func TestEnvironmentsMergeDart(t *testing.T) {
-	if os.Getenv("PULUMI_ACCESS_TOKEN") == "" {
-		t.Skip("requires Pulumi service access token")
-	}
-
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:            "config_basic",
 		Quick:          true,
@@ -551,11 +543,6 @@ func TestEnumOutputsDart(t *testing.T) {
 			assert.Equal(t, "My Burgundy Rubber tree is from Pulumi Planters Inc.", stack.Outputs["mySentence"])
 		},
 	})
-}
-
-// Back-compat shim for parity-audit naming history.
-func TestEnumOutputDart(t *testing.T) {
-	t.Skip("covered by TestEnumOutputsDart")
 }
 
 // tests that when a resource transformation throws an exception, the program exits
@@ -941,11 +928,6 @@ func TestCallFailuresDart(t *testing.T) {
 	testConstructMethodsErrors(t, "dotnet")
 }
 
-// Back-compat shim for parity-audit naming history.
-func TestConstructMethodsErrorsDart(t *testing.T) {
-	t.Skip("covered by TestCallFailuresDart")
-}
-
 func TestConstructMethodsProviderDart(t *testing.T) {
 	testConstructMethodsProvider(t, "dart")
 }
@@ -1160,14 +1142,15 @@ func TestConvertTerraformProviderDart(t *testing.T) {
 	defer e.DeleteIfNotFailed()
 
 	e.ImportDirectory("convertmultiplefromterraform")
+	setupLocalDartLanguagePluginPath(t, e.RootPath)
+	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	require.NoError(t, err)
+	t.Setenv("PULUMI_DART_PULUMI_DEPENDENCY_PATH", pulumiSDKPath)
 
 	_, _ = e.RunCommand("pulumi", "plugin", "install", "converter", "terraform")
 	_, _ = e.RunCommand("pulumi", "plugin", "install", "resource", "terraform-provider")
-	stdout, stderr, err := e.GetCommandResults("pulumi", "convert", "--from", "terraform", "--language", "dart", "--out", "dartdir")
+	_, _, err = e.GetCommandResults("pulumi", "convert", "--from", "terraform", "--language", "dart", "--out", "dartdir")
 	if err != nil {
-		if strings.Contains(stdout+stderr, "no language plugin 'pulumi-language-terraform' found") {
-			t.Skip("pulumi-language-terraform is not available in PATH for convert integration test")
-		}
 		require.NoError(t, err)
 	}
 
@@ -1180,11 +1163,6 @@ func TestConvertTerraformProviderDart(t *testing.T) {
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "sdks/supabase")
 	assert.Contains(t, pubspec, "sdks/b2")
-}
-
-// Back-compat shim for parity-audit naming history.
-func TestConvertMultipleTerraformProviderDart(t *testing.T) {
-	t.Skip("covered by TestConvertTerraformProviderDart")
 }
 
 func TestPackageAddNamespaceDart(t *testing.T) {
@@ -1305,10 +1283,6 @@ func TestRefreshDart(t *testing.T) {
 
 // TestTracePropagationDart checks that tracing writes runtime traces for Dart updates.
 func TestTracePropagationDart(t *testing.T) {
-	if os.Getenv("PULUMI_ACCESS_TOKEN") == "" {
-		t.Skip("requires Pulumi service access token")
-	}
-
 	traceDir := t.TempDir()
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:                    "empty",
