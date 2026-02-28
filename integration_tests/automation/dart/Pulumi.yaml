@@ -1,0 +1,4 @@
+name: automation-dart
+runtime: dart
+main: bin/automation_dart.dart
+description: Fixture Pulumi program used by Dart automation integration tests.

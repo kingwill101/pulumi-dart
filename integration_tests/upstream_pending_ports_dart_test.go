@@ -9,18 +9,6 @@ func TestFailsOnImplicitDependencyCyclesDart(t *testing.T) {
 	t.Skip("blocked: upstream test is currently flaky/skipped; Dart port currently succeeds unexpectedly in local validation and needs upstream-aligned fixture semantics")
 }
 
-func TestAutomationLocalWorkspaceLifecycleDart(t *testing.T) {
-	t.Skip("pending port: pulumi/sdk/nodejs/tests/automation/localWorkspace.spec.ts + pulumi/sdk/python/lib/test/automation/test_local_workspace.py + pulumi/sdk/go/auto/local_workspace_test.go")
-}
-
-func TestAutomationStackLifecycleAndHistoryDart(t *testing.T) {
-	t.Skip("pending port: pulumi/sdk/nodejs/tests/automation/localWorkspace.stack.spec.ts + pulumi/sdk/python/lib/test/automation/test_stack.py")
-}
-
-func TestAutomationConfigAndConfigFileDart(t *testing.T) {
-	t.Skip("pending port: pulumi/sdk/nodejs/tests/automation/localWorkspace.config.spec.ts + pulumi/sdk/python/lib/test/automation/test_config_file.py")
-}
-
 func TestAutomationCommandAndVersionValidationDart(t *testing.T) {
 	t.Skip("pending port: pulumi/sdk/nodejs/tests/automation/cmd.spec.ts + localWorkspace.command.spec.ts + pulumi/sdk/python/lib/test/automation/test_cmd.py")
 }
