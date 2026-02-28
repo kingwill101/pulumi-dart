@@ -611,5 +611,140 @@ void main() {
         );
       },
     );
+
+    test(
+      'stack config json/refresh and tag commands use expected shapes',
+      () async {
+        final runner = _FakeRunner(<PulumiCommandResult>[
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          const PulumiCommandResult(
+            exitCode: 0,
+            stdout:
+                '{"proj:value":{"value":"hello","secret":false},"proj:secret":{"value":"s3cret","secret":true}}',
+            stderr: '',
+          ),
+          const PulumiCommandResult(
+            exitCode: 0,
+            stdout: 'team-a\n',
+            stderr: '',
+          ),
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          const PulumiCommandResult(
+            exitCode: 0,
+            stdout: '{"owner":"team-a","service":"payments"}',
+            stderr: '',
+          ),
+        ]);
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+          ),
+        );
+        final stack = Stack('dev', workspace);
+
+        await stack.setAllConfigJson(
+          '{"proj:value":{"value":"hello","secret":false}}',
+        );
+        final refreshed = await stack.refreshConfig();
+        final owner = await stack.getTag('owner');
+        await stack.setTag('owner', 'team-a');
+        await stack.removeTag('owner');
+        final tags = await stack.listTags();
+
+        expect(refreshed['proj:value']?.value, equals('hello'));
+        expect(refreshed['proj:secret']?.secret, isTrue);
+        expect(owner, equals('team-a'));
+        expect(tags['owner'], equals('team-a'));
+        expect(tags['service'], equals('payments'));
+
+        expect(
+          runner.requests[0].arguments,
+          equals(<String>[
+            'config',
+            'set-all',
+            '--stack',
+            'dev',
+            '--json',
+            '{"proj:value":{"value":"hello","secret":false}}',
+          ]),
+        );
+        expect(
+          runner.requests[1].arguments,
+          equals(<String>['config', 'refresh', '--force', '--stack', 'dev']),
+        );
+        expect(
+          runner.requests[2].arguments,
+          equals(<String>[
+            'config',
+            '--show-secrets',
+            '--json',
+            '--stack',
+            'dev',
+          ]),
+        );
+        expect(
+          runner.requests[3].arguments,
+          equals(<String>['stack', 'tag', 'get', 'owner', '--stack', 'dev']),
+        );
+        expect(
+          runner.requests[4].arguments,
+          equals(<String>[
+            'stack',
+            'tag',
+            'set',
+            'owner',
+            'team-a',
+            '--stack',
+            'dev',
+          ]),
+        );
+        expect(
+          runner.requests[5].arguments,
+          equals(<String>['stack', 'tag', 'rm', 'owner', '--stack', 'dev']),
+        );
+        expect(
+          runner.requests[6].arguments,
+          equals(<String>['stack', 'tag', 'ls', '--json', '--stack', 'dev']),
+        );
+      },
+    );
+
+    test('stack export/import delegates to workspace state commands', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: '{"version":3,"deployment":{"resources":[]}}',
+          stderr: '',
+        ),
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      final state = await stack.exportStack();
+      await stack.importStack(<String, dynamic>{
+        'version': 3,
+        'deployment': <String, dynamic>{'resources': <dynamic>[]},
+      });
+
+      expect(state['version'], equals(3));
+      expect(
+        runner.requests[0].arguments,
+        equals(<String>['stack', 'export', '--stack', 'dev', '--show-secrets']),
+      );
+      expect(runner.requests[1].arguments[0], equals('stack'));
+      expect(runner.requests[1].arguments[1], equals('import'));
+      expect(runner.requests[1].arguments[2], equals('--file'));
+      expect(runner.requests[1].arguments[4], equals('--stack'));
+      expect(runner.requests[1].arguments[5], equals('dev'));
+    });
   });
 }

@@ -1,9 +1,19 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:path/path.dart' as p;
+import 'package:yaml/yaml.dart';
+
 import 'command.dart';
 import 'stack.dart';
 import 'version.dart';
+
+const List<String> _settingsExtensions = <String>['.yaml', '.yml', '.json'];
+const Map<String, String> _stackSettingsSerializedKeys = <String, String>{
+  'secretsprovider': 'secretsProvider',
+  'encryptedkey': 'encryptedKey',
+  'encryptionsalt': 'encryptionSalt',
+};
 
 /// Summary metadata for a stack returned by `pulumi stack ls --json`.
 class AutomationStackSummary {
@@ -16,6 +26,68 @@ class AutomationStackSummary {
   final String name;
   final bool current;
   final Map<String, dynamic> raw;
+}
+
+/// Metadata for an installed Pulumi plugin.
+class AutomationPluginInfo {
+  const AutomationPluginInfo({
+    required this.name,
+    required this.path,
+    required this.kind,
+    required this.size,
+    required this.serverURL,
+    required this.raw,
+    this.version,
+    this.installTime,
+    this.lastUsedTime,
+  });
+
+  factory AutomationPluginInfo.fromJson(Map<String, dynamic> json) {
+    DateTime? parseDate(String key) {
+      final value = json[key];
+      if (value == null) {
+        return null;
+      }
+      return DateTime.tryParse('$value');
+    }
+
+    return AutomationPluginInfo(
+      name: '${json['name'] ?? ''}',
+      path: '${json['path'] ?? ''}',
+      kind: '${json['kind'] ?? ''}',
+      version: json['version'] == null ? null : '${json['version']}',
+      size: (json['size'] is num) ? (json['size'] as num).toInt() : 0,
+      installTime: parseDate('installTime'),
+      lastUsedTime: parseDate('lastUsedTime'),
+      serverURL: '${json['serverURL'] ?? ''}',
+      raw: json,
+    );
+  }
+
+  final String name;
+  final String path;
+  final String kind;
+  final String? version;
+  final int size;
+  final DateTime? installTime;
+  final DateTime? lastUsedTime;
+  final String serverURL;
+  final Map<String, dynamic> raw;
+}
+
+/// Options for `pulumi install`.
+class AutomationInstallOptions {
+  const AutomationInstallOptions({
+    this.noPlugins = false,
+    this.noDependencies = false,
+    this.reinstall = false,
+    this.useLanguageVersionTools = false,
+  });
+
+  final bool noPlugins;
+  final bool noDependencies;
+  final bool reinstall;
+  final bool useLanguageVersionTools;
 }
 
 Future<PulumiCommandResult> _defaultCommandRunner(
@@ -333,6 +405,197 @@ class LocalWorkspace {
     await runPulumiCommand(args);
   }
 
+  /// Returns project settings read from `Pulumi.{yaml,yml,json}`.
+  Future<Map<String, dynamic>> projectSettings() async {
+    final path = _findSettingsPath('Pulumi');
+    if (path == null) {
+      throw StateError(
+        'failed to find project settings file in workdir: $workDir',
+      );
+    }
+    return _loadSettings(path);
+  }
+
+  /// Saves project settings into `Pulumi.{yaml,yml,json}`.
+  Future<void> saveProjectSettings(Map<String, dynamic> settings) async {
+    final path = _findSettingsPath('Pulumi') ?? p.join(workDir, 'Pulumi.yaml');
+    await _writeSettings(path, settings);
+  }
+
+  /// Returns stack settings from `Pulumi.<stack>.{yaml,yml,json}`.
+  Future<Map<String, dynamic>> stackSettings(String stackName) async {
+    final stackSettingsName = _stackSettingsName(stackName);
+    final path = _findSettingsPath('Pulumi.$stackSettingsName');
+    if (path == null) {
+      throw StateError(
+        'failed to find stack settings file in workdir: $workDir',
+      );
+    }
+
+    final settings = _loadSettings(path);
+    for (final entry in _stackSettingsSerializedKeys.entries) {
+      final serializedKey = entry.key;
+      final canonicalKey = entry.value;
+      if (settings.containsKey(serializedKey)) {
+        settings[canonicalKey] = settings[serializedKey];
+        settings.remove(serializedKey);
+      }
+    }
+    return settings;
+  }
+
+  /// Saves stack settings to `Pulumi.<stack>.{yaml,yml,json}`.
+  Future<void> saveStackSettings(
+    String stackName,
+    Map<String, dynamic> settings,
+  ) async {
+    final stackSettingsName = _stackSettingsName(stackName);
+    final path =
+        _findSettingsPath('Pulumi.$stackSettingsName') ??
+        p.join(workDir, 'Pulumi.$stackSettingsName.yaml');
+
+    final serialized = Map<String, dynamic>.from(settings);
+    for (final entry in _stackSettingsSerializedKeys.entries) {
+      final serializedKey = entry.key;
+      final canonicalKey = entry.value;
+      if (serialized.containsKey(canonicalKey)) {
+        serialized[serializedKey] = serialized[canonicalKey];
+        serialized.remove(canonicalKey);
+      }
+    }
+
+    await _writeSettings(path, serialized);
+  }
+
+  /// Installs a Pulumi plugin in this workspace.
+  Future<void> installPlugin(
+    String name,
+    String version, {
+    String kind = 'resource',
+  }) async {
+    await runPulumiCommand(<String>['plugin', 'install', kind, name, version]);
+  }
+
+  /// Installs project plugins/dependencies via `pulumi install`.
+  Future<void> install([
+    AutomationInstallOptions options = const AutomationInstallOptions(),
+  ]) async {
+    final args = <String>['install'];
+    if (options.useLanguageVersionTools) {
+      args.add('--use-language-version-tools');
+    }
+    if (options.noPlugins) {
+      args.add('--no-plugins');
+    }
+    if (options.noDependencies) {
+      args.add('--no-dependencies');
+    }
+    if (options.reinstall) {
+      args.add('--reinstall');
+    }
+    await runPulumiCommand(args);
+  }
+
+  /// Installs a Pulumi resource plugin from a third-party server.
+  Future<void> installPluginFromServer(
+    String name,
+    String version,
+    String server,
+  ) async {
+    await runPulumiCommand(<String>[
+      'plugin',
+      'install',
+      'resource',
+      name,
+      version,
+      '--server',
+      server,
+    ]);
+  }
+
+  /// Removes plugins matching [kind], optional [name], and optional [versionRange].
+  Future<void> removePlugin({
+    String kind = 'resource',
+    String? name,
+    String? versionRange,
+  }) async {
+    final args = <String>['plugin', 'rm', kind];
+    if (name != null && name.trim().isNotEmpty) {
+      args.add(name);
+    }
+    if (versionRange != null && versionRange.trim().isNotEmpty) {
+      args.add(versionRange);
+    }
+    args.add('--yes');
+    await runPulumiCommand(args);
+  }
+
+  /// Returns plugins installed in this workspace.
+  Future<List<AutomationPluginInfo>> listPlugins() async {
+    final result = await runPulumiCommand(<String>['plugin', 'ls', '--json']);
+    final decoded = jsonDecode(result.stdout);
+    if (decoded is! List) {
+      throw FormatException(
+        'Expected array JSON from `pulumi plugin ls --json`',
+      );
+    }
+
+    return decoded
+        .whereType<Map>()
+        .map((entry) {
+          final mapped = entry.map((key, value) => MapEntry('$key', value));
+          return AutomationPluginInfo.fromJson(mapped);
+        })
+        .toList(growable: false);
+  }
+
+  /// Exports stack deployment state.
+  Future<Map<String, dynamic>> exportStack(
+    String stackName, {
+    bool showSecrets = true,
+  }) async {
+    final args = <String>['stack', 'export', '--stack', stackName];
+    if (showSecrets) {
+      args.add('--show-secrets');
+    }
+    final result = await runPulumiCommand(args);
+    final decoded = jsonDecode(result.stdout);
+    if (decoded is! Map) {
+      throw FormatException(
+        'Expected object JSON from `pulumi stack export --stack $stackName`',
+      );
+    }
+    return decoded.map((key, value) => MapEntry('$key', value));
+  }
+
+  /// Imports deployment state into an existing stack.
+  Future<void> importStack(String stackName, Map<String, dynamic> state) async {
+    final tempDir = await Directory.systemTemp.createTemp('automation-import-');
+    final filePath = p.join(tempDir.path, 'stack-state.json');
+    try {
+      final encoder = const JsonEncoder.withIndent('  ');
+      await File(
+        filePath,
+      ).writeAsString(encoder.convert(state), encoding: utf8);
+      await runPulumiCommand(<String>[
+        'stack',
+        'import',
+        '--file',
+        filePath,
+        '--stack',
+        stackName,
+      ]);
+    } finally {
+      final file = File(filePath);
+      if (await file.exists()) {
+        await file.delete();
+      }
+      if (await tempDir.exists()) {
+        await tempDir.delete(recursive: true);
+      }
+    }
+  }
+
   /// Resolves and validates the installed Pulumi CLI version.
   Future<PulumiVersion?> pulumiVersion({
     PulumiVersion minimumVersion = minimumPulumiVersion,
@@ -419,5 +682,65 @@ class LocalWorkspace {
     return combined.contains('no stack named') ||
         combined.contains('stack does not exist') ||
         combined.contains('not found');
+  }
+
+  String? _findSettingsPath(String baseName) {
+    for (final ext in _settingsExtensions) {
+      final path = p.join(workDir, '$baseName$ext');
+      if (File(path).existsSync()) {
+        return path;
+      }
+    }
+    return null;
+  }
+
+  String _stackSettingsName(String stackName) {
+    final segments = stackName.split('/');
+    if (segments.isEmpty) {
+      return stackName;
+    }
+    return segments.last;
+  }
+
+  Map<String, dynamic> _loadSettings(String path) {
+    final contents = File(path).readAsStringSync();
+    dynamic decoded;
+    if (path.endsWith('.json')) {
+      decoded = jsonDecode(contents);
+    } else {
+      decoded = loadYaml(contents);
+    }
+
+    if (decoded is! Map) {
+      throw FormatException('Expected object settings in $path');
+    }
+    return _normalizeMap(decoded);
+  }
+
+  Future<void> _writeSettings(
+    String path,
+    Map<String, dynamic> settings,
+  ) async {
+    // JSON is also valid YAML, so one serializer works across all extensions.
+    final encoder = const JsonEncoder.withIndent('  ');
+    await File(path).writeAsString(encoder.convert(settings), encoding: utf8);
+  }
+
+  dynamic _normalizeValue(dynamic value) {
+    if (value is YamlMap || value is Map) {
+      return _normalizeMap(value as Map);
+    }
+    if (value is YamlList || value is List) {
+      return (value as List)
+          .map<dynamic>((entry) => _normalizeValue(entry))
+          .toList(growable: false);
+    }
+    return value;
+  }
+
+  Map<String, dynamic> _normalizeMap(Map raw) {
+    return raw.map<String, dynamic>(
+      (key, value) => MapEntry('$key', _normalizeValue(value)),
+    );
   }
 }
