@@ -1,15 +1,8 @@
 import 'dart:convert';
 
 import 'command.dart';
+import 'config.dart';
 import 'local_workspace.dart';
-
-/// Automation config value returned by `pulumi config` commands.
-class AutomationConfigValue {
-  const AutomationConfigValue({required this.value, required this.secret});
-
-  final String value;
-  final bool secret;
-}
 
 /// Automation stack handle scoped to a [LocalWorkspace].
 class Stack {
@@ -53,21 +46,8 @@ class Stack {
     String value, {
     bool path = false,
     bool secret = false,
-  }) async {
-    final args = <String>['config', 'set'];
-    if (path) {
-      args.add('--path');
-    }
-    args.addAll(<String>[
-      key,
-      '--stack',
-      name,
-      secret ? '--secret' : '--plaintext',
-      '--non-interactive',
-      '--',
-      value,
-    ]);
-    return workspace.runPulumiCommand(args);
+  }) {
+    return workspace.setConfig(name, key, value, path: path, secret: secret);
   }
 
   /// Sets multiple config values on this stack in one command.
@@ -75,110 +55,42 @@ class Stack {
     Map<String, AutomationConfigValue> config, {
     bool path = false,
   }) {
-    final args = <String>['config', 'set-all', '--stack', name];
-    if (path) {
-      args.add('--path');
-    }
-
-    for (final entry in config.entries) {
-      args.add(entry.value.secret ? '--secret' : '--plaintext');
-      args.add('${entry.key}=${entry.value.value}');
-    }
-
-    return workspace.runPulumiCommand(args);
+    return workspace.setAllConfig(name, config, path: path);
   }
 
   /// Sets all config values from a JSON string for this stack.
   Future<PulumiCommandResult> setAllConfigJson(String configJson) {
-    return workspace.runPulumiCommand(<String>[
-      'config',
-      'set-all',
-      '--stack',
-      name,
-      '--json',
-      configJson,
-    ]);
+    return workspace.setAllConfigJson(name, configJson);
   }
 
   /// Removes a config value from this stack.
   Future<PulumiCommandResult> removeConfig(String key, {bool path = false}) {
-    final args = <String>['config', 'rm'];
-    if (path) {
-      args.add('--path');
-    }
-    args.addAll(<String>[key, '--stack', name]);
-    return workspace.runPulumiCommand(args);
+    return workspace.removeConfig(name, key, path: path);
   }
 
   /// Refreshes stack config from backend and returns the resulting config map.
-  Future<Map<String, AutomationConfigValue>> refreshConfig() async {
-    await workspace.runPulumiCommand(<String>[
-      'config',
-      'refresh',
-      '--force',
-      '--stack',
-      name,
-    ]);
-    return getAllConfig();
+  Future<Map<String, AutomationConfigValue>> refreshConfig() {
+    return workspace.refreshConfig(name);
   }
 
   /// Returns a stack tag value by key.
-  Future<String> getTag(String key) async {
-    final result = await workspace.runPulumiCommand(<String>[
-      'stack',
-      'tag',
-      'get',
-      key,
-      '--stack',
-      name,
-    ]);
-    return result.stdout.trim();
+  Future<String> getTag(String key) {
+    return workspace.getTag(name, key);
   }
 
   /// Sets a stack tag key-value pair.
   Future<PulumiCommandResult> setTag(String key, String value) {
-    return workspace.runPulumiCommand(<String>[
-      'stack',
-      'tag',
-      'set',
-      key,
-      value,
-      '--stack',
-      name,
-    ]);
+    return workspace.setTag(name, key, value);
   }
 
   /// Removes a stack tag by key.
   Future<PulumiCommandResult> removeTag(String key) {
-    return workspace.runPulumiCommand(<String>[
-      'stack',
-      'tag',
-      'rm',
-      key,
-      '--stack',
-      name,
-    ]);
+    return workspace.removeTag(name, key);
   }
 
   /// Lists all tags for this stack.
-  Future<Map<String, String>> listTags() async {
-    final result = await workspace.runPulumiCommand(<String>[
-      'stack',
-      'tag',
-      'ls',
-      '--json',
-      '--stack',
-      name,
-    ]);
-    final decoded = jsonDecode(result.stdout);
-    if (decoded is! Map) {
-      throw FormatException(
-        'Expected object JSON from `pulumi stack tag ls --json`',
-      );
-    }
-    return decoded.map(
-      (key, value) => MapEntry('$key', value == null ? '' : '$value'),
-    );
+  Future<Map<String, String>> listTags() {
+    return workspace.listTags(name);
   }
 
   /// Removes multiple config values from this stack.
@@ -186,17 +98,7 @@ class Stack {
     Iterable<String> keys, {
     bool path = false,
   }) {
-    final filteredKeys = keys.where((key) => key.trim().isNotEmpty).toList();
-    if (filteredKeys.isEmpty) {
-      throw ArgumentError.value(keys, 'keys', 'At least one key is required');
-    }
-
-    final args = <String>['config', 'rm-all'];
-    if (path) {
-      args.add('--path');
-    }
-    args.addAll(<String>[...filteredKeys, '--stack', name]);
-    return workspace.runPulumiCommand(args);
+    return workspace.removeAllConfig(name, keys, path: path);
   }
 
   /// Adds one or more ESC environments to this stack.
@@ -204,41 +106,12 @@ class Stack {
     Iterable<String> environments, {
     bool yes = true,
   }) {
-    final names = environments.where((e) => e.trim().isNotEmpty).toList();
-    if (names.isEmpty) {
-      throw ArgumentError.value(
-        environments,
-        'environments',
-        'At least one environment is required',
-      );
-    }
-
-    final args = <String>['config', 'env', 'add', ...names, '--stack', name];
-    if (yes) {
-      args.add('--yes');
-    }
-    return workspace.runPulumiCommand(args);
+    return workspace.addEnvironments(name, environments, yes: yes);
   }
 
   /// Lists ESC environments imported by this stack.
-  Future<List<String>> listEnvironments() async {
-    final result = await workspace.runPulumiCommand(<String>[
-      'config',
-      'env',
-      'ls',
-      '--stack',
-      name,
-      '--json',
-    ]);
-
-    final decoded = jsonDecode(result.stdout);
-    if (decoded is! List) {
-      throw FormatException(
-        'Expected a JSON array from `pulumi config env ls --json`',
-      );
-    }
-
-    return decoded.map((value) => '$value').toList(growable: false);
+  Future<List<String>> listEnvironments() {
+    return workspace.listEnvironments(name);
   }
 
   /// Removes an ESC environment from this stack.
@@ -246,48 +119,17 @@ class Stack {
     String environment, {
     bool yes = true,
   }) {
-    final args = <String>['config', 'env', 'rm', environment, '--stack', name];
-    if (yes) {
-      args.add('--yes');
-    }
-    return workspace.runPulumiCommand(args);
+    return workspace.removeEnvironment(name, environment, yes: yes);
   }
 
   /// Reads a single config value from this stack.
-  Future<AutomationConfigValue> getConfig(
-    String key, {
-    bool path = false,
-  }) async {
-    final args = <String>['config', 'get'];
-    if (path) {
-      args.add('--path');
-    }
-    args.addAll(<String>[key, '--json', '--stack', name]);
-
-    final result = await workspace.runPulumiCommand(args);
-    return _decodeConfigValue(result.stdout);
+  Future<AutomationConfigValue> getConfig(String key, {bool path = false}) {
+    return workspace.getConfig(name, key, path: path);
   }
 
   /// Reads all config values for this stack.
-  Future<Map<String, AutomationConfigValue>> getAllConfig() async {
-    final result = await workspace.runPulumiCommand(<String>[
-      'config',
-      '--show-secrets',
-      '--json',
-      '--stack',
-      name,
-    ]);
-
-    final decoded = jsonDecode(result.stdout);
-    if (decoded is! Map) {
-      throw FormatException('Expected object JSON from `pulumi config --json`');
-    }
-
-    final config = <String, AutomationConfigValue>{};
-    for (final entry in decoded.entries) {
-      config['${entry.key}'] = _decodeConfigValueFromDecoded(entry.value);
-    }
-    return config;
+  Future<Map<String, AutomationConfigValue>> getAllConfig() {
+    return workspace.getAllConfig(name);
   }
 
   /// Runs `pulumi preview` for this stack.
@@ -367,19 +209,8 @@ class Stack {
   }
 
   /// Returns stack outputs from the last successful update.
-  Future<Map<String, dynamic>> outputs({bool showSecrets = false}) async {
-    final args = <String>['stack', 'output', '--json', '--stack', name];
-    if (showSecrets) {
-      args.add('--show-secrets');
-    }
-    final result = await workspace.runPulumiCommand(args);
-    final decoded = jsonDecode(result.stdout);
-    if (decoded is! Map) {
-      throw FormatException(
-        'Expected object JSON from `pulumi stack output --json`',
-      );
-    }
-    return decoded.map((key, value) => MapEntry('$key', value));
+  Future<Map<String, dynamic>> outputs({bool showSecrets = false}) {
+    return workspace.stackOutputs(name, showSecrets: showSecrets);
   }
 
   /// Exports deployment state for this stack.
@@ -436,18 +267,5 @@ class Stack {
       args.add('--yes');
     }
     return workspace.runPulumiCommand(args);
-  }
-
-  AutomationConfigValue _decodeConfigValue(String rawJson) {
-    return _decodeConfigValueFromDecoded(jsonDecode(rawJson));
-  }
-
-  AutomationConfigValue _decodeConfigValueFromDecoded(dynamic decoded) {
-    if (decoded is Map) {
-      final value = decoded['value'];
-      final secret = decoded['secret'] == true;
-      return AutomationConfigValue(value: '${value ?? ''}', secret: secret);
-    }
-    return AutomationConfigValue(value: '$decoded', secret: false);
   }
 }
