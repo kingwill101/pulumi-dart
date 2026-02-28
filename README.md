@@ -91,6 +91,34 @@ pulumi preview --non-interactive
 
 For full generator and package workflow details, see [`packages/README.md`](packages/README.md).
 
+## Schema Drift Monitoring
+
+Provider schema drift is tracked via:
+
+- manifest: `packages/schema_sources.json`
+- checker: `scripts/check-schema-drift.sh`
+- CI workflow: `.github/workflows/schema-drift.yml`
+
+Run locally:
+
+```bash
+./scripts/check-schema-drift.sh --pretty
+./scripts/check-schema-drift.sh --provider aws --pretty
+./scripts/check-schema-drift.sh --fail-on-drift
+```
+
+## Documentation Site
+
+A dedicated Docusaurus docs site lives at [`website/`](website/README.md).
+
+Run locally:
+
+```bash
+cd website
+npm install
+npm start
+```
+
 ## SDK Mutation Testing
 
 `pulumi-dart/` is configured for mutation testing with `mutation_test`.

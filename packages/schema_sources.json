@@ -1,0 +1,52 @@
+{
+  "providers": [
+    {
+      "name": "aws",
+      "schema_url": "https://www.pulumi.com/registry/packages/aws/schema.json",
+      "local_schema_path": "packages/schemas/aws.schema.json",
+      "package_pubspec_path": "packages/aws/pubspec.yaml"
+    },
+    {
+      "name": "awsx",
+      "schema_url": "https://www.pulumi.com/registry/packages/awsx/schema.json",
+      "local_schema_path": "packages/schemas/awsx.schema.json",
+      "package_pubspec_path": "packages/awsx/pubspec.yaml"
+    },
+    {
+      "name": "docker",
+      "schema_url": "https://www.pulumi.com/registry/packages/docker/schema.json",
+      "local_schema_path": "packages/schemas/docker.schema.json",
+      "package_pubspec_path": "packages/docker/pubspec.yaml"
+    },
+    {
+      "name": "gcp",
+      "schema_url": "https://www.pulumi.com/registry/packages/gcp/schema.json",
+      "local_schema_path": "packages/schemas/gcp.schema.json",
+      "package_pubspec_path": "packages/gcp/pubspec.yaml"
+    },
+    {
+      "name": "gcp-global-cloudrun",
+      "schema_url": "https://www.pulumi.com/registry/packages/gcp-global-cloudrun/schema.json",
+      "local_schema_path": "packages/schemas/gcp-global-cloudrun.schema.json",
+      "package_pubspec_path": "packages/gcp-global-cloudrun/pubspec.yaml"
+    },
+    {
+      "name": "google-native",
+      "schema_url": "https://www.pulumi.com/registry/packages/google-native/schema.json",
+      "local_schema_path": "packages/schemas/google-native.schema.json",
+      "package_pubspec_path": "packages/google-native/pubspec.yaml"
+    },
+    {
+      "name": "random",
+      "schema_url": "https://www.pulumi.com/registry/packages/random/schema.json",
+      "local_schema_path": "packages/schemas/random.schema.json",
+      "package_pubspec_path": "packages/random/pubspec.yaml"
+    },
+    {
+      "name": "terraform",
+      "schema_url": "https://www.pulumi.com/registry/packages/terraform/schema.json",
+      "local_schema_path": "packages/schemas/terraform.schema.json",
+      "package_pubspec_path": "packages/terraform/pubspec.yaml"
+    }
+  ]
+}

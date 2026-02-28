@@ -1,0 +1,85 @@
+name: Schema Drift
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 4 * * *"
+  pull_request:
+    paths:
+      - .github/workflows/schema-drift.yml
+      - scripts/check-schema-drift.sh
+      - packages/schema_sources.json
+      - packages/schemas/*.schema.json
+
+permissions:
+  contents: read
+
+jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        name: Build provider matrix
+        run: |
+          set -euo pipefail
+          MATRIX_JSON="$(jq -c '{provider: [.providers[].name]}' packages/schema_sources.json)"
+          echo "matrix=${MATRIX_JSON}" >> "$GITHUB_OUTPUT"
+
+  schema-drift:
+    name: schema drift - ${{ matrix.provider }}
+    needs: prepare-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.prepare-matrix.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run drift check
+        id: drift
+        run: |
+          set -euo pipefail
+          REPORT_PATH="schema-drift-${{ matrix.provider }}.json"
+          ./scripts/check-schema-drift.sh --provider "${{ matrix.provider }}" --pretty > "${REPORT_PATH}"
+          cat "${REPORT_PATH}"
+
+          echo "report_path=${REPORT_PATH}" >> "$GITHUB_OUTPUT"
+          echo "drift=$(jq -r '.drift' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "local_schema_version=$(jq -r '.local_schema_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "upstream_schema_version=$(jq -r '.upstream_schema_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "package_version=$(jq -r '.package_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "upstream_version_changed=$(jq -r '.upstream_version_changed' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "upstream_checksum_changed=$(jq -r '.upstream_checksum_changed' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "package_version_matches_local_schema=$(jq -r '.package_version_matches_local_schema' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+
+      - name: Write job summary
+        run: |
+          {
+            echo "### Schema Drift - ${{ matrix.provider }}"
+            echo
+            echo "| Field | Value |"
+            echo "|---|---|"
+            echo "| Local schema version | \`${{ steps.drift.outputs.local_schema_version }}\` |"
+            echo "| Upstream schema version | \`${{ steps.drift.outputs.upstream_schema_version }}\` |"
+            echo "| Generated package version | \`${{ steps.drift.outputs.package_version }}\` |"
+            echo "| Upstream version changed | \`${{ steps.drift.outputs.upstream_version_changed }}\` |"
+            echo "| Upstream checksum changed | \`${{ steps.drift.outputs.upstream_checksum_changed }}\` |"
+            echo "| Package version matches local schema | \`${{ steps.drift.outputs.package_version_matches_local_schema }}\` |"
+            echo "| Drift detected | \`${{ steps.drift.outputs.drift }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload JSON report
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-drift-${{ matrix.provider }}
+          path: ${{ steps.drift.outputs.report_path }}
+
+      - name: Fail when drift is detected
+        if: steps.drift.outputs.drift == 'true'
+        run: |
+          echo "Upstream schema drift detected for provider '${{ matrix.provider }}'."
+          echo "Regenerate this provider package with the latest schema and commit updates."
+          exit 1
