@@ -1,30 +1,37 @@
-builds:
+version: 2
 
-- binary: pulumi-language-dotnet
-  id: pulumi-language-dotnet
-  dir: ./pulumi-language-dotnet
-  env:
-  - CGO_ENABLED=0
-  - GO111MODULE=on
-  goos:
-    - darwin
-    - windows
-    - linux
-  goarch:
-    - amd64
-    - arm64
-  mod_timestamp: '{{ .CommitTimestamp }}'
-  ldflags:
-    - -X github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/version.Version={{.Tag}}
+project_name: pulumi-language-dart
+
+builds:
+  - id: pulumi-language-dart
+    binary: pulumi-language-dart
+    dir: ./pulumi-language-dart
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    ldflags:
+      - -s -w -X github.com/kingwill101/pulumi-dart/pulumi-language-dart/version.Version={{.Tag}}
 
 archives:
-- name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
-
-snapshot:
-  name_template: "{{ .Tag }}-SNAPSHOT"
+  - id: pulumi-language-dart-archives
+    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+    format_overrides:
+      - goos: windows
+        formats: [zip]
 
 checksum:
-  name_template: 'checksums.txt'
+  name_template: 'pulumi-language-dart-{{ .Tag }}-checksums.txt'
+
+snapshot:
+  version_template: '{{ .Version }}-SNAPSHOT'
 
 changelog:
-  skip: false
+  use: github

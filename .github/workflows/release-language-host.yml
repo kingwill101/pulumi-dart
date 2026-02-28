@@ -1,0 +1,71 @@
+name: Release Language Host
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Release mode: snapshot (no publish) or release (publish GitHub Release assets)'
+        required: true
+        default: snapshot
+        type: choice
+        options:
+          - snapshot
+          - release
+      release_tag:
+        description: 'Tag to release when mode=release (for example v1.2.3)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release-language-host:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.release_tag || github.ref }}
+          fetch-depth: 0
+
+      - name: Validate release inputs
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'release'
+        run: |
+          if [ -z "${{ github.event.inputs.release_tag }}" ]; then
+            echo "release_tag is required when mode=release" >&2
+            exit 1
+          fi
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.25.x
+
+      - name: Verify language host tests
+        run: |
+          cd pulumi-language-dart
+          go test -count=1 ./...
+
+      - name: Build release snapshot
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: latest
+          args: release --snapshot --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish release assets
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'release')
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: latest
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
