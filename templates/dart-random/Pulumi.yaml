@@ -1,0 +1,3 @@
+name: dart-random
+description: Pulumi Dart template using random provider package
+runtime: dart

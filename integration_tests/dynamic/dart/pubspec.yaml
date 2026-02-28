@@ -1,0 +1,5 @@
+name: dynamic_dart
+environment:
+  sdk: ">=3.10.0 <4.0.0"
+dependencies:
+  pulumi: any

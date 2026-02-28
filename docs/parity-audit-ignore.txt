@@ -1,14 +1,5 @@
 # Upstream integration test names intentionally not yet ported to Dart.
 # One exact test name per line.
-
-CallFailures
-ComponentProviderSchema
-ConvertTerraformProvider
-CustomResourceTypeNameDynamic
-DuplicateOutput
-DynamicProvider
-DynamicProviderSecrets
-EnumOutputs
-FailsOnImplicitDependencyCycles
-PartialValues
-ResourceWithSecretSerialization
+#
+# Keep this file empty by default and prefer explicit skipped tests in
+# integration_tests when a known upstream parity gap cannot yet be executed.

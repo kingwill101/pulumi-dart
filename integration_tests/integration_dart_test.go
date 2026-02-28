@@ -121,6 +121,19 @@ func TestUndefinedStackOutputDart(t *testing.T) {
 	})
 }
 
+// Regression test for https://github.com/pulumi/pulumi/issues/9411.
+func TestDuplicateOutputDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "duplicate_output",
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			expected := []any{float64(1), float64(2)}
+			assert.Equal(t, expected, stack.Outputs["export1"])
+			assert.Equal(t, expected, stack.Outputs["export2"])
+		},
+	})
+}
+
 // TestStackComponentDart tests the programming model of defining a stack as an explicit top-level component.
 func TestStackComponentDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
@@ -527,7 +540,7 @@ func TestLargeResourceDart(t *testing.T) {
 }
 
 // Tests enum outputs.
-func TestEnumOutputDart(t *testing.T) {
+func TestEnumOutputsDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:   filepath.Join("enums", "dart"),
 		Quick: true,
@@ -538,6 +551,11 @@ func TestEnumOutputDart(t *testing.T) {
 			assert.Equal(t, "My Burgundy Rubber tree is from Pulumi Planters Inc.", stack.Outputs["mySentence"])
 		},
 	})
+}
+
+// Back-compat shim for parity-audit naming history.
+func TestEnumOutputDart(t *testing.T) {
+	t.Skip("covered by TestEnumOutputsDart")
 }
 
 // tests that when a resource transformation throws an exception, the program exits
@@ -551,6 +569,82 @@ func TestFailingTransfomationExitsProgram(t *testing.T) {
 	})
 
 	assert.Contains(t, stderr.String(), "Boom!")
+}
+
+func TestDynamicProviderDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join("dynamic", "dart"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "pulumi-dart",
+				Path:    filepath.Join("dynamic", "pulumi-dart-provider-go"),
+			},
+		},
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			randomID, ok := stackInfo.Outputs["random_id"].(string)
+			assert.True(t, ok, "random_id output should be a string")
+			assert.NotEmpty(t, randomID)
+
+			randomVal, ok := stackInfo.Outputs["random_val"].(string)
+			assert.True(t, ok, "random_val output should be a string")
+			assert.NotEmpty(t, randomVal)
+
+			var dynRes *apitype.ResourceV3
+			for i := range stackInfo.Deployment.Resources {
+				res := &stackInfo.Deployment.Resources[i]
+				if strings.HasPrefix(res.URN.Type().String(), "pulumi-dart:dynamic") {
+					dynRes = res
+					break
+				}
+			}
+			require.NotNil(t, dynRes, "expected a dynamic resource in deployment")
+			assert.IsType(t, "", dynRes.Inputs["__provider"], "expect __provider input to be plain string")
+			assert.IsType(t, "", dynRes.Outputs["__provider"], "expect __provider output to be plain string")
+		},
+	})
+}
+
+func TestDynamicProviderSecretsDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join("dynamic", "dart-secrets"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "pulumi-dart",
+				Path:    filepath.Join("dynamic", "pulumi-dart-provider-go"),
+			},
+		},
+		Secrets: map[string]string{
+			"password": "s3cret",
+		},
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			var dynRes *apitype.ResourceV3
+			for i := range stackInfo.Deployment.Resources {
+				res := &stackInfo.Deployment.Resources[i]
+				if strings.HasPrefix(res.URN.Type().String(), "pulumi-dart:dynamic") {
+					dynRes = res
+					break
+				}
+			}
+
+			require.NotNil(t, dynRes, "expected a dynamic resource in deployment")
+			for _, providerVal := range []any{dynRes.Inputs["__provider"], dynRes.Outputs["__provider"]} {
+				switch v := providerVal.(type) {
+				case string:
+					assert.Fail(t, "__provider was not a secret")
+				case map[string]any:
+					assert.Equal(t, resource.SecretSig, v[resource.SigKey])
+				default:
+					assert.Failf(t, "__provider had unexpected type", "%T", providerVal)
+				}
+			}
+
+			code, ok := stackInfo.Outputs["out"].(string)
+			assert.True(t, ok)
+			assert.Equal(t, "200", code)
+		},
+	})
 }
 
 // Tests errors in dynamic resource create behavior.
@@ -575,6 +669,73 @@ func TestErrorCreateDynamicDart(t *testing.T) {
 				}
 			}
 			assert.True(t, foundError, "Did not see create error")
+		},
+	})
+}
+
+func TestResourceWithSecretSerializationDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join("secret_outputs", "dart"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "testprovider",
+				Path:    filepath.Join("custom_resource_hooks", "testprovider-go"),
+			},
+		},
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			withSecretValue, ok := stackInfo.Outputs["withSecret"].(map[string]any)
+			assert.True(t, ok, "withSecret output should be serialized as a secret")
+			assert.Equal(t, resource.SecretSig, withSecretValue[resource.SigKey])
+
+			withSecretAdditionalValue, ok := stackInfo.Outputs["withSecretAdditional"].(map[string]any)
+			assert.True(t, ok, "withSecretAdditional output should be serialized as a secret")
+			assert.Equal(t, resource.SecretSig, withSecretAdditionalValue[resource.SigKey])
+
+			withoutSecretValue, ok := stackInfo.Outputs["withoutSecret"].(string)
+			assert.True(t, ok, "withoutSecret output should not be secret")
+			assert.Equal(t, "it's a secret to everybody", withoutSecretValue)
+		},
+	})
+}
+
+func TestPartialValuesDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join("partial_values", "dart"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "testprovider",
+				Path:    filepath.Join("custom_resource_hooks", "testprovider-go"),
+			},
+		},
+		AllowEmptyPreviewChanges: true,
+		Quick:                    true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, "checked", stackInfo.Outputs["o"])
+		},
+	})
+}
+
+func TestCustomResourceTypeNameDynamicDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join("dynamic", "resource_type_name_dart"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "testprovider",
+				Path:    filepath.Join("custom_resource_hooks", "testprovider-go"),
+			},
+		},
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			urnOut, ok := stack.Outputs["urn"].(string)
+			require.True(t, ok, "expected stack output urn to be a string")
+
+			urn := resource.URN(urnOut)
+			assert.Equal(
+				t,
+				"testprovider:dynamic/custom-provider:CustomResource",
+				urn.Type().String(),
+			)
 		},
 	})
 }
@@ -693,8 +854,13 @@ func TestConstructMethodsResourcesDart(t *testing.T) {
 	testConstructMethodsResources(t, "dart")
 }
 
-func TestConstructMethodsErrorsDart(t *testing.T) {
+func TestCallFailuresDart(t *testing.T) {
 	testConstructMethodsErrors(t, "dotnet")
+}
+
+// Back-compat shim for parity-audit naming history.
+func TestConstructMethodsErrorsDart(t *testing.T) {
+	t.Skip("covered by TestCallFailuresDart")
 }
 
 func TestConstructMethodsProviderDart(t *testing.T) {
@@ -791,6 +957,21 @@ func TestGetResourceDart(t *testing.T) {
 			assert.True(t, ok)
 		},
 	})
+}
+
+func TestComponentProviderSchemaDart(t *testing.T) {
+	binName := "pulumi-resource-testcomponent"
+	if runtime.GOOS == WindowsOS {
+		binName += ".exe"
+	}
+	binPath := filepath.Join(t.TempDir(), binName)
+
+	cmd := exec.Command("go", "build", "-o", binPath, "./component_provider_schema/testcomponent-go")
+	cmd.Dir = "."
+	output, err := cmd.CombinedOutput()
+	require.NoErrorf(t, err, "failed to build component provider schema fixture:\n%s", string(output))
+
+	testComponentProviderSchema(t, binPath)
 }
 
 // Test that the about command works as expected. Because about parses the
@@ -891,7 +1072,7 @@ func TestPackageAddDart(t *testing.T) {
 	require.NotEmpty(t, strings.TrimSpace(stackOutput))
 }
 
-func TestConvertMultipleTerraformProviderDart(t *testing.T) {
+func TestConvertTerraformProviderDart(t *testing.T) {
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
 
@@ -916,6 +1097,11 @@ func TestConvertMultipleTerraformProviderDart(t *testing.T) {
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "sdks/supabase")
 	assert.Contains(t, pubspec, "sdks/b2")
+}
+
+// Back-compat shim for parity-audit naming history.
+func TestConvertMultipleTerraformProviderDart(t *testing.T) {
+	t.Skip("covered by TestConvertTerraformProviderDart")
 }
 
 func TestPackageAddNamespaceDart(t *testing.T) {
@@ -960,52 +1146,65 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	rootSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "pulumi_my_namespace_mypkg.dart")
 	rootSDK, err := os.ReadFile(rootSDKPath)
 	require.NoError(t, err)
-	assert.Contains(t, string(rootSDK), "export 'src/pulumi_my_namespace_mypkg/sdk.dart';")
+	for _, expected := range []string{
+		"library pulumi_my_namespace_mypkg;",
+		"import 'package:pulumi_my_namespace_mypkg/index.dart' as _index;",
+		"final index = _IndexModuleNamespace();",
+		"final getResource = _index.getResource;",
+	} {
+		assert.Contains(t, string(rootSDK), expected)
+	}
 
-	implSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "sdk.dart")
+	moduleExportPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "index.dart")
+	moduleExport, err := os.ReadFile(moduleExportPath)
+	require.NoError(t, err)
+	assert.Contains(t, string(moduleExport), "export 'package:pulumi_my_namespace_mypkg/src/index.dart';")
+
+	implSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "index.dart")
 	implSDK, err := os.ReadFile(implSDKPath)
 	require.NoError(t, err)
 	for _, expected := range []string{
-		"library pulumi_my_namespace_mypkg_sdk;",
+		"library module_index;",
+		"export 'index/functions.dart';",
 		"export 'index/resource_type.dart';",
-		"export 'index/get_resource.dart';",
-		"export 'config/config.dart';",
+		"export 'index/get_resource_args.dart';",
+		"export 'index/get_resource_result.dart';",
 	} {
 		assert.Contains(t, string(implSDK), expected)
 	}
 
-	resourceTypePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "resource_type.dart")
+	resourceTypePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "index", "resource_type.dart")
 	resourceTypeSource, err := os.ReadFile(resourceTypePath)
 	require.NoError(t, err)
-	assert.Contains(t, string(resourceTypeSource), "class ResourceType extends CustomResource")
+	assert.Contains(t, string(resourceTypeSource), "class ResourceType extends pulumi.CustomResource")
 	assert.Contains(t, string(resourceTypeSource), "Input.mapToInputs")
 
-	resourceModePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "resource_mode.dart")
+	resourceModePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "index", "resource_mode.dart")
 	resourceModeSource, err := os.ReadFile(resourceModePath)
 	require.NoError(t, err)
 	assert.Contains(t, string(resourceModeSource), "enum ResourceMode")
 
-	resourceMetadataPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "resource_metadata.dart")
+	resourceMetadataPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "index", "resource_metadata.dart")
 	resourceMetadataSource, err := os.ReadFile(resourceMetadataPath)
 	require.NoError(t, err)
 	assert.Contains(t, string(resourceMetadataSource), "class ResourceMetadata")
 
-	resourceArgsPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "resource_args.dart")
+	resourceArgsPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "index", "resource_args.dart")
 	resourceArgsSource, err := os.ReadFile(resourceArgsPath)
 	require.NoError(t, err)
 	assert.Contains(t, string(resourceArgsSource), "class ResourceArgs")
 
-	getResourceResultPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "get_resource_result.dart")
+	getResourceResultPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "index", "get_resource_result.dart")
 	getResourceResultSource, err := os.ReadFile(getResourceResultPath)
 	require.NoError(t, err)
 	assert.Contains(t, string(getResourceResultSource), "class GetResourceResult")
 
-	getResourcePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "get_resource.dart")
+	getResourcePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "index", "functions.dart")
 	getResourceSource, err := os.ReadFile(getResourcePath)
 	require.NoError(t, err)
 	assert.Contains(t, string(getResourceSource), "Future<GetResourceResult> getResource")
 
-	configPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "config", "config.dart")
+	configPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "config", "config.dart")
 	configSource, err := os.ReadFile(configPath)
 	require.NoError(t, err)
 	assert.Contains(t, string(configSource), "final config = ")

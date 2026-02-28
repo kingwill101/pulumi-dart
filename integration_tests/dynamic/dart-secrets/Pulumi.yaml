@@ -1,0 +1,3 @@
+name: dynamic-dart-secrets
+runtime: dart
+description: Dynamic resource secret serialization test for Dart.

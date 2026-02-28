@@ -1,0 +1,3 @@
+name: dart-minimal
+description: Minimal Pulumi Dart project template
+runtime: dart
