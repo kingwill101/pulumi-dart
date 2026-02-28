@@ -182,6 +182,36 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 		addGeneratedTypeFile(typeFilesByName, objectClass.ClassName, objectClass.ModulePath, filePath)
 	}
 
+	// Pre-reserve resource file paths and add them to the type lookup so object
+	// classes can import resource types referenced in args/result shapes.
+	resourceTokens := make([]string, 0, len(spec.Resources))
+	for token := range spec.Resources {
+		resourceTokens = append(resourceTokens, token)
+	}
+	sort.Strings(resourceTokens)
+
+	usedResourceClassNamesByModule := map[string]map[string]int{}
+	for _, objectClass := range spec.ObjectClasses {
+		usedNames := moduleScopedTypeNameSet(usedResourceClassNamesByModule, objectClass.ModulePath)
+		if objectClass.ClassName != "" {
+			usedNames[objectClass.ClassName] = 1
+		}
+	}
+	if spec.Config != nil && spec.Config.ClassName != "" {
+		moduleScopedTypeNameSet(usedResourceClassNamesByModule, "config")[spec.Config.ClassName] = 1
+	}
+
+	resourceClassNameByToken := map[string]string{}
+	resourceFilePathByToken := map[string]string{}
+	for _, token := range resourceTokens {
+		modulePath := tokenModulePath(token)
+		className := resourceClassNameFromToken(token, moduleScopedTypeNameSet(usedResourceClassNamesByModule, modulePath))
+		filePath := uniqueGeneratedFilePath(moduleClassFilePath(modulePath, className), usedPaths)
+		resourceClassNameByToken[token] = className
+		resourceFilePathByToken[token] = filePath
+		addGeneratedTypeFile(typeFilesByName, className, modulePath, filePath)
+	}
+
 	for _, enumSpec := range spec.Enums {
 		filePath, ok := resolveTypeFilePath(typeFilesByName, enumSpec.EnumName, enumSpec.ModulePath)
 		if !ok {
@@ -202,12 +232,6 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	sort.Strings(typeExports)
 	moduleSymbolFiles := make([]string, 0, len(typeExports)+len(spec.Resources)+len(spec.Functions))
 	moduleSymbolFiles = append(moduleSymbolFiles, typeExports...)
-
-	resourceTokens := make([]string, 0, len(spec.Resources))
-	for token := range spec.Resources {
-		resourceTokens = append(resourceTokens, token)
-	}
-	sort.Strings(resourceTokens)
 
 	moduleAliases := map[string]map[string]moduleAliasSpec{}
 	moduleSymbols := map[string]map[string]moduleAliasSpec{}
@@ -311,20 +335,10 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	}
 
 	resourceExports := make([]string, 0, len(resourceTokens))
-	usedResourceClassNamesByModule := map[string]map[string]int{}
-	for _, objectClass := range spec.ObjectClasses {
-		usedNames := moduleScopedTypeNameSet(usedResourceClassNamesByModule, objectClass.ModulePath)
-		if objectClass.ClassName != "" {
-			usedNames[objectClass.ClassName] = 1
-		}
-	}
-	if spec.Config != nil && spec.Config.ClassName != "" {
-		moduleScopedTypeNameSet(usedResourceClassNamesByModule, "config")[spec.Config.ClassName] = 1
-	}
 	for _, token := range resourceTokens {
 		modulePath := tokenModulePath(token)
-		className := resourceClassNameFromToken(token, moduleScopedTypeNameSet(usedResourceClassNamesByModule, modulePath))
-		filePath := uniqueGeneratedFilePath(moduleClassFilePath(tokenModulePath(token), className), usedPaths)
+		className := resourceClassNameByToken[token]
+		filePath := resourceFilePathByToken[token]
 		resourceExports = append(resourceExports, filePath)
 		files[filePath] = generatedResourceFile(
 			token,

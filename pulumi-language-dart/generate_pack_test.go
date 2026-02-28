@@ -939,6 +939,199 @@ func TestGeneratePackageWritesDartLanguageDependenciesToPubspec(t *testing.T) {
 	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
 }
 
+func TestGeneratePackageInfersDependenciesFromExternalSchemaRefs(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:Thing": {
+				"type": "object",
+				"properties": {
+					"vpc": {
+						"$ref": "/aws/v7.15.0/schema.json#/types/aws:ec2/Vpc:Vpc"
+					}
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "dependencies:")
+	assert.Contains(t, pubspec, "pulumi_aws: ^7.15.0")
+	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+}
+
+func TestGeneratePackageIgnoresSelfExternalSchemaRefDependency(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "aws",
+		"version": "1.2.3",
+		"types": {
+			"aws:index:Thing": {
+				"type": "object",
+				"properties": {
+					"vpc": {
+						"$ref": "/aws/v7.15.0/schema.json#/types/aws:ec2/Vpc:Vpc"
+					}
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.NotContains(t, pubspec, "pulumi_aws:")
+	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+}
+
+func TestGeneratePackageRegistryDependencyOverridesInferredSchemaRefDependency(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	workspaceDir := t.TempDir()
+	targetDir := filepath.Join(workspaceDir, "sdks", "sample")
+	require.NoError(t, os.MkdirAll(filepath.Join(workspaceDir, "packages"), 0o700))
+	registry := strings.TrimSpace(`
+providers:
+  sample:
+    dependencies:
+      pulumi_aws: ^7.99.0
+`) + "\n"
+	require.NoError(
+		t,
+		os.WriteFile(filepath.Join(workspaceDir, "packages", "sdk_dependency_registry.yaml"), []byte(registry), 0o600),
+	)
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:Thing": {
+				"type": "object",
+				"properties": {
+					"vpc": {
+						"$ref": "/aws/v7.15.0/schema.json#/types/aws:ec2/Vpc:Vpc"
+					}
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi_aws: ^7.99.0")
+	assert.NotContains(t, pubspec, "pulumi_aws: ^7.15.0")
+}
+
+func TestGeneratePackageInfersHighestVersionFromExternalSchemaRefs(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:Thing": {
+				"type": "object",
+				"properties": {
+					"vpc": {
+						"$ref": "/aws/v7.1.0/schema.json#/types/aws:ec2/Vpc:Vpc"
+					},
+					"bucket": {
+						"$ref": "/aws/v7.15.0/schema.json#/types/aws:s3/Bucket:Bucket"
+					}
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi_aws: ^7.15.0")
+	assert.NotContains(t, pubspec, "pulumi_aws: ^7.1.0")
+}
+
+func TestGeneratePackageUsesTypedExternalRefsInGeneratedSources(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:ecr:Repository": {
+				"isComponent": true,
+				"inputProperties": {
+					"logging": {
+						"$ref": "/aws/v7.15.0/schema.json#/types/aws:s3/BucketLogging:BucketLogging"
+					}
+				},
+				"properties": {
+					"repository": {
+						"$ref": "/aws/v7.15.0/schema.json#/resources/aws:ecr%2frepository:Repository"
+					}
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	argsData, err := os.ReadFile(filepath.Join(targetDir, "lib", "src", "ecr", "repository_args.dart"))
+	require.NoError(t, err)
+	argsContent := string(argsData)
+	assert.Contains(t, argsContent, "import 'package:pulumi_aws/s3.dart' as pulumi_aws_s3;")
+	assert.Contains(t, argsContent, "final pulumi.Input<pulumi_aws_s3.BucketLogging>? logging;")
+
+	resourceData, err := os.ReadFile(filepath.Join(targetDir, "lib", "src", "ecr", "repository.dart"))
+	require.NoError(t, err)
+	resourceContent := string(resourceData)
+	assert.Contains(t, resourceContent, "import 'package:pulumi_aws/ecr.dart' as pulumi_aws_ecr;")
+	assert.Contains(t, resourceContent, "late final pulumi.Output<pulumi_aws_ecr.Repository?> repository;")
+}
+
 func TestGeneratePackageUsesVersionOverrideEnv(t *testing.T) {
 	t.Setenv("PULUMI_DART_SDK_VERSION", "v9.9.9-dev.1")
 
@@ -1208,7 +1401,7 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(t, content, "class WidgetMetadata")
 	assert.Contains(t, content, "final String owner;")
 	assert.Contains(t, content, "final WidgetMode mode;")
-	assert.Contains(t, content, "map['mode'] = mode.value;")
+	assert.Contains(t, content, "'mode': mode.value,")
 	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode'] as String)")
 
 	assert.Contains(t, content, "class WidgetArgs")
@@ -1218,7 +1411,7 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(
 		t,
 		content,
-		"pulumi.Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap())",
+		"'metadata': ?pulumi.Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),",
 	)
 
 	assert.Contains(t, content, "class GetWidgetDetailsResult")
@@ -1258,7 +1451,7 @@ func TestGeneratePackageTreatsEmptyObjectTypesAsMaps(t *testing.T) {
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, content, "final pulumi.Input<Map<String, dynamic>>? opaque;")
-	assert.Contains(t, content, "map['opaque'] = opaqueValue;")
+	assert.Contains(t, content, "'opaque': ?opaque,")
 	assert.NotContains(t, content, "Input<Opaque>")
 	assert.NotContains(t, content, "index/opaque.dart")
 }
@@ -1625,7 +1818,7 @@ func TestGeneratePackageSanitizesRuntimeTypeFieldName(t *testing.T) {
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, content, "final String runtimeType_;")
-	assert.Contains(t, content, "map['runtimeType'] = runtimeType_;")
+	assert.Contains(t, content, "'runtimeType': runtimeType_,")
 	assert.Contains(t, content, "runtimeType_: map['runtimeType'] as String")
 }
 
@@ -1706,6 +1899,20 @@ func TestNormalizeDeprecatedProviderReferences(t *testing.T) {
 	assert.Contains(t, refs, "#/types/sample:index:Owner")
 }
 
+func TestExternalTokenTypeSpecTreatsPulumiProviderTokenAsCurrentPackage(t *testing.T) {
+	t.Parallel()
+
+	_, ok := externalTokenTypeSpec(
+		"pulumi:providers:aws",
+		"aws",
+		"resource",
+		"",
+		true,
+		true,
+	)
+	assert.False(t, ok)
+}
+
 func collectSchemaRefs(node interface{}) []string {
 	refs := []string{}
 	var walk func(interface{})
@@ -1781,9 +1988,9 @@ func TestGeneratePackageEmitsConfigClass(t *testing.T) {
 	assert.Contains(t, content, "String? get region")
 	assert.Contains(t, content, "String requireRegion()")
 	assert.Contains(t, content, "int? get replicas")
-	assert.Contains(t, content, "return _parseIntConfig(raw);")
+	assert.Contains(t, content, "return (raw).toInt();")
 	assert.Contains(t, content, "bool? get enabled")
-	assert.Contains(t, content, "return _parseBoolConfig(raw);")
+	assert.Contains(t, content, "return (raw).toBool();")
 	assert.Contains(t, content, "WidgetMode? get mode")
 	assert.Contains(t, content, "return raw == null ? null : WidgetMode.fromValue(raw as String);")
 	assert.Contains(t, content, "WidgetMetadata? get metadata")
@@ -1793,8 +2000,8 @@ func TestGeneratePackageEmitsConfigClass(t *testing.T) {
 		"return raw == null ? null : WidgetMetadata.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());",
 	)
 	assert.Contains(t, content, "bool get regionIsSecret => _isSecret('region');")
-	assert.Contains(t, content, "int? _parseIntConfig(String? value)")
-	assert.Contains(t, content, "bool? _parseBoolConfig(String? value)")
+	assert.NotContains(t, content, "_parseIntConfig(")
+	assert.NotContains(t, content, "_parseBoolConfig(")
 }
 
 func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
@@ -1889,7 +2096,7 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 	assert.Contains(
 		t,
 		content,
-		"pulumi.Input.mapOptionalInputValue<Map<String, WidgetMetadata>, Map<String, Map<String, dynamic>>>(metadataByIdValue, (value) => pulumi.Input.encodeMapValues<WidgetMetadata, Map<String, dynamic>>(value, (value) => value.toMap()))",
+		"'metadataById': ?pulumi.Input.mapOptionalInputValue<Map<String, WidgetMetadata>, Map<String, Map<String, dynamic>>>(metadataById, (value) => pulumi.Input.encodeMapValues<WidgetMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),",
 	)
 
 	assert.Contains(t, content, "final List<WidgetMode> modes;")

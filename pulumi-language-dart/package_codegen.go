@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"net/url"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -81,6 +82,9 @@ type packageTypeSpec struct {
 	ReferenceType     string
 	ReferenceWireType string
 	ElementType       *packageTypeSpec
+	IsExternalRef     bool
+	ExternalImport    string
+	ExternalAlias     string
 }
 
 type packageEnumSpec struct {
@@ -179,6 +183,35 @@ type rawPropertyTypeSpec struct {
 	AnyOf                []rawPropertyTypeSpec `json:"anyOf"`
 }
 
+type externalTypeRefSpec struct {
+	ProviderName    string
+	ProviderVersion string
+	RefKind         string
+	Token           string
+	ImportPackage   string
+	ImportPath      string
+	ImportAlias     string
+	ClassName       string
+	QualifiedType   string
+}
+
+type externalSchemaTypeInfo struct {
+	Kind             string
+	DartType         string
+	WireType         string
+	UseReferenceType bool
+}
+
+type externalSchemaIndex struct {
+	TypeInfoByToken map[string]externalSchemaTypeInfo
+}
+
+type externalRefResolver struct {
+	currentProvider string
+	searchRoots     []string
+	indexByProvider map[string]*externalSchemaIndex
+}
+
 func rawRequiredSet(required []string) map[string]struct{} {
 	requiredSet := make(map[string]struct{}, len(required))
 	for _, property := range required {
@@ -247,7 +280,237 @@ func rawRefToken(ref string) string {
 	if strings.HasPrefix(ref, typesPrefix) {
 		return strings.TrimPrefix(ref, typesPrefix)
 	}
+	const resourcesPrefix = "#/resources/"
+	if strings.HasPrefix(ref, resourcesPrefix) {
+		return strings.TrimPrefix(ref, resourcesPrefix)
+	}
 	return ref
+}
+
+// Section: external schema reference resolution
+//
+// These helpers keep cross-provider type/resource refs strongly typed by
+// mapping refs like /aws/v7.15.0/schema.json#/resources/aws:ecr/repository:Repository
+// to generated Dart symbols from package:pulumi_aws/<module>.dart.
+func newExternalRefResolver(currentProvider, outputDir string) *externalRefResolver {
+	roots := make([]string, 0, 3)
+	if strings.TrimSpace(outputDir) != "" {
+		roots = append(roots, outputDir)
+	}
+	if cwd, err := os.Getwd(); err == nil && cwd != "" {
+		roots = append(roots, cwd)
+	}
+
+	dedup := map[string]struct{}{}
+	uniqueRoots := make([]string, 0, len(roots))
+	for _, root := range roots {
+		if root == "" {
+			continue
+		}
+		abs, err := filepath.Abs(root)
+		if err != nil {
+			continue
+		}
+		if _, exists := dedup[abs]; exists {
+			continue
+		}
+		dedup[abs] = struct{}{}
+		uniqueRoots = append(uniqueRoots, abs)
+	}
+
+	return &externalRefResolver{
+		currentProvider: canonicalProviderName(currentProvider),
+		searchRoots:     uniqueRoots,
+		indexByProvider: map[string]*externalSchemaIndex{},
+	}
+}
+
+func parseExternalSchemaRef(ref string) (externalTypeRefSpec, bool) {
+	ref = strings.TrimSpace(ref)
+	if ref == "" || !strings.HasPrefix(ref, "/") {
+		return externalTypeRefSpec{}, false
+	}
+
+	parts := strings.SplitN(ref, "#/", 2)
+	if len(parts) != 2 {
+		return externalTypeRefSpec{}, false
+	}
+	left := strings.TrimSpace(parts[0])
+	right := strings.TrimSpace(parts[1])
+
+	leftSegments := strings.Split(strings.TrimPrefix(left, "/"), "/")
+	if len(leftSegments) < 3 {
+		return externalTypeRefSpec{}, false
+	}
+	if leftSegments[2] != "schema.json" {
+		return externalTypeRefSpec{}, false
+	}
+
+	providerName := canonicalProviderName(leftSegments[0])
+	versionSegment := strings.TrimSpace(leftSegments[1])
+	if providerName == "" || !strings.HasPrefix(strings.ToLower(versionSegment), "v") {
+		return externalTypeRefSpec{}, false
+	}
+	providerVersion := strings.TrimPrefix(versionSegment, "v")
+	providerVersion = strings.TrimPrefix(providerVersion, "V")
+
+	rightSegments := strings.SplitN(right, "/", 2)
+	if len(rightSegments) != 2 {
+		return externalTypeRefSpec{}, false
+	}
+	refKind := strings.ToLower(strings.TrimSpace(rightSegments[0]))
+	if refKind != "types" && refKind != "resources" {
+		return externalTypeRefSpec{}, false
+	}
+
+	token, err := url.PathUnescape(rightSegments[1])
+	if err != nil {
+		token = rightSegments[1]
+	}
+	token = strings.TrimSpace(token)
+	if token == "" {
+		return externalTypeRefSpec{}, false
+	}
+
+	className := canonicalTypeName(tokenElementName(token))
+	if className == "" {
+		return externalTypeRefSpec{}, false
+	}
+
+	modulePath := tokenModulePath(token)
+	moduleLibrary := moduleLibraryFilePath(modulePath)
+	importPackage := toDartPackageName("", providerName)
+	importPath := fmt.Sprintf("package:%s/%s", importPackage, moduleLibrary)
+	importAlias := sanitizeDartIdentifier(importPackage + "_" + strings.TrimSuffix(moduleLibrary, ".dart"))
+	qualifiedType := fmt.Sprintf("%s.%s", importAlias, className)
+
+	return externalTypeRefSpec{
+		ProviderName:    providerName,
+		ProviderVersion: providerVersion,
+		RefKind:         refKind,
+		Token:           token,
+		ImportPackage:   importPackage,
+		ImportPath:      importPath,
+		ImportAlias:     importAlias,
+		ClassName:       className,
+		QualifiedType:   qualifiedType,
+	}, true
+}
+
+func (r *externalRefResolver) resolve(ref string) (externalTypeRefSpec, externalSchemaTypeInfo, bool) {
+	if r == nil {
+		return externalTypeRefSpec{}, externalSchemaTypeInfo{}, false
+	}
+
+	externalRef, ok := parseExternalSchemaRef(ref)
+	if !ok {
+		return externalTypeRefSpec{}, externalSchemaTypeInfo{}, false
+	}
+	if externalRef.ProviderName == "" || externalRef.ProviderName == r.currentProvider {
+		return externalTypeRefSpec{}, externalSchemaTypeInfo{}, false
+	}
+
+	// Resources are always class references in provider SDKs.
+	if externalRef.RefKind == "resources" {
+		return externalRef, externalSchemaTypeInfo{Kind: "resource", UseReferenceType: true}, true
+	}
+
+	typeInfo := externalSchemaTypeInfo{
+		Kind:             "object",
+		WireType:         "Map<String, dynamic>",
+		UseReferenceType: true,
+	}
+	if index := r.indexForProvider(externalRef.ProviderName); index != nil {
+		if resolvedInfo, exists := index.TypeInfoByToken[externalRef.Token]; exists {
+			typeInfo = resolvedInfo
+		}
+	}
+
+	return externalRef, typeInfo, true
+}
+
+func (r *externalRefResolver) indexForProvider(providerName string) *externalSchemaIndex {
+	providerName = canonicalProviderName(providerName)
+	if providerName == "" {
+		return nil
+	}
+	if index, exists := r.indexByProvider[providerName]; exists {
+		return index
+	}
+
+	schemaPath := resolveExternalSchemaPath(providerName, r.searchRoots)
+	if schemaPath == "" {
+		r.indexByProvider[providerName] = nil
+		return nil
+	}
+
+	schemaBytes, err := os.ReadFile(schemaPath)
+	if err != nil {
+		r.indexByProvider[providerName] = nil
+		return nil
+	}
+
+	var rawSpec rawPackageSchema
+	if err := json.Unmarshal(schemaBytes, &rawSpec); err != nil {
+		r.indexByProvider[providerName] = nil
+		return nil
+	}
+
+	index := &externalSchemaIndex{TypeInfoByToken: map[string]externalSchemaTypeInfo{}}
+	for token, rawType := range rawSpec.Types {
+		info := externalSchemaTypeInfo{}
+		switch {
+		case len(rawType.Enum) > 0:
+			info.Kind = "enum"
+			info.WireType = dartTypeFromRawTypeName(rawType.Type)
+			info.UseReferenceType = true
+		case rawType.Type == "object":
+			info.Kind = "object"
+			info.WireType = "Map<String, dynamic>"
+			info.UseReferenceType = len(rawType.Properties) > 0
+		case rawType.Type == "boolean" || rawType.Type == "integer" || rawType.Type == "number" || rawType.Type == "string":
+			info.Kind = "scalar"
+			info.DartType = dartTypeFromRawTypeName(rawType.Type)
+		default:
+			info.Kind = "dynamic"
+		}
+		index.TypeInfoByToken[token] = info
+	}
+
+	r.indexByProvider[providerName] = index
+	return index
+}
+
+func resolveExternalSchemaPath(providerName string, roots []string) string {
+	providerName = canonicalProviderName(providerName)
+	if providerName == "" {
+		return ""
+	}
+
+	if envDir := strings.TrimSpace(os.Getenv("PULUMI_DART_SCHEMAS_DIR")); envDir != "" {
+		candidate := filepath.Join(envDir, providerName+".schema.json")
+		if info, err := os.Stat(candidate); err == nil && !info.IsDir() {
+			return candidate
+		}
+	}
+
+	for _, root := range roots {
+		dir := root
+		for {
+			candidate := filepath.Join(dir, "packages", "schemas", providerName+".schema.json")
+			if info, err := os.Stat(candidate); err == nil && !info.IsDir() {
+				return candidate
+			}
+
+			parent := filepath.Dir(dir)
+			if parent == dir {
+				break
+			}
+			dir = parent
+		}
+	}
+
+	return ""
 }
 
 func directReferenceInfo(typeSpec packageTypeSpec) (referenceKind string, referenceType string, referenceWireType string) {
@@ -272,6 +535,7 @@ func dartTypeSpecFromRawPropertyType(
 	typ rawPropertyTypeSpec,
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
+	externalRefs *externalRefResolver,
 ) packageTypeSpec {
 	if token := rawRefToken(typ.Ref); token != "" {
 		if namedType, ok := namedTypeRefs[token]; ok {
@@ -279,8 +543,12 @@ func dartTypeSpecFromRawPropertyType(
 				return makePackageTypeSpec("object", "Map<String, dynamic>")
 			}
 			if useReferenceTypes {
+				kind := namedType.Kind
+				if kind == "" {
+					kind = "dynamic"
+				}
 				return packageTypeSpec{
-					Kind:              namedType.Kind,
+					Kind:              kind,
 					DartType:          namedType.Name,
 					ReferenceType:     namedType.Name,
 					ReferenceWireType: namedType.UnderlyingType,
@@ -289,8 +557,56 @@ func dartTypeSpecFromRawPropertyType(
 			if namedType.Kind == "enum" {
 				return makePackageTypeSpec("scalar", namedType.UnderlyingType)
 			}
+			if namedType.Kind == "resource" {
+				return makePackageTypeSpec("dynamic", "dynamic")
+			}
 			return makePackageTypeSpec("object", "Map<String, dynamic>")
 		}
+
+		if externalRef, typeInfo, ok := externalRefs.resolve(typ.Ref); ok {
+			switch typeInfo.Kind {
+			case "resource":
+				return packageTypeSpec{
+					Kind:           "resource",
+					DartType:       externalRef.QualifiedType,
+					IsExternalRef:  true,
+					ExternalImport: externalRef.ImportPath,
+					ExternalAlias:  externalRef.ImportAlias,
+				}
+			case "enum":
+				wireType := typeInfo.WireType
+				if wireType == "" {
+					wireType = "String"
+				}
+				return packageTypeSpec{
+					Kind:              "enum",
+					DartType:          externalRef.QualifiedType,
+					ReferenceType:     externalRef.QualifiedType,
+					ReferenceWireType: wireType,
+					IsExternalRef:     true,
+					ExternalImport:    externalRef.ImportPath,
+					ExternalAlias:     externalRef.ImportAlias,
+				}
+			case "object":
+				if !typeInfo.UseReferenceType {
+					return makePackageTypeSpec("object", "Map<String, dynamic>")
+				}
+				return packageTypeSpec{
+					Kind:              "object",
+					DartType:          externalRef.QualifiedType,
+					ReferenceType:     externalRef.QualifiedType,
+					ReferenceWireType: "Map<String, dynamic>",
+					IsExternalRef:     true,
+					ExternalImport:    externalRef.ImportPath,
+					ExternalAlias:     externalRef.ImportAlias,
+				}
+			case "scalar":
+				if typeInfo.DartType != "" {
+					return makePackageTypeSpec("scalar", typeInfo.DartType)
+				}
+			}
+		}
+
 		return makePackageTypeSpec("dynamic", "dynamic")
 	}
 
@@ -306,7 +622,7 @@ func dartTypeSpecFromRawPropertyType(
 	case "array":
 		elementSpec := makePackageTypeSpec("dynamic", "dynamic")
 		if typ.Items != nil {
-			elementSpec = dartTypeSpecFromRawPropertyType(*typ.Items, namedTypeRefs, useReferenceTypes)
+			elementSpec = dartTypeSpecFromRawPropertyType(*typ.Items, namedTypeRefs, useReferenceTypes, externalRefs)
 		}
 		return packageTypeSpec{
 			Kind:        "array",
@@ -315,7 +631,7 @@ func dartTypeSpecFromRawPropertyType(
 		}
 	case "object":
 		if typ.AdditionalProperties != nil {
-			valueSpec := dartTypeSpecFromRawPropertyType(*typ.AdditionalProperties, namedTypeRefs, useReferenceTypes)
+			valueSpec := dartTypeSpecFromRawPropertyType(*typ.AdditionalProperties, namedTypeRefs, useReferenceTypes, externalRefs)
 			return packageTypeSpec{
 				Kind:        "map",
 				DartType:    fmt.Sprintf("Map<String, %s>", valueSpec.DartType),
@@ -327,7 +643,7 @@ func dartTypeSpecFromRawPropertyType(
 
 	if len(typ.OneOf) > 0 {
 		for _, candidate := range typ.OneOf {
-			typeSpec := dartTypeSpecFromRawPropertyType(candidate, namedTypeRefs, useReferenceTypes)
+			typeSpec := dartTypeSpecFromRawPropertyType(candidate, namedTypeRefs, useReferenceTypes, externalRefs)
 			if typeSpec.DartType != "dynamic" {
 				return typeSpec
 			}
@@ -336,7 +652,7 @@ func dartTypeSpecFromRawPropertyType(
 
 	if len(typ.AnyOf) > 0 {
 		for _, candidate := range typ.AnyOf {
-			typeSpec := dartTypeSpecFromRawPropertyType(candidate, namedTypeRefs, useReferenceTypes)
+			typeSpec := dartTypeSpecFromRawPropertyType(candidate, namedTypeRefs, useReferenceTypes, externalRefs)
 			if typeSpec.DartType != "dynamic" {
 				return typeSpec
 			}
@@ -355,6 +671,7 @@ func makeRawObjectClassSpec(
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
 	usesInputTypes bool,
+	externalRefs *externalRefResolver,
 	nameSuffixes ...string,
 ) *packageObjectClassSpec {
 	if len(properties) == 0 {
@@ -371,6 +688,7 @@ func makeRawObjectClassSpec(
 		namedTypeRefs,
 		useReferenceTypes,
 		usesInputTypes,
+		externalRefs,
 	)
 }
 
@@ -383,6 +701,7 @@ func buildRawObjectClassSpec(
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
 	usesInputTypes bool,
+	externalRefs *externalRefResolver,
 ) *packageObjectClassSpec {
 	if len(properties) == 0 {
 		return nil
@@ -404,6 +723,7 @@ func buildRawObjectClassSpec(
 			property,
 			namedTypeRefs,
 			useReferenceTypes,
+			externalRefs,
 		)
 		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
 		fields = append(fields, packagePropertySpec{
@@ -482,6 +802,7 @@ func dartTypeFromRawTypeName(typeName string) string {
 func makeRawResourceOutputPropertySpecs(
 	resource rawResourceSpec,
 	namedTypeRefs map[string]packageNamedTypeRef,
+	externalRefs *externalRefResolver,
 ) []packagePropertySpec {
 	if len(resource.Properties) == 0 {
 		return nil
@@ -516,6 +837,7 @@ func makeRawResourceOutputPropertySpecs(
 			property,
 			namedTypeRefs,
 			true,
+			externalRefs,
 		)
 		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
 		fields = append(fields, packagePropertySpec{
@@ -537,7 +859,7 @@ func makeRawResourceOutputPropertySpecs(
 	return fields
 }
 
-func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
+func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
 	var rawSpec rawPackageSchema
 	if err := json.Unmarshal([]byte(schemaJSON), &rawSpec); err != nil {
 		return nil, fmt.Errorf("failed to parse package schema: %w", err)
@@ -564,6 +886,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 
 	usedClassNamesByModule := map[string]map[string]int{}
 	namedTypeRefs := map[string]packageNamedTypeRef{}
+	externalRefs := newExternalRefResolver(rawSpec.Name, outputDir)
 
 	typeTokens := make([]string, 0, len(rawSpec.Types))
 	for token := range rawSpec.Types {
@@ -614,6 +937,26 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		}
 	}
 
+	// Reserve resource type names up front so refs to #/resources/... can be
+	// strongly typed and stable while we build the remaining schema model.
+	resourceTokens := make([]string, 0, len(rawSpec.Resources))
+	for token := range rawSpec.Resources {
+		resourceTokens = append(resourceTokens, token)
+	}
+	sort.Strings(resourceTokens)
+
+	for _, token := range resourceTokens {
+		modulePath := tokenModulePath(token)
+		className := resourceClassNameFromToken(token, moduleScopedTypeNameSet(usedClassNamesByModule, modulePath))
+		namedTypeRefs[token] = packageNamedTypeRef{
+			Kind:             "resource",
+			Name:             className,
+			CanonicalName:    canonicalTypeName(tokenElementName(token)),
+			UnderlyingType:   "dynamic",
+			UseReferenceType: true,
+		}
+	}
+
 	for _, token := range typeTokens {
 		typeSpec := rawSpec.Types[token]
 		namedType, ok := namedTypeRefs[token]
@@ -640,6 +983,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 				namedTypeRefs,
 				true,
 				false,
+				externalRefs,
 			); classSpec != nil {
 				classSpec.CanonicalName = namedType.CanonicalName
 				spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
@@ -661,6 +1005,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			namedTypeRefs,
 			true,
 			false,
+			externalRefs,
 		); configClass != nil {
 			spec.Config = &packageConfigSpec{
 				ClassName:  configClass.ClassName,
@@ -669,12 +1014,6 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			}
 		}
 	}
-
-	resourceTokens := make([]string, 0, len(rawSpec.Resources))
-	for token := range rawSpec.Resources {
-		resourceTokens = append(resourceTokens, token)
-	}
-	sort.Strings(resourceTokens)
 
 	for _, token := range resourceTokens {
 		resource := rawSpec.Resources[token]
@@ -693,6 +1032,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			namedTypeRefs,
 			true,
 			true,
+			externalRefs,
 			"Args",
 			"ResourceArgs",
 		); classSpec != nil {
@@ -700,7 +1040,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			resourceSpec.ArgsClass = classSpec.ClassName
 		}
-		resourceSpec.OutputProperties = makeRawResourceOutputPropertySpecs(resource, namedTypeRefs)
+		resourceSpec.OutputProperties = makeRawResourceOutputPropertySpecs(resource, namedTypeRefs, externalRefs)
 		spec.Resources[token] = resourceSpec
 	}
 
@@ -740,6 +1080,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			namedTypeRefs,
 			true,
 			true,
+			externalRefs,
 			"Args",
 			"InvokeArgs",
 		); classSpec != nil {
@@ -757,6 +1098,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			namedTypeRefs,
 			true,
 			false,
+			externalRefs,
 			"Result",
 			"InvokeResult",
 		); classSpec != nil {
@@ -1063,6 +1405,7 @@ func dartTypeSpecFromSchemaType(
 	typ schema.Type,
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
+	currentProvider string,
 ) packageTypeSpec {
 	for {
 		switch t := typ.(type) {
@@ -1080,14 +1423,14 @@ resolved:
 	case nil:
 		return makePackageTypeSpec("dynamic", "dynamic")
 	case *schema.ArrayType:
-		elementType := dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes)
+		elementType := dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes, currentProvider)
 		return packageTypeSpec{
 			Kind:        "array",
 			DartType:    fmt.Sprintf("List<%s>", elementType.DartType),
 			ElementType: &elementType,
 		}
 	case *schema.MapType:
-		valueType := dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes)
+		valueType := dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes, currentProvider)
 		return packageTypeSpec{
 			Kind:        "map",
 			DartType:    fmt.Sprintf("Map<String, %s>", valueType.DartType),
@@ -1095,10 +1438,10 @@ resolved:
 		}
 	case *schema.UnionType:
 		if t.DefaultType != nil {
-			return dartTypeSpecFromSchemaType(t.DefaultType, namedTypeRefs, useReferenceTypes)
+			return dartTypeSpecFromSchemaType(t.DefaultType, namedTypeRefs, useReferenceTypes, currentProvider)
 		}
 		for _, elementType := range t.ElementTypes {
-			candidate := dartTypeSpecFromSchemaType(elementType, namedTypeRefs, useReferenceTypes)
+			candidate := dartTypeSpecFromSchemaType(elementType, namedTypeRefs, useReferenceTypes, currentProvider)
 			if candidate.DartType != "dynamic" {
 				return candidate
 			}
@@ -1121,7 +1464,17 @@ resolved:
 				return makePackageTypeSpec("scalar", namedType.UnderlyingType)
 			}
 		}
-		return dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes)
+		if externalSpec, ok := externalTokenTypeSpec(
+			t.Token,
+			currentProvider,
+			"enum",
+			dartTypeSpecFromSchemaType(t.ElementType, nil, false, currentProvider).DartType,
+			true,
+			useReferenceTypes,
+		); ok {
+			return externalSpec
+		}
+		return dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes, currentProvider)
 	case *schema.TokenType:
 		if namedTypeRefs != nil {
 			if namedType, ok := namedTypeRefs[t.Token]; ok {
@@ -1129,8 +1482,12 @@ resolved:
 					return makePackageTypeSpec("object", "Map<String, dynamic>")
 				}
 				if useReferenceTypes {
+					kind := namedType.Kind
+					if kind == "" {
+						kind = "dynamic"
+					}
 					return packageTypeSpec{
-						Kind:              namedType.Kind,
+						Kind:              kind,
 						DartType:          namedType.Name,
 						ReferenceType:     namedType.Name,
 						ReferenceWireType: namedType.UnderlyingType,
@@ -1139,11 +1496,30 @@ resolved:
 				if namedType.Kind == "enum" {
 					return makePackageTypeSpec("scalar", namedType.UnderlyingType)
 				}
+				if namedType.Kind == "resource" {
+					return makePackageTypeSpec("dynamic", "dynamic")
+				}
 				return makePackageTypeSpec("object", "Map<String, dynamic>")
 			}
 		}
+		if externalSpec, ok := externalTokenTypeSpec(
+			t.Token,
+			currentProvider,
+			"object",
+			"Map<String, dynamic>",
+			true,
+			useReferenceTypes,
+		); ok {
+			if t.UnderlyingType != nil {
+				if underlying := dartTypeSpecFromSchemaType(t.UnderlyingType, namedTypeRefs, useReferenceTypes, currentProvider); underlying.Kind == "enum" {
+					externalSpec.Kind = "enum"
+					externalSpec.ReferenceWireType = underlying.ReferenceWireType
+				}
+			}
+			return externalSpec
+		}
 		if t.UnderlyingType != nil {
-			return dartTypeSpecFromSchemaType(t.UnderlyingType, namedTypeRefs, useReferenceTypes)
+			return dartTypeSpecFromSchemaType(t.UnderlyingType, namedTypeRefs, useReferenceTypes, currentProvider)
 		}
 		return makePackageTypeSpec("dynamic", "dynamic")
 	case *schema.ObjectType:
@@ -1163,8 +1539,40 @@ resolved:
 				return makePackageTypeSpec("object", "Map<String, dynamic>")
 			}
 		}
+		if externalSpec, ok := externalTokenTypeSpec(
+			t.Token,
+			currentProvider,
+			"object",
+			"Map<String, dynamic>",
+			len(t.Properties) > 0,
+			useReferenceTypes,
+		); ok {
+			return externalSpec
+		}
 		return makePackageTypeSpec("object", "Map<String, dynamic>")
 	case *schema.ResourceType:
+		if namedTypeRefs != nil && t.Token != "" {
+			if namedType, ok := namedTypeRefs[t.Token]; ok {
+				if useReferenceTypes {
+					return packageTypeSpec{
+						Kind:              "resource",
+						DartType:          namedType.Name,
+						ReferenceType:     namedType.Name,
+						ReferenceWireType: "dynamic",
+					}
+				}
+			}
+		}
+		if externalSpec, ok := externalTokenTypeSpec(
+			t.Token,
+			currentProvider,
+			"resource",
+			"",
+			true,
+			useReferenceTypes,
+		); ok {
+			return externalSpec
+		}
 		return makePackageTypeSpec("dynamic", "dynamic")
 	}
 
@@ -1193,6 +1601,7 @@ func makeObjectClassSpec(
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
 	usesInputTypes bool,
+	currentProvider string,
 	nameSuffixes ...string,
 ) *packageObjectClassSpec {
 	if len(properties) == 0 {
@@ -1208,6 +1617,7 @@ func makeObjectClassSpec(
 		namedTypeRefs,
 		useReferenceTypes,
 		usesInputTypes,
+		currentProvider,
 	)
 }
 
@@ -1219,6 +1629,7 @@ func buildObjectClassSpec(
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
 	usesInputTypes bool,
+	currentProvider string,
 ) *packageObjectClassSpec {
 	if len(properties) == 0 {
 		return nil
@@ -1237,6 +1648,7 @@ func buildObjectClassSpec(
 			property.Type,
 			namedTypeRefs,
 			useReferenceTypes,
+			currentProvider,
 		)
 		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
 		fields = append(fields, packagePropertySpec{
@@ -1264,6 +1676,7 @@ func buildObjectClassSpec(
 func makeResourceOutputPropertySpecs(
 	resource *schema.Resource,
 	namedTypeRefs map[string]packageNamedTypeRef,
+	currentProvider string,
 ) []packagePropertySpec {
 	if len(resource.Properties) == 0 {
 		return nil
@@ -1295,6 +1708,7 @@ func makeResourceOutputPropertySpecs(
 			property.Type,
 			namedTypeRefs,
 			true,
+			currentProvider,
 		)
 		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
 		fields = append(fields, packagePropertySpec{
@@ -1316,12 +1730,12 @@ func makeResourceOutputPropertySpecs(
 	return fields
 }
 
-func makeSchemaEnumSpec(typeName string, modulePath string, enumType *schema.EnumType) *packageEnumSpec {
+func makeSchemaEnumSpec(typeName string, modulePath string, enumType *schema.EnumType, currentProvider string) *packageEnumSpec {
 	if enumType == nil || len(enumType.Elements) == 0 {
 		return nil
 	}
 
-	underlyingType := dartTypeSpecFromSchemaType(enumType.ElementType, nil, false).DartType
+	underlyingType := dartTypeSpecFromSchemaType(enumType.ElementType, nil, false, currentProvider).DartType
 	values := make([]packageEnumValueSpec, 0, len(enumType.Elements))
 	usedValueNames := map[string]int{}
 	for _, enumValue := range enumType.Elements {
@@ -1435,7 +1849,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 				"",
 				"Enum",
 			)
-			underlyingType := dartTypeSpecFromSchemaType(t.ElementType, nil, false).DartType
+			underlyingType := dartTypeSpecFromSchemaType(t.ElementType, nil, false, pkg.Name).DartType
 			namedTypeRefs[token] = packageNamedTypeRef{
 				Kind:             "enum",
 				Name:             typeName,
@@ -1475,7 +1889,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 
 		switch t := typ.(type) {
 		case *schema.EnumType:
-			if enumSpec := makeSchemaEnumSpec(namedType.Name, tokenModulePath(token), t); enumSpec != nil {
+			if enumSpec := makeSchemaEnumSpec(namedType.Name, tokenModulePath(token), t, pkg.Name); enumSpec != nil {
 				enumSpec.CanonicalName = namedType.CanonicalName
 				spec.Enums = append(spec.Enums, *enumSpec)
 			}
@@ -1491,10 +1905,35 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 				namedTypeRefs,
 				true,
 				false,
+				pkg.Name,
 			); classSpec != nil {
 				classSpec.CanonicalName = namedType.CanonicalName
 				spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			}
+		}
+	}
+
+	// Section: schema-bound resource ref typing
+	//
+	// BindSpec can still surface resource refs in property types. Reserve their
+	// generated class names here so token refs stay strongly typed.
+	reservedResourceTokens := make([]string, 0, len(pkg.Resources))
+	for _, resource := range pkg.Resources {
+		if resource == nil || resource.Token == "" {
+			continue
+		}
+		reservedResourceTokens = append(reservedResourceTokens, resource.Token)
+	}
+	sort.Strings(reservedResourceTokens)
+	for _, token := range reservedResourceTokens {
+		modulePath := tokenModulePath(token)
+		className := resourceClassNameFromToken(token, moduleScopedTypeNameSet(usedClassNamesByModule, modulePath))
+		namedTypeRefs[token] = packageNamedTypeRef{
+			Kind:             "resource",
+			Name:             className,
+			CanonicalName:    canonicalTypeName(tokenElementName(token)),
+			UnderlyingType:   "dynamic",
+			UseReferenceType: true,
 		}
 	}
 
@@ -1511,6 +1950,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			namedTypeRefs,
 			true,
 			false,
+			pkg.Name,
 		); configClass != nil {
 			spec.Config = &packageConfigSpec{
 				ClassName:  configClass.ClassName,
@@ -1544,6 +1984,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			namedTypeRefs,
 			true,
 			true,
+			pkg.Name,
 			"Args",
 			"ResourceArgs",
 		); classSpec != nil {
@@ -1551,7 +1992,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			resourceSpec.ArgsClass = classSpec.ClassName
 		}
-		resourceSpec.OutputProperties = makeResourceOutputPropertySpecs(resource, namedTypeRefs)
+		resourceSpec.OutputProperties = makeResourceOutputPropertySpecs(resource, namedTypeRefs, pkg.Name)
 		spec.Resources[resource.Token] = resourceSpec
 	}
 
@@ -1588,6 +2029,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			namedTypeRefs,
 			true,
 			true,
+			pkg.Name,
 			"Args",
 			"InvokeArgs",
 		); classSpec != nil {
@@ -1604,6 +2046,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			namedTypeRefs,
 			true,
 			false,
+			pkg.Name,
 			"Result",
 			"InvokeResult",
 		); classSpec != nil {
@@ -1725,6 +2168,107 @@ func tokenModulePath(token string) string {
 		return "index"
 	}
 	return rewriteModulePath(module)
+}
+
+func tokenProviderName(token string) string {
+	// Provider resource tokens are encoded as pulumi:providers:<pkg>.
+	// Treat these as belonging to the target provider package (<pkg>) so they
+	// resolve locally instead of incorrectly importing package:pulumi_pulumi.
+	if strings.HasPrefix(token, "pulumi:providers:") {
+		return canonicalProviderName(tokenElementName(token))
+	}
+
+	first := strings.Index(token, ":")
+	if first <= 0 {
+		return ""
+	}
+	return canonicalProviderName(token[:first])
+}
+
+// Section: schema-bound external token typing
+//
+// The schema loader path can resolve references without preserving raw `$ref`
+// strings. This helper ensures those external tokens still become typed Dart
+// symbols with explicit package imports.
+func externalTokenTypeSpec(
+	token string,
+	currentProvider string,
+	refKind string,
+	wireType string,
+	useReferenceType bool,
+	useReferenceTypes bool,
+) (packageTypeSpec, bool) {
+	token = strings.TrimSpace(token)
+	if token == "" {
+		return packageTypeSpec{}, false
+	}
+
+	providerName := tokenProviderName(token)
+	if providerName == "" || providerName == canonicalProviderName(currentProvider) {
+		return packageTypeSpec{}, false
+	}
+
+	if !useReferenceTypes {
+		switch refKind {
+		case "enum":
+			if wireType != "" {
+				return makePackageTypeSpec("scalar", wireType), true
+			}
+			return makePackageTypeSpec("scalar", "String"), true
+		case "object":
+			return makePackageTypeSpec("object", "Map<String, dynamic>"), true
+		case "resource":
+			return makePackageTypeSpec("dynamic", "dynamic"), true
+		default:
+			return makePackageTypeSpec("dynamic", "dynamic"), true
+		}
+	}
+
+	importPackage := toDartPackageName("", providerName)
+	moduleLibrary := moduleLibraryFilePath(tokenModulePath(token))
+	importPath := fmt.Sprintf("package:%s/%s", importPackage, moduleLibrary)
+	importAlias := sanitizeDartIdentifier(importPackage + "_" + strings.TrimSuffix(moduleLibrary, ".dart"))
+	className := canonicalTypeName(tokenElementName(token))
+	qualifiedType := fmt.Sprintf("%s.%s", importAlias, className)
+
+	switch refKind {
+	case "resource":
+		return packageTypeSpec{
+			Kind:           "resource",
+			DartType:       qualifiedType,
+			IsExternalRef:  true,
+			ExternalImport: importPath,
+			ExternalAlias:  importAlias,
+		}, true
+	case "enum":
+		if wireType == "" {
+			wireType = "String"
+		}
+		return packageTypeSpec{
+			Kind:              "enum",
+			DartType:          qualifiedType,
+			ReferenceType:     qualifiedType,
+			ReferenceWireType: wireType,
+			IsExternalRef:     true,
+			ExternalImport:    importPath,
+			ExternalAlias:     importAlias,
+		}, true
+	case "object":
+		if !useReferenceType {
+			return makePackageTypeSpec("object", "Map<String, dynamic>"), true
+		}
+		return packageTypeSpec{
+			Kind:              "object",
+			DartType:          qualifiedType,
+			ReferenceType:     qualifiedType,
+			ReferenceWireType: "Map<String, dynamic>",
+			IsExternalRef:     true,
+			ExternalImport:    importPath,
+			ExternalAlias:     importAlias,
+		}, true
+	default:
+		return makePackageTypeSpec("dynamic", "dynamic"), true
+	}
 }
 
 func rewriteModulePath(module string) string {
@@ -2129,6 +2673,13 @@ func objectClassToMapExpressionFromSource(objectClass packageObjectClassSpec, pr
 	}
 
 	if typeSpecNeedsEncodeConversion(typeSpec) {
+		if !property.Required {
+			return fmt.Sprintf(
+				"%s == null ? null : %s",
+				sourceExpr,
+				typeSpecEncodeExpression(typeSpec, sourceExpr+"!"),
+			)
+		}
 		return typeSpecEncodeExpression(typeSpec, sourceExpr)
 	}
 	return sourceExpr
@@ -2161,39 +2712,6 @@ func configTypeRequiresJSONDecode(typeSpec packageTypeSpec) bool {
 	}
 }
 
-func configTypeNeedsIntParser(typeSpec packageTypeSpec) bool {
-	switch typeSpec.Kind {
-	case "scalar":
-		return typeSpec.DartType == "int"
-	case "enum":
-		return typeSpec.ReferenceWireType == "int"
-	default:
-		return false
-	}
-}
-
-func configTypeNeedsDoubleParser(typeSpec packageTypeSpec) bool {
-	switch typeSpec.Kind {
-	case "scalar":
-		return typeSpec.DartType == "double"
-	case "enum":
-		return typeSpec.ReferenceWireType == "double"
-	default:
-		return false
-	}
-}
-
-func configTypeNeedsBoolParser(typeSpec packageTypeSpec) bool {
-	switch typeSpec.Kind {
-	case "scalar":
-		return typeSpec.DartType == "bool"
-	case "enum":
-		return typeSpec.ReferenceWireType == "bool"
-	default:
-		return false
-	}
-}
-
 func configPropertyParseExpression(property packagePropertySpec, rawExpr string) string {
 	typeSpec := propertyTypeSpec(property)
 	if configTypeRequiresJSONDecode(typeSpec) {
@@ -2212,11 +2730,11 @@ func configPropertyParseExpression(property packagePropertySpec, rawExpr string)
 		parseWire := rawExpr
 		switch wireType {
 		case "int":
-			parseWire = fmt.Sprintf("_parseIntConfig(%s)", rawExpr)
+			parseWire = fmt.Sprintf("(%s).toInt()", rawExpr)
 		case "double":
-			parseWire = fmt.Sprintf("_parseDoubleConfig(%s)", rawExpr)
+			parseWire = fmt.Sprintf("(%s).toDouble()", rawExpr)
 		case "bool":
-			parseWire = fmt.Sprintf("_parseBoolConfig(%s)", rawExpr)
+			parseWire = fmt.Sprintf("(%s).toBool()", rawExpr)
 		}
 		return fmt.Sprintf(
 			"%s == null ? null : %s.fromValue(%s as %s)",
@@ -2231,11 +2749,11 @@ func configPropertyParseExpression(property packagePropertySpec, rawExpr string)
 	case "String":
 		return rawExpr
 	case "int":
-		return fmt.Sprintf("_parseIntConfig(%s)", rawExpr)
+		return fmt.Sprintf("(%s).toInt()", rawExpr)
 	case "double":
-		return fmt.Sprintf("_parseDoubleConfig(%s)", rawExpr)
+		return fmt.Sprintf("(%s).toDouble()", rawExpr)
 	case "bool":
-		return fmt.Sprintf("_parseBoolConfig(%s)", rawExpr)
+		return fmt.Sprintf("(%s).toBool()", rawExpr)
 	default:
 		return rawExpr
 	}
@@ -2545,29 +3063,25 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 	}
 
 	b.WriteString("  Map<String, dynamic> toMap() {\n")
-	b.WriteString("    final map = <String, dynamic>{};\n")
+	b.WriteString("    return <String, dynamic>{\n")
 	for _, property := range objectClass.Properties {
 		if property.Required {
 			fmt.Fprintf(
 				b,
-				"    map['%s'] = %s;\n",
+				"      '%s': %s,\n",
 				property.Name,
 				objectClassToMapExpression(objectClass, property),
 			)
 		} else {
-			valueName := property.FieldName + "Value"
 			fmt.Fprintf(
 				b,
-				"    final %s = %s;\n    if (%s != null) {\n      map['%s'] = %s;\n    }\n",
-				valueName,
-				property.FieldName,
-				valueName,
+				"      '%s': ?%s,\n",
 				property.Name,
-				objectClassToMapExpressionFromSource(objectClass, property, valueName),
+				objectClassToMapExpression(objectClass, property),
 			)
 		}
 	}
-	b.WriteString("    return map;\n")
+	b.WriteString("    };\n")
 	b.WriteString("  }\n\n")
 
 	fmt.Fprintf(b, "  factory %s.fromMap(Map<String, dynamic> map) {\n", objectClass.ClassName)
@@ -2607,9 +3121,6 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 	usesDeploymentModels := len(functionTokens) > 0 || hasPackageRegistration
 	hasConfig := spec.Config != nil
 	configNeedsJSONDecode := false
-	configNeedsIntParser := false
-	configNeedsDoubleParser := false
-	configNeedsBoolParser := false
 	hasTypedInputObjects := false
 	hasInputReferenceMappings := false
 	needsDecodeListHelper := false
@@ -2644,15 +3155,6 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 			typeSpec := propertyTypeSpec(property)
 			if configTypeRequiresJSONDecode(typeSpec) {
 				configNeedsJSONDecode = true
-			}
-			if configTypeNeedsIntParser(typeSpec) {
-				configNeedsIntParser = true
-			}
-			if configTypeNeedsDoubleParser(typeSpec) {
-				configNeedsDoubleParser = true
-			}
-			if configTypeNeedsBoolParser(typeSpec) {
-				configNeedsBoolParser = true
 			}
 			if typeSpecNeedsDecodeListHelper(typeSpec) {
 				needsDecodeListHelper = true
@@ -2819,49 +3321,6 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 		for _, objectClass := range spec.ObjectClasses {
 			writeGeneratedObjectClass(&b, objectClass)
 		}
-	}
-
-	if hasConfig && configNeedsIntParser {
-		b.WriteString(`int? _parseIntConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return int.tryParse(value);
-}
-
-`)
-	}
-
-	if hasConfig && configNeedsDoubleParser {
-		b.WriteString(`double? _parseDoubleConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return double.tryParse(value);
-}
-
-`)
-	}
-
-	if hasConfig && configNeedsBoolParser {
-		b.WriteString(`bool? _parseBoolConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-
-  switch (value.toLowerCase()) {
-    case 'true':
-    case '1':
-      return true;
-    case 'false':
-    case '0':
-      return false;
-    default:
-      return null;
-  }
-}
-
-`)
 	}
 
 	if hasConfig {
@@ -3048,12 +3507,29 @@ func toSnakeCaseIdentifier(value string) string {
 }
 
 func collectReferenceTypes(typeSpec packageTypeSpec, refs map[string]struct{}) {
-	if typeSpec.ReferenceType != "" {
+	if typeSpec.ReferenceType != "" && !typeSpec.IsExternalRef {
 		refs[typeSpec.ReferenceType] = struct{}{}
 	}
 	if typeSpec.ElementType != nil {
 		collectReferenceTypes(*typeSpec.ElementType, refs)
 	}
+}
+
+func collectExternalImports(typeSpec packageTypeSpec, imports map[string]string) {
+	if typeSpec.ExternalImport != "" && typeSpec.ExternalAlias != "" {
+		imports[typeSpec.ExternalImport] = typeSpec.ExternalAlias
+	}
+	if typeSpec.ElementType != nil {
+		collectExternalImports(*typeSpec.ElementType, imports)
+	}
+}
+
+func externalImportsFromProperties(properties []packagePropertySpec) map[string]string {
+	imports := map[string]string{}
+	for _, property := range properties {
+		collectExternalImports(property.TypeSpec, imports)
+	}
+	return imports
 }
 
 func referencedTypesFromProperties(properties []packagePropertySpec) []string {
@@ -3123,6 +3599,15 @@ func generatedObjectClassFile(
 	for _, path := range importPaths {
 		fmt.Fprintf(&b, "import '%s';\n", path)
 	}
+	externalImports := externalImportsFromProperties(objectClass.Properties)
+	externalImportPaths := make([]string, 0, len(externalImports))
+	for path := range externalImports {
+		externalImportPaths = append(externalImportPaths, path)
+	}
+	sort.Strings(externalImportPaths)
+	for _, path := range externalImportPaths {
+		fmt.Fprintf(&b, "import '%s' as %s;\n", path, externalImports[path])
+	}
 	b.WriteString("\n")
 
 	writeGeneratedObjectClass(&b, objectClass)
@@ -3166,6 +3651,15 @@ func generatedResourceFile(
 	sort.Strings(importPaths)
 	for _, path := range importPaths {
 		fmt.Fprintf(&b, "import '%s';\n", path)
+	}
+	externalImports := externalImportsFromProperties(resource.OutputProperties)
+	externalImportPaths := make([]string, 0, len(externalImports))
+	for path := range externalImports {
+		externalImportPaths = append(externalImportPaths, path)
+	}
+	sort.Strings(externalImportPaths)
+	for _, path := range externalImportPaths {
+		fmt.Fprintf(&b, "import '%s' as %s;\n", path, externalImports[path])
 	}
 	if hasPackageRegistration && !resource.IsComponent {
 		fmt.Fprintf(&b, "import '%s' as package_registration;\n", relativeDartImportPath(filePath, registrationFilePath))
@@ -3456,40 +3950,16 @@ func generatedConfigFile(
 	for _, path := range importPaths {
 		fmt.Fprintf(&b, "import '%s';\n", path)
 	}
+	externalImports := externalImportsFromProperties(spec.Config.Properties)
+	externalImportPaths := make([]string, 0, len(externalImports))
+	for path := range externalImports {
+		externalImportPaths = append(externalImportPaths, path)
+	}
+	sort.Strings(externalImportPaths)
+	for _, path := range externalImportPaths {
+		fmt.Fprintf(&b, "import '%s' as %s;\n", path, externalImports[path])
+	}
 	b.WriteString("\n")
-
-	b.WriteString(`int? _parseIntConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return int.tryParse(value);
-}
-
-double? _parseDoubleConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return double.tryParse(value);
-}
-
-bool? _parseBoolConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-
-  switch (value.toLowerCase()) {
-    case 'true':
-    case '1':
-      return true;
-    case 'false':
-    case '0':
-      return false;
-    default:
-      return null;
-  }
-}
-
-`)
 
 	writeGeneratedConfigClass(&b, *spec.Config)
 	return []byte(b.String())

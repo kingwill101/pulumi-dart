@@ -252,6 +252,44 @@ void main() {
     });
   });
 
+  group('config parse helpers', () {
+    test('parseConfigInt returns parsed integer or null', () {
+      expect(parseConfigInt('42'), equals(42));
+      expect(parseConfigInt('-7'), equals(-7));
+      expect(parseConfigInt('not-an-int'), isNull);
+      expect(parseConfigInt(null), isNull);
+    });
+
+    test('parseConfigDouble returns parsed double or null', () {
+      expect(parseConfigDouble('42.5'), equals(42.5));
+      expect(parseConfigDouble('1e3'), equals(1000));
+      expect(parseConfigDouble('not-a-double'), isNull);
+      expect(parseConfigDouble(null), isNull);
+    });
+
+    test('parseConfigBool accepts true/false/1/0', () {
+      expect(parseConfigBool('true'), isTrue);
+      expect(parseConfigBool('FALSE'), isFalse);
+      expect(parseConfigBool('1'), isTrue);
+      expect(parseConfigBool('0'), isFalse);
+      expect(parseConfigBool('yes'), isNull);
+      expect(parseConfigBool(null), isNull);
+    });
+
+    test('String? extension parses int/double/bool values', () {
+      expect('42'.toInt(), equals(42));
+      expect('42.5'.toDouble(), equals(42.5));
+      expect('true'.toBool(), isTrue);
+      expect('0'.toBool(), isFalse);
+
+      const String? nullValue = null;
+      expect(nullValue.toInt(), isNull);
+      expect('x'.toInt(), isNull);
+      expect('x'.toDouble(), isNull);
+      expect('x'.toBool(), isNull);
+    });
+  });
+
   group('config behavior', () {
     test('resolves namespaced and local keys', () async {
       final payload = await _runConfigProbe(

@@ -7,9 +7,11 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 
+	semver "github.com/blang/semver"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
@@ -142,10 +144,19 @@ func (host *dartLanguageHost) GeneratePackage(
 		})
 		if err == nil {
 			rpcDiagnostics = plugin.HclDiagnosticsToRPCDiagnostics(diags)
-			if diags.HasErrors() {
+			// Keep parse-only generation as the source of truth when no loader is
+			// available and the schema includes external refs. BindSpec does not
+			// preserve enough shape information for cross-package typed refs.
+			if loader == nil && schemaContainsExternalReferences(normalizedSchema) {
+				spec, err = parsePackageSchema(normalizedSchema, req.GetDirectory())
+				if err != nil {
+					return nil, err
+				}
+				rpcDiagnostics = nil
+			} else if diags.HasErrors() {
 				// Preserve previous parse-only behavior when no loader target is provided.
 				if loader == nil {
-					spec, err = parsePackageSchema(normalizedSchema)
+					spec, err = parsePackageSchema(normalizedSchema, req.GetDirectory())
 					if err != nil {
 						return nil, err
 					}
@@ -161,7 +172,7 @@ func (host *dartLanguageHost) GeneratePackage(
 		} else if loader == nil {
 			// Parse-only fallback is intentionally permissive when we do not have
 			// a schema loader and cannot resolve external references.
-			spec, err = parsePackageSchema(normalizedSchema)
+			spec, err = parsePackageSchema(normalizedSchema, req.GetDirectory())
 			if err != nil {
 				return nil, err
 			}
@@ -171,7 +182,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 	if spec == nil {
 		var err error
-		spec, err = parsePackageSchema(normalizedSchema)
+		spec, err = parsePackageSchema(normalizedSchema, req.GetDirectory())
 		if err != nil {
 			return nil, err
 		}
@@ -200,7 +211,7 @@ func (host *dartLanguageHost) GeneratePackage(
 		}
 	}
 
-	requiredDependencies := requiredDartDependencies(packageSpec, spec.Name, req.GetDirectory())
+	requiredDependencies := requiredDartDependencies(packageSpec, normalizedSchema, spec.Name, req.GetDirectory())
 	pubspec := buildGeneratedPubspec(packageName, localDependencies, requiredDependencies)
 	if shouldUseWorkspaceResolution(req.GetDirectory()) {
 		pubspec.Resolution = "workspace"
@@ -384,10 +395,15 @@ func dartLanguageDependencies(packageSpec schema.PackageSpec) map[string]interfa
 
 func requiredDartDependencies(
 	packageSpec schema.PackageSpec,
+	rawSchema string,
 	providerName string,
 	outputDir string,
 ) map[string]interface{} {
 	combined := map[string]interface{}{}
+	inferredDependencies := inferredDartDependenciesFromExternalRefs(rawSchema, providerName)
+	for name, dep := range inferredDependencies {
+		combined[name] = dep
+	}
 	registryDependencies := localRegistryDartDependencies(providerName, outputDir)
 	for name, dep := range registryDependencies {
 		combined[name] = dep
@@ -400,6 +416,116 @@ func requiredDartDependencies(
 		return nil
 	}
 	return combined
+}
+
+// Section: dependency inference from external schema refs.
+//
+// We infer Dart package dependencies by scanning refs of the shape:
+//
+//	/<provider>/v<version>/schema.json#/(types|resources)/...
+//
+// and use that discovered provider version in pubspec constraints.
+var externalSchemaRefRegex = regexp.MustCompile(`/([a-z0-9][a-z0-9-]*)/v([0-9][^/"]*)/schema\.json#`)
+
+func schemaContainsExternalReferences(rawSchema string) bool {
+	if strings.TrimSpace(rawSchema) == "" {
+		return false
+	}
+	return externalSchemaRefRegex.MatchString(strings.ToLower(rawSchema))
+}
+
+func inferredDartDependenciesFromExternalRefs(rawSchema, providerName string) map[string]interface{} {
+	rawSchema = strings.TrimSpace(rawSchema)
+	if rawSchema == "" {
+		return nil
+	}
+
+	providerName = canonicalProviderName(providerName)
+	matches := externalSchemaRefRegex.FindAllStringSubmatch(strings.ToLower(rawSchema), -1)
+	if len(matches) == 0 {
+		return nil
+	}
+
+	dependencies := map[string]interface{}{}
+	discoveredVersions := map[string]string{}
+	for _, match := range matches {
+		if len(match) < 3 {
+			continue
+		}
+		referencedProvider := canonicalProviderName(match[1])
+		if referencedProvider == "" || referencedProvider == providerName {
+			continue
+		}
+
+		dependencyName := toDartPackageName("", referencedProvider)
+		if dependencyName == "" {
+			continue
+		}
+		discoveredVersion := strings.TrimSpace(match[2])
+		if current, ok := discoveredVersions[dependencyName]; ok {
+			if compareDiscoveredProviderVersions(discoveredVersion, current) > 0 {
+				discoveredVersions[dependencyName] = discoveredVersion
+			}
+		} else {
+			discoveredVersions[dependencyName] = discoveredVersion
+		}
+	}
+	for dependencyName, version := range discoveredVersions {
+		if version == "" {
+			dependencies[dependencyName] = "any"
+			continue
+		}
+		dependencies[dependencyName] = "^" + version
+	}
+
+	if len(dependencies) == 0 {
+		return nil
+	}
+	return dependencies
+}
+
+func compareDiscoveredProviderVersions(left, right string) int {
+	left = strings.TrimSpace(strings.TrimPrefix(strings.TrimPrefix(left, "v"), "V"))
+	right = strings.TrimSpace(strings.TrimPrefix(strings.TrimPrefix(right, "v"), "V"))
+	if left == right {
+		return 0
+	}
+	if left == "" {
+		return -1
+	}
+	if right == "" {
+		return 1
+	}
+
+	leftVersion, leftErr := semver.ParseTolerant(left)
+	rightVersion, rightErr := semver.ParseTolerant(right)
+	if leftErr == nil && rightErr == nil {
+		if leftVersion.GT(rightVersion) {
+			return 1
+		}
+		return -1
+	}
+	if leftErr == nil {
+		return 1
+	}
+	if rightErr == nil {
+		return -1
+	}
+	if left > right {
+		return 1
+	}
+	if left < right {
+		return -1
+	}
+	return 0
+}
+
+func canonicalProviderName(name string) string {
+	name = strings.TrimSpace(strings.ToLower(name))
+	if name == "" {
+		return ""
+	}
+	return strings.ReplaceAll(name, "_", "-")
 }
 
 func localRegistryDartDependencies(providerName, outputDir string) map[string]interface{} {

@@ -6,37 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import '../index/widget_metadata.dart';
 import '../index/widget_mode.dart';
 
-int? _parseIntConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return int.tryParse(value);
-}
-
-double? _parseDoubleConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-  return double.tryParse(value);
-}
-
-bool? _parseBoolConfig(String? value) {
-  if (value == null) {
-    return null;
-  }
-
-  switch (value.toLowerCase()) {
-    case 'true':
-    case '1':
-      return true;
-    case 'false':
-    case '0':
-      return false;
-    default:
-      return null;
-  }
-}
-
 /// Configuration values for the sample package.
 class SampleConfig {
   const SampleConfig();
@@ -53,7 +22,7 @@ class SampleConfig {
 
   bool? get enabled {
     final raw = _raw('enabled');
-    return _parseBoolConfig(raw);
+    return (raw).toBool();
   }
 
   bool get enabledIsSecret => _isSecret('enabled');
@@ -97,7 +66,7 @@ class SampleConfig {
 
   int? get replicas {
     final raw = _raw('replicas');
-    return _parseIntConfig(raw);
+    return (raw).toInt();
   }
 
   bool get replicasIsSecret => _isSecret('replicas');
@@ -158,9 +127,9 @@ class GetWidgetDetailsArgs {
       id = pulumi.Input.asInput<String>(id);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    return map;
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetWidgetDetailsArgs.fromMap(Map<String, dynamic> map) {
@@ -191,10 +160,10 @@ class GetWidgetDetailsResult {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['metadata'] = metadata.toMap();
-    map['mode'] = mode.value;
-    return map;
+    return <String, dynamic>{
+      'metadata': metadata.toMap(),
+      'mode': mode.value,
+    };
   }
 
   factory GetWidgetDetailsResult.fromMap(Map<String, dynamic> map) {
@@ -260,13 +229,10 @@ class WidgetArgs {
       mode = pulumi.Input.asInput<WidgetMode>(mode);
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    final metadataValue = metadata;
-    if (metadataValue != null) {
-      map['metadata'] = pulumi.Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap());
-    }
-    map['mode'] = pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value);
-    return map;
+    return <String, dynamic>{
+      'metadata': ?pulumi.Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'mode': pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value),
+    };
   }
 
   factory WidgetArgs.fromMap(Map<String, dynamic> map) {
@@ -296,10 +262,10 @@ class WidgetMetadata {
   });
 
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    map['mode'] = mode.value;
-    map['owner'] = owner;
-    return map;
+    return <String, dynamic>{
+      'mode': mode.value,
+      'owner': owner,
+    };
   }
 
   factory WidgetMetadata.fromMap(Map<String, dynamic> map) {

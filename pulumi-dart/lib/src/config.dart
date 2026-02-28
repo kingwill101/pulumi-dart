@@ -3,6 +3,70 @@ import 'dart:io';
 
 import 'store/store.dart' as runtime_store;
 
+/// Parses an optional integer config value.
+///
+/// Returns `null` when [value] is `null` or not a valid integer.
+int? parseConfigInt(String? value) {
+  return value.toInt();
+}
+
+/// Parses an optional double config value.
+///
+/// Returns `null` when [value] is `null` or not a valid double.
+double? parseConfigDouble(String? value) {
+  return value.toDouble();
+}
+
+/// Parses an optional boolean config value.
+///
+/// Accepted values are `true`, `false`, `1`, and `0` (case-insensitive).
+/// Returns `null` when [value] is `null` or not a recognized boolean.
+bool? parseConfigBool(String? value) {
+  return value.toBool();
+}
+
+/// Extension helpers for parsing optional config strings.
+extension ConfigStringParsing on String? {
+  /// Parses an optional integer config value.
+  int? toInt() {
+    final value = this;
+    if (value == null) {
+      return null;
+    }
+    return int.tryParse(value);
+  }
+
+  /// Parses an optional double config value.
+  double? toDouble() {
+    final value = this;
+    if (value == null) {
+      return null;
+    }
+    return double.tryParse(value);
+  }
+
+  /// Parses an optional boolean config value.
+  ///
+  /// Accepted values are `true`, `false`, `1`, and `0` (case-insensitive).
+  bool? toBool() {
+    final value = this;
+    if (value == null) {
+      return null;
+    }
+
+    switch (value.toLowerCase()) {
+      case 'true':
+      case '1':
+        return true;
+      case 'false':
+      case '0':
+        return false;
+      default:
+        return null;
+    }
+  }
+}
+
 /// {@template pulumi.config_mixin.summary}
 /// Shared config parsing logic used by runtime settings.
 /// {@endtemplate}
