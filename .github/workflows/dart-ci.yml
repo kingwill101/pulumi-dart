@@ -126,6 +126,7 @@ jobs:
           npm run build
 
   dart-integration-tests:
+    name: Dart integration tests (core)
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -187,9 +188,24 @@ jobs:
         shell: bash
         run: |
           cd integration_tests
-          mapfile -t tests < <(go test -list . . | grep '^Test' | sort)
+          declare -A cloud_only_tests=(
+            [TestEnvironmentsBasicDart]=1
+            [TestEnvironmentsMergeDart]=1
+            [TestTracePropagationDart]=1
+            [TestAutomationEnvironmentManagementDart]=1
+            [TestAutomationRemoteWorkspaceLifecycleDart]=1
+          )
+
+          mapfile -t all_tests < <(go test -list . . | grep '^Test' | sort)
+          tests=()
+          for test_name in "${all_tests[@]}"; do
+            if [[ -z "${cloud_only_tests[$test_name]+x}" ]]; then
+              tests+=("${test_name}")
+            fi
+          done
+
           total="${#tests[@]}"
-          echo "Found ${total} Dart integration tests"
+          echo "Found ${total} core Dart integration tests"
 
           selected=()
           for i in "${!tests[@]}"; do
@@ -213,8 +229,101 @@ jobs:
           cd integration_tests
           go test -count=1 -run "${{ steps.shard.outputs.regex }}" -v .
 
+  dart-integration-tests-cloud:
+    name: Dart integration tests (cloud-only)
+    if: ${{ secrets.PULUMI_ACCESS_TOKEN != '' }}
+    runs-on: ubuntu-latest
+    env:
+      PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.25.x
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ensure pulumi submodule checkout
+        run: git submodule update --init --recursive
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Install Pulumi CLI
+        uses: pulumi/actions@v5
+
+      - name: Check toolchain versions
+        run: |
+          go version
+          dart --version
+          node --version
+          npm --version
+          python --version
+          uv --version
+
+      - name: Build Dart language host
+        run: |
+          cd pulumi-language-dart
+          go build -o pulumi-language-dart .
+
+      - name: Resolve cloud-only test regex
+        id: cloud
+        shell: bash
+        run: |
+          cd integration_tests
+          mapfile -t all_tests < <(go test -list . . | grep '^Test' | sort)
+          wanted=(
+            TestEnvironmentsBasicDart
+            TestEnvironmentsMergeDart
+            TestTracePropagationDart
+            TestAutomationEnvironmentManagementDart
+            TestAutomationRemoteWorkspaceLifecycleDart
+          )
+
+          selected=()
+          for wanted_test in "${wanted[@]}"; do
+            if printf '%s\n' "${all_tests[@]}" | grep -qx "${wanted_test}"; then
+              selected+=("${wanted_test}")
+            fi
+          done
+
+          if [ "${#selected[@]}" -eq 0 ]; then
+            echo "No cloud-only integration tests were discovered."
+            exit 1
+          fi
+
+          regex="^($(IFS='|'; echo "${selected[*]}"))$"
+          echo "regex=${regex}" >> "$GITHUB_OUTPUT"
+          printf 'Cloud-only tests:\n'
+          printf '%s\n' "${selected[@]}"
+
+      - name: Run cloud-only integration tests
+        run: |
+          cd integration_tests
+          go test -count=1 -run "${{ steps.cloud.outputs.regex }}" -v .
+
   check-pr:
-    needs: [dart-unit-tests, proto-regeneration, website-docs, dart-integration-tests]
+    needs: [dart-unit-tests, proto-regeneration, website-docs, dart-integration-tests, dart-integration-tests-cloud]
     runs-on: ubuntu-latest
     if: always()
     steps:
@@ -229,6 +338,9 @@ jobs:
         run: exit 1
       - name: Dart integration tests failed
         if: ${{ needs.dart-integration-tests.result != 'success' }}
+        run: exit 1
+      - name: Cloud integration tests failed
+        if: ${{ needs.dart-integration-tests-cloud.result != 'success' && needs.dart-integration-tests-cloud.result != 'skipped' }}
         run: exit 1
       - name: CI succeeded
         run: exit 0
