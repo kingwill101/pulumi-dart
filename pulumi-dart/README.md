@@ -1,19 +1,19 @@
 # Pulumi for Dart
 
-`pulumi` is the core runtime SDK for writing Pulumi programs in Dart.
+`pulumi` is the core Dart SDK for building infrastructure with Pulumi.
 
-This package provides:
-- Deployment entrypoints (`Deployment.run`, `Deployment.runOrThrow`)
-- Stack and resource base types (`Stack`, `CustomResource`, `ComponentResource`)
-- Inputs/outputs and composition helpers (`Input`, `Output`)
-- Config access (`Config`)
-- Asset/archive support and invoke/call utilities
+It includes:
+- deployment entrypoints (`Deployment.run`, `Deployment.runOrThrow`)
+- stack/resource base types (`Stack`, `CustomResource`, `ComponentResource`)
+- input/output primitives (`Input`, `Output`)
+- config helpers (`Config`)
+- invoke/call/resource option APIs used by generated provider SDKs
 
-## Prerequisites
+## Requirements
 
 - Dart SDK `>=3.10.0 <4.0.0`
-- Pulumi CLI installed
-- `pulumi-language-dart` available on `PATH` when running `pulumi up/preview`
+- Pulumi CLI
+- `pulumi-language-dart` on your `PATH`
 
 ## Install
 
@@ -21,7 +21,7 @@ This package provides:
 dart pub add pulumi
 ```
 
-## Minimal Program
+## Quick Start
 
 ```dart
 import 'package:pulumi/pulumi.dart';
@@ -46,25 +46,22 @@ Future<void> main() async {
 }
 ```
 
-## Running With Pulumi
+## Custom Provider + Custom Resource Example
 
-Create a Pulumi project with runtime `dart`, then run:
+This package supports raw provider/resource definitions when you want to work directly with Pulumi tokens.
+See [`example/pulumi_dart_example.dart`](example/pulumi_dart_example.dart), which demonstrates:
+- creating a custom provider resource (`pulumi:providers:random`)
+- creating a custom resource (`random:index:RandomPet`) that uses that provider
+- exporting stack outputs
+
+## Run With Pulumi
 
 ```bash
 pulumi stack init dev
+pulumi config set name dart
 pulumi preview
 pulumi up
 ```
-
-Set config values as needed:
-
-```bash
-pulumi config set name dart
-```
-
-## Example
-
-See [`example/pulumi_dart_example.dart`](example/pulumi_dart_example.dart) for a complete sample using config + stack outputs.
 
 ## Development
 
