@@ -37,10 +37,6 @@ func TestDynamicConfigRoundTripDart(t *testing.T) {
 	t.Skip("pending port: pulumi/tests/integration/integration_nodejs_test.go::dynamic nodejs-config + pulumi/tests/integration/integration_python_test.go::dynamic python-config")
 }
 
-func TestDynamicReadInputsAfterRefreshDart(t *testing.T) {
-	t.Skip("pending port: pulumi/tests/integration/integration_nodejs_test.go::nodejs-read-inputs + pulumi/tests/integration/integration_python_acceptance_test.go::python-read-inputs")
-}
-
 func TestDynamicReservedIdentifierShadowingDart(t *testing.T) {
 	t.Skip("pending port: pulumi/tests/integration/integration_nodejs_test.go::nodejs-reserved-identifier-shadowing")
 }

@@ -605,6 +605,38 @@ func TestDynamicProviderDart(t *testing.T) {
 	})
 }
 
+// Tests that dynamic providers can return inputs from read() for accurate diffs after refresh.
+// Regression test for https://github.com/pulumi/pulumi/issues/13839.
+func TestDynamicProviderReadInputsDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join("dynamic", "read_inputs_dart"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "pulumi-dart",
+				Path:    filepath.Join("dynamic", "pulumi-dart-provider-go"),
+			},
+		},
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			require.NotNil(t, stackInfo.Outputs["resource_id"])
+
+			var dynRes *apitype.ResourceV3
+			for i := range stackInfo.Deployment.Resources {
+				res := &stackInfo.Deployment.Resources[i]
+				if strings.HasPrefix(res.URN.Type().String(), "pulumi-dart:dynamic") {
+					dynRes = res
+					break
+				}
+			}
+
+			require.NotNil(t, dynRes, "expected a dynamic resource in deployment")
+			require.NotNil(t, dynRes.Inputs, "expected dynamic resource inputs to be persisted")
+			assert.Contains(t, dynRes.Inputs, "__provider")
+			assert.Contains(t, dynRes.Inputs, "value")
+		},
+	})
+}
+
 func TestDynamicProviderSecretsDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join("dynamic", "dart-secrets"),

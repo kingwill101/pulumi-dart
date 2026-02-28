@@ -11,14 +11,6 @@ void main() {
     );
 
     test(
-      'read-inputs refresh parity',
-      () {},
-      skip:
-          'pending port: pulumi/tests/integration/integration_nodejs_test.go::nodejs-read-inputs '
-          '+ pulumi/tests/integration/integration_python_acceptance_test.go::python-read-inputs',
-    );
-
-    test(
       'reserved identifier shadowing parity',
       () {},
       skip:

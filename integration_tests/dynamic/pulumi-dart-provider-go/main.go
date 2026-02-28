@@ -131,6 +131,7 @@ func (p *dynamicProvider) Read(
 	return &pulumirpc.ReadResponse{
 		Id:         req.GetId(),
 		Properties: req.GetProperties(),
+		Inputs:     req.GetProperties(),
 	}, nil
 }
 

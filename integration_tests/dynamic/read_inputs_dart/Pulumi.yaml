@@ -1,0 +1,3 @@
+name: dynamic-read-inputs-dart
+runtime: dart
+description: Dynamic provider read() inputs regression test for Dart.
