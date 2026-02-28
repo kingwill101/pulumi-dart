@@ -139,20 +139,22 @@ class Settings {
     required this.featureSupport,
   });
 
-  factory Settings.fromEnvironment() {
+  factory Settings.fromEnvironment([Map<String, String>? environment]) {
+    final env = environment ?? Platform.environment;
     return Settings(
       options: WriteableOptions(
-        organization: Platform.environment[NodeEnvKeys.organization],
-        project: Platform.environment[NodeEnvKeys.project] ?? 'project',
-        stack: Platform.environment[NodeEnvKeys.stack] ?? 'stack',
-        dryRun: Platform.environment[NodeEnvKeys.dryRun] == 'true',
-        queryMode: Platform.environment[NodeEnvKeys.queryMode] == 'true',
-        monitorAddr: Platform.environment[NodeEnvKeys.monitorAddr],
-        engineAddr: Platform.environment[NodeEnvKeys.engineAddr],
-        syncDir: Platform.environment[NodeEnvKeys.syncDir],
+        organization:
+            env[NodeEnvKeys.organization] ?? env['PULUMI_ORGANIZATION'],
+        project: env[NodeEnvKeys.project] ?? env['PULUMI_PROJECT'] ?? 'project',
+        stack: env[NodeEnvKeys.stack] ?? env['PULUMI_STACK'] ?? 'stack',
+        dryRun: env[NodeEnvKeys.dryRun] == 'true',
+        queryMode: env[NodeEnvKeys.queryMode] == 'true',
+        monitorAddr: env[NodeEnvKeys.monitorAddr] ?? env['PULUMI_MONITOR'],
+        engineAddr: env[NodeEnvKeys.engineAddr] ?? env['PULUMI_ENGINE'],
+        syncDir: env[NodeEnvKeys.syncDir],
         cacheDynamicProviders:
-            Platform.environment[NodeEnvKeys.cacheDynamicProviders] != 'false',
-        legacyApply: Platform.environment[PulumiEnvKeys.legacyApply] == 'true',
+            env[NodeEnvKeys.cacheDynamicProviders] != 'false',
+        legacyApply: env[PulumiEnvKeys.legacyApply] == 'true',
         maximumProcessListeners: 30,
       ),
       rpcDone: Completer<void>().future,

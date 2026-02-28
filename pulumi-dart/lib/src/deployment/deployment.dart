@@ -868,6 +868,8 @@ class DeploymentImpl extends Deployment
 
   @override
   Future<void> registerOutputs() async {
+    _stack?.registerPropertyOutputs();
+
     if (_resourceOperations.isNotEmpty) {
       await Future.wait(_resourceOperations);
       _resourceOperations.clear();

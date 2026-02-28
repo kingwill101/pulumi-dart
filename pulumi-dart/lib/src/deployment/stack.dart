@@ -56,6 +56,7 @@ abstract class Stack extends ComponentResource {
 
   static const String rootPulumiStackTypeName = 'pulumi:pulumi:Stack';
 
+  bool _outputsRegistered = false;
   late final Map<String, Object?> outputs;
 
   Stack([StackOptions? options])
@@ -70,9 +71,18 @@ abstract class Stack extends ComponentResource {
 
   /// Registers stack outputs discovered from [getOutputProperties].
   void registerPropertyOutputs() {
+    if (_outputsRegistered) {
+      return;
+    }
+
+    final properties = getOutputProperties();
+    if (properties.isEmpty) {
+      return;
+    }
+
     final outputProperties = <String, Object?>{};
 
-    for (var property in getOutputProperties()) {
+    for (final property in properties) {
       final name = property.name;
       final value = property.value;
       outputProperties[name] = value;
@@ -80,6 +90,26 @@ abstract class Stack extends ComponentResource {
 
     outputs = outputProperties;
     registerOutputs(outputProperties.cast<String, dynamic>());
+  }
+
+  @override
+  void registerOutputs([Map<String, dynamic>? outputs]) {
+    _outputsRegistered = true;
+    super.registerOutputs(outputs);
+  }
+
+  @override
+  Future<void> registerOutputsAsync(
+    Future<Map<String, dynamic>> outputs,
+  ) async {
+    _outputsRegistered = true;
+    await super.registerOutputsAsync(outputs);
+  }
+
+  @override
+  void registerOutputsOutput(Output<Map<String, dynamic>> outputs) {
+    _outputsRegistered = true;
+    super.registerOutputsOutput(outputs);
   }
 
   /// Returns the stack outputs to export.

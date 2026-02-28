@@ -81,6 +81,9 @@
 /// - Lifecycle controls: [ResourceOptions], [CustomTimeouts], [Alias]
 /// - Interop types: [Asset], [Archive], [StackReference]
 ///
+/// For CLI-driven automation workflows, import `package:pulumi/automation.dart`.
+/// For dynamic resource authoring APIs, import `package:pulumi/dynamic.dart`.
+///
 /// ## Entrypoint recommendation
 /// For application code, call [Deployment.runOrThrow]. For tests or custom
 /// runners, [Deployment.run] gives explicit exit-code control.
