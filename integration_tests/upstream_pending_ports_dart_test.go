@@ -1,22 +1,41 @@
 package integration_tests
 
-import "testing"
+import (
+	"bytes"
+	"path/filepath"
+	"testing"
 
-// These tests are intentionally skipped placeholders to track upstream parity
-// scenarios we still need to port into the Dart integration suite.
+	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
+	"github.com/stretchr/testify/assert"
+)
 
+// Regression test for https://github.com/pulumi/pulumi/issues/13551.
+//
+// Upstream Python temporarily marks this scenario flaky. For Dart we keep the
+// fixture and assertion active to ensure implicit dependency cycles fail fast
+// with actionable diagnostics.
 func TestFailsOnImplicitDependencyCyclesDart(t *testing.T) {
-	t.Skip("blocked: upstream test is currently flaky/skipped; Dart port currently succeeds unexpectedly in local validation and needs upstream-aligned fixture semantics")
-}
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
 
-func TestAutomationCommandAndVersionValidationDart(t *testing.T) {
-	t.Skip("pending port: pulumi/sdk/nodejs/tests/automation/cmd.spec.ts + localWorkspace.command.spec.ts + pulumi/sdk/python/lib/test/automation/test_cmd.py")
-}
-
-func TestAutomationRemoteWorkspaceDart(t *testing.T) {
-	t.Skip("pending port: pulumi/sdk/nodejs/tests/automation/remoteWorkspace.spec.ts + pulumi/sdk/python/lib/test/automation/test_remote_workspace.py")
-}
-
-func TestAutomationEnvironmentManagementDart(t *testing.T) {
-	t.Skip("pending port: pulumi/sdk/nodejs/tests/automation/localWorkspace.stack.spec.ts::add/remove environments + pulumi/sdk/go/auto/local_workspace_test.go::AddEnvironments")
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:           filepath.Join("implicit_dependency_cycles", "dart"),
+		Quick:         true,
+		ExpectFailure: true,
+		Stdout:        stdout,
+		Stderr:        stderr,
+		ExtraRuntimeValidation: func(t *testing.T, _ integration.RuntimeValidationStackInfo) {
+			output := stdout.String() + stderr.String()
+			assert.Contains(
+				t,
+				output,
+				"We have detected a circular dependency involving a resource of type my:module:Child-1 named a-child-1.",
+			)
+			assert.Contains(
+				t,
+				output,
+				"Please review any `depends_on`, `parent` or other dependency relationships between your resources to ensure no cycles have been introduced in your program.",
+			)
+		},
+	})
 }

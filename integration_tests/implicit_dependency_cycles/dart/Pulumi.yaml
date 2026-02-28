@@ -1,0 +1,3 @@
+name: implicit_dependency_cycles_dart
+runtime: dart
+description: Dart fixture that intentionally creates an implicit dependency cycle.
