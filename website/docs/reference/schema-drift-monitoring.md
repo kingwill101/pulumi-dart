@@ -48,7 +48,7 @@ Fail non-zero if any drift is detected:
 
 Workflow:
 
-- `.github/workflows/schema-drift.yml`
+- `.github/workflows/dart-schema-drift.yml`
 
 Behavior:
 

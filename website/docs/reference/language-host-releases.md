@@ -51,16 +51,16 @@ Default install path is `~/.local/bin`.
 
 ## Current GitHub workflows in this repo
 
-- CI: `.github/workflows/pr.yml`
+- CI: `.github/workflows/dart-ci.yml`
   - tests `pulumi-language-dart` and `pulumi-dart`
   - runs integration test shards
   - installs Pulumi CLI in CI jobs
   - validates protobuf generation (`make generate`) with `protoc` + `protoc_plugin`
   - ensures Pulumi submodule checkout is initialized for proto/integration workflows
-- Binary release: `.github/workflows/release-language-host.yml`
+- Binary release: `.github/workflows/dart-release-language-host.yml`
   - push tag `vX.Y.Z` to publish assets
   - `workflow_dispatch` supports snapshot builds and manual tagged releases
-- Drift monitor: `.github/workflows/schema-drift.yml`
+- Drift monitor: `.github/workflows/dart-schema-drift.yml`
   - checks schema/version drift per provider package
 
 ## Verification checklist for maintainers

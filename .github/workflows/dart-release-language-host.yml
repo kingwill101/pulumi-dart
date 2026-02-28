@@ -1,4 +1,4 @@
-name: Release Language Host
+name: Dart Language Host Release
 
 on:
   push:

@@ -97,7 +97,7 @@ Provider schema drift is tracked via:
 
 - manifest: `packages/schema_sources.json`
 - checker: `scripts/check-schema-drift.sh`
-- CI workflow: `.github/workflows/schema-drift.yml`
+- CI workflow: `.github/workflows/dart-schema-drift.yml`
 
 Run locally:
 

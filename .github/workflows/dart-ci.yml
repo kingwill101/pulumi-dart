@@ -1,6 +1,7 @@
-name: Build and test
+name: Dart CI
 
 on:
+  workflow_dispatch:
   merge_group:
   pull_request:
   push:
@@ -51,11 +52,19 @@ jobs:
           cd pulumi-language-dart
           go test -count=1 ./...
 
-      - name: Test Dart SDK package
+      - name: Install Dart SDK package dependencies
         run: |
           cd pulumi-dart
           dart pub get
+
+      - name: Analyze Dart SDK package
+        run: |
+          cd pulumi-dart
           dart analyze
+
+      - name: Run Dart SDK package tests
+        run: |
+          cd pulumi-dart
           dart test
 
   proto-regeneration:

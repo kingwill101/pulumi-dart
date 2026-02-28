@@ -1,4 +1,4 @@
-name: Schema Drift
+name: Dart Provider Schema Drift
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     - cron: "23 4 * * *"
   pull_request:
     paths:
-      - .github/workflows/schema-drift.yml
+      - .github/workflows/dart-schema-drift.yml
       - scripts/check-schema-drift.sh
       - packages/schema_sources.json
       - packages/schemas/*.schema.json
