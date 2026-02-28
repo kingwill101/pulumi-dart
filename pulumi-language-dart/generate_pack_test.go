@@ -8,6 +8,8 @@ import (
 	"fmt"
 	"io"
 	"io/fs"
+	"net/http"
+	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"sort"
@@ -836,8 +838,9 @@ providers:
 	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
 	require.NoError(t, err)
 	pubspec := string(pubspecData)
+	expectedPath := filepath.ToSlash(filepath.Join(workspaceDir, "local", "pulumi-local-path"))
 	assert.Contains(t, pubspec, "pulumi_local_path:")
-	assert.Contains(t, pubspec, "path: ../local/pulumi-local-path")
+	assert.Contains(t, pubspec, "path: "+expectedPath)
 	assert.Contains(t, pubspec, "pulumi_local_git:")
 	assert.Contains(t, pubspec, "git:")
 	assert.Contains(t, pubspec, "url: https://github.com/example/pulumi-local-git.git")
@@ -877,6 +880,40 @@ providers:
 	require.NoError(t, err)
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "pulumi_policy: ^1.2.3")
+}
+
+func TestGeneratePackageReadsDependencyRegistryFromURL(t *testing.T) {
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		_, _ = w.Write([]byte(strings.TrimSpace(`
+providers:
+  sample:
+    dependencies:
+      pulumi_policy: ^0.5.0
+`) + "\n"))
+	}))
+	defer server.Close()
+
+	t.Setenv("PULUMI_DART_DEPENDENCY_REGISTRY", filepath.Join(t.TempDir(), "missing-registry.yaml"))
+	t.Setenv("PULUMI_DART_DEPENDENCY_REGISTRY_URL", server.URL)
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi_policy: ^0.5.0")
 }
 
 func TestGeneratePackageUpdatesExistingPubspecWhenEnabled(t *testing.T) {

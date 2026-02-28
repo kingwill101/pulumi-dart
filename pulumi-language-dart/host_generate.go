@@ -5,11 +5,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
+	"time"
 
 	semver "github.com/blang/semver"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
@@ -529,13 +531,8 @@ func canonicalProviderName(name string) string {
 }
 
 func localRegistryDartDependencies(providerName, outputDir string) map[string]interface{} {
-	registryPath := resolveDependencyRegistryPath(outputDir)
-	if registryPath == "" {
-		return nil
-	}
-
-	registryBytes, err := os.ReadFile(registryPath)
-	if err != nil {
+	registryBytes, registryBaseDir, ok := loadDependencyRegistryContent(outputDir)
+	if !ok {
 		return nil
 	}
 
@@ -579,7 +576,7 @@ func localRegistryDartDependencies(providerName, outputDir string) map[string]in
 		if name == "" {
 			continue
 		}
-		normalizedSpec, ok := normalizeRegistryDependencySpec(spec)
+		normalizedSpec, ok := normalizeRegistryDependencySpec(spec, registryBaseDir)
 		if !ok {
 			continue
 		}
@@ -592,7 +589,7 @@ func localRegistryDartDependencies(providerName, outputDir string) map[string]in
 	return normalized
 }
 
-func normalizeRegistryDependencySpec(spec interface{}) (interface{}, bool) {
+func normalizeRegistryDependencySpec(spec interface{}, registryBaseDir string) (interface{}, bool) {
 	switch value := spec.(type) {
 	case nil:
 		return nil, false
@@ -603,17 +600,17 @@ func normalizeRegistryDependencySpec(spec interface{}) (interface{}, bool) {
 		}
 		return trimmed, true
 	case map[string]interface{}:
-		normalized, ok := normalizeRegistryDependencyMap(value)
+		normalized, ok := normalizeRegistryDependencySpecMap(value, registryBaseDir)
 		if !ok {
 			return nil, false
 		}
 		return normalized, true
 	case map[interface{}]interface{}:
-		normalizedAny, ok := normalizeRegistryDependencyValue(value)
+		converted, ok := convertInterfaceMapToStringMap(value)
 		if !ok {
 			return nil, false
 		}
-		normalizedMap, ok := normalizedAny.(map[string]interface{})
+		normalizedMap, ok := normalizeRegistryDependencySpecMap(converted, registryBaseDir)
 		if !ok {
 			return nil, false
 		}
@@ -623,13 +620,32 @@ func normalizeRegistryDependencySpec(spec interface{}) (interface{}, bool) {
 	}
 }
 
-func normalizeRegistryDependencyMap(value map[string]interface{}) (map[string]interface{}, bool) {
+func normalizeRegistryDependencySpecMap(value map[string]interface{}, registryBaseDir string) (map[string]interface{}, bool) {
 	normalized := map[string]interface{}{}
 	for rawKey, rawValue := range value {
 		key := strings.TrimSpace(rawKey)
 		if key == "" {
 			continue
 		}
+
+		// Top-level dependency "path" entries are file system paths and should
+		// resolve relative to the registry file location when needed.
+		if key == "path" {
+			pathValue, ok := rawValue.(string)
+			if !ok {
+				continue
+			}
+			pathValue = strings.TrimSpace(pathValue)
+			if pathValue == "" {
+				continue
+			}
+			if !filepath.IsAbs(pathValue) && registryBaseDir != "" {
+				pathValue = filepath.Clean(filepath.Join(registryBaseDir, pathValue))
+			}
+			normalized[key] = filepath.ToSlash(pathValue)
+			continue
+		}
+
 		normalizedValue, ok := normalizeRegistryDependencyValue(rawValue)
 		if !ok {
 			continue
@@ -665,31 +681,72 @@ func normalizeRegistryDependencyValue(value interface{}) (interface{}, bool) {
 		}
 		return items, true
 	case map[string]interface{}:
-		return normalizeRegistryDependencyMap(typed)
+		return normalizeRegistryDependencyValueMap(typed)
 	case map[interface{}]interface{}:
-		normalized := map[string]interface{}{}
-		for rawKey, rawValue := range typed {
-			key, ok := rawKey.(string)
-			if !ok {
-				continue
-			}
-			trimmedKey := strings.TrimSpace(key)
-			if trimmedKey == "" {
-				continue
-			}
-			normalizedValue, ok := normalizeRegistryDependencyValue(rawValue)
-			if !ok {
-				continue
-			}
-			normalized[trimmedKey] = normalizedValue
-		}
-		if len(normalized) == 0 {
+		converted, ok := convertInterfaceMapToStringMap(typed)
+		if !ok {
 			return nil, false
 		}
-		return normalized, true
+		return normalizeRegistryDependencyValueMap(converted)
 	default:
 		return nil, false
 	}
+}
+
+func normalizeRegistryDependencyValueMap(value map[string]interface{}) (map[string]interface{}, bool) {
+	normalized := map[string]interface{}{}
+	for rawKey, rawValue := range value {
+		key := strings.TrimSpace(rawKey)
+		if key == "" {
+			continue
+		}
+		normalizedValue, ok := normalizeRegistryDependencyValue(rawValue)
+		if !ok {
+			continue
+		}
+		normalized[key] = normalizedValue
+	}
+	if len(normalized) == 0 {
+		return nil, false
+	}
+	return normalized, true
+}
+
+func convertInterfaceMapToStringMap(value map[interface{}]interface{}) (map[string]interface{}, bool) {
+	converted := map[string]interface{}{}
+	for rawKey, rawValue := range value {
+		key, ok := rawKey.(string)
+		if !ok {
+			continue
+		}
+		trimmed := strings.TrimSpace(key)
+		if trimmed == "" {
+			continue
+		}
+		converted[trimmed] = rawValue
+	}
+	if len(converted) == 0 {
+		return nil, false
+	}
+	return converted, true
+}
+
+func loadDependencyRegistryContent(outputDir string) ([]byte, string, bool) {
+	if registryPath := resolveDependencyRegistryPath(outputDir); registryPath != "" {
+		registryBytes, err := os.ReadFile(registryPath)
+		if err == nil {
+			return registryBytes, filepath.Dir(registryPath), true
+		}
+	}
+
+	if registryURL := resolveDependencyRegistryURL(); registryURL != "" {
+		registryBytes, ok := fetchDependencyRegistryURL(registryURL)
+		if ok {
+			return registryBytes, "", true
+		}
+	}
+
+	return nil, "", false
 }
 
 func resolveDependencyRegistryPath(outputDir string) string {
@@ -735,6 +792,32 @@ func resolveDependencyRegistryPath(outputDir string) string {
 	}
 
 	return ""
+}
+
+func resolveDependencyRegistryURL() string {
+	return strings.TrimSpace(os.Getenv("PULUMI_DART_DEPENDENCY_REGISTRY_URL"))
+}
+
+func fetchDependencyRegistryURL(registryURL string) ([]byte, bool) {
+	client := &http.Client{Timeout: 5 * time.Second}
+	response, err := client.Get(registryURL)
+	if err != nil {
+		return nil, false
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode < http.StatusOK || response.StatusCode >= http.StatusMultipleChoices {
+		return nil, false
+	}
+
+	bytes, err := io.ReadAll(response.Body)
+	if err != nil {
+		return nil, false
+	}
+	if len(bytes) == 0 {
+		return nil, false
+	}
+	return bytes, true
 }
 
 func shouldUpdateExistingPubspec() bool {
