@@ -1,3 +1,3 @@
 library pulumi_awsx_awsx;
 
-export 'package:pulumi_awsx/src/pulumi_awsx/awsx.dart';
+export 'package:pulumi_awsx/src/awsx.dart';
