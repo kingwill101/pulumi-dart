@@ -5,9 +5,9 @@ class GetRemoteReferenceResult {
   /// The outputs displayed from Terraform state.
   final Map<String, dynamic> outputs;
 
-  GetRemoteReferenceResult({
-    required this.outputs,
-  });
+  /// Creates a new [GetRemoteReferenceResult].
+  /// [outputs] The outputs displayed from Terraform state.
+  GetRemoteReferenceResult({required this.outputs});
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};

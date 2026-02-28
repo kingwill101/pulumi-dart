@@ -5,9 +5,9 @@ class GetLocalReferenceResult {
   /// The outputs displayed from Terraform state.
   final Map<String, dynamic> outputs;
 
-  GetLocalReferenceResult({
-    required this.outputs,
-  });
+  /// Creates a new [GetLocalReferenceResult].
+  /// [outputs] The outputs displayed from Terraform state.
+  GetLocalReferenceResult({required this.outputs});
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};

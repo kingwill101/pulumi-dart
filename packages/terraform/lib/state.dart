@@ -1,3 +1,3 @@
 library pulumi_terraform_state;
 
-export 'package:pulumi_terraform/src/pulumi_terraform/state/index.dart';
+export 'package:pulumi_terraform/src/state.dart';
