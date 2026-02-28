@@ -6,12 +6,15 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/cmdutil"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -21,8 +24,10 @@ const (
 
 type dynamicProvider struct {
 	pulumirpc.UnimplementedResourceProviderServer
-	id      int
-	version string
+	id       int
+	version  string
+	password string
+	color    string
 }
 
 func main() {
@@ -58,7 +63,13 @@ func (p *dynamicProvider) Configure(
 	req *pulumirpc.ConfigureRequest,
 ) (*pulumirpc.ConfigureResponse, error) {
 	_ = ctx
-	_ = req
+
+	p.password = getConfigValue(req, "password")
+	p.color = getConfigValue(req, "colors:banana")
+	if p.color == "" {
+		p.color = "blue"
+	}
+
 	return &pulumirpc.ConfigureResponse{
 		AcceptSecrets:   true,
 		SupportsPreview: true,
@@ -103,6 +114,39 @@ func (p *dynamicProvider) Create(
 	_ = ctx
 	p.id++
 	props := req.GetProperties()
+	if props == nil {
+		props = &structpb.Struct{Fields: map[string]*structpb.Value{}}
+	}
+
+	if _, configureMode := props.GetFields()["configureMode"]; configureMode {
+		password := p.password
+		color := p.color
+
+		if providerPayload, ok := props.GetFields()[providerKey]; ok {
+			payload := map[string]string{}
+			if err := json.Unmarshal([]byte(valueToString(providerPayload)), &payload); err == nil {
+				if payloadPassword := payload["password"]; payloadPassword != "" {
+					password = payloadPassword
+				}
+				if payloadColor := payload["color"]; payloadColor != "" {
+					color = payloadColor
+				}
+			}
+		}
+
+		if color == "" {
+			color = "blue"
+		}
+		authenticated := "401"
+		if password == "s3cret" {
+			authenticated = "200"
+		}
+
+		props.Fields["authenticated"] = structpb.NewStringValue(authenticated)
+		props.Fields["color"] = structpb.NewStringValue(color)
+		delete(props.Fields, "configureMode")
+	}
+
 	return &pulumirpc.CreateResponse{
 		Id:         fmt.Sprintf("%d", p.id),
 		Properties: props,
@@ -158,3 +202,61 @@ func (p *dynamicProvider) Cancel(ctx context.Context, req *empty.Empty) (*empty.
 	_ = req
 	return &empty.Empty{}, nil
 }
+
+func getConfigValue(req *pulumirpc.ConfigureRequest, key string) string {
+	for k, v := range req.GetVariables() {
+		if k == key || strings.HasSuffix(k, ":"+key) {
+			return v
+		}
+	}
+
+	args := req.GetArgs()
+	if args == nil {
+		return ""
+	}
+
+	for k, field := range args.GetFields() {
+		if k == key || strings.HasSuffix(k, ":"+key) {
+			return valueToString(field)
+		}
+	}
+
+	return ""
+}
+
+func valueToString(value *structpb.Value) string {
+	if value == nil {
+		return ""
+	}
+
+	switch kind := value.Kind.(type) {
+	case *structpb.Value_StringValue:
+		return kind.StringValue
+	case *structpb.Value_NumberValue:
+		return fmt.Sprintf("%v", kind.NumberValue)
+	case *structpb.Value_BoolValue:
+		if kind.BoolValue {
+			return "true"
+		}
+		return "false"
+	case *structpb.Value_StructValue:
+		fields := kind.StructValue.GetFields()
+		// Pulumi secret envelope: {sig: secretSig, value: ...}
+		if sig, ok := fields["4dabf18193072939515e22adb298388d"]; ok &&
+			sig.GetStringValue() == "1b47061264138c4ac30d75fd1eb44270" {
+			return valueToString(fields["value"])
+		}
+		// Alternate secret envelope shape.
+		if secret, ok := fields["fn::secret"]; ok {
+			return valueToString(secret)
+		}
+		if inner, ok := fields["value"]; ok {
+			return valueToString(inner)
+		}
+		return fmt.Sprint(value.AsInterface())
+	default:
+		return fmt.Sprint(value.AsInterface())
+	}
+}
+
+const providerKey = "__provider"

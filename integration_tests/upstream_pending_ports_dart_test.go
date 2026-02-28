@@ -32,11 +32,3 @@ func TestAutomationRemoteWorkspaceDart(t *testing.T) {
 func TestAutomationEnvironmentManagementDart(t *testing.T) {
 	t.Skip("pending port: pulumi/sdk/nodejs/tests/automation/localWorkspace.stack.spec.ts::add/remove environments + pulumi/sdk/go/auto/local_workspace_test.go::AddEnvironments")
 }
-
-func TestDynamicConfigRoundTripDart(t *testing.T) {
-	t.Skip("pending port: pulumi/tests/integration/integration_nodejs_test.go::dynamic nodejs-config + pulumi/tests/integration/integration_python_test.go::dynamic python-config")
-}
-
-func TestDynamicReservedIdentifierShadowingDart(t *testing.T) {
-	t.Skip("pending port: pulumi/tests/integration/integration_nodejs_test.go::nodejs-reserved-identifier-shadowing")
-}

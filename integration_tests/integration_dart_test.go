@@ -637,6 +637,57 @@ func TestDynamicProviderReadInputsDart(t *testing.T) {
 	})
 }
 
+func TestDynamicProviderConfigDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join("dynamic", "config_dart"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "pulumi-dart",
+				Path:    filepath.Join("dynamic", "pulumi-dart-provider-go"),
+			},
+		},
+		Secrets: map[string]string{
+			"password":      "s3cret",
+			"colors:banana": "yellow",
+		},
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			code, ok := stackInfo.Outputs["authenticated"].(string)
+			assert.True(t, ok)
+			assert.Equal(t, "200", code)
+
+			color, ok := stackInfo.Outputs["color"].(string)
+			assert.True(t, ok)
+			assert.Equal(t, "yellow", color)
+		},
+	})
+}
+
+func TestDynamicReservedIdentifierShadowingDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join("dynamic", "reserved_identifier_shadowing_dart"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "pulumi-dart",
+				Path:    filepath.Join("dynamic", "pulumi-dart-provider-go"),
+			},
+		},
+		ExpectFailure: false,
+		Quick:         true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			noError := true
+			for _, event := range stack.Events {
+				if event.ResOpFailedEvent != nil {
+					noError = false
+					assert.Equal(t, apitype.OpType("create"), event.ResOpFailedEvent.Metadata.Op)
+				}
+			}
+
+			assert.True(t, noError, "an error occurred when testing reserved-identifier shadowing")
+		},
+	})
+}
+
 func TestDynamicProviderSecretsDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir: filepath.Join("dynamic", "dart-secrets"),

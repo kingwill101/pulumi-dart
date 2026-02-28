@@ -1,0 +1,3 @@
+name: dynamic-config-dart
+runtime: dart
+description: Dynamic provider configure/config regression test for Dart.

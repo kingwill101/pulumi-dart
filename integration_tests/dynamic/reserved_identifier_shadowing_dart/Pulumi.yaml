@@ -1,0 +1,3 @@
+name: dynamic-reserved-identifier-shadowing-dart
+runtime: dart
+description: Regression test for reserved identifier shadowing in dynamic providers.
