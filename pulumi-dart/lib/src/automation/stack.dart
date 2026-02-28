@@ -283,6 +283,68 @@ class Stack {
     return workspace.runPulumiCommand(args, check: check);
   }
 
+  /// Returns stack outputs from the last successful update.
+  Future<Map<String, dynamic>> outputs({bool showSecrets = false}) async {
+    final args = <String>['stack', 'output', '--json', '--stack', name];
+    if (showSecrets) {
+      args.add('--show-secrets');
+    }
+    final result = await workspace.runPulumiCommand(args);
+    final decoded = jsonDecode(result.stdout);
+    if (decoded is! Map) {
+      throw FormatException(
+        'Expected object JSON from `pulumi stack output --json`',
+      );
+    }
+    return decoded.map((key, value) => MapEntry('$key', value));
+  }
+
+  /// Returns stack update history.
+  Future<List<Map<String, dynamic>>> history({
+    int? pageSize,
+    int? page,
+    bool showSecrets = false,
+  }) async {
+    final args = <String>['stack', 'history', '--json', '--stack', name];
+    if (pageSize != null) {
+      args.addAll(<String>['--page-size', '$pageSize']);
+    }
+    if (page != null) {
+      args.addAll(<String>['--page', '$page']);
+    }
+    if (showSecrets) {
+      args.add('--show-secrets');
+    }
+
+    final result = await workspace.runPulumiCommand(args);
+    final decoded = jsonDecode(result.stdout);
+    if (decoded is! List) {
+      throw FormatException(
+        'Expected array JSON from `pulumi stack history --json`',
+      );
+    }
+
+    return decoded
+        .whereType<Map>()
+        .map((entry) => entry.map((key, value) => MapEntry('$key', value)))
+        .toList(growable: false);
+  }
+
+  /// Returns the most recent stack update summary if one exists.
+  Future<Map<String, dynamic>?> info({bool showSecrets = false}) async {
+    final entries = await history(pageSize: 1, showSecrets: showSecrets);
+    return entries.isEmpty ? null : entries.first;
+  }
+
+  /// Cancels the currently running update for this stack.
+  Future<PulumiCommandResult> cancel({bool yes = true}) {
+    final args = <String>['cancel', '--stack', name];
+    if (yes) {
+      args.add('--yes');
+    }
+    return workspace.runPulumiCommand(args);
+  }
+
   AutomationConfigValue _decodeConfigValue(String rawJson) {
     return _decodeConfigValueFromDecoded(jsonDecode(rawJson));
   }

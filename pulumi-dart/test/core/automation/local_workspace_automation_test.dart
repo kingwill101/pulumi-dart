@@ -325,6 +325,115 @@ void main() {
       );
     });
 
+    test('outputs uses stack output json command shape', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: '{"petName":"otis"}',
+          stderr: '',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      final outputs = await stack.outputs(showSecrets: true);
+
+      expect(outputs['petName'], equals('otis'));
+      expect(
+        runner.requests.single.arguments,
+        equals(<String>[
+          'stack',
+          'output',
+          '--json',
+          '--stack',
+          'dev',
+          '--show-secrets',
+        ]),
+      );
+    });
+
+    test('history/info parse json and apply pagination args', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout:
+              '[{"kind":"update","result":"succeeded"},{"kind":"preview","result":"succeeded"}]',
+          stderr: '',
+        ),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: '[{"kind":"update","result":"succeeded"}]',
+          stderr: '',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      final history = await stack.history(pageSize: 2, page: 3);
+      final info = await stack.info(showSecrets: true);
+
+      expect(history, hasLength(2));
+      expect(history.first['kind'], equals('update'));
+      expect(info?['kind'], equals('update'));
+      expect(
+        runner.requests[0].arguments,
+        equals(<String>[
+          'stack',
+          'history',
+          '--json',
+          '--stack',
+          'dev',
+          '--page-size',
+          '2',
+          '--page',
+          '3',
+        ]),
+      );
+      expect(
+        runner.requests[1].arguments,
+        equals(<String>[
+          'stack',
+          'history',
+          '--json',
+          '--stack',
+          'dev',
+          '--page-size',
+          '1',
+          '--show-secrets',
+        ]),
+      );
+    });
+
+    test('cancel uses expected command shape', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      await stack.cancel();
+
+      expect(
+        runner.requests.single.arguments,
+        equals(<String>['cancel', '--stack', 'dev', '--yes']),
+      );
+    });
+
     test(
       'throws PulumiCommandException when check mode command fails',
       () async {
