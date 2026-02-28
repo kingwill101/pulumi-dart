@@ -223,6 +223,9 @@ func (host *dartLanguageHost) GeneratePackage(
 		pubspec.Description = fmt.Sprintf("A Pulumi SDK package for %s.", spec.Name)
 	}
 	pubspec.Version = generatedSDKPackageVersion(spec.Version)
+	if err := validateGeneratedPubspecDependencies(pubspec, req.GetDirectory()); err != nil {
+		return nil, err
+	}
 
 	pubspecBytes, err := yaml.Marshal(pubspec)
 	if err != nil {

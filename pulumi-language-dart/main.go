@@ -245,6 +245,25 @@ func dependencyToPackageName(name string) string {
 	return strings.TrimSpace(name)
 }
 
+func resolveProgramDirectory(info *pulumirpc.ProgramInfo, fallbacks ...string) string {
+	if info != nil && strings.TrimSpace(info.GetProgramDirectory()) != "" {
+		return strings.TrimSpace(info.GetProgramDirectory())
+	}
+	for _, fallback := range fallbacks {
+		if strings.TrimSpace(fallback) != "" {
+			return strings.TrimSpace(fallback)
+		}
+	}
+	return ""
+}
+
+func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string) string {
+	if info != nil && strings.TrimSpace(info.GetEntryPoint()) != "" {
+		return strings.TrimSpace(info.GetEntryPoint())
+	}
+	return strings.TrimSpace(fallback)
+}
+
 type projectPackageSpec struct {
 	Source     string   `yaml:"source"`
 	Version    string   `yaml:"version"`
@@ -457,33 +476,54 @@ func (host *dartLanguageHost) GetRequiredPlugins(
 	ctx context.Context,
 	req *pulumirpc.GetRequiredPluginsRequest,
 ) (*pulumirpc.GetRequiredPluginsResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request is required")
+	}
 	logging.V(5).Infof("GetRequiredPlugins: %v", req.GetProgram())
 
-	if host.binary != "" {
-		logging.V(5).Infof("GetRequiredPlugins: no plugins can be listed when a binary is specified")
-		return &pulumirpc.GetRequiredPluginsResponse{}, nil
+	info := req.GetInfo()
+	if info == nil {
+		info = &pulumirpc.ProgramInfo{
+			ProgramDirectory: req.GetPwd(),
+			EntryPoint:       req.GetProgram(),
+		}
 	}
 
-	// Make a connection to the real engine that we will log messages to.
-	conn, err := grpc.Dial(
-		host.engineAddress,
-		grpc.WithInsecure(),
-		rpcutil.GrpcChannelOptions(),
-	)
+	packagesResp, err := host.GetRequiredPackages(ctx, &pulumirpc.GetRequiredPackagesRequest{
+		Info: info,
+	})
 	if err != nil {
-		return nil, errors.Wrapf(err, "language host could not make connection to engine")
-	}
-
-	// Make a client around that connection.
-	engineClient := pulumirpc.NewEngineClient(conn)
-
-	// First do a `dart pub get`. This will ensure that all the pub dependencies of the project
-	// are restored and locally available for us.
-	if err := host.DartPubGet(ctx, req, engineClient); err != nil {
 		return nil, err
 	}
 
-	plugins := []*pulumirpc.PluginDependency{}
+	plugins := make([]*pulumirpc.PluginDependency, 0, len(packagesResp.GetPackages()))
+	seen := map[string]struct{}{}
+	for _, pkg := range packagesResp.GetPackages() {
+		if pkg == nil {
+			continue
+		}
+		name := strings.TrimSpace(pkg.GetName())
+		if name == "" {
+			continue
+		}
+		kind := strings.TrimSpace(pkg.GetKind())
+		if kind == "" {
+			kind = "resource"
+		}
+		key := name + "|" + kind + "|" + strings.TrimSpace(pkg.GetVersion()) + "|" + strings.TrimSpace(pkg.GetServer())
+		if _, ok := seen[key]; ok {
+			continue
+		}
+		seen[key] = struct{}{}
+
+		plugins = append(plugins, &pulumirpc.PluginDependency{
+			Name:      name,
+			Kind:      kind,
+			Version:   strings.TrimSpace(pkg.GetVersion()),
+			Server:    strings.TrimSpace(pkg.GetServer()),
+			Checksums: pkg.GetChecksums(),
+		})
+	}
 
 	return &pulumirpc.GetRequiredPluginsResponse{Plugins: plugins}, nil
 }
@@ -891,6 +931,8 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 
 	executable := host.exec
 	args := []string{}
+	programDirectory := resolveProgramDirectory(req.GetInfo(), req.GetPwd())
+	entryPoint := resolveProgramEntryPoint(req.GetInfo(), req.GetProgram())
 
 	if host.binary != "" {
 		// Use the specified binary
@@ -899,6 +941,13 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 		// Run the project from source. Pulumi projects conventionally use
 		// `bin/<project_name>.dart` as the program entrypoint.
 		args = append(args, "run")
+		if entryPoint != "" && entryPoint != "." {
+			args = append(args, entryPoint)
+		}
+	}
+
+	if len(req.GetArgs()) > 0 {
+		args = append(args, req.GetArgs()...)
 	}
 
 	if logging.V(5) {
@@ -937,6 +986,9 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 
 	// Now simply spawn a process to execute the requested program, wiring up stdout/stderr directly.
 	cmd := exec.CommandContext(runCtx, executable, args...)
+	if programDirectory != "" {
+		cmd.Dir = programDirectory
+	}
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Env = host.constructEnv(req, config, configSecretKeys)
@@ -1043,6 +1095,18 @@ func (host *dartLanguageHost) GetPluginInfo(ctx context.Context, req *pbempty.Em
 func (host *dartLanguageHost) InstallDependencies(
 	req *pulumirpc.InstallDependenciesRequest, server pulumirpc.LanguageRuntime_InstallDependenciesServer,
 ) error {
+	if req == nil {
+		return status.Error(codes.InvalidArgument, "request is required")
+	}
+
+	programDirectory := req.GetDirectory()
+	if info := req.GetInfo(); info != nil && info.GetProgramDirectory() != "" {
+		programDirectory = info.GetProgramDirectory()
+	}
+	if programDirectory == "" {
+		return status.Error(codes.InvalidArgument, "program directory is required")
+	}
+
 	closer, stdout, stderr, err := rpcutil.MakeInstallDependenciesStreams(server, req.IsTerminal)
 	if err != nil {
 		return err
@@ -1052,7 +1116,7 @@ func (host *dartLanguageHost) InstallDependencies(
 	stdout.Write([]byte("Installing dependencies...\n\n"))
 
 	cmd := exec.Command(host.exec, "pub", "get")
-	cmd.Dir = req.Directory
+	cmd.Dir = programDirectory
 	cmd.Env = os.Environ()
 	cmd.Stdout, cmd.Stderr = stdout, stderr
 
@@ -1071,21 +1135,113 @@ func (host *dartLanguageHost) RuntimeOptionsPrompts(ctx context.Context,
 	return &pulumirpc.RuntimeOptionsResponse{}, nil
 }
 
-// About returns information about the runtime for the language.
-func (host *dartLanguageHost) About(ctx context.Context, req *pulumirpc.AboutRequest) (*pulumirpc.AboutResponse, error) {
-	dartPath, err := exec.LookPath("dart")
-	if err != nil {
-		return nil, fmt.Errorf("could not find Dart executable: %w", err)
+// Template allows the language runtime to perform additional templating for a new project.
+func (host *dartLanguageHost) Template(
+	ctx context.Context, req *pulumirpc.TemplateRequest,
+) (*pulumirpc.TemplateResponse, error) {
+	_ = ctx
+	if req == nil {
+		return &pulumirpc.TemplateResponse{}, nil
 	}
 
-	cmd := exec.Command(dartPath, "--version")
-	out, err := cmd.Output()
+	programDir := resolveProgramDirectory(req.GetInfo())
+	if programDir == "" {
+		return &pulumirpc.TemplateResponse{}, nil
+	}
+
+	pubspecPath := filepath.Join(programDir, "pubspec.yaml")
+	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	if err != nil || pubspec == nil {
+		return &pulumirpc.TemplateResponse{}, nil
+	}
+	if pubspec.Dependencies == nil {
+		pubspec.Dependencies = map[string]interface{}{}
+	}
+
+	currentPulumiDep, hasPulumiDependency := pubspec.Dependencies["pulumi"]
+	if hasPulumiDependency && !shouldRewriteTemplatePulumiDependency(currentPulumiDep) {
+		if isSourceDependencySpec(currentPulumiDep) {
+			if pubspec.DependencyOverrides == nil {
+				pubspec.DependencyOverrides = map[string]interface{}{}
+			}
+			pubspec.DependencyOverrides["pulumi"] = currentPulumiDep
+			pubspecBytes, err := yaml.Marshal(pubspec)
+			if err != nil {
+				return nil, fmt.Errorf("failed to marshal pubspec.yaml in template hook: %w", err)
+			}
+			if err := os.WriteFile(pubspecPath, pubspecBytes, 0o600); err != nil {
+				return nil, fmt.Errorf("failed to write pubspec.yaml in template hook: %w", err)
+			}
+		}
+		return &pulumirpc.TemplateResponse{}, nil
+	}
+
+	pulumiSpec := defaultPulumiPubspecDependency()
+	pubspec.Dependencies["pulumi"] = pulumiSpec
+	if isSourceDependencySpec(pulumiSpec) {
+		if pubspec.DependencyOverrides == nil {
+			pubspec.DependencyOverrides = map[string]interface{}{}
+		}
+		pubspec.DependencyOverrides["pulumi"] = pulumiSpec
+	}
+
+	// When a local pulumi path is used, prefer local source dependencies for any
+	// pulumi_* packages referenced by the template if those package directories are
+	// present in the same repository. This prevents transitive version constraint
+	// conflicts before packages are published to pub.dev.
+	if pulumiPath, ok := dependencySpecPath(pulumiSpec); ok {
+		if filepath.IsAbs(pulumiPath) {
+			repoRoot := filepath.Dir(pulumiPath)
+			for depName, depSpec := range pubspec.Dependencies {
+				moduleDir := dependencyPackageDirFromDartPackageName(depName)
+				if moduleDir == "" {
+					continue
+				}
+				if existingPath, hasPath := dependencySpecPath(depSpec); hasPath {
+					if filepath.IsAbs(existingPath) || strings.HasPrefix(existingPath, ".") {
+						continue
+					}
+				}
+				candidate := filepath.Join(repoRoot, "packages", moduleDir)
+				if stat, err := os.Stat(candidate); err == nil && stat.IsDir() {
+					pubspec.Dependencies[depName] = map[string]string{
+						"path": filepath.ToSlash(candidate),
+					}
+				}
+			}
+		}
+	}
+
+	pubspecBytes, err := yaml.Marshal(pubspec)
 	if err != nil {
-		return nil, fmt.Errorf("failed to execute 'dart --version'")
+		return nil, fmt.Errorf("failed to marshal pubspec.yaml in template hook: %w", err)
+	}
+	if err := os.WriteFile(pubspecPath, pubspecBytes, 0o600); err != nil {
+		return nil, fmt.Errorf("failed to write pubspec.yaml in template hook: %w", err)
+	}
+
+	return &pulumirpc.TemplateResponse{}, nil
+}
+
+// About returns information about the runtime for the language.
+func (host *dartLanguageHost) About(ctx context.Context, req *pulumirpc.AboutRequest) (*pulumirpc.AboutResponse, error) {
+	executable := strings.TrimSpace(host.exec)
+	if executable == "" {
+		var err error
+		executable, err = exec.LookPath("dart")
+		if err != nil {
+			return nil, fmt.Errorf("could not find Dart executable: %w", err)
+		}
+	}
+
+	cmd := exec.CommandContext(ctx, executable, "--version")
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return nil, fmt.Errorf("failed to execute '%s --version': %w", executable, err)
 	}
 
 	return &pulumirpc.AboutResponse{
-		Executable: dartPath,
+		Executable: executable,
 		Version:    strings.TrimSpace(string(out)),
 	}, nil
 }
@@ -1094,24 +1250,92 @@ func (host *dartLanguageHost) About(ctx context.Context, req *pulumirpc.AboutReq
 func (host *dartLanguageHost) GetProgramDependencies(
 	ctx context.Context, req *pulumirpc.GetProgramDependenciesRequest,
 ) (*pulumirpc.GetProgramDependenciesResponse, error) {
-	cmd := exec.Command(host.exec, "pub", "deps", "--style=compact")
-	cmd.Dir = filepath.Dir(req.GetProgram())
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request is required")
+	}
+
+	programDirectory := resolveProgramDirectory(req.GetInfo(), req.GetPwd())
+	if programDirectory == "" {
+		if program := strings.TrimSpace(req.GetProgram()); program != "" {
+			programDirectory = filepath.Dir(program)
+		}
+	}
+	if programDirectory == "" {
+		return nil, status.Error(codes.InvalidArgument, "program directory is required")
+	}
+
+	cmd := exec.CommandContext(ctx, host.exec, "pub", "deps", "--json")
+	cmd.Dir = programDirectory
 	out, err := cmd.Output()
 	if err != nil {
 		return nil, fmt.Errorf("failed to get dependencies: %w", err)
 	}
 
-	lines := strings.Split(string(out), "\n")
-	var dependencies []*pulumirpc.DependencyInfo
+	type packageInfo struct {
+		Name               string   `json:"name"`
+		Version            string   `json:"version"`
+		Kind               string   `json:"kind"`
+		DirectDependencies []string `json:"directDependencies"`
+	}
+	type dependenciesPayload struct {
+		Root     string        `json:"root"`
+		Packages []packageInfo `json:"packages"`
+	}
 
-	for _, line := range lines {
-		parts := strings.Fields(line)
-		if len(parts) >= 2 {
-			dependencies = append(dependencies, &pulumirpc.DependencyInfo{
-				Name:    parts[0],
-				Version: parts[1],
-			})
+	var payload dependenciesPayload
+	if err := json.Unmarshal(out, &payload); err != nil {
+		return nil, fmt.Errorf("failed to parse dependency output: %w", err)
+	}
+
+	packagesByName := map[string]packageInfo{}
+	var root packageInfo
+	for _, pkg := range payload.Packages {
+		packagesByName[pkg.Name] = pkg
+		if pkg.Kind == "root" || (payload.Root != "" && pkg.Name == payload.Root) {
+			root = pkg
 		}
+	}
+
+	dependencyByName := map[string]*pulumirpc.DependencyInfo{}
+	if req.GetTransitiveDependencies() {
+		for _, pkg := range payload.Packages {
+			if pkg.Kind == "root" || pkg.Name == payload.Root {
+				continue
+			}
+			if strings.TrimSpace(pkg.Name) == "" {
+				continue
+			}
+			dependencyByName[pkg.Name] = &pulumirpc.DependencyInfo{
+				Name:    pkg.Name,
+				Version: pkg.Version,
+			}
+		}
+	} else {
+		for _, depName := range root.DirectDependencies {
+			if strings.TrimSpace(depName) == "" {
+				continue
+			}
+			pkg, ok := packagesByName[depName]
+			if !ok {
+				dependencyByName[depName] = &pulumirpc.DependencyInfo{Name: depName}
+				continue
+			}
+			dependencyByName[depName] = &pulumirpc.DependencyInfo{
+				Name:    depName,
+				Version: pkg.Version,
+			}
+		}
+	}
+
+	names := make([]string, 0, len(dependencyByName))
+	for name := range dependencyByName {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+
+	dependencies := make([]*pulumirpc.DependencyInfo, 0, len(names))
+	for _, name := range names {
+		dependencies = append(dependencies, dependencyByName[name])
 	}
 
 	return &pulumirpc.GetProgramDependenciesResponse{

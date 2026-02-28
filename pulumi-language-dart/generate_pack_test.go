@@ -542,7 +542,10 @@ func TestGeneratePackageWritesPulumiDependency(t *testing.T) {
 	assert.Contains(t, pubspec, "version: 1.2.3")
 	assert.NotContains(t, pubspec, "resolution: workspace")
 	assert.Contains(t, pubspec, "dependencies:")
-	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+	assert.Contains(t, pubspec, "pulumi:")
+	assert.Contains(t, pubspec, "git:")
+	assert.Contains(t, pubspec, "url: https://github.com/pulumi/pulumi-dart.git")
+	assert.Contains(t, pubspec, "path: pulumi-dart")
 }
 
 func TestGeneratePackageWritesLocalPulumiDependency(t *testing.T) {
@@ -767,7 +770,8 @@ providers:
 	require.NoError(t, err)
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "pulumi_policy: ^0.2.0")
-	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+	assert.Contains(t, pubspec, "pulumi:")
+	assert.Contains(t, pubspec, "url: https://github.com/pulumi/pulumi-dart.git")
 }
 
 func TestGeneratePackageReadsDependencyRegistryFromEnv(t *testing.T) {
@@ -1090,7 +1094,8 @@ func TestGeneratePackageWritesDartLanguageDependenciesToPubspec(t *testing.T) {
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "dependencies:")
 	assert.Contains(t, pubspec, "pulumi_policy: ^0.2.0")
-	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+	assert.Contains(t, pubspec, "pulumi:")
+	assert.Contains(t, pubspec, "url: https://github.com/pulumi/pulumi-dart.git")
 }
 
 func TestGeneratePackageInfersDependenciesFromExternalSchemaRefs(t *testing.T) {
@@ -1124,7 +1129,8 @@ func TestGeneratePackageInfersDependenciesFromExternalSchemaRefs(t *testing.T) {
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "dependencies:")
 	assert.Contains(t, pubspec, "pulumi_aws: ^7.15.0")
-	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+	assert.Contains(t, pubspec, "pulumi:")
+	assert.Contains(t, pubspec, "url: https://github.com/pulumi/pulumi-dart.git")
 }
 
 func TestGeneratePackageIgnoresSelfExternalSchemaRefDependency(t *testing.T) {
@@ -1157,7 +1163,8 @@ func TestGeneratePackageIgnoresSelfExternalSchemaRefDependency(t *testing.T) {
 	require.NoError(t, err)
 	pubspec := string(pubspecData)
 	assert.NotContains(t, pubspec, "pulumi_aws:")
-	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+	assert.Contains(t, pubspec, "pulumi:")
+	assert.Contains(t, pubspec, "url: https://github.com/pulumi/pulumi-dart.git")
 }
 
 func TestGeneratePackageRegistryDependencyOverridesInferredSchemaRefDependency(t *testing.T) {
