@@ -5,14 +5,18 @@ import 'package:pulumi/automation.dart';
 import 'package:test/test.dart';
 
 class _FakeRunner {
-  _FakeRunner(List<PulumiCommandResult> responses)
+  _FakeRunner(List<PulumiCommandResult> responses, {this.onRequest})
     : _responses = Queue<PulumiCommandResult>.from(responses);
 
   final Queue<PulumiCommandResult> _responses;
   final List<PulumiCommandRequest> requests = <PulumiCommandRequest>[];
+  final Future<void> Function(PulumiCommandRequest request)? onRequest;
 
   Future<PulumiCommandResult> call(PulumiCommandRequest request) async {
     requests.add(request);
+    if (onRequest != null) {
+      await onRequest!(request);
+    }
     if (_responses.isEmpty) {
       throw StateError('No fake response available for ${request.arguments}');
     }
@@ -899,5 +903,266 @@ void main() {
       expect(runner.requests[1].arguments[4], equals('--stack'));
       expect(runner.requests[1].arguments[5], equals('dev'));
     });
+
+    test(
+      'previewResult captures event log, serializes extra args, and calls post-command hook',
+      () async {
+        final postCommandStacks = <String>[];
+        final observedEvents = <AutomationEngineEvent>[];
+        final runner = _FakeRunner(
+          <PulumiCommandResult>[
+            const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          ],
+          onRequest: (request) async {
+            final args = request.arguments;
+            final eventLogIndex = args.indexOf('--event-log');
+            if (eventLogIndex == -1) {
+              return;
+            }
+            final eventLogPath = args[eventLogIndex + 1];
+            await File(eventLogPath).writeAsString(
+              '{"sequence":1,"timestamp":"2025-01-01T00:00:00Z","summaryEvent":{"message":"preview complete"}}\n'
+              '{"sequence":2,"timestamp":"2025-01-01T00:00:01Z","resourcePreEvent":{"metadata":{"op":"create"}}}\n',
+            );
+          },
+        );
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+            serializeArgsForOp: (stackName) async => <String>[
+              '--color',
+              'never',
+              '--stack',
+              stackName,
+            ],
+            postCommandCallback: (stackName) async {
+              postCommandStacks.add(stackName);
+            },
+          ),
+        );
+        final stack = Stack('dev', workspace);
+
+        final result = await stack.previewResult(
+          onEvent: observedEvents.add,
+          extraArgs: const <String>['--diff'],
+        );
+
+        expect(result.succeeded, isTrue);
+        expect(result.events, hasLength(2));
+        expect(result.events.first.sequence, equals(1));
+        expect(result.events.first.kind, equals('summaryEvent'));
+        expect(result.events[1].sequence, equals(2));
+        expect(result.events[1].kind, equals('resourcePreEvent'));
+        expect(observedEvents, hasLength(2));
+        expect(postCommandStacks, equals(<String>['dev']));
+        expect(
+          runner.requests.single.arguments.take(4).toList(),
+          equals(<String>['preview', '--stack', 'dev', '--non-interactive']),
+        );
+        expect(runner.requests.single.arguments, contains('--diff'));
+        expect(
+          runner.requests.single.arguments,
+          containsAll(<String>['--color', 'never']),
+        );
+        expect(runner.requests.single.arguments, contains('--event-log'));
+      },
+    );
+
+    test(
+      'upResult includeOutputs false avoids output fetch commands',
+      () async {
+        final runner = _FakeRunner(<PulumiCommandResult>[
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        ]);
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+          ),
+        );
+        final stack = Stack('dev', workspace);
+
+        final result = await stack.upResult(includeOutputs: false);
+
+        expect(result.succeeded, isTrue);
+        expect(result.outputs, isNull);
+        expect(runner.requests, hasLength(1));
+        final args = runner.requests.single.arguments;
+        expect(
+          args.take(6).toList(),
+          equals(<String>[
+            'up',
+            '--stack',
+            'dev',
+            '--yes',
+            '--skip-preview',
+            '--non-interactive',
+          ]),
+        );
+        expect(args, contains('--event-log'));
+      },
+    );
+
+    test('upResult includeOutputs true loads typed outputs metadata', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: '{"petName":"[secret]","region":"us-west-2"}',
+          stderr: '',
+        ),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout: '{"petName":"otis","region":"us-west-2"}',
+          stderr: '',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      final result = await stack.upResult(includeOutputs: true);
+
+      expect(result.succeeded, isTrue);
+      expect(result.outputs, isNotNull);
+      expect(result.outputs?['petName']?.value, equals('otis'));
+      expect(result.outputs?['petName']?.secret, isTrue);
+      expect(result.outputs?['region']?.value, equals('us-west-2'));
+      expect(result.outputs?['region']?.secret, isFalse);
+      expect(runner.requests, hasLength(3));
+      expect(
+        runner.requests[1].arguments,
+        equals(<String>['stack', 'output', '--json', '--stack', 'dev']),
+      );
+      expect(
+        runner.requests[2].arguments,
+        equals(<String>[
+          'stack',
+          'output',
+          '--json',
+          '--stack',
+          'dev',
+          '--show-secrets',
+        ]),
+      );
+    });
+
+    test('post-command callback still runs when operation fails', () async {
+      final postCommandStacks = <String>[];
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(
+          exitCode: 1,
+          stdout: '',
+          stderr: 'simulated update failure',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+          postCommandCallback: (stackName) async {
+            postCommandStacks.add(stackName);
+          },
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      await expectLater(
+        stack.destroyResult(),
+        throwsA(isA<PulumiCommandException>()),
+      );
+      expect(postCommandStacks, equals(<String>['dev']));
+    });
+
+    test('createInlineStack scaffolds files and initializes stack', () async {
+      final inlineDir = Directory('${tempDir.path}/inline');
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+
+      final stack = await LocalWorkspace.createInlineStack(
+        InlineProgramArgs(
+          stackName: 'dev',
+          projectName: 'My Inline App',
+          program: '''
+import 'package:pulumi/pulumi.dart';
+
+class ExampleStack extends Stack {
+  ExampleStack() : super('example');
+}
+
+Future<void> main() async {
+  await Deployment.runAsync(() => ExampleStack());
+}
+''',
+          workDir: inlineDir.path,
+        ),
+        options: LocalWorkspaceOptions(commandRunner: runner.call),
+      );
+
+      final pulumiYaml = File('${inlineDir.path}/Pulumi.yaml');
+      final pubspec = File('${inlineDir.path}/pubspec.yaml');
+      final mainFile = File('${inlineDir.path}/bin/my_inline_app.dart');
+      expect(await pulumiYaml.exists(), isTrue);
+      expect(await pubspec.exists(), isTrue);
+      expect(await mainFile.exists(), isTrue);
+      expect(
+        await pulumiYaml.readAsString(),
+        allOf(
+          contains('name: My Inline App'),
+          contains('runtime: dart'),
+          contains('main: bin/my_inline_app.dart'),
+        ),
+      );
+      expect(await pubspec.readAsString(), contains('pulumi: ^0.0.1-dev'));
+      expect(stack.name, equals('dev'));
+      expect(stack.workspace.workDir, equals(inlineDir.path));
+      expect(
+        runner.requests.single.arguments,
+        equals(<String>['stack', 'init', 'dev']),
+      );
+      expect(runner.requests.single.workingDirectory, equals(inlineDir.path));
+    });
+
+    test(
+      'createOrSelectInlineStack falls back to stack init for missing stack',
+      () async {
+        final inlineDir = Directory('${tempDir.path}/inline-create-select');
+        final runner = _FakeRunner(<PulumiCommandResult>[
+          const PulumiCommandResult(
+            exitCode: 255,
+            stdout: '',
+            stderr: 'error: stack dev not found',
+          ),
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        ]);
+
+        final stack = await LocalWorkspace.createOrSelectInlineStack(
+          InlineProgramArgs(
+            stackName: 'dev',
+            projectName: 'Inline Select App',
+            program: 'void main() {}',
+            workDir: inlineDir.path,
+          ),
+          options: LocalWorkspaceOptions(commandRunner: runner.call),
+        );
+
+        expect(stack.name, equals('dev'));
+        expect(runner.requests, hasLength(2));
+        expect(
+          runner.requests[0].arguments,
+          equals(<String>['stack', 'select', 'dev']),
+        );
+        expect(
+          runner.requests[1].arguments,
+          equals(<String>['stack', 'init', 'dev']),
+        );
+      },
+    );
   });
 }
