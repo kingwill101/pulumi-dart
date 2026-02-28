@@ -24,6 +24,7 @@ type PubSpec struct {
 	Topics              []string               `yaml:"topics,omitempty" json:"topics,omitempty"`
 	PublishTo           string                 `yaml:"publish_to,omitempty" json:"publish_to,omitempty"`
 	Environment         map[string]string      `yaml:"environment,omitempty" json:"environment,omitempty"`
+	Resolution          string                 `yaml:"resolution,omitempty" json:"resolution,omitempty"`
 	Dependencies        map[string]interface{} `yaml:"dependencies,omitempty" json:"dependencies,omitempty"`
 	DevDependencies     map[string]interface{} `yaml:"dev_dependencies,omitempty" json:"dev_dependencies,omitempty"`
 	DependencyOverrides map[string]interface{} `yaml:"dependency_overrides,omitempty" json:"dependency_overrides,omitempty"`

@@ -28,7 +28,7 @@ func readGeneratedPackageLibraries(t *testing.T, targetDir, packageName string) 
 	rootData, err := os.ReadFile(filepath.Join(targetDir, "lib", packageName+".dart"))
 	require.NoError(t, err)
 
-	sdkDir := filepath.Join(targetDir, "lib", "src", packageName)
+	sdkDir := filepath.Join(targetDir, "lib", "src")
 	paths := make([]string, 0, 16)
 	err = filepath.WalkDir(sdkDir, func(path string, d fs.DirEntry, walkErr error) error {
 		if walkErr != nil {
@@ -268,15 +268,17 @@ func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
 
 	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, rootContent, "library pulumi_sample;")
-	assert.Contains(t, rootContent, "export 'src/pulumi_sample/sdk.dart';")
-	assert.Contains(t, content, "// FILE: sdk.dart")
+	assert.NotContains(t, rootContent, "sdk.dart")
 	assert.Contains(t, content, "// FILE: index/widget.dart")
 	assert.Contains(t, content, "// FILE: index/widget_component.dart")
-	assert.Contains(t, content, "// FILE: index/do_thing.dart")
+	assert.Contains(t, content, "// FILE: index/functions.dart")
 	assert.NotContains(t, content, "part of ")
 	assert.NotContains(t, content, "part '")
 	assert.Contains(t, content, "class Widget extends pulumi.CustomResource")
 	assert.Contains(t, content, "class WidgetComponent extends pulumi.ComponentResource")
+	assert.Contains(t, content, "/// Creates a new [Widget].")
+	assert.Contains(t, content, "/// [name] The Pulumi resource name.")
+	assert.Contains(t, content, "/// [options] Resource options controlling this resource's behavior.")
 	assert.Contains(t, content, "pulumi.Input.mapToInputs")
 	assert.Contains(t, content, "sample:index:Widget")
 	assert.Contains(t, content, "sample:index:WidgetComponent")
@@ -305,7 +307,7 @@ func TestGeneratePackageHandlesFunctionTokenSuffix(t *testing.T) {
 	require.NoError(t, err)
 
 	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, rootContent, "export 'src/pulumi_sample/sdk.dart';")
+	assert.NotContains(t, rootContent, "sdk.dart")
 	assert.Contains(t, content, "Future<Map<String, dynamic>> doEchoMethod")
 	assert.Contains(t, content, "sample:index:Echo/doEchoMethod")
 }
@@ -333,20 +335,17 @@ func TestGeneratePackageUsesModuleDirectoryStructure(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level/access_level.dart")
-	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level/get_access_level.dart")
 	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level.dart")
+	assert.Contains(t, content, "// FILE: accesscontextmanager/functions.dart")
 	assert.Contains(t, content, "// FILE: accesscontextmanager.dart")
-	assert.Contains(t, content, "export 'accesscontextmanager/access_level/access_level.dart';")
-	assert.Contains(t, content, "export 'accesscontextmanager/access_level/get_access_level.dart';")
+	assert.Contains(t, content, "export 'accesscontextmanager/access_level.dart';")
+	assert.Contains(t, content, "export 'accesscontextmanager/functions.dart';")
+	assert.NotContains(t, content, "// FILE: accesscontextmanager/access_level/access_level.dart")
+	assert.NotContains(t, content, "export 'accesscontextmanager/access_level/access_level.dart';")
 
 	parentModuleEntry, err := os.ReadFile(filepath.Join(targetDir, "lib", "accesscontextmanager.dart"))
 	require.NoError(t, err)
-	assert.Contains(t, string(parentModuleEntry), "export 'package:pulumi_sample/src/pulumi_sample/accesscontextmanager.dart';")
-
-	_, err = os.Stat(filepath.Join(targetDir, "lib", "accesscontextmanager"))
-	require.Error(t, err)
-	assert.True(t, os.IsNotExist(err))
+	assert.Contains(t, string(parentModuleEntry), "export 'package:pulumi_sample/src/accesscontextmanager.dart';")
 }
 
 func TestGeneratePackageEmitsParameterizedPackageRegistration(t *testing.T) {
@@ -444,21 +443,22 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	require.NoError(t, err)
 
 	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, rootContent, "export 'src/pulumi_sample/sdk.dart';")
+	assert.NotContains(t, rootContent, "sdk.dart")
 	assert.Contains(t, content, "// FILE: index/widget_args.dart")
 	assert.Contains(t, content, "// FILE: index/get_widget_args.dart")
 	assert.Contains(t, content, "// FILE: index/get_widget_result.dart")
 	assert.Contains(t, content, "// FILE: index/widget.dart")
-	assert.Contains(t, content, "// FILE: index/get_widget.dart")
+	assert.Contains(t, content, "// FILE: index/functions.dart")
 
 	assert.Contains(t, content, "class WidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<int> size;")
 	assert.Contains(t, content, "final pulumi.Input<String>? label;")
-	assert.Contains(t, content, "required this.size")
+	assert.Contains(t, content, "required int size")
+	assert.Contains(t, content, "size = pulumi.Input.asInput<int>(size)")
 	assert.Contains(t, content, "WidgetArgs? args")
 	assert.Contains(t, content, "args?.toMap()")
-	assert.Contains(t, content, "size: pulumi.Input.asInput<int>(map['size'])")
-	assert.Contains(t, content, "label: pulumi.Input.asOptionalInput<String>(map['label'])")
+	assert.Contains(t, content, "size: map['size'] as int")
+	assert.Contains(t, content, "label: map['label'] == null ? null : map['label'] as String")
 
 	assert.Contains(t, content, "late final pulumi.Output<String> arn;")
 	assert.Contains(t, content, "late final pulumi.Output<int?> size;")
@@ -469,7 +469,8 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 
 	assert.Contains(t, content, "class GetWidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<String> id;")
-	assert.Contains(t, content, "required this.id")
+	assert.Contains(t, content, "required String id")
+	assert.Contains(t, content, "id = pulumi.Input.asInput<String>(id)")
 	assert.Contains(t, content, "class GetWidgetResult")
 	assert.Contains(t, content, "final String name;")
 	assert.Contains(t, content, "final List<String>? tags;")
@@ -537,6 +538,7 @@ func TestGeneratePackageWritesPulumiDependency(t *testing.T) {
 	require.NoError(t, err)
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "version: 1.2.3")
+	assert.NotContains(t, pubspec, "resolution: workspace")
 	assert.Contains(t, pubspec, "dependencies:")
 	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
 }
@@ -565,9 +567,275 @@ func TestGeneratePackageWritesLocalPulumiDependency(t *testing.T) {
 	require.NoError(t, err)
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "version: 1.2.3")
+	assert.NotContains(t, pubspec, "resolution: workspace")
 	assert.Contains(t, pubspec, "dependencies:")
 	assert.Contains(t, pubspec, "pulumi:")
 	assert.Contains(t, pubspec, "path: "+filepath.ToSlash(localPulumi))
+}
+
+func TestGeneratePackageWritesWorkspaceResolutionWhenInsideWorkspace(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	workspaceDir := t.TempDir()
+	targetDir := filepath.Join(workspaceDir, "sdks", "sample")
+	require.NoError(t, os.MkdirAll(targetDir, 0o700))
+	workspacePubspec := strings.TrimSpace(`
+name: test_workspace
+publish_to: none
+workspace:
+  - sdks/sample
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(workspaceDir, "pubspec.yaml"), []byte(workspacePubspec), 0o600))
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	assert.Contains(t, string(pubspecData), "resolution: workspace")
+}
+
+func TestGeneratePackagePreservesExistingPubspec(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	existingPubspec := strings.TrimSpace(`
+name: custom_package
+description: user managed package metadata
+version: 9.9.9
+dependencies:
+  pulumi: ^1.0.0
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "pubspec.yaml"), []byte(existingPubspec), 0o600))
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:index:Widget": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	assert.Equal(t, existingPubspec, string(pubspecData))
+	assert.FileExists(t, filepath.Join(targetDir, "lib", "pulumi_sample.dart"))
+}
+
+func TestGeneratePackageFailsWhenExistingPubspecMissingRequiredDependencies(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	existingPubspec := strings.TrimSpace(`
+name: custom_package
+description: user managed package metadata
+version: 9.9.9
+dependencies:
+  http: ^1.2.0
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "pubspec.yaml"), []byte(existingPubspec), 0o600))
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "missing required dependencies")
+	assert.Contains(t, err.Error(), "pulumi")
+}
+
+func TestGeneratePackageChecksAdditionalLocalDependenciesInExistingPubspec(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	existingPubspec := strings.TrimSpace(`
+name: custom_package
+description: user managed package metadata
+version: 9.9.9
+dependencies:
+  pulumi: ^1.0.0
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "pubspec.yaml"), []byte(existingPubspec), 0o600))
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+		LocalDependencies: map[string]string{
+			"pulumi_terraform": filepath.Join(targetDir, "..", "pulumi_terraform"),
+		},
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "missing required dependencies")
+	assert.Contains(t, err.Error(), "pulumi_terraform")
+}
+
+func TestGeneratePackageChecksDartLanguageDependenciesInExistingPubspec(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	existingPubspec := strings.TrimSpace(`
+name: custom_package
+description: user managed package metadata
+version: 9.9.9
+dependencies:
+  pulumi: ^1.0.0
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "pubspec.yaml"), []byte(existingPubspec), 0o600))
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"language": {
+			"dart": {
+				"dependencies": {
+					"pulumi_policy": "^0.2.0"
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "missing required dependencies")
+	assert.Contains(t, err.Error(), "pulumi_policy")
+}
+
+func TestGeneratePackageReadsLocalDependencyRegistry(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	workspaceDir := t.TempDir()
+	targetDir := filepath.Join(workspaceDir, "sdks", "sample")
+	require.NoError(t, os.MkdirAll(filepath.Join(workspaceDir, "packages"), 0o700))
+	registry := strings.TrimSpace(`
+providers:
+  sample:
+    dependencies:
+      pulumi_policy: ^0.2.0
+`) + "\n"
+	require.NoError(
+		t,
+		os.WriteFile(filepath.Join(workspaceDir, "packages", "sdk_dependency_registry.yaml"), []byte(registry), 0o600),
+	)
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi_policy: ^0.2.0")
+	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+}
+
+func TestGeneratePackageReadsDependencyRegistryFromEnv(t *testing.T) {
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	registryDir := t.TempDir()
+	registryPath := filepath.Join(registryDir, "sdk_dependency_registry.yaml")
+	registry := strings.TrimSpace(`
+providers:
+  sample:
+    dependencies:
+      pulumi_policy: ^0.3.0
+`) + "\n"
+	require.NoError(t, os.WriteFile(registryPath, []byte(registry), 0o600))
+	t.Setenv("PULUMI_DART_DEPENDENCY_REGISTRY", registryPath)
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi_policy: ^0.3.0")
+}
+
+func TestGeneratePackageUpdatesExistingPubspecWhenEnabled(t *testing.T) {
+	t.Setenv("PULUMI_DART_UPDATE_EXISTING_PUBSPEC", "true")
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	existingPubspec := strings.TrimSpace(`
+name: custom_package
+description: user managed package metadata
+version: 9.9.9
+dependencies:
+  pulumi: ^1.0.0
+`) + "\n"
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "pubspec.yaml"), []byte(existingPubspec), 0o600))
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"language": {
+			"dart": {
+				"dependencies": {
+					"pulumi_policy": "^0.2.0"
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+	assert.Contains(t, pubspec, "pulumi_policy: ^0.2.0")
 }
 
 func TestGeneratePackageInfersLocalPulumiDependencyFromAncestorPubspec(t *testing.T) {
@@ -638,6 +906,37 @@ func TestGeneratePackageWritesSchemaMetadataToPubspec(t *testing.T) {
 	assert.Contains(t, pubspec, "- category-cloud")
 	assert.Contains(t, pubspec, "- kind-component")
 	assert.Contains(t, pubspec, "- sample-provider")
+}
+
+func TestGeneratePackageWritesDartLanguageDependenciesToPubspec(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"language": {
+			"dart": {
+				"dependencies": {
+					"pulumi_policy": "^0.2.0"
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "dependencies:")
+	assert.Contains(t, pubspec, "pulumi_policy: ^0.2.0")
+	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
 }
 
 func TestGeneratePackageUsesVersionOverrideEnv(t *testing.T) {
@@ -742,6 +1041,7 @@ func TestGeneratePackageWritesExtraFiles(t *testing.T) {
 		Schema:    schema,
 		ExtraFiles: map[string][]byte{
 			"README.md":                 []byte("# sample\n"),
+			"analysis_options.yaml":     []byte("include: package:lints/recommended.yaml\n"),
 			"lib/src/sample/extra.dart": []byte("const marker = 'ok';\n"),
 		},
 	})
@@ -754,6 +1054,48 @@ func TestGeneratePackageWritesExtraFiles(t *testing.T) {
 	extra, err := os.ReadFile(filepath.Join(targetDir, "lib", "src", "sample", "extra.dart"))
 	require.NoError(t, err)
 	assert.Equal(t, "const marker = 'ok';\n", string(extra))
+
+	analysisOptions, err := os.ReadFile(filepath.Join(targetDir, "analysis_options.yaml"))
+	require.NoError(t, err)
+	assert.Equal(t, "include: package:lints/recommended.yaml\n", string(analysisOptions))
+}
+
+func TestGeneratePackageSkipsNonLibScaffoldingByDefault(t *testing.T) {
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, err = os.Stat(filepath.Join(targetDir, "README.md"))
+	require.Error(t, err)
+	assert.True(t, os.IsNotExist(err))
+
+	_, err = os.Stat(filepath.Join(targetDir, "CHANGELOG.md"))
+	require.Error(t, err)
+	assert.True(t, os.IsNotExist(err))
+
+	_, err = os.Stat(filepath.Join(targetDir, "analysis_options.yaml"))
+	require.Error(t, err)
+	assert.True(t, os.IsNotExist(err))
+
+	_, err = os.Stat(filepath.Join(targetDir, "example", "main.dart"))
+	require.Error(t, err)
+	assert.True(t, os.IsNotExist(err))
+
+	pubspec, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspecContent := string(pubspec)
+	assert.NotContains(t, pubspecContent, "dev_dependencies:")
+	assert.NotContains(t, pubspecContent, "very_good_analysis")
 }
 
 func TestGeneratePackageRejectsExtraFileCollisions(t *testing.T) {
@@ -775,32 +1117,6 @@ func TestGeneratePackageRejectsExtraFileCollisions(t *testing.T) {
 	})
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "conflicts with generated file output")
-}
-
-func TestGeneratePackageWritesExampleMain(t *testing.T) {
-	t.Parallel()
-
-	host := &dartLanguageHost{}
-	targetDir := t.TempDir()
-	schema := `{
-		"name": "sample",
-		"version": "1.2.3"
-	}`
-
-	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
-		Directory: targetDir,
-		Schema:    schema,
-	})
-	require.NoError(t, err)
-
-	exampleData, err := os.ReadFile(filepath.Join(targetDir, "example", "main.dart"))
-	require.NoError(t, err)
-	example := string(exampleData)
-
-	assert.Contains(t, example, "import 'package:pulumi/pulumi.dart' as pulumi;")
-	assert.Contains(t, example, "import 'package:pulumi_sample/pulumi_sample.dart' as provider;")
-	assert.Contains(t, example, "await pulumi.Deployment.runOrThrow(() => ExampleStack());")
-	assert.Contains(t, example, "class ExampleStack extends pulumi.Stack")
 }
 
 func TestGeneratePackageRejectsUnsafeExtraFilePaths(t *testing.T) {
@@ -880,7 +1196,7 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	require.NoError(t, err)
 
 	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, rootContent, "export 'src/pulumi_sample/sdk.dart';")
+	assert.NotContains(t, rootContent, "sdk.dart")
 
 	assert.Contains(t, content, "enum WidgetMode")
 	assert.Contains(t, content, `readOnly("read-only"),`)
@@ -978,7 +1294,7 @@ func TestGeneratePackageAvoidsPulumiConfigImportCollision(t *testing.T) {
 	})
 	require.NoError(t, err)
 
-	matches, err := filepath.Glob(filepath.Join(targetDir, "lib", "src", "pulumi_sample", "index", "widget_args*.dart"))
+	matches, err := filepath.Glob(filepath.Join(targetDir, "lib", "src", "index", "widget_args*.dart"))
 	require.NoError(t, err)
 	require.NotEmpty(t, matches)
 
@@ -1130,9 +1446,156 @@ func TestGeneratePackageModuleQualifiesResourceNameCollisions(t *testing.T) {
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, content, "class Thing extends pulumi.CustomResource")
-	assert.Contains(t, content, "class ThingBeta extends pulumi.CustomResource")
 	assert.Contains(t, content, "export 'alpha/thing.dart';")
-	assert.Contains(t, content, "export 'beta/thing_beta.dart';")
+	assert.Contains(t, content, "export 'beta/thing.dart';")
+	assert.Contains(t, content, "// FILE: beta.dart")
+	assert.Contains(t, content, "export 'beta/thing.dart';")
+}
+
+func TestGeneratePackageKeepsCanonicalResourceNamesPerModule(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:lightsail/bucket:Bucket": {
+				"inputProperties": {
+					"name": { "type": "string" }
+				}
+			},
+			"sample:s3/bucket:Bucket": {
+				"inputProperties": {
+					"name": { "type": "string" }
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.Contains(t, content, "class Bucket extends pulumi.CustomResource")
+	assert.Contains(t, content, "// FILE: lightsail/bucket.dart")
+	assert.Contains(t, content, "// FILE: s3/bucket.dart")
+	assert.NotContains(t, content, "class BucketS3 extends pulumi.CustomResource")
+	assert.NotContains(t, content, "typedef Bucket = BucketS3;")
+}
+
+func TestGeneratePackageGroupsS3AndRoute53SubmodulesUnderParents(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:s3control/bucket:Bucket": {},
+			"sample:s3outposts/endpoint:Endpoint": {},
+			"sample:s3tables/table:Table": {},
+			"sample:route53domains/domain:Domain": {},
+			"sample:route53recoverycontrol/cluster:Cluster": {},
+			"sample:route53recoveryreadiness/resourceSet:ResourceSet": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.Contains(t, content, "// FILE: s3.dart")
+	assert.Contains(t, content, "export 's3/bucket.dart';")
+	assert.Contains(t, content, "export 's3/endpoint.dart';")
+	assert.Contains(t, content, "export 's3/table.dart';")
+	assert.NotContains(t, content, "// FILE: s3control.dart")
+	assert.NotContains(t, content, "// FILE: s3outposts.dart")
+	assert.NotContains(t, content, "// FILE: s3tables.dart")
+
+	assert.Contains(t, content, "// FILE: route53.dart")
+	assert.Contains(t, content, "export 'route53/domain.dart';")
+	assert.Contains(t, content, "export 'route53/cluster.dart';")
+	assert.Contains(t, content, "export 'route53/resource_set.dart';")
+	assert.NotContains(t, content, "// FILE: route53domains.dart")
+	assert.NotContains(t, content, "// FILE: route53recoverycontrol.dart")
+	assert.NotContains(t, content, "// FILE: route53recoveryreadiness.dart")
+}
+
+func TestGeneratePackageEmitsCanonicalModuleSymbolsForTokens(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:alpha:Shape": {
+				"type": "object",
+				"properties": {
+					"size": { "type": "integer" }
+				}
+			},
+			"sample:beta:Mode": {
+				"type": "string",
+				"enum": [
+					{ "name": "on", "value": "on" },
+					{ "name": "off", "value": "off" }
+				]
+			}
+		},
+		"resources": {
+			"sample:alpha:Widget": {
+				"inputProperties": {
+					"shape": { "$ref": "#/types/sample:alpha:Shape" }
+				}
+			},
+			"sample:beta:Widget": {}
+		},
+		"functions": {
+			"sample:alpha:getWidget": {
+				"inputs": {
+					"properties": {
+						"id": { "type": "string" }
+					},
+					"required": ["id"]
+				},
+				"outputs": {
+					"properties": {
+						"mode": { "$ref": "#/types/sample:beta:Mode" }
+					}
+				}
+			},
+			"sample:beta:getWidget": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+
+	assert.Contains(t, content, "// FILE: alpha.dart")
+	assert.Contains(t, content, "// FILE: beta.dart")
+	assert.Contains(t, content, "class Shape ")
+	assert.Contains(t, content, "class Widget extends pulumi.CustomResource")
+	assert.Contains(t, content, "class WidgetArgs ")
+	assert.Contains(t, content, "Future<GetWidgetResult> getWidget(")
+	assert.Contains(t, content, "class GetWidgetArgs ")
+	assert.Contains(t, content, "class GetWidgetResult ")
+	assert.Contains(t, content, "enum Mode ")
 }
 
 func TestGeneratePackageSanitizesRuntimeTypeFieldName(t *testing.T) {
@@ -1176,7 +1639,7 @@ func TestGeneratePackageSanitizesDocCommentMarkup(t *testing.T) {
 		"version": "1.2.3",
 		"resources": {
 			"sample:index:Widget": {
-				"description": "Widget <span pulumi-lang-nodejs=\"sample.Widget\">sample.Widget</span> resource.\n\n<!--Start PulumiCodeChooser -->\nExample:\nconst widget = new sample.Widget(\"w\");\n<!--End PulumiCodeChooser -->",
+				"description": "Widget <span pulumi-lang-nodejs=\"sample.Widget\">sample.Widget</span> resource.\n\n<!--Start PulumiCodeChooser -->\nExample:\n~~~typescript\nconst widget = new sample.Widget(\"w\");\n  const widgetIndented = new sample.Widget(\"w2\");\n~~~\n<!--End PulumiCodeChooser -->",
 				"inputProperties": {
 					"value": {
 						"type": "string",
@@ -1200,8 +1663,11 @@ func TestGeneratePackageSanitizesDocCommentMarkup(t *testing.T) {
 	assert.NotContains(t, content, "Start PulumiCodeChooser")
 	assert.NotContains(t, content, "End PulumiCodeChooser")
 	assert.NotContains(t, content, "## Example Usage")
-	assert.NotContains(t, content, "Example:")
-	assert.NotContains(t, content, "const widget = new sample.Widget(\"w\");")
+	assert.Contains(t, content, "Example:")
+	assert.Contains(t, content, "~~~typescript")
+	assert.Contains(t, content, "const widget = new sample.Widget(\"w\");")
+	assert.Contains(t, content, "  const widgetIndented = new sample.Widget(\"w2\");")
+	assert.Contains(t, content, "///   const widgetIndented = new sample.Widget(\"w2\");")
 	assert.Contains(t, content, "Widget sample.Widget resource.")
 	assert.Contains(t, content, "A value field.")
 }
@@ -1308,7 +1774,7 @@ func TestGeneratePackageEmitsConfigClass(t *testing.T) {
 	require.NoError(t, err)
 
 	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, rootContent, "export 'src/pulumi_sample/sdk.dart';")
+	assert.NotContains(t, rootContent, "sdk.dart")
 
 	assert.Contains(t, content, "class SampleConfig")
 	assert.Contains(t, content, "final config = SampleConfig();")
@@ -1412,7 +1878,7 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 	assert.Contains(t, content, "// FILE: index/widget_metadata.dart")
 	assert.Contains(t, content, "// FILE: index/get_widget_details_result.dart")
 	assert.Contains(t, content, "// FILE: index/widget.dart")
-	assert.Contains(t, content, "// FILE: index/get_widget_details.dart")
+	assert.Contains(t, content, "// FILE: index/functions.dart")
 	assert.Contains(t, content, "final pulumi.Input<List<WidgetMode>> modes;")
 	assert.Contains(t, content, "final pulumi.Input<Map<String, WidgetMetadata>>? metadataById;")
 	assert.Contains(

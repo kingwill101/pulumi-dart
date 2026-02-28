@@ -110,7 +110,7 @@ final config = SampleConfig();
 // FILE: index.dart
 library module_index;
 
-export 'index/get_widget_details.dart';
+export 'index/functions.dart';
 export 'index/get_widget_details_args.dart';
 export 'index/get_widget_details_result.dart';
 export 'index/widget.dart';
@@ -118,11 +118,13 @@ export 'index/widget_args.dart';
 export 'index/widget_metadata.dart';
 export 'index/widget_mode.dart';
 
-// FILE: index/get_widget_details.dart
+// FILE: index/functions.dart
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_widget_details_args.dart';
 import 'get_widget_details_result.dart';
 
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_widget_details_args_doc}
+/// [options] Invoke options controlling this call.
 Future<GetWidgetDetailsResult> getWidgetDetails(
   GetWidgetDetailsArgs args, {
   pulumi.InvokeOptions? options,
@@ -141,13 +143,19 @@ Future<GetWidgetDetailsResult> getWidgetDetails(
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
+/// {@template pulumi_index_get_widget_details_args_doc}
 /// Arguments for getWidgetDetails.
+/// {@endtemplate}
+/// {@macro pulumi_index_get_widget_details_args_doc}
 class GetWidgetDetailsArgs {
   final pulumi.Input<String> id;
 
+  /// Creates a new [GetWidgetDetailsArgs].
+  /// [id] Required.
   GetWidgetDetailsArgs({
-    required this.id,
-  });
+    required String id,
+  }) :
+      id = pulumi.Input.asInput<String>(id);
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
@@ -157,7 +165,7 @@ class GetWidgetDetailsArgs {
 
   factory GetWidgetDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetWidgetDetailsArgs(
-      id: pulumi.Input.asInput<String>(map['id']),
+      id: map['id'] as String,
     );
   }
 }
@@ -174,6 +182,9 @@ class GetWidgetDetailsResult {
   final WidgetMetadata metadata;
   final WidgetMode mode;
 
+  /// Creates a new [GetWidgetDetailsResult].
+  /// [metadata] Required.
+  /// [mode] Required.
   GetWidgetDetailsResult({
     required this.metadata,
     required this.mode,
@@ -204,6 +215,10 @@ class Widget extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   late final pulumi.Output<WidgetMode> mode;
 
+  /// Creates a new [Widget].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Widget]. {@macro pulumi_index_widget_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
   Widget(
     String name, {
     WidgetArgs? args,
@@ -226,15 +241,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget_metadata.dart';
 import 'widget_mode.dart';
 
+/// {@template pulumi_index_widget_args_doc}
 /// The set of arguments for Widget.
+/// {@endtemplate}
+/// {@macro pulumi_index_widget_args_doc}
 class WidgetArgs {
   final pulumi.Input<WidgetMetadata>? metadata;
   final pulumi.Input<WidgetMode> mode;
 
+  /// Creates a new [WidgetArgs].
+  /// [metadata] Optional.
+  /// [mode] Required.
   WidgetArgs({
-    this.metadata,
-    required this.mode,
-  });
+    WidgetMetadata? metadata,
+    required WidgetMode mode,
+  }) :
+      metadata = pulumi.Input.asOptionalInput<WidgetMetadata>(metadata),
+      mode = pulumi.Input.asInput<WidgetMode>(mode);
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
@@ -248,8 +271,8 @@ class WidgetArgs {
 
   factory WidgetArgs.fromMap(Map<String, dynamic> map) {
     return WidgetArgs(
-      metadata: pulumi.Input.asOptionalInput<WidgetMetadata>(map['metadata']),
-      mode: pulumi.Input.asInput<WidgetMode>(map['mode']),
+      metadata: map['metadata'] == null ? null : WidgetMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      mode: WidgetMode.fromValue(map['mode'] as String),
     );
   }
 }
@@ -264,6 +287,9 @@ class WidgetMetadata {
   final WidgetMode mode;
   final String owner;
 
+  /// Creates a new [WidgetMetadata].
+  /// [mode] Required.
+  /// [owner] Required.
   WidgetMetadata({
     required this.mode,
     required this.owner,
@@ -303,16 +329,4 @@ enum WidgetMode {
   }
 }
 
-
-// FILE: sdk.dart
-library pulumi_sample_sdk;
-
-export 'index/get_widget_details_args.dart';
-export 'index/get_widget_details_result.dart';
-export 'index/widget_args.dart';
-export 'index/widget_metadata.dart';
-export 'index/widget_mode.dart';
-export 'config/config.dart';
-export 'index/widget.dart';
-export 'index/get_widget_details.dart';
 
