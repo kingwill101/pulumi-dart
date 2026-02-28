@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_iam_v1_get_workload_identity_pool_args_doc}
+/// Arguments for getWorkloadIdentityPool.
+/// {@endtemplate}
+/// {@macro pulumi_iam_v1_get_workload_identity_pool_args_doc}
+class GetWorkloadIdentityPoolArgs {
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> workloadIdentityPoolId;
+
+  /// Creates a new [GetWorkloadIdentityPoolArgs].
+  /// [location] Required.
+  /// [project] Optional.
+  /// [workloadIdentityPoolId] Required.
+  GetWorkloadIdentityPoolArgs({
+    required String location,
+    String? project,
+    required String workloadIdentityPoolId,
+  })  : location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        workloadIdentityPoolId =
+            pulumi.Input.asInput<String>(workloadIdentityPoolId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['workloadIdentityPoolId'] = workloadIdentityPoolId;
+    return map;
+  }
+
+  factory GetWorkloadIdentityPoolArgs.fromMap(Map<String, dynamic> map) {
+    return GetWorkloadIdentityPoolArgs(
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      workloadIdentityPoolId: map['workloadIdentityPoolId'] as String,
+    );
+  }
+}

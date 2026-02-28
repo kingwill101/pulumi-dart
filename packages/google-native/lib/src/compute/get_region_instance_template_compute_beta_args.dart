@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_compute_beta_get_region_instance_template_compute_beta_args_doc}
+/// Arguments for getRegionInstanceTemplate.
+/// {@endtemplate}
+/// {@macro pulumi_compute_beta_get_region_instance_template_compute_beta_args_doc}
+class GetRegionInstanceTemplateComputeBetaArgs {
+  final pulumi.Input<String> instanceTemplate;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+
+  /// Creates a new [GetRegionInstanceTemplateComputeBetaArgs].
+  /// [instanceTemplate] Required.
+  /// [project] Optional.
+  /// [region] Required.
+  GetRegionInstanceTemplateComputeBetaArgs({
+    required String instanceTemplate,
+    String? project,
+    required String region,
+  })  : instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        region = pulumi.Input.asInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['instanceTemplate'] = instanceTemplate;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['region'] = region;
+    return map;
+  }
+
+  factory GetRegionInstanceTemplateComputeBetaArgs.fromMap(
+      Map<String, dynamic> map) {
+    return GetRegionInstanceTemplateComputeBetaArgs(
+      instanceTemplate: map['instanceTemplate'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      region: map['region'] as String,
+    );
+  }
+}

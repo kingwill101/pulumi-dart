@@ -1,0 +1,22 @@
+library module_cloudsupport;
+
+export 'cloudsupport/actor.dart';
+export 'cloudsupport/actor_cloudsupport_v2beta.dart';
+export 'cloudsupport/actor_response.dart';
+export 'cloudsupport/actor_response_cloudsupport_v2beta.dart';
+export 'cloudsupport/case.dart';
+export 'cloudsupport/case_args.dart';
+export 'cloudsupport/case_classification.dart';
+export 'cloudsupport/case_classification_cloudsupport_v2beta.dart';
+export 'cloudsupport/case_classification_response.dart';
+export 'cloudsupport/case_classification_response_cloudsupport_v2beta.dart';
+export 'cloudsupport/case_cloudsupport_v2beta.dart';
+export 'cloudsupport/case_cloudsupport_v2beta_args.dart';
+export 'cloudsupport/case_priority.dart';
+export 'cloudsupport/case_priority_cloudsupport_v2beta.dart';
+export 'cloudsupport/case_severity.dart';
+export 'cloudsupport/functions.dart';
+export 'cloudsupport/get_case_args.dart';
+export 'cloudsupport/get_case_cloudsupport_v2beta_args.dart';
+export 'cloudsupport/get_case_cloudsupport_v2beta_result.dart';
+export 'cloudsupport/get_case_result.dart';

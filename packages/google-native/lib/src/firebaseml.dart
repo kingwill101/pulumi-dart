@@ -1,0 +1,13 @@
+library module_firebaseml;
+
+export 'firebaseml/functions.dart';
+export 'firebaseml/get_model_args.dart';
+export 'firebaseml/get_model_result.dart';
+export 'firebaseml/model.dart';
+export 'firebaseml/model_args.dart';
+export 'firebaseml/model_state.dart';
+export 'firebaseml/model_state_response.dart';
+export 'firebaseml/operation_response.dart';
+export 'firebaseml/status_response.dart';
+export 'firebaseml/tf_lite_model.dart';
+export 'firebaseml/tf_lite_model_response.dart';

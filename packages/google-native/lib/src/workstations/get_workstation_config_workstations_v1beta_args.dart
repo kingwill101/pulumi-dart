@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_workstations_v1beta_get_workstation_config_workstations_v1beta_args_doc}
+/// Arguments for getWorkstationConfig.
+/// {@endtemplate}
+/// {@macro pulumi_workstations_v1beta_get_workstation_config_workstations_v1beta_args_doc}
+class GetWorkstationConfigWorkstationsV1betaArgs {
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> workstationClusterId;
+  final pulumi.Input<String> workstationConfigId;
+
+  /// Creates a new [GetWorkstationConfigWorkstationsV1betaArgs].
+  /// [location] Required.
+  /// [project] Optional.
+  /// [workstationClusterId] Required.
+  /// [workstationConfigId] Required.
+  GetWorkstationConfigWorkstationsV1betaArgs({
+    required String location,
+    String? project,
+    required String workstationClusterId,
+    required String workstationConfigId,
+  })  : location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        workstationClusterId =
+            pulumi.Input.asInput<String>(workstationClusterId),
+        workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['workstationClusterId'] = workstationClusterId;
+    map['workstationConfigId'] = workstationConfigId;
+    return map;
+  }
+
+  factory GetWorkstationConfigWorkstationsV1betaArgs.fromMap(
+      Map<String, dynamic> map) {
+    return GetWorkstationConfigWorkstationsV1betaArgs(
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      workstationClusterId: map['workstationClusterId'] as String,
+      workstationConfigId: map['workstationConfigId'] as String,
+    );
+  }
+}

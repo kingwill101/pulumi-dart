@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_toolresults_v1beta3_get_history_args_doc}
+/// Arguments for getHistory.
+/// {@endtemplate}
+/// {@macro pulumi_toolresults_v1beta3_get_history_args_doc}
+class GetHistoryArgs {
+  final pulumi.Input<String> historyId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetHistoryArgs].
+  /// [historyId] Required.
+  /// [project] Optional.
+  GetHistoryArgs({
+    required String historyId,
+    String? project,
+  })  : historyId = pulumi.Input.asInput<String>(historyId),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['historyId'] = historyId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetHistoryArgs.fromMap(Map<String, dynamic> map) {
+    return GetHistoryArgs(
+      historyId: map['historyId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_contactcenterinsights_v1_get_issue_model_args_doc}
+/// Arguments for getIssueModel.
+/// {@endtemplate}
+/// {@macro pulumi_contactcenterinsights_v1_get_issue_model_args_doc}
+class GetIssueModelArgs {
+  final pulumi.Input<String> issueModelId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetIssueModelArgs].
+  /// [issueModelId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetIssueModelArgs({
+    required String issueModelId,
+    required String location,
+    String? project,
+  })  : issueModelId = pulumi.Input.asInput<String>(issueModelId),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['issueModelId'] = issueModelId;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetIssueModelArgs.fromMap(Map<String, dynamic> map) {
+    return GetIssueModelArgs(
+      issueModelId: map['issueModelId'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

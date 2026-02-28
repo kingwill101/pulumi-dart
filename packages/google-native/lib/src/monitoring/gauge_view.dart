@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
+class GaugeView {
+  /// The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
+  final double? lowerBound;
+
+  /// The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
+  final double? upperBound;
+
+  /// Creates a new [GaugeView].
+  /// [lowerBound] The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
+  /// [upperBound] The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
+  GaugeView({
+    this.lowerBound,
+    this.upperBound,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final lowerBoundValue = lowerBound;
+    if (lowerBoundValue != null) {
+      map['lowerBound'] = lowerBoundValue;
+    }
+    final upperBoundValue = upperBound;
+    if (upperBoundValue != null) {
+      map['upperBound'] = upperBoundValue;
+    }
+    return map;
+  }
+
+  factory GaugeView.fromMap(Map<String, dynamic> map) {
+    return GaugeView(
+      lowerBound:
+          map['lowerBound'] == null ? null : map['lowerBound'] as double,
+      upperBound:
+          map['upperBound'] == null ? null : map['upperBound'] as double,
+    );
+  }
+}

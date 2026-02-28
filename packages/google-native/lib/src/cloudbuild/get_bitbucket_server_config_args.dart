@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cloudbuild_v1_get_bitbucket_server_config_args_doc}
+/// Arguments for getBitbucketServerConfig.
+/// {@endtemplate}
+/// {@macro pulumi_cloudbuild_v1_get_bitbucket_server_config_args_doc}
+class GetBitbucketServerConfigArgs {
+  final pulumi.Input<String> bitbucketServerConfigId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetBitbucketServerConfigArgs].
+  /// [bitbucketServerConfigId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetBitbucketServerConfigArgs({
+    required String bitbucketServerConfigId,
+    required String location,
+    String? project,
+  })  : bitbucketServerConfigId =
+            pulumi.Input.asInput<String>(bitbucketServerConfigId),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['bitbucketServerConfigId'] = bitbucketServerConfigId;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetBitbucketServerConfigArgs.fromMap(Map<String, dynamic> map) {
+    return GetBitbucketServerConfigArgs(
+      bitbucketServerConfigId: map['bitbucketServerConfigId'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Configuration for a read pool instance.
+class ReadPoolConfigAlloydbV1beta {
+  /// Read capacity, i.e. number of nodes in a read pool instance.
+  final int? nodeCount;
+
+  /// Creates a new [ReadPoolConfigAlloydbV1beta].
+  /// [nodeCount] Read capacity, i.e. number of nodes in a read pool instance.
+  ReadPoolConfigAlloydbV1beta({
+    this.nodeCount,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final nodeCountValue = nodeCount;
+    if (nodeCountValue != null) {
+      map['nodeCount'] = nodeCountValue;
+    }
+    return map;
+  }
+
+  factory ReadPoolConfigAlloydbV1beta.fromMap(Map<String, dynamic> map) {
+    return ReadPoolConfigAlloydbV1beta(
+      nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
+    );
+  }
+}

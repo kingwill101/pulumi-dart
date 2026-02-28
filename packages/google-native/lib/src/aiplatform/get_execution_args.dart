@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_aiplatform_v1_get_execution_args_doc}
+/// Arguments for getExecution.
+/// {@endtemplate}
+/// {@macro pulumi_aiplatform_v1_get_execution_args_doc}
+class GetExecutionArgs {
+  final pulumi.Input<String> executionId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> metadataStoreId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetExecutionArgs].
+  /// [executionId] Required.
+  /// [location] Required.
+  /// [metadataStoreId] Required.
+  /// [project] Optional.
+  GetExecutionArgs({
+    required String executionId,
+    required String location,
+    required String metadataStoreId,
+    String? project,
+  })  : executionId = pulumi.Input.asInput<String>(executionId),
+        location = pulumi.Input.asInput<String>(location),
+        metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['executionId'] = executionId;
+    map['location'] = location;
+    map['metadataStoreId'] = metadataStoreId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetExecutionArgs.fromMap(Map<String, dynamic> map) {
+    return GetExecutionArgs(
+      executionId: map['executionId'] as String,
+      location: map['location'] as String,
+      metadataStoreId: map['metadataStoreId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

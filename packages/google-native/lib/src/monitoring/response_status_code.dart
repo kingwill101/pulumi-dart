@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'response_status_code_status_class.dart';
+
+/// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+class ResponseStatusCode {
+  /// A class of status codes to accept.
+  final ResponseStatusCodeStatusClass? statusClass;
+
+  /// A status code to accept.
+  final int? statusValue;
+
+  /// Creates a new [ResponseStatusCode].
+  /// [statusClass] A class of status codes to accept.
+  /// [statusValue] A status code to accept.
+  ResponseStatusCode({
+    this.statusClass,
+    this.statusValue,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final statusClassValue = statusClass;
+    if (statusClassValue != null) {
+      map['statusClass'] = statusClassValue.value;
+    }
+    final statusValueValue = statusValue;
+    if (statusValueValue != null) {
+      map['statusValue'] = statusValueValue;
+    }
+    return map;
+  }
+
+  factory ResponseStatusCode.fromMap(Map<String, dynamic> map) {
+    return ResponseStatusCode(
+      statusClass: map['statusClass'] == null
+          ? null
+          : ResponseStatusCodeStatusClass.fromValue(
+              map['statusClass'] as String),
+      statusValue:
+          map['statusValue'] == null ? null : map['statusValue'] as int,
+    );
+  }
+}

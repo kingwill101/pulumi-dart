@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_monitoring_v3_get_uptime_check_config_args_doc}
+/// Arguments for getUptimeCheckConfig.
+/// {@endtemplate}
+/// {@macro pulumi_monitoring_v3_get_uptime_check_config_args_doc}
+class GetUptimeCheckConfigArgs {
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> uptimeCheckConfigId;
+
+  /// Creates a new [GetUptimeCheckConfigArgs].
+  /// [project] Optional.
+  /// [uptimeCheckConfigId] Required.
+  GetUptimeCheckConfigArgs({
+    String? project,
+    required String uptimeCheckConfigId,
+  })  : project = pulumi.Input.asOptionalInput<String>(project),
+        uptimeCheckConfigId = pulumi.Input.asInput<String>(uptimeCheckConfigId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['uptimeCheckConfigId'] = uptimeCheckConfigId;
+    return map;
+  }
+
+  factory GetUptimeCheckConfigArgs.fromMap(Map<String, dynamic> map) {
+    return GetUptimeCheckConfigArgs(
+      project: map['project'] == null ? null : map['project'] as String,
+      uptimeCheckConfigId: map['uptimeCheckConfigId'] as String,
+    );
+  }
+}

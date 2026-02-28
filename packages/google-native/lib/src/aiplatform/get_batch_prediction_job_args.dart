@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_aiplatform_v1_get_batch_prediction_job_args_doc}
+/// Arguments for getBatchPredictionJob.
+/// {@endtemplate}
+/// {@macro pulumi_aiplatform_v1_get_batch_prediction_job_args_doc}
+class GetBatchPredictionJobArgs {
+  final pulumi.Input<String> batchPredictionJobId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetBatchPredictionJobArgs].
+  /// [batchPredictionJobId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetBatchPredictionJobArgs({
+    required String batchPredictionJobId,
+    required String location,
+    String? project,
+  })  : batchPredictionJobId =
+            pulumi.Input.asInput<String>(batchPredictionJobId),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['batchPredictionJobId'] = batchPredictionJobId;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetBatchPredictionJobArgs.fromMap(Map<String, dynamic> map) {
+    return GetBatchPredictionJobArgs(
+      batchPredictionJobId: map['batchPredictionJobId'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

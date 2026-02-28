@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_compute_alpha_get_region_health_check_args_doc}
+/// Arguments for getRegionHealthCheck.
+/// {@endtemplate}
+/// {@macro pulumi_compute_alpha_get_region_health_check_args_doc}
+class GetRegionHealthCheckArgs {
+  final pulumi.Input<String> healthCheck;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+
+  /// Creates a new [GetRegionHealthCheckArgs].
+  /// [healthCheck] Required.
+  /// [project] Optional.
+  /// [region] Required.
+  GetRegionHealthCheckArgs({
+    required String healthCheck,
+    String? project,
+    required String region,
+  })  : healthCheck = pulumi.Input.asInput<String>(healthCheck),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        region = pulumi.Input.asInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['healthCheck'] = healthCheck;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['region'] = region;
+    return map;
+  }
+
+  factory GetRegionHealthCheckArgs.fromMap(Map<String, dynamic> map) {
+    return GetRegionHealthCheckArgs(
+      healthCheck: map['healthCheck'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      region: map['region'] as String,
+    );
+  }
+}

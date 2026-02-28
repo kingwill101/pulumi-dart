@@ -1,0 +1,152 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'private_cluster_config.dart';
+
+/// {@template pulumi_workstations_v1_workstation_cluster_args_doc}
+/// The set of arguments for WorkstationCluster.
+/// {@endtemplate}
+/// {@macro pulumi_workstations_v1_workstation_cluster_args_doc}
+class WorkstationClusterArgs {
+  /// Optional. Client-specified annotations.
+  final pulumi.Input<Map<String, String>>? annotations;
+
+  /// Optional. Human-readable name for this workstation cluster.
+  final pulumi.Input<String>? displayName;
+
+  /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+  final pulumi.Input<String>? etag;
+
+  /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
+
+  /// Identifier. Full name of this workstation cluster.
+  final pulumi.Input<String>? name;
+
+  /// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
+  final pulumi.Input<String>? network;
+
+  /// Optional. Configuration for private workstation cluster.
+  final pulumi.Input<PrivateClusterConfig>? privateClusterConfig;
+  final pulumi.Input<String>? project;
+
+  /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
+  final pulumi.Input<String>? subnetwork;
+
+  /// Required. ID to use for the workstation cluster.
+  final pulumi.Input<String> workstationClusterId;
+
+  /// Creates a new [WorkstationClusterArgs].
+  /// [annotations] Optional. Client-specified annotations.
+  /// [displayName] Optional. Human-readable name for this workstation cluster.
+  /// [etag] Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+  /// [labels] Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
+  /// [location] Optional.
+  /// [name] Identifier. Full name of this workstation cluster.
+  /// [network] Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
+  /// [privateClusterConfig] Optional. Configuration for private workstation cluster.
+  /// [project] Optional.
+  /// [subnetwork] Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
+  /// [workstationClusterId] Required. ID to use for the workstation cluster.
+  WorkstationClusterArgs({
+    Map<String, String>? annotations,
+    String? displayName,
+    String? etag,
+    Map<String, String>? labels,
+    String? location,
+    String? name,
+    String? network,
+    PrivateClusterConfig? privateClusterConfig,
+    String? project,
+    String? subnetwork,
+    required String workstationClusterId,
+  })  : annotations =
+            pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+        displayName = pulumi.Input.asOptionalInput<String>(displayName),
+        etag = pulumi.Input.asOptionalInput<String>(etag),
+        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+        location = pulumi.Input.asOptionalInput<String>(location),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        network = pulumi.Input.asOptionalInput<String>(network),
+        privateClusterConfig =
+            pulumi.Input.asOptionalInput<PrivateClusterConfig>(
+                privateClusterConfig),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork),
+        workstationClusterId =
+            pulumi.Input.asInput<String>(workstationClusterId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final annotationsValue = annotations;
+    if (annotationsValue != null) {
+      map['annotations'] = annotationsValue;
+    }
+    final displayNameValue = displayName;
+    if (displayNameValue != null) {
+      map['displayName'] = displayNameValue;
+    }
+    final etagValue = etag;
+    if (etagValue != null) {
+      map['etag'] = etagValue;
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final networkValue = network;
+    if (networkValue != null) {
+      map['network'] = networkValue;
+    }
+    final privateClusterConfigValue = privateClusterConfig;
+    if (privateClusterConfigValue != null) {
+      map['privateClusterConfig'] = pulumi.Input.mapOptionalInputValue<
+              PrivateClusterConfig, Map<String, dynamic>>(
+          privateClusterConfigValue, (value) => value.toMap());
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final subnetworkValue = subnetwork;
+    if (subnetworkValue != null) {
+      map['subnetwork'] = subnetworkValue;
+    }
+    map['workstationClusterId'] = workstationClusterId;
+    return map;
+  }
+
+  factory WorkstationClusterArgs.fromMap(Map<String, dynamic> map) {
+    return WorkstationClusterArgs(
+      annotations: map['annotations'] == null
+          ? null
+          : (map['annotations'] as Map).cast<String, String>(),
+      displayName:
+          map['displayName'] == null ? null : map['displayName'] as String,
+      etag: map['etag'] == null ? null : map['etag'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      location: map['location'] == null ? null : map['location'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      network: map['network'] == null ? null : map['network'] as String,
+      privateClusterConfig: map['privateClusterConfig'] == null
+          ? null
+          : PrivateClusterConfig.fromMap(
+              (map['privateClusterConfig'] as Map).cast<String, dynamic>()),
+      project: map['project'] == null ? null : map['project'] as String,
+      subnetwork:
+          map['subnetwork'] == null ? null : map['subnetwork'] as String,
+      workstationClusterId: map['workstationClusterId'] as String,
+    );
+  }
+}

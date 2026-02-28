@@ -1,3 +1,3 @@
 library pulumi_google_native_cloudresourcemanager;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/cloudresourcemanager.dart';
+export 'package:pulumi_google_native/src/cloudresourcemanager.dart';

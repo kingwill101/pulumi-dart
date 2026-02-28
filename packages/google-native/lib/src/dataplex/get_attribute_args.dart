@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dataplex_v1_get_attribute_args_doc}
+/// Arguments for getAttribute.
+/// {@endtemplate}
+/// {@macro pulumi_dataplex_v1_get_attribute_args_doc}
+class GetAttributeArgs {
+  final pulumi.Input<String> attributeId;
+  final pulumi.Input<String> dataTaxonomyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetAttributeArgs].
+  /// [attributeId] Required.
+  /// [dataTaxonomyId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetAttributeArgs({
+    required String attributeId,
+    required String dataTaxonomyId,
+    required String location,
+    String? project,
+  })  : attributeId = pulumi.Input.asInput<String>(attributeId),
+        dataTaxonomyId = pulumi.Input.asInput<String>(dataTaxonomyId),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['attributeId'] = attributeId;
+    map['dataTaxonomyId'] = dataTaxonomyId;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetAttributeArgs.fromMap(Map<String, dynamic> map) {
+    return GetAttributeArgs(
+      attributeId: map['attributeId'] as String,
+      dataTaxonomyId: map['dataTaxonomyId'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

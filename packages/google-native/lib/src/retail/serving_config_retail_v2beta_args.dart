@@ -1,0 +1,332 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_retail_v2beta_search_request_dynamic_facet_spec.dart';
+import 'google_cloud_retail_v2beta_search_request_personalization_spec.dart';
+import 'serving_config_diversity_type_retail_v2beta.dart';
+import 'serving_config_solution_types_item_retail_v2beta.dart';
+
+/// {@template pulumi_retail_v2beta_serving_config_retail_v2beta_args_doc}
+/// The set of arguments for ServingConfig.
+/// {@endtemplate}
+/// {@macro pulumi_retail_v2beta_serving_config_retail_v2beta_args_doc}
+class ServingConfigRetailV2betaArgs {
+  /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? boostControlIds;
+  final pulumi.Input<String> catalogId;
+
+  /// The human readable serving config display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  final pulumi.Input<String> displayName;
+
+  /// How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  final pulumi.Input<String>? diversityLevel;
+
+  /// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
+  final pulumi.Input<ServingConfigDiversityTypeRetailV2beta>? diversityType;
+
+  /// Condition do not associate specifications. If multiple do not associate conditions match, all matching do not associate controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? doNotAssociateControlIds;
+
+  /// The specification for dynamically generated facets. Notice that only textual facets can be dynamically generated. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec>?
+      dynamicFacetSpec;
+
+  /// Whether to add additional category filters on the `similar-items` model. If not specified, we enable it by default. Allowed values are: * `no-category-match`: No additional filtering of original results from the model and the customer's filters. * `relaxed-category-match`: Only keep results with categories that match at least one item categories in the PredictRequests's context item. * If customer also sends filters in the PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  final pulumi.Input<String>? enableCategoryFilterLevel;
+
+  /// Facet specifications for faceted search. If empty, no facets are returned. The ids refer to the ids of Control resources with only the Facet control set. These controls are assumed to be in the same Catalog as the ServingConfig. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? facetControlIds;
+
+  /// Condition filter specifications. If a product matches multiple conditions in the specifications, filters from these specifications are all applied and combined via the AND operator. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? filterControlIds;
+
+  /// Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? ignoreControlIds;
+  final pulumi.Input<String>? location;
+
+  /// The id of the model in the same Catalog to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  final pulumi.Input<String>? modelId;
+
+  /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
+  final pulumi.Input<String>? name;
+
+  /// Condition oneway synonyms specifications. If multiple oneway synonyms conditions match, all matching oneway synonyms controls in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? onewaySynonymsControlIds;
+
+  /// The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
+  final pulumi.Input<GoogleCloudRetailV2betaSearchRequestPersonalizationSpec>?
+      personalizationSpec;
+
+  /// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-reranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  final pulumi.Input<String>? priceRerankingLevel;
+  final pulumi.Input<String>? project;
+
+  /// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? redirectControlIds;
+
+  /// Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? replacementControlIds;
+
+  /// Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+  final pulumi.Input<String> servingConfigId;
+
+  /// Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
+  final pulumi.Input<List<ServingConfigSolutionTypesItemRetailV2beta>>
+      solutionTypes;
+
+  /// Condition synonyms specifications. If multiple syonyms conditions match, all matching synonyms control in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  final pulumi.Input<List<String>>? twowaySynonymsControlIds;
+
+  /// Creates a new [ServingConfigRetailV2betaArgs].
+  /// [boostControlIds] Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [catalogId] Required.
+  /// [displayName] The human readable serving config display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// [diversityLevel] How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  /// [diversityType] What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
+  /// [doNotAssociateControlIds] Condition do not associate specifications. If multiple do not associate conditions match, all matching do not associate controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [dynamicFacetSpec] The specification for dynamically generated facets. Notice that only textual facets can be dynamically generated. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [enableCategoryFilterLevel] Whether to add additional category filters on the `similar-items` model. If not specified, we enable it by default. Allowed values are: * `no-category-match`: No additional filtering of original results from the model and the customer's filters. * `relaxed-category-match`: Only keep results with categories that match at least one item categories in the PredictRequests's context item. * If customer also sends filters in the PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  /// [facetControlIds] Facet specifications for faceted search. If empty, no facets are returned. The ids refer to the ids of Control resources with only the Facet control set. These controls are assumed to be in the same Catalog as the ServingConfig. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [filterControlIds] Condition filter specifications. If a product matches multiple conditions in the specifications, filters from these specifications are all applied and combined via the AND operator. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [ignoreControlIds] Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [location] Optional.
+  /// [modelId] The id of the model in the same Catalog to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  /// [name] Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
+  /// [onewaySynonymsControlIds] Condition oneway synonyms specifications. If multiple oneway synonyms conditions match, all matching oneway synonyms controls in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [personalizationSpec] The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
+  /// [priceRerankingLevel] How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-reranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+  /// [project] Optional.
+  /// [redirectControlIds] Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [replacementControlIds] Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  /// [servingConfigId] Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+  /// [solutionTypes] Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
+  /// [twowaySynonymsControlIds] Condition synonyms specifications. If multiple syonyms conditions match, all matching synonyms control in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+  ServingConfigRetailV2betaArgs({
+    List<String>? boostControlIds,
+    required String catalogId,
+    required String displayName,
+    String? diversityLevel,
+    ServingConfigDiversityTypeRetailV2beta? diversityType,
+    List<String>? doNotAssociateControlIds,
+    GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec? dynamicFacetSpec,
+    String? enableCategoryFilterLevel,
+    List<String>? facetControlIds,
+    List<String>? filterControlIds,
+    List<String>? ignoreControlIds,
+    String? location,
+    String? modelId,
+    String? name,
+    List<String>? onewaySynonymsControlIds,
+    GoogleCloudRetailV2betaSearchRequestPersonalizationSpec?
+        personalizationSpec,
+    String? priceRerankingLevel,
+    String? project,
+    List<String>? redirectControlIds,
+    List<String>? replacementControlIds,
+    required String servingConfigId,
+    required List<ServingConfigSolutionTypesItemRetailV2beta> solutionTypes,
+    List<String>? twowaySynonymsControlIds,
+  })  : boostControlIds =
+            pulumi.Input.asOptionalInput<List<String>>(boostControlIds),
+        catalogId = pulumi.Input.asInput<String>(catalogId),
+        displayName = pulumi.Input.asInput<String>(displayName),
+        diversityLevel = pulumi.Input.asOptionalInput<String>(diversityLevel),
+        diversityType = pulumi.Input.asOptionalInput<
+            ServingConfigDiversityTypeRetailV2beta>(diversityType),
+        doNotAssociateControlIds = pulumi.Input.asOptionalInput<List<String>>(
+            doNotAssociateControlIds),
+        dynamicFacetSpec = pulumi.Input.asOptionalInput<
+                GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec>(
+            dynamicFacetSpec),
+        enableCategoryFilterLevel =
+            pulumi.Input.asOptionalInput<String>(enableCategoryFilterLevel),
+        facetControlIds =
+            pulumi.Input.asOptionalInput<List<String>>(facetControlIds),
+        filterControlIds =
+            pulumi.Input.asOptionalInput<List<String>>(filterControlIds),
+        ignoreControlIds =
+            pulumi.Input.asOptionalInput<List<String>>(ignoreControlIds),
+        location = pulumi.Input.asOptionalInput<String>(location),
+        modelId = pulumi.Input.asOptionalInput<String>(modelId),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        onewaySynonymsControlIds = pulumi.Input.asOptionalInput<List<String>>(
+            onewaySynonymsControlIds),
+        personalizationSpec = pulumi.Input.asOptionalInput<
+                GoogleCloudRetailV2betaSearchRequestPersonalizationSpec>(
+            personalizationSpec),
+        priceRerankingLevel =
+            pulumi.Input.asOptionalInput<String>(priceRerankingLevel),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        redirectControlIds =
+            pulumi.Input.asOptionalInput<List<String>>(redirectControlIds),
+        replacementControlIds =
+            pulumi.Input.asOptionalInput<List<String>>(replacementControlIds),
+        servingConfigId = pulumi.Input.asInput<String>(servingConfigId),
+        solutionTypes = pulumi.Input.asInput<
+            List<ServingConfigSolutionTypesItemRetailV2beta>>(solutionTypes),
+        twowaySynonymsControlIds = pulumi.Input.asOptionalInput<List<String>>(
+            twowaySynonymsControlIds);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final boostControlIdsValue = boostControlIds;
+    if (boostControlIdsValue != null) {
+      map['boostControlIds'] = boostControlIdsValue;
+    }
+    map['catalogId'] = catalogId;
+    map['displayName'] = displayName;
+    final diversityLevelValue = diversityLevel;
+    if (diversityLevelValue != null) {
+      map['diversityLevel'] = diversityLevelValue;
+    }
+    final diversityTypeValue = diversityType;
+    if (diversityTypeValue != null) {
+      map['diversityType'] = pulumi.Input.mapOptionalInputValue<
+          ServingConfigDiversityTypeRetailV2beta,
+          String>(diversityTypeValue, (value) => value.value);
+    }
+    final doNotAssociateControlIdsValue = doNotAssociateControlIds;
+    if (doNotAssociateControlIdsValue != null) {
+      map['doNotAssociateControlIds'] = doNotAssociateControlIdsValue;
+    }
+    final dynamicFacetSpecValue = dynamicFacetSpec;
+    if (dynamicFacetSpecValue != null) {
+      map['dynamicFacetSpec'] = pulumi.Input.mapOptionalInputValue<
+              GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec,
+              Map<String, dynamic>>(
+          dynamicFacetSpecValue, (value) => value.toMap());
+    }
+    final enableCategoryFilterLevelValue = enableCategoryFilterLevel;
+    if (enableCategoryFilterLevelValue != null) {
+      map['enableCategoryFilterLevel'] = enableCategoryFilterLevelValue;
+    }
+    final facetControlIdsValue = facetControlIds;
+    if (facetControlIdsValue != null) {
+      map['facetControlIds'] = facetControlIdsValue;
+    }
+    final filterControlIdsValue = filterControlIds;
+    if (filterControlIdsValue != null) {
+      map['filterControlIds'] = filterControlIdsValue;
+    }
+    final ignoreControlIdsValue = ignoreControlIds;
+    if (ignoreControlIdsValue != null) {
+      map['ignoreControlIds'] = ignoreControlIdsValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final modelIdValue = modelId;
+    if (modelIdValue != null) {
+      map['modelId'] = modelIdValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final onewaySynonymsControlIdsValue = onewaySynonymsControlIds;
+    if (onewaySynonymsControlIdsValue != null) {
+      map['onewaySynonymsControlIds'] = onewaySynonymsControlIdsValue;
+    }
+    final personalizationSpecValue = personalizationSpec;
+    if (personalizationSpecValue != null) {
+      map['personalizationSpec'] = pulumi.Input.mapOptionalInputValue<
+              GoogleCloudRetailV2betaSearchRequestPersonalizationSpec,
+              Map<String, dynamic>>(
+          personalizationSpecValue, (value) => value.toMap());
+    }
+    final priceRerankingLevelValue = priceRerankingLevel;
+    if (priceRerankingLevelValue != null) {
+      map['priceRerankingLevel'] = priceRerankingLevelValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final redirectControlIdsValue = redirectControlIds;
+    if (redirectControlIdsValue != null) {
+      map['redirectControlIds'] = redirectControlIdsValue;
+    }
+    final replacementControlIdsValue = replacementControlIds;
+    if (replacementControlIdsValue != null) {
+      map['replacementControlIds'] = replacementControlIdsValue;
+    }
+    map['servingConfigId'] = servingConfigId;
+    map['solutionTypes'] = pulumi.Input.mapInputValue<
+            List<ServingConfigSolutionTypesItemRetailV2beta>, List<String>>(
+        solutionTypes,
+        (value) => pulumi.Input.encodeList<
+            ServingConfigSolutionTypesItemRetailV2beta,
+            String>(value, (value) => value.value));
+    final twowaySynonymsControlIdsValue = twowaySynonymsControlIds;
+    if (twowaySynonymsControlIdsValue != null) {
+      map['twowaySynonymsControlIds'] = twowaySynonymsControlIdsValue;
+    }
+    return map;
+  }
+
+  factory ServingConfigRetailV2betaArgs.fromMap(Map<String, dynamic> map) {
+    return ServingConfigRetailV2betaArgs(
+      boostControlIds: map['boostControlIds'] == null
+          ? null
+          : (map['boostControlIds'] as List).cast<String>(),
+      catalogId: map['catalogId'] as String,
+      displayName: map['displayName'] as String,
+      diversityLevel: map['diversityLevel'] == null
+          ? null
+          : map['diversityLevel'] as String,
+      diversityType: map['diversityType'] == null
+          ? null
+          : ServingConfigDiversityTypeRetailV2beta.fromValue(
+              map['diversityType'] as String),
+      doNotAssociateControlIds: map['doNotAssociateControlIds'] == null
+          ? null
+          : (map['doNotAssociateControlIds'] as List).cast<String>(),
+      dynamicFacetSpec: map['dynamicFacetSpec'] == null
+          ? null
+          : GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec.fromMap(
+              (map['dynamicFacetSpec'] as Map).cast<String, dynamic>()),
+      enableCategoryFilterLevel: map['enableCategoryFilterLevel'] == null
+          ? null
+          : map['enableCategoryFilterLevel'] as String,
+      facetControlIds: map['facetControlIds'] == null
+          ? null
+          : (map['facetControlIds'] as List).cast<String>(),
+      filterControlIds: map['filterControlIds'] == null
+          ? null
+          : (map['filterControlIds'] as List).cast<String>(),
+      ignoreControlIds: map['ignoreControlIds'] == null
+          ? null
+          : (map['ignoreControlIds'] as List).cast<String>(),
+      location: map['location'] == null ? null : map['location'] as String,
+      modelId: map['modelId'] == null ? null : map['modelId'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      onewaySynonymsControlIds: map['onewaySynonymsControlIds'] == null
+          ? null
+          : (map['onewaySynonymsControlIds'] as List).cast<String>(),
+      personalizationSpec: map['personalizationSpec'] == null
+          ? null
+          : GoogleCloudRetailV2betaSearchRequestPersonalizationSpec.fromMap(
+              (map['personalizationSpec'] as Map).cast<String, dynamic>()),
+      priceRerankingLevel: map['priceRerankingLevel'] == null
+          ? null
+          : map['priceRerankingLevel'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      redirectControlIds: map['redirectControlIds'] == null
+          ? null
+          : (map['redirectControlIds'] as List).cast<String>(),
+      replacementControlIds: map['replacementControlIds'] == null
+          ? null
+          : (map['replacementControlIds'] as List).cast<String>(),
+      servingConfigId: map['servingConfigId'] as String,
+      solutionTypes:
+          pulumi.Input.decodeList<ServingConfigSolutionTypesItemRetailV2beta>(
+              map['solutionTypes'],
+              (value) => ServingConfigSolutionTypesItemRetailV2beta.fromValue(
+                  value as String)),
+      twowaySynonymsControlIds: map['twowaySynonymsControlIds'] == null
+          ? null
+          : (map['twowaySynonymsControlIds'] as List).cast<String>(),
+    );
+  }
+}

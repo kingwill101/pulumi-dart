@@ -1,3 +1,3 @@
 library pulumi_google_native_dlp;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/dlp.dart';
+export 'package:pulumi_google_native/src/dlp.dart';

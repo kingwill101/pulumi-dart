@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Defines machines types and a rank to which the machines types belong.
+class InstanceSelection {
+  /// Optional. Full machine-type names, e.g. "n1-standard-16".
+  final List<String>? machineTypes;
+
+  /// Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+  final int? rank;
+
+  /// Creates a new [InstanceSelection].
+  /// [machineTypes] Optional. Full machine-type names, e.g. "n1-standard-16".
+  /// [rank] Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+  InstanceSelection({
+    this.machineTypes,
+    this.rank,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final machineTypesValue = machineTypes;
+    if (machineTypesValue != null) {
+      map['machineTypes'] = machineTypesValue;
+    }
+    final rankValue = rank;
+    if (rankValue != null) {
+      map['rank'] = rankValue;
+    }
+    return map;
+  }
+
+  factory InstanceSelection.fromMap(Map<String, dynamic> map) {
+    return InstanceSelection(
+      machineTypes: map['machineTypes'] == null
+          ? null
+          : (map['machineTypes'] as List).cast<String>(),
+      rank: map['rank'] == null ? null : map['rank'] as int,
+    );
+  }
+}

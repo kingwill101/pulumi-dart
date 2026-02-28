@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_container_v1beta1_get_server_config_container_v1beta1_args_doc}
+/// Arguments for getServerConfig.
+/// {@endtemplate}
+/// {@macro pulumi_container_v1beta1_get_server_config_container_v1beta1_args_doc}
+class GetServerConfigContainerV1beta1Args {
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> projectId;
+  final pulumi.Input<String> zone;
+
+  /// Creates a new [GetServerConfigContainerV1beta1Args].
+  /// [location] Required.
+  /// [project] Optional.
+  /// [projectId] Required.
+  /// [zone] Required.
+  GetServerConfigContainerV1beta1Args({
+    required String location,
+    String? project,
+    required String projectId,
+    required String zone,
+  })  : location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        projectId = pulumi.Input.asInput<String>(projectId),
+        zone = pulumi.Input.asInput<String>(zone);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['projectId'] = projectId;
+    map['zone'] = zone;
+    return map;
+  }
+
+  factory GetServerConfigContainerV1beta1Args.fromMap(
+      Map<String, dynamic> map) {
+    return GetServerConfigContainerV1beta1Args(
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      projectId: map['projectId'] as String,
+      zone: map['zone'] as String,
+    );
+  }
+}

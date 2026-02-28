@@ -1,0 +1,15 @@
+library module_oslogin;
+
+export 'oslogin/functions.dart';
+export 'oslogin/get_ssh_public_key_args.dart';
+export 'oslogin/get_ssh_public_key_oslogin_v1alpha_args.dart';
+export 'oslogin/get_ssh_public_key_oslogin_v1alpha_result.dart';
+export 'oslogin/get_ssh_public_key_oslogin_v1beta_args.dart';
+export 'oslogin/get_ssh_public_key_oslogin_v1beta_result.dart';
+export 'oslogin/get_ssh_public_key_result.dart';
+export 'oslogin/ssh_public_key.dart';
+export 'oslogin/ssh_public_key_args.dart';
+export 'oslogin/ssh_public_key_oslogin_v1alpha.dart';
+export 'oslogin/ssh_public_key_oslogin_v1alpha_args.dart';
+export 'oslogin/ssh_public_key_oslogin_v1beta.dart';
+export 'oslogin/ssh_public_key_oslogin_v1beta_args.dart';

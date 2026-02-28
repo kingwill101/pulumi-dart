@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_iam_v1_get_workforce_pool_args_doc}
+/// Arguments for getWorkforcePool.
+/// {@endtemplate}
+/// {@macro pulumi_iam_v1_get_workforce_pool_args_doc}
+class GetWorkforcePoolArgs {
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> workforcePoolId;
+
+  /// Creates a new [GetWorkforcePoolArgs].
+  /// [location] Required.
+  /// [workforcePoolId] Required.
+  GetWorkforcePoolArgs({
+    required String location,
+    required String workforcePoolId,
+  })  : location = pulumi.Input.asInput<String>(location),
+        workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['location'] = location;
+    map['workforcePoolId'] = workforcePoolId;
+    return map;
+  }
+
+  factory GetWorkforcePoolArgs.fromMap(Map<String, dynamic> map) {
+    return GetWorkforcePoolArgs(
+      location: map['location'] as String,
+      workforcePoolId: map['workforcePoolId'] as String,
+    );
+  }
+}

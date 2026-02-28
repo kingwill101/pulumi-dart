@@ -1,0 +1,123 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'backup_retention_settings.dart';
+
+/// Database instance backup configuration.
+class BackupConfiguration {
+  /// Backup retention settings.
+  final BackupRetentionSettings? backupRetentionSettings;
+
+  /// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
+  final bool? binaryLogEnabled;
+
+  /// Whether this configuration is enabled.
+  final bool? enabled;
+
+  /// This is always `sql#backupConfiguration`.
+  final String? kind;
+
+  /// Location of the backup
+  final String? location;
+
+  /// Whether point in time recovery is enabled.
+  final bool? pointInTimeRecoveryEnabled;
+
+  /// Reserved for future use.
+  final bool? replicationLogArchivingEnabled;
+
+  /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
+  final String? startTime;
+
+  /// The number of days of transaction logs we retain for point in time restore, from 1-7.
+  final int? transactionLogRetentionDays;
+
+  /// Creates a new [BackupConfiguration].
+  /// [backupRetentionSettings] Backup retention settings.
+  /// [binaryLogEnabled] (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
+  /// [enabled] Whether this configuration is enabled.
+  /// [kind] This is always `sql#backupConfiguration`.
+  /// [location] Location of the backup
+  /// [pointInTimeRecoveryEnabled] Whether point in time recovery is enabled.
+  /// [replicationLogArchivingEnabled] Reserved for future use.
+  /// [startTime] Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
+  /// [transactionLogRetentionDays] The number of days of transaction logs we retain for point in time restore, from 1-7.
+  BackupConfiguration({
+    this.backupRetentionSettings,
+    this.binaryLogEnabled,
+    this.enabled,
+    this.kind,
+    this.location,
+    this.pointInTimeRecoveryEnabled,
+    this.replicationLogArchivingEnabled,
+    this.startTime,
+    this.transactionLogRetentionDays,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final backupRetentionSettingsValue = backupRetentionSettings;
+    if (backupRetentionSettingsValue != null) {
+      map['backupRetentionSettings'] = backupRetentionSettingsValue.toMap();
+    }
+    final binaryLogEnabledValue = binaryLogEnabled;
+    if (binaryLogEnabledValue != null) {
+      map['binaryLogEnabled'] = binaryLogEnabledValue;
+    }
+    final enabledValue = enabled;
+    if (enabledValue != null) {
+      map['enabled'] = enabledValue;
+    }
+    final kindValue = kind;
+    if (kindValue != null) {
+      map['kind'] = kindValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final pointInTimeRecoveryEnabledValue = pointInTimeRecoveryEnabled;
+    if (pointInTimeRecoveryEnabledValue != null) {
+      map['pointInTimeRecoveryEnabled'] = pointInTimeRecoveryEnabledValue;
+    }
+    final replicationLogArchivingEnabledValue = replicationLogArchivingEnabled;
+    if (replicationLogArchivingEnabledValue != null) {
+      map['replicationLogArchivingEnabled'] =
+          replicationLogArchivingEnabledValue;
+    }
+    final startTimeValue = startTime;
+    if (startTimeValue != null) {
+      map['startTime'] = startTimeValue;
+    }
+    final transactionLogRetentionDaysValue = transactionLogRetentionDays;
+    if (transactionLogRetentionDaysValue != null) {
+      map['transactionLogRetentionDays'] = transactionLogRetentionDaysValue;
+    }
+    return map;
+  }
+
+  factory BackupConfiguration.fromMap(Map<String, dynamic> map) {
+    return BackupConfiguration(
+      backupRetentionSettings: map['backupRetentionSettings'] == null
+          ? null
+          : BackupRetentionSettings.fromMap(
+              (map['backupRetentionSettings'] as Map).cast<String, dynamic>()),
+      binaryLogEnabled: map['binaryLogEnabled'] == null
+          ? null
+          : map['binaryLogEnabled'] as bool,
+      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      kind: map['kind'] == null ? null : map['kind'] as String,
+      location: map['location'] == null ? null : map['location'] as String,
+      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null
+          ? null
+          : map['pointInTimeRecoveryEnabled'] as bool,
+      replicationLogArchivingEnabled:
+          map['replicationLogArchivingEnabled'] == null
+              ? null
+              : map['replicationLogArchivingEnabled'] as bool,
+      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      transactionLogRetentionDays: map['transactionLogRetentionDays'] == null
+          ? null
+          : map['transactionLogRetentionDays'] as int,
+    );
+  }
+}

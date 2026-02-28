@@ -1,0 +1,15 @@
+library module_contactcenteraiplatform;
+
+export 'contactcenteraiplatform/admin_user.dart';
+export 'contactcenteraiplatform/admin_user_response.dart';
+export 'contactcenteraiplatform/contact_center.dart';
+export 'contactcenteraiplatform/contact_center_args.dart';
+export 'contactcenteraiplatform/functions.dart';
+export 'contactcenteraiplatform/get_contact_center_args.dart';
+export 'contactcenteraiplatform/get_contact_center_result.dart';
+export 'contactcenteraiplatform/instance_config.dart';
+export 'contactcenteraiplatform/instance_config_instance_size.dart';
+export 'contactcenteraiplatform/instance_config_response.dart';
+export 'contactcenteraiplatform/samlparams.dart';
+export 'contactcenteraiplatform/samlparams_response.dart';
+export 'contactcenteraiplatform/uris_response.dart';

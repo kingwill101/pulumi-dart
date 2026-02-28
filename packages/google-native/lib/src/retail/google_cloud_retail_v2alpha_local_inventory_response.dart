@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'google_cloud_retail_v2alpha_price_info_response.dart';
+
+/// The inventory information at a place (e.g. a store) identified by a place ID.
+class GoogleCloudRetailV2alphaLocalInventoryResponse {
+  /// Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+  final Map<String, String> attributes;
+
+  /// Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
+  final List<String> fulfillmentTypes;
+
+  /// The place ID for the current set of inventory information.
+  final String placeId;
+
+  /// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+  final GoogleCloudRetailV2alphaPriceInfoResponse priceInfo;
+
+  /// Creates a new [GoogleCloudRetailV2alphaLocalInventoryResponse].
+  /// [attributes] Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+  /// [fulfillmentTypes] Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// [placeId] The place ID for the current set of inventory information.
+  /// [priceInfo] Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+  GoogleCloudRetailV2alphaLocalInventoryResponse({
+    required this.attributes,
+    required this.fulfillmentTypes,
+    required this.placeId,
+    required this.priceInfo,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['attributes'] = attributes;
+    map['fulfillmentTypes'] = fulfillmentTypes;
+    map['placeId'] = placeId;
+    map['priceInfo'] = priceInfo.toMap();
+    return map;
+  }
+
+  factory GoogleCloudRetailV2alphaLocalInventoryResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudRetailV2alphaLocalInventoryResponse(
+      attributes: (map['attributes'] as Map).cast<String, String>(),
+      fulfillmentTypes: (map['fulfillmentTypes'] as List).cast<String>(),
+      placeId: map['placeId'] as String,
+      priceInfo: GoogleCloudRetailV2alphaPriceInfoResponse.fromMap(
+          (map['priceInfo'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

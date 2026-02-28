@@ -1,3 +1,3 @@
 library pulumi_google_native_datafusion;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/datafusion.dart';
+export 'package:pulumi_google_native/src/datafusion.dart';

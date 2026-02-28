@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_datamigration_v1_get_mapping_rule_args_doc}
+/// Arguments for getMappingRule.
+/// {@endtemplate}
+/// {@macro pulumi_datamigration_v1_get_mapping_rule_args_doc}
+class GetMappingRuleArgs {
+  final pulumi.Input<String> conversionWorkspaceId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> mappingRuleId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetMappingRuleArgs].
+  /// [conversionWorkspaceId] Required.
+  /// [location] Required.
+  /// [mappingRuleId] Required.
+  /// [project] Optional.
+  GetMappingRuleArgs({
+    required String conversionWorkspaceId,
+    required String location,
+    required String mappingRuleId,
+    String? project,
+  })  : conversionWorkspaceId =
+            pulumi.Input.asInput<String>(conversionWorkspaceId),
+        location = pulumi.Input.asInput<String>(location),
+        mappingRuleId = pulumi.Input.asInput<String>(mappingRuleId),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['conversionWorkspaceId'] = conversionWorkspaceId;
+    map['location'] = location;
+    map['mappingRuleId'] = mappingRuleId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetMappingRuleArgs.fromMap(Map<String, dynamic> map) {
+    return GetMappingRuleArgs(
+      conversionWorkspaceId: map['conversionWorkspaceId'] as String,
+      location: map['location'] as String,
+      mappingRuleId: map['mappingRuleId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

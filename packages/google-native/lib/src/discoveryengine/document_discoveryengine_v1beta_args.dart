@@ -1,0 +1,157 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_discoveryengine_v1beta_document_content.dart';
+
+/// {@template pulumi_discoveryengine_v1beta_document_discoveryengine_v1beta_args_doc}
+/// The set of arguments for Document.
+/// {@endtemplate}
+/// {@macro pulumi_discoveryengine_v1beta_document_discoveryengine_v1beta_args_doc}
+class DocumentDiscoveryengineV1betaArgs {
+  final pulumi.Input<String> branchId;
+  final pulumi.Input<String> collectionId;
+
+  /// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+  final pulumi.Input<GoogleCloudDiscoveryengineV1betaDocumentContent>? content;
+  final pulumi.Input<String> dataStoreId;
+
+  /// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+  final pulumi.Input<String> documentId;
+
+  /// Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
+  final pulumi.Input<String>? id;
+
+  /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
+  final pulumi.Input<String>? jsonData;
+  final pulumi.Input<String>? location;
+
+  /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+  final pulumi.Input<String>? name;
+
+  /// The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
+  final pulumi.Input<String>? parentDocumentId;
+  final pulumi.Input<String>? project;
+
+  /// The identifier of the schema located in the same data store.
+  final pulumi.Input<String>? schemaId;
+
+  /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
+  final pulumi.Input<Map<String, String>>? structData;
+
+  /// Creates a new [DocumentDiscoveryengineV1betaArgs].
+  /// [branchId] Required.
+  /// [collectionId] Required.
+  /// [content] The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+  /// [dataStoreId] Required.
+  /// [documentId] Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+  /// [id] Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
+  /// [jsonData] The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
+  /// [location] Optional.
+  /// [name] Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+  /// [parentDocumentId] The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
+  /// [project] Optional.
+  /// [schemaId] The identifier of the schema located in the same data store.
+  /// [structData] The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
+  DocumentDiscoveryengineV1betaArgs({
+    required String branchId,
+    required String collectionId,
+    GoogleCloudDiscoveryengineV1betaDocumentContent? content,
+    required String dataStoreId,
+    required String documentId,
+    String? id,
+    String? jsonData,
+    String? location,
+    String? name,
+    String? parentDocumentId,
+    String? project,
+    String? schemaId,
+    Map<String, String>? structData,
+  })  : branchId = pulumi.Input.asInput<String>(branchId),
+        collectionId = pulumi.Input.asInput<String>(collectionId),
+        content = pulumi.Input.asOptionalInput<
+            GoogleCloudDiscoveryengineV1betaDocumentContent>(content),
+        dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+        documentId = pulumi.Input.asInput<String>(documentId),
+        id = pulumi.Input.asOptionalInput<String>(id),
+        jsonData = pulumi.Input.asOptionalInput<String>(jsonData),
+        location = pulumi.Input.asOptionalInput<String>(location),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        parentDocumentId =
+            pulumi.Input.asOptionalInput<String>(parentDocumentId),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        schemaId = pulumi.Input.asOptionalInput<String>(schemaId),
+        structData =
+            pulumi.Input.asOptionalInput<Map<String, String>>(structData);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['branchId'] = branchId;
+    map['collectionId'] = collectionId;
+    final contentValue = content;
+    if (contentValue != null) {
+      map['content'] = pulumi.Input.mapOptionalInputValue<
+          GoogleCloudDiscoveryengineV1betaDocumentContent,
+          Map<String, dynamic>>(contentValue, (value) => value.toMap());
+    }
+    map['dataStoreId'] = dataStoreId;
+    map['documentId'] = documentId;
+    final idValue = id;
+    if (idValue != null) {
+      map['id'] = idValue;
+    }
+    final jsonDataValue = jsonData;
+    if (jsonDataValue != null) {
+      map['jsonData'] = jsonDataValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final parentDocumentIdValue = parentDocumentId;
+    if (parentDocumentIdValue != null) {
+      map['parentDocumentId'] = parentDocumentIdValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final schemaIdValue = schemaId;
+    if (schemaIdValue != null) {
+      map['schemaId'] = schemaIdValue;
+    }
+    final structDataValue = structData;
+    if (structDataValue != null) {
+      map['structData'] = structDataValue;
+    }
+    return map;
+  }
+
+  factory DocumentDiscoveryengineV1betaArgs.fromMap(Map<String, dynamic> map) {
+    return DocumentDiscoveryengineV1betaArgs(
+      branchId: map['branchId'] as String,
+      collectionId: map['collectionId'] as String,
+      content: map['content'] == null
+          ? null
+          : GoogleCloudDiscoveryengineV1betaDocumentContent.fromMap(
+              (map['content'] as Map).cast<String, dynamic>()),
+      dataStoreId: map['dataStoreId'] as String,
+      documentId: map['documentId'] as String,
+      id: map['id'] == null ? null : map['id'] as String,
+      jsonData: map['jsonData'] == null ? null : map['jsonData'] as String,
+      location: map['location'] == null ? null : map['location'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      parentDocumentId: map['parentDocumentId'] == null
+          ? null
+          : map['parentDocumentId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      schemaId: map['schemaId'] == null ? null : map['schemaId'] as String,
+      structData: map['structData'] == null
+          ? null
+          : (map['structData'] as Map).cast<String, String>(),
+    );
+  }
+}

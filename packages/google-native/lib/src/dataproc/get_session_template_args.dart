@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dataproc_v1_get_session_template_args_doc}
+/// Arguments for getSessionTemplate.
+/// {@endtemplate}
+/// {@macro pulumi_dataproc_v1_get_session_template_args_doc}
+class GetSessionTemplateArgs {
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sessionTemplateId;
+
+  /// Creates a new [GetSessionTemplateArgs].
+  /// [location] Required.
+  /// [project] Optional.
+  /// [sessionTemplateId] Required.
+  GetSessionTemplateArgs({
+    required String location,
+    String? project,
+    required String sessionTemplateId,
+  })  : location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        sessionTemplateId = pulumi.Input.asInput<String>(sessionTemplateId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['sessionTemplateId'] = sessionTemplateId;
+    return map;
+  }
+
+  factory GetSessionTemplateArgs.fromMap(Map<String, dynamic> map) {
+    return GetSessionTemplateArgs(
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      sessionTemplateId: map['sessionTemplateId'] as String,
+    );
+  }
+}

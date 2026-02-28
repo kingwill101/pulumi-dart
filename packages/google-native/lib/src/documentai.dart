@@ -1,0 +1,13 @@
+library module_documentai;
+
+export 'documentai/functions.dart';
+export 'documentai/get_processor_args.dart';
+export 'documentai/get_processor_documentai_v1beta3_args.dart';
+export 'documentai/get_processor_documentai_v1beta3_result.dart';
+export 'documentai/get_processor_result.dart';
+export 'documentai/google_cloud_documentai_v1_processor_version_alias_response.dart';
+export 'documentai/google_cloud_documentai_v1beta3_processor_version_alias_response.dart';
+export 'documentai/processor.dart';
+export 'documentai/processor_args.dart';
+export 'documentai/processor_documentai_v1beta3.dart';
+export 'documentai/processor_documentai_v1beta3_args.dart';

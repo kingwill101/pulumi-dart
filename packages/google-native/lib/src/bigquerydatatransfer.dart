@@ -1,0 +1,14 @@
+library module_bigquerydatatransfer;
+
+export 'bigquerydatatransfer/email_preferences.dart';
+export 'bigquerydatatransfer/email_preferences_response.dart';
+export 'bigquerydatatransfer/encryption_configuration.dart';
+export 'bigquerydatatransfer/encryption_configuration_response.dart';
+export 'bigquerydatatransfer/functions.dart';
+export 'bigquerydatatransfer/get_transfer_config_args.dart';
+export 'bigquerydatatransfer/get_transfer_config_result.dart';
+export 'bigquerydatatransfer/schedule_options.dart';
+export 'bigquerydatatransfer/schedule_options_response.dart';
+export 'bigquerydatatransfer/transfer_config.dart';
+export 'bigquerydatatransfer/transfer_config_args.dart';
+export 'bigquerydatatransfer/user_info_response.dart';

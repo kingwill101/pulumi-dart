@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'node_affinity_container_v1beta1.dart';
+
+/// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
+class SoleTenantConfigContainerV1beta1 {
+  /// NodeAffinities used to match to a shared sole tenant node group.
+  final List<NodeAffinityContainerV1beta1>? nodeAffinities;
+
+  /// Creates a new [SoleTenantConfigContainerV1beta1].
+  /// [nodeAffinities] NodeAffinities used to match to a shared sole tenant node group.
+  SoleTenantConfigContainerV1beta1({
+    this.nodeAffinities,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final nodeAffinitiesValue = nodeAffinities;
+    if (nodeAffinitiesValue != null) {
+      map['nodeAffinities'] = pulumi.Input.encodeList<
+          NodeAffinityContainerV1beta1,
+          Map<String, dynamic>>(nodeAffinitiesValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory SoleTenantConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+    return SoleTenantConfigContainerV1beta1(
+      nodeAffinities: map['nodeAffinities'] == null
+          ? null
+          : pulumi.Input.decodeList<NodeAffinityContainerV1beta1>(
+              map['nodeAffinities'],
+              (value) => NodeAffinityContainerV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

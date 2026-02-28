@@ -1,0 +1,15 @@
+library module_speech;
+
+export 'speech/class_item.dart';
+export 'speech/class_item_response.dart';
+export 'speech/custom_class.dart';
+export 'speech/custom_class_args.dart';
+export 'speech/functions.dart';
+export 'speech/get_custom_class_args.dart';
+export 'speech/get_custom_class_result.dart';
+export 'speech/get_phrase_set_args.dart';
+export 'speech/get_phrase_set_result.dart';
+export 'speech/phrase.dart';
+export 'speech/phrase_response.dart';
+export 'speech/phrase_set.dart';
+export 'speech/phrase_set_args.dart';

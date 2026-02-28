@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_aiplatform_v1_get_time_series_args_doc}
+/// Arguments for getTimeSeries.
+/// {@endtemplate}
+/// {@macro pulumi_aiplatform_v1_get_time_series_args_doc}
+class GetTimeSeriesArgs {
+  final pulumi.Input<String> experimentId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> runId;
+  final pulumi.Input<String> tensorboardId;
+  final pulumi.Input<String> timeSeriesId;
+
+  /// Creates a new [GetTimeSeriesArgs].
+  /// [experimentId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  /// [runId] Required.
+  /// [tensorboardId] Required.
+  /// [timeSeriesId] Required.
+  GetTimeSeriesArgs({
+    required String experimentId,
+    required String location,
+    String? project,
+    required String runId,
+    required String tensorboardId,
+    required String timeSeriesId,
+  })  : experimentId = pulumi.Input.asInput<String>(experimentId),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        runId = pulumi.Input.asInput<String>(runId),
+        tensorboardId = pulumi.Input.asInput<String>(tensorboardId),
+        timeSeriesId = pulumi.Input.asInput<String>(timeSeriesId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['experimentId'] = experimentId;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['runId'] = runId;
+    map['tensorboardId'] = tensorboardId;
+    map['timeSeriesId'] = timeSeriesId;
+    return map;
+  }
+
+  factory GetTimeSeriesArgs.fromMap(Map<String, dynamic> map) {
+    return GetTimeSeriesArgs(
+      experimentId: map['experimentId'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      runId: map['runId'] as String,
+      tensorboardId: map['tensorboardId'] as String,
+      timeSeriesId: map['timeSeriesId'] as String,
+    );
+  }
+}

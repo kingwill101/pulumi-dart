@@ -1,0 +1,239 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_integrations_v1alpha_integration_parameter.dart';
+import 'google_cloud_integrations_v1alpha_test_task_config.dart';
+import 'test_case_database_persistence_policy.dart';
+
+/// {@template pulumi_integrations_v1alpha_test_case_args_doc}
+/// The set of arguments for TestCase.
+/// {@endtemplate}
+/// {@macro pulumi_integrations_v1alpha_test_case_args_doc}
+class TestCaseArgs {
+  /// Auto-generated.
+  final pulumi.Input<String>? createTime;
+
+  /// Optional. The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
+  final pulumi.Input<String>? creatorEmail;
+
+  /// Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..
+  final pulumi.Input<TestCaseDatabasePersistencePolicy>?
+      databasePersistencePolicy;
+
+  /// Optional. Description of the test case.
+  final pulumi.Input<String>? description;
+
+  /// The display name of test case.
+  final pulumi.Input<String> displayName;
+  final pulumi.Input<String> integrationId;
+
+  /// The last modifer's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
+  final pulumi.Input<String>? lastModifierEmail;
+  final pulumi.Input<String>? location;
+
+  /// Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
+  final pulumi.Input<String>? lockHolderEmail;
+  final pulumi.Input<String>? project;
+
+  /// Required. Required
+  final pulumi.Input<String> testCaseId;
+
+  /// Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables.
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaIntegrationParameter>>?
+      testInputParameters;
+
+  /// Optional. However, the test case doesn't mock or assert anything without test_task_configs.
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaTestTaskConfig>>?
+      testTaskConfigs;
+
+  /// This defines the trigger ID in workflow which is considered to be executed as starting point of the test case
+  final pulumi.Input<String> triggerId;
+
+  /// Auto-generated.
+  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String> versionId;
+
+  /// ID of the workflow with which this test case is associated
+  final pulumi.Input<String>? workflowId;
+
+  /// Creates a new [TestCaseArgs].
+  /// [createTime] Auto-generated.
+  /// [creatorEmail] Optional. The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
+  /// [databasePersistencePolicy] Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..
+  /// [description] Optional. Description of the test case.
+  /// [displayName] The display name of test case.
+  /// [integrationId] Required.
+  /// [lastModifierEmail] The last modifer's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
+  /// [location] Optional.
+  /// [lockHolderEmail] Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
+  /// [project] Optional.
+  /// [testCaseId] Required. Required
+  /// [testInputParameters] Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables.
+  /// [testTaskConfigs] Optional. However, the test case doesn't mock or assert anything without test_task_configs.
+  /// [triggerId] This defines the trigger ID in workflow which is considered to be executed as starting point of the test case
+  /// [updateTime] Auto-generated.
+  /// [versionId] Required.
+  /// [workflowId] ID of the workflow with which this test case is associated
+  TestCaseArgs({
+    String? createTime,
+    String? creatorEmail,
+    TestCaseDatabasePersistencePolicy? databasePersistencePolicy,
+    String? description,
+    required String displayName,
+    required String integrationId,
+    String? lastModifierEmail,
+    String? location,
+    String? lockHolderEmail,
+    String? project,
+    required String testCaseId,
+    List<GoogleCloudIntegrationsV1alphaIntegrationParameter>?
+        testInputParameters,
+    List<GoogleCloudIntegrationsV1alphaTestTaskConfig>? testTaskConfigs,
+    required String triggerId,
+    String? updateTime,
+    required String versionId,
+    String? workflowId,
+  })  : createTime = pulumi.Input.asOptionalInput<String>(createTime),
+        creatorEmail = pulumi.Input.asOptionalInput<String>(creatorEmail),
+        databasePersistencePolicy =
+            pulumi.Input.asOptionalInput<TestCaseDatabasePersistencePolicy>(
+                databasePersistencePolicy),
+        description = pulumi.Input.asOptionalInput<String>(description),
+        displayName = pulumi.Input.asInput<String>(displayName),
+        integrationId = pulumi.Input.asInput<String>(integrationId),
+        lastModifierEmail =
+            pulumi.Input.asOptionalInput<String>(lastModifierEmail),
+        location = pulumi.Input.asOptionalInput<String>(location),
+        lockHolderEmail = pulumi.Input.asOptionalInput<String>(lockHolderEmail),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        testCaseId = pulumi.Input.asInput<String>(testCaseId),
+        testInputParameters = pulumi.Input.asOptionalInput<
+                List<GoogleCloudIntegrationsV1alphaIntegrationParameter>>(
+            testInputParameters),
+        testTaskConfigs = pulumi.Input.asOptionalInput<
+                List<GoogleCloudIntegrationsV1alphaTestTaskConfig>>(
+            testTaskConfigs),
+        triggerId = pulumi.Input.asInput<String>(triggerId),
+        updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
+        versionId = pulumi.Input.asInput<String>(versionId),
+        workflowId = pulumi.Input.asOptionalInput<String>(workflowId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final createTimeValue = createTime;
+    if (createTimeValue != null) {
+      map['createTime'] = createTimeValue;
+    }
+    final creatorEmailValue = creatorEmail;
+    if (creatorEmailValue != null) {
+      map['creatorEmail'] = creatorEmailValue;
+    }
+    final databasePersistencePolicyValue = databasePersistencePolicy;
+    if (databasePersistencePolicyValue != null) {
+      map['databasePersistencePolicy'] = pulumi.Input.mapOptionalInputValue<
+          TestCaseDatabasePersistencePolicy,
+          String>(databasePersistencePolicyValue, (value) => value.value);
+    }
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    map['displayName'] = displayName;
+    map['integrationId'] = integrationId;
+    final lastModifierEmailValue = lastModifierEmail;
+    if (lastModifierEmailValue != null) {
+      map['lastModifierEmail'] = lastModifierEmailValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final lockHolderEmailValue = lockHolderEmail;
+    if (lockHolderEmailValue != null) {
+      map['lockHolderEmail'] = lockHolderEmailValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['testCaseId'] = testCaseId;
+    final testInputParametersValue = testInputParameters;
+    if (testInputParametersValue != null) {
+      map['testInputParameters'] = pulumi.Input.mapOptionalInputValue<
+              List<GoogleCloudIntegrationsV1alphaIntegrationParameter>,
+              List<Map<String, dynamic>>>(
+          testInputParametersValue,
+          (value) => pulumi.Input.encodeList<
+              GoogleCloudIntegrationsV1alphaIntegrationParameter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    final testTaskConfigsValue = testTaskConfigs;
+    if (testTaskConfigsValue != null) {
+      map['testTaskConfigs'] = pulumi.Input.mapOptionalInputValue<
+              List<GoogleCloudIntegrationsV1alphaTestTaskConfig>,
+              List<Map<String, dynamic>>>(
+          testTaskConfigsValue,
+          (value) => pulumi.Input.encodeList<
+              GoogleCloudIntegrationsV1alphaTestTaskConfig,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    map['triggerId'] = triggerId;
+    final updateTimeValue = updateTime;
+    if (updateTimeValue != null) {
+      map['updateTime'] = updateTimeValue;
+    }
+    map['versionId'] = versionId;
+    final workflowIdValue = workflowId;
+    if (workflowIdValue != null) {
+      map['workflowId'] = workflowIdValue;
+    }
+    return map;
+  }
+
+  factory TestCaseArgs.fromMap(Map<String, dynamic> map) {
+    return TestCaseArgs(
+      createTime:
+          map['createTime'] == null ? null : map['createTime'] as String,
+      creatorEmail:
+          map['creatorEmail'] == null ? null : map['creatorEmail'] as String,
+      databasePersistencePolicy: map['databasePersistencePolicy'] == null
+          ? null
+          : TestCaseDatabasePersistencePolicy.fromValue(
+              map['databasePersistencePolicy'] as String),
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      displayName: map['displayName'] as String,
+      integrationId: map['integrationId'] as String,
+      lastModifierEmail: map['lastModifierEmail'] == null
+          ? null
+          : map['lastModifierEmail'] as String,
+      location: map['location'] == null ? null : map['location'] as String,
+      lockHolderEmail: map['lockHolderEmail'] == null
+          ? null
+          : map['lockHolderEmail'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      testCaseId: map['testCaseId'] as String,
+      testInputParameters: map['testInputParameters'] == null
+          ? null
+          : pulumi.Input.decodeList<
+                  GoogleCloudIntegrationsV1alphaIntegrationParameter>(
+              map['testInputParameters'],
+              (value) =>
+                  GoogleCloudIntegrationsV1alphaIntegrationParameter.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+      testTaskConfigs: map['testTaskConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+                  GoogleCloudIntegrationsV1alphaTestTaskConfig>(
+              map['testTaskConfigs'],
+              (value) => GoogleCloudIntegrationsV1alphaTestTaskConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      triggerId: map['triggerId'] as String,
+      updateTime:
+          map['updateTime'] == null ? null : map['updateTime'] as String,
+      versionId: map['versionId'] as String,
+      workflowId:
+          map['workflowId'] == null ? null : map['workflowId'] as String,
+    );
+  }
+}

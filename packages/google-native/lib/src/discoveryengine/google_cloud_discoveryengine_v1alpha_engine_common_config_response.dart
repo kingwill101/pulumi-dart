@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Common configurations for an Engine.
+class GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse {
+  /// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+  final String companyName;
+
+  /// Creates a new [GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse].
+  /// [companyName] The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+  GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse({
+    required this.companyName,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['companyName'] = companyName;
+    return map;
+  }
+
+  factory GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse(
+      companyName: map['companyName'] as String,
+    );
+  }
+}

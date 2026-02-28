@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'fleet_observability_fleet_observability_base_feature_state_response_gkehub_v1beta.dart';
+
+/// Feature state for monitoring feature.
+class FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta {
+  /// The base feature state of fleet monitoring feature.
+  final FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta
+      state;
+
+  /// Creates a new [FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta].
+  /// [state] The base feature state of fleet monitoring feature.
+  FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta({
+    required this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['state'] = state.toMap();
+    return map;
+  }
+
+  factory FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta.fromMap(
+      Map<String, dynamic> map) {
+    return FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1beta(
+      state:
+          FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta
+              .fromMap((map['state'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

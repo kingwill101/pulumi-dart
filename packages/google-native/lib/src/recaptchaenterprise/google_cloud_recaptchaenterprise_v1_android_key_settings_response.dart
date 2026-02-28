@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Settings specific to keys that can be used by Android apps.
+class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
+  /// Optional. If set to true, allowed_package_names are not enforced.
+  final bool allowAllPackageNames;
+
+  /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+  final List<String> allowedPackageNames;
+
+  /// Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+  final bool supportNonGoogleAppStoreDistribution;
+
+  /// Creates a new [GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse].
+  /// [allowAllPackageNames] Optional. If set to true, allowed_package_names are not enforced.
+  /// [allowedPackageNames] Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+  /// [supportNonGoogleAppStoreDistribution] Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+  GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse({
+    required this.allowAllPackageNames,
+    required this.allowedPackageNames,
+    required this.supportNonGoogleAppStoreDistribution,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['allowAllPackageNames'] = allowAllPackageNames;
+    map['allowedPackageNames'] = allowedPackageNames;
+    map['supportNonGoogleAppStoreDistribution'] =
+        supportNonGoogleAppStoreDistribution;
+    return map;
+  }
+
+  factory GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(
+      allowAllPackageNames: map['allowAllPackageNames'] as bool,
+      allowedPackageNames: (map['allowedPackageNames'] as List).cast<String>(),
+      supportNonGoogleAppStoreDistribution:
+          map['supportNonGoogleAppStoreDistribution'] as bool,
+    );
+  }
+}

@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_networkservices_v1_get_edge_cache_service_iam_policy_args_doc}
+/// Arguments for getEdgeCacheServiceIamPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_networkservices_v1_get_edge_cache_service_iam_policy_args_doc}
+class GetEdgeCacheServiceIamPolicyArgs {
+  final pulumi.Input<String> edgeCacheServiceId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetEdgeCacheServiceIamPolicyArgs].
+  /// [edgeCacheServiceId] Required.
+  /// [location] Required.
+  /// [optionsRequestedPolicyVersion] Optional.
+  /// [project] Optional.
+  GetEdgeCacheServiceIamPolicyArgs({
+    required String edgeCacheServiceId,
+    required String location,
+    int? optionsRequestedPolicyVersion,
+    String? project,
+  })  : edgeCacheServiceId = pulumi.Input.asInput<String>(edgeCacheServiceId),
+        location = pulumi.Input.asInput<String>(location),
+        optionsRequestedPolicyVersion =
+            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['edgeCacheServiceId'] = edgeCacheServiceId;
+    map['location'] = location;
+    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
+    if (optionsRequestedPolicyVersionValue != null) {
+      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetEdgeCacheServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetEdgeCacheServiceIamPolicyArgs(
+      edgeCacheServiceId: map['edgeCacheServiceId'] as String,
+      location: map['location'] as String,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+              ? null
+              : map['optionsRequestedPolicyVersion'] as int,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dialogflow_v2beta1_get_entity_type_dialogflow_v2beta1_args_doc}
+/// Arguments for getEntityType.
+/// {@endtemplate}
+/// {@macro pulumi_dialogflow_v2beta1_get_entity_type_dialogflow_v2beta1_args_doc}
+class GetEntityTypeDialogflowV2beta1Args {
+  final pulumi.Input<String> entityTypeId;
+  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetEntityTypeDialogflowV2beta1Args].
+  /// [entityTypeId] Required.
+  /// [languageCode] Optional.
+  /// [location] Required.
+  /// [project] Optional.
+  GetEntityTypeDialogflowV2beta1Args({
+    required String entityTypeId,
+    String? languageCode,
+    required String location,
+    String? project,
+  })  : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+        languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['entityTypeId'] = entityTypeId;
+    final languageCodeValue = languageCode;
+    if (languageCodeValue != null) {
+      map['languageCode'] = languageCodeValue;
+    }
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetEntityTypeDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
+    return GetEntityTypeDialogflowV2beta1Args(
+      entityTypeId: map['entityTypeId'] as String,
+      languageCode:
+          map['languageCode'] == null ? null : map['languageCode'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

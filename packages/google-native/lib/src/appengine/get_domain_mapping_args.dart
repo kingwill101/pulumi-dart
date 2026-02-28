@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_appengine_v1_get_domain_mapping_args_doc}
+/// Arguments for getDomainMapping.
+/// {@endtemplate}
+/// {@macro pulumi_appengine_v1_get_domain_mapping_args_doc}
+class GetDomainMappingArgs {
+  final pulumi.Input<String> appId;
+  final pulumi.Input<String> domainMappingId;
+
+  /// Creates a new [GetDomainMappingArgs].
+  /// [appId] Required.
+  /// [domainMappingId] Required.
+  GetDomainMappingArgs({
+    required String appId,
+    required String domainMappingId,
+  })  : appId = pulumi.Input.asInput<String>(appId),
+        domainMappingId = pulumi.Input.asInput<String>(domainMappingId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['appId'] = appId;
+    map['domainMappingId'] = domainMappingId;
+    return map;
+  }
+
+  factory GetDomainMappingArgs.fromMap(Map<String, dynamic> map) {
+    return GetDomainMappingArgs(
+      appId: map['appId'] as String,
+      domainMappingId: map['domainMappingId'] as String,
+    );
+  }
+}

@@ -1,0 +1,114 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Configuration for how human labeling task should be done.
+class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
+  /// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
+  final String? annotatedDatasetDescription;
+
+  /// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+  final String annotatedDatasetDisplayName;
+
+  /// Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
+  final List<String>? contributorEmails;
+
+  /// Instruction resource name.
+  final String instruction;
+
+  /// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
+  final String? labelGroup;
+
+  /// Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification.
+  final String? languageCode;
+
+  /// Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds.
+  final String? questionDuration;
+
+  /// Optional. Replication of questions. Each question will be sent to up to this number of contributors to label. Aggregated answers will be returned. Default is set to 1. For image related labeling, valid values are 1, 3, 5.
+  final int? replicaCount;
+
+  /// Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent.
+  final String? userEmailAddress;
+
+  /// Creates a new [GoogleCloudDatalabelingV1beta1HumanAnnotationConfig].
+  /// [annotatedDatasetDescription] Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
+  /// [annotatedDatasetDisplayName] A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+  /// [contributorEmails] Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
+  /// [instruction] Instruction resource name.
+  /// [labelGroup] Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
+  /// [languageCode] Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification.
+  /// [questionDuration] Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds.
+  /// [replicaCount] Optional. Replication of questions. Each question will be sent to up to this number of contributors to label. Aggregated answers will be returned. Default is set to 1. For image related labeling, valid values are 1, 3, 5.
+  /// [userEmailAddress] Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent.
+  GoogleCloudDatalabelingV1beta1HumanAnnotationConfig({
+    this.annotatedDatasetDescription,
+    required this.annotatedDatasetDisplayName,
+    this.contributorEmails,
+    required this.instruction,
+    this.labelGroup,
+    this.languageCode,
+    this.questionDuration,
+    this.replicaCount,
+    this.userEmailAddress,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final annotatedDatasetDescriptionValue = annotatedDatasetDescription;
+    if (annotatedDatasetDescriptionValue != null) {
+      map['annotatedDatasetDescription'] = annotatedDatasetDescriptionValue;
+    }
+    map['annotatedDatasetDisplayName'] = annotatedDatasetDisplayName;
+    final contributorEmailsValue = contributorEmails;
+    if (contributorEmailsValue != null) {
+      map['contributorEmails'] = contributorEmailsValue;
+    }
+    map['instruction'] = instruction;
+    final labelGroupValue = labelGroup;
+    if (labelGroupValue != null) {
+      map['labelGroup'] = labelGroupValue;
+    }
+    final languageCodeValue = languageCode;
+    if (languageCodeValue != null) {
+      map['languageCode'] = languageCodeValue;
+    }
+    final questionDurationValue = questionDuration;
+    if (questionDurationValue != null) {
+      map['questionDuration'] = questionDurationValue;
+    }
+    final replicaCountValue = replicaCount;
+    if (replicaCountValue != null) {
+      map['replicaCount'] = replicaCountValue;
+    }
+    final userEmailAddressValue = userEmailAddress;
+    if (userEmailAddressValue != null) {
+      map['userEmailAddress'] = userEmailAddressValue;
+    }
+    return map;
+  }
+
+  factory GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudDatalabelingV1beta1HumanAnnotationConfig(
+      annotatedDatasetDescription: map['annotatedDatasetDescription'] == null
+          ? null
+          : map['annotatedDatasetDescription'] as String,
+      annotatedDatasetDisplayName: map['annotatedDatasetDisplayName'] as String,
+      contributorEmails: map['contributorEmails'] == null
+          ? null
+          : (map['contributorEmails'] as List).cast<String>(),
+      instruction: map['instruction'] as String,
+      labelGroup:
+          map['labelGroup'] == null ? null : map['labelGroup'] as String,
+      languageCode:
+          map['languageCode'] == null ? null : map['languageCode'] as String,
+      questionDuration: map['questionDuration'] == null
+          ? null
+          : map['questionDuration'] as String,
+      replicaCount:
+          map['replicaCount'] == null ? null : map['replicaCount'] as int,
+      userEmailAddress: map['userEmailAddress'] == null
+          ? null
+          : map['userEmailAddress'] as String,
+    );
+  }
+}

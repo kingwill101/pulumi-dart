@@ -1,3 +1,3 @@
 library pulumi_google_native_clouddeploy;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/clouddeploy.dart';
+export 'package:pulumi_google_native/src/clouddeploy.dart';

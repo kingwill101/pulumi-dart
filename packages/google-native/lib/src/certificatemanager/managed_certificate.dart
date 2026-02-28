@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
+class ManagedCertificate {
+  /// Immutable. Authorizations that will be used for performing domain authorization.
+  final List<String>? dnsAuthorizations;
+
+  /// Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
+  final List<String>? domains;
+
+  /// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+  final String? issuanceConfig;
+
+  /// Creates a new [ManagedCertificate].
+  /// [dnsAuthorizations] Immutable. Authorizations that will be used for performing domain authorization.
+  /// [domains] Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
+  /// [issuanceConfig] Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+  ManagedCertificate({
+    this.dnsAuthorizations,
+    this.domains,
+    this.issuanceConfig,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final dnsAuthorizationsValue = dnsAuthorizations;
+    if (dnsAuthorizationsValue != null) {
+      map['dnsAuthorizations'] = dnsAuthorizationsValue;
+    }
+    final domainsValue = domains;
+    if (domainsValue != null) {
+      map['domains'] = domainsValue;
+    }
+    final issuanceConfigValue = issuanceConfig;
+    if (issuanceConfigValue != null) {
+      map['issuanceConfig'] = issuanceConfigValue;
+    }
+    return map;
+  }
+
+  factory ManagedCertificate.fromMap(Map<String, dynamic> map) {
+    return ManagedCertificate(
+      dnsAuthorizations: map['dnsAuthorizations'] == null
+          ? null
+          : (map['dnsAuthorizations'] as List).cast<String>(),
+      domains: map['domains'] == null
+          ? null
+          : (map['domains'] as List).cast<String>(),
+      issuanceConfig: map['issuanceConfig'] == null
+          ? null
+          : map['issuanceConfig'] as String,
+    );
+  }
+}

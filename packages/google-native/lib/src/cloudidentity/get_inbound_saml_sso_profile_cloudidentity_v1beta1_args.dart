@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cloudidentity_v1beta1_get_inbound_saml_sso_profile_cloudidentity_v1beta1_args_doc}
+/// Arguments for getInboundSamlSsoProfile.
+/// {@endtemplate}
+/// {@macro pulumi_cloudidentity_v1beta1_get_inbound_saml_sso_profile_cloudidentity_v1beta1_args_doc}
+class GetInboundSamlSsoProfileCloudidentityV1beta1Args {
+  final pulumi.Input<String> inboundSamlSsoProfileId;
+
+  /// Creates a new [GetInboundSamlSsoProfileCloudidentityV1beta1Args].
+  /// [inboundSamlSsoProfileId] Required.
+  GetInboundSamlSsoProfileCloudidentityV1beta1Args({
+    required String inboundSamlSsoProfileId,
+  }) : inboundSamlSsoProfileId =
+            pulumi.Input.asInput<String>(inboundSamlSsoProfileId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['inboundSamlSsoProfileId'] = inboundSamlSsoProfileId;
+    return map;
+  }
+
+  factory GetInboundSamlSsoProfileCloudidentityV1beta1Args.fromMap(
+      Map<String, dynamic> map) {
+    return GetInboundSamlSsoProfileCloudidentityV1beta1Args(
+      inboundSamlSsoProfileId: map['inboundSamlSsoProfileId'] as String,
+    );
+  }
+}

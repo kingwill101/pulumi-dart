@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_compute_v1_get_network_attachment_compute_v1_args_doc}
+/// Arguments for getNetworkAttachment.
+/// {@endtemplate}
+/// {@macro pulumi_compute_v1_get_network_attachment_compute_v1_args_doc}
+class GetNetworkAttachmentComputeV1Args {
+  final pulumi.Input<String> networkAttachment;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+
+  /// Creates a new [GetNetworkAttachmentComputeV1Args].
+  /// [networkAttachment] Required.
+  /// [project] Optional.
+  /// [region] Required.
+  GetNetworkAttachmentComputeV1Args({
+    required String networkAttachment,
+    String? project,
+    required String region,
+  })  : networkAttachment = pulumi.Input.asInput<String>(networkAttachment),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        region = pulumi.Input.asInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['networkAttachment'] = networkAttachment;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['region'] = region;
+    return map;
+  }
+
+  factory GetNetworkAttachmentComputeV1Args.fromMap(Map<String, dynamic> map) {
+    return GetNetworkAttachmentComputeV1Args(
+      networkAttachment: map['networkAttachment'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      region: map['region'] as String,
+    );
+  }
+}

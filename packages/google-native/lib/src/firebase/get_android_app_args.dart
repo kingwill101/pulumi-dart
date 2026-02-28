@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_firebase_v1beta1_get_android_app_args_doc}
+/// Arguments for getAndroidApp.
+/// {@endtemplate}
+/// {@macro pulumi_firebase_v1beta1_get_android_app_args_doc}
+class GetAndroidAppArgs {
+  final pulumi.Input<String> androidAppId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetAndroidAppArgs].
+  /// [androidAppId] Required.
+  /// [project] Optional.
+  GetAndroidAppArgs({
+    required String androidAppId,
+    String? project,
+  })  : androidAppId = pulumi.Input.asInput<String>(androidAppId),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['androidAppId'] = androidAppId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetAndroidAppArgs.fromMap(Map<String, dynamic> map) {
+    return GetAndroidAppArgs(
+      androidAppId: map['androidAppId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

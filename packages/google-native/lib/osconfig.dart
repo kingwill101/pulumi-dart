@@ -1,3 +1,3 @@
 library pulumi_google_native_osconfig;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/osconfig.dart';
+export 'package:pulumi_google_native/src/osconfig.dart';

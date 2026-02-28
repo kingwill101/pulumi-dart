@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_run_v2_get_job_run_v2_args_doc}
+/// Arguments for getJob.
+/// {@endtemplate}
+/// {@macro pulumi_run_v2_get_job_run_v2_args_doc}
+class GetJobRunV2Args {
+  final pulumi.Input<String> jobId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetJobRunV2Args].
+  /// [jobId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetJobRunV2Args({
+    required String jobId,
+    required String location,
+    String? project,
+  })  : jobId = pulumi.Input.asInput<String>(jobId),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['jobId'] = jobId;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetJobRunV2Args.fromMap(Map<String, dynamic> map) {
+    return GetJobRunV2Args(
+      jobId: map['jobId'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

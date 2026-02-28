@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_networksecurity_v1_get_address_group_args_doc}
+/// Arguments for getAddressGroup.
+/// {@endtemplate}
+/// {@macro pulumi_networksecurity_v1_get_address_group_args_doc}
+class GetAddressGroupArgs {
+  final pulumi.Input<String> addressGroupId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetAddressGroupArgs].
+  /// [addressGroupId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetAddressGroupArgs({
+    required String addressGroupId,
+    required String location,
+    String? project,
+  })  : addressGroupId = pulumi.Input.asInput<String>(addressGroupId),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['addressGroupId'] = addressGroupId;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetAddressGroupArgs.fromMap(Map<String, dynamic> map) {
+    return GetAddressGroupArgs(
+      addressGroupId: map['addressGroupId'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

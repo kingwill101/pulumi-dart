@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_toolresults_v1beta3_get_perf_sample_series_args_doc}
+/// Arguments for getPerfSampleSeries.
+/// {@endtemplate}
+/// {@macro pulumi_toolresults_v1beta3_get_perf_sample_series_args_doc}
+class GetPerfSampleSeriesArgs {
+  final pulumi.Input<String> executionId;
+  final pulumi.Input<String> historyId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sampleSeriesId;
+  final pulumi.Input<String> stepId;
+
+  /// Creates a new [GetPerfSampleSeriesArgs].
+  /// [executionId] Required.
+  /// [historyId] Required.
+  /// [project] Optional.
+  /// [sampleSeriesId] Required.
+  /// [stepId] Required.
+  GetPerfSampleSeriesArgs({
+    required String executionId,
+    required String historyId,
+    String? project,
+    required String sampleSeriesId,
+    required String stepId,
+  })  : executionId = pulumi.Input.asInput<String>(executionId),
+        historyId = pulumi.Input.asInput<String>(historyId),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        sampleSeriesId = pulumi.Input.asInput<String>(sampleSeriesId),
+        stepId = pulumi.Input.asInput<String>(stepId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['executionId'] = executionId;
+    map['historyId'] = historyId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['sampleSeriesId'] = sampleSeriesId;
+    map['stepId'] = stepId;
+    return map;
+  }
+
+  factory GetPerfSampleSeriesArgs.fromMap(Map<String, dynamic> map) {
+    return GetPerfSampleSeriesArgs(
+      executionId: map['executionId'] as String,
+      historyId: map['historyId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      sampleSeriesId: map['sampleSeriesId'] as String,
+      stepId: map['stepId'] as String,
+    );
+  }
+}

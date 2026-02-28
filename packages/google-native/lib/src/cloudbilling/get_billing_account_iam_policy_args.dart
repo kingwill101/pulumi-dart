@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cloudbilling_v1_get_billing_account_iam_policy_args_doc}
+/// Arguments for getBillingAccountIamPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_cloudbilling_v1_get_billing_account_iam_policy_args_doc}
+class GetBillingAccountIamPolicyArgs {
+  final pulumi.Input<String> billingAccountId;
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+
+  /// Creates a new [GetBillingAccountIamPolicyArgs].
+  /// [billingAccountId] Required.
+  /// [optionsRequestedPolicyVersion] Optional.
+  GetBillingAccountIamPolicyArgs({
+    required String billingAccountId,
+    int? optionsRequestedPolicyVersion,
+  })  : billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
+        optionsRequestedPolicyVersion =
+            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['billingAccountId'] = billingAccountId;
+    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
+    if (optionsRequestedPolicyVersionValue != null) {
+      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
+    }
+    return map;
+  }
+
+  factory GetBillingAccountIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetBillingAccountIamPolicyArgs(
+      billingAccountId: map['billingAccountId'] as String,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+              ? null
+              : map['optionsRequestedPolicyVersion'] as int,
+    );
+  }
+}

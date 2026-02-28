@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'field_policy_response.dart';
+
+/// Defines policies applying to an RPC method.
+class MethodPolicyResponse {
+  /// Policies that are applicable to the request message.
+  final List<FieldPolicyResponse> requestPolicies;
+
+  /// Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+  final String selector;
+
+  /// Creates a new [MethodPolicyResponse].
+  /// [requestPolicies] Policies that are applicable to the request message.
+  /// [selector] Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+  MethodPolicyResponse({
+    required this.requestPolicies,
+    required this.selector,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['requestPolicies'] =
+        pulumi.Input.encodeList<FieldPolicyResponse, Map<String, dynamic>>(
+            requestPolicies, (value) => value.toMap());
+    map['selector'] = selector;
+    return map;
+  }
+
+  factory MethodPolicyResponse.fromMap(Map<String, dynamic> map) {
+    return MethodPolicyResponse(
+      requestPolicies: pulumi.Input.decodeList<FieldPolicyResponse>(
+          map['requestPolicies'],
+          (value) => FieldPolicyResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      selector: map['selector'] as String,
+    );
+  }
+}

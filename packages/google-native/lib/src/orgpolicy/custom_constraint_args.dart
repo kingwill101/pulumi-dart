@@ -1,0 +1,129 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'custom_constraint_action_type.dart';
+import 'custom_constraint_method_types_item.dart';
+
+/// {@template pulumi_orgpolicy_v2_custom_constraint_args_doc}
+/// The set of arguments for CustomConstraint.
+/// {@endtemplate}
+/// {@macro pulumi_orgpolicy_v2_custom_constraint_args_doc}
+class CustomConstraintArgs {
+  /// Allow or deny type.
+  final pulumi.Input<CustomConstraintActionType>? actionType;
+
+  /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+  final pulumi.Input<String>? condition;
+
+  /// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+  final pulumi.Input<String>? description;
+
+  /// One line display name for the UI. The max length of the display_name is 200 characters.
+  final pulumi.Input<String>? displayName;
+
+  /// All the operations being applied for this constraint.
+  final pulumi.Input<List<CustomConstraintMethodTypesItem>>? methodTypes;
+
+  /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> organizationId;
+
+  /// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+  final pulumi.Input<List<String>>? resourceTypes;
+
+  /// Creates a new [CustomConstraintArgs].
+  /// [actionType] Allow or deny type.
+  /// [condition] Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+  /// [description] Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+  /// [displayName] One line display name for the UI. The max length of the display_name is 200 characters.
+  /// [methodTypes] All the operations being applied for this constraint.
+  /// [name] Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+  /// [organizationId] Required.
+  /// [resourceTypes] Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+  CustomConstraintArgs({
+    CustomConstraintActionType? actionType,
+    String? condition,
+    String? description,
+    String? displayName,
+    List<CustomConstraintMethodTypesItem>? methodTypes,
+    String? name,
+    required String organizationId,
+    List<String>? resourceTypes,
+  })  : actionType = pulumi.Input.asOptionalInput<CustomConstraintActionType>(
+            actionType),
+        condition = pulumi.Input.asOptionalInput<String>(condition),
+        description = pulumi.Input.asOptionalInput<String>(description),
+        displayName = pulumi.Input.asOptionalInput<String>(displayName),
+        methodTypes =
+            pulumi.Input.asOptionalInput<List<CustomConstraintMethodTypesItem>>(
+                methodTypes),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        organizationId = pulumi.Input.asInput<String>(organizationId),
+        resourceTypes =
+            pulumi.Input.asOptionalInput<List<String>>(resourceTypes);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final actionTypeValue = actionType;
+    if (actionTypeValue != null) {
+      map['actionType'] = pulumi.Input.mapOptionalInputValue<
+          CustomConstraintActionType,
+          String>(actionTypeValue, (value) => value.value);
+    }
+    final conditionValue = condition;
+    if (conditionValue != null) {
+      map['condition'] = conditionValue;
+    }
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    final displayNameValue = displayName;
+    if (displayNameValue != null) {
+      map['displayName'] = displayNameValue;
+    }
+    final methodTypesValue = methodTypes;
+    if (methodTypesValue != null) {
+      map['methodTypes'] = pulumi.Input.mapOptionalInputValue<
+              List<CustomConstraintMethodTypesItem>, List<String>>(
+          methodTypesValue,
+          (value) =>
+              pulumi.Input.encodeList<CustomConstraintMethodTypesItem, String>(
+                  value, (value) => value.value));
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    map['organizationId'] = organizationId;
+    final resourceTypesValue = resourceTypes;
+    if (resourceTypesValue != null) {
+      map['resourceTypes'] = resourceTypesValue;
+    }
+    return map;
+  }
+
+  factory CustomConstraintArgs.fromMap(Map<String, dynamic> map) {
+    return CustomConstraintArgs(
+      actionType: map['actionType'] == null
+          ? null
+          : CustomConstraintActionType.fromValue(map['actionType'] as String),
+      condition: map['condition'] == null ? null : map['condition'] as String,
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      displayName:
+          map['displayName'] == null ? null : map['displayName'] as String,
+      methodTypes: map['methodTypes'] == null
+          ? null
+          : pulumi.Input.decodeList<CustomConstraintMethodTypesItem>(
+              map['methodTypes'],
+              (value) =>
+                  CustomConstraintMethodTypesItem.fromValue(value as String)),
+      name: map['name'] == null ? null : map['name'] as String,
+      organizationId: map['organizationId'] as String,
+      resourceTypes: map['resourceTypes'] == null
+          ? null
+          : (map['resourceTypes'] as List).cast<String>(),
+    );
+  }
+}

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// The cadence at which to update data profiles when a table is modified.
+class GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse {
+  /// How frequently data profiles can be updated when tables are modified. Defaults to never.
+  final String frequency;
+
+  /// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+  final List<String> types;
+
+  /// Creates a new [GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse].
+  /// [frequency] How frequently data profiles can be updated when tables are modified. Defaults to never.
+  /// [types] The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
+  GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse({
+    required this.frequency,
+    required this.types,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['frequency'] = frequency;
+    map['types'] = types;
+    return map;
+  }
+
+  factory GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GooglePrivacyDlpV2DiscoveryTableModifiedCadenceResponse(
+      frequency: map['frequency'] as String,
+      types: (map['types'] as List).cast<String>(),
+    );
+  }
+}

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// The note representing an SBOM reference.
+class SBOMReferenceNoteResponseContaineranalysisV1alpha1 {
+  /// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+  final String format;
+
+  /// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+  final String version;
+
+  /// Creates a new [SBOMReferenceNoteResponseContaineranalysisV1alpha1].
+  /// [format] The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+  /// [version] The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+  SBOMReferenceNoteResponseContaineranalysisV1alpha1({
+    required this.format,
+    required this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['format'] = format;
+    map['version'] = version;
+    return map;
+  }
+
+  factory SBOMReferenceNoteResponseContaineranalysisV1alpha1.fromMap(
+      Map<String, dynamic> map) {
+    return SBOMReferenceNoteResponseContaineranalysisV1alpha1(
+      format: map['format'] as String,
+      version: map['version'] as String,
+    );
+  }
+}

@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_firebasehosting_v1beta1_get_site_args_doc}
+/// Arguments for getSite.
+/// {@endtemplate}
+/// {@macro pulumi_firebasehosting_v1beta1_get_site_args_doc}
+class GetSiteArgs {
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> siteId;
+
+  /// Creates a new [GetSiteArgs].
+  /// [project] Optional.
+  /// [siteId] Required.
+  GetSiteArgs({
+    String? project,
+    required String siteId,
+  })  : project = pulumi.Input.asOptionalInput<String>(project),
+        siteId = pulumi.Input.asInput<String>(siteId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['siteId'] = siteId;
+    return map;
+  }
+
+  factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
+    return GetSiteArgs(
+      project: map['project'] == null ? null : map['project'] as String,
+      siteId: map['siteId'] as String,
+    );
+  }
+}

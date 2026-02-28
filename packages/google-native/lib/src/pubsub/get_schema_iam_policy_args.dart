@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_pubsub_v1_get_schema_iam_policy_args_doc}
+/// Arguments for getSchemaIamPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_pubsub_v1_get_schema_iam_policy_args_doc}
+class GetSchemaIamPolicyArgs {
+  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> schemaId;
+
+  /// Creates a new [GetSchemaIamPolicyArgs].
+  /// [optionsRequestedPolicyVersion] Optional.
+  /// [project] Optional.
+  /// [schemaId] Required.
+  GetSchemaIamPolicyArgs({
+    int? optionsRequestedPolicyVersion,
+    String? project,
+    required String schemaId,
+  })  : optionsRequestedPolicyVersion =
+            pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        schemaId = pulumi.Input.asInput<String>(schemaId);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final optionsRequestedPolicyVersionValue = optionsRequestedPolicyVersion;
+    if (optionsRequestedPolicyVersionValue != null) {
+      map['optionsRequestedPolicyVersion'] = optionsRequestedPolicyVersionValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['schemaId'] = schemaId;
+    return map;
+  }
+
+  factory GetSchemaIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetSchemaIamPolicyArgs(
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+              ? null
+              : map['optionsRequestedPolicyVersion'] as int,
+      project: map['project'] == null ? null : map['project'] as String,
+      schemaId: map['schemaId'] as String,
+    );
+  }
+}

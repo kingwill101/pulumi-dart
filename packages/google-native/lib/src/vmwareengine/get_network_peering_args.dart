@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_vmwareengine_v1_get_network_peering_args_doc}
+/// Arguments for getNetworkPeering.
+/// {@endtemplate}
+/// {@macro pulumi_vmwareengine_v1_get_network_peering_args_doc}
+class GetNetworkPeeringArgs {
+  final pulumi.Input<String> networkPeeringId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetNetworkPeeringArgs].
+  /// [networkPeeringId] Required.
+  /// [project] Optional.
+  GetNetworkPeeringArgs({
+    required String networkPeeringId,
+    String? project,
+  })  : networkPeeringId = pulumi.Input.asInput<String>(networkPeeringId),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['networkPeeringId'] = networkPeeringId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
+    return GetNetworkPeeringArgs(
+      networkPeeringId: map['networkPeeringId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

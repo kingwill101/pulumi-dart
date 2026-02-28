@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_aiplatform_v1_get_feature_online_store_args_doc}
+/// Arguments for getFeatureOnlineStore.
+/// {@endtemplate}
+/// {@macro pulumi_aiplatform_v1_get_feature_online_store_args_doc}
+class GetFeatureOnlineStoreArgs {
+  final pulumi.Input<String> featureOnlineStoreId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetFeatureOnlineStoreArgs].
+  /// [featureOnlineStoreId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetFeatureOnlineStoreArgs({
+    required String featureOnlineStoreId,
+    required String location,
+    String? project,
+  })  : featureOnlineStoreId =
+            pulumi.Input.asInput<String>(featureOnlineStoreId),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['featureOnlineStoreId'] = featureOnlineStoreId;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetFeatureOnlineStoreArgs.fromMap(Map<String, dynamic> map) {
+    return GetFeatureOnlineStoreArgs(
+      featureOnlineStoreId: map['featureOnlineStoreId'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

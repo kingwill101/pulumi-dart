@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'fleet_observability_logging_config_response_gkehub_v1alpha.dart';
+
+/// **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+class FleetObservabilityFeatureSpecResponseGkehubV1alpha {
+  /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+  final FleetObservabilityLoggingConfigResponseGkehubV1alpha loggingConfig;
+
+  /// Creates a new [FleetObservabilityFeatureSpecResponseGkehubV1alpha].
+  /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+  FleetObservabilityFeatureSpecResponseGkehubV1alpha({
+    required this.loggingConfig,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['loggingConfig'] = loggingConfig.toMap();
+    return map;
+  }
+
+  factory FleetObservabilityFeatureSpecResponseGkehubV1alpha.fromMap(
+      Map<String, dynamic> map) {
+    return FleetObservabilityFeatureSpecResponseGkehubV1alpha(
+      loggingConfig:
+          FleetObservabilityLoggingConfigResponseGkehubV1alpha.fromMap(
+              (map['loggingConfig'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Contains Properties set for the reservation.
+class AllocationResourceStatusSpecificSKUAllocationResponse {
+  /// ID of the instance template used to populate reservation properties.
+  final String sourceInstanceTemplateId;
+
+  /// Creates a new [AllocationResourceStatusSpecificSKUAllocationResponse].
+  /// [sourceInstanceTemplateId] ID of the instance template used to populate reservation properties.
+  AllocationResourceStatusSpecificSKUAllocationResponse({
+    required this.sourceInstanceTemplateId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['sourceInstanceTemplateId'] = sourceInstanceTemplateId;
+    return map;
+  }
+
+  factory AllocationResourceStatusSpecificSKUAllocationResponse.fromMap(
+      Map<String, dynamic> map) {
+    return AllocationResourceStatusSpecificSKUAllocationResponse(
+      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] as String,
+    );
+  }
+}
