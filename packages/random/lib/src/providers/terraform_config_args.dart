@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_providers_terraform_config_args_doc}
+/// Arguments for terraformConfig.
+/// {@endtemplate}
+/// {@macro pulumi_providers_terraform_config_args_doc}
+class TerraformConfigArgs {
+  final pulumi.Input<dynamic> self;
+
+  /// Creates a new [TerraformConfigArgs].
+  /// [self] Required.
+  TerraformConfigArgs({
+    required dynamic self,
+  }) : self = pulumi.Input.asInput<dynamic>(self);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['__self__'] = self;
+    return map;
+  }
+
+  factory TerraformConfigArgs.fromMap(Map<String, dynamic> map) {
+    return TerraformConfigArgs(
+      self: map['__self__'],
+    );
+  }
+}
