@@ -92,6 +92,13 @@ class AutomationInstallOptions {
   final bool useLanguageVersionTools;
 }
 
+/// Callback used to provide additional CLI arguments per stack operation.
+typedef AutomationArgsSerializer =
+    Future<List<String>> Function(String stackName);
+
+/// Callback invoked after a stack operation command completes.
+typedef AutomationPostCommandCallback = Future<void> Function(String stackName);
+
 Future<PulumiCommandResult> _defaultCommandRunner(
   PulumiCommandRequest request,
 ) async {
@@ -123,6 +130,35 @@ class LocalProgramArgs {
   final String workDir;
 }
 
+/// Arguments for source-based inline automation programs.
+///
+/// The [program] is full Dart source code written to `bin/<project>.dart`.
+/// This enables an "inline-defined" workflow while still using the Pulumi CLI.
+class InlineProgramArgs {
+  const InlineProgramArgs({
+    required this.stackName,
+    required this.projectName,
+    required this.program,
+    this.workDir,
+    this.description,
+  });
+
+  /// Stack name (for example `dev`, `org/project/dev`).
+  final String stackName;
+
+  /// Pulumi project name written into `Pulumi.yaml`.
+  final String projectName;
+
+  /// Full Dart source written to `bin/<project>.dart`.
+  final String program;
+
+  /// Optional project directory. When omitted, a temporary directory is created.
+  final String? workDir;
+
+  /// Optional project description written to `Pulumi.yaml`.
+  final String? description;
+}
+
 /// Options for [LocalWorkspace].
 class LocalWorkspaceOptions {
   const LocalWorkspaceOptions({
@@ -135,6 +171,8 @@ class LocalWorkspaceOptions {
     this.skipVersionCheck = false,
     this.remote = false,
     this.remoteArgs = const <String>[],
+    this.serializeArgsForOp,
+    this.postCommandCallback,
     this.commandRunner,
     this.stdoutEncoding = utf8,
     this.stderrEncoding = utf8,
@@ -169,6 +207,12 @@ class LocalWorkspaceOptions {
   /// Additional CLI args appended for remote operations.
   final List<String> remoteArgs;
 
+  /// Optional callback to append extra args for stack operations.
+  final AutomationArgsSerializer? serializeArgsForOp;
+
+  /// Optional callback invoked after each stack operation command.
+  final AutomationPostCommandCallback? postCommandCallback;
+
   /// Optional command runner override (primarily for tests/custom execution).
   final PulumiCommandRunner? commandRunner;
 
@@ -188,6 +232,8 @@ class LocalWorkspaceOptions {
     bool? skipVersionCheck,
     bool? remote,
     List<String>? remoteArgs,
+    AutomationArgsSerializer? serializeArgsForOp,
+    AutomationPostCommandCallback? postCommandCallback,
     PulumiCommandRunner? commandRunner,
     Encoding? stdoutEncoding,
     Encoding? stderrEncoding,
@@ -202,6 +248,8 @@ class LocalWorkspaceOptions {
       skipVersionCheck: skipVersionCheck ?? this.skipVersionCheck,
       remote: remote ?? this.remote,
       remoteArgs: remoteArgs ?? this.remoteArgs,
+      serializeArgsForOp: serializeArgsForOp ?? this.serializeArgsForOp,
+      postCommandCallback: postCommandCallback ?? this.postCommandCallback,
       commandRunner: commandRunner ?? this.commandRunner,
       stdoutEncoding: stdoutEncoding ?? this.stdoutEncoding,
       stderrEncoding: stderrEncoding ?? this.stderrEncoding,
@@ -221,6 +269,8 @@ class LocalWorkspace {
     required this.skipVersionCheck,
     required this.remote,
     required this.remoteArgs,
+    required this.serializeArgsForOp,
+    required this.postCommandCallback,
     required PulumiCommandRunner commandRunner,
     required this.stdoutEncoding,
     required this.stderrEncoding,
@@ -248,6 +298,8 @@ class LocalWorkspace {
       skipVersionCheck: options.skipVersionCheck,
       remote: options.remote,
       remoteArgs: List<String>.unmodifiable(options.remoteArgs),
+      serializeArgsForOp: options.serializeArgsForOp,
+      postCommandCallback: options.postCommandCallback,
       commandRunner: options.commandRunner ?? _defaultCommandRunner,
       stdoutEncoding: options.stdoutEncoding,
       stderrEncoding: options.stderrEncoding,
@@ -279,6 +331,113 @@ class LocalWorkspace {
   }) async {
     final workspace = await create(options.copyWith(workDir: args.workDir));
     return Stack.createOrSelect(args.stackName, workspace);
+  }
+
+  /// Creates a new stack for a source-based inline program.
+  static Future<Stack> createInlineStack(
+    InlineProgramArgs args, {
+    LocalWorkspaceOptions options = const LocalWorkspaceOptions(),
+  }) async {
+    final workDir = await _prepareInlineProject(args);
+    return createStack(
+      LocalProgramArgs(stackName: args.stackName, workDir: workDir),
+      options: options.copyWith(workDir: workDir),
+    );
+  }
+
+  /// Selects an existing stack for a source-based inline program.
+  static Future<Stack> selectInlineStack(
+    InlineProgramArgs args, {
+    LocalWorkspaceOptions options = const LocalWorkspaceOptions(),
+  }) async {
+    final workDir = await _prepareInlineProject(args);
+    return selectStack(
+      LocalProgramArgs(stackName: args.stackName, workDir: workDir),
+      options: options.copyWith(workDir: workDir),
+    );
+  }
+
+  /// Creates or selects a stack for a source-based inline program.
+  static Future<Stack> createOrSelectInlineStack(
+    InlineProgramArgs args, {
+    LocalWorkspaceOptions options = const LocalWorkspaceOptions(),
+  }) async {
+    final workDir = await _prepareInlineProject(args);
+    return createOrSelectStack(
+      LocalProgramArgs(stackName: args.stackName, workDir: workDir),
+      options: options.copyWith(workDir: workDir),
+    );
+  }
+
+  static Future<String> _prepareInlineProject(InlineProgramArgs args) async {
+    final providedDir = args.workDir;
+    final resolvedDir = providedDir == null || providedDir.trim().isEmpty
+        ? (await Directory.systemTemp.createTemp('pulumi-inline-')).path
+        : providedDir;
+
+    final projectDir = Directory(resolvedDir);
+    if (!await projectDir.exists()) {
+      await projectDir.create(recursive: true);
+    }
+
+    final packageName = _sanitizePackageName(args.projectName);
+    final programFileName = '$packageName.dart';
+    final binDir = Directory(p.join(resolvedDir, 'bin'));
+    if (!await binDir.exists()) {
+      await binDir.create(recursive: true);
+    }
+
+    final pulumiYamlPath = p.join(resolvedDir, 'Pulumi.yaml');
+    final pulumiYaml = File(pulumiYamlPath);
+    if (!await pulumiYaml.exists()) {
+      final descriptionLine = args.description == null || args.description!.isEmpty
+          ? ''
+          : 'description: ${args.description}\n';
+      await pulumiYaml.writeAsString(
+        'name: ${args.projectName}\n'
+        'runtime: dart\n'
+        '${descriptionLine}main: bin/$programFileName\n',
+        encoding: utf8,
+      );
+    }
+
+    final pubspecPath = p.join(resolvedDir, 'pubspec.yaml');
+    final pubspec = File(pubspecPath);
+    if (!await pubspec.exists()) {
+      final pulumiPathDependency = Platform.environment['PULUMI_DART_PULUMI_DEPENDENCY_PATH'];
+      final pulumiDependency = (pulumiPathDependency != null &&
+              pulumiPathDependency.trim().isNotEmpty)
+          ? "  pulumi:\n    path: '${pulumiPathDependency.replaceAll("'", "''")}'\n"
+          : '  pulumi: ^0.0.1-dev\n';
+      await pubspec.writeAsString(
+        'name: $packageName\n'
+        'description: Inline Pulumi Dart automation project.\n'
+        'publish_to: none\n'
+        'environment:\n'
+        '  sdk: ">=3.10.0 <4.0.0"\n'
+        'dependencies:\n'
+        '$pulumiDependency',
+        encoding: utf8,
+      );
+    }
+
+    final programPath = p.join(resolvedDir, 'bin', programFileName);
+    await File(programPath).writeAsString(args.program, encoding: utf8);
+
+    return resolvedDir;
+  }
+
+  static String _sanitizePackageName(String projectName) {
+    final lowered = projectName.toLowerCase();
+    final normalized = lowered.replaceAll(RegExp(r'[^a-z0-9_]'), '_');
+    final squashed = normalized.replaceAll(RegExp(r'_+'), '_');
+    if (squashed.isEmpty) {
+      return 'pulumi_inline_project';
+    }
+    if (RegExp(r'^[0-9]').hasMatch(squashed)) {
+      return 'p_$squashed';
+    }
+    return squashed;
   }
 
   /// Working directory for this workspace.
@@ -330,6 +489,12 @@ class LocalWorkspace {
   /// Remote operation CLI args.
   final List<String> remoteArgs;
 
+  /// Optional callback to append args to stack operations.
+  final AutomationArgsSerializer? serializeArgsForOp;
+
+  /// Optional callback invoked after stack operations.
+  final AutomationPostCommandCallback? postCommandCallback;
+
   /// Encoding for stdout.
   final Encoding stdoutEncoding;
 
@@ -369,6 +534,24 @@ class LocalWorkspace {
       throw createCommandException(request, result);
     }
     return result;
+  }
+
+  /// Returns additional args to append to stack operation commands.
+  Future<List<String>> serializeArgsForOperation(String stackName) async {
+    final callback = serializeArgsForOp;
+    if (callback == null) {
+      return const <String>[];
+    }
+    return callback(stackName);
+  }
+
+  /// Runs post-command callback for stack operations.
+  Future<void> runPostCommandCallback(String stackName) async {
+    final callback = postCommandCallback;
+    if (callback == null) {
+      return;
+    }
+    await callback(stackName);
   }
 
   List<String> _remoteArgsForCommand(List<String> arguments) {

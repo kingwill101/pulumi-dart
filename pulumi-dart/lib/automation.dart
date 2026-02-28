@@ -34,6 +34,7 @@ export 'src/automation/command.dart';
 export 'src/automation/config.dart';
 export 'src/automation/events.dart';
 export 'src/automation/local_workspace.dart';
+export 'src/automation/operation_results.dart';
 export 'src/automation/remote_workspace.dart';
 export 'src/automation/settings.dart';
 export 'src/automation/stack.dart';

@@ -82,3 +82,46 @@ class PolicyEvent {
     );
   }
 }
+
+/// Pulumi engine event emitted through `--event-log`.
+class AutomationEngineEvent {
+  const AutomationEngineEvent({required this.raw});
+
+  factory AutomationEngineEvent.fromJson(Map<String, dynamic> json) {
+    return AutomationEngineEvent(raw: Map<String, dynamic>.from(json));
+  }
+
+  /// Original event payload.
+  final Map<String, dynamic> raw;
+
+  /// Event sequence number if available.
+  int? get sequence {
+    final value = raw['sequence'];
+    if (value is int) {
+      return value;
+    }
+    if (value is num) {
+      return value.toInt();
+    }
+    return int.tryParse('${raw['sequence'] ?? ''}');
+  }
+
+  /// Event timestamp if available.
+  String? get timestamp {
+    final value = raw['timestamp'];
+    if (value == null) {
+      return null;
+    }
+    return '$value';
+  }
+
+  /// Best-effort event kind derived from the event payload keys.
+  String get kind {
+    for (final key in raw.keys) {
+      if (key.endsWith('Event')) {
+        return key;
+      }
+    }
+    return 'unknown';
+  }
+}

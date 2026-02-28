@@ -1,8 +1,16 @@
 import 'dart:convert';
+import 'dart:io';
+
+import 'package:path/path.dart' as p;
 
 import 'command.dart';
 import 'config.dart';
+import 'events.dart';
 import 'local_workspace.dart';
+import 'operation_results.dart';
+
+/// Callback invoked for each parsed Pulumi engine event.
+typedef AutomationEngineEventHandler = void Function(AutomationEngineEvent event);
 
 /// Automation stack handle scoped to a [LocalWorkspace].
 class Stack {
@@ -137,13 +145,18 @@ class Stack {
     bool nonInteractive = true,
     bool check = true,
     List<String> extraArgs = const <String>[],
-  }) {
+  }) async {
     final args = <String>['preview', '--stack', name];
     if (nonInteractive) {
       args.add('--non-interactive');
     }
     args.addAll(extraArgs);
-    return workspace.runPulumiCommand(args, check: check);
+    final (result, _) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: false,
+    );
+    return result;
   }
 
   /// Runs `pulumi up` for this stack.
@@ -153,7 +166,7 @@ class Stack {
     bool nonInteractive = true,
     bool check = true,
     List<String> extraArgs = const <String>[],
-  }) {
+  }) async {
     final args = <String>['up', '--stack', name];
     if (yes) {
       args.add('--yes');
@@ -165,7 +178,12 @@ class Stack {
       args.add('--non-interactive');
     }
     args.addAll(extraArgs);
-    return workspace.runPulumiCommand(args, check: check);
+    final (result, _) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: false,
+    );
+    return result;
   }
 
   /// Runs `pulumi refresh` for this stack.
@@ -174,7 +192,7 @@ class Stack {
     bool nonInteractive = true,
     bool check = true,
     List<String> extraArgs = const <String>[],
-  }) {
+  }) async {
     final args = <String>['refresh', '--stack', name];
     if (yes) {
       args.add('--yes');
@@ -183,7 +201,12 @@ class Stack {
       args.add('--non-interactive');
     }
     args.addAll(extraArgs);
-    return workspace.runPulumiCommand(args, check: check);
+    final (result, _) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: false,
+    );
+    return result;
   }
 
   /// Runs `pulumi destroy` for this stack.
@@ -193,7 +216,7 @@ class Stack {
     bool nonInteractive = true,
     bool check = true,
     List<String> extraArgs = const <String>[],
-  }) {
+  }) async {
     final args = <String>['destroy', '--stack', name];
     if (yes) {
       args.add('--yes');
@@ -205,7 +228,133 @@ class Stack {
       args.add('--non-interactive');
     }
     args.addAll(extraArgs);
-    return workspace.runPulumiCommand(args, check: check);
+    final (result, _) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: false,
+    );
+    return result;
+  }
+
+  /// Runs `pulumi preview` and returns a typed operation result.
+  Future<AutomationPreviewResult> previewResult({
+    bool nonInteractive = true,
+    bool check = true,
+    bool captureEvents = true,
+    AutomationEngineEventHandler? onEvent,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    final args = <String>['preview', '--stack', name];
+    if (nonInteractive) {
+      args.add('--non-interactive');
+    }
+    args.addAll(extraArgs);
+
+    final (result, events) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: captureEvents,
+      onEvent: onEvent,
+    );
+    return AutomationPreviewResult(commandResult: result, events: events);
+  }
+
+  /// Runs `pulumi up` and returns a typed operation result.
+  Future<AutomationUpResult> upResult({
+    bool yes = true,
+    bool skipPreview = true,
+    bool nonInteractive = true,
+    bool check = true,
+    bool captureEvents = true,
+    bool includeOutputs = true,
+    AutomationEngineEventHandler? onEvent,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    final args = <String>['up', '--stack', name];
+    if (yes) {
+      args.add('--yes');
+    }
+    if (skipPreview) {
+      args.add('--skip-preview');
+    }
+    if (nonInteractive) {
+      args.add('--non-interactive');
+    }
+    args.addAll(extraArgs);
+
+    final (result, events) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: captureEvents,
+      onEvent: onEvent,
+    );
+    Map<String, AutomationOutputValue>? typedOutputs;
+    if (includeOutputs && result.succeeded) {
+      typedOutputs = await outputsWithMetadata();
+    }
+    return AutomationUpResult(
+      commandResult: result,
+      events: events,
+      outputs: typedOutputs,
+    );
+  }
+
+  /// Runs `pulumi refresh` and returns a typed operation result.
+  Future<AutomationRefreshResult> refreshResult({
+    bool yes = true,
+    bool nonInteractive = true,
+    bool check = true,
+    bool captureEvents = true,
+    AutomationEngineEventHandler? onEvent,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    final args = <String>['refresh', '--stack', name];
+    if (yes) {
+      args.add('--yes');
+    }
+    if (nonInteractive) {
+      args.add('--non-interactive');
+    }
+    args.addAll(extraArgs);
+
+    final (result, events) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: captureEvents,
+      onEvent: onEvent,
+    );
+    return AutomationRefreshResult(commandResult: result, events: events);
+  }
+
+  /// Runs `pulumi destroy` and returns a typed operation result.
+  Future<AutomationDestroyResult> destroyResult({
+    bool yes = true,
+    bool skipPreview = true,
+    bool nonInteractive = true,
+    bool check = true,
+    bool captureEvents = true,
+    AutomationEngineEventHandler? onEvent,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    final args = <String>['destroy', '--stack', name];
+    if (yes) {
+      args.add('--yes');
+    }
+    if (skipPreview) {
+      args.add('--skip-preview');
+    }
+    if (nonInteractive) {
+      args.add('--non-interactive');
+    }
+    args.addAll(extraArgs);
+
+    final (result, events) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: captureEvents,
+      onEvent: onEvent,
+    );
+    return AutomationDestroyResult(commandResult: result, events: events);
   }
 
   /// Returns stack outputs from the last successful update.
@@ -272,5 +421,84 @@ class Stack {
       args.add('--yes');
     }
     return workspace.runPulumiCommand(args);
+  }
+
+  Future<(PulumiCommandResult, List<AutomationEngineEvent>)> _runStackCommand(
+    List<String> baseArgs, {
+    required bool check,
+    required bool captureEvents,
+    AutomationEngineEventHandler? onEvent,
+  }) async {
+    final operationArgs = <String>[...baseArgs];
+    final additionalArgs = await workspace.serializeArgsForOperation(name);
+    if (additionalArgs.isNotEmpty) {
+      operationArgs.addAll(additionalArgs);
+    }
+
+    Directory? tempDir;
+    String? eventLogPath;
+    if (captureEvents || onEvent != null) {
+      tempDir = await Directory.systemTemp.createTemp('pulumi-events-');
+      eventLogPath = p.join(tempDir.path, 'events.json');
+      operationArgs.addAll(<String>['--event-log', eventLogPath]);
+    }
+
+    PulumiCommandResult? result;
+    Object? error;
+    StackTrace? stackTrace;
+    List<AutomationEngineEvent> events = const <AutomationEngineEvent>[];
+    try {
+      result = await workspace.runPulumiCommand(operationArgs, check: check);
+    } catch (err, st) {
+      error = err;
+      stackTrace = st;
+    } finally {
+      if (eventLogPath != null) {
+        events = await _readEventLogFile(eventLogPath);
+        if (onEvent != null) {
+          for (final event in events) {
+            onEvent(event);
+          }
+        }
+      }
+      await workspace.runPostCommandCallback(name);
+      if (tempDir != null && await tempDir.exists()) {
+        await tempDir.delete(recursive: true);
+      }
+    }
+
+    if (error != null) {
+      Error.throwWithStackTrace(error, stackTrace!);
+    }
+    return (result!, events);
+  }
+
+  Future<List<AutomationEngineEvent>> _readEventLogFile(String path) async {
+    final file = File(path);
+    if (!await file.exists()) {
+      return const <AutomationEngineEvent>[];
+    }
+
+    final lines = await file.readAsLines();
+    final events = <AutomationEngineEvent>[];
+    for (final line in lines) {
+      final trimmed = line.trim();
+      if (trimmed.isEmpty) {
+        continue;
+      }
+      try {
+        final decoded = jsonDecode(trimmed);
+        if (decoded is Map) {
+          events.add(
+            AutomationEngineEvent.fromJson(
+              decoded.map((key, value) => MapEntry('$key', value)),
+            ),
+          );
+        }
+      } catch (_) {
+        // Ignore malformed lines from partially written logs.
+      }
+    }
+    return events;
   }
 }
