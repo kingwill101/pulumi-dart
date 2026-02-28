@@ -19,7 +19,25 @@ import (
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
+	"github.com/stretchr/testify/require"
 )
+
+func dartAuthoredProviderPath(t *testing.T) string {
+	t.Helper()
+
+	path, err := filepath.Abs(filepath.Join("provider_authoring", "dart"))
+	require.NoError(t, err)
+	return path
+}
+
+func providerAuthoringDependency(t *testing.T) integration.LocalDependency {
+	t.Helper()
+
+	return integration.LocalDependency{
+		Package: "testprovider",
+		Path:    dartAuthoredProviderPath(t),
+	}
+}
 
 func TestStackReferenceDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
@@ -126,5 +144,71 @@ func TestProviderConstructResourceRefDart(t *testing.T) {
 		},
 		Dir:   filepath.Join(testDir, "dotnet"),
 		Quick: true,
+	})
+}
+
+func TestProviderCallDartAuthoredProvider(t *testing.T) {
+	const testDir = "provider_call"
+	testDartProgram(t, &integration.ProgramTestOptions{
+		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
+		Dir:            filepath.Join(testDir, "dotnet"),
+		Env:            []string{"TEST_VALUE=HelloWorld"},
+		Quick:          true,
+	})
+}
+
+func TestProviderCallInvalidArgumentDartAuthoredProvider(t *testing.T) {
+	const testDir = "provider_call"
+	testDartProgram(t, &integration.ProgramTestOptions{
+		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
+		Dir:            filepath.Join(testDir, "dotnet"),
+		Env:            []string{"TEST_VALUE="},
+		ExpectFailure:  true,
+		Quick:          true,
+	})
+}
+
+func TestProviderComponentHostDartAuthoredProvider(t *testing.T) {
+	const testDir = "provider_component_host"
+	testDartProgram(t, &integration.ProgramTestOptions{
+		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
+		Dir:            filepath.Join(testDir, "example"),
+		Quick:          true,
+	})
+}
+
+func TestProviderConstructDartAuthoredProvider(t *testing.T) {
+	const testDir = "provider_construct"
+	testDartProgram(t, &integration.ProgramTestOptions{
+		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
+		Dir:            filepath.Join(testDir, "dotnet"),
+		Quick:          true,
+	})
+}
+
+func TestProviderConstructDependenciesDartAuthoredProvider(t *testing.T) {
+	const testDir = "provider_construct_dependencies"
+	testDartProgram(t, &integration.ProgramTestOptions{
+		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
+		Dir:            filepath.Join(testDir, "dotnet"),
+		Quick:          true,
+	})
+}
+
+func TestProviderConstructUnknownDartAuthoredProvider(t *testing.T) {
+	const testDir = "provider_construct_unknown"
+	testDartProgram(t, &integration.ProgramTestOptions{
+		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
+		Dir:            filepath.Join(testDir, "dotnet"),
+		Quick:          true,
+	})
+}
+
+func TestProviderConstructResourceRefDartAuthoredProvider(t *testing.T) {
+	const testDir = "provider_construct_resource_ref"
+	testDartProgram(t, &integration.ProgramTestOptions{
+		LocalProviders: []integration.LocalDependency{providerAuthoringDependency(t)},
+		Dir:            filepath.Join(testDir, "dotnet"),
+		Quick:          true,
 	})
 }
