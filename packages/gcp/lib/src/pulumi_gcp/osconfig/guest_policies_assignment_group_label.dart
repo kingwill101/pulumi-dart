@@ -1,3 +1,0 @@
-library module_osconfig_guest_policies_assignment_group_label;
-
-export 'guest_policies_assignment_group_label/guest_policies_assignment_group_label.dart';

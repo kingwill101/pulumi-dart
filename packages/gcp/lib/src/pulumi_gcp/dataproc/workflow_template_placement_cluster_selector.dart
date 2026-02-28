@@ -1,3 +1,0 @@
-library module_dataproc_workflow_template_placement_cluster_selector;
-
-export 'workflow_template_placement_cluster_selector/workflow_template_placement_cluster_selector.dart';

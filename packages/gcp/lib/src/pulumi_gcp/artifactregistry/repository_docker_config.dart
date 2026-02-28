@@ -1,3 +1,0 @@
-library module_artifactregistry_repository_docker_config;
-
-export 'repository_docker_config/repository_docker_config.dart';

@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_essentialcontacts_document_ai_processor_default_version_document_ai_processor_default_version_args_doc}
+/// The set of arguments for DocumentAiProcessorDefaultVersion.
+/// {@endtemplate}
+/// {@macro pulumi_essentialcontacts_document_ai_processor_default_version_document_ai_processor_default_version_args_doc}
+class DocumentAiProcessorDefaultVersionArgs {
+  /// The processor to set the version on.
+  final pulumi.Input<String> processor;
+
+  /// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+  /// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
+  final pulumi.Input<String> version;
+
+  /// Creates a new [DocumentAiProcessorDefaultVersionArgs].
+  /// [processor] The processor to set the version on.
+  /// [version] The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+  DocumentAiProcessorDefaultVersionArgs({
+    required String processor,
+    required String version,
+  })  : processor = pulumi.Input.asInput<String>(processor),
+        version = pulumi.Input.asInput<String>(version);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['processor'] = processor;
+    map['version'] = version;
+    return map;
+  }
+
+  factory DocumentAiProcessorDefaultVersionArgs.fromMap(
+      Map<String, dynamic> map) {
+    return DocumentAiProcessorDefaultVersionArgs(
+      processor: map['processor'] as String,
+      version: map['version'] as String,
+    );
+  }
+}

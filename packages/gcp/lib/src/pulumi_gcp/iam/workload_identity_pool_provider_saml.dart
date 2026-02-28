@@ -1,3 +1,0 @@
-library module_iam_workload_identity_pool_provider_saml;
-
-export 'workload_identity_pool_provider_saml/workload_identity_pool_provider_saml.dart';

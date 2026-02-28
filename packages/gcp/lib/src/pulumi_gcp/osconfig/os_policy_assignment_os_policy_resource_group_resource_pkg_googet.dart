@@ -1,3 +1,0 @@
-library module_osconfig_os_policy_assignment_os_policy_resource_group_resource_pkg_googet;
-
-export 'os_policy_assignment_os_policy_resource_group_resource_pkg_googet/os_policy_assignment_os_policy_resource_group_resource_pkg_googet.dart';

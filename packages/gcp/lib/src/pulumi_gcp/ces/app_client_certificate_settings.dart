@@ -1,3 +1,0 @@
-library module_ces_app_client_certificate_settings;
-
-export 'app_client_certificate_settings/app_client_certificate_settings.dart';

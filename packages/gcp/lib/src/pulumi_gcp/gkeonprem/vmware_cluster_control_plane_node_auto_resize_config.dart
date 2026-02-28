@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_cluster_control_plane_node_auto_resize_config;
-
-export 'vmware_cluster_control_plane_node_auto_resize_config/vmware_cluster_control_plane_node_auto_resize_config.dart';

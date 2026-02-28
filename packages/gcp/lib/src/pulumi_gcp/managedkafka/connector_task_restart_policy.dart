@@ -1,3 +1,0 @@
-library module_managedkafka_connector_task_restart_policy;
-
-export 'connector_task_restart_policy/connector_task_restart_policy.dart';

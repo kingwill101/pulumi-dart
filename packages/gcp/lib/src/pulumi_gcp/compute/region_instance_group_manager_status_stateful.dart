@@ -1,3 +1,0 @@
-library module_compute_region_instance_group_manager_status_stateful;
-
-export 'region_instance_group_manager_status_stateful/region_instance_group_manager_status_stateful.dart';

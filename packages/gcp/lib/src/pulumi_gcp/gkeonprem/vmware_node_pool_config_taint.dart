@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_node_pool_config_taint;
-
-export 'vmware_node_pool_config_taint/vmware_node_pool_config_taint.dart';

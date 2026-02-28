@@ -1,3 +1,0 @@
-library module_compute_get_region_network_endpoint_group_cloud_function;
-
-export 'get_region_network_endpoint_group_cloud_function/get_region_network_endpoint_group_cloud_function.dart';

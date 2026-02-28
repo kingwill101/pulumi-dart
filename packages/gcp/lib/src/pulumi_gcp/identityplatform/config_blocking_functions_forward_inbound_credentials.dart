@@ -1,3 +1,0 @@
-library module_identityplatform_config_blocking_functions_forward_inbound_credentials;
-
-export 'config_blocking_functions_forward_inbound_credentials/config_blocking_functions_forward_inbound_credentials.dart';

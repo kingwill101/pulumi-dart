@@ -1,0 +1,65 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ManagedZoneDnssecConfigDefaultKeySpec {
+  /// String mnemonic specifying the DNSSEC algorithm of this key
+  /// Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
+  final String? algorithm;
+
+  /// Length of the keys in bits
+  final int? keyLength;
+
+  /// Specifies whether this is a key signing key (KSK) or a zone
+  /// signing key (ZSK). Key signing keys have the Secure Entry
+  /// Point flag set and, when active, will only be used to sign
+  /// resource record sets of type DNSKEY. Zone signing keys do
+  /// not have the Secure Entry Point flag set and will be used
+  /// to sign all other types of resource record sets.
+  /// Possible values are: `keySigning`, `zoneSigning`.
+  final String? keyType;
+
+  /// Identifies what kind of resource this is
+  final String? kind;
+
+  /// Creates a new [ManagedZoneDnssecConfigDefaultKeySpec].
+  /// [algorithm] String mnemonic specifying the DNSSEC algorithm of this key
+  /// [keyLength] Length of the keys in bits
+  /// [keyType] Specifies whether this is a key signing key (KSK) or a zone
+  /// [kind] Identifies what kind of resource this is
+  ManagedZoneDnssecConfigDefaultKeySpec({
+    this.algorithm,
+    this.keyLength,
+    this.keyType,
+    this.kind,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final algorithmValue = algorithm;
+    if (algorithmValue != null) {
+      map['algorithm'] = algorithmValue;
+    }
+    final keyLengthValue = keyLength;
+    if (keyLengthValue != null) {
+      map['keyLength'] = keyLengthValue;
+    }
+    final keyTypeValue = keyType;
+    if (keyTypeValue != null) {
+      map['keyType'] = keyTypeValue;
+    }
+    final kindValue = kind;
+    if (kindValue != null) {
+      map['kind'] = kindValue;
+    }
+    return map;
+  }
+
+  factory ManagedZoneDnssecConfigDefaultKeySpec.fromMap(
+      Map<String, dynamic> map) {
+    return ManagedZoneDnssecConfigDefaultKeySpec(
+      algorithm: map['algorithm'] == null ? null : map['algorithm'] as String,
+      keyLength: map['keyLength'] == null ? null : map['keyLength'] as int,
+      keyType: map['keyType'] == null ? null : map['keyType'] as String,
+      kind: map['kind'] == null ? null : map['kind'] as String,
+    );
+  }
+}

@@ -1,3 +1,0 @@
-library module_composer_environment_config_workloads_config_scheduler;
-
-export 'environment_config_workloads_config_scheduler/environment_config_workloads_config_scheduler.dart';

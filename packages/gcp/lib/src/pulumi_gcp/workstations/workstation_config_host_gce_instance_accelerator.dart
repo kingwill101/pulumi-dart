@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_host_gce_instance_accelerator;
-
-export 'workstation_config_host_gce_instance_accelerator/workstation_config_host_gce_instance_accelerator.dart';

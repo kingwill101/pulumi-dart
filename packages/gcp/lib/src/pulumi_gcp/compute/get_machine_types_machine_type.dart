@@ -1,3 +1,0 @@
-library module_compute_get_machine_types_machine_type;
-
-export 'get_machine_types_machine_type/get_machine_types_machine_type.dart';

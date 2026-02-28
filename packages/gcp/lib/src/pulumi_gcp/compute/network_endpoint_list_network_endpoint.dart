@@ -1,3 +1,0 @@
-library module_compute_network_endpoint_list_network_endpoint;
-
-export 'network_endpoint_list_network_endpoint/network_endpoint_list_network_endpoint.dart';

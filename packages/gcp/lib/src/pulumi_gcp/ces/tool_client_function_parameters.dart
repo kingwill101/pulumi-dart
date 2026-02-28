@@ -1,3 +1,0 @@
-library module_ces_tool_client_function_parameters;
-
-export 'tool_client_function_parameters/tool_client_function_parameters.dart';

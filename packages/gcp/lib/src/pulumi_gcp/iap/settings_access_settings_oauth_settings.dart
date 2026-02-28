@@ -1,3 +1,0 @@
-library module_iap_settings_access_settings_oauth_settings;
-
-export 'settings_access_settings_oauth_settings/settings_access_settings_oauth_settings.dart';

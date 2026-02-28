@@ -1,3 +1,0 @@
-library module_container_cluster_ip_allocation_policy;
-
-export 'cluster_ip_allocation_policy/cluster_ip_allocation_policy.dart';

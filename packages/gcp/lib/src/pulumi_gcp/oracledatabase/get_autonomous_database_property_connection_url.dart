@@ -1,3 +1,0 @@
-library module_oracledatabase_get_autonomous_database_property_connection_url;
-
-export 'get_autonomous_database_property_connection_url/get_autonomous_database_property_connection_url.dart';

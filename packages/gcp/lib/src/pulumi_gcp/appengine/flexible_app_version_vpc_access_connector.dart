@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_vpc_access_connector;
-
-export 'flexible_app_version_vpc_access_connector/flexible_app_version_vpc_access_connector.dart';

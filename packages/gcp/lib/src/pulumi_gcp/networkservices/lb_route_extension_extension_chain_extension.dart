@@ -1,3 +1,0 @@
-library module_networkservices_lb_route_extension_extension_chain_extension;
-
-export 'lb_route_extension_extension_chain_extension/lb_route_extension_extension_chain_extension.dart';

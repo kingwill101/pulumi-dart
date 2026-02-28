@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_workbench_instance_iam_policy_instance_iam_policy_args_doc}
+/// The set of arguments for InstanceIamPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_workbench_instance_iam_policy_instance_iam_policy_args_doc}
+class InstanceIamPolicyArgs {
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> policyData;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [InstanceIamPolicyArgs].
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [policyData] Required.
+  /// [project] Optional.
+  InstanceIamPolicyArgs({
+    String? location,
+    String? name,
+    required String policyData,
+    String? project,
+  })  : location = pulumi.Input.asOptionalInput<String>(location),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        policyData = pulumi.Input.asInput<String>(policyData),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    map['policyData'] = policyData;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory InstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return InstanceIamPolicyArgs(
+      location: map['location'] == null ? null : map['location'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      policyData: map['policyData'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

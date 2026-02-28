@@ -1,3 +1,0 @@
-library module_apigateway_api_config_grpc_service_source;
-
-export 'api_config_grpc_service_source/api_config_grpc_service_source.dart';

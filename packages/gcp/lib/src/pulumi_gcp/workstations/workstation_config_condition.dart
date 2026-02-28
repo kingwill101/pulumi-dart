@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_condition;
-
-export 'workstation_config_condition/workstation_config_condition.dart';

@@ -1,3 +1,0 @@
-library module_backupdisasterrecovery_restore_workload_compute_instance_restore_properties_params;
-
-export 'restore_workload_compute_instance_restore_properties_params/restore_workload_compute_instance_restore_properties_params.dart';

@@ -1,3 +1,0 @@
-library module_iam_organizations_policy_binding_condition;
-
-export 'organizations_policy_binding_condition/organizations_policy_binding_condition.dart';

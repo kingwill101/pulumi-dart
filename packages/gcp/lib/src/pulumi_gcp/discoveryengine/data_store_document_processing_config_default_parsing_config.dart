@@ -1,3 +1,0 @@
-library module_discoveryengine_data_store_document_processing_config_default_parsing_config;
-
-export 'data_store_document_processing_config_default_parsing_config/data_store_document_processing_config_default_parsing_config.dart';

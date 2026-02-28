@@ -1,3 +1,0 @@
-library module_compute_get_instance_template_scheduling_max_run_duration;
-
-export 'get_instance_template_scheduling_max_run_duration/get_instance_template_scheduling_max_run_duration.dart';

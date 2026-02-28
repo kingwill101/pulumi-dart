@@ -1,3 +1,0 @@
-library module_apigee_api_product_operation_group_operation_config_attribute;
-
-export 'api_product_operation_group_operation_config_attribute/api_product_operation_group_operation_config_attribute.dart';

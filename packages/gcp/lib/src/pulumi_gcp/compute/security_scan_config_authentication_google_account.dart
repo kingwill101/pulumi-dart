@@ -1,3 +1,0 @@
-library module_compute_security_scan_config_authentication_google_account;
-
-export 'security_scan_config_authentication_google_account/security_scan_config_authentication_google_account.dart';

@@ -1,3 +1,0 @@
-library module_workstations_workstation_cluster_domain_config;
-
-export 'workstation_cluster_domain_config/workstation_cluster_domain_config.dart';

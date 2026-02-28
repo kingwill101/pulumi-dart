@@ -1,3 +1,0 @@
-library module_pubsub_subscription_iambinding_condition;
-
-export 'subscription_iambinding_condition/subscription_iambinding_condition.dart';

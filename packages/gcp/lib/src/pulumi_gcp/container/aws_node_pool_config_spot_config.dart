@@ -1,3 +1,0 @@
-library module_container_aws_node_pool_config_spot_config;
-
-export 'aws_node_pool_config_spot_config/aws_node_pool_config_spot_config.dart';

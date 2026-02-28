@@ -1,3 +1,0 @@
-library module_compute_get_reservation_block_physical_topology;
-
-export 'get_reservation_block_physical_topology/get_reservation_block_physical_topology.dart';

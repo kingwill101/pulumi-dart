@@ -1,3 +1,0 @@
-library module_compute_future_reservation_auto_created_reservations_duration;
-
-export 'future_reservation_auto_created_reservations_duration/future_reservation_auto_created_reservations_duration.dart';

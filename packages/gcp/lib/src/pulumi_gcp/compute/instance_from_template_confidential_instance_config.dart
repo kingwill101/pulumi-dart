@@ -1,3 +1,0 @@
-library module_compute_instance_from_template_confidential_instance_config;
-
-export 'instance_from_template_confidential_instance_config/instance_from_template_confidential_instance_config.dart';

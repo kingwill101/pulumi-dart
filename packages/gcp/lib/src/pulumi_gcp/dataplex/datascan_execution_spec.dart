@@ -1,3 +1,0 @@
-library module_dataplex_datascan_execution_spec;
-
-export 'datascan_execution_spec/datascan_execution_spec.dart';

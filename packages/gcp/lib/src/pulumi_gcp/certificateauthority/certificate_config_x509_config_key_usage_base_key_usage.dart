@@ -1,3 +1,0 @@
-library module_certificateauthority_certificate_config_x509_config_key_usage_base_key_usage;
-
-export 'certificate_config_x509_config_key_usage_base_key_usage/certificate_config_x509_config_key_usage_base_key_usage.dart';

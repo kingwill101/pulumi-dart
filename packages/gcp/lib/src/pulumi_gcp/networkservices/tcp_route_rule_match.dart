@@ -1,3 +1,0 @@
-library module_networkservices_tcp_route_rule_match;
-
-export 'tcp_route_rule_match/tcp_route_rule_match.dart';

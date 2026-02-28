@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_form_parameter_advanced_settings;
-
-export 'cx_page_form_parameter_advanced_settings/cx_page_form_parameter_advanced_settings.dart';

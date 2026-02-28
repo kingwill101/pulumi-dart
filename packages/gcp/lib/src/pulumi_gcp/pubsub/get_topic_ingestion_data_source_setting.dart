@@ -1,3 +1,0 @@
-library module_pubsub_get_topic_ingestion_data_source_setting;
-
-export 'get_topic_ingestion_data_source_setting/get_topic_ingestion_data_source_setting.dart';

@@ -1,3 +1,0 @@
-library module_alloydb_get_cluster_maintenance_update_policy;
-
-export 'get_cluster_maintenance_update_policy/get_cluster_maintenance_update_policy.dart';

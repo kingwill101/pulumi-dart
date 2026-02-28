@@ -1,3 +1,0 @@
-library module_dataproc_cluster_cluster_config_master_config_accelerator;
-
-export 'cluster_cluster_config_master_config_accelerator/cluster_cluster_config_master_config_accelerator.dart';

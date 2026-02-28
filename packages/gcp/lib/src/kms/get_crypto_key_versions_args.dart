@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_kms_get_crypto_key_versions_get_crypto_key_versions_args_doc}
+/// Arguments for getCryptoKeyVersions.
+/// {@endtemplate}
+/// {@macro pulumi_kms_get_crypto_key_versions_get_crypto_key_versions_args_doc}
+class GetCryptoKeyVersionsArgs {
+  /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+  /// `gcp.kms.CryptoKey` resource/datasource.
+  final pulumi.Input<String> cryptoKey;
+
+  /// The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+  ///
+  /// Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}/cryptoKeyVersions.
+  ///
+  /// * `"name:my-key-"` will retrieve cryptoKeyVersions that contain "my-key-" anywhere in their name.
+  /// * `"name=projects/my-project/locations/global/keyRings/my-key-ring/cryptoKeys/my-key-1/cryptoKeyVersions/my-version-1"` will only retrieve a key with that exact name.
+  ///
+  /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
+  final pulumi.Input<String>? filter;
+
+  /// Creates a new [GetCryptoKeyVersionsArgs].
+  /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+  /// [filter] The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
+  GetCryptoKeyVersionsArgs({
+    required String cryptoKey,
+    String? filter,
+  })  : cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
+        filter = pulumi.Input.asOptionalInput<String>(filter);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['cryptoKey'] = cryptoKey;
+    final filterValue = filter;
+    if (filterValue != null) {
+      map['filter'] = filterValue;
+    }
+    return map;
+  }
+
+  factory GetCryptoKeyVersionsArgs.fromMap(Map<String, dynamic> map) {
+    return GetCryptoKeyVersionsArgs(
+      cryptoKey: map['cryptoKey'] as String,
+      filter: map['filter'] == null ? null : map['filter'] as String,
+    );
+  }
+}

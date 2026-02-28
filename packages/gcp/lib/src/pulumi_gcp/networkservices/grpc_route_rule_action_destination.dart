@@ -1,3 +1,0 @@
-library module_networkservices_grpc_route_rule_action_destination;
-
-export 'grpc_route_rule_action_destination/grpc_route_rule_action_destination.dart';

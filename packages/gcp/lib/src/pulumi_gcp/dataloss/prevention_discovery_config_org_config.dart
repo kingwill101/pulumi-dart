@@ -1,3 +1,0 @@
-library module_dataloss_prevention_discovery_config_org_config;
-
-export 'prevention_discovery_config_org_config/prevention_discovery_config_org_config.dart';

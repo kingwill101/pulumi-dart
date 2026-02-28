@@ -1,3 +1,0 @@
-library module_networkservices_edge_cache_service_routing_path_matcher_route_rule;
-
-export 'edge_cache_service_routing_path_matcher_route_rule/edge_cache_service_routing_path_matcher_route_rule.dart';

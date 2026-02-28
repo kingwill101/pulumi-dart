@@ -1,4 +1,0 @@
-library module_bigquery_datapolicyv2_data_policy;
-
-export 'datapolicyv2_data_policy/datapolicyv2_data_policy.dart';
-export 'datapolicyv2_data_policy/datapolicyv2_data_policy_args.dart';

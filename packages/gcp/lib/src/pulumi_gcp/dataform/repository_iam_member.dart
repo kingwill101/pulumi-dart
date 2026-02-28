@@ -1,4 +1,0 @@
-library module_dataform_repository_iam_member;
-
-export 'repository_iam_member/repository_iam_member_dataform.dart';
-export 'repository_iam_member/repository_iam_member_dataform_args.dart';

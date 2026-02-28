@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_ssl_config_private_server_certificate;
-
-export 'connection_ssl_config_private_server_certificate/connection_ssl_config_private_server_certificate.dart';

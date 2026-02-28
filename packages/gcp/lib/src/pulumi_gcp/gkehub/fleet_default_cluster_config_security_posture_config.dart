@@ -1,3 +1,0 @@
-library module_gkehub_fleet_default_cluster_config_security_posture_config;
-
-export 'fleet_default_cluster_config_security_posture_config/fleet_default_cluster_config_security_posture_config.dart';

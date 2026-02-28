@@ -1,3 +1,3 @@
 library pulumi_gcp_logging;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/logging.dart';
+export 'package:pulumi_gcp/src/logging.dart';

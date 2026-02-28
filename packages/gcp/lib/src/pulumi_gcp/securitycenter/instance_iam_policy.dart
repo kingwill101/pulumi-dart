@@ -1,4 +1,0 @@
-library module_securitycenter_instance_iam_policy;
-
-export 'instance_iam_policy/instance_iam_policy_securitycenter.dart';
-export 'instance_iam_policy/instance_iam_policy_securitycenter_args.dart';

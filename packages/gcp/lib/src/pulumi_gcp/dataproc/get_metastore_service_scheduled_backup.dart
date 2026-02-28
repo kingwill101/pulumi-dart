@@ -1,3 +1,0 @@
-library module_dataproc_get_metastore_service_scheduled_backup;
-
-export 'get_metastore_service_scheduled_backup/get_metastore_service_scheduled_backup.dart';

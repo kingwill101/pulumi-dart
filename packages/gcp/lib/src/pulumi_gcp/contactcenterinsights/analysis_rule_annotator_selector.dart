@@ -1,3 +1,0 @@
-library module_contactcenterinsights_analysis_rule_annotator_selector;
-
-export 'analysis_rule_annotator_selector/analysis_rule_annotator_selector.dart';

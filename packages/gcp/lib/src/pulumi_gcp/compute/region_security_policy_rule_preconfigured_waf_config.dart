@@ -1,3 +1,0 @@
-library module_compute_region_security_policy_rule_preconfigured_waf_config;
-
-export 'region_security_policy_rule_preconfigured_waf_config/region_security_policy_rule_preconfigured_waf_config.dart';

@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_node_config_gvnic;
-
-export 'cluster_node_pool_node_config_gvnic/cluster_node_pool_node_config_gvnic.dart';

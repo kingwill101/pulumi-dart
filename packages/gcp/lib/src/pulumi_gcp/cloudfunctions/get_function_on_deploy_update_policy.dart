@@ -1,3 +1,0 @@
-library module_cloudfunctions_get_function_on_deploy_update_policy;
-
-export 'get_function_on_deploy_update_policy/get_function_on_deploy_update_policy.dart';

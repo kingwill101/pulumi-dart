@@ -1,3 +1,0 @@
-library module_oracledatabase_autonomous_database_properties_local_standby_db;
-
-export 'autonomous_database_properties_local_standby_db/autonomous_database_properties_local_standby_db.dart';

@@ -1,3 +1,0 @@
-library module_compute_backend_service_outlier_detection_interval;
-
-export 'backend_service_outlier_detection_interval/backend_service_outlier_detection_interval.dart';

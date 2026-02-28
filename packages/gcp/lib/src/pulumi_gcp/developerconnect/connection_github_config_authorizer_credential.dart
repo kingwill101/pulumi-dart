@@ -1,3 +1,0 @@
-library module_developerconnect_connection_github_config_authorizer_credential;
-
-export 'connection_github_config_authorizer_credential/connection_github_config_authorizer_credential_developerconnect.dart';

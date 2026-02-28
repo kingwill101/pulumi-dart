@@ -1,3 +1,0 @@
-library module_networksecurity_mirroring_endpoint_group_connected_deployment_group;
-
-export 'mirroring_endpoint_group_connected_deployment_group/mirroring_endpoint_group_connected_deployment_group.dart';

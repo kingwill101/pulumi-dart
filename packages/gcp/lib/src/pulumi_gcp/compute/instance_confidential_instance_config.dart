@@ -1,3 +1,0 @@
-library module_compute_instance_confidential_instance_config;
-
-export 'instance_confidential_instance_config/instance_confidential_instance_config.dart';

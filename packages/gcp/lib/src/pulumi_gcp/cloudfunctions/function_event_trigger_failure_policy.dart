@@ -1,3 +1,0 @@
-library module_cloudfunctions_function_event_trigger_failure_policy;
-
-export 'function_event_trigger_failure_policy/function_event_trigger_failure_policy.dart';

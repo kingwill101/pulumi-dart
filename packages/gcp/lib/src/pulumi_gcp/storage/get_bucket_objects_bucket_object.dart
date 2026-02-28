@@ -1,3 +1,0 @@
-library module_storage_get_bucket_objects_bucket_object;
-
-export 'get_bucket_objects_bucket_object/get_bucket_objects_bucket_object.dart';

@@ -1,3 +1,0 @@
-library module_dataplex_datascan_data_discovery_spec;
-
-export 'datascan_data_discovery_spec/datascan_data_discovery_spec.dart';

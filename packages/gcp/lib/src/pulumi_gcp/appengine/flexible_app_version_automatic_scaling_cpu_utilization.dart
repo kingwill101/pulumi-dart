@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_automatic_scaling_cpu_utilization;
-
-export 'flexible_app_version_automatic_scaling_cpu_utilization/flexible_app_version_automatic_scaling_cpu_utilization.dart';

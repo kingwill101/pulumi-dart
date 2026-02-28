@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_platform_config_status;
-
-export 'vmware_admin_cluster_platform_config_status/vmware_admin_cluster_platform_config_status.dart';

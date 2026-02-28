@@ -1,3 +1,0 @@
-library module_vertex_ai_rag_engine_config_rag_managed_db_config;
-
-export 'ai_rag_engine_config_rag_managed_db_config/ai_rag_engine_config_rag_managed_db_config.dart';

@@ -1,3 +1,0 @@
-library module_identityplatform_tenant_inbound_saml_config_idp_config_idp_certificate;
-
-export 'tenant_inbound_saml_config_idp_config_idp_certificate/tenant_inbound_saml_config_idp_config_idp_certificate.dart';

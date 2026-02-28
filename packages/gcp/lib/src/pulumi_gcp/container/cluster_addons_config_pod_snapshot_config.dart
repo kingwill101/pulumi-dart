@@ -1,3 +1,0 @@
-library module_container_cluster_addons_config_pod_snapshot_config;
-
-export 'cluster_addons_config_pod_snapshot_config/cluster_addons_config_pod_snapshot_config.dart';

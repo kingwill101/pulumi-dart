@@ -1,3 +1,0 @@
-library module_container_node_pool_network_config_additional_pod_network_config;
-
-export 'node_pool_network_config_additional_pod_network_config/node_pool_network_config_additional_pod_network_config.dart';

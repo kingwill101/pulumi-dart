@@ -1,3 +1,0 @@
-library module_container_get_cluster_cluster_telemetry;
-
-export 'get_cluster_cluster_telemetry/get_cluster_cluster_telemetry.dart';

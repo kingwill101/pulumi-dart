@@ -1,3 +1,0 @@
-library module_cloudsecuritycompliance_framework_deployment_cloud_control_metadata;
-
-export 'framework_deployment_cloud_control_metadata/framework_deployment_cloud_control_metadata.dart';

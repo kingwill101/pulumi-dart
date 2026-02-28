@@ -1,3 +1,0 @@
-library module_alloydb_instance_psc_instance_config;
-
-export 'instance_psc_instance_config/instance_psc_instance_config.dart';

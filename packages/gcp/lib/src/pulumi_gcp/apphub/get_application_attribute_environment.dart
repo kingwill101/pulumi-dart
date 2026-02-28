@@ -1,3 +1,0 @@
-library module_apphub_get_application_attribute_environment;
-
-export 'get_application_attribute_environment/get_application_attribute_environment.dart';

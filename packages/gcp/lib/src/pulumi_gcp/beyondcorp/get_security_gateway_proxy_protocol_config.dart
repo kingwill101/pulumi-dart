@@ -1,3 +1,0 @@
-library module_beyondcorp_get_security_gateway_proxy_protocol_config;
-
-export 'get_security_gateway_proxy_protocol_config/get_security_gateway_proxy_protocol_config.dart';

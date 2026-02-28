@@ -1,3 +1,0 @@
-library module_vmwareengine_network_policy_external_ip;
-
-export 'network_policy_external_ip/network_policy_external_ip.dart';

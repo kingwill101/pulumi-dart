@@ -1,3 +1,0 @@
-library module_redis_cluster_user_created_connections_cluster_endpoint_connection;
-
-export 'cluster_user_created_connections_cluster_endpoint_connection/cluster_user_created_connections_cluster_endpoint_connection.dart';

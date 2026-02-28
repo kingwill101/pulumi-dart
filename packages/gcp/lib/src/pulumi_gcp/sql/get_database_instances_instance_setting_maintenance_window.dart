@@ -1,3 +1,0 @@
-library module_sql_get_database_instances_instance_setting_maintenance_window;
-
-export 'get_database_instances_instance_setting_maintenance_window/get_database_instances_instance_setting_maintenance_window.dart';

@@ -1,3 +1,0 @@
-library module_compute_region_backend_service_iam_binding_condition;
-
-export 'region_backend_service_iam_binding_condition/region_backend_service_iam_binding_condition.dart';

@@ -1,3 +1,0 @@
-library module_dataplex_get_data_quality_rules_rule_table_condition_expectation;
-
-export 'get_data_quality_rules_rule_table_condition_expectation/get_data_quality_rules_rule_table_condition_expectation.dart';

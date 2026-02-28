@@ -1,3 +1,0 @@
-library module_cloudsecuritycompliance_cloud_control_parameter_spec_sub_parameter;
-
-export 'cloud_control_parameter_spec_sub_parameter/cloud_control_parameter_spec_sub_parameter.dart';

@@ -1,3 +1,0 @@
-library module_sql_user_password_policy_status;
-
-export 'user_password_policy_status/user_password_policy_status.dart';

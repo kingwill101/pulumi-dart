@@ -1,3 +1,0 @@
-library module_ces_app_evaluation_metrics_thresholds;
-
-export 'app_evaluation_metrics_thresholds/app_evaluation_metrics_thresholds.dart';

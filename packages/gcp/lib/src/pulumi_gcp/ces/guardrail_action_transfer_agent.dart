@@ -1,3 +1,0 @@
-library module_ces_guardrail_action_transfer_agent;
-
-export 'guardrail_action_transfer_agent/guardrail_action_transfer_agent.dart';

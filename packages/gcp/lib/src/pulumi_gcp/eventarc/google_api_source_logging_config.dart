@@ -1,3 +1,0 @@
-library module_eventarc_google_api_source_logging_config;
-
-export 'google_api_source_logging_config/google_api_source_logging_config.dart';

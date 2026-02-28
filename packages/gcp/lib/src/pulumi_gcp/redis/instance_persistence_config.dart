@@ -1,3 +1,0 @@
-library module_redis_instance_persistence_config;
-
-export 'instance_persistence_config/instance_persistence_config_redis.dart';

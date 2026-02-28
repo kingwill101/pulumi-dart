@@ -1,3 +1,0 @@
-library module_compute_instance_template_scheduling_on_instance_stop_action;
-
-export 'instance_template_scheduling_on_instance_stop_action/instance_template_scheduling_on_instance_stop_action.dart';

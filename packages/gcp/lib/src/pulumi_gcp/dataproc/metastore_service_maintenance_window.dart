@@ -1,3 +1,0 @@
-library module_dataproc_metastore_service_maintenance_window;
-
-export 'metastore_service_maintenance_window/metastore_service_maintenance_window.dart';

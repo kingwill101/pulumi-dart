@@ -1,3 +1,0 @@
-library module_edgecontainer_cluster_maintenance_policy;
-
-export 'cluster_maintenance_policy/cluster_maintenance_policy_edgecontainer.dart';

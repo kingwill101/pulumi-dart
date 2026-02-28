@@ -1,3 +1,0 @@
-library module_certificateauthority_certificate_config_subject_config_subject_alt_name;
-
-export 'certificate_config_subject_config_subject_alt_name/certificate_config_subject_config_subject_alt_name.dart';

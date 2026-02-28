@@ -1,3 +1,0 @@
-library module_cloudfunctionsv2_function_build_config_source_repo_source;
-
-export 'function_build_config_source_repo_source/function_build_config_source_repo_source.dart';

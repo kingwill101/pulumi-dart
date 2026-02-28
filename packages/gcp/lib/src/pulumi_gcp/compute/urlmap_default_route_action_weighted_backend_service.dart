@@ -1,3 +1,0 @@
-library module_compute_urlmap_default_route_action_weighted_backend_service;
-
-export 'urlmap_default_route_action_weighted_backend_service/urlmap_default_route_action_weighted_backend_service.dart';

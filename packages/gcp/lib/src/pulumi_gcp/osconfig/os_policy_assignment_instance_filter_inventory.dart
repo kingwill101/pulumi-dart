@@ -1,3 +1,0 @@
-library module_osconfig_os_policy_assignment_instance_filter_inventory;
-
-export 'os_policy_assignment_instance_filter_inventory/os_policy_assignment_instance_filter_inventory.dart';

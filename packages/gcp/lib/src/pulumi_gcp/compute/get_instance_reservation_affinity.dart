@@ -1,3 +1,0 @@
-library module_compute_get_instance_reservation_affinity;
-
-export 'get_instance_reservation_affinity/get_instance_reservation_affinity.dart';

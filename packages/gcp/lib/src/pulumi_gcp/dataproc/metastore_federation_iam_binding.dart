@@ -1,4 +1,0 @@
-library module_dataproc_metastore_federation_iam_binding;
-
-export 'metastore_federation_iam_binding/metastore_federation_iam_binding.dart';
-export 'metastore_federation_iam_binding/metastore_federation_iam_binding_args.dart';

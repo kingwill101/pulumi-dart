@@ -1,3 +1,0 @@
-library module_cloudbuild_trigger_build_available_secrets;
-
-export 'trigger_build_available_secrets/trigger_build_available_secrets.dart';

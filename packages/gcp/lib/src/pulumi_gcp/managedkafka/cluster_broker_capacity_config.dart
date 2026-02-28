@@ -1,3 +1,0 @@
-library module_managedkafka_cluster_broker_capacity_config;
-
-export 'cluster_broker_capacity_config/cluster_broker_capacity_config.dart';

@@ -1,3 +1,0 @@
-library module_vmwareengine_network_policy_internet_access;
-
-export 'network_policy_internet_access/network_policy_internet_access.dart';

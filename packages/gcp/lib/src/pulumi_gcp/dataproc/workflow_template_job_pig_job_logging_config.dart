@@ -1,3 +1,0 @@
-library module_dataproc_workflow_template_job_pig_job_logging_config;
-
-export 'workflow_template_job_pig_job_logging_config/workflow_template_job_pig_job_logging_config.dart';

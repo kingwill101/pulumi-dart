@@ -1,3 +1,0 @@
-library module_redis_instance_server_ca_cert;
-
-export 'instance_server_ca_cert/instance_server_ca_cert.dart';

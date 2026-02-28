@@ -1,3 +1,0 @@
-library module_apihub_curation_plugin_instance_action;
-
-export 'curation_plugin_instance_action/curation_plugin_instance_action.dart';

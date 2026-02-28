@@ -1,4 +1,0 @@
-library module_dataplex_entry_group_iam_member;
-
-export 'entry_group_iam_member/entry_group_iam_member_dataplex.dart';
-export 'entry_group_iam_member/entry_group_iam_member_dataplex_args.dart';

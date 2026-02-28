@@ -1,3 +1,0 @@
-library module_looker_instance_deny_maintenance_period;
-
-export 'instance_deny_maintenance_period/instance_deny_maintenance_period.dart';

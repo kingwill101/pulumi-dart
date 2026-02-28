@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_network_config_host_config;
-
-export 'vmware_admin_cluster_network_config_host_config/vmware_admin_cluster_network_config_host_config.dart';

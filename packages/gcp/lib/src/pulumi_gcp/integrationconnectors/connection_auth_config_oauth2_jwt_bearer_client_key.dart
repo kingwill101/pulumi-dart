@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_auth_config_oauth2_jwt_bearer_client_key;
-
-export 'connection_auth_config_oauth2_jwt_bearer_client_key/connection_auth_config_oauth2_jwt_bearer_client_key.dart';

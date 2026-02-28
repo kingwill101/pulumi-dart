@@ -1,3 +1,0 @@
-library module_iam_folders_policy_binding_target;
-
-export 'folders_policy_binding_target/folders_policy_binding_target.dart';

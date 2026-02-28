@@ -1,3 +1,0 @@
-library module_sql_database_instance_point_in_time_restore_context;
-
-export 'database_instance_point_in_time_restore_context/database_instance_point_in_time_restore_context.dart';

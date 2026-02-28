@@ -1,3 +1,0 @@
-library module_dataproc_autoscaling_policy_worker_config;
-
-export 'autoscaling_policy_worker_config/autoscaling_policy_worker_config.dart';

@@ -1,3 +1,0 @@
-library module_cloudrun_service_status_traffic;
-
-export 'service_status_traffic/service_status_traffic.dart';

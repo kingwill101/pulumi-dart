@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_guardrail;
-
-export 'app_version_snapshot_guardrail/app_version_snapshot_guardrail.dart';

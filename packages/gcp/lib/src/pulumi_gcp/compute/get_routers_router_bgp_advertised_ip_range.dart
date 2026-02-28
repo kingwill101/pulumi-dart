@@ -1,3 +1,0 @@
-library module_compute_get_routers_router_bgp_advertised_ip_range;
-
-export 'get_routers_router_bgp_advertised_ip_range/get_routers_router_bgp_advertised_ip_range.dart';

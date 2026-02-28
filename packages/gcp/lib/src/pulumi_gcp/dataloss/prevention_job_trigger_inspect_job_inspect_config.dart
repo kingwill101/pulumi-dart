@@ -1,3 +1,0 @@
-library module_dataloss_prevention_job_trigger_inspect_job_inspect_config;
-
-export 'prevention_job_trigger_inspect_job_inspect_config/prevention_job_trigger_inspect_job_inspect_config.dart';

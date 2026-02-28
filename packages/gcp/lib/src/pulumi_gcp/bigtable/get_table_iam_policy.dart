@@ -1,5 +1,0 @@
-library module_bigtable_get_table_iam_policy;
-
-export 'get_table_iam_policy/get_table_iam_policy_bigtable.dart';
-export 'get_table_iam_policy/get_table_iam_policy_bigtable_args.dart';
-export 'get_table_iam_policy/get_table_iam_policy_bigtable_result.dart';

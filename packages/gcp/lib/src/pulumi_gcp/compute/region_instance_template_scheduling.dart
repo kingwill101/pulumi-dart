@@ -1,3 +1,0 @@
-library module_compute_region_instance_template_scheduling;
-
-export 'region_instance_template_scheduling/region_instance_template_scheduling.dart';

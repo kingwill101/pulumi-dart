@@ -1,3 +1,0 @@
-library module_apphub_application_attributes_business_owner;
-
-export 'application_attributes_business_owner/application_attributes_business_owner.dart';

@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_agent_after_model_callback;
-
-export 'app_version_snapshot_agent_after_model_callback/app_version_snapshot_agent_after_model_callback.dart';

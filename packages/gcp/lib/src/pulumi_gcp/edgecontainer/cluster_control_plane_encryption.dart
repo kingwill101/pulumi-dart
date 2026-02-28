@@ -1,3 +1,0 @@
-library module_edgecontainer_cluster_control_plane_encryption;
-
-export 'cluster_control_plane_encryption/cluster_control_plane_encryption.dart';

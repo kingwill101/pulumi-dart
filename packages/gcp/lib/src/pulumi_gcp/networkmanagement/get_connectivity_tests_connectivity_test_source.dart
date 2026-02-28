@@ -1,3 +1,0 @@
-library module_networkmanagement_get_connectivity_tests_connectivity_test_source;
-
-export 'get_connectivity_tests_connectivity_test_source/get_connectivity_tests_connectivity_test_source.dart';

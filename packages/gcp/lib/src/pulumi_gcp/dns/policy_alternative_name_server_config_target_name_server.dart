@@ -1,3 +1,0 @@
-library module_dns_policy_alternative_name_server_config_target_name_server;
-
-export 'policy_alternative_name_server_config_target_name_server/policy_alternative_name_server_config_target_name_server.dart';

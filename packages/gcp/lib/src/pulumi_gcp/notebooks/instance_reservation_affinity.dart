@@ -1,3 +1,0 @@
-library module_notebooks_instance_reservation_affinity;
-
-export 'instance_reservation_affinity/instance_reservation_affinity_notebooks.dart';

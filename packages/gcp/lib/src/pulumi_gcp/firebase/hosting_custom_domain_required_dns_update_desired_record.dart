@@ -1,3 +1,0 @@
-library module_firebase_hosting_custom_domain_required_dns_update_desired_record;
-
-export 'hosting_custom_domain_required_dns_update_desired_record/hosting_custom_domain_required_dns_update_desired_record.dart';

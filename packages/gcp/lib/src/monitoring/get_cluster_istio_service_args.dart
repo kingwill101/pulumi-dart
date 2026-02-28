@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_monitoring_get_cluster_istio_service_get_cluster_istio_service_args_doc}
+/// Arguments for getClusterIstioService.
+/// {@endtemplate}
+/// {@macro pulumi_monitoring_get_cluster_istio_service_get_cluster_istio_service_args_doc}
+class GetClusterIstioServiceArgs {
+  /// The name of the Kubernetes cluster in which this Istio service
+  /// is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
+  final pulumi.Input<String> clusterName;
+
+  /// The location of the Kubernetes cluster in which this Istio service
+  /// is defined. Corresponds to the location resource label in k8s_cluster resources.
+  final pulumi.Input<String> location;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// The name of the Istio service underlying this service.
+  /// Corresponds to the destination_service_name metric label in Istio metrics.
+  ///
+  /// - - -
+  ///
+  /// Other optional fields include:
+  final pulumi.Input<String> serviceName;
+
+  /// The namespace of the Istio service underlying this service.
+  /// Corresponds to the destination_service_namespace metric label in Istio metrics.
+  final pulumi.Input<String> serviceNamespace;
+
+  /// Creates a new [GetClusterIstioServiceArgs].
+  /// [clusterName] The name of the Kubernetes cluster in which this Istio service
+  /// [location] The location of the Kubernetes cluster in which this Istio service
+  /// [project] The ID of the project in which the resource belongs.
+  /// [serviceName] The name of the Istio service underlying this service.
+  /// [serviceNamespace] The namespace of the Istio service underlying this service.
+  GetClusterIstioServiceArgs({
+    required String clusterName,
+    required String location,
+    String? project,
+    required String serviceName,
+    required String serviceNamespace,
+  })  : clusterName = pulumi.Input.asInput<String>(clusterName),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        serviceName = pulumi.Input.asInput<String>(serviceName),
+        serviceNamespace = pulumi.Input.asInput<String>(serviceNamespace);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['clusterName'] = clusterName;
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['serviceName'] = serviceName;
+    map['serviceNamespace'] = serviceNamespace;
+    return map;
+  }
+
+  factory GetClusterIstioServiceArgs.fromMap(Map<String, dynamic> map) {
+    return GetClusterIstioServiceArgs(
+      clusterName: map['clusterName'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      serviceName: map['serviceName'] as String,
+      serviceNamespace: map['serviceNamespace'] as String,
+    );
+  }
+}

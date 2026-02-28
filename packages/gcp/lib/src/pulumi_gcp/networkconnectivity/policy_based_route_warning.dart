@@ -1,3 +1,0 @@
-library module_networkconnectivity_policy_based_route_warning;
-
-export 'policy_based_route_warning/policy_based_route_warning.dart';

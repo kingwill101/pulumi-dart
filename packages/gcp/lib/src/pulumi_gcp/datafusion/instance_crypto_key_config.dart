@@ -1,3 +1,0 @@
-library module_datafusion_instance_crypto_key_config;
-
-export 'instance_crypto_key_config/instance_crypto_key_config.dart';

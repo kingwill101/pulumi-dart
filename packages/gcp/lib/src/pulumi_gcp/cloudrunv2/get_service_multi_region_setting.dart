@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_service_multi_region_setting;
-
-export 'get_service_multi_region_setting/get_service_multi_region_setting.dart';

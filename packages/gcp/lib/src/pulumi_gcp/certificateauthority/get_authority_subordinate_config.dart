@@ -1,3 +1,0 @@
-library module_certificateauthority_get_authority_subordinate_config;
-
-export 'get_authority_subordinate_config/get_authority_subordinate_config.dart';

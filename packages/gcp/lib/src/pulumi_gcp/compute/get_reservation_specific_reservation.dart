@@ -1,3 +1,0 @@
-library module_compute_get_reservation_specific_reservation;
-
-export 'get_reservation_specific_reservation/get_reservation_specific_reservation.dart';

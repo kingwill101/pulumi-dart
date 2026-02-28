@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_cluster_network_config_control_plane_v2_config;
-
-export 'vmware_cluster_network_config_control_plane_v2_config/vmware_cluster_network_config_control_plane_v2_config.dart';

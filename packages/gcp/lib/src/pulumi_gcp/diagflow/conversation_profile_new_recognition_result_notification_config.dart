@@ -1,3 +1,0 @@
-library module_diagflow_conversation_profile_new_recognition_result_notification_config;
-
-export 'conversation_profile_new_recognition_result_notification_config/conversation_profile_new_recognition_result_notification_config.dart';

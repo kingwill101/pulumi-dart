@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_networkmanagement_get_connectivity_tests_get_connectivity_tests_args_doc}
+/// Arguments for getConnectivityTests.
+/// {@endtemplate}
+/// {@macro pulumi_networkmanagement_get_connectivity_tests_get_connectivity_tests_args_doc}
+class GetConnectivityTestsArgs {
+  /// Lists the ConnectivityTests that match the [filter expression](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/list#query-parameters). A filter expression filters the resources listed in the response.
+  final pulumi.Input<String>? filter;
+
+  /// The ID of the project.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetConnectivityTestsArgs].
+  /// [filter] Lists the ConnectivityTests that match the [filter expression](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/list#query-parameters). A filter expression filters the resources listed in the response.
+  /// [project] The ID of the project.
+  GetConnectivityTestsArgs({
+    String? filter,
+    String? project,
+  })  : filter = pulumi.Input.asOptionalInput<String>(filter),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final filterValue = filter;
+    if (filterValue != null) {
+      map['filter'] = filterValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetConnectivityTestsArgs.fromMap(Map<String, dynamic> map) {
+    return GetConnectivityTestsArgs(
+      filter: map['filter'] == null ? null : map['filter'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

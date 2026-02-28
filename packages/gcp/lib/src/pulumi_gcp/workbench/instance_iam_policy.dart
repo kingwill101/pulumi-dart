@@ -1,4 +1,0 @@
-library module_workbench_instance_iam_policy;
-
-export 'instance_iam_policy/instance_iam_policy_workbench.dart';
-export 'instance_iam_policy/instance_iam_policy_workbench_args.dart';

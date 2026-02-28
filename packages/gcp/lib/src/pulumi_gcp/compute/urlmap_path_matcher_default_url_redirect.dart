@@ -1,3 +1,0 @@
-library module_compute_urlmap_path_matcher_default_url_redirect;
-
-export 'urlmap_path_matcher_default_url_redirect/urlmap_path_matcher_default_url_redirect.dart';

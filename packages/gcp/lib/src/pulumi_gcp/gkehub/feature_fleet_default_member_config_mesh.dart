@@ -1,3 +1,0 @@
-library module_gkehub_feature_fleet_default_member_config_mesh;
-
-export 'feature_fleet_default_member_config_mesh/feature_fleet_default_member_config_mesh.dart';

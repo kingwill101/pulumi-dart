@@ -1,3 +1,0 @@
-library module_privilegedaccessmanager_entitlement_privileged_access;
-
-export 'entitlement_privileged_access/entitlement_privileged_access.dart';

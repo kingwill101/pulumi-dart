@@ -1,3 +1,0 @@
-library module_accesscontextmanager_service_perimeter_status;
-
-export 'service_perimeter_status/service_perimeter_status.dart';

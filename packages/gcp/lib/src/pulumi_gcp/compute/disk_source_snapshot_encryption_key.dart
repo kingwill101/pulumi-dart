@@ -1,3 +1,0 @@
-library module_compute_disk_source_snapshot_encryption_key;
-
-export 'disk_source_snapshot_encryption_key/disk_source_snapshot_encryption_key.dart';

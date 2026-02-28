@@ -1,3 +1,0 @@
-library module_compute_get_region_security_policy_rule;
-
-export 'get_region_security_policy_rule/get_region_security_policy_rule.dart';

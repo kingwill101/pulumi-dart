@@ -1,3 +1,0 @@
-library module_vertex_ai_endpoint_private_service_connect_config;
-
-export 'ai_endpoint_private_service_connect_config/ai_endpoint_private_service_connect_config.dart';

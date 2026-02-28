@@ -1,3 +1,0 @@
-library module_dataproc_workflow_template_job_hadoop_job;
-
-export 'workflow_template_job_hadoop_job/workflow_template_job_hadoop_job.dart';

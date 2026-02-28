@@ -1,3 +1,0 @@
-library module_vmwareengine_get_private_cloud_hcx;
-
-export 'get_private_cloud_hcx/get_private_cloud_hcx.dart';

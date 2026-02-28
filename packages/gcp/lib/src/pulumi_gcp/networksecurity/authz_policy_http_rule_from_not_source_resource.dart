@@ -1,3 +1,0 @@
-library module_networksecurity_authz_policy_http_rule_from_not_source_resource;
-
-export 'authz_policy_http_rule_from_not_source_resource/authz_policy_http_rule_from_not_source_resource.dart';

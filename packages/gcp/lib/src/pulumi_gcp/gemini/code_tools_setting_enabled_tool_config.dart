@@ -1,3 +1,0 @@
-library module_gemini_code_tools_setting_enabled_tool_config;
-
-export 'code_tools_setting_enabled_tool_config/code_tools_setting_enabled_tool_config.dart';

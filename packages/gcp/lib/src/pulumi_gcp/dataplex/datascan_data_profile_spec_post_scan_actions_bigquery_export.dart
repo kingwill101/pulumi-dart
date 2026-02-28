@@ -1,3 +1,0 @@
-library module_dataplex_datascan_data_profile_spec_post_scan_actions_bigquery_export;
-
-export 'datascan_data_profile_spec_post_scan_actions_bigquery_export/datascan_data_profile_spec_post_scan_actions_bigquery_export.dart';

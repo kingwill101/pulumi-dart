@@ -1,3 +1,0 @@
-library module_container_cluster_secret_sync_config_rotation_config;
-
-export 'cluster_secret_sync_config_rotation_config/cluster_secret_sync_config_rotation_config.dart';

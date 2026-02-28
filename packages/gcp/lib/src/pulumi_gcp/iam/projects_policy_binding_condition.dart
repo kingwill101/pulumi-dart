@@ -1,3 +1,0 @@
-library module_iam_projects_policy_binding_condition;
-
-export 'projects_policy_binding_condition/projects_policy_binding_condition.dart';

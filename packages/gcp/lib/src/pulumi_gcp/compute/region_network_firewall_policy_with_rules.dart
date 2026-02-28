@@ -1,4 +1,0 @@
-library module_compute_region_network_firewall_policy_with_rules;
-
-export 'region_network_firewall_policy_with_rules/region_network_firewall_policy_with_rules.dart';
-export 'region_network_firewall_policy_with_rules/region_network_firewall_policy_with_rules_args.dart';

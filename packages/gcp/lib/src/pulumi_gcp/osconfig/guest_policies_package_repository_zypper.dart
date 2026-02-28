@@ -1,3 +1,0 @@
-library module_osconfig_guest_policies_package_repository_zypper;
-
-export 'guest_policies_package_repository_zypper/guest_policies_package_repository_zypper.dart';

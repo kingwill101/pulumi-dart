@@ -1,3 +1,0 @@
-library module_cloudfunctionsv2_get_function_build_config_source_storage_source;
-
-export 'get_function_build_config_source_storage_source/get_function_build_config_source_storage_source.dart';

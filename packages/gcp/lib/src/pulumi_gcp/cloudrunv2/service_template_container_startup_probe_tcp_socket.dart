@@ -1,3 +1,0 @@
-library module_cloudrunv2_service_template_container_startup_probe_tcp_socket;
-
-export 'service_template_container_startup_probe_tcp_socket/service_template_container_startup_probe_tcp_socket.dart';

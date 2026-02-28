@@ -1,3 +1,0 @@
-library module_transcoder_job_template_config_overlay_image;
-
-export 'job_template_config_overlay_image/job_template_config_overlay_image.dart';

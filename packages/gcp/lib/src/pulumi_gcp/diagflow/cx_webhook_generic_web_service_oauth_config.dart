@@ -1,3 +1,0 @@
-library module_diagflow_cx_webhook_generic_web_service_oauth_config;
-
-export 'cx_webhook_generic_web_service_oauth_config/cx_webhook_generic_web_service_oauth_config.dart';

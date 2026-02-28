@@ -1,3 +1,0 @@
-library module_osconfig_os_policy_assignment_rollout;
-
-export 'os_policy_assignment_rollout/os_policy_assignment_rollout.dart';

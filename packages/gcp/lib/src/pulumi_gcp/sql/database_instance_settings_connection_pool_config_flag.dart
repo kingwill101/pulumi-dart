@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_connection_pool_config_flag;
-
-export 'database_instance_settings_connection_pool_config_flag/database_instance_settings_connection_pool_config_flag.dart';

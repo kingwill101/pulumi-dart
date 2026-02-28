@@ -1,3 +1,0 @@
-library module_bigqueryanalyticshub_listing_restricted_export_config;
-
-export 'listing_restricted_export_config/listing_restricted_export_config.dart';

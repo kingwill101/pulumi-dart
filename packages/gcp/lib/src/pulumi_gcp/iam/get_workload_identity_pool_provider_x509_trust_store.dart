@@ -1,3 +1,0 @@
-library module_iam_get_workload_identity_pool_provider_x509_trust_store;
-
-export 'get_workload_identity_pool_provider_x509_trust_store/get_workload_identity_pool_provider_x509_trust_store.dart';

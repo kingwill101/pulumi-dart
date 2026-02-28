@@ -1,3 +1,0 @@
-library module_apphub_workload_attributes_environment;
-
-export 'workload_attributes_environment/workload_attributes_environment.dart';

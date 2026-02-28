@@ -1,3 +1,0 @@
-library module_compute_service_attachment_consumer_accept_list;
-
-export 'service_attachment_consumer_accept_list/service_attachment_consumer_accept_list.dart';

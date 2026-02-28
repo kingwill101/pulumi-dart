@@ -1,3 +1,3 @@
 library pulumi_gcp_migrationcenter;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/migrationcenter.dart';
+export 'package:pulumi_gcp/src/migrationcenter.dart';

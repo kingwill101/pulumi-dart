@@ -1,3 +1,0 @@
-library module_gemini_repository_group_iam_member_condition;
-
-export 'repository_group_iam_member_condition/repository_group_iam_member_condition.dart';

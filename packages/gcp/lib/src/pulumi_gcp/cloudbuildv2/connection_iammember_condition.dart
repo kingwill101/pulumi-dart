@@ -1,3 +1,0 @@
-library module_cloudbuildv2_connection_iammember_condition;
-
-export 'connection_iammember_condition/connection_iammember_condition.dart';

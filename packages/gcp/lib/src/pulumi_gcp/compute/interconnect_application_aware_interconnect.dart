@@ -1,3 +1,0 @@
-library module_compute_interconnect_application_aware_interconnect;
-
-export 'interconnect_application_aware_interconnect/interconnect_application_aware_interconnect.dart';

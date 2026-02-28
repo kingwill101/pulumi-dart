@@ -1,3 +1,0 @@
-library module_diagflow_cx_generative_settings_knowledge_connector_settings;
-
-export 'cx_generative_settings_knowledge_connector_settings/cx_generative_settings_knowledge_connector_settings.dart';

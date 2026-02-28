@@ -1,3 +1,0 @@
-library module_pubsub_lite_topic_reservation_config;
-
-export 'lite_topic_reservation_config/lite_topic_reservation_config.dart';

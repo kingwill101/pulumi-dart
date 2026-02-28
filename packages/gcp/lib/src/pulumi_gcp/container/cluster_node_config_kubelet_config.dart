@@ -1,3 +1,0 @@
-library module_container_cluster_node_config_kubelet_config;
-
-export 'cluster_node_config_kubelet_config/cluster_node_config_kubelet_config.dart';

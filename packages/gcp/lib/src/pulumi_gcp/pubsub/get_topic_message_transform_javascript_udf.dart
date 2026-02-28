@@ -1,3 +1,0 @@
-library module_pubsub_get_topic_message_transform_javascript_udf;
-
-export 'get_topic_message_transform_javascript_udf/get_topic_message_transform_javascript_udf.dart';

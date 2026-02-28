@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_cluster_control_plane_node;
-
-export 'vmware_cluster_control_plane_node/vmware_cluster_control_plane_node.dart';

@@ -1,3 +1,0 @@
-library module_bigquery_table_external_catalog_table_options;
-
-export 'table_external_catalog_table_options/table_external_catalog_table_options.dart';

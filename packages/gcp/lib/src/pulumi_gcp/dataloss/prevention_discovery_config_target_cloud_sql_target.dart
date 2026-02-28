@@ -1,3 +1,0 @@
-library module_dataloss_prevention_discovery_config_target_cloud_sql_target;
-
-export 'prevention_discovery_config_target_cloud_sql_target/prevention_discovery_config_target_cloud_sql_target.dart';

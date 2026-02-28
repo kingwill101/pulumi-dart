@@ -1,3 +1,0 @@
-library module_securitycenter_folder_custom_module_custom_config_custom_output_property;
-
-export 'folder_custom_module_custom_config_custom_output_property/folder_custom_module_custom_config_custom_output_property.dart';

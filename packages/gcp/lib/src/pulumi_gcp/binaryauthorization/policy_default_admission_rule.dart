@@ -1,3 +1,0 @@
-library module_binaryauthorization_policy_default_admission_rule;
-
-export 'policy_default_admission_rule/policy_default_admission_rule.dart';

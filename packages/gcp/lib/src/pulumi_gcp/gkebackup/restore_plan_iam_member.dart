@@ -1,4 +1,0 @@
-library module_gkebackup_restore_plan_iam_member;
-
-export 'restore_plan_iam_member/restore_plan_iam_member.dart';
-export 'restore_plan_iam_member/restore_plan_iam_member_args.dart';

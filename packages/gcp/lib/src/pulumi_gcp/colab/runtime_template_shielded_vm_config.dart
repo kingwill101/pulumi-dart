@@ -1,3 +1,0 @@
-library module_colab_runtime_template_shielded_vm_config;
-
-export 'runtime_template_shielded_vm_config/runtime_template_shielded_vm_config.dart';

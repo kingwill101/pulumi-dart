@@ -1,4 +1,0 @@
-library module_networkservices_multicast_group_consumer_activation;
-
-export 'multicast_group_consumer_activation/multicast_group_consumer_activation.dart';
-export 'multicast_group_consumer_activation/multicast_group_consumer_activation_args.dart';

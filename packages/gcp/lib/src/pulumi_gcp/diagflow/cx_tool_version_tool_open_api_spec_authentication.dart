@@ -1,3 +1,0 @@
-library module_diagflow_cx_tool_version_tool_open_api_spec_authentication;
-
-export 'cx_tool_version_tool_open_api_spec_authentication/cx_tool_version_tool_open_api_spec_authentication.dart';

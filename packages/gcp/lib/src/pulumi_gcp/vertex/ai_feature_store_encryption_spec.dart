@@ -1,3 +1,0 @@
-library module_vertex_ai_feature_store_encryption_spec;
-
-export 'ai_feature_store_encryption_spec/ai_feature_store_encryption_spec.dart';

@@ -1,3 +1,0 @@
-library module_secretmanager_secret_replication_user_managed_replica;
-
-export 'secret_replication_user_managed_replica/secret_replication_user_managed_replica.dart';

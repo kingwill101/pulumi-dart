@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_host;
-
-export 'workstation_config_host/workstation_config_host.dart';

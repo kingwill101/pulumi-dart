@@ -1,3 +1,0 @@
-library module_compute_urlmap_path_matcher_default_route_action;
-
-export 'urlmap_path_matcher_default_route_action/urlmap_path_matcher_default_route_action.dart';

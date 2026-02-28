@@ -1,3 +1,0 @@
-library module_compute_backend_service_iam_member_condition;
-
-export 'backend_service_iam_member_condition/backend_service_iam_member_condition.dart';

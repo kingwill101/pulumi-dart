@@ -1,3 +1,0 @@
-library module_memorystore_instance_automated_backup_config;
-
-export 'instance_automated_backup_config/instance_automated_backup_config.dart';

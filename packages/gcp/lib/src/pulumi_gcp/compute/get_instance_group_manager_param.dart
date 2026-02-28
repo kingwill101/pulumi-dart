@@ -1,3 +1,0 @@
-library module_compute_get_instance_group_manager_param;
-
-export 'get_instance_group_manager_param/get_instance_group_manager_param.dart';

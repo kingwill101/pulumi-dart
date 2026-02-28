@@ -1,3 +1,0 @@
-library module_compute_backend_bucket_iam_binding_condition;
-
-export 'backend_bucket_iam_binding_condition/backend_bucket_iam_binding_condition.dart';

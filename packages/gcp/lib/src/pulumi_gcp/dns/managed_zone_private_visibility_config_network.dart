@@ -1,3 +1,0 @@
-library module_dns_managed_zone_private_visibility_config_network;
-
-export 'managed_zone_private_visibility_config_network/managed_zone_private_visibility_config_network.dart';

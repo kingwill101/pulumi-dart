@@ -1,3 +1,3 @@
 library pulumi_gcp_dataform;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/dataform.dart';
+export 'package:pulumi_gcp/src/dataform.dart';

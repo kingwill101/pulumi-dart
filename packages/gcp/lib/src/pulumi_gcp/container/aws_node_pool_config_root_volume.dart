@@ -1,3 +1,0 @@
-library module_container_aws_node_pool_config_root_volume;
-
-export 'aws_node_pool_config_root_volume/aws_node_pool_config_root_volume.dart';

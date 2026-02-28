@@ -1,3 +1,0 @@
-library module_bigqueryanalyticshub_data_exchange_iam_member_condition;
-
-export 'data_exchange_iam_member_condition/data_exchange_iam_member_condition.dart';

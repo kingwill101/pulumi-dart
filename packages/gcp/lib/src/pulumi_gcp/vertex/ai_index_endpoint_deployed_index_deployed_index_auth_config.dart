@@ -1,3 +1,0 @@
-library module_vertex_ai_index_endpoint_deployed_index_deployed_index_auth_config;
-
-export 'ai_index_endpoint_deployed_index_deployed_index_auth_config/ai_index_endpoint_deployed_index_deployed_index_auth_config.dart';

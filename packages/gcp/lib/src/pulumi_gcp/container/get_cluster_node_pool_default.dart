@@ -1,3 +1,0 @@
-library module_container_get_cluster_node_pool_default;
-
-export 'get_cluster_node_pool_default/get_cluster_node_pool_default.dart';

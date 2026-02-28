@@ -1,3 +1,0 @@
-library module_cloudfunctions_get_function_event_trigger;
-
-export 'get_function_event_trigger/get_function_event_trigger.dart';

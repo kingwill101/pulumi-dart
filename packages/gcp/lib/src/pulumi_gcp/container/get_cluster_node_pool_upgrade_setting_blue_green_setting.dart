@@ -1,3 +1,0 @@
-library module_container_get_cluster_node_pool_upgrade_setting_blue_green_setting;
-
-export 'get_cluster_node_pool_upgrade_setting_blue_green_setting/get_cluster_node_pool_upgrade_setting_blue_green_setting.dart';

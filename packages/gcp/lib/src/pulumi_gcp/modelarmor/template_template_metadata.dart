@@ -1,3 +1,0 @@
-library module_modelarmor_template_template_metadata;
-
-export 'template_template_metadata/template_template_metadata.dart';

@@ -1,3 +1,0 @@
-library module_cloudbuild_get_trigger_build_source;
-
-export 'get_trigger_build_source/get_trigger_build_source.dart';

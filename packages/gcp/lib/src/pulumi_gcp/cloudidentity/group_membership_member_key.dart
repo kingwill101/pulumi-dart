@@ -1,3 +1,0 @@
-library module_cloudidentity_group_membership_member_key;
-
-export 'group_membership_member_key/group_membership_member_key.dart';

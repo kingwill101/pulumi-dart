@@ -1,3 +1,0 @@
-library module_managedkafka_cluster_rebalance_config;
-
-export 'cluster_rebalance_config/cluster_rebalance_config.dart';

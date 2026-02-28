@@ -1,3 +1,0 @@
-library module_networkservices_http_route_rule_action_redirect;
-
-export 'http_route_rule_action_redirect/http_route_rule_action_redirect.dart';

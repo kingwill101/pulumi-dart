@@ -1,3 +1,0 @@
-library module_certificateauthority_certificate_certificate_description;
-
-export 'certificate_certificate_description/certificate_certificate_description.dart';

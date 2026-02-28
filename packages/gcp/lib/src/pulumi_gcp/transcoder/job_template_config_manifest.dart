@@ -1,3 +1,0 @@
-library module_transcoder_job_template_config_manifest;
-
-export 'job_template_config_manifest/job_template_config_manifest.dart';

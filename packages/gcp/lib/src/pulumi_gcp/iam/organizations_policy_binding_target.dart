@@ -1,3 +1,0 @@
-library module_iam_organizations_policy_binding_target;
-
-export 'organizations_policy_binding_target/organizations_policy_binding_target.dart';

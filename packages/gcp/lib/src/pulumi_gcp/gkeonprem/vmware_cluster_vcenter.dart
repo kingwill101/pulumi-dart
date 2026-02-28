@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_cluster_vcenter;
-
-export 'vmware_cluster_vcenter/vmware_cluster_vcenter.dart';

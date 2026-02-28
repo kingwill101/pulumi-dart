@@ -1,3 +1,0 @@
-library module_redis_cluster_maintenance_policy_weekly_maintenance_window_start_time;
-
-export 'cluster_maintenance_policy_weekly_maintenance_window_start_time/cluster_maintenance_policy_weekly_maintenance_window_start_time.dart';

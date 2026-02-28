@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_advanced_machine_features;
-
-export 'database_instance_settings_advanced_machine_features/database_instance_settings_advanced_machine_features.dart';

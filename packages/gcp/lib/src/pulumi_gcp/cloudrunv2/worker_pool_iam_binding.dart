@@ -1,4 +1,0 @@
-library module_cloudrunv2_worker_pool_iam_binding;
-
-export 'worker_pool_iam_binding/worker_pool_iam_binding.dart';
-export 'worker_pool_iam_binding/worker_pool_iam_binding_args.dart';

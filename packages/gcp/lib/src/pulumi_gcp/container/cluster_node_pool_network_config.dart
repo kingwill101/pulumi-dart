@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_network_config;
-
-export 'cluster_node_pool_network_config/cluster_node_pool_network_config.dart';

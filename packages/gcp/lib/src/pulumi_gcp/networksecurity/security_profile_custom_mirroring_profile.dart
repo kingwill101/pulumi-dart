@@ -1,3 +1,0 @@
-library module_networksecurity_security_profile_custom_mirroring_profile;
-
-export 'security_profile_custom_mirroring_profile/security_profile_custom_mirroring_profile.dart';

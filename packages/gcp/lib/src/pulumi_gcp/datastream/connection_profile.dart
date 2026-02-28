@@ -1,4 +1,0 @@
-library module_datastream_connection_profile;
-
-export 'connection_profile/connection_profile_datastream.dart';
-export 'connection_profile/connection_profile_datastream_args.dart';

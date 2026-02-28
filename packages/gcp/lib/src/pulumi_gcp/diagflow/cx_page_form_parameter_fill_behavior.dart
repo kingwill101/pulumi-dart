@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_form_parameter_fill_behavior;
-
-export 'cx_page_form_parameter_fill_behavior/cx_page_form_parameter_fill_behavior.dart';

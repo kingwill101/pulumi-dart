@@ -1,4 +1,0 @@
-library module_networkconnectivity_service_connection_policy;
-
-export 'service_connection_policy/service_connection_policy.dart';
-export 'service_connection_policy/service_connection_policy_args.dart';

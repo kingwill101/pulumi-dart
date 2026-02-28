@@ -1,4 +1,0 @@
-library module_vertex_ai_feature_online_store_featureview_iam_policy;
-
-export 'ai_feature_online_store_featureview_iam_policy/ai_feature_online_store_featureview_iam_policy.dart';
-export 'ai_feature_online_store_featureview_iam_policy/ai_feature_online_store_featureview_iam_policy_args.dart';

@@ -1,0 +1,83 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn {
+  /// The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+  final String? encoding;
+
+  /// If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+  final String? fieldName;
+
+  /// If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+  final bool? onlyReadLatest;
+
+  /// Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+  final String? qualifierEncoded;
+
+  /// Qualifier string.
+  final String? qualifierString;
+
+  /// The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+  final String? type;
+
+  /// Creates a new [TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn].
+  /// [encoding] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+  /// [fieldName] If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+  /// [onlyReadLatest] If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+  /// [qualifierEncoded] Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
+  /// [qualifierString] Qualifier string.
+  /// [type] The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+  TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn({
+    this.encoding,
+    this.fieldName,
+    this.onlyReadLatest,
+    this.qualifierEncoded,
+    this.qualifierString,
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final encodingValue = encoding;
+    if (encodingValue != null) {
+      map['encoding'] = encodingValue;
+    }
+    final fieldNameValue = fieldName;
+    if (fieldNameValue != null) {
+      map['fieldName'] = fieldNameValue;
+    }
+    final onlyReadLatestValue = onlyReadLatest;
+    if (onlyReadLatestValue != null) {
+      map['onlyReadLatest'] = onlyReadLatestValue;
+    }
+    final qualifierEncodedValue = qualifierEncoded;
+    if (qualifierEncodedValue != null) {
+      map['qualifierEncoded'] = qualifierEncodedValue;
+    }
+    final qualifierStringValue = qualifierString;
+    if (qualifierStringValue != null) {
+      map['qualifierString'] = qualifierStringValue;
+    }
+    final typeValue = type;
+    if (typeValue != null) {
+      map['type'] = typeValue;
+    }
+    return map;
+  }
+
+  factory TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn.fromMap(
+      Map<String, dynamic> map) {
+    return TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn(
+      encoding: map['encoding'] == null ? null : map['encoding'] as String,
+      fieldName: map['fieldName'] == null ? null : map['fieldName'] as String,
+      onlyReadLatest:
+          map['onlyReadLatest'] == null ? null : map['onlyReadLatest'] as bool,
+      qualifierEncoded: map['qualifierEncoded'] == null
+          ? null
+          : map['qualifierEncoded'] as String,
+      qualifierString: map['qualifierString'] == null
+          ? null
+          : map['qualifierString'] as String,
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}

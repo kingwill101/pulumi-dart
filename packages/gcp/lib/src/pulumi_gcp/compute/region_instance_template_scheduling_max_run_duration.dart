@@ -1,3 +1,0 @@
-library module_compute_region_instance_template_scheduling_max_run_duration;
-
-export 'region_instance_template_scheduling_max_run_duration/region_instance_template_scheduling_max_run_duration.dart';

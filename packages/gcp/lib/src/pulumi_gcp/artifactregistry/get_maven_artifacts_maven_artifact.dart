@@ -1,3 +1,0 @@
-library module_artifactregistry_get_maven_artifacts_maven_artifact;
-
-export 'get_maven_artifacts_maven_artifact/get_maven_artifacts_maven_artifact.dart';

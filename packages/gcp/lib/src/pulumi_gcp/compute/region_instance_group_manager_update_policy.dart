@@ -1,3 +1,0 @@
-library module_compute_region_instance_group_manager_update_policy;
-
-export 'region_instance_group_manager_update_policy/region_instance_group_manager_update_policy.dart';

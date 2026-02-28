@@ -1,3 +1,0 @@
-library module_dataplex_task_notebook_infrastructure_spec_container_image;
-
-export 'task_notebook_infrastructure_spec_container_image/task_notebook_infrastructure_spec_container_image.dart';

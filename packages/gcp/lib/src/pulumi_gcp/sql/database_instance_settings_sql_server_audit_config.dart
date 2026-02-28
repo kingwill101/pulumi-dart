@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_sql_server_audit_config;
-
-export 'database_instance_settings_sql_server_audit_config/database_instance_settings_sql_server_audit_config.dart';

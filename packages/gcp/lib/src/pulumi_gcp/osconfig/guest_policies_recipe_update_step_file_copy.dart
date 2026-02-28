@@ -1,3 +1,0 @@
-library module_osconfig_guest_policies_recipe_update_step_file_copy;
-
-export 'guest_policies_recipe_update_step_file_copy/guest_policies_recipe_update_step_file_copy.dart';

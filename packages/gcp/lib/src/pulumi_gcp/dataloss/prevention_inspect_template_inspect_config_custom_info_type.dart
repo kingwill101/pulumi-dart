@@ -1,3 +1,0 @@
-library module_dataloss_prevention_inspect_template_inspect_config_custom_info_type;
-
-export 'prevention_inspect_template_inspect_config_custom_info_type/prevention_inspect_template_inspect_config_custom_info_type.dart';

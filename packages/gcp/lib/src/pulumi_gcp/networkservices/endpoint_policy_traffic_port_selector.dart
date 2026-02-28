@@ -1,3 +1,0 @@
-library module_networkservices_endpoint_policy_traffic_port_selector;
-
-export 'endpoint_policy_traffic_port_selector/endpoint_policy_traffic_port_selector.dart';

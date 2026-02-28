@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+  /// Specific uri to the registry, e.g. `"https://pypi.io"`
+  final String? uri;
+
+  /// Creates a new [RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository].
+  /// [uri] Specific uri to the registry, e.g. `"https://pypi.io"`
+  RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository({
+    this.uri,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final uriValue = uri;
+    if (uriValue != null) {
+      map['uri'] = uriValue;
+    }
+    return map;
+  }
+
+  factory RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap(
+      Map<String, dynamic> map) {
+    return RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository(
+      uri: map['uri'] == null ? null : map['uri'] as String,
+    );
+  }
+}

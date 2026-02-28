@@ -1,3 +1,0 @@
-library module_vertex_ai_feature_group_iam_member_condition;
-
-export 'ai_feature_group_iam_member_condition/ai_feature_group_iam_member_condition.dart';

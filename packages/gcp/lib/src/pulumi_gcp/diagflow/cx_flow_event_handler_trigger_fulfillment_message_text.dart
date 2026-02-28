@@ -1,3 +1,0 @@
-library module_diagflow_cx_flow_event_handler_trigger_fulfillment_message_text;
-
-export 'cx_flow_event_handler_trigger_fulfillment_message_text/cx_flow_event_handler_trigger_fulfillment_message_text.dart';

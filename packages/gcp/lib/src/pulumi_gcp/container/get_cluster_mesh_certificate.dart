@@ -1,3 +1,0 @@
-library module_container_get_cluster_mesh_certificate;
-
-export 'get_cluster_mesh_certificate/get_cluster_mesh_certificate.dart';

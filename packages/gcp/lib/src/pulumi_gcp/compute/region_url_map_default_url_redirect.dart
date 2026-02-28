@@ -1,3 +1,0 @@
-library module_compute_region_url_map_default_url_redirect;
-
-export 'region_url_map_default_url_redirect/region_url_map_default_url_redirect.dart';

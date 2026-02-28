@@ -1,3 +1,0 @@
-library module_compute_instance_from_machine_image_network_interface_access_config;
-
-export 'instance_from_machine_image_network_interface_access_config/instance_from_machine_image_network_interface_access_config.dart';

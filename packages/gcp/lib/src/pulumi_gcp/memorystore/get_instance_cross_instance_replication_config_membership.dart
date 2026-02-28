@@ -1,3 +1,0 @@
-library module_memorystore_get_instance_cross_instance_replication_config_membership;
-
-export 'get_instance_cross_instance_replication_config_membership/get_instance_cross_instance_replication_config_membership.dart';

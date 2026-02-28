@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config_effective_taint;
-
-export 'node_pool_node_config_effective_taint/node_pool_node_config_effective_taint.dart';

@@ -1,3 +1,0 @@
-library module_cloudasset_folder_feed_condition;
-
-export 'folder_feed_condition/folder_feed_condition.dart';

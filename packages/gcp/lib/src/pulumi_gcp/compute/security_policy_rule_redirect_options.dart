@@ -1,3 +1,0 @@
-library module_compute_security_policy_rule_redirect_options;
-
-export 'security_policy_rule_redirect_options/security_policy_rule_redirect_options.dart';

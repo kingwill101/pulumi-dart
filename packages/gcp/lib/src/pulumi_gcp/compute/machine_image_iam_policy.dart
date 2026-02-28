@@ -1,4 +1,0 @@
-library module_compute_machine_image_iam_policy;
-
-export 'machine_image_iam_policy/machine_image_iam_policy.dart';
-export 'machine_image_iam_policy/machine_image_iam_policy_args.dart';

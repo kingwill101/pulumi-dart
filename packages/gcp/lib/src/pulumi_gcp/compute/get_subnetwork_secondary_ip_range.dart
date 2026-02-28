@@ -1,3 +1,0 @@
-library module_compute_get_subnetwork_secondary_ip_range;
-
-export 'get_subnetwork_secondary_ip_range/get_subnetwork_secondary_ip_range.dart';

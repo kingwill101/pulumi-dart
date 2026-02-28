@@ -1,4 +1,0 @@
-library module_cloudfunctionsv2_function_iam_member;
-
-export 'function_iam_member/function_iam_member_cloudfunctionsv2.dart';
-export 'function_iam_member/function_iam_member_cloudfunctionsv2_args.dart';

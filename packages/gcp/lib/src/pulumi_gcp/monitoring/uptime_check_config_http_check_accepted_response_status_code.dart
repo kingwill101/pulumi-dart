@@ -1,3 +1,0 @@
-library module_monitoring_uptime_check_config_http_check_accepted_response_status_code;
-
-export 'uptime_check_config_http_check_accepted_response_status_code/uptime_check_config_http_check_accepted_response_status_code.dart';

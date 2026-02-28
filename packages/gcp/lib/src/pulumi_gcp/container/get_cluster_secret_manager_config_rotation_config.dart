@@ -1,3 +1,0 @@
-library module_container_get_cluster_secret_manager_config_rotation_config;
-
-export 'get_cluster_secret_manager_config_rotation_config/get_cluster_secret_manager_config_rotation_config.dart';

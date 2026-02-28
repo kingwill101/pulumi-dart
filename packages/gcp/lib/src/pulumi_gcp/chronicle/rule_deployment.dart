@@ -1,4 +1,0 @@
-library module_chronicle_rule_deployment;
-
-export 'rule_deployment/rule_deployment.dart';
-export 'rule_deployment/rule_deployment_args.dart';

@@ -1,5 +1,0 @@
-library module_notebooks_get_instance_iam_policy;
-
-export 'get_instance_iam_policy/get_instance_iam_policy_notebooks.dart';
-export 'get_instance_iam_policy/get_instance_iam_policy_notebooks_args.dart';
-export 'get_instance_iam_policy/get_instance_iam_policy_notebooks_result.dart';

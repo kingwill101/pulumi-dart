@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_worker_pool_template_volume_nf;
-
-export 'get_worker_pool_template_volume_nf/get_worker_pool_template_volume_nf.dart';

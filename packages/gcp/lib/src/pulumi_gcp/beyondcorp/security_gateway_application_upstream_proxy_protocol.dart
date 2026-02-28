@@ -1,3 +1,0 @@
-library module_beyondcorp_security_gateway_application_upstream_proxy_protocol;
-
-export 'security_gateway_application_upstream_proxy_protocol/security_gateway_application_upstream_proxy_protocol.dart';

@@ -1,4 +1,0 @@
-library module_projects_organization_policy;
-
-export 'organization_policy/organization_policy_projects.dart';
-export 'organization_policy/organization_policy_projects_args.dart';

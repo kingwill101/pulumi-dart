@@ -1,0 +1,93 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'conversation_profile_human_agent_assistant_config_human_agent_suggestion_config_feature_config_query_config_context_filter_settings.dart';
+import 'conversation_profile_human_agent_assistant_config_human_agent_suggestion_config_feature_config_query_config_dialogflow_query_source.dart';
+import 'conversation_profile_human_agent_assistant_config_human_agent_suggestion_config_feature_config_query_config_sections.dart';
+
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig {
+  /// Confidence threshold of query result.
+  /// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+  final double? confidenceThreshold;
+
+  /// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+  /// Structure is documented below.
+  final ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings?
+      contextFilterSettings;
+
+  /// Query from Dialogflow agent.
+  /// This feature is supported for types: DIALOGFLOW_ASSIST.
+  /// Structure is documented below.
+  final ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource?
+      dialogflowQuerySource;
+
+  /// Maximum number of results to return.
+  final int? maxResults;
+
+  /// he customized sections chosen to return when requesting a summary of a conversation.
+  /// Structure is documented below.
+  final ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections?
+      sections;
+
+  /// Creates a new [ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig].
+  /// [confidenceThreshold] Confidence threshold of query result.
+  /// [contextFilterSettings] Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+  /// [dialogflowQuerySource] Query from Dialogflow agent.
+  /// [maxResults] Maximum number of results to return.
+  /// [sections] he customized sections chosen to return when requesting a summary of a conversation.
+  ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig({
+    this.confidenceThreshold,
+    this.contextFilterSettings,
+    this.dialogflowQuerySource,
+    this.maxResults,
+    this.sections,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final confidenceThresholdValue = confidenceThreshold;
+    if (confidenceThresholdValue != null) {
+      map['confidenceThreshold'] = confidenceThresholdValue;
+    }
+    final contextFilterSettingsValue = contextFilterSettings;
+    if (contextFilterSettingsValue != null) {
+      map['contextFilterSettings'] = contextFilterSettingsValue.toMap();
+    }
+    final dialogflowQuerySourceValue = dialogflowQuerySource;
+    if (dialogflowQuerySourceValue != null) {
+      map['dialogflowQuerySource'] = dialogflowQuerySourceValue.toMap();
+    }
+    final maxResultsValue = maxResults;
+    if (maxResultsValue != null) {
+      map['maxResults'] = maxResultsValue;
+    }
+    final sectionsValue = sections;
+    if (sectionsValue != null) {
+      map['sections'] = sectionsValue.toMap();
+    }
+    return map;
+  }
+
+  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig.fromMap(
+      Map<String, dynamic> map) {
+    return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig(
+      confidenceThreshold: map['confidenceThreshold'] == null
+          ? null
+          : map['confidenceThreshold'] as double,
+      contextFilterSettings: map['contextFilterSettings'] == null
+          ? null
+          : ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings
+              .fromMap((map['contextFilterSettings'] as Map)
+                  .cast<String, dynamic>()),
+      dialogflowQuerySource: map['dialogflowQuerySource'] == null
+          ? null
+          : ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource
+              .fromMap((map['dialogflowQuerySource'] as Map)
+                  .cast<String, dynamic>()),
+      maxResults: map['maxResults'] == null ? null : map['maxResults'] as int,
+      sections: map['sections'] == null
+          ? null
+          : ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections
+              .fromMap((map['sections'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

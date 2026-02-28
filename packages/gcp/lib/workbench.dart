@@ -1,3 +1,3 @@
 library pulumi_gcp_workbench;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/workbench.dart';
+export 'package:pulumi_gcp/src/workbench.dart';

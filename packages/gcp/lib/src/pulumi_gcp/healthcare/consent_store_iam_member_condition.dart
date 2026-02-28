@@ -1,3 +1,0 @@
-library module_healthcare_consent_store_iam_member_condition;
-
-export 'consent_store_iam_member_condition/consent_store_iam_member_condition.dart';

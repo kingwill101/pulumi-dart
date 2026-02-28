@@ -1,3 +1,0 @@
-library module_compute_get_router_status_best_routes_for_router_param;
-
-export 'get_router_status_best_routes_for_router_param/get_router_status_best_routes_for_router_param.dart';

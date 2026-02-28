@@ -1,5 +1,0 @@
-library module_compute_region_security_policy_rule;
-
-export 'region_security_policy_rule/region_security_policy_rule.dart';
-export 'region_security_policy_rule/region_security_policy_rule_args.dart';
-export 'region_security_policy_rule/region_security_policy_rule_compute.dart';

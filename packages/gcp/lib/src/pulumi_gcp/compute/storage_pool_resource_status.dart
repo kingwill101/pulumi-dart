@@ -1,3 +1,0 @@
-library module_compute_storage_pool_resource_status;
-
-export 'storage_pool_resource_status/storage_pool_resource_status.dart';

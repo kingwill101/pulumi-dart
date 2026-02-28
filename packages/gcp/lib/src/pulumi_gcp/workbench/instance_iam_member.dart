@@ -1,4 +1,0 @@
-library module_workbench_instance_iam_member;
-
-export 'instance_iam_member/instance_iam_member_workbench.dart';
-export 'instance_iam_member/instance_iam_member_workbench_args.dart';

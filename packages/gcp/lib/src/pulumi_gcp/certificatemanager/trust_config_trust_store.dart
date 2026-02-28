@@ -1,3 +1,0 @@
-library module_certificatemanager_trust_config_trust_store;
-
-export 'trust_config_trust_store/trust_config_trust_store.dart';

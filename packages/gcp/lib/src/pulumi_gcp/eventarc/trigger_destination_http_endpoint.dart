@@ -1,3 +1,0 @@
-library module_eventarc_trigger_destination_http_endpoint;
-
-export 'trigger_destination_http_endpoint/trigger_destination_http_endpoint.dart';

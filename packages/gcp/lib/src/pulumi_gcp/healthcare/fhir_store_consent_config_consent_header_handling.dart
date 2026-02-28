@@ -1,3 +1,0 @@
-library module_healthcare_fhir_store_consent_config_consent_header_handling;
-
-export 'fhir_store_consent_config_consent_header_handling/fhir_store_consent_config_consent_header_handling.dart';

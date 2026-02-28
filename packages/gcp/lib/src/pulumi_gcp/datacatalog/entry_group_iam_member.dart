@@ -1,4 +1,0 @@
-library module_datacatalog_entry_group_iam_member;
-
-export 'entry_group_iam_member/entry_group_iam_member.dart';
-export 'entry_group_iam_member/entry_group_iam_member_args.dart';

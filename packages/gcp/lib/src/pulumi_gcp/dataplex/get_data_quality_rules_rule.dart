@@ -1,3 +1,0 @@
-library module_dataplex_get_data_quality_rules_rule;
-
-export 'get_data_quality_rules_rule/get_data_quality_rules_rule.dart';

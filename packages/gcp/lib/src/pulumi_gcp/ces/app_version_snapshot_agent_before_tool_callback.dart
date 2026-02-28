@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_agent_before_tool_callback;
-
-export 'app_version_snapshot_agent_before_tool_callback/app_version_snapshot_agent_before_tool_callback.dart';

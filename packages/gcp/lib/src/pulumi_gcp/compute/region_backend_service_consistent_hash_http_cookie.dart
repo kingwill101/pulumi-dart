@@ -1,3 +1,0 @@
-library module_compute_region_backend_service_consistent_hash_http_cookie;
-
-export 'region_backend_service_consistent_hash_http_cookie/region_backend_service_consistent_hash_http_cookie.dart';

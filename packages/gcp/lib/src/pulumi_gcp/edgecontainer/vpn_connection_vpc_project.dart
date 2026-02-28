@@ -1,3 +1,0 @@
-library module_edgecontainer_vpn_connection_vpc_project;
-
-export 'vpn_connection_vpc_project/vpn_connection_vpc_project.dart';

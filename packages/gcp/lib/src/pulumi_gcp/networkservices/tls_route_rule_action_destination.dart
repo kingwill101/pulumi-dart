@@ -1,3 +1,0 @@
-library module_networkservices_tls_route_rule_action_destination;
-
-export 'tls_route_rule_action_destination/tls_route_rule_action_destination.dart';

@@ -1,3 +1,0 @@
-library module_monitoring_uptime_check_config_synthetic_monitor_cloud_function_v2;
-
-export 'uptime_check_config_synthetic_monitor_cloud_function_v2/uptime_check_config_synthetic_monitor_cloud_function_v2.dart';

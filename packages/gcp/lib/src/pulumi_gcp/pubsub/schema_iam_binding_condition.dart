@@ -1,3 +1,0 @@
-library module_pubsub_schema_iam_binding_condition;
-
-export 'schema_iam_binding_condition/schema_iam_binding_condition.dart';

@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_app_language_setting;
-
-export 'app_version_snapshot_app_language_setting/app_version_snapshot_app_language_setting.dart';

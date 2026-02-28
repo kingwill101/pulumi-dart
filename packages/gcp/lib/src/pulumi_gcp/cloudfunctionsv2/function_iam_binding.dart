@@ -1,4 +1,0 @@
-library module_cloudfunctionsv2_function_iam_binding;
-
-export 'function_iam_binding/function_iam_binding_cloudfunctionsv2.dart';
-export 'function_iam_binding/function_iam_binding_cloudfunctionsv2_args.dart';

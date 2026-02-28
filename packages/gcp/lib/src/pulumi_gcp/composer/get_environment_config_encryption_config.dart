@@ -1,3 +1,0 @@
-library module_composer_get_environment_config_encryption_config;
-
-export 'get_environment_config_encryption_config/get_environment_config_encryption_config.dart';

@@ -1,3 +1,0 @@
-library module_compute_get_region_disk_guest_os_feature;
-
-export 'get_region_disk_guest_os_feature/get_region_disk_guest_os_feature.dart';

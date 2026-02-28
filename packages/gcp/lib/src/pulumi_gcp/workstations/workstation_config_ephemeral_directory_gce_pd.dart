@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_ephemeral_directory_gce_pd;
-
-export 'workstation_config_ephemeral_directory_gce_pd/workstation_config_ephemeral_directory_gce_pd.dart';

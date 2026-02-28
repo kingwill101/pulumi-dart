@@ -1,5 +1,0 @@
-library module_networksecurity_mirroring_endpoint_group_association;
-
-export 'mirroring_endpoint_group_association/mirroring_endpoint_group_association.dart';
-export 'mirroring_endpoint_group_association/mirroring_endpoint_group_association_args.dart';
-export 'mirroring_endpoint_group_association/mirroring_endpoint_group_association_networksecurity.dart';

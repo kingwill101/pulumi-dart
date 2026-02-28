@@ -1,3 +1,0 @@
-library module_memorystore_instance_persistence_config_aof_config;
-
-export 'instance_persistence_config_aof_config/instance_persistence_config_aof_config.dart';

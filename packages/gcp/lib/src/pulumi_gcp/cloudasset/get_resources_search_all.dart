@@ -1,5 +1,0 @@
-library module_cloudasset_get_resources_search_all;
-
-export 'get_resources_search_all/get_resources_search_all.dart';
-export 'get_resources_search_all/get_resources_search_all_args.dart';
-export 'get_resources_search_all/get_resources_search_all_cloudasset_result.dart';

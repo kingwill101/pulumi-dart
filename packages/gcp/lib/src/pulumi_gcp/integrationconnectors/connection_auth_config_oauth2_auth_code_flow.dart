@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_auth_config_oauth2_auth_code_flow;
-
-export 'connection_auth_config_oauth2_auth_code_flow/connection_auth_config_oauth2_auth_code_flow.dart';

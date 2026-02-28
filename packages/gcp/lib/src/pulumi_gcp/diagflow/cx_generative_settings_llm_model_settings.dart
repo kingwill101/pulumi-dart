@@ -1,3 +1,0 @@
-library module_diagflow_cx_generative_settings_llm_model_settings;
-
-export 'cx_generative_settings_llm_model_settings/cx_generative_settings_llm_model_settings.dart';

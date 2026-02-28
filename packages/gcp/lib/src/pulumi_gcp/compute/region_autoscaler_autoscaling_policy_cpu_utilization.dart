@@ -1,3 +1,0 @@
-library module_compute_region_autoscaler_autoscaling_policy_cpu_utilization;
-
-export 'region_autoscaler_autoscaling_policy_cpu_utilization/region_autoscaler_autoscaling_policy_cpu_utilization.dart';

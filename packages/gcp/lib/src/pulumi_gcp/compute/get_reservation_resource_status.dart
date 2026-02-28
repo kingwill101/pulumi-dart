@@ -1,3 +1,0 @@
-library module_compute_get_reservation_resource_status;
-
-export 'get_reservation_resource_status/get_reservation_resource_status.dart';

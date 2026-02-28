@@ -1,3 +1,0 @@
-library module_compute_region_per_instance_config_preserved_state_disk;
-
-export 'region_per_instance_config_preserved_state_disk/region_per_instance_config_preserved_state_disk.dart';

@@ -1,3 +1,0 @@
-library module_cloudfunctions_function_on_deploy_update_policy;
-
-export 'function_on_deploy_update_policy/function_on_deploy_update_policy.dart';

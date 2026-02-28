@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_firestore_get_document_get_document_args_doc}
+/// Arguments for getDocument.
+/// {@endtemplate}
+/// {@macro pulumi_firestore_get_document_get_document_args_doc}
+class GetDocumentArgs {
+  /// The name of the collection of documents.
+  final pulumi.Input<String> collection;
+
+  /// The name of the Firestore database.
+  final pulumi.Input<String> database;
+
+  /// The id of the document to get.
+  final pulumi.Input<String> documentId;
+
+  /// The project in which the database resides.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetDocumentArgs].
+  /// [collection] The name of the collection of documents.
+  /// [database] The name of the Firestore database.
+  /// [documentId] The id of the document to get.
+  /// [project] The project in which the database resides.
+  GetDocumentArgs({
+    required String collection,
+    required String database,
+    required String documentId,
+    String? project,
+  })  : collection = pulumi.Input.asInput<String>(collection),
+        database = pulumi.Input.asInput<String>(database),
+        documentId = pulumi.Input.asInput<String>(documentId),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['collection'] = collection;
+    map['database'] = database;
+    map['documentId'] = documentId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetDocumentArgs.fromMap(Map<String, dynamic> map) {
+    return GetDocumentArgs(
+      collection: map['collection'] as String,
+      database: map['database'] as String,
+      documentId: map['documentId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

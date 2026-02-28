@@ -1,3 +1,0 @@
-library module_compute_packet_mirroring_mirrored_resources;
-
-export 'packet_mirroring_mirrored_resources/packet_mirroring_mirrored_resources.dart';

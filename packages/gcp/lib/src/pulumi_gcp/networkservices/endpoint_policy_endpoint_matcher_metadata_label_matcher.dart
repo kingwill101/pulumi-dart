@@ -1,3 +1,0 @@
-library module_networkservices_endpoint_policy_endpoint_matcher_metadata_label_matcher;
-
-export 'endpoint_policy_endpoint_matcher_metadata_label_matcher/endpoint_policy_endpoint_matcher_metadata_label_matcher.dart';

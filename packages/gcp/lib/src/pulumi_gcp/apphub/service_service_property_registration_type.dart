@@ -1,3 +1,0 @@
-library module_apphub_service_service_property_registration_type;
-
-export 'service_service_property_registration_type/service_service_property_registration_type.dart';

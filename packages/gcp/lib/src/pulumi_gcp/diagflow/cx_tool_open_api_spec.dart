@@ -1,3 +1,0 @@
-library module_diagflow_cx_tool_open_api_spec;
-
-export 'cx_tool_open_api_spec/cx_tool_open_api_spec.dart';

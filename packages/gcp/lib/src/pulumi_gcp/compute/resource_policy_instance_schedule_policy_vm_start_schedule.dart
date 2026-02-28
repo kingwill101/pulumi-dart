@@ -1,3 +1,0 @@
-library module_compute_resource_policy_instance_schedule_policy_vm_start_schedule;
-
-export 'resource_policy_instance_schedule_policy_vm_start_schedule/resource_policy_instance_schedule_policy_vm_start_schedule.dart';

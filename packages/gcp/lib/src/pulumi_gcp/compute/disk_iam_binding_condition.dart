@@ -1,3 +1,0 @@
-library module_compute_disk_iam_binding_condition;
-
-export 'disk_iam_binding_condition/disk_iam_binding_condition.dart';

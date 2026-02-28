@@ -1,3 +1,0 @@
-library module_compute_backend_service_cdn_policy_bypass_cache_on_request_header;
-
-export 'backend_service_cdn_policy_bypass_cache_on_request_header/backend_service_cdn_policy_bypass_cache_on_request_header.dart';

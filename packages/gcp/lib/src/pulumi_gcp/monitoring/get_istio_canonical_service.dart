@@ -1,5 +1,0 @@
-library module_monitoring_get_istio_canonical_service;
-
-export 'get_istio_canonical_service/get_istio_canonical_service.dart';
-export 'get_istio_canonical_service/get_istio_canonical_service_args.dart';
-export 'get_istio_canonical_service/get_istio_canonical_service_result.dart';

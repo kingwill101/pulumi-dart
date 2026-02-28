@@ -1,3 +1,0 @@
-library module_dataplex_datascan_data_quality_spec_post_scan_actions_notification_report;
-
-export 'datascan_data_quality_spec_post_scan_actions_notification_report/datascan_data_quality_spec_post_scan_actions_notification_report.dart';

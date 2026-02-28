@@ -1,3 +1,0 @@
-library module_discoveryengine_data_store_document_processing_config;
-
-export 'data_store_document_processing_config/data_store_document_processing_config.dart';

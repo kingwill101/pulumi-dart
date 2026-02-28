@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_admin_cluster_control_plane;
-
-export 'bare_metal_admin_cluster_control_plane/bare_metal_admin_cluster_control_plane.dart';

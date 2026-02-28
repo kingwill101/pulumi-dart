@@ -1,3 +1,0 @@
-library module_compute_instance_reservation_affinity_specific_reservation;
-
-export 'instance_reservation_affinity_specific_reservation/instance_reservation_affinity_specific_reservation.dart';

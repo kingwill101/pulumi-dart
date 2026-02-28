@@ -1,3 +1,0 @@
-library module_dataplex_datascan_iam_binding_condition;
-
-export 'datascan_iam_binding_condition/datascan_iam_binding_condition.dart';

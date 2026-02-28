@@ -1,5 +1,0 @@
-library module_serviceaccount_get_account_access_token;
-
-export 'get_account_access_token/get_account_access_token.dart';
-export 'get_account_access_token/get_account_access_token_args.dart';
-export 'get_account_access_token/get_account_access_token_result.dart';

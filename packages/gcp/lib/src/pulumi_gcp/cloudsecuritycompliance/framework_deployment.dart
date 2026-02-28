@@ -1,4 +1,0 @@
-library module_cloudsecuritycompliance_framework_deployment;
-
-export 'framework_deployment/framework_deployment.dart';
-export 'framework_deployment/framework_deployment_args.dart';

@@ -1,3 +1,0 @@
-library module_memorystore_instance_psc_attachment_detail;
-
-export 'instance_psc_attachment_detail/instance_psc_attachment_detail.dart';

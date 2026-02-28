@@ -1,4 +1,0 @@
-library module_networksecurity_backend_authentication_config;
-
-export 'backend_authentication_config/backend_authentication_config.dart';
-export 'backend_authentication_config/backend_authentication_config_args.dart';

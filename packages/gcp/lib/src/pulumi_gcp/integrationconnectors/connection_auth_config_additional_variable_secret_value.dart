@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_auth_config_additional_variable_secret_value;
-
-export 'connection_auth_config_additional_variable_secret_value/connection_auth_config_additional_variable_secret_value.dart';

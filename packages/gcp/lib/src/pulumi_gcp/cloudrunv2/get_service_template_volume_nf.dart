@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_service_template_volume_nf;
-
-export 'get_service_template_volume_nf/get_service_template_volume_nf.dart';

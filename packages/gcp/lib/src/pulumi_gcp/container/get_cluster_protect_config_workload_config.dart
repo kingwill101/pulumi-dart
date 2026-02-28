@@ -1,3 +1,0 @@
-library module_container_get_cluster_protect_config_workload_config;
-
-export 'get_cluster_protect_config_workload_config/get_cluster_protect_config_workload_config.dart';

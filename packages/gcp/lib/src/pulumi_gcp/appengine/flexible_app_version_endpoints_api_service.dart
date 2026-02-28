@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_endpoints_api_service;
-
-export 'flexible_app_version_endpoints_api_service/flexible_app_version_endpoints_api_service.dart';

@@ -1,3 +1,0 @@
-library module_iap_settings_application_settings_access_denied_page_settings;
-
-export 'settings_application_settings_access_denied_page_settings/settings_application_settings_access_denied_page_settings.dart';

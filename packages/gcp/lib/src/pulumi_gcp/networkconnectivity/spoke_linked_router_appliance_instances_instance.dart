@@ -1,3 +1,0 @@
-library module_networkconnectivity_spoke_linked_router_appliance_instances_instance;
-
-export 'spoke_linked_router_appliance_instances_instance/spoke_linked_router_appliance_instances_instance.dart';

@@ -1,3 +1,0 @@
-library module_vertex_ai_deployment_resource_pool_dedicated_resources;
-
-export 'ai_deployment_resource_pool_dedicated_resources/ai_deployment_resource_pool_dedicated_resources.dart';

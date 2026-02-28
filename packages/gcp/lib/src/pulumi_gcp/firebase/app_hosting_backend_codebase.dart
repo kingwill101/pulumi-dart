@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_backend_codebase;
-
-export 'app_hosting_backend_codebase/app_hosting_backend_codebase.dart';

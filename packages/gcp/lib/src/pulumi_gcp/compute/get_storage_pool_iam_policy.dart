@@ -1,5 +1,0 @@
-library module_compute_get_storage_pool_iam_policy;
-
-export 'get_storage_pool_iam_policy/get_storage_pool_iam_policy.dart';
-export 'get_storage_pool_iam_policy/get_storage_pool_iam_policy_args.dart';
-export 'get_storage_pool_iam_policy/get_storage_pool_iam_policy_result.dart';

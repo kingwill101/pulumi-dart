@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'service_perimeters_service_perimeter.dart';
+
+/// {@template pulumi_accesscontextmanager_service_perimeters_service_perimeters_args_doc}
+/// The set of arguments for ServicePerimeters.
+/// {@endtemplate}
+/// {@macro pulumi_accesscontextmanager_service_perimeters_service_perimeters_args_doc}
+class ServicePerimetersArgs {
+  /// The AccessPolicy this ServicePerimeter lives in.
+  /// Format: accessPolicies/{policy_id}
+  final pulumi.Input<String> parent;
+
+  /// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+  /// Structure is documented below.
+  final pulumi.Input<List<ServicePerimetersServicePerimeter>>?
+      servicePerimeters;
+
+  /// Creates a new [ServicePerimetersArgs].
+  /// [parent] The AccessPolicy this ServicePerimeter lives in.
+  /// [servicePerimeters] The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+  ServicePerimetersArgs({
+    required String parent,
+    List<ServicePerimetersServicePerimeter>? servicePerimeters,
+  })  : parent = pulumi.Input.asInput<String>(parent),
+        servicePerimeters = pulumi.Input.asOptionalInput<
+            List<ServicePerimetersServicePerimeter>>(servicePerimeters);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['parent'] = parent;
+    final servicePerimetersValue = servicePerimeters;
+    if (servicePerimetersValue != null) {
+      map['servicePerimeters'] = pulumi.Input.mapOptionalInputValue<
+              List<ServicePerimetersServicePerimeter>,
+              List<Map<String, dynamic>>>(
+          servicePerimetersValue,
+          (value) => pulumi.Input.encodeList<ServicePerimetersServicePerimeter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    return map;
+  }
+
+  factory ServicePerimetersArgs.fromMap(Map<String, dynamic> map) {
+    return ServicePerimetersArgs(
+      parent: map['parent'] as String,
+      servicePerimeters: map['servicePerimeters'] == null
+          ? null
+          : pulumi.Input.decodeList<ServicePerimetersServicePerimeter>(
+              map['servicePerimeters'],
+              (value) => ServicePerimetersServicePerimeter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

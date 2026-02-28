@@ -1,3 +1,0 @@
-library module_compute_get_instance_group_manager_version;
-
-export 'get_instance_group_manager_version/get_instance_group_manager_version.dart';

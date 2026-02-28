@@ -1,3 +1,0 @@
-library module_compute_router_peer_md5_authentication_key;
-
-export 'router_peer_md5_authentication_key/router_peer_md5_authentication_key.dart';

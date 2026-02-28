@@ -1,3 +1,0 @@
-library module_compute_instance_from_template_scheduling_node_affinity;
-
-export 'instance_from_template_scheduling_node_affinity/instance_from_template_scheduling_node_affinity.dart';

@@ -1,3 +1,0 @@
-library module_cloudrun_domain_mapping_metadata;
-
-export 'domain_mapping_metadata/domain_mapping_metadata.dart';

@@ -1,3 +1,0 @@
-library module_compute_firewall_policy_with_rules_predefined_rule_target_secure_tag;
-
-export 'firewall_policy_with_rules_predefined_rule_target_secure_tag/firewall_policy_with_rules_predefined_rule_target_secure_tag.dart';

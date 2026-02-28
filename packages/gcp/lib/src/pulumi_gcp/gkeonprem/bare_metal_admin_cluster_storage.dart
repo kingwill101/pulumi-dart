@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_admin_cluster_storage;
-
-export 'bare_metal_admin_cluster_storage/bare_metal_admin_cluster_storage.dart';

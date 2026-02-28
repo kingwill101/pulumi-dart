@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_node_pool_node_pool_config;
-
-export 'bare_metal_node_pool_node_pool_config/bare_metal_node_pool_node_pool_config.dart';

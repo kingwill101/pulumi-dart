@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class PrivateConnectionPscInterfaceConfig {
+  /// Fully qualified name of the network attachment that Datastream will connect to.
+  /// Format: projects/{project}/regions/{region}/networkAttachments/{name}
+  /// To get Datastream project for the accepted list:
+  /// `gcloud datastream private-connections create [PC ID] --location=[LOCATION] --network-attachment=[NA URI] --validate-only --display-name=[ANY STRING]`
+  /// Add Datastream project to the attachment accepted list:
+  /// `gcloud compute network-attachments update [NA URI] --region=[NA region] --producer-accept-list=[TP from prev command]`
+  final String networkAttachment;
+
+  /// Creates a new [PrivateConnectionPscInterfaceConfig].
+  /// [networkAttachment] Fully qualified name of the network attachment that Datastream will connect to.
+  PrivateConnectionPscInterfaceConfig({
+    required this.networkAttachment,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['networkAttachment'] = networkAttachment;
+    return map;
+  }
+
+  factory PrivateConnectionPscInterfaceConfig.fromMap(
+      Map<String, dynamic> map) {
+    return PrivateConnectionPscInterfaceConfig(
+      networkAttachment: map['networkAttachment'] as String,
+    );
+  }
+}

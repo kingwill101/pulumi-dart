@@ -1,3 +1,0 @@
-library module_cloudasset_project_feed_condition;
-
-export 'project_feed_condition/project_feed_condition.dart';

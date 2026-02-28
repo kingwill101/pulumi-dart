@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_form_parameter;
-
-export 'cx_page_form_parameter/cx_page_form_parameter.dart';

@@ -1,3 +1,0 @@
-library module_artifactregistry_get_versions_version_related_tag;
-
-export 'get_versions_version_related_tag/get_versions_version_related_tag.dart';

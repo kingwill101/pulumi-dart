@@ -1,3 +1,0 @@
-library module_bigtable_instance_cluster_autoscaling_config;
-
-export 'instance_cluster_autoscaling_config/instance_cluster_autoscaling_config.dart';

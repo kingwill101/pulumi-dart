@@ -1,3 +1,0 @@
-library module_discoveryengine_widget_config_ui_settings_generative_answer_config;
-
-export 'widget_config_ui_settings_generative_answer_config/widget_config_ui_settings_generative_answer_config.dart';

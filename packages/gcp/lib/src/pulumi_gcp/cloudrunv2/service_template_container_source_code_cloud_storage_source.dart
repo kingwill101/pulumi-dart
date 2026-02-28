@@ -1,3 +1,0 @@
-library module_cloudrunv2_service_template_container_source_code_cloud_storage_source;
-
-export 'service_template_container_source_code_cloud_storage_source/service_template_container_source_code_cloud_storage_source.dart';

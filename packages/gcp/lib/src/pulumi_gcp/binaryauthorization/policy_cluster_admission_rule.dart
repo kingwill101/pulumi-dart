@@ -1,3 +1,0 @@
-library module_binaryauthorization_policy_cluster_admission_rule;
-
-export 'policy_cluster_admission_rule/policy_cluster_admission_rule.dart';

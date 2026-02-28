@@ -1,3 +1,0 @@
-library module_compute_get_hc_vpn_gateway_vpn_interface;
-
-export 'get_hc_vpn_gateway_vpn_interface/get_hc_vpn_gateway_vpn_interface.dart';

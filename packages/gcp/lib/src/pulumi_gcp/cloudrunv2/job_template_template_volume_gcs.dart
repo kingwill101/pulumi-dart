@@ -1,3 +1,0 @@
-library module_cloudrunv2_job_template_template_volume_gcs;
-
-export 'job_template_template_volume_gcs/job_template_template_volume_gcs.dart';

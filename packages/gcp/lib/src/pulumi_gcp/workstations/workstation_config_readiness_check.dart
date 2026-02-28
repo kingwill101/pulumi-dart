@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_readiness_check;
-
-export 'workstation_config_readiness_check/workstation_config_readiness_check.dart';

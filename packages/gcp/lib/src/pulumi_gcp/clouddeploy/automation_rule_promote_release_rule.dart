@@ -1,3 +1,0 @@
-library module_clouddeploy_automation_rule_promote_release_rule;
-
-export 'automation_rule_promote_release_rule/automation_rule_promote_release_rule.dart';

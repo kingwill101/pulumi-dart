@@ -1,3 +1,0 @@
-library module_memorystore_instance_maintenance_policy;
-
-export 'instance_maintenance_policy/instance_maintenance_policy_memorystore.dart';

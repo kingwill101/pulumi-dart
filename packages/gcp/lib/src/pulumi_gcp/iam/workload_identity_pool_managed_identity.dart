@@ -1,4 +1,0 @@
-library module_iam_workload_identity_pool_managed_identity;
-
-export 'workload_identity_pool_managed_identity/workload_identity_pool_managed_identity.dart';
-export 'workload_identity_pool_managed_identity/workload_identity_pool_managed_identity_args.dart';

@@ -1,3 +1,0 @@
-library module_networksecurity_security_profile_url_filtering_profile;
-
-export 'security_profile_url_filtering_profile/security_profile_url_filtering_profile.dart';

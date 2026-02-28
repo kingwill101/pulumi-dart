@@ -1,3 +1,0 @@
-library module_filestore_instance_directory_services;
-
-export 'instance_directory_services/instance_directory_services.dart';

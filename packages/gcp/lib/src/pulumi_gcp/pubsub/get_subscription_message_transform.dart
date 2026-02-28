@@ -1,3 +1,0 @@
-library module_pubsub_get_subscription_message_transform;
-
-export 'get_subscription_message_transform/get_subscription_message_transform.dart';

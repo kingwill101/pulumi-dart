@@ -1,3 +1,0 @@
-library module_compute_region_instance_group_manager_stateful_external_ip;
-
-export 'region_instance_group_manager_stateful_external_ip/region_instance_group_manager_stateful_external_ip.dart';

@@ -1,3 +1,0 @@
-library module_networkservices_grpc_route_rule_match_method;
-
-export 'grpc_route_rule_match_method/grpc_route_rule_match_method.dart';

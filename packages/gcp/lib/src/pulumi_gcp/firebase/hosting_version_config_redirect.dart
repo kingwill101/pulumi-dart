@@ -1,3 +1,0 @@
-library module_firebase_hosting_version_config_redirect;
-
-export 'hosting_version_config_redirect/hosting_version_config_redirect.dart';

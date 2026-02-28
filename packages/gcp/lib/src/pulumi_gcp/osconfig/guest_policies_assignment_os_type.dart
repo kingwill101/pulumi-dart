@@ -1,3 +1,0 @@
-library module_osconfig_guest_policies_assignment_os_type;
-
-export 'guest_policies_assignment_os_type/guest_policies_assignment_os_type.dart';

@@ -1,3 +1,0 @@
-library module_compute_security_scan_config_authentication;
-
-export 'security_scan_config_authentication/security_scan_config_authentication.dart';

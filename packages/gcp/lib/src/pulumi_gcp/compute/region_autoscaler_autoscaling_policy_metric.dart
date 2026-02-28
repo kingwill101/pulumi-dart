@@ -1,3 +1,0 @@
-library module_compute_region_autoscaler_autoscaling_policy_metric;
-
-export 'region_autoscaler_autoscaling_policy_metric/region_autoscaler_autoscaling_policy_metric.dart';

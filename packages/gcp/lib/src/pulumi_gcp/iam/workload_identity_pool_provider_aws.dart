@@ -1,3 +1,0 @@
-library module_iam_workload_identity_pool_provider_aws;
-
-export 'workload_identity_pool_provider_aws/workload_identity_pool_provider_aws.dart';

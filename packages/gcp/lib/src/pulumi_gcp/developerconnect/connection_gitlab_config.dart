@@ -1,3 +1,0 @@
-library module_developerconnect_connection_gitlab_config;
-
-export 'connection_gitlab_config/connection_gitlab_config_developerconnect.dart';

@@ -1,3 +1,0 @@
-library module_compute_service_attachment_tunneling_config;
-
-export 'service_attachment_tunneling_config/service_attachment_tunneling_config.dart';

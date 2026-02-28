@@ -1,3 +1,0 @@
-library module_compute_per_instance_config_preserved_state_disk;
-
-export 'per_instance_config_preserved_state_disk/per_instance_config_preserved_state_disk.dart';

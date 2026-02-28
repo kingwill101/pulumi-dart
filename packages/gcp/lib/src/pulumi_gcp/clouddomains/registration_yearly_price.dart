@@ -1,3 +1,0 @@
-library module_clouddomains_registration_yearly_price;
-
-export 'registration_yearly_price/registration_yearly_price.dart';

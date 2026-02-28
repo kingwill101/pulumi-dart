@@ -1,3 +1,0 @@
-library module_vertex_ai_feature_group_big_query_big_query_source;
-
-export 'ai_feature_group_big_query_big_query_source/ai_feature_group_big_query_big_query_source.dart';

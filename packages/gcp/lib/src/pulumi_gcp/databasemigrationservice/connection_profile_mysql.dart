@@ -1,3 +1,0 @@
-library module_databasemigrationservice_connection_profile_mysql;
-
-export 'connection_profile_mysql/connection_profile_mysql.dart';

@@ -1,4 +1,0 @@
-library module_networksecurity_address_group_iam_policy;
-
-export 'address_group_iam_policy/address_group_iam_policy.dart';
-export 'address_group_iam_policy/address_group_iam_policy_args.dart';

@@ -1,3 +1,0 @@
-library module_compute_get_region_instance_template_scheduling_on_instance_stop_action;
-
-export 'get_region_instance_template_scheduling_on_instance_stop_action/get_region_instance_template_scheduling_on_instance_stop_action.dart';

@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config_sole_tenant_config_node_affinity;
-
-export 'node_pool_node_config_sole_tenant_config_node_affinity/node_pool_node_config_sole_tenant_config_node_affinity.dart';

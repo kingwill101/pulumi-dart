@@ -1,3 +1,0 @@
-library module_cloudsecuritycompliance_framework_cloud_control_detail;
-
-export 'framework_cloud_control_detail/framework_cloud_control_detail.dart';

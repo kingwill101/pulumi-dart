@@ -1,3 +1,0 @@
-library module_netapp_volume_replication_transfer_stat;
-
-export 'volume_replication_transfer_stat/volume_replication_transfer_stat.dart';

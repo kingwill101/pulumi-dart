@@ -1,0 +1,19 @@
+library module_cloudquota;
+
+export 'cloudquota/functions.dart';
+export 'cloudquota/get_squota_info_args.dart';
+export 'cloudquota/get_squota_info_dimensions_info.dart';
+export 'cloudquota/get_squota_info_dimensions_info_detail.dart';
+export 'cloudquota/get_squota_info_quota_increase_eligibility.dart';
+export 'cloudquota/get_squota_info_result.dart';
+export 'cloudquota/get_squota_infos_args.dart';
+export 'cloudquota/get_squota_infos_quota_info.dart';
+export 'cloudquota/get_squota_infos_quota_info_dimensions_info.dart';
+export 'cloudquota/get_squota_infos_quota_info_dimensions_info_detail.dart';
+export 'cloudquota/get_squota_infos_quota_info_quota_increase_eligibility.dart';
+export 'cloudquota/get_squota_infos_result.dart';
+export 'cloudquota/squota_adjuster_settings.dart';
+export 'cloudquota/squota_adjuster_settings_args.dart';
+export 'cloudquota/squota_preference.dart';
+export 'cloudquota/squota_preference_args.dart';
+export 'cloudquota/squota_preference_quota_config.dart';

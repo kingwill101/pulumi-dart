@@ -1,3 +1,0 @@
-library module_diagflow_conversation_profile_stt_config;
-
-export 'conversation_profile_stt_config/conversation_profile_stt_config.dart';

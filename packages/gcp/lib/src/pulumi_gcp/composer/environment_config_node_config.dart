@@ -1,3 +1,0 @@
-library module_composer_environment_config_node_config;
-
-export 'environment_config_node_config/environment_config_node_config.dart';

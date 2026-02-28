@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetClusterNodePoolPlacementPolicy {
+  /// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+  final String policyName;
+
+  /// The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
+  final String tpuTopology;
+
+  /// Type defines the type of placement policy
+  final String type;
+
+  /// Creates a new [GetClusterNodePoolPlacementPolicy].
+  /// [policyName] If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+  /// [tpuTopology] The TPU topology like "2x4" or "2x2x2". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology
+  /// [type] Type defines the type of placement policy
+  GetClusterNodePoolPlacementPolicy({
+    required this.policyName,
+    required this.tpuTopology,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['policyName'] = policyName;
+    map['tpuTopology'] = tpuTopology;
+    map['type'] = type;
+    return map;
+  }
+
+  factory GetClusterNodePoolPlacementPolicy.fromMap(Map<String, dynamic> map) {
+    return GetClusterNodePoolPlacementPolicy(
+      policyName: map['policyName'] as String,
+      tpuTopology: map['tpuTopology'] as String,
+      type: map['type'] as String,
+    );
+  }
+}

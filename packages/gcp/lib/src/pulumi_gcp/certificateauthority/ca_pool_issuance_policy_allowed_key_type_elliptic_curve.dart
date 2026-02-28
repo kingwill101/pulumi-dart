@@ -1,3 +1,0 @@
-library module_certificateauthority_ca_pool_issuance_policy_allowed_key_type_elliptic_curve;
-
-export 'ca_pool_issuance_policy_allowed_key_type_elliptic_curve/ca_pool_issuance_policy_allowed_key_type_elliptic_curve.dart';

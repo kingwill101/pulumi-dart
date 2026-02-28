@@ -1,3 +1,0 @@
-library module_gkebackup_restore_plan_iam_member_condition;
-
-export 'restore_plan_iam_member_condition/restore_plan_iam_member_condition.dart';

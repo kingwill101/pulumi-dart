@@ -1,4 +1,0 @@
-library module_kms_ekm_connection_iam_binding;
-
-export 'ekm_connection_iam_binding/ekm_connection_iam_binding.dart';
-export 'ekm_connection_iam_binding/ekm_connection_iam_binding_args.dart';

@@ -1,4 +1,0 @@
-library module_apihub_host_project_registration;
-
-export 'host_project_registration/host_project_registration.dart';
-export 'host_project_registration/host_project_registration_args.dart';

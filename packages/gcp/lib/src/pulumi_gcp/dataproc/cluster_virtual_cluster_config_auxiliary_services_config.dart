@@ -1,3 +1,0 @@
-library module_dataproc_cluster_virtual_cluster_config_auxiliary_services_config;
-
-export 'cluster_virtual_cluster_config_auxiliary_services_config/cluster_virtual_cluster_config_auxiliary_services_config.dart';

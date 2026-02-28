@@ -1,3 +1,0 @@
-library module_cloudrunv2_worker_pool_template_volume_gcs;
-
-export 'worker_pool_template_volume_gcs/worker_pool_template_volume_gcs.dart';

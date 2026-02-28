@@ -1,3 +1,0 @@
-library module_folder_organization_policy_list_policy;
-
-export 'organization_policy_list_policy/organization_policy_list_policy.dart';

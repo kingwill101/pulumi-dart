@@ -1,4 +1,0 @@
-library module_identityplatform_tenant_inbound_saml_config;
-
-export 'tenant_inbound_saml_config/tenant_inbound_saml_config.dart';
-export 'tenant_inbound_saml_config/tenant_inbound_saml_config_args.dart';

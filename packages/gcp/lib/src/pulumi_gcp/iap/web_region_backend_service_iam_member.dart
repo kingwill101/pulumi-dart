@@ -1,4 +1,0 @@
-library module_iap_web_region_backend_service_iam_member;
-
-export 'web_region_backend_service_iam_member/web_region_backend_service_iam_member.dart';
-export 'web_region_backend_service_iam_member/web_region_backend_service_iam_member_args.dart';

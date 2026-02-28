@@ -1,3 +1,0 @@
-library module_bigquery_job_load_time_partitioning;
-
-export 'job_load_time_partitioning/job_load_time_partitioning.dart';

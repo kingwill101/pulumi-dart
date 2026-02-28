@@ -1,3 +1,0 @@
-library module_appengine_standard_app_version_deployment_zip;
-
-export 'standard_app_version_deployment_zip/standard_app_version_deployment_zip.dart';

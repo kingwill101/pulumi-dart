@@ -1,4 +1,0 @@
-library module_integrationconnectors_managed_zone;
-
-export 'managed_zone/managed_zone_integrationconnectors.dart';
-export 'managed_zone/managed_zone_integrationconnectors_args.dart';

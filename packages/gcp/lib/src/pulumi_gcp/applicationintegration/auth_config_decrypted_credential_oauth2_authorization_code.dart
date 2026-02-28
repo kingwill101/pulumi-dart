@@ -1,3 +1,0 @@
-library module_applicationintegration_auth_config_decrypted_credential_oauth2_authorization_code;
-
-export 'auth_config_decrypted_credential_oauth2_authorization_code/auth_config_decrypted_credential_oauth2_authorization_code.dart';

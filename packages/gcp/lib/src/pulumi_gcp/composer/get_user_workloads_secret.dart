@@ -1,5 +1,0 @@
-library module_composer_get_user_workloads_secret;
-
-export 'get_user_workloads_secret/get_user_workloads_secret.dart';
-export 'get_user_workloads_secret/get_user_workloads_secret_args.dart';
-export 'get_user_workloads_secret/get_user_workloads_secret_result.dart';

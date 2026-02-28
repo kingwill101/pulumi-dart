@@ -1,3 +1,0 @@
-library module_folder_get_organization_policy_boolean_policy;
-
-export 'get_organization_policy_boolean_policy/get_organization_policy_boolean_policy.dart';

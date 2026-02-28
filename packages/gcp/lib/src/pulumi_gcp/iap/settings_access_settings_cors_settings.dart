@@ -1,3 +1,0 @@
-library module_iap_settings_access_settings_cors_settings;
-
-export 'settings_access_settings_cors_settings/settings_access_settings_cors_settings.dart';

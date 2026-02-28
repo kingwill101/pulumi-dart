@@ -1,4 +1,0 @@
-library module_dataplex_entry_group_iam_policy;
-
-export 'entry_group_iam_policy/entry_group_iam_policy_dataplex.dart';
-export 'entry_group_iam_policy/entry_group_iam_policy_dataplex_args.dart';

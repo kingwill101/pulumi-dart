@@ -1,3 +1,0 @@
-library module_alloydb_get_supported_database_flags_supported_database_flag;
-
-export 'get_supported_database_flags_supported_database_flag/get_supported_database_flags_supported_database_flag.dart';

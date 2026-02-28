@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_node_config_kubelet_config_memory_manager;
-
-export 'cluster_node_pool_node_config_kubelet_config_memory_manager/cluster_node_pool_node_config_kubelet_config_memory_manager.dart';

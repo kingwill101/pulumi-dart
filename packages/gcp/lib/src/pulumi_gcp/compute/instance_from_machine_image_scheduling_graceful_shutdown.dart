@@ -1,3 +1,0 @@
-library module_compute_instance_from_machine_image_scheduling_graceful_shutdown;
-
-export 'instance_from_machine_image_scheduling_graceful_shutdown/instance_from_machine_image_scheduling_graceful_shutdown.dart';

@@ -1,3 +1,0 @@
-library module_container_cluster_node_config_sandbox_config;
-
-export 'cluster_node_config_sandbox_config/cluster_node_config_sandbox_config.dart';

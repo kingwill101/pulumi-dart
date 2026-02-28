@@ -1,3 +1,0 @@
-library module_eventarc_trigger_destination_network_config;
-
-export 'trigger_destination_network_config/trigger_destination_network_config.dart';

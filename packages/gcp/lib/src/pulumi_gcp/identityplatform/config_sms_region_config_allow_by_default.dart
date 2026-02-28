@@ -1,3 +1,0 @@
-library module_identityplatform_config_sms_region_config_allow_by_default;
-
-export 'config_sms_region_config_allow_by_default/config_sms_region_config_allow_by_default.dart';

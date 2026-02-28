@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_config_variable;
-
-export 'connection_config_variable/connection_config_variable.dart';

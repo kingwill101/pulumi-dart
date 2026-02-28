@@ -1,3 +1,0 @@
-library module_assuredworkloads_workload_ekm_provisioning_response;
-
-export 'workload_ekm_provisioning_response/workload_ekm_provisioning_response.dart';

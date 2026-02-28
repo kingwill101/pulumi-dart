@@ -1,3 +1,0 @@
-library module_redis_cluster_automated_backup_config;
-
-export 'cluster_automated_backup_config/cluster_automated_backup_config.dart';

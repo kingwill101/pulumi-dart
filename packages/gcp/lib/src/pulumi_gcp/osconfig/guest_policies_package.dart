@@ -1,3 +1,0 @@
-library module_osconfig_guest_policies_package;
-
-export 'guest_policies_package/guest_policies_package.dart';

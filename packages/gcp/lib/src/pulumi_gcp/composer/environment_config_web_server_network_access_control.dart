@@ -1,3 +1,0 @@
-library module_composer_environment_config_web_server_network_access_control;
-
-export 'environment_config_web_server_network_access_control/environment_config_web_server_network_access_control.dart';

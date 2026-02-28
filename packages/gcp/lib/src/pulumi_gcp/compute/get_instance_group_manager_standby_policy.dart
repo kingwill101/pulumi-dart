@@ -1,3 +1,0 @@
-library module_compute_get_instance_group_manager_standby_policy;
-
-export 'get_instance_group_manager_standby_policy/get_instance_group_manager_standby_policy.dart';

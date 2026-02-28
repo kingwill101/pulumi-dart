@@ -1,4 +1,0 @@
-library module_compute_region_backend_service_iam_member;
-
-export 'region_backend_service_iam_member/region_backend_service_iam_member.dart';
-export 'region_backend_service_iam_member/region_backend_service_iam_member_args.dart';

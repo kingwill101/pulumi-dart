@@ -1,3 +1,0 @@
-library module_dataproc_autoscaling_policy_basic_algorithm_yarn_config;
-
-export 'autoscaling_policy_basic_algorithm_yarn_config/autoscaling_policy_basic_algorithm_yarn_config.dart';

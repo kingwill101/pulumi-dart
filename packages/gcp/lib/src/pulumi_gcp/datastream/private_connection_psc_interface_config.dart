@@ -1,3 +1,0 @@
-library module_datastream_private_connection_psc_interface_config;
-
-export 'private_connection_psc_interface_config/private_connection_psc_interface_config.dart';

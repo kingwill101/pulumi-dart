@@ -1,5 +1,0 @@
-library module_endpoints_get_service_iam_policy;
-
-export 'get_service_iam_policy/get_service_iam_policy_endpoints.dart';
-export 'get_service_iam_policy/get_service_iam_policy_endpoints_args.dart';
-export 'get_service_iam_policy/get_service_iam_policy_endpoints_result.dart';

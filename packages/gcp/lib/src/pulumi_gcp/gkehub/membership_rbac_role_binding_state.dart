@@ -1,3 +1,0 @@
-library module_gkehub_membership_rbac_role_binding_state;
-
-export 'membership_rbac_role_binding_state/membership_rbac_role_binding_state.dart';

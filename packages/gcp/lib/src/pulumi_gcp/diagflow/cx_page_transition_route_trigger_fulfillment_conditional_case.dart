@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_transition_route_trigger_fulfillment_conditional_case;
-
-export 'cx_page_transition_route_trigger_fulfillment_conditional_case/cx_page_transition_route_trigger_fulfillment_conditional_case.dart';

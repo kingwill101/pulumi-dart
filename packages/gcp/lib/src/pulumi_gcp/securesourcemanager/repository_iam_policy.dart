@@ -1,4 +1,0 @@
-library module_securesourcemanager_repository_iam_policy;
-
-export 'repository_iam_policy/repository_iam_policy_securesourcemanager.dart';
-export 'repository_iam_policy/repository_iam_policy_securesourcemanager_args.dart';

@@ -1,3 +1,0 @@
-library module_storage_transfer_job_transfer_spec_transfer_manifest;
-
-export 'transfer_job_transfer_spec_transfer_manifest/transfer_job_transfer_spec_transfer_manifest.dart';

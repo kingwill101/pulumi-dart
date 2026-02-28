@@ -1,3 +1,0 @@
-library module_dataplex_asset_iam_binding_condition;
-
-export 'asset_iam_binding_condition/asset_iam_binding_condition.dart';

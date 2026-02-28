@@ -1,3 +1,0 @@
-library module_dataproc_metastore_federation_iam_binding_condition;
-
-export 'metastore_federation_iam_binding_condition/metastore_federation_iam_binding_condition.dart';

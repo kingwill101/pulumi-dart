@@ -1,3 +1,0 @@
-library module_transcoder_job_template_config_elementary_stream;
-
-export 'job_template_config_elementary_stream/job_template_config_elementary_stream.dart';

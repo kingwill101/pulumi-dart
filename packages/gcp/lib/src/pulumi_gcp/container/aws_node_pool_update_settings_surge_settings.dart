@@ -1,3 +1,0 @@
-library module_container_aws_node_pool_update_settings_surge_settings;
-
-export 'aws_node_pool_update_settings_surge_settings/aws_node_pool_update_settings_surge_settings.dart';

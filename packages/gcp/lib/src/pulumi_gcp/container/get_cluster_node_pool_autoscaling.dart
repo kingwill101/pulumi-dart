@@ -1,3 +1,0 @@
-library module_container_get_cluster_node_pool_autoscaling;
-
-export 'get_cluster_node_pool_autoscaling/get_cluster_node_pool_autoscaling.dart';

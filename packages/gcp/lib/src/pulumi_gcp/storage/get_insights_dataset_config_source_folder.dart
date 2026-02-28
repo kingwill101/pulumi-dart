@@ -1,3 +1,0 @@
-library module_storage_get_insights_dataset_config_source_folder;
-
-export 'get_insights_dataset_config_source_folder/get_insights_dataset_config_source_folder.dart';

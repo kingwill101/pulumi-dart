@@ -1,3 +1,0 @@
-library module_organizations_get_iam_custom_roles_role;
-
-export 'get_iam_custom_roles_role/get_iam_custom_roles_role.dart';

@@ -1,3 +1,0 @@
-library module_cloudtasks_queue_http_target_oidc_token;
-
-export 'queue_http_target_oidc_token/queue_http_target_oidc_token.dart';

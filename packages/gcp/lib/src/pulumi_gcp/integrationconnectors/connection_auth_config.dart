@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_auth_config;
-
-export 'connection_auth_config/connection_auth_config.dart';

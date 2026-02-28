@@ -1,4 +1,0 @@
-library module_securitycenter_organization_scc_big_query_export;
-
-export 'organization_scc_big_query_export/organization_scc_big_query_export.dart';
-export 'organization_scc_big_query_export/organization_scc_big_query_export_args.dart';

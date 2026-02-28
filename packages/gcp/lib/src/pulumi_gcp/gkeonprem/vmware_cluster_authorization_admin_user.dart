@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_cluster_authorization_admin_user;
-
-export 'vmware_cluster_authorization_admin_user/vmware_cluster_authorization_admin_user.dart';

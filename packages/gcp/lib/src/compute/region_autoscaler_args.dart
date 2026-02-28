@@ -1,0 +1,99 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'region_autoscaler_autoscaling_policy.dart';
+
+/// {@template pulumi_compute_region_autoscaler_region_autoscaler_args_doc}
+/// The set of arguments for RegionAutoscaler.
+/// {@endtemplate}
+/// {@macro pulumi_compute_region_autoscaler_region_autoscaler_args_doc}
+class RegionAutoscalerArgs {
+  /// The configuration parameters for the autoscaling algorithm. You can
+  /// define one or more of the policies for an autoscaler: cpuUtilization,
+  /// customMetricUtilizations, and loadBalancingUtilization.
+  /// If none of these are specified, the default will be to autoscale based
+  /// on cpuUtilization to 0.6 or 60%.
+  /// Structure is documented below.
+  final pulumi.Input<RegionAutoscalerAutoscalingPolicy> autoscalingPolicy;
+
+  /// An optional description of this resource.
+  final pulumi.Input<String>? description;
+
+  /// Name of the resource. The name must be 1-63 characters long and match
+  /// the regular expression `a-z?` which means the
+  /// first character must be a lowercase letter, and all following
+  /// characters must be a dash, lowercase letter, or digit, except the last
+  /// character, which cannot be a dash.
+  final pulumi.Input<String>? name;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// URL of the region where the instance group resides.
+  final pulumi.Input<String>? region;
+
+  /// URL of the managed instance group that this autoscaler will scale.
+  final pulumi.Input<String> target;
+
+  /// Creates a new [RegionAutoscalerArgs].
+  /// [autoscalingPolicy] The configuration parameters for the autoscaling algorithm. You can
+  /// [description] An optional description of this resource.
+  /// [name] Name of the resource. The name must be 1-63 characters long and match
+  /// [project] The ID of the project in which the resource belongs.
+  /// [region] URL of the region where the instance group resides.
+  /// [target] URL of the managed instance group that this autoscaler will scale.
+  RegionAutoscalerArgs({
+    required RegionAutoscalerAutoscalingPolicy autoscalingPolicy,
+    String? description,
+    String? name,
+    String? project,
+    String? region,
+    required String target,
+  })  : autoscalingPolicy =
+            pulumi.Input.asInput<RegionAutoscalerAutoscalingPolicy>(
+                autoscalingPolicy),
+        description = pulumi.Input.asOptionalInput<String>(description),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        region = pulumi.Input.asOptionalInput<String>(region),
+        target = pulumi.Input.asInput<String>(target);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['autoscalingPolicy'] = pulumi.Input.mapInputValue<
+        RegionAutoscalerAutoscalingPolicy,
+        Map<String, dynamic>>(autoscalingPolicy, (value) => value.toMap());
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['target'] = target;
+    return map;
+  }
+
+  factory RegionAutoscalerArgs.fromMap(Map<String, dynamic> map) {
+    return RegionAutoscalerArgs(
+      autoscalingPolicy: RegionAutoscalerAutoscalingPolicy.fromMap(
+          (map['autoscalingPolicy'] as Map).cast<String, dynamic>()),
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      target: map['target'] as String,
+    );
+  }
+}

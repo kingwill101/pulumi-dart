@@ -1,3 +1,0 @@
-library module_compute_urlmap_path_matcher_default_route_action_timeout;
-
-export 'urlmap_path_matcher_default_route_action_timeout/urlmap_path_matcher_default_route_action_timeout.dart';

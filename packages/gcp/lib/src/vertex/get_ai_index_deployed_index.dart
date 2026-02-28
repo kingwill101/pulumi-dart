@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetAiIndexDeployedIndex {
+  /// The ID of the DeployedIndex in the above IndexEndpoint.
+  final String deployedIndexId;
+
+  /// A resource name of the IndexEndpoint.
+  final String indexEndpoint;
+
+  /// Creates a new [GetAiIndexDeployedIndex].
+  /// [deployedIndexId] The ID of the DeployedIndex in the above IndexEndpoint.
+  /// [indexEndpoint] A resource name of the IndexEndpoint.
+  GetAiIndexDeployedIndex({
+    required this.deployedIndexId,
+    required this.indexEndpoint,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['deployedIndexId'] = deployedIndexId;
+    map['indexEndpoint'] = indexEndpoint;
+    return map;
+  }
+
+  factory GetAiIndexDeployedIndex.fromMap(Map<String, dynamic> map) {
+    return GetAiIndexDeployedIndex(
+      deployedIndexId: map['deployedIndexId'] as String,
+      indexEndpoint: map['indexEndpoint'] as String,
+    );
+  }
+}

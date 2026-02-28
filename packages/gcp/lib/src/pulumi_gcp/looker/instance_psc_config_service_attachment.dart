@@ -1,3 +1,0 @@
-library module_looker_instance_psc_config_service_attachment;
-
-export 'instance_psc_config_service_attachment/instance_psc_config_service_attachment.dart';

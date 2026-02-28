@@ -1,3 +1,0 @@
-library module_container_get_cluster_release_channel;
-
-export 'get_cluster_release_channel/get_cluster_release_channel.dart';

@@ -1,3 +1,0 @@
-library module_clouddeploy_deploy_policy_selector_delivery_pipeline;
-
-export 'deploy_policy_selector_delivery_pipeline/deploy_policy_selector_delivery_pipeline.dart';

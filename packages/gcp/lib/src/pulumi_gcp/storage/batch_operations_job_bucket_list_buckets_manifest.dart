@@ -1,3 +1,0 @@
-library module_storage_batch_operations_job_bucket_list_buckets_manifest;
-
-export 'batch_operations_job_bucket_list_buckets_manifest/batch_operations_job_bucket_list_buckets_manifest.dart';

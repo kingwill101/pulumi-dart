@@ -1,3 +1,0 @@
-library module_discoveryengine_recommendation_engine_media_recommendation_engine_config;
-
-export 'recommendation_engine_media_recommendation_engine_config/recommendation_engine_media_recommendation_engine_config.dart';

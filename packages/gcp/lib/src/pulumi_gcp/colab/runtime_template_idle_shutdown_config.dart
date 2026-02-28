@@ -1,3 +1,0 @@
-library module_colab_runtime_template_idle_shutdown_config;
-
-export 'runtime_template_idle_shutdown_config/runtime_template_idle_shutdown_config.dart';

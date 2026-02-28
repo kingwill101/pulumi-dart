@@ -1,3 +1,0 @@
-library module_projects_api_key_restrictions_browser_key_restrictions;
-
-export 'api_key_restrictions_browser_key_restrictions/api_key_restrictions_browser_key_restrictions.dart';

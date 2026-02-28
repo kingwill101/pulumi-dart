@@ -1,3 +1,0 @@
-library module_spanner_instance_config_replica;
-
-export 'instance_config_replica/instance_config_replica.dart';

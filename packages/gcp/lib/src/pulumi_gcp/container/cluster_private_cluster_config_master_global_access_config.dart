@@ -1,3 +1,0 @@
-library module_container_cluster_private_cluster_config_master_global_access_config;
-
-export 'cluster_private_cluster_config_master_global_access_config/cluster_private_cluster_config_master_global_access_config.dart';

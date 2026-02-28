@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_private_registry_config;
-
-export 'vmware_admin_cluster_private_registry_config/vmware_admin_cluster_private_registry_config.dart';

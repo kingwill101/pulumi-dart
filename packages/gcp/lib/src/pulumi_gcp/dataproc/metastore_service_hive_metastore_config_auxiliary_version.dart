@@ -1,3 +1,0 @@
-library module_dataproc_metastore_service_hive_metastore_config_auxiliary_version;
-
-export 'metastore_service_hive_metastore_config_auxiliary_version/metastore_service_hive_metastore_config_auxiliary_version.dart';

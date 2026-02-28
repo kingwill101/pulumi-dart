@@ -1,3 +1,0 @@
-library module_monitoring_get_istio_canonical_service_telemetry;
-
-export 'get_istio_canonical_service_telemetry/get_istio_canonical_service_telemetry.dart';

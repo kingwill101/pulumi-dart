@@ -1,3 +1,0 @@
-library module_diagflow_cx_generator_placeholder;
-
-export 'cx_generator_placeholder/cx_generator_placeholder.dart';

@@ -1,3 +1,0 @@
-library module_gkehub_get_feature_spec_multiclusteringress;
-
-export 'get_feature_spec_multiclusteringress/get_feature_spec_multiclusteringress.dart';

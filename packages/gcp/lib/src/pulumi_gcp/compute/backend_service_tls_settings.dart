@@ -1,3 +1,0 @@
-library module_compute_backend_service_tls_settings;
-
-export 'backend_service_tls_settings/backend_service_tls_settings.dart';

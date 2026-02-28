@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_bigquery_get_default_service_account_get_default_service_account_args_doc}
+/// Arguments for getDefaultServiceAccount.
+/// {@endtemplate}
+/// {@macro pulumi_bigquery_get_default_service_account_get_default_service_account_args_doc}
+class GetDefaultServiceAccountArgs {
+  /// The project the unique service account was created for. If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetDefaultServiceAccountArgs].
+  /// [project] The project the unique service account was created for. If it is not provided, the provider project is used.
+  GetDefaultServiceAccountArgs({
+    String? project,
+  }) : project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetDefaultServiceAccountArgs.fromMap(Map<String, dynamic> map) {
+    return GetDefaultServiceAccountArgs(
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_organizations_get_iam_custom_roles_get_iam_custom_roles_args_doc}
+/// Arguments for getIamCustomRoles.
+/// {@endtemplate}
+/// {@macro pulumi_organizations_get_iam_custom_roles_get_iam_custom_roles_args_doc}
+class GetIamCustomRolesArgs {
+  /// The numeric ID of the organization.
+  final pulumi.Input<String>? orgId;
+
+  /// Include Roles that have been deleted. Defaults to `false`.
+  final pulumi.Input<bool>? showDeleted;
+
+  /// When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
+  final pulumi.Input<String>? view;
+
+  /// Creates a new [GetIamCustomRolesArgs].
+  /// [orgId] The numeric ID of the organization.
+  /// [showDeleted] Include Roles that have been deleted. Defaults to `false`.
+  /// [view] When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
+  GetIamCustomRolesArgs({
+    String? orgId,
+    bool? showDeleted,
+    String? view,
+  })  : orgId = pulumi.Input.asOptionalInput<String>(orgId),
+        showDeleted = pulumi.Input.asOptionalInput<bool>(showDeleted),
+        view = pulumi.Input.asOptionalInput<String>(view);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final orgIdValue = orgId;
+    if (orgIdValue != null) {
+      map['orgId'] = orgIdValue;
+    }
+    final showDeletedValue = showDeleted;
+    if (showDeletedValue != null) {
+      map['showDeleted'] = showDeletedValue;
+    }
+    final viewValue = view;
+    if (viewValue != null) {
+      map['view'] = viewValue;
+    }
+    return map;
+  }
+
+  factory GetIamCustomRolesArgs.fromMap(Map<String, dynamic> map) {
+    return GetIamCustomRolesArgs(
+      orgId: map['orgId'] == null ? null : map['orgId'] as String,
+      showDeleted:
+          map['showDeleted'] == null ? null : map['showDeleted'] as bool,
+      view: map['view'] == null ? null : map['view'] as String,
+    );
+  }
+}

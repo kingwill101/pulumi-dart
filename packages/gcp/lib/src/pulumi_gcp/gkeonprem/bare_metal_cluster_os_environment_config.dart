@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_cluster_os_environment_config;
-
-export 'bare_metal_cluster_os_environment_config/bare_metal_cluster_os_environment_config.dart';

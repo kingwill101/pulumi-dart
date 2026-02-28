@@ -1,3 +1,0 @@
-library module_cloudrunv2_job_template_template_container_resources;
-
-export 'job_template_template_container_resources/job_template_template_container_resources.dart';

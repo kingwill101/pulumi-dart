@@ -1,3 +1,0 @@
-library module_netapp_volume_replication_hybrid_peering_detail;
-
-export 'volume_replication_hybrid_peering_detail/volume_replication_hybrid_peering_detail.dart';

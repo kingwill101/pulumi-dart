@@ -1,4 +1,0 @@
-library module_bigquery_datapolicyv2_data_policy_iam_member;
-
-export 'datapolicyv2_data_policy_iam_member/datapolicyv2_data_policy_iam_member.dart';
-export 'datapolicyv2_data_policy_iam_member/datapolicyv2_data_policy_iam_member_args.dart';

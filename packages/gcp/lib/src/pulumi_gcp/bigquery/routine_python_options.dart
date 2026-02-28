@@ -1,3 +1,0 @@
-library module_bigquery_routine_python_options;
-
-export 'routine_python_options/routine_python_options.dart';

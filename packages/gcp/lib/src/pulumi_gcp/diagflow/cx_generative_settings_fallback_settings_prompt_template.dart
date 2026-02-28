@@ -1,3 +1,0 @@
-library module_diagflow_cx_generative_settings_fallback_settings_prompt_template;
-
-export 'cx_generative_settings_fallback_settings_prompt_template/cx_generative_settings_fallback_settings_prompt_template.dart';

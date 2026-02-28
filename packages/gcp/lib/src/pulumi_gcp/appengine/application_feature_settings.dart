@@ -1,3 +1,0 @@
-library module_appengine_application_feature_settings;
-
-export 'application_feature_settings/application_feature_settings.dart';

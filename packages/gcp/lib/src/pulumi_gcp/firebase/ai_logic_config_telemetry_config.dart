@@ -1,3 +1,0 @@
-library module_firebase_ai_logic_config_telemetry_config;
-
-export 'ai_logic_config_telemetry_config/ai_logic_config_telemetry_config.dart';

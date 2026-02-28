@@ -1,3 +1,0 @@
-library module_compute_resource_policy_snapshot_schedule_policy_snapshot_properties;
-
-export 'resource_policy_snapshot_schedule_policy_snapshot_properties/resource_policy_snapshot_schedule_policy_snapshot_properties.dart';

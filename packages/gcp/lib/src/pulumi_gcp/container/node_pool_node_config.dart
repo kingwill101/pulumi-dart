@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config;
-
-export 'node_pool_node_config/node_pool_node_config.dart';

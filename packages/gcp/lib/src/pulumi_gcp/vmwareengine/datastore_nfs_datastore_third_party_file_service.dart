@@ -1,3 +1,0 @@
-library module_vmwareengine_datastore_nfs_datastore_third_party_file_service;
-
-export 'datastore_nfs_datastore_third_party_file_service/datastore_nfs_datastore_third_party_file_service.dart';

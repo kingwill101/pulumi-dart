@@ -1,3 +1,0 @@
-library module_monitoring_alert_policy_alert_strategy_notification_rate_limit;
-
-export 'alert_policy_alert_strategy_notification_rate_limit/alert_policy_alert_strategy_notification_rate_limit.dart';

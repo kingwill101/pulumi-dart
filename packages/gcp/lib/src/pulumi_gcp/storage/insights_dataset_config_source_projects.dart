@@ -1,3 +1,0 @@
-library module_storage_insights_dataset_config_source_projects;
-
-export 'insights_dataset_config_source_projects/insights_dataset_config_source_projects.dart';

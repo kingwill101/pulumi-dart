@@ -1,4 +1,0 @@
-library module_logging_billing_account_bucket_config;
-
-export 'billing_account_bucket_config/billing_account_bucket_config.dart';
-export 'billing_account_bucket_config/billing_account_bucket_config_args.dart';

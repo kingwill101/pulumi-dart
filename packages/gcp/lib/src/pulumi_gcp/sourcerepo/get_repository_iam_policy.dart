@@ -1,5 +1,0 @@
-library module_sourcerepo_get_repository_iam_policy;
-
-export 'get_repository_iam_policy/get_repository_iam_policy_sourcerepo.dart';
-export 'get_repository_iam_policy/get_repository_iam_policy_sourcerepo_args.dart';
-export 'get_repository_iam_policy/get_repository_iam_policy_sourcerepo_result.dart';

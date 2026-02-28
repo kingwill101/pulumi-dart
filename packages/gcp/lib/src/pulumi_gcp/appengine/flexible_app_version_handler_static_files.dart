@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_handler_static_files;
-
-export 'flexible_app_version_handler_static_files/flexible_app_version_handler_static_files.dart';

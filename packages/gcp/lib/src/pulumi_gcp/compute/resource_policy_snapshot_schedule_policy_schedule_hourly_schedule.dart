@@ -1,3 +1,0 @@
-library module_compute_resource_policy_snapshot_schedule_policy_schedule_hourly_schedule;
-
-export 'resource_policy_snapshot_schedule_policy_schedule_hourly_schedule/resource_policy_snapshot_schedule_policy_schedule_hourly_schedule.dart';

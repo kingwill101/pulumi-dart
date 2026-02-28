@@ -1,3 +1,0 @@
-library module_dataproc_job_sparksql_config_logging_config;
-
-export 'job_sparksql_config_logging_config/job_sparksql_config_logging_config.dart';

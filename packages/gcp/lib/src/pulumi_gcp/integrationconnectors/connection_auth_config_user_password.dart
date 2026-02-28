@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_auth_config_user_password;
-
-export 'connection_auth_config_user_password/connection_auth_config_user_password.dart';

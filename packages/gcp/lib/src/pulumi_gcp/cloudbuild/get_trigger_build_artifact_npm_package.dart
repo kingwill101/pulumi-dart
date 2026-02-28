@@ -1,3 +1,0 @@
-library module_cloudbuild_get_trigger_build_artifact_npm_package;
-
-export 'get_trigger_build_artifact_npm_package/get_trigger_build_artifact_npm_package.dart';

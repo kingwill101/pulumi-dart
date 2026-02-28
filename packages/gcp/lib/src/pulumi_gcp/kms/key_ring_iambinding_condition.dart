@@ -1,3 +1,0 @@
-library module_kms_key_ring_iambinding_condition;
-
-export 'key_ring_iambinding_condition/key_ring_iambinding_condition.dart';

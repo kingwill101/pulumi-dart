@@ -1,4 +1,0 @@
-library module_healthcare_dataset_iam_member;
-
-export 'dataset_iam_member/dataset_iam_member_healthcare.dart';
-export 'dataset_iam_member/dataset_iam_member_healthcare_args.dart';

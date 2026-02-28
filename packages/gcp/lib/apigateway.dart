@@ -1,3 +1,3 @@
 library pulumi_gcp_apigateway;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/apigateway.dart';
+export 'package:pulumi_gcp/src/apigateway.dart';

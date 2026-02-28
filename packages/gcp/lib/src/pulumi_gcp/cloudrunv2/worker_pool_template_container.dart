@@ -1,3 +1,0 @@
-library module_cloudrunv2_worker_pool_template_container;
-
-export 'worker_pool_template_container/worker_pool_template_container.dart';

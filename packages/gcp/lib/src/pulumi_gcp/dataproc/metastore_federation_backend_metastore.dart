@@ -1,3 +1,0 @@
-library module_dataproc_metastore_federation_backend_metastore;
-
-export 'metastore_federation_backend_metastore/metastore_federation_backend_metastore.dart';

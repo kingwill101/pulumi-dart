@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_agent_toolset;
-
-export 'app_version_snapshot_agent_toolset/app_version_snapshot_agent_toolset.dart';

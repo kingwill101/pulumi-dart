@@ -1,3 +1,0 @@
-library module_diagflow_cx_tool_version_tool_data_store_spec;
-
-export 'cx_tool_version_tool_data_store_spec/cx_tool_version_tool_data_store_spec.dart';

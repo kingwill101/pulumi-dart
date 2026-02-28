@@ -1,3 +1,0 @@
-library module_bigtable_table_automated_backup_policy;
-
-export 'table_automated_backup_policy/table_automated_backup_policy.dart';

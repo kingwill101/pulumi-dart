@@ -1,3 +1,0 @@
-library module_datastream_stream_source_config_sql_server_source_config_include_objects;
-
-export 'stream_source_config_sql_server_source_config_include_objects/stream_source_config_sql_server_source_config_include_objects.dart';

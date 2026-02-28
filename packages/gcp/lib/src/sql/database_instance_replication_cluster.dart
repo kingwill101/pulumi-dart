@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DatabaseInstanceReplicationCluster {
+  /// Read-only field that indicates whether the replica is a DR replica.
+  final bool? drReplica;
+
+  /// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+  final String? failoverDrReplicaName;
+
+  /// Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+  final String? psaWriteEndpoint;
+
+  /// Creates a new [DatabaseInstanceReplicationCluster].
+  /// [drReplica] Read-only field that indicates whether the replica is a DR replica.
+  /// [failoverDrReplicaName] If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+  /// [psaWriteEndpoint] Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+  DatabaseInstanceReplicationCluster({
+    this.drReplica,
+    this.failoverDrReplicaName,
+    this.psaWriteEndpoint,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final drReplicaValue = drReplica;
+    if (drReplicaValue != null) {
+      map['drReplica'] = drReplicaValue;
+    }
+    final failoverDrReplicaNameValue = failoverDrReplicaName;
+    if (failoverDrReplicaNameValue != null) {
+      map['failoverDrReplicaName'] = failoverDrReplicaNameValue;
+    }
+    final psaWriteEndpointValue = psaWriteEndpoint;
+    if (psaWriteEndpointValue != null) {
+      map['psaWriteEndpoint'] = psaWriteEndpointValue;
+    }
+    return map;
+  }
+
+  factory DatabaseInstanceReplicationCluster.fromMap(Map<String, dynamic> map) {
+    return DatabaseInstanceReplicationCluster(
+      drReplica: map['drReplica'] == null ? null : map['drReplica'] as bool,
+      failoverDrReplicaName: map['failoverDrReplicaName'] == null
+          ? null
+          : map['failoverDrReplicaName'] as String,
+      psaWriteEndpoint: map['psaWriteEndpoint'] == null
+          ? null
+          : map['psaWriteEndpoint'] as String,
+    );
+  }
+}

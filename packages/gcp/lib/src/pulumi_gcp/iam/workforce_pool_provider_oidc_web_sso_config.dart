@@ -1,3 +1,0 @@
-library module_iam_workforce_pool_provider_oidc_web_sso_config;
-
-export 'workforce_pool_provider_oidc_web_sso_config/workforce_pool_provider_oidc_web_sso_config.dart';

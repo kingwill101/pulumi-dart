@@ -1,3 +1,0 @@
-library module_compute_region_instance_group_manager_status;
-
-export 'region_instance_group_manager_status/region_instance_group_manager_status.dart';

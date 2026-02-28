@@ -1,3 +1,0 @@
-library module_compute_service_attachment_connected_endpoint;
-
-export 'service_attachment_connected_endpoint/service_attachment_connected_endpoint.dart';

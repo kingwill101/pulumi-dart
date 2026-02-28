@@ -1,3 +1,0 @@
-library module_datacatalog_tag_template_field_type_enum_type;
-
-export 'tag_template_field_type_enum_type/tag_template_field_type_enum_type.dart';

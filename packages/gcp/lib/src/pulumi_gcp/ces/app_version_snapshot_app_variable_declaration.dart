@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_app_variable_declaration;
-
-export 'app_version_snapshot_app_variable_declaration/app_version_snapshot_app_variable_declaration.dart';

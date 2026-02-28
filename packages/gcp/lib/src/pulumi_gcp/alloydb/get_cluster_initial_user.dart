@@ -1,3 +1,0 @@
-library module_alloydb_get_cluster_initial_user;
-
-export 'get_cluster_initial_user/get_cluster_initial_user.dart';

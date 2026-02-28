@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_tool_python_function;
-
-export 'app_version_snapshot_tool_python_function/app_version_snapshot_tool_python_function.dart';

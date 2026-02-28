@@ -1,3 +1,0 @@
-library module_clouddeploy_custom_target_type_custom_actions;
-
-export 'custom_target_type_custom_actions/custom_target_type_custom_actions.dart';

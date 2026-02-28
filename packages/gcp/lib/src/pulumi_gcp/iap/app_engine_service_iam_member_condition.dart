@@ -1,3 +1,0 @@
-library module_iap_app_engine_service_iam_member_condition;
-
-export 'app_engine_service_iam_member_condition/app_engine_service_iam_member_condition.dart';

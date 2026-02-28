@@ -1,3 +1,0 @@
-library module_dataloss_prevention_inspect_template_inspect_config_rule_set_rule;
-
-export 'prevention_inspect_template_inspect_config_rule_set_rule/prevention_inspect_template_inspect_config_rule_set_rule.dart';

@@ -1,3 +1,0 @@
-library module_osconfig_patch_deployment_patch_config_goo;
-
-export 'patch_deployment_patch_config_goo/patch_deployment_patch_config_goo.dart';

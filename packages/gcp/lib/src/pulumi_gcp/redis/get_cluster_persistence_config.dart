@@ -1,3 +1,0 @@
-library module_redis_get_cluster_persistence_config;
-
-export 'get_cluster_persistence_config/get_cluster_persistence_config.dart';

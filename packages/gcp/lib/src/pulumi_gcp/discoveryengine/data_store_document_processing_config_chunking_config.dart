@@ -1,3 +1,0 @@
-library module_discoveryengine_data_store_document_processing_config_chunking_config;
-
-export 'data_store_document_processing_config_chunking_config/data_store_document_processing_config_chunking_config.dart';

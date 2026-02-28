@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_container;
-
-export 'workstation_config_container/workstation_config_container.dart';

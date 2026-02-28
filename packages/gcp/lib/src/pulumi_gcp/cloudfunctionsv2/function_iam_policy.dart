@@ -1,4 +1,0 @@
-library module_cloudfunctionsv2_function_iam_policy;
-
-export 'function_iam_policy/function_iam_policy_cloudfunctionsv2.dart';
-export 'function_iam_policy/function_iam_policy_cloudfunctionsv2_args.dart';

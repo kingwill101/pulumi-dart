@@ -1,3 +1,0 @@
-library module_vertex_ai_endpoint_iam_binding_condition;
-
-export 'ai_endpoint_iam_binding_condition/ai_endpoint_iam_binding_condition.dart';

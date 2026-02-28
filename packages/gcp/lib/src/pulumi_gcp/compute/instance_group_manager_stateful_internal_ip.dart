@@ -1,3 +1,0 @@
-library module_compute_instance_group_manager_stateful_internal_ip;
-
-export 'instance_group_manager_stateful_internal_ip/instance_group_manager_stateful_internal_ip.dart';

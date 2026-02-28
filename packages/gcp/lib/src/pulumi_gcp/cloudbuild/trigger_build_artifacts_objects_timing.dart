@@ -1,3 +1,0 @@
-library module_cloudbuild_trigger_build_artifacts_objects_timing;
-
-export 'trigger_build_artifacts_objects_timing/trigger_build_artifacts_objects_timing.dart';

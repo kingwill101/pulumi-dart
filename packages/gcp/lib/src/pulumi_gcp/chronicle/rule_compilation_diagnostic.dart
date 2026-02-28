@@ -1,3 +1,0 @@
-library module_chronicle_rule_compilation_diagnostic;
-
-export 'rule_compilation_diagnostic/rule_compilation_diagnostic.dart';

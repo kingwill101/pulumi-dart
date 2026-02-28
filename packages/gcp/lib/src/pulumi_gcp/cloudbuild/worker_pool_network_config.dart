@@ -1,3 +1,0 @@
-library module_cloudbuild_worker_pool_network_config;
-
-export 'worker_pool_network_config/worker_pool_network_config.dart';

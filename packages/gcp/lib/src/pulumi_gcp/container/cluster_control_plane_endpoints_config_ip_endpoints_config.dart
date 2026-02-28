@@ -1,3 +1,0 @@
-library module_container_cluster_control_plane_endpoints_config_ip_endpoints_config;
-
-export 'cluster_control_plane_endpoints_config_ip_endpoints_config/cluster_control_plane_endpoints_config_ip_endpoints_config.dart';

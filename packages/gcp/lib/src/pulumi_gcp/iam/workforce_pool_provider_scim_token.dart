@@ -1,4 +1,0 @@
-library module_iam_workforce_pool_provider_scim_token;
-
-export 'workforce_pool_provider_scim_token/workforce_pool_provider_scim_token.dart';
-export 'workforce_pool_provider_scim_token/workforce_pool_provider_scim_token_args.dart';

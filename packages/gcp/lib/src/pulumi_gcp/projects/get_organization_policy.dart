@@ -1,5 +1,0 @@
-library module_projects_get_organization_policy;
-
-export 'get_organization_policy/get_organization_policy_projects.dart';
-export 'get_organization_policy/get_organization_policy_projects_args.dart';
-export 'get_organization_policy/get_organization_policy_projects_result.dart';

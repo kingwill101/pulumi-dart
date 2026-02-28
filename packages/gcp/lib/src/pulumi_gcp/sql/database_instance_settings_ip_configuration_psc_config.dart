@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_ip_configuration_psc_config;
-
-export 'database_instance_settings_ip_configuration_psc_config/database_instance_settings_ip_configuration_psc_config.dart';

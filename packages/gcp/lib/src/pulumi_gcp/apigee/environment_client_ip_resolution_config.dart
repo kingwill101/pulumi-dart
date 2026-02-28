@@ -1,3 +1,0 @@
-library module_apigee_environment_client_ip_resolution_config;
-
-export 'environment_client_ip_resolution_config/environment_client_ip_resolution_config.dart';

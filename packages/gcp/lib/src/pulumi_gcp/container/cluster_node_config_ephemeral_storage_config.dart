@@ -1,3 +1,0 @@
-library module_container_cluster_node_config_ephemeral_storage_config;
-
-export 'cluster_node_config_ephemeral_storage_config/cluster_node_config_ephemeral_storage_config.dart';

@@ -1,3 +1,0 @@
-library module_databasemigrationservice_connection_profile_oracle;
-
-export 'connection_profile_oracle/connection_profile_oracle.dart';

@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_network_config_static_ip_config;
-
-export 'vmware_admin_cluster_network_config_static_ip_config/vmware_admin_cluster_network_config_static_ip_config.dart';

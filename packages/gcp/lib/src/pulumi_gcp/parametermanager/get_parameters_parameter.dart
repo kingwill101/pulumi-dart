@@ -1,3 +1,0 @@
-library module_parametermanager_get_parameters_parameter;
-
-export 'get_parameters_parameter/get_parameters_parameter.dart';

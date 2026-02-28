@@ -1,3 +1,0 @@
-library module_cloudscheduler_job_http_target_oauth_token;
-
-export 'job_http_target_oauth_token/job_http_target_oauth_token.dart';

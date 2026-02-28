@@ -1,3 +1,0 @@
-library module_networksecurity_server_tls_policy_server_certificate_grpc_endpoint;
-
-export 'server_tls_policy_server_certificate_grpc_endpoint/server_tls_policy_server_certificate_grpc_endpoint.dart';

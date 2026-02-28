@@ -1,3 +1,0 @@
-library module_compute_get_region_instance_group_instance;
-
-export 'get_region_instance_group_instance/get_region_instance_group_instance.dart';

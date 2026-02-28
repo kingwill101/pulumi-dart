@@ -1,3 +1,0 @@
-library module_ces_tool_open_api_tool_api_authentication;
-
-export 'tool_open_api_tool_api_authentication/tool_open_api_tool_api_authentication.dart';

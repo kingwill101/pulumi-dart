@@ -1,3 +1,0 @@
-library module_networkservices_grpc_route_rule_action_fault_injection_policy;
-
-export 'grpc_route_rule_action_fault_injection_policy/grpc_route_rule_action_fault_injection_policy.dart';

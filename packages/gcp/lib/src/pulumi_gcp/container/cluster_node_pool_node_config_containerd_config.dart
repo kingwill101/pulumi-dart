@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_node_config_containerd_config;
-
-export 'cluster_node_pool_node_config_containerd_config/cluster_node_pool_node_config_containerd_config.dart';

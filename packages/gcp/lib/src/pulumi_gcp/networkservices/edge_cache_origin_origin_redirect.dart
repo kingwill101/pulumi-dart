@@ -1,3 +1,0 @@
-library module_networkservices_edge_cache_origin_origin_redirect;
-
-export 'edge_cache_origin_origin_redirect/edge_cache_origin_origin_redirect.dart';

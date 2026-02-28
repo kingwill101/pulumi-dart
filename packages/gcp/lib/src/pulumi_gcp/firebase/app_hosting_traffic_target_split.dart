@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_traffic_target_split;
-
-export 'app_hosting_traffic_target_split/app_hosting_traffic_target_split.dart';

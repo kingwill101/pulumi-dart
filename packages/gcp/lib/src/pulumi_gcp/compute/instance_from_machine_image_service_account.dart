@@ -1,3 +1,0 @@
-library module_compute_instance_from_machine_image_service_account;
-
-export 'instance_from_machine_image_service_account/instance_from_machine_image_service_account.dart';

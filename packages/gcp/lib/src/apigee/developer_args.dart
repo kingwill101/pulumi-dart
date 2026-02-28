@@ -1,0 +1,87 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'developer_attribute.dart';
+
+/// {@template pulumi_apigee_developer_developer_args_doc}
+/// The set of arguments for Developer.
+/// {@endtemplate}
+/// {@macro pulumi_apigee_developer_developer_args_doc}
+class DeveloperArgs {
+  /// Developer attributes (name/value pairs). The custom attribute limit is 18.
+  /// Structure is documented below.
+  final pulumi.Input<List<DeveloperAttribute>>? attributes;
+
+  /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
+  final pulumi.Input<String> email;
+
+  /// First name of the developer.
+  final pulumi.Input<String> firstName;
+
+  /// Last name of the developer.
+  final pulumi.Input<String> lastName;
+
+  /// The Apigee Organization associated with the Apigee instance,
+  /// in the format `organizations/{{org_name}}`.
+  final pulumi.Input<String> orgId;
+
+  /// User name of the developer. Not used by Apigee hybrid.
+  final pulumi.Input<String> userName;
+
+  /// Creates a new [DeveloperArgs].
+  /// [attributes] Developer attributes (name/value pairs). The custom attribute limit is 18.
+  /// [email] Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
+  /// [firstName] First name of the developer.
+  /// [lastName] Last name of the developer.
+  /// [orgId] The Apigee Organization associated with the Apigee instance,
+  /// [userName] User name of the developer. Not used by Apigee hybrid.
+  DeveloperArgs({
+    List<DeveloperAttribute>? attributes,
+    required String email,
+    required String firstName,
+    required String lastName,
+    required String orgId,
+    required String userName,
+  })  : attributes =
+            pulumi.Input.asOptionalInput<List<DeveloperAttribute>>(attributes),
+        email = pulumi.Input.asInput<String>(email),
+        firstName = pulumi.Input.asInput<String>(firstName),
+        lastName = pulumi.Input.asInput<String>(lastName),
+        orgId = pulumi.Input.asInput<String>(orgId),
+        userName = pulumi.Input.asInput<String>(userName);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final attributesValue = attributes;
+    if (attributesValue != null) {
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<
+              List<DeveloperAttribute>, List<Map<String, dynamic>>>(
+          attributesValue,
+          (value) =>
+              pulumi.Input.encodeList<DeveloperAttribute, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
+    }
+    map['email'] = email;
+    map['firstName'] = firstName;
+    map['lastName'] = lastName;
+    map['orgId'] = orgId;
+    map['userName'] = userName;
+    return map;
+  }
+
+  factory DeveloperArgs.fromMap(Map<String, dynamic> map) {
+    return DeveloperArgs(
+      attributes: map['attributes'] == null
+          ? null
+          : pulumi.Input.decodeList<DeveloperAttribute>(
+              map['attributes'],
+              (value) => DeveloperAttribute.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      email: map['email'] as String,
+      firstName: map['firstName'] as String,
+      lastName: map['lastName'] as String,
+      orgId: map['orgId'] as String,
+      userName: map['userName'] as String,
+    );
+  }
+}

@@ -1,3 +1,0 @@
-library module_networksecurity_authz_policy_http_rule_from_source_principal;
-
-export 'authz_policy_http_rule_from_source_principal/authz_policy_http_rule_from_source_principal.dart';

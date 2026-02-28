@@ -1,3 +1,0 @@
-library module_certificatemanager_get_certificate_map_gclb_target;
-
-export 'get_certificate_map_gclb_target/get_certificate_map_gclb_target.dart';

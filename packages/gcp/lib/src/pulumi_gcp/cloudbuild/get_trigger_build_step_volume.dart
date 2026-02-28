@@ -1,3 +1,0 @@
-library module_cloudbuild_get_trigger_build_step_volume;
-
-export 'get_trigger_build_step_volume/get_trigger_build_step_volume.dart';

@@ -1,3 +1,0 @@
-library module_compute_get_region_instance_template_scheduling_graceful_shutdown;
-
-export 'get_region_instance_template_scheduling_graceful_shutdown/get_region_instance_template_scheduling_graceful_shutdown.dart';

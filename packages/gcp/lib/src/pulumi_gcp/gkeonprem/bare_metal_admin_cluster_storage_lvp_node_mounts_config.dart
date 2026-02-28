@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_admin_cluster_storage_lvp_node_mounts_config;
-
-export 'bare_metal_admin_cluster_storage_lvp_node_mounts_config/bare_metal_admin_cluster_storage_lvp_node_mounts_config.dart';

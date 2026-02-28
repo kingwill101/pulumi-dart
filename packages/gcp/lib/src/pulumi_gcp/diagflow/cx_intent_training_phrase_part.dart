@@ -1,3 +1,0 @@
-library module_diagflow_cx_intent_training_phrase_part;
-
-export 'cx_intent_training_phrase_part/cx_intent_training_phrase_part.dart';

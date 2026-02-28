@@ -1,3 +1,0 @@
-library module_datastream_connection_profile_salesforce_profile;
-
-export 'connection_profile_salesforce_profile/connection_profile_salesforce_profile.dart';

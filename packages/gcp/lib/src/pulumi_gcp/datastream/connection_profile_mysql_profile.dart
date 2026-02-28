@@ -1,3 +1,0 @@
-library module_datastream_connection_profile_mysql_profile;
-
-export 'connection_profile_mysql_profile/connection_profile_mysql_profile.dart';

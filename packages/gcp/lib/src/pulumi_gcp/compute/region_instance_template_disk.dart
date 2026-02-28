@@ -1,3 +1,0 @@
-library module_compute_region_instance_template_disk;
-
-export 'region_instance_template_disk/region_instance_template_disk.dart';

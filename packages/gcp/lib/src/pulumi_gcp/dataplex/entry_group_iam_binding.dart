@@ -1,4 +1,0 @@
-library module_dataplex_entry_group_iam_binding;
-
-export 'entry_group_iam_binding/entry_group_iam_binding_dataplex.dart';
-export 'entry_group_iam_binding/entry_group_iam_binding_dataplex_args.dart';

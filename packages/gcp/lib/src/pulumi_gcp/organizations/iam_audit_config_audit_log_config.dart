@@ -1,3 +1,0 @@
-library module_organizations_iam_audit_config_audit_log_config;
-
-export 'iam_audit_config_audit_log_config/iam_audit_config_audit_log_config_organizations.dart';

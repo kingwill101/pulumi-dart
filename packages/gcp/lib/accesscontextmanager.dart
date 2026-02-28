@@ -1,3 +1,3 @@
 library pulumi_gcp_accesscontextmanager;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/accesscontextmanager.dart';
+export 'package:pulumi_gcp/src/accesscontextmanager.dart';

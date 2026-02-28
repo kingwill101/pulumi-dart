@@ -1,3 +1,0 @@
-library module_monitoring_slo_windows_based_sli_metric_sum_in_range_range;
-
-export 'slo_windows_based_sli_metric_sum_in_range_range/slo_windows_based_sli_metric_sum_in_range_range.dart';

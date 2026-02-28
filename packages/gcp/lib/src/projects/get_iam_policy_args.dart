@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_projects_get_iam_policy_get_iam_policy_args_doc}
+/// Arguments for getIamPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_projects_get_iam_policy_get_iam_policy_args_doc}
+class GetIamPolicyArgs {
+  /// The project id of the target project. This is not
+  /// inferred from the provider.
+  final pulumi.Input<String> project;
+
+  /// Creates a new [GetIamPolicyArgs].
+  /// [project] The project id of the target project. This is not
+  GetIamPolicyArgs({
+    required String project,
+  }) : project = pulumi.Input.asInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['project'] = project;
+    return map;
+  }
+
+  factory GetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetIamPolicyArgs(
+      project: map['project'] as String,
+    );
+  }
+}

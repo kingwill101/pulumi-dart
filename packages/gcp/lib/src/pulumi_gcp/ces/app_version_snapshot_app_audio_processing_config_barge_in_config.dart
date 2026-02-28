@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_app_audio_processing_config_barge_in_config;
-
-export 'app_version_snapshot_app_audio_processing_config_barge_in_config/app_version_snapshot_app_audio_processing_config_barge_in_config.dart';

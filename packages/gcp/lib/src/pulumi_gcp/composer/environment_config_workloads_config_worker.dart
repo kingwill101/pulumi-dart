@@ -1,3 +1,0 @@
-library module_composer_environment_config_workloads_config_worker;
-
-export 'environment_config_workloads_config_worker/environment_config_workloads_config_worker.dart';

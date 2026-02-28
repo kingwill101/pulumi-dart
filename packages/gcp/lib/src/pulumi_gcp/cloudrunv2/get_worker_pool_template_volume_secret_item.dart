@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_worker_pool_template_volume_secret_item;
-
-export 'get_worker_pool_template_volume_secret_item/get_worker_pool_template_volume_secret_item.dart';

@@ -1,3 +1,0 @@
-library module_networkservices_http_route_rule_action_destination;
-
-export 'http_route_rule_action_destination/http_route_rule_action_destination.dart';

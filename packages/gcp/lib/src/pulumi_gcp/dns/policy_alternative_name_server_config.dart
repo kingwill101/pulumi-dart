@@ -1,3 +1,0 @@
-library module_dns_policy_alternative_name_server_config;
-
-export 'policy_alternative_name_server_config/policy_alternative_name_server_config.dart';

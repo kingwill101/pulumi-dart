@@ -1,4 +1,0 @@
-library module_notebooks_instance_iam_policy;
-
-export 'instance_iam_policy/instance_iam_policy_notebooks.dart';
-export 'instance_iam_policy/instance_iam_policy_notebooks_args.dart';

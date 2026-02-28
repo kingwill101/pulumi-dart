@@ -1,3 +1,0 @@
-library module_compute_get_instance_network_interface_access_config;
-
-export 'get_instance_network_interface_access_config/get_instance_network_interface_access_config.dart';

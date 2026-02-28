@@ -1,3 +1,0 @@
-library module_compute_region_instance_group_manager_named_port;
-
-export 'region_instance_group_manager_named_port/region_instance_group_manager_named_port.dart';

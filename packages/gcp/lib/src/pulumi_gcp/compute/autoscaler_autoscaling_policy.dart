@@ -1,3 +1,0 @@
-library module_compute_autoscaler_autoscaling_policy;
-
-export 'autoscaler_autoscaling_policy/autoscaler_autoscaling_policy.dart';

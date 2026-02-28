@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_admin_cluster_security_config_authorization;
-
-export 'bare_metal_admin_cluster_security_config_authorization/bare_metal_admin_cluster_security_config_authorization.dart';

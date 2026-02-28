@@ -1,3 +1,0 @@
-library module_vertex_ai_index_metadata_config_algorithm_config_tree_ah_config;
-
-export 'ai_index_metadata_config_algorithm_config_tree_ah_config/ai_index_metadata_config_algorithm_config_tree_ah_config.dart';

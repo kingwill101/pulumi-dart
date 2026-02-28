@@ -1,3 +1,0 @@
-library module_dataplex_lake_iam_binding_condition;
-
-export 'lake_iam_binding_condition/lake_iam_binding_condition.dart';

@@ -1,3 +1,0 @@
-library module_modelarmor_floorsetting_floor_setting_metadata_multi_language_detection;
-
-export 'floorsetting_floor_setting_metadata_multi_language_detection/floorsetting_floor_setting_metadata_multi_language_detection.dart';

@@ -1,4 +1,0 @@
-library module_compute_region_instance_template;
-
-export 'region_instance_template/region_instance_template.dart';
-export 'region_instance_template/region_instance_template_args.dart';

@@ -1,3 +1,0 @@
-library module_iam_deny_policy_rule_deny_rule_denial_condition;
-
-export 'deny_policy_rule_deny_rule_denial_condition/deny_policy_rule_deny_rule_denial_condition.dart';

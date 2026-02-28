@@ -1,3 +1,0 @@
-library module_transcoder_job_config_overlay_animation;
-
-export 'job_config_overlay_animation/job_config_overlay_animation.dart';

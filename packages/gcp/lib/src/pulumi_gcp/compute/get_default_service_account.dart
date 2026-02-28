@@ -1,5 +1,0 @@
-library module_compute_get_default_service_account;
-
-export 'get_default_service_account/get_default_service_account_compute.dart';
-export 'get_default_service_account/get_default_service_account_compute_args.dart';
-export 'get_default_service_account/get_default_service_account_compute_result.dart';

@@ -1,3 +1,0 @@
-library module_dataproc_job_pig_config_logging_config;
-
-export 'job_pig_config_logging_config/job_pig_config_logging_config.dart';

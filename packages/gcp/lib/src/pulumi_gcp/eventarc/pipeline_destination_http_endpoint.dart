@@ -1,3 +1,0 @@
-library module_eventarc_pipeline_destination_http_endpoint;
-
-export 'pipeline_destination_http_endpoint/pipeline_destination_http_endpoint.dart';

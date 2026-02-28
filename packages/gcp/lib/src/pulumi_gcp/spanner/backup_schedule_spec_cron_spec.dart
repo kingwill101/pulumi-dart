@@ -1,3 +1,0 @@
-library module_spanner_backup_schedule_spec_cron_spec;
-
-export 'backup_schedule_spec_cron_spec/backup_schedule_spec_cron_spec.dart';

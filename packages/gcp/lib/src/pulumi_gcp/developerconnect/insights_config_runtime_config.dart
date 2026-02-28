@@ -1,3 +1,0 @@
-library module_developerconnect_insights_config_runtime_config;
-
-export 'insights_config_runtime_config/insights_config_runtime_config.dart';

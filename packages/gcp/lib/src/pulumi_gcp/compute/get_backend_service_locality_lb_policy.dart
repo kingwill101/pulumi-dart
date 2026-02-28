@@ -1,3 +1,0 @@
-library module_compute_get_backend_service_locality_lb_policy;
-
-export 'get_backend_service_locality_lb_policy/get_backend_service_locality_lb_policy.dart';

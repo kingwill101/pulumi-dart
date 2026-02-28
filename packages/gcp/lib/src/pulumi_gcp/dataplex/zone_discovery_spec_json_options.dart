@@ -1,3 +1,0 @@
-library module_dataplex_zone_discovery_spec_json_options;
-
-export 'zone_discovery_spec_json_options/zone_discovery_spec_json_options.dart';

@@ -1,5 +1,0 @@
-library module_datacatalog_get_tag_template_iam_policy;
-
-export 'get_tag_template_iam_policy/get_tag_template_iam_policy.dart';
-export 'get_tag_template_iam_policy/get_tag_template_iam_policy_args.dart';
-export 'get_tag_template_iam_policy/get_tag_template_iam_policy_result.dart';

@@ -1,3 +1,0 @@
-library module_colab_notebook_execution_custom_environment_spec_persistent_disk_spec;
-
-export 'notebook_execution_custom_environment_spec_persistent_disk_spec/notebook_execution_custom_environment_spec_persistent_disk_spec.dart';

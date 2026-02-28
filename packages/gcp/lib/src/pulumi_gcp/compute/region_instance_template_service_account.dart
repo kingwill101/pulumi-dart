@@ -1,3 +1,0 @@
-library module_compute_region_instance_template_service_account;
-
-export 'region_instance_template_service_account/region_instance_template_service_account.dart';

@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_tool_data_store_tool_modality_config;
-
-export 'app_version_snapshot_tool_data_store_tool_modality_config/app_version_snapshot_tool_data_store_tool_modality_config.dart';

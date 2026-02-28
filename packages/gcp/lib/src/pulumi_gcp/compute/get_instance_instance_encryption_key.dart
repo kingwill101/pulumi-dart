@@ -1,3 +1,0 @@
-library module_compute_get_instance_instance_encryption_key;
-
-export 'get_instance_instance_encryption_key/get_instance_instance_encryption_key.dart';

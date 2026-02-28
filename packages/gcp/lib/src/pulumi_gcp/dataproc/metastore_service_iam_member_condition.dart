@@ -1,3 +1,0 @@
-library module_dataproc_metastore_service_iam_member_condition;
-
-export 'metastore_service_iam_member_condition/metastore_service_iam_member_condition.dart';

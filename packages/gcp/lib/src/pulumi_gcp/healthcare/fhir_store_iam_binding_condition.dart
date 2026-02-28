@@ -1,3 +1,0 @@
-library module_healthcare_fhir_store_iam_binding_condition;
-
-export 'fhir_store_iam_binding_condition/fhir_store_iam_binding_condition.dart';

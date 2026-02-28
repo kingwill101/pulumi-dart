@@ -1,3 +1,0 @@
-library module_compute_ha_vpn_gateway_vpn_interface;
-
-export 'ha_vpn_gateway_vpn_interface/ha_vpn_gateway_vpn_interface.dart';

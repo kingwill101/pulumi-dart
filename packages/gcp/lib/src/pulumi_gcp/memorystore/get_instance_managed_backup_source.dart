@@ -1,3 +1,0 @@
-library module_memorystore_get_instance_managed_backup_source;
-
-export 'get_instance_managed_backup_source/get_instance_managed_backup_source.dart';

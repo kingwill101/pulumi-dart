@@ -1,3 +1,0 @@
-library module_cloudrunv2_job_template_template_container_volume_mount;
-
-export 'job_template_template_container_volume_mount/job_template_template_container_volume_mount.dart';

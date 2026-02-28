@@ -1,3 +1,0 @@
-library module_clouddomains_registration_contact_settings_registrant_contact;
-
-export 'registration_contact_settings_registrant_contact/registration_contact_settings_registrant_contact.dart';

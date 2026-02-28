@@ -1,3 +1,0 @@
-library module_container_get_cluster_cluster_autoscaling;
-
-export 'get_cluster_cluster_autoscaling/get_cluster_cluster_autoscaling.dart';

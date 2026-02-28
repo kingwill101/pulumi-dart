@@ -1,3 +1,0 @@
-library module_cloudidentity_get_policies_policy_policy_query;
-
-export 'get_policies_policy_policy_query/get_policies_policy_policy_query.dart';

@@ -1,3 +1,0 @@
-library module_apigee_instance_access_logging_config;
-
-export 'instance_access_logging_config/instance_access_logging_config.dart';

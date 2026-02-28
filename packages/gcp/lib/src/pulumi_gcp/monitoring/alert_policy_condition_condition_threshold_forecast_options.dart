@@ -1,3 +1,0 @@
-library module_monitoring_alert_policy_condition_condition_threshold_forecast_options;
-
-export 'alert_policy_condition_condition_threshold_forecast_options/alert_policy_condition_condition_threshold_forecast_options.dart';

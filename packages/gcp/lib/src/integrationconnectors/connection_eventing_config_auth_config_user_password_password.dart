@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ConnectionEventingConfigAuthConfigUserPasswordPassword {
+  /// The resource name of the secret version in the format,
+  /// format as: projects/*/secrets/*/versions/*.
+  final String secretVersion;
+
+  /// Creates a new [ConnectionEventingConfigAuthConfigUserPasswordPassword].
+  /// [secretVersion] The resource name of the secret version in the format,
+  ConnectionEventingConfigAuthConfigUserPasswordPassword({
+    required this.secretVersion,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['secretVersion'] = secretVersion;
+    return map;
+  }
+
+  factory ConnectionEventingConfigAuthConfigUserPasswordPassword.fromMap(
+      Map<String, dynamic> map) {
+    return ConnectionEventingConfigAuthConfigUserPasswordPassword(
+      secretVersion: map['secretVersion'] as String,
+    );
+  }
+}

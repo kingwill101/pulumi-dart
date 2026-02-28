@@ -1,3 +1,0 @@
-library module_discoveryengine_assistant_customer_policy_banned_phrase;
-
-export 'assistant_customer_policy_banned_phrase/assistant_customer_policy_banned_phrase.dart';

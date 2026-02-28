@@ -1,3 +1,0 @@
-library module_alloydb_cluster_automated_backup_policy_weekly_schedule;
-
-export 'cluster_automated_backup_policy_weekly_schedule/cluster_automated_backup_policy_weekly_schedule.dart';

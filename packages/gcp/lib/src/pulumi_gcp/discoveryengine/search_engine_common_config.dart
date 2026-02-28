@@ -1,3 +1,0 @@
-library module_discoveryengine_search_engine_common_config;
-
-export 'search_engine_common_config/search_engine_common_config.dart';

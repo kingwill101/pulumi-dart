@@ -1,3 +1,0 @@
-library module_backupdisasterrecovery_restore_workload_disk_restore_properties_label;
-
-export 'restore_workload_disk_restore_properties_label/restore_workload_disk_restore_properties_label.dart';

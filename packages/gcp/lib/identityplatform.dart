@@ -1,3 +1,3 @@
 library pulumi_gcp_identityplatform;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/identityplatform.dart';
+export 'package:pulumi_gcp/src/identityplatform.dart';

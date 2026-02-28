@@ -1,3 +1,0 @@
-library module_firestore_field_index_config_index;
-
-export 'field_index_config_index/field_index_config_index.dart';

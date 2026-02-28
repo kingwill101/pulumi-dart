@@ -1,3 +1,0 @@
-library module_networksecurity_sac_realm_pairing_key;
-
-export 'sac_realm_pairing_key/sac_realm_pairing_key.dart';

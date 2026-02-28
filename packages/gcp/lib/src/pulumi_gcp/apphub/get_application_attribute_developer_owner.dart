@@ -1,3 +1,0 @@
-library module_apphub_get_application_attribute_developer_owner;
-
-export 'get_application_attribute_developer_owner/get_application_attribute_developer_owner.dart';

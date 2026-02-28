@@ -1,3 +1,0 @@
-library module_dataproc_get_metastore_service_scaling_config;
-
-export 'get_metastore_service_scaling_config/get_metastore_service_scaling_config.dart';

@@ -1,0 +1,75 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'table_hive_options.dart';
+
+/// {@template pulumi_biglake_table_table_args_doc}
+/// The set of arguments for Table.
+/// {@endtemplate}
+/// {@macro pulumi_biglake_table_table_args_doc}
+class TableArgs {
+  /// The id of the parent database.
+  final pulumi.Input<String>? database;
+
+  /// Options of a Hive table.
+  /// Structure is documented below.
+  final pulumi.Input<TableHiveOptions>? hiveOptions;
+
+  /// Output only. The name of the Table. Format:
+  /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
+  final pulumi.Input<String>? name;
+
+  /// The database type.
+  /// Possible values are: `HIVE`.
+  final pulumi.Input<String>? type;
+
+  /// Creates a new [TableArgs].
+  /// [database] The id of the parent database.
+  /// [hiveOptions] Options of a Hive table.
+  /// [name] Output only. The name of the Table. Format:
+  /// [type] The database type.
+  TableArgs({
+    String? database,
+    TableHiveOptions? hiveOptions,
+    String? name,
+    String? type,
+  })  : database = pulumi.Input.asOptionalInput<String>(database),
+        hiveOptions =
+            pulumi.Input.asOptionalInput<TableHiveOptions>(hiveOptions),
+        name = pulumi.Input.asOptionalInput<String>(name),
+        type = pulumi.Input.asOptionalInput<String>(type);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final databaseValue = database;
+    if (databaseValue != null) {
+      map['database'] = databaseValue;
+    }
+    final hiveOptionsValue = hiveOptions;
+    if (hiveOptionsValue != null) {
+      map['hiveOptions'] = pulumi.Input.mapOptionalInputValue<TableHiveOptions,
+          Map<String, dynamic>>(hiveOptionsValue, (value) => value.toMap());
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final typeValue = type;
+    if (typeValue != null) {
+      map['type'] = typeValue;
+    }
+    return map;
+  }
+
+  factory TableArgs.fromMap(Map<String, dynamic> map) {
+    return TableArgs(
+      database: map['database'] == null ? null : map['database'] as String,
+      hiveOptions: map['hiveOptions'] == null
+          ? null
+          : TableHiveOptions.fromMap(
+              (map['hiveOptions'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : map['name'] as String,
+      type: map['type'] == null ? null : map['type'] as String,
+    );
+  }
+}

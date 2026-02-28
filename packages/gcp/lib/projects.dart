@@ -1,3 +1,3 @@
 library pulumi_gcp_projects;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/projects.dart';
+export 'package:pulumi_gcp/src/projects.dart';

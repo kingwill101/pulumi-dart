@@ -1,4 +1,0 @@
-library module_integrationconnectors_endpoint_attachment;
-
-export 'endpoint_attachment/endpoint_attachment_integrationconnectors.dart';
-export 'endpoint_attachment/endpoint_attachment_integrationconnectors_args.dart';

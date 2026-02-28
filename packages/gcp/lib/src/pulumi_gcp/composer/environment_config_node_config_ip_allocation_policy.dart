@@ -1,3 +1,0 @@
-library module_composer_environment_config_node_config_ip_allocation_policy;
-
-export 'environment_config_node_config_ip_allocation_policy/environment_config_node_config_ip_allocation_policy.dart';

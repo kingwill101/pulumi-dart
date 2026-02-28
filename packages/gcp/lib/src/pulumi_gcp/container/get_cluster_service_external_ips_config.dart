@@ -1,3 +1,0 @@
-library module_container_get_cluster_service_external_ips_config;
-
-export 'get_cluster_service_external_ips_config/get_cluster_service_external_ips_config.dart';

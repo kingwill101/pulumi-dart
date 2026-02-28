@@ -1,3 +1,0 @@
-library module_diagflow_cx_tool_version_tool_open_api_spec_authentication_oauth_config;
-
-export 'cx_tool_version_tool_open_api_spec_authentication_oauth_config/cx_tool_version_tool_open_api_spec_authentication_oauth_config.dart';

@@ -1,3 +1,0 @@
-library module_securitycenter_project_custom_module_custom_config;
-
-export 'project_custom_module_custom_config/project_custom_module_custom_config.dart';

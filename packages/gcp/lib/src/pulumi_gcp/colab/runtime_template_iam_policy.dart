@@ -1,4 +1,0 @@
-library module_colab_runtime_template_iam_policy;
-
-export 'runtime_template_iam_policy/runtime_template_iam_policy.dart';
-export 'runtime_template_iam_policy/runtime_template_iam_policy_args.dart';

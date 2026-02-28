@@ -1,4 +1,0 @@
-library module_securitycenter_instance_iam_member;
-
-export 'instance_iam_member/instance_iam_member_securitycenter.dart';
-export 'instance_iam_member/instance_iam_member_securitycenter_args.dart';

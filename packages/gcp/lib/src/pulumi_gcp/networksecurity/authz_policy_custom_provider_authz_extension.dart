@@ -1,3 +1,0 @@
-library module_networksecurity_authz_policy_custom_provider_authz_extension;
-
-export 'authz_policy_custom_provider_authz_extension/authz_policy_custom_provider_authz_extension.dart';

@@ -1,3 +1,0 @@
-library module_networkconnectivity_policy_based_route_filter;
-
-export 'policy_based_route_filter/policy_based_route_filter.dart';

@@ -1,3 +1,0 @@
-library module_monitoring_uptime_check_config_resource_group;
-
-export 'uptime_check_config_resource_group/uptime_check_config_resource_group.dart';

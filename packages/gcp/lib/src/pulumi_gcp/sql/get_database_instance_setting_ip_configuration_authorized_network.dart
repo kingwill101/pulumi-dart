@@ -1,3 +1,0 @@
-library module_sql_get_database_instance_setting_ip_configuration_authorized_network;
-
-export 'get_database_instance_setting_ip_configuration_authorized_network/get_database_instance_setting_ip_configuration_authorized_network.dart';

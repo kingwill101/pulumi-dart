@@ -1,3 +1,0 @@
-library module_developerconnect_account_connector_provider_oauth_config;
-
-export 'account_connector_provider_oauth_config/account_connector_provider_oauth_config.dart';

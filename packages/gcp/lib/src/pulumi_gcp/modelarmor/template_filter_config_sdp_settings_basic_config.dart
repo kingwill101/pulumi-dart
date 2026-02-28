@@ -1,3 +1,0 @@
-library module_modelarmor_template_filter_config_sdp_settings_basic_config;
-
-export 'template_filter_config_sdp_settings_basic_config/template_filter_config_sdp_settings_basic_config.dart';

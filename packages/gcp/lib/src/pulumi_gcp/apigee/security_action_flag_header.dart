@@ -1,3 +1,0 @@
-library module_apigee_security_action_flag_header;
-
-export 'security_action_flag_header/security_action_flag_header.dart';

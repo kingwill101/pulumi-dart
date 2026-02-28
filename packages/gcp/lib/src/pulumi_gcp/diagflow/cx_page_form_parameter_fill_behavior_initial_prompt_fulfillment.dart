@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment;
-
-export 'cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment/cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment.dart';

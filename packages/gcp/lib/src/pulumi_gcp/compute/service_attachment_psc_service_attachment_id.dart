@@ -1,3 +1,0 @@
-library module_compute_service_attachment_psc_service_attachment_id;
-
-export 'service_attachment_psc_service_attachment_id/service_attachment_psc_service_attachment_id.dart';

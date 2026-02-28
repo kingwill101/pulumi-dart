@@ -1,3 +1,0 @@
-library module_vertex_ai_feature_online_store_featureview_sync_config;
-
-export 'ai_feature_online_store_featureview_sync_config/ai_feature_online_store_featureview_sync_config.dart';

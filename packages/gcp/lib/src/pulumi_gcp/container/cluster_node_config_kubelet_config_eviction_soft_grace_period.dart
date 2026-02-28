@@ -1,3 +1,0 @@
-library module_container_cluster_node_config_kubelet_config_eviction_soft_grace_period;
-
-export 'cluster_node_config_kubelet_config_eviction_soft_grace_period/cluster_node_config_kubelet_config_eviction_soft_grace_period.dart';

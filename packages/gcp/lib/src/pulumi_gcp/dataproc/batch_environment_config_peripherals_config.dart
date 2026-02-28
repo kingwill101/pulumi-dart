@@ -1,3 +1,0 @@
-library module_dataproc_batch_environment_config_peripherals_config;
-
-export 'batch_environment_config_peripherals_config/batch_environment_config_peripherals_config.dart';

@@ -1,3 +1,0 @@
-library module_billing_budget_amount_specified_amount;
-
-export 'budget_amount_specified_amount/budget_amount_specified_amount.dart';

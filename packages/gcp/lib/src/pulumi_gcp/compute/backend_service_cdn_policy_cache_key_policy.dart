@@ -1,3 +1,0 @@
-library module_compute_backend_service_cdn_policy_cache_key_policy;
-
-export 'backend_service_cdn_policy_cache_key_policy/backend_service_cdn_policy_cache_key_policy.dart';

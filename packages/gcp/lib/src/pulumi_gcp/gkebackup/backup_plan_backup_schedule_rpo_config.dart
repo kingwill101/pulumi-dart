@@ -1,3 +1,0 @@
-library module_gkebackup_backup_plan_backup_schedule_rpo_config;
-
-export 'backup_plan_backup_schedule_rpo_config/backup_plan_backup_schedule_rpo_config.dart';

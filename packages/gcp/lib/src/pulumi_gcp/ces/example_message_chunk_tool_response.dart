@@ -1,3 +1,0 @@
-library module_ces_example_message_chunk_tool_response;
-
-export 'example_message_chunk_tool_response/example_message_chunk_tool_response.dart';

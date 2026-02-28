@@ -1,3 +1,0 @@
-library module_iam_workload_identity_pool_provider_oidc;
-
-export 'workload_identity_pool_provider_oidc/workload_identity_pool_provider_oidc.dart';

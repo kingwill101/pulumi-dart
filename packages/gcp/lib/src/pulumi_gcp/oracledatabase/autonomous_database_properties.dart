@@ -1,3 +1,0 @@
-library module_oracledatabase_autonomous_database_properties;
-
-export 'autonomous_database_properties/autonomous_database_properties.dart';

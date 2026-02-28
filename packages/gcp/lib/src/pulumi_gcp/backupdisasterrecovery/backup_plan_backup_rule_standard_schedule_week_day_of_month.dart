@@ -1,3 +1,0 @@
-library module_backupdisasterrecovery_backup_plan_backup_rule_standard_schedule_week_day_of_month;
-
-export 'backup_plan_backup_rule_standard_schedule_week_day_of_month/backup_plan_backup_rule_standard_schedule_week_day_of_month.dart';

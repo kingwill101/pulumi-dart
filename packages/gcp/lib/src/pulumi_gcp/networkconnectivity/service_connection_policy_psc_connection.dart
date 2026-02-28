@@ -1,3 +1,0 @@
-library module_networkconnectivity_service_connection_policy_psc_connection;
-
-export 'service_connection_policy_psc_connection/service_connection_policy_psc_connection.dart';

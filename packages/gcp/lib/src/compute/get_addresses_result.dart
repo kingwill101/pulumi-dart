@@ -1,0 +1,63 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_addresses_address.dart';
+
+/// Result data returned by getAddresses.
+class GetAddressesResult {
+  /// A list of addresses matching the filter. Structure is defined below.
+  final List<GetAddressesAddress> addresses;
+  final String? filter;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final String project;
+
+  /// The region in which the address resides.
+  final String? region;
+
+  /// Creates a new [GetAddressesResult].
+  /// [addresses] A list of addresses matching the filter. Structure is defined below.
+  /// [filter] Optional.
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [project] Required.
+  /// [region] The region in which the address resides.
+  GetAddressesResult({
+    required this.addresses,
+    this.filter,
+    required this.id,
+    required this.project,
+    this.region,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['addresses'] =
+        pulumi.Input.encodeList<GetAddressesAddress, Map<String, dynamic>>(
+            addresses, (value) => value.toMap());
+    final filterValue = filter;
+    if (filterValue != null) {
+      map['filter'] = filterValue;
+    }
+    map['id'] = id;
+    map['project'] = project;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory GetAddressesResult.fromMap(Map<String, dynamic> map) {
+    return GetAddressesResult(
+      addresses: pulumi.Input.decodeList<GetAddressesAddress>(
+          map['addresses'],
+          (value) => GetAddressesAddress.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      filter: map['filter'] == null ? null : map['filter'] as String,
+      id: map['id'] as String,
+      project: map['project'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

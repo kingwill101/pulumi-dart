@@ -1,3 +1,0 @@
-library module_cloudbuild_trigger_build_artifacts_maven_artifact;
-
-export 'trigger_build_artifacts_maven_artifact/trigger_build_artifacts_maven_artifact.dart';

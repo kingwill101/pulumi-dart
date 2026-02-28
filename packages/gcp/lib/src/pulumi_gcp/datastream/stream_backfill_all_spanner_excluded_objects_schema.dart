@@ -1,3 +1,0 @@
-library module_datastream_stream_backfill_all_spanner_excluded_objects_schema;
-
-export 'stream_backfill_all_spanner_excluded_objects_schema/stream_backfill_all_spanner_excluded_objects_schema.dart';

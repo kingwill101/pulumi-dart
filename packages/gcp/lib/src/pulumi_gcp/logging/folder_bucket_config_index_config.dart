@@ -1,3 +1,0 @@
-library module_logging_folder_bucket_config_index_config;
-
-export 'folder_bucket_config_index_config/folder_bucket_config_index_config.dart';

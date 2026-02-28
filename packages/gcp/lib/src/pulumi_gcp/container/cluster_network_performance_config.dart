@@ -1,3 +1,0 @@
-library module_container_cluster_network_performance_config;
-
-export 'cluster_network_performance_config/cluster_network_performance_config.dart';

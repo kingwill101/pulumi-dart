@@ -1,3 +1,0 @@
-library module_projects_organization_policy_list_policy_allow;
-
-export 'organization_policy_list_policy_allow/organization_policy_list_policy_allow_projects.dart';

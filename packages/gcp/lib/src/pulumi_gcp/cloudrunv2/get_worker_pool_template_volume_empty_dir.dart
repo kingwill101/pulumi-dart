@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_worker_pool_template_volume_empty_dir;
-
-export 'get_worker_pool_template_volume_empty_dir/get_worker_pool_template_volume_empty_dir.dart';

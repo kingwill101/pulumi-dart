@@ -1,4 +1,0 @@
-library module_accesscontextmanager_service_perimeter_dry_run_egress_policy;
-
-export 'service_perimeter_dry_run_egress_policy/service_perimeter_dry_run_egress_policy.dart';
-export 'service_perimeter_dry_run_egress_policy/service_perimeter_dry_run_egress_policy_args.dart';

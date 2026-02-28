@@ -1,3 +1,0 @@
-library module_alloydb_cluster_automated_backup_policy;
-
-export 'cluster_automated_backup_policy/cluster_automated_backup_policy.dart';

@@ -1,3 +1,0 @@
-library module_cloudtasks_queue_app_engine_routing_override;
-
-export 'queue_app_engine_routing_override/queue_app_engine_routing_override.dart';

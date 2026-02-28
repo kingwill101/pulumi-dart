@@ -1,0 +1,144 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'organization_security_policy_rule_match.dart';
+
+/// {@template pulumi_compute_organization_security_policy_rule_organization_security_policy_rule_args_doc}
+/// The set of arguments for OrganizationSecurityPolicyRule.
+/// {@endtemplate}
+/// {@macro pulumi_compute_organization_security_policy_rule_organization_security_policy_rule_args_doc}
+class OrganizationSecurityPolicyRuleArgs {
+  /// The Action to perform when the client connection triggers the rule. Can currently be either
+  /// "allow", "deny" or "goto_next".
+  final pulumi.Input<String> action;
+
+  /// A description of the rule.
+  final pulumi.Input<String>? description;
+
+  /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
+  /// Possible values are: `INGRESS`, `EGRESS`.
+  final pulumi.Input<String>? direction;
+
+  /// Denotes whether to enable logging for a particular rule.
+  /// If logging is enabled, logs will be exported to the
+  /// configured export destination in Stackdriver.
+  final pulumi.Input<bool>? enableLogging;
+
+  /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+  /// Structure is documented below.
+  final pulumi.Input<OrganizationSecurityPolicyRuleMatch> match;
+
+  /// The ID of the OrganizationSecurityPolicy this rule applies to.
+  final pulumi.Input<String> policyId;
+
+  /// If set to true, the specified action is not enforced.
+  final pulumi.Input<bool>? preview;
+
+  /// An integer indicating the priority of a rule in the list. The priority must be a value
+  /// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+  /// highest priority and 2147483647 is the lowest prority.
+  final pulumi.Input<int> priority;
+
+  /// A list of network resource URLs to which this rule applies.
+  /// This field allows you to control which network's VMs get
+  /// this rule. If this field is left blank, all VMs
+  /// within the organization will receive the rule.
+  final pulumi.Input<List<String>>? targetResources;
+
+  /// A list of service accounts indicating the sets of
+  /// instances that are applied with this rule.
+  final pulumi.Input<List<String>>? targetServiceAccounts;
+
+  /// Creates a new [OrganizationSecurityPolicyRuleArgs].
+  /// [action] The Action to perform when the client connection triggers the rule. Can currently be either
+  /// [description] A description of the rule.
+  /// [direction] The direction in which this rule applies. If unspecified an INGRESS rule is created.
+  /// [enableLogging] Denotes whether to enable logging for a particular rule.
+  /// [match] A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+  /// [policyId] The ID of the OrganizationSecurityPolicy this rule applies to.
+  /// [preview] If set to true, the specified action is not enforced.
+  /// [priority] An integer indicating the priority of a rule in the list. The priority must be a value
+  /// [targetResources] A list of network resource URLs to which this rule applies.
+  /// [targetServiceAccounts] A list of service accounts indicating the sets of
+  OrganizationSecurityPolicyRuleArgs({
+    required String action,
+    String? description,
+    String? direction,
+    bool? enableLogging,
+    required OrganizationSecurityPolicyRuleMatch match,
+    required String policyId,
+    bool? preview,
+    required int priority,
+    List<String>? targetResources,
+    List<String>? targetServiceAccounts,
+  })  : action = pulumi.Input.asInput<String>(action),
+        description = pulumi.Input.asOptionalInput<String>(description),
+        direction = pulumi.Input.asOptionalInput<String>(direction),
+        enableLogging = pulumi.Input.asOptionalInput<bool>(enableLogging),
+        match =
+            pulumi.Input.asInput<OrganizationSecurityPolicyRuleMatch>(match),
+        policyId = pulumi.Input.asInput<String>(policyId),
+        preview = pulumi.Input.asOptionalInput<bool>(preview),
+        priority = pulumi.Input.asInput<int>(priority),
+        targetResources =
+            pulumi.Input.asOptionalInput<List<String>>(targetResources),
+        targetServiceAccounts =
+            pulumi.Input.asOptionalInput<List<String>>(targetServiceAccounts);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['action'] = action;
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    final directionValue = direction;
+    if (directionValue != null) {
+      map['direction'] = directionValue;
+    }
+    final enableLoggingValue = enableLogging;
+    if (enableLoggingValue != null) {
+      map['enableLogging'] = enableLoggingValue;
+    }
+    map['match'] = pulumi.Input.mapInputValue<
+        OrganizationSecurityPolicyRuleMatch,
+        Map<String, dynamic>>(match, (value) => value.toMap());
+    map['policyId'] = policyId;
+    final previewValue = preview;
+    if (previewValue != null) {
+      map['preview'] = previewValue;
+    }
+    map['priority'] = priority;
+    final targetResourcesValue = targetResources;
+    if (targetResourcesValue != null) {
+      map['targetResources'] = targetResourcesValue;
+    }
+    final targetServiceAccountsValue = targetServiceAccounts;
+    if (targetServiceAccountsValue != null) {
+      map['targetServiceAccounts'] = targetServiceAccountsValue;
+    }
+    return map;
+  }
+
+  factory OrganizationSecurityPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
+    return OrganizationSecurityPolicyRuleArgs(
+      action: map['action'] as String,
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      direction: map['direction'] == null ? null : map['direction'] as String,
+      enableLogging:
+          map['enableLogging'] == null ? null : map['enableLogging'] as bool,
+      match: OrganizationSecurityPolicyRuleMatch.fromMap(
+          (map['match'] as Map).cast<String, dynamic>()),
+      policyId: map['policyId'] as String,
+      preview: map['preview'] == null ? null : map['preview'] as bool,
+      priority: map['priority'] as int,
+      targetResources: map['targetResources'] == null
+          ? null
+          : (map['targetResources'] as List).cast<String>(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null
+          ? null
+          : (map['targetServiceAccounts'] as List).cast<String>(),
+    );
+  }
+}

@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_traffic_current;
-
-export 'app_hosting_traffic_current/app_hosting_traffic_current.dart';

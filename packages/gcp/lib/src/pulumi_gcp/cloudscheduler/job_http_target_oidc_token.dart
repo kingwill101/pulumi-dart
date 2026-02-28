@@ -1,3 +1,0 @@
-library module_cloudscheduler_job_http_target_oidc_token;
-
-export 'job_http_target_oidc_token/job_http_target_oidc_token.dart';

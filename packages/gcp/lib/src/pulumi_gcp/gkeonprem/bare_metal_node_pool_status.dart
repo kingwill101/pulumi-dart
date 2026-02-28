@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_node_pool_status;
-
-export 'bare_metal_node_pool_status/bare_metal_node_pool_status.dart';

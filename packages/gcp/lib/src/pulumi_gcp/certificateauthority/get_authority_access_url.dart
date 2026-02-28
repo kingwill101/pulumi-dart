@@ -1,3 +1,0 @@
-library module_certificateauthority_get_authority_access_url;
-
-export 'get_authority_access_url/get_authority_access_url.dart';

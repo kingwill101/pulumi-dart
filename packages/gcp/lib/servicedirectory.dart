@@ -1,3 +1,3 @@
 library pulumi_gcp_servicedirectory;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/servicedirectory.dart';
+export 'package:pulumi_gcp/src/servicedirectory.dart';

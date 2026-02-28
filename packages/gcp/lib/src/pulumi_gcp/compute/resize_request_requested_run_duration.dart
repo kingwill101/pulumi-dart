@@ -1,3 +1,0 @@
-library module_compute_resize_request_requested_run_duration;
-
-export 'resize_request_requested_run_duration/resize_request_requested_run_duration.dart';

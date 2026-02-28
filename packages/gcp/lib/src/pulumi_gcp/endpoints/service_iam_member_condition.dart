@@ -1,3 +1,0 @@
-library module_endpoints_service_iam_member_condition;
-
-export 'service_iam_member_condition/service_iam_member_condition_endpoints.dart';

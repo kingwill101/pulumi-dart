@@ -1,3 +1,0 @@
-library module_diagflow_cx_playbook_instruction;
-
-export 'cx_playbook_instruction/cx_playbook_instruction.dart';

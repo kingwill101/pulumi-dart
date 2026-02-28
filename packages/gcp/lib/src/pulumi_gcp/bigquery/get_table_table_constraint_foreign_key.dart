@@ -1,3 +1,0 @@
-library module_bigquery_get_table_table_constraint_foreign_key;
-
-export 'get_table_table_constraint_foreign_key/get_table_table_constraint_foreign_key.dart';

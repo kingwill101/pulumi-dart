@@ -1,3 +1,0 @@
-library module_networkservices_tcp_route_rule_action;
-
-export 'tcp_route_rule_action/tcp_route_rule_action.dart';

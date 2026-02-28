@@ -1,4 +1,0 @@
-library module_healthcare_dataset_iam_binding;
-
-export 'dataset_iam_binding/dataset_iam_binding_healthcare.dart';
-export 'dataset_iam_binding/dataset_iam_binding_healthcare_args.dart';

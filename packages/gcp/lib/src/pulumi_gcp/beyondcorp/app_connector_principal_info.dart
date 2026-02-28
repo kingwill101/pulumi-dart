@@ -1,3 +1,0 @@
-library module_beyondcorp_app_connector_principal_info;
-
-export 'app_connector_principal_info/app_connector_principal_info.dart';

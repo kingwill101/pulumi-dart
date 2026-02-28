@@ -1,3 +1,0 @@
-library module_compute_get_instance_boot_disk;
-
-export 'get_instance_boot_disk/get_instance_boot_disk.dart';

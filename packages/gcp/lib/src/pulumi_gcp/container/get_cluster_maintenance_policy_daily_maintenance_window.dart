@@ -1,3 +1,0 @@
-library module_container_get_cluster_maintenance_policy_daily_maintenance_window;
-
-export 'get_cluster_maintenance_policy_daily_maintenance_window/get_cluster_maintenance_policy_daily_maintenance_window.dart';

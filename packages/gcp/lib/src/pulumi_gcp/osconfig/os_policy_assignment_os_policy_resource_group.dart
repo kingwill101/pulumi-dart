@@ -1,3 +1,0 @@
-library module_osconfig_os_policy_assignment_os_policy_resource_group;
-
-export 'os_policy_assignment_os_policy_resource_group/os_policy_assignment_os_policy_resource_group.dart';

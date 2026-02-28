@@ -1,3 +1,0 @@
-library module_bigquery_table_table_constraints_foreign_key_referenced_table;
-
-export 'table_table_constraints_foreign_key_referenced_table/table_table_constraints_foreign_key_referenced_table.dart';

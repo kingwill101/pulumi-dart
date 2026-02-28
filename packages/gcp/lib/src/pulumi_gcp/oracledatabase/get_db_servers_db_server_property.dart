@@ -1,3 +1,0 @@
-library module_oracledatabase_get_db_servers_db_server_property;
-
-export 'get_db_servers_db_server_property/get_db_servers_db_server_property.dart';

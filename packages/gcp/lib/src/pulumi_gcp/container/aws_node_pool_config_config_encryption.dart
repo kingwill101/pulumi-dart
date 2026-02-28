@@ -1,3 +1,0 @@
-library module_container_aws_node_pool_config_config_encryption;
-
-export 'aws_node_pool_config_config_encryption/aws_node_pool_config_config_encryption.dart';

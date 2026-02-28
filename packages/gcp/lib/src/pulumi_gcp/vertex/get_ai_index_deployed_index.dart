@@ -1,3 +1,0 @@
-library module_vertex_get_ai_index_deployed_index;
-
-export 'get_ai_index_deployed_index/get_ai_index_deployed_index.dart';

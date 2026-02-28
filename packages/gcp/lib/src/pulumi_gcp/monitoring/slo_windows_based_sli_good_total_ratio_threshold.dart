@@ -1,3 +1,0 @@
-library module_monitoring_slo_windows_based_sli_good_total_ratio_threshold;
-
-export 'slo_windows_based_sli_good_total_ratio_threshold/slo_windows_based_sli_good_total_ratio_threshold.dart';

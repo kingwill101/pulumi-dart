@@ -1,0 +1,8 @@
+library module_edgenetwork;
+
+export 'edgenetwork/interconnect_attachment.dart';
+export 'edgenetwork/interconnect_attachment_args.dart';
+export 'edgenetwork/network.dart';
+export 'edgenetwork/network_args.dart';
+export 'edgenetwork/subnet.dart';
+export 'edgenetwork/subnet_args.dart';

@@ -1,3 +1,0 @@
-library module_compute_packet_mirroring_collector_ilb;
-
-export 'packet_mirroring_collector_ilb/packet_mirroring_collector_ilb.dart';

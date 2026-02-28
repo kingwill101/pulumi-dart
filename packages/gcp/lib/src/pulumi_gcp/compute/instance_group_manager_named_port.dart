@@ -1,3 +1,0 @@
-library module_compute_instance_group_manager_named_port;
-
-export 'instance_group_manager_named_port/instance_group_manager_named_port.dart';

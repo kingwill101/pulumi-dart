@@ -1,3 +1,0 @@
-library module_dataplex_task_spark_infrastructure_spec_vpc_network;
-
-export 'task_spark_infrastructure_spec_vpc_network/task_spark_infrastructure_spec_vpc_network.dart';

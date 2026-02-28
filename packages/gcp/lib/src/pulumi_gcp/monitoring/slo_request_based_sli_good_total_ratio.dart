@@ -1,3 +1,0 @@
-library module_monitoring_slo_request_based_sli_good_total_ratio;
-
-export 'slo_request_based_sli_good_total_ratio/slo_request_based_sli_good_total_ratio.dart';

@@ -1,3 +1,0 @@
-library module_sql_database_instance_replica_configuration;
-
-export 'database_instance_replica_configuration/database_instance_replica_configuration.dart';

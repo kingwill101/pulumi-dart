@@ -1,3 +1,0 @@
-library module_storage_get_bucket_hierarchical_namespace;
-
-export 'get_bucket_hierarchical_namespace/get_bucket_hierarchical_namespace.dart';

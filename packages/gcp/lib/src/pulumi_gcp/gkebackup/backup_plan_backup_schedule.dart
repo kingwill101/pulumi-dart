@@ -1,3 +1,0 @@
-library module_gkebackup_backup_plan_backup_schedule;
-
-export 'backup_plan_backup_schedule/backup_plan_backup_schedule.dart';

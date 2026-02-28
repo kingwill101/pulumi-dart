@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_password_validation_policy;
-
-export 'database_instance_settings_password_validation_policy/database_instance_settings_password_validation_policy.dart';

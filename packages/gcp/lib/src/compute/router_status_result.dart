@@ -1,0 +1,80 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'router_status_best_route.dart';
+import 'router_status_best_routes_for_router.dart';
+
+/// Result data returned by routerStatus.
+class RouterStatusResult {
+  /// List of best `compute#routes` configurations for this router's network. See gcp.compute.Route resource for available attributes.
+  final List<RouterStatusBestRoute> bestRoutes;
+
+  /// List of best `compute#routes` for this specific router. See gcp.compute.Route resource for available attributes.
+  final List<RouterStatusBestRoutesForRouter> bestRoutesForRouters;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final String name;
+
+  /// The network name or resource link to the parent
+  /// network of this subnetwork.
+  final String network;
+  final String? project;
+  final String region;
+
+  /// Creates a new [RouterStatusResult].
+  /// [bestRoutes] List of best `compute#routes` configurations for this router's network. See gcp.compute.Route resource for available attributes.
+  /// [bestRoutesForRouters] List of best `compute#routes` for this specific router. See gcp.compute.Route resource for available attributes.
+  /// [id] The provider-assigned unique ID for this managed resource.
+  /// [name] Required.
+  /// [network] The network name or resource link to the parent
+  /// [project] Optional.
+  /// [region] Required.
+  RouterStatusResult({
+    required this.bestRoutes,
+    required this.bestRoutesForRouters,
+    required this.id,
+    required this.name,
+    required this.network,
+    this.project,
+    required this.region,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['bestRoutes'] =
+        pulumi.Input.encodeList<RouterStatusBestRoute, Map<String, dynamic>>(
+            bestRoutes, (value) => value.toMap());
+    map['bestRoutesForRouters'] = pulumi.Input.encodeList<
+        RouterStatusBestRoutesForRouter,
+        Map<String, dynamic>>(bestRoutesForRouters, (value) => value.toMap());
+    map['id'] = id;
+    map['name'] = name;
+    map['network'] = network;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['region'] = region;
+    return map;
+  }
+
+  factory RouterStatusResult.fromMap(Map<String, dynamic> map) {
+    return RouterStatusResult(
+      bestRoutes: pulumi.Input.decodeList<RouterStatusBestRoute>(
+          map['bestRoutes'],
+          (value) => RouterStatusBestRoute.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      bestRoutesForRouters:
+          pulumi.Input.decodeList<RouterStatusBestRoutesForRouter>(
+              map['bestRoutesForRouters'],
+              (value) => RouterStatusBestRoutesForRouter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      id: map['id'] as String,
+      name: map['name'] as String,
+      network: map['network'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      region: map['region'] as String,
+    );
+  }
+}

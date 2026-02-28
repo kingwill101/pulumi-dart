@@ -1,4 +1,0 @@
-library module_datastream_private_connection;
-
-export 'private_connection/private_connection_datastream.dart';
-export 'private_connection/private_connection_datastream_args.dart';

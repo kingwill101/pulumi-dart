@@ -1,3 +1,0 @@
-library module_apphub_service_attributes_criticality;
-
-export 'service_attributes_criticality/service_attributes_criticality.dart';

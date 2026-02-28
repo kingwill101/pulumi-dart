@@ -1,3 +1,0 @@
-library module_dataplex_asset_iam_member_condition;
-
-export 'asset_iam_member_condition/asset_iam_member_condition.dart';

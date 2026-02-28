@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_connection_pool_config;
-
-export 'database_instance_settings_connection_pool_config/database_instance_settings_connection_pool_config.dart';

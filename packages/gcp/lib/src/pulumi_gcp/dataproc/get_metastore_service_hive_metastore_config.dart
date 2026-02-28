@@ -1,3 +1,0 @@
-library module_dataproc_get_metastore_service_hive_metastore_config;
-
-export 'get_metastore_service_hive_metastore_config/get_metastore_service_hive_metastore_config.dart';

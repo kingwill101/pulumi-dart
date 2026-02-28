@@ -1,3 +1,0 @@
-library module_alloydb_cluster_automated_backup_policy_quantity_based_retention;
-
-export 'cluster_automated_backup_policy_quantity_based_retention/cluster_automated_backup_policy_quantity_based_retention.dart';

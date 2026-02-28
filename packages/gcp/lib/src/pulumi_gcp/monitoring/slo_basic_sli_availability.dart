@@ -1,3 +1,0 @@
-library module_monitoring_slo_basic_sli_availability;
-
-export 'slo_basic_sli_availability/slo_basic_sli_availability.dart';

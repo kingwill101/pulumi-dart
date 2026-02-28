@@ -1,3 +1,0 @@
-library module_osconfig_patch_deployment_instance_filter;
-
-export 'patch_deployment_instance_filter/patch_deployment_instance_filter.dart';

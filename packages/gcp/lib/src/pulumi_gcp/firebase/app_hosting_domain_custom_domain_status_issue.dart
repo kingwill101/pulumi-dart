@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_domain_custom_domain_status_issue;
-
-export 'app_hosting_domain_custom_domain_status_issue/app_hosting_domain_custom_domain_status_issue.dart';

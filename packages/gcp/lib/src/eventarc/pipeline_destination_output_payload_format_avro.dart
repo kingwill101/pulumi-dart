@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class PipelineDestinationOutputPayloadFormatAvro {
+  /// The entire schema definition is stored in this field.
+  final String? schemaDefinition;
+
+  /// Creates a new [PipelineDestinationOutputPayloadFormatAvro].
+  /// [schemaDefinition] The entire schema definition is stored in this field.
+  PipelineDestinationOutputPayloadFormatAvro({
+    this.schemaDefinition,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final schemaDefinitionValue = schemaDefinition;
+    if (schemaDefinitionValue != null) {
+      map['schemaDefinition'] = schemaDefinitionValue;
+    }
+    return map;
+  }
+
+  factory PipelineDestinationOutputPayloadFormatAvro.fromMap(
+      Map<String, dynamic> map) {
+    return PipelineDestinationOutputPayloadFormatAvro(
+      schemaDefinition: map['schemaDefinition'] == null
+          ? null
+          : map['schemaDefinition'] as String,
+    );
+  }
+}

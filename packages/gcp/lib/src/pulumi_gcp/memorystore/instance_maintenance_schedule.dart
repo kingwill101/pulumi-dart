@@ -1,3 +1,0 @@
-library module_memorystore_instance_maintenance_schedule;
-
-export 'instance_maintenance_schedule/instance_maintenance_schedule_memorystore.dart';

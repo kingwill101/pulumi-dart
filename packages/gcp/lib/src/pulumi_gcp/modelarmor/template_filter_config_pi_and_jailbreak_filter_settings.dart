@@ -1,3 +1,0 @@
-library module_modelarmor_template_filter_config_pi_and_jailbreak_filter_settings;
-
-export 'template_filter_config_pi_and_jailbreak_filter_settings/template_filter_config_pi_and_jailbreak_filter_settings.dart';

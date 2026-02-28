@@ -1,3 +1,0 @@
-library module_appengine_standard_app_version_vpc_access_connector;
-
-export 'standard_app_version_vpc_access_connector/standard_app_version_vpc_access_connector.dart';

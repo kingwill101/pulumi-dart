@@ -1,3 +1,0 @@
-library module_container_aws_cluster_authorization_admin_group;
-
-export 'aws_cluster_authorization_admin_group/aws_cluster_authorization_admin_group.dart';

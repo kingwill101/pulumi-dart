@@ -1,3 +1,0 @@
-library module_diagflow_generator_summarization_context_few_shot_example;
-
-export 'generator_summarization_context_few_shot_example/generator_summarization_context_few_shot_example.dart';

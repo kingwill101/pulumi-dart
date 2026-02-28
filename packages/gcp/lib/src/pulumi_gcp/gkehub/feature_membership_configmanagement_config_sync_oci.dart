@@ -1,3 +1,0 @@
-library module_gkehub_feature_membership_configmanagement_config_sync_oci;
-
-export 'feature_membership_configmanagement_config_sync_oci/feature_membership_configmanagement_config_sync_oci.dart';

@@ -1,3 +1,0 @@
-library module_dataproc_metastore_service_metadata_integration;
-
-export 'metastore_service_metadata_integration/metastore_service_metadata_integration.dart';

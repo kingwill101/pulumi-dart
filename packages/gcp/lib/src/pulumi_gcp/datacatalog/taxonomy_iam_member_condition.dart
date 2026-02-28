@@ -1,3 +1,0 @@
-library module_datacatalog_taxonomy_iam_member_condition;
-
-export 'taxonomy_iam_member_condition/taxonomy_iam_member_condition.dart';

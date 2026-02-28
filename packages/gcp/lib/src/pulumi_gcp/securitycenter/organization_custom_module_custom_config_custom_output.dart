@@ -1,3 +1,0 @@
-library module_securitycenter_organization_custom_module_custom_config_custom_output;
-
-export 'organization_custom_module_custom_config_custom_output/organization_custom_module_custom_config_custom_output.dart';

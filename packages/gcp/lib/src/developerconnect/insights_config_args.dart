@@ -1,0 +1,116 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'insights_config_artifact_config.dart';
+
+/// {@template pulumi_developerconnect_insights_config_insights_config_args_doc}
+/// The set of arguments for InsightsConfig.
+/// {@endtemplate}
+/// {@macro pulumi_developerconnect_insights_config_insights_config_args_doc}
+class InsightsConfigArgs {
+  /// User specified annotations. See https://google.aip.dev/148#annotations
+  /// for more details such as format and size limitations.
+  /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  final pulumi.Input<Map<String, String>>? annotations;
+
+  /// The name of the App Hub Application.
+  /// Format:
+  /// projects/{project}/locations/{location}/applications/{application}
+  final pulumi.Input<String> appHubApplication;
+
+  /// The artifact configurations of the artifacts that are deployed.
+  /// Structure is documented below.
+  final pulumi.Input<List<InsightsConfigArtifactConfig>>? artifactConfigs;
+
+  /// ID of the requesting InsightsConfig.
+  final pulumi.Input<String> insightsConfigId;
+
+  /// Set of labels associated with an InsightsConfig.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  final pulumi.Input<String> location;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [InsightsConfigArgs].
+  /// [annotations] User specified annotations. See https://google.aip.dev/148#annotations
+  /// [appHubApplication] The name of the App Hub Application.
+  /// [artifactConfigs] The artifact configurations of the artifacts that are deployed.
+  /// [insightsConfigId] ID of the requesting InsightsConfig.
+  /// [labels] Set of labels associated with an InsightsConfig.
+  /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [project] The ID of the project in which the resource belongs.
+  InsightsConfigArgs({
+    Map<String, String>? annotations,
+    required String appHubApplication,
+    List<InsightsConfigArtifactConfig>? artifactConfigs,
+    required String insightsConfigId,
+    Map<String, String>? labels,
+    required String location,
+    String? project,
+  })  : annotations =
+            pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+        appHubApplication = pulumi.Input.asInput<String>(appHubApplication),
+        artifactConfigs =
+            pulumi.Input.asOptionalInput<List<InsightsConfigArtifactConfig>>(
+                artifactConfigs),
+        insightsConfigId = pulumi.Input.asInput<String>(insightsConfigId),
+        labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final annotationsValue = annotations;
+    if (annotationsValue != null) {
+      map['annotations'] = annotationsValue;
+    }
+    map['appHubApplication'] = appHubApplication;
+    final artifactConfigsValue = artifactConfigs;
+    if (artifactConfigsValue != null) {
+      map['artifactConfigs'] = pulumi.Input.mapOptionalInputValue<
+              List<InsightsConfigArtifactConfig>, List<Map<String, dynamic>>>(
+          artifactConfigsValue,
+          (value) => pulumi.Input.encodeList<InsightsConfigArtifactConfig,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    map['insightsConfigId'] = insightsConfigId;
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory InsightsConfigArgs.fromMap(Map<String, dynamic> map) {
+    return InsightsConfigArgs(
+      annotations: map['annotations'] == null
+          ? null
+          : (map['annotations'] as Map).cast<String, String>(),
+      appHubApplication: map['appHubApplication'] as String,
+      artifactConfigs: map['artifactConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<InsightsConfigArtifactConfig>(
+              map['artifactConfigs'],
+              (value) => InsightsConfigArtifactConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      insightsConfigId: map['insightsConfigId'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

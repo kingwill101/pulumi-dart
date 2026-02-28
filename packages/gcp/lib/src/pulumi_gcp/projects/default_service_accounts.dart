@@ -1,4 +1,0 @@
-library module_projects_default_service_accounts;
-
-export 'default_service_accounts/default_service_accounts.dart';
-export 'default_service_accounts/default_service_accounts_args.dart';

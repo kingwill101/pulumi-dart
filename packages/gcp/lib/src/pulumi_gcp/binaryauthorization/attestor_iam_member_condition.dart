@@ -1,3 +1,0 @@
-library module_binaryauthorization_attestor_iam_member_condition;
-
-export 'attestor_iam_member_condition/attestor_iam_member_condition.dart';

@@ -1,3 +1,0 @@
-library module_looker_instance_periodic_export_config;
-
-export 'instance_periodic_export_config/instance_periodic_export_config.dart';

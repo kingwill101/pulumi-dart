@@ -1,3 +1,0 @@
-library module_iam_workload_identity_pool_provider_x509;
-
-export 'workload_identity_pool_provider_x509/workload_identity_pool_provider_x509.dart';

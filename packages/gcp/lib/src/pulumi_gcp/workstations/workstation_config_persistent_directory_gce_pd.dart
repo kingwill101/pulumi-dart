@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_persistent_directory_gce_pd;
-
-export 'workstation_config_persistent_directory_gce_pd/workstation_config_persistent_directory_gce_pd.dart';

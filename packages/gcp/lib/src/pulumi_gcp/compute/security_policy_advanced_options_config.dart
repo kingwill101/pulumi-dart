@@ -1,3 +1,0 @@
-library module_compute_security_policy_advanced_options_config;
-
-export 'security_policy_advanced_options_config/security_policy_advanced_options_config.dart';

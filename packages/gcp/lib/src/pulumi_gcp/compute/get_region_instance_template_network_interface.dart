@@ -1,3 +1,0 @@
-library module_compute_get_region_instance_template_network_interface;
-
-export 'get_region_instance_template_network_interface/get_region_instance_template_network_interface.dart';

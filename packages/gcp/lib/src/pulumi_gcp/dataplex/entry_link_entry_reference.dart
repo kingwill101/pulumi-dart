@@ -1,3 +1,0 @@
-library module_dataplex_entry_link_entry_reference;
-
-export 'entry_link_entry_reference/entry_link_entry_reference.dart';

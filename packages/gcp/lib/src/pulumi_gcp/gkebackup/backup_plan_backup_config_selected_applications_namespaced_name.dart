@@ -1,3 +1,0 @@
-library module_gkebackup_backup_plan_backup_config_selected_applications_namespaced_name;
-
-export 'backup_plan_backup_config_selected_applications_namespaced_name/backup_plan_backup_config_selected_applications_namespaced_name.dart';

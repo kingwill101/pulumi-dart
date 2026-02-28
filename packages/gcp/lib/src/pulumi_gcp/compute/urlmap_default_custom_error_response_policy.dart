@@ -1,3 +1,0 @@
-library module_compute_urlmap_default_custom_error_response_policy;
-
-export 'urlmap_default_custom_error_response_policy/urlmap_default_custom_error_response_policy.dart';

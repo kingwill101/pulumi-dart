@@ -1,4 +1,0 @@
-library module_vertex_ai_endpoint_iam_binding;
-
-export 'ai_endpoint_iam_binding/ai_endpoint_iam_binding.dart';
-export 'ai_endpoint_iam_binding/ai_endpoint_iam_binding_args.dart';

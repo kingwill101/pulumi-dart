@@ -1,3 +1,0 @@
-library module_secretmanager_regional_secret_iam_member_condition;
-
-export 'regional_secret_iam_member_condition/regional_secret_iam_member_condition.dart';

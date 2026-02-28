@@ -1,3 +1,0 @@
-library module_storage_bucket_ip_filter_vpc_network_source;
-
-export 'bucket_ip_filter_vpc_network_source/bucket_ip_filter_vpc_network_source.dart';

@@ -1,15 +1,15 @@
 // ignore_for_file: unused_import
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_gcp/pulumi_gcp.dart' as provider;
 
-class ExampleStack extends Stack {
+class ExampleStack extends pulumi.Stack {
   ExampleStack() {
-    // TODO: Add resources from package:pulumi_gcp.
+    // Add resources from package:pulumi_gcp.
     // Example:
     // final resource = provider.YourResource("example");
   }
 }
 
 Future<void> main() async {
-  await Deployment.run(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => ExampleStack());
 }

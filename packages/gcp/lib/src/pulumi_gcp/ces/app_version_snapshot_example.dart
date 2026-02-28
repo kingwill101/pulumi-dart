@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_example;
-
-export 'app_version_snapshot_example/app_version_snapshot_example.dart';

@@ -1,3 +1,0 @@
-library module_bigquery_data_transfer_config_schedule_options;
-
-export 'data_transfer_config_schedule_options/data_transfer_config_schedule_options.dart';

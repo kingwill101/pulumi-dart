@@ -1,3 +1,0 @@
-library module_secretmanager_get_secrets_secret_replication_user_managed;
-
-export 'get_secrets_secret_replication_user_managed/get_secrets_secret_replication_user_managed.dart';

@@ -1,3 +1,0 @@
-library module_networkservices_http_route_rule_action_url_rewrite;
-
-export 'http_route_rule_action_url_rewrite/http_route_rule_action_url_rewrite.dart';

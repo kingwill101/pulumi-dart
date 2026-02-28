@@ -1,3 +1,0 @@
-library module_composer_get_environment_config_web_server_config;
-
-export 'get_environment_config_web_server_config/get_environment_config_web_server_config.dart';

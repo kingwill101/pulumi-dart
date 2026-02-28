@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_transition_route;
-
-export 'cx_page_transition_route/cx_page_transition_route.dart';

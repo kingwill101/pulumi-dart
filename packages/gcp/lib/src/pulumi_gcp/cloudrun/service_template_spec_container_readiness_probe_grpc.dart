@@ -1,3 +1,0 @@
-library module_cloudrun_service_template_spec_container_readiness_probe_grpc;
-
-export 'service_template_spec_container_readiness_probe_grpc/service_template_spec_container_readiness_probe_grpc.dart';

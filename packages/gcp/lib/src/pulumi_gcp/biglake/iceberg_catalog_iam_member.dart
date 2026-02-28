@@ -1,4 +1,0 @@
-library module_biglake_iceberg_catalog_iam_member;
-
-export 'iceberg_catalog_iam_member/iceberg_catalog_iam_member.dart';
-export 'iceberg_catalog_iam_member/iceberg_catalog_iam_member_args.dart';

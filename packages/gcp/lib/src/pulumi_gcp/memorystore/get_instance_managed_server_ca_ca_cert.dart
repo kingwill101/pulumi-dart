@@ -1,3 +1,0 @@
-library module_memorystore_get_instance_managed_server_ca_ca_cert;
-
-export 'get_instance_managed_server_ca_ca_cert/get_instance_managed_server_ca_ca_cert.dart';

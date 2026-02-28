@@ -1,3 +1,0 @@
-library module_container_aws_cluster_control_plane_main_volume;
-
-export 'aws_cluster_control_plane_main_volume/aws_cluster_control_plane_main_volume.dart';

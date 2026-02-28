@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_admin_cluster_proxy;
-
-export 'bare_metal_admin_cluster_proxy/bare_metal_admin_cluster_proxy.dart';

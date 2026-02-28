@@ -1,3 +1,0 @@
-library module_networksecurity_authz_policy_http_rule_to_not_operation_path;
-
-export 'authz_policy_http_rule_to_not_operation_path/authz_policy_http_rule_to_not_operation_path.dart';

@@ -1,3 +1,0 @@
-library module_networkconnectivity_internal_range_migration;
-
-export 'internal_range_migration/internal_range_migration.dart';

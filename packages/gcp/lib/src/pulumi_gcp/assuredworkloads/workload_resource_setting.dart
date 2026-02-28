@@ -1,3 +1,0 @@
-library module_assuredworkloads_workload_resource_setting;
-
-export 'workload_resource_setting/workload_resource_setting.dart';

@@ -1,3 +1,0 @@
-library module_filestore_get_instance_performance_config_fixed_iop;
-
-export 'get_instance_performance_config_fixed_iop/get_instance_performance_config_fixed_iop.dart';

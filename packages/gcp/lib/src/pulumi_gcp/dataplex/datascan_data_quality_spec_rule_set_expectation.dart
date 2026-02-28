@@ -1,3 +1,0 @@
-library module_dataplex_datascan_data_quality_spec_rule_set_expectation;
-
-export 'datascan_data_quality_spec_rule_set_expectation/datascan_data_quality_spec_rule_set_expectation.dart';

@@ -1,3 +1,0 @@
-library module_runtimeconfig_config_iam_member_condition;
-
-export 'config_iam_member_condition/config_iam_member_condition.dart';

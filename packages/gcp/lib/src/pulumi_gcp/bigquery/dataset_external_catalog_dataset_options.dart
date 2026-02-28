@@ -1,3 +1,0 @@
-library module_bigquery_dataset_external_catalog_dataset_options;
-
-export 'dataset_external_catalog_dataset_options/dataset_external_catalog_dataset_options.dart';

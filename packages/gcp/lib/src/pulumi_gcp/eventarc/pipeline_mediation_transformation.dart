@@ -1,3 +1,0 @@
-library module_eventarc_pipeline_mediation_transformation;
-
-export 'pipeline_mediation_transformation/pipeline_mediation_transformation.dart';

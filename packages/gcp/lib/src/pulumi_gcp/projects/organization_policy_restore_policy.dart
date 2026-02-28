@@ -1,3 +1,0 @@
-library module_projects_organization_policy_restore_policy;
-
-export 'organization_policy_restore_policy/organization_policy_restore_policy_projects.dart';

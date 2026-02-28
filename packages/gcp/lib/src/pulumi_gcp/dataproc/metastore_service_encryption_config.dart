@@ -1,3 +1,0 @@
-library module_dataproc_metastore_service_encryption_config;
-
-export 'metastore_service_encryption_config/metastore_service_encryption_config.dart';

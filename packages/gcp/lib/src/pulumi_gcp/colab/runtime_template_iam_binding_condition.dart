@@ -1,3 +1,0 @@
-library module_colab_runtime_template_iam_binding_condition;
-
-export 'runtime_template_iam_binding_condition/runtime_template_iam_binding_condition.dart';

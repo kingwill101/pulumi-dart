@@ -1,3 +1,0 @@
-library module_compute_router_peer_advertised_ip_range;
-
-export 'router_peer_advertised_ip_range/router_peer_advertised_ip_range.dart';

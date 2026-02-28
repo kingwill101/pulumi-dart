@@ -1,3 +1,0 @@
-library module_dataproc_gdc_application_environment_spark_application_environment_config;
-
-export 'gdc_application_environment_spark_application_environment_config/gdc_application_environment_spark_application_environment_config.dart';

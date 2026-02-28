@@ -1,3 +1,0 @@
-library module_compute_instance_from_machine_image_attached_disk;
-
-export 'instance_from_machine_image_attached_disk/instance_from_machine_image_attached_disk.dart';

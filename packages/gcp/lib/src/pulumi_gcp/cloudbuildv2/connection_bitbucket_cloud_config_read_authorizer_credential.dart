@@ -1,3 +1,0 @@
-library module_cloudbuildv2_connection_bitbucket_cloud_config_read_authorizer_credential;
-
-export 'connection_bitbucket_cloud_config_read_authorizer_credential/connection_bitbucket_cloud_config_read_authorizer_credential.dart';

@@ -1,5 +1,0 @@
-library module_servicedirectory_get_service_iam_policy;
-
-export 'get_service_iam_policy/get_service_iam_policy_servicedirectory.dart';
-export 'get_service_iam_policy/get_service_iam_policy_servicedirectory_args.dart';
-export 'get_service_iam_policy/get_service_iam_policy_servicedirectory_result.dart';

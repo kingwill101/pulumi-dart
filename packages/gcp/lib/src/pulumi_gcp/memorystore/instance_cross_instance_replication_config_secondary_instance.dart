@@ -1,3 +1,0 @@
-library module_memorystore_instance_cross_instance_replication_config_secondary_instance;
-
-export 'instance_cross_instance_replication_config_secondary_instance/instance_cross_instance_replication_config_secondary_instance.dart';

@@ -1,3 +1,0 @@
-library module_cloudrunv2_service_binary_authorization;
-
-export 'service_binary_authorization/service_binary_authorization.dart';

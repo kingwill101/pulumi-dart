@@ -1,3 +1,0 @@
-library module_container_cluster_anonymous_authentication_config;
-
-export 'cluster_anonymous_authentication_config/cluster_anonymous_authentication_config.dart';

@@ -1,3 +1,0 @@
-library module_sql_database_instance_dns_name;
-
-export 'database_instance_dns_name/database_instance_dns_name.dart';

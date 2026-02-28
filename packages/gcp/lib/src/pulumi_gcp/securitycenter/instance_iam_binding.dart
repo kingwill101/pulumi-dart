@@ -1,4 +1,0 @@
-library module_securitycenter_instance_iam_binding;
-
-export 'instance_iam_binding/instance_iam_binding_securitycenter.dart';
-export 'instance_iam_binding/instance_iam_binding_securitycenter_args.dart';

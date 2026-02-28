@@ -1,3 +1,0 @@
-library module_storage_control_folder_intelligence_config_trial_config;
-
-export 'control_folder_intelligence_config_trial_config/control_folder_intelligence_config_trial_config.dart';

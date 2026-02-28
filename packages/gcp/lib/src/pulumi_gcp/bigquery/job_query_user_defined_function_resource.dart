@@ -1,3 +1,0 @@
-library module_bigquery_job_query_user_defined_function_resource;
-
-export 'job_query_user_defined_function_resource/job_query_user_defined_function_resource.dart';

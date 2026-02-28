@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_node_config_confidential_nodes;
-
-export 'cluster_node_pool_node_config_confidential_nodes/cluster_node_pool_node_config_confidential_nodes.dart';

@@ -1,3 +1,0 @@
-library module_pubsub_get_subscription_push_config_oidc_token;
-
-export 'get_subscription_push_config_oidc_token/get_subscription_push_config_oidc_token.dart';

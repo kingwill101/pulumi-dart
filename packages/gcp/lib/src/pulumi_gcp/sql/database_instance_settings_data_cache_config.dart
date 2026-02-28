@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_data_cache_config;
-
-export 'database_instance_settings_data_cache_config/database_instance_settings_data_cache_config.dart';

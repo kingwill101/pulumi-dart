@@ -1,3 +1,0 @@
-library module_cloudrunv2_service_template_container_build_info;
-
-export 'service_template_container_build_info/service_template_container_build_info.dart';

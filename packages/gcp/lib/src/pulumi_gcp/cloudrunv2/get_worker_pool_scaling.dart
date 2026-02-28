@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_worker_pool_scaling;
-
-export 'get_worker_pool_scaling/get_worker_pool_scaling.dart';

@@ -1,3 +1,0 @@
-library module_certificateauthority_get_authority_config_x509_config_ca_option;
-
-export 'get_authority_config_x509_config_ca_option/get_authority_config_x509_config_ca_option.dart';

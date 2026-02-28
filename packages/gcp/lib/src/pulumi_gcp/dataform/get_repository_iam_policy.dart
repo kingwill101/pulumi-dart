@@ -1,5 +1,0 @@
-library module_dataform_get_repository_iam_policy;
-
-export 'get_repository_iam_policy/get_repository_iam_policy_dataform.dart';
-export 'get_repository_iam_policy/get_repository_iam_policy_dataform_args.dart';
-export 'get_repository_iam_policy/get_repository_iam_policy_dataform_result.dart';

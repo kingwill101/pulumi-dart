@@ -1,3 +1,0 @@
-library module_datastream_connection_profile_salesforce_profile_user_credentials;
-
-export 'connection_profile_salesforce_profile_user_credentials/connection_profile_salesforce_profile_user_credentials.dart';

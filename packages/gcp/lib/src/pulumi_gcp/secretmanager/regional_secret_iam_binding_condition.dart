@@ -1,3 +1,0 @@
-library module_secretmanager_regional_secret_iam_binding_condition;
-
-export 'regional_secret_iam_binding_condition/regional_secret_iam_binding_condition.dart';

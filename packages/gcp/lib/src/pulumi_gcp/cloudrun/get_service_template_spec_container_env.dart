@@ -1,3 +1,0 @@
-library module_cloudrun_get_service_template_spec_container_env;
-
-export 'get_service_template_spec_container_env/get_service_template_spec_container_env.dart';

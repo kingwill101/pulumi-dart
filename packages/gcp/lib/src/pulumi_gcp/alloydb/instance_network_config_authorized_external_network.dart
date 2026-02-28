@@ -1,3 +1,0 @@
-library module_alloydb_instance_network_config_authorized_external_network;
-
-export 'instance_network_config_authorized_external_network/instance_network_config_authorized_external_network.dart';

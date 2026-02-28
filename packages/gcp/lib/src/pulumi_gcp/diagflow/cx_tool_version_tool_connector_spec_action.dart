@@ -1,3 +1,0 @@
-library module_diagflow_cx_tool_version_tool_connector_spec_action;
-
-export 'cx_tool_version_tool_connector_spec_action/cx_tool_version_tool_connector_spec_action.dart';

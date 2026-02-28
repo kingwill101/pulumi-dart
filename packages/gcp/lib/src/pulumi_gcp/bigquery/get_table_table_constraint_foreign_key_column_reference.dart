@@ -1,3 +1,0 @@
-library module_bigquery_get_table_table_constraint_foreign_key_column_reference;
-
-export 'get_table_table_constraint_foreign_key_column_reference/get_table_table_constraint_foreign_key_column_reference.dart';

@@ -1,3 +1,0 @@
-library module_filestore_instance_directory_services_ldap;
-
-export 'instance_directory_services_ldap/instance_directory_services_ldap.dart';

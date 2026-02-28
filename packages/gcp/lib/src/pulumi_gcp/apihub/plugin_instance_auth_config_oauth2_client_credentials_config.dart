@@ -1,3 +1,0 @@
-library module_apihub_plugin_instance_auth_config_oauth2_client_credentials_config;
-
-export 'plugin_instance_auth_config_oauth2_client_credentials_config/plugin_instance_auth_config_oauth2_client_credentials_config.dart';

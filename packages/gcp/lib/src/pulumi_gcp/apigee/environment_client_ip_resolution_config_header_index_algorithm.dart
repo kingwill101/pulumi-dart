@@ -1,3 +1,0 @@
-library module_apigee_environment_client_ip_resolution_config_header_index_algorithm;
-
-export 'environment_client_ip_resolution_config_header_index_algorithm/environment_client_ip_resolution_config_header_index_algorithm.dart';

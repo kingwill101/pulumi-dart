@@ -1,3 +1,0 @@
-library module_compute_region_network_endpoint_group_app_engine;
-
-export 'region_network_endpoint_group_app_engine/region_network_endpoint_group_app_engine.dart';

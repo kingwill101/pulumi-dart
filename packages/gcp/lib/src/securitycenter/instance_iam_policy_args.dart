@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_securitycenter_instance_iam_policy_instance_iam_policy_args_doc}
+/// The set of arguments for InstanceIamPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_securitycenter_instance_iam_policy_instance_iam_policy_args_doc}
+class InstanceIamPolicyArgs {
+  /// The ID of the instance or a fully qualified identifier for the instance.
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> policyData;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// The region of the Data Fusion instance.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [InstanceIamPolicyArgs].
+  /// [name] The ID of the instance or a fully qualified identifier for the instance.
+  /// [policyData] Required.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [region] The region of the Data Fusion instance.
+  InstanceIamPolicyArgs({
+    String? name,
+    required String policyData,
+    String? project,
+    String? region,
+  })  : name = pulumi.Input.asOptionalInput<String>(name),
+        policyData = pulumi.Input.asInput<String>(policyData),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    map['policyData'] = policyData;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory InstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return InstanceIamPolicyArgs(
+      name: map['name'] == null ? null : map['name'] as String,
+      policyData: map['policyData'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+    );
+  }
+}

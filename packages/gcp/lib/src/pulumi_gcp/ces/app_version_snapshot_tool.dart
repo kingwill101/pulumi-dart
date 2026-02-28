@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_tool;
-
-export 'app_version_snapshot_tool/app_version_snapshot_tool.dart';

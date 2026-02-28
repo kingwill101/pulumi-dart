@@ -1,3 +1,0 @@
-library module_alloydb_cluster_trial_metadata;
-
-export 'cluster_trial_metadata/cluster_trial_metadata.dart';

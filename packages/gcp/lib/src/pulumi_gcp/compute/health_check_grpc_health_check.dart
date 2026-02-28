@@ -1,3 +1,0 @@
-library module_compute_health_check_grpc_health_check;
-
-export 'health_check_grpc_health_check/health_check_grpc_health_check.dart';

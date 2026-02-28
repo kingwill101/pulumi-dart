@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_defaults_node_config_defaults;
-
-export 'cluster_node_pool_defaults_node_config_defaults/cluster_node_pool_defaults_node_config_defaults.dart';

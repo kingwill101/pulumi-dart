@@ -1,3 +1,0 @@
-library module_workstations_workstation_cluster_condition;
-
-export 'workstation_cluster_condition/workstation_cluster_condition.dart';

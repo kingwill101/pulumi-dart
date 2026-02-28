@@ -1,3 +1,0 @@
-library module_diagflow_cx_flow_knowledge_connector_settings_trigger_fulfillment;
-
-export 'cx_flow_knowledge_connector_settings_trigger_fulfillment/cx_flow_knowledge_connector_settings_trigger_fulfillment.dart';

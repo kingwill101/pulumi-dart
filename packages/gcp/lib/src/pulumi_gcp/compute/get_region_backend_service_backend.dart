@@ -1,3 +1,0 @@
-library module_compute_get_region_backend_service_backend;
-
-export 'get_region_backend_service_backend/get_region_backend_service_backend.dart';

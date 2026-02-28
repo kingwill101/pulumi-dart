@@ -1,5 +1,0 @@
-library module_secretmanager_get_secret_version;
-
-export 'get_secret_version/get_secret_version_secretmanager.dart';
-export 'get_secret_version/get_secret_version_secretmanager_args.dart';
-export 'get_secret_version/get_secret_version_secretmanager_result.dart';

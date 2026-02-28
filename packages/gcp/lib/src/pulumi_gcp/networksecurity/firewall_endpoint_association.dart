@@ -1,4 +1,0 @@
-library module_networksecurity_firewall_endpoint_association;
-
-export 'firewall_endpoint_association/firewall_endpoint_association.dart';
-export 'firewall_endpoint_association/firewall_endpoint_association_args.dart';

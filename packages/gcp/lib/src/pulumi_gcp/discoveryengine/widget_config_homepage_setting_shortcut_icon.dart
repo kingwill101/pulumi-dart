@@ -1,3 +1,0 @@
-library module_discoveryengine_widget_config_homepage_setting_shortcut_icon;
-
-export 'widget_config_homepage_setting_shortcut_icon/widget_config_homepage_setting_shortcut_icon.dart';

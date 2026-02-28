@@ -1,3 +1,0 @@
-library module_colab_runtime_notebook_runtime_template_ref;
-
-export 'runtime_notebook_runtime_template_ref/runtime_notebook_runtime_template_ref.dart';

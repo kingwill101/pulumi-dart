@@ -1,3 +1,0 @@
-library module_transcoder_job_template_config_overlay_animation_animation_fade_xy;
-
-export 'job_template_config_overlay_animation_animation_fade_xy/job_template_config_overlay_animation_animation_fade_xy.dart';

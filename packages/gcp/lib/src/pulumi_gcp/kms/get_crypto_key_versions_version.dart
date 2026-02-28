@@ -1,3 +1,0 @@
-library module_kms_get_crypto_key_versions_version;
-
-export 'get_crypto_key_versions_version/get_crypto_key_versions_version.dart';

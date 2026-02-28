@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_tool_open_api_tool_service_directory_config;
-
-export 'app_version_snapshot_tool_open_api_tool_service_directory_config/app_version_snapshot_tool_open_api_tool_service_directory_config.dart';

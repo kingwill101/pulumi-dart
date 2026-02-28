@@ -1,3 +1,0 @@
-library module_ces_deployment_channel_profile_persona_property;
-
-export 'deployment_channel_profile_persona_property/deployment_channel_profile_persona_property.dart';

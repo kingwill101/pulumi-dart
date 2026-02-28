@@ -1,3 +1,0 @@
-library module_datastream_connection_profile_mysql_profile_ssl_config;
-
-export 'connection_profile_mysql_profile_ssl_config/connection_profile_mysql_profile_ssl_config.dart';

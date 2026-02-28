@@ -1,3 +1,0 @@
-library module_compute_instance_template_disk;
-
-export 'instance_template_disk/instance_template_disk.dart';

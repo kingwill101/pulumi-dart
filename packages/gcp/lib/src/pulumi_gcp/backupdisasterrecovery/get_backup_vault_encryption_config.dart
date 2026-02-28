@@ -1,3 +1,0 @@
-library module_backupdisasterrecovery_get_backup_vault_encryption_config;
-
-export 'get_backup_vault_encryption_config/get_backup_vault_encryption_config.dart';

@@ -1,3 +1,0 @@
-library module_container_aws_cluster_control_plane_instance_placement;
-
-export 'aws_cluster_control_plane_instance_placement/aws_cluster_control_plane_instance_placement.dart';

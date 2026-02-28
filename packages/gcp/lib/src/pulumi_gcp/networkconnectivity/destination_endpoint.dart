@@ -1,3 +1,0 @@
-library module_networkconnectivity_destination_endpoint;
-
-export 'destination_endpoint/destination_endpoint.dart';

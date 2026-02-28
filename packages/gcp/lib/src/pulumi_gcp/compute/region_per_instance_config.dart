@@ -1,4 +1,0 @@
-library module_compute_region_per_instance_config;
-
-export 'region_per_instance_config/region_per_instance_config.dart';
-export 'region_per_instance_config/region_per_instance_config_args.dart';

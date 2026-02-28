@@ -1,3 +1,0 @@
-library module_cloudbuild_trigger_webhook_config;
-
-export 'trigger_webhook_config/trigger_webhook_config.dart';

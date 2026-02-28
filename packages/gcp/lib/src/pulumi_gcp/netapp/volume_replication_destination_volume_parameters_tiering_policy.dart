@@ -1,3 +1,0 @@
-library module_netapp_volume_replication_destination_volume_parameters_tiering_policy;
-
-export 'volume_replication_destination_volume_parameters_tiering_policy/volume_replication_destination_volume_parameters_tiering_policy.dart';

@@ -1,3 +1,0 @@
-library module_logging_linked_dataset_bigquery_dataset;
-
-export 'linked_dataset_bigquery_dataset/linked_dataset_bigquery_dataset.dart';

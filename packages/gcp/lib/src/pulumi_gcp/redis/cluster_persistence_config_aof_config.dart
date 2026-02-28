@@ -1,3 +1,0 @@
-library module_redis_cluster_persistence_config_aof_config;
-
-export 'cluster_persistence_config_aof_config/cluster_persistence_config_aof_config.dart';

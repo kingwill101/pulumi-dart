@@ -1,3 +1,0 @@
-library module_networksecurity_server_tls_policy_server_certificate;
-
-export 'server_tls_policy_server_certificate/server_tls_policy_server_certificate.dart';

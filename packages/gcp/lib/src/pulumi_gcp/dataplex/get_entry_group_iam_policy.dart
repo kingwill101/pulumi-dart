@@ -1,5 +1,0 @@
-library module_dataplex_get_entry_group_iam_policy;
-
-export 'get_entry_group_iam_policy/get_entry_group_iam_policy_dataplex.dart';
-export 'get_entry_group_iam_policy/get_entry_group_iam_policy_dataplex_args.dart';
-export 'get_entry_group_iam_policy/get_entry_group_iam_policy_dataplex_result.dart';

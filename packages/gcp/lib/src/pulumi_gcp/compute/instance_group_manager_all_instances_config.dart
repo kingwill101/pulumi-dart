@@ -1,3 +1,0 @@
-library module_compute_instance_group_manager_all_instances_config;
-
-export 'instance_group_manager_all_instances_config/instance_group_manager_all_instances_config.dart';

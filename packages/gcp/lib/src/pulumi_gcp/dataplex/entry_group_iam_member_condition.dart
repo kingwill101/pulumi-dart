@@ -1,3 +1,0 @@
-library module_dataplex_entry_group_iam_member_condition;
-
-export 'entry_group_iam_member_condition/entry_group_iam_member_condition_dataplex.dart';

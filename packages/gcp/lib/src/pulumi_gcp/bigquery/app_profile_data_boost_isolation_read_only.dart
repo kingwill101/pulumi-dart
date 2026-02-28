@@ -1,3 +1,0 @@
-library module_bigquery_app_profile_data_boost_isolation_read_only;
-
-export 'app_profile_data_boost_isolation_read_only/app_profile_data_boost_isolation_read_only.dart';

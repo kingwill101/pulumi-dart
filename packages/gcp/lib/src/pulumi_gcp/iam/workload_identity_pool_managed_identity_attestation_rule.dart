@@ -1,3 +1,0 @@
-library module_iam_workload_identity_pool_managed_identity_attestation_rule;
-
-export 'workload_identity_pool_managed_identity_attestation_rule/workload_identity_pool_managed_identity_attestation_rule.dart';

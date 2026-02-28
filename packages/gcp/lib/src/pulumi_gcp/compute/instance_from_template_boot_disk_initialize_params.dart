@@ -1,3 +1,0 @@
-library module_compute_instance_from_template_boot_disk_initialize_params;
-
-export 'instance_from_template_boot_disk_initialize_params/instance_from_template_boot_disk_initialize_params.dart';

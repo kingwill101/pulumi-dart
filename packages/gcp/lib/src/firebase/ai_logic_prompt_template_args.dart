@@ -1,0 +1,71 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_firebase_ai_logic_prompt_template_ai_logic_prompt_template_args_doc}
+/// The set of arguments for AiLogicPromptTemplate.
+/// {@endtemplate}
+/// {@macro pulumi_firebase_ai_logic_prompt_template_ai_logic_prompt_template_args_doc}
+class AiLogicPromptTemplateArgs {
+  /// The display name of the PromptTemplate.
+  final pulumi.Input<String>? displayName;
+
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  final pulumi.Input<String> location;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// The unique ID of the PromptTemplate, which is the final component of the
+  /// PromptTemplate's resource name.
+  final pulumi.Input<String> templateId;
+
+  /// The DotPrompt raw template string.
+  final pulumi.Input<String> templateString;
+
+  /// Creates a new [AiLogicPromptTemplateArgs].
+  /// [displayName] The display name of the PromptTemplate.
+  /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [templateId] The unique ID of the PromptTemplate, which is the final component of the
+  /// [templateString] The DotPrompt raw template string.
+  AiLogicPromptTemplateArgs({
+    String? displayName,
+    required String location,
+    String? project,
+    required String templateId,
+    required String templateString,
+  })  : displayName = pulumi.Input.asOptionalInput<String>(displayName),
+        location = pulumi.Input.asInput<String>(location),
+        project = pulumi.Input.asOptionalInput<String>(project),
+        templateId = pulumi.Input.asInput<String>(templateId),
+        templateString = pulumi.Input.asInput<String>(templateString);
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final displayNameValue = displayName;
+    if (displayNameValue != null) {
+      map['displayName'] = displayNameValue;
+    }
+    map['location'] = location;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['templateId'] = templateId;
+    map['templateString'] = templateString;
+    return map;
+  }
+
+  factory AiLogicPromptTemplateArgs.fromMap(Map<String, dynamic> map) {
+    return AiLogicPromptTemplateArgs(
+      displayName:
+          map['displayName'] == null ? null : map['displayName'] as String,
+      location: map['location'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      templateId: map['templateId'] as String,
+      templateString: map['templateString'] as String,
+    );
+  }
+}

@@ -1,3 +1,0 @@
-library module_spanner_database_iambinding_condition;
-
-export 'database_iambinding_condition/database_iambinding_condition.dart';

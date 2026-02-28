@@ -1,3 +1,0 @@
-library module_oracledatabase_cloud_vm_cluster_properties;
-
-export 'cloud_vm_cluster_properties/cloud_vm_cluster_properties.dart';
