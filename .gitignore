@@ -14,3 +14,6 @@ pulumi-language-dart/pulumi-language-dart
 # Local Codex workspace artifacts
 .codex/
 .gen/
+
+# Local planning/tracking notes
+SDK_FEATURE_GAP_ANALYSIS.md
