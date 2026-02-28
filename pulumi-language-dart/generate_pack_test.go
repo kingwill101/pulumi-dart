@@ -916,6 +916,43 @@ providers:
 	assert.Contains(t, pubspec, "pulumi_policy: ^0.5.0")
 }
 
+func TestGeneratePackageIgnoresSelfDependencyFromRegistry(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	workspaceDir := t.TempDir()
+	targetDir := filepath.Join(workspaceDir, "sdks", "sample")
+	require.NoError(t, os.MkdirAll(filepath.Join(workspaceDir, "packages"), 0o700))
+	registry := strings.TrimSpace(`
+providers:
+  sample:
+    dependencies:
+      pulumi_sample: ^1.2.3
+      pulumi_policy: ^0.2.0
+`) + "\n"
+	require.NoError(
+		t,
+		os.WriteFile(filepath.Join(workspaceDir, "packages", "sdk_dependency_registry.yaml"), []byte(registry), 0o600),
+	)
+
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.NotContains(t, pubspec, "pulumi_sample:")
+	assert.Contains(t, pubspec, "pulumi_policy: ^0.2.0")
+}
+
 func TestGeneratePackageUpdatesExistingPubspecWhenEnabled(t *testing.T) {
 	t.Setenv("PULUMI_DART_UPDATE_EXISTING_PUBSPEC", "true")
 

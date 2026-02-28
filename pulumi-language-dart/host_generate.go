@@ -571,9 +571,13 @@ func localRegistryDartDependencies(providerName, outputDir string) map[string]in
 	}
 
 	normalized := map[string]interface{}{}
+	currentPackageName := toDartPackageName("", providerName)
 	for dependencyName, spec := range providerEntry.Dependencies {
 		name := strings.TrimSpace(dependencyName)
 		if name == "" {
+			continue
+		}
+		if name == currentPackageName {
 			continue
 		}
 		normalizedSpec, ok := normalizeRegistryDependencySpec(spec, registryBaseDir)
