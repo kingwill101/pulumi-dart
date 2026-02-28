@@ -49,6 +49,20 @@ Default install path is `~/.local/bin`.
 4. Publish release notes
 5. Smoke-test installer script against new release
 
+## Current GitHub workflows in this repo
+
+- CI: `.github/workflows/pr.yml`
+  - tests `pulumi-language-dart` and `pulumi-dart`
+  - runs integration test shards
+  - installs Pulumi CLI in CI jobs
+  - validates protobuf generation (`make generate`) with `protoc` + `protoc_plugin`
+  - ensures Pulumi submodule checkout is initialized for proto/integration workflows
+- Binary release: `.github/workflows/release-language-host.yml`
+  - push tag `vX.Y.Z` to publish assets
+  - `workflow_dispatch` supports snapshot builds and manual tagged releases
+- Drift monitor: `.github/workflows/schema-drift.yml`
+  - checks schema/version drift per provider package
+
 ## Verification checklist for maintainers
 
 - `pulumi-language-dart -help` works from installed artifact
